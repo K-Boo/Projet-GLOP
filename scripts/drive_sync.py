@@ -13,6 +13,20 @@ CATEGORIES = {
 }
 
 def find_drive_root():
+    # 0. Local config file override (config.local.json at repo root)
+    repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    local_cfg = os.path.join(repo_root, "config.local.json")
+    if os.path.isfile(local_cfg):
+        try:
+            import json
+            with open(local_cfg, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                custom_path = data.get("drive_path")
+                if custom_path and os.path.isdir(custom_path):
+                    return custom_path
+        except Exception:
+            pass
+
     # 1. Environment variable override
     env_path = os.environ.get("GLOP_DRIVE_DIR") or os.environ.get("GLOP_DRIVE_PATH")
     if env_path and os.path.isdir(env_path):

@@ -70,3 +70,9 @@ Ce fichier définit les directives obligatoires que tout agent Antigravity opér
 ## 6. Synchronisation des Livrables sur Google Drive
 1. **Centralisation des Livrables** : Tout document officiel finalisé (PDF de cadrage, étude financière, dossier d'architecture, diaporama PPTX, vidéo MP4) doit être synchronisé dans le dossier partagé Google Drive de l'équipe (`G:\Mon Drive\Projet-GLOP` ou chemin configuré via `GLOP_DRIVE_DIR`).
 2. **Exécution Automatisée** : L'agent ou les scripts d'outillage doivent systématiquement appeler `python scripts/drive_sync.py <fichier>` pour assurer la réplication immédiate sur le Drive partagé dans la sous-catégorie appropriée (`01_Cadrage_Metier_R1`, `02_Etude_Financiere_R3`, `03_Architecture_Technique_R4_R5`, `04_Presentations_Diaporamas`, `05_Demonstrations_Videos`).
+
+---
+
+## 7. Alignement Automatique de l'Environnement Équipe
+Tout agent Antigravity opérant sur ce projet doit appliquer le protocole d'alignement défini dans `.antigravity/setup_equipe.md`. Dès qu'un membre de l'équipe demande de vérifier, aligner ou synchroniser sa configuration, l'agent exécute automatiquement `python scripts/setup_env.py` et applique les ajustements locaux nécessaires de façon autonome.
+
