@@ -76,3 +76,11 @@
 3. **Exécution Ciblée & Propre** :
    - Limiter la verbosité des commandes terminal (utiliser des filtres et cibler précisément les fichiers de tests).
    - Garder le workspace ordonné avec deux pôles étanches : `agent_projet/` (docs, livrables, drive) et `agent_code/` (backend, frontend, docker, tests).
+
+4. **Routage Multi-Modèles Économique (Model Tiering)** :
+   - Déléguer au moins 70% des tâches à `flash` (PO, rédaction, analyse) et `flash_lite` (QA, assertions, conformité zéro emoji).
+   - Réserver le modèle `pro` aux seules phases d'architecture (modélisation BDD 3NF) et aux calculs financiers critiques.
+
+5. **Contrôle & Audit de Consommation de Jetons** :
+   - Auditer régulièrement la consommation de jetons de la session via le script dédié :
+     `python agent_projet/scripts/token_tracker.py`

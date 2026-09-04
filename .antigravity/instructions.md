@@ -102,3 +102,22 @@ python agent_projet/scripts/setup_env.py
 1. **Interdiction stricte des emojis** : Aucun emoji ne doit être utilisé dans la rédaction des fichiers du projet : `README.md`, documentation dans `agent_projet/docs/`, spécifications d'architecture dans `agent_code/`, livrables PDF/PPTX/HTML, commentaires de code et messages de commit.
 2. **Exigence de sobriété et de propreté** : Le rendu visuel doit être épuré, structuré, rigoureux et digne d'un rapport professionnel d'élèves-ingénieurs en Master 2 MIAGE.
 3. **Contrôle à chaque modification** : À chaque modification d'un document ou du `README.md`, l'agent doit impérativement s'assurer de l'absence totale d'emojis avant de valider ses changements.
+
+---
+
+## 8. Coordination Multi-Agents & Optimisation des Jetons (Model Tiering)
+
+1. **Architecture par Contrats & Fichiers Partagés** :
+   - Pour éliminer le non-déterminisme, les sous-agents ne dialoguent pas en texte libre mais s'échangent des contrats JSON typés et des fichiers de spécification versionnés selon la machine à états décrite dans [`.antigravity/workflows/workflow_sprint.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/.antigravity/workflows/workflow_sprint.md).
+2. **Rôles de Sous-Agents Spécialisés** :
+   - Sous-Agent PO (`.antigravity/roles/po_role.md`) : Découpage INVEST, critères Gherkin, synchronisation Linear via MCP (`.agents/mcp_config.json`). Modèle obligatoire : `flash`.
+   - Sous-Agent Architecte (`.antigravity/roles/architect_role.md`) : Contrats OpenAPI, schémas PostgreSQL 3NF, multi-tenancy. Modèle obligatoire : `pro`.
+   - Sous-Agent Développeur TDD (`.antigravity/roles/developer_role.md`) : Cycle Red-Green-Refactor, Clean Code. Modèle : `pro` (calculs financiers) ou `flash` (standard).
+   - Sous-Agent QA & Conformité (`.antigravity/roles/qa_role.md`) : Validation DoD, non-régression, vérification cartouche et zéro emoji. Modèle obligatoire : `flash_lite`.
+   - Sous-Agent FinOps (`.antigravity/roles/finops_role.md`) : Contrôle a priori du dimensionnement et respect de la frugalité. Modèle obligatoire : `flash_lite`.
+3. **Optimisation des Quotas Gemini Pro** :
+   - Plus de 70% des opérations doivent être déléguées à `flash` ou `flash_lite` pour réserver le quota `pro` aux seuls arbitrages complexes d'architecture et de logique financière.
+   - Suivi régulier de la consommation via le script dédié :
+     ```bash
+     python agent_projet/scripts/token_tracker.py
+     ```
