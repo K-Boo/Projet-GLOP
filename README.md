@@ -47,23 +47,26 @@ Pour séparer nettement la phase de cadrage et de livrables de la phase d'implé
 
 ---
 
-## 4. Surveillance des Quotas et Observabilite LLM (FinOps)
+## 4. Surveillance des Quotas, Routage LLM & Green FinOps
 
-Pour suivre en direct la consommation de jetons de chaque requete et auditer les traces de l'agent tout en preservant les quotas Gemini Pro, deux outils 100% locaux et open source sont integres :
+Pour suivre en direct la consommation de jetons de chaque requete, auditer le routage de modeles LLM et mesurer l'impact ecologique (energie et eau), un moniteur en ligne de commande sobre et 100% local est integre :
 
-### Option A : Tableau de Bord Web Local (Arize Phoenix - Recommande)
-* **Sous Windows** : Double-cliquez sur `agent_projet/scripts/start_monitoring.bat`.
+* **Sous Windows** : Double-cliquez directement sur `agent_projet/scripts/watch_tokens.bat`.
 * **En ligne de commande** :
   ```bash
-  python agent_projet/scripts/launch_phoenix.py
-  ```
-* **Acceder a l'interface** : Rendez-vous sur `http://localhost:6006` dans votre navigateur.
-* Visualisation des traces completes, spans, tokens d'entree/sortie, latences et evaluations, stockes integralement en local sans aucun compte ni cle API cloud.
-
-### Option B : Moniteur CLI en Direct
-* **Sous Windows** : Double-cliquez sur `agent_projet/scripts/watch_tokens.bat`.
-* **En ligne de commande** :
-  ```bash
+  # Mode tableau de bord en direct (actualise a chaque reponse de l'agent)
   python agent_projet/scripts/token_tracker.py --watch
+
+  # Mode flux continu (journal defilant sans effacement d'ecran)
+  python agent_projet/scripts/token_tracker.py --stream
+
+  # Mode ponctuel (affichage instantane)
+  python agent_projet/scripts/token_tracker.py
   ```
-* Le moniteur terminal s'actualise a chaque reponse de l'agent en affichant les jetons d'entree, de sortie, les outils invoques et la jauge de contexte globale.
+
+### Metriques Affichees :
+* **Quotas Globaux** : Suivi du quota journalier (24h) et hebdomadaire (7 jours) avec jauges d'utilisation.
+* **Derniere Requete** : Horodatage, prompt nettoye, modele LLM sollicite (Orchestrateur Flash, Sous-Agents Pro ou Flash Lite).
+* **Jetons Consommes** : Jetons d'entree (In), de sortie (Out) et total unitaire.
+* **Green AI / Impact Ecologique** : Estimation de la consommation d'energie electrique (Wh avec equivalence ampoule LED) et de l'empreinte eau (mL avec equivalence en gorgees d'eau).
+* **Historique Recent** : Tableau recapitulatif des requetes precedentes.

@@ -35,10 +35,8 @@ Projet-GLOP/
 │   └── scripts/
 │       ├── generate_pdf.py        # Compilateur PDF vectoriel A4 (LaTeX/HTML)
 │       ├── drive_sync.py          # Synchronisation automatique Google Drive
-│       ├── launch_phoenix.py      # Lanceur du tableau de bord Arize Phoenix
-│       ├── start_monitoring.bat   # Lanceur Windows Web Arize Phoenix (http://localhost:6006)
-│       ├── token_tracker.py       # Moniteur FinOps CLI en direct (bibliotheque Rich)
-│       ├── watch_tokens.bat       # Lanceur Windows CLI du moniteur
+│       ├── token_tracker.py       # Moniteur FinOps & Green AI CLI (Quotas, LLM, Energie, Eau)
+│       ├── watch_tokens.bat       # Lanceur Windows du moniteur
 │       └── setup_env.py           # Script d'auto-alignement de l'environnement
 │
 ├── agent_code/                    # [POLE INGENIERIE LOGICIELLE & CODE]
@@ -74,9 +72,12 @@ Les sous-agents ne dialoguent pas en texte libre. L'orchestrateur suit la machin
 Declare dans `.agents/mcp_config.json`, il utilise le package `@modelcontextprotocol/server-linear`.
 Chaque membre de l'equipe renseigne sa variable d'environnement `LINEAR_API_KEY` pour que son agent puisse creer des tickets et gerer les cycles de sprint automatiquement.
 
-### D. La Suite d'Observabilite & FinOps 100% Locale
-1. **Arize Phoenix (Web)** : Accessible via `agent_projet/scripts/start_monitoring.bat` ou `python agent_projet/scripts/launch_phoenix.py` sur `http://localhost:6006`. Permet d'auditer les traces, spans, tokens et couts sans aucun service cloud ni abonnement externe.
-2. **Token Tracker CLI** : Accessible via `agent_projet/scripts/watch_tokens.bat` ou `python agent_projet/scripts/token_tracker.py --watch` pour un affichage terminal direct base sur `rich`.
+### D. Le Moniteur de Tokens, Routage & Green FinOps en Direct
+Situe dans `agent_projet/scripts/token_tracker.py` et pilotable via `watch_tokens.bat`, il offre une interface terminal sobre et non-intrusive :
+* **Suivi des Quotas Globaux** : Jauges d'utilisation du quota journalier (24h) et hebdomadaire (7 jours).
+* **Routage LLM par Requete** : Affiche le modele exact sollicite a chaque etape (Gemini Flash, Sous-Agents Pro ou Flash Lite).
+* **Mesure des Tokens** : Detail Entree (In), Sortie (Out) et Total.
+* **Green AI / Impact Ecologique** : Estimation scientifique de l'empreinte electrique (Wh) et en eau (mL) par requete et en cumul.
 
 ### E. La Politique Stricte Zero Emoji
 Tout fichier cree ou modifie (README, documentation, code, commentaires, commits) doit imperativement respecter la regle d'interdiction totale des emojis.
@@ -94,7 +95,7 @@ python agent_projet/scripts/setup_env.py
 ```
 
 Ce script realise en totale autonomie :
-1. **Verification et installation des packages Python** : installe `pymupdf`, `reportlab`, `pypdf`, `pillow`, `rich` et `arize-phoenix`.
+1. **Verification et installation des packages Python** : installe `pymupdf`, `reportlab`, `pypdf`, `pillow` et `rich`.
 2. **Verification du moteur PDF** : verifie la presence de Chromium / Edge headless pour la compilation A4.
 3. **Detection de Google Drive pour ordinateur** : localise le dossier `Projet-GLOP`, cree les 5 sous-dossiers officiels (`01_Cadrage_Metier_R1` a `05_Demonstrations_Videos`), et genere un fichier `config.local.json` si le Drive n'est pas sur le lecteur `G:\`.
 4. **Controle du depot Git** : verifie la connexion au remote `git@github.com:K-Boo/Projet-GLOP.git`.

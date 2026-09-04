@@ -1,14 +1,16 @@
-import os
+﻿import os
 import sys
 import glob
 import json
 import time
+import re
+import unicodedata
+from datetime import datetime, timedelta
 
 try:
     from rich.console import Console
     from rich.panel import Panel
     from rich.table import Table
-    from rich.layout import Layout
     from rich.text import Text
     from rich import box
     RICH_AVAILABLE = True
@@ -17,317 +19,433 @@ except ImportError:
     RICH_AVAILABLE = False
     console = None
 
-def find_latest_transcript():
+# Quotas par defaut (tokens)
+DEFAULT_DAILY_QUOTA = 1_000_000   # 1M tokens/jour
+DEFAULT_WEEKLY_QUOTA = 5_000_000  # 5M tokens/semaine
+
+# Facteurs environnementaux par 1000 tokens (Luccioni et al. 2023, Shaolei Ren et al. 2023)
+ECO_FACTORS = {
+    "flash_lite": {"wh": 0.10, "ml": 0.25},
+    "flash":      {"wh": 0.35, "ml": 0.80},
+    "pro":        {"wh": 1.20, "ml": 2.00},
+    "default":    {"wh": 0.35, "ml": 0.80}
+}
+
+def clean_ascii(text):
+    if not text:
+        return ""
+    text = text.replace("«", "\"").replace("»", "\"")
+    text = text.replace("“", "\"").replace("”", "\"")
+    text = text.replace("’", "'").replace("‘", "'")
+    text = text.replace("…", "...").replace("–", "-").replace("—", "-")
+    text = text.replace("€", "EUR").replace("°", "deg")
+    normalized = unicodedata.normalize("NFKD", text)
+    return "".join(c for c in normalized if not unicodedata.combining(c))
+
+def get_brain_dir():
     user_home = os.path.expanduser("~")
-    base_dir = os.path.join(user_home, ".gemini", "antigravity", "brain")
-    pattern = os.path.join(base_dir, "*", ".system_generated", "logs", "transcript.jsonl")
-    transcripts = glob.glob(pattern)
-    if not transcripts:
-        return None
-    transcripts.sort(key=os.path.getmtime, reverse=True)
-    return transcripts[0]
+    return os.path.join(user_home, ".gemini", "antigravity", "brain")
 
-def parse_transcript_data(file_path):
-    if not os.path.isfile(file_path):
-        return None
+def find_all_transcripts():
+    base = get_brain_dir()
+    pattern = os.path.join(base, "*", ".system_generated", "logs", "transcript.jsonl")
+    return sorted(glob.glob(pattern), key=os.path.getmtime, reverse=True)
 
-    steps = []
-    with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                steps.append(json.loads(line))
-            except Exception:
-                continue
+def find_latest_transcript():
+    ts = find_all_transcripts()
+    return ts[0] if ts else None
 
-    if not steps:
-        return None
+def parse_iso_datetime(ts_str, default_dt):
+    if not ts_str:
+        return default_dt
+    try:
+        clean = ts_str.replace("Z", "+00:00")
+        return datetime.fromisoformat(clean).astimezone().replace(tzinfo=None)
+    except Exception:
+        return default_dt
 
-    # Extraction des metriques globales
-    steps_count = len(steps)
-    user_messages = sum(1 for s in steps if s.get("type") == "USER_INPUT")
-    model_responses = sum(1 for s in steps if s.get("type") == "PLANNER_RESPONSE")
-    
-    total_in_chars = sum(len(s.get("content") or "") for s in steps if s.get("type") == "USER_INPUT")
-    total_out_chars = sum(len(s.get("content") or "") + len(s.get("thinking") or "") for s in steps if s.get("type") == "PLANNER_RESPONSE")
-    
-    total_in_tokens = total_in_chars // 4
-    total_out_tokens = total_out_chars // 4
-    total_session_tokens = total_in_tokens + total_out_tokens
+def compute_quotas_all_sessions(daily_quota=DEFAULT_DAILY_QUOTA, weekly_quota=DEFAULT_WEEKLY_QUOTA):
+    transcripts = find_all_transcripts()
+    now = datetime.now()
+    today_midnight = now.replace(hour=0, minute=0, second=0, microsecond=0)
+    week_ago = today_midnight - timedelta(days=7)
 
-    # Repartition des outils
-    tools_breakdown = {}
-    subagents_invoked = []
-    heavy_calls = []
+    today_in = 0
+    today_out = 0
+    week_in = 0
+    week_out = 0
 
-    for s in steps:
-        tool_calls = s.get("tool_calls") or []
-        for tc in tool_calls:
-            tname = tc.get("name") or "unknown"
-            tools_breakdown[tname] = tools_breakdown.get(tname, 0) + 1
-            args = tc.get("args") or {}
-            if tname == "invoke_subagent":
-                subs = args.get("Subagents", [])
-                for sub in subs:
-                    subagents_invoked.append({
-                        "role": sub.get("Role", "Inconnu"),
-                        "model": sub.get("Model", "inherit")
-                    })
-        content = s.get("content") or ""
-        if len(content) > 4000 and s.get("type") == "GENERIC":
-            heavy_calls.append(len(content))
+    for tf in transcripts:
+        file_mtime = datetime.fromtimestamp(os.path.getmtime(tf))
+        if file_mtime < week_ago:
+            continue
+        try:
+            with open(tf, "r", encoding="utf-8", errors="ignore") as f:
+                for line in f:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        data = json.loads(line)
+                    except Exception:
+                        continue
 
-    # Analyse du dernier tour
-    last_user_idx = -1
-    for i in range(len(steps) - 1, -1, -1):
-        if steps[i].get("type") == "USER_INPUT":
-            last_user_idx = i
-            break
+                    dt = parse_iso_datetime(data.get("created_at"), file_mtime)
+                    stype = data.get("type", "")
+                    tok_in = 0
+                    tok_out = 0
 
-    last_turn_info = None
-    if last_user_idx != -1:
-        u_step = steps[last_user_idx]
-        u_content = u_step.get("content") or ""
-        clean_prompt = u_content
-        if "<USER_REQUEST>" in clean_prompt and "</USER_REQUEST>" in clean_prompt:
-            clean_prompt = clean_prompt.split("<USER_REQUEST>")[1].split("</USER_REQUEST>")[0].strip()
-        clean_prompt = clean_prompt.replace("\n", " ").strip()
-        if len(clean_prompt) > 85:
-            clean_prompt = clean_prompt[:82] + "..."
+                    if stype == "USER_INPUT":
+                        tok_in = len(data.get("content") or "") // 4
+                    elif stype == "PLANNER_RESPONSE":
+                        tok_out = (len(data.get("content") or "") + len(data.get("thinking") or "")) // 4
+                    elif stype == "GENERIC":
+                        tok_in = len(data.get("content") or "") // 4
 
-        turn_in_chars = len(u_content)
-        turn_out_chars = 0
-        turn_tools = {}
+                    if dt >= today_midnight:
+                        today_in += tok_in
+                        today_out += tok_out
+                    if dt >= week_ago:
+                        week_in += tok_in
+                        week_out += tok_out
+        except Exception:
+            pass
 
-        for step in steps[last_user_idx + 1:]:
-            stype = step.get("type", "")
-            cnt = step.get("content") or ""
-            thk = step.get("thinking") or ""
-            tcalls = step.get("tool_calls") or []
-            if stype == "PLANNER_RESPONSE":
-                turn_out_chars += len(cnt) + len(thk)
-            elif stype == "GENERIC":
-                turn_in_chars += len(cnt)
-            for tc in tcalls:
-                name = tc.get("name") or "unknown"
-                turn_tools[name] = turn_tools.get(name, 0) + 1
+    today_total = today_in + today_out
+    week_total = week_in + week_out
 
-        t_in_tokens = turn_in_chars // 4
-        t_out_tokens = turn_out_chars // 4
-        t_total_tokens = t_in_tokens + t_out_tokens
-
-        last_turn_info = {
-            "prompt": clean_prompt,
-            "in_tokens": t_in_tokens,
-            "out_tokens": t_out_tokens,
-            "total_tokens": t_total_tokens,
-            "tools": turn_tools,
-            "tools_count": sum(turn_tools.values())
-        }
-
-    conv_id = os.path.basename(os.path.dirname(os.path.dirname(os.path.dirname(file_path))))
+    today_wh = (today_total / 1000.0) * ECO_FACTORS["default"]["wh"]
+    today_ml = (today_total / 1000.0) * ECO_FACTORS["default"]["ml"]
+    week_wh = (week_total / 1000.0) * ECO_FACTORS["default"]["wh"]
+    week_ml = (week_total / 1000.0) * ECO_FACTORS["default"]["ml"]
 
     return {
-        "conv_id": conv_id,
-        "file_path": file_path,
-        "steps_count": steps_count,
-        "user_messages": user_messages,
-        "model_responses": model_responses,
-        "total_in_tokens": total_in_tokens,
-        "total_out_tokens": total_out_tokens,
-        "total_session_tokens": total_session_tokens,
-        "tools_breakdown": tools_breakdown,
-        "subagents_invoked": subagents_invoked,
-        "heavy_calls_count": len(heavy_calls),
-        "last_turn": last_turn_info
+        "today_in": today_in,
+        "today_out": today_out,
+        "today_total": today_total,
+        "today_quota": daily_quota,
+        "today_ratio": min(today_total / max(daily_quota, 1), 1.0),
+        "today_wh": today_wh,
+        "today_ml": today_ml,
+        "week_in": week_in,
+        "week_out": week_out,
+        "week_total": week_total,
+        "week_quota": weekly_quota,
+        "week_ratio": min(week_total / max(weekly_quota, 1), 1.0),
+        "week_wh": week_wh,
+        "week_ml": week_ml
     }
 
-def render_gauge(value, max_value, width=28):
-    ratio = min(max(value / max_value, 0.0), 1.0)
+def extract_turns_from_transcript(file_path):
+    if not os.path.isfile(file_path):
+        return []
+
+    steps = []
+    try:
+        with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
+            for line in f:
+                line = line.strip()
+                if line:
+                    try:
+                        steps.append(json.loads(line))
+                    except Exception:
+                        pass
+    except Exception:
+        return []
+
+    user_indices = [i for i, s in enumerate(steps) if s.get("type") == "USER_INPUT"]
+    turns = []
+    current_parent_model = "Gemini 3.8 Flash"
+
+    for pos, u_idx in enumerate(user_indices):
+        next_u_idx = user_indices[pos + 1] if pos + 1 < len(user_indices) else len(steps)
+        u_step = steps[u_idx]
+        u_content = u_step.get("content", "")
+
+        if "Model Selection" in u_content:
+            match = re.search(r"Model Selection from (.*?) to (.*?)\.", u_content)
+            if match:
+                current_parent_model = match.group(2).strip()
+
+        prompt_text = u_content
+        if "<USER_REQUEST>" in prompt_text and "</USER_REQUEST>" in prompt_text:
+            prompt_text = prompt_text.split("<USER_REQUEST>")[1].split("</USER_REQUEST>")[0].strip()
+        prompt_text = clean_ascii(prompt_text.replace("\n", " ").strip())
+        if len(prompt_text) > 85:
+            prompt_text = prompt_text[:82] + "..."
+
+        t_in = len(u_content) // 4
+        t_out = 0
+        subagents = []
+        model_tier = "flash"
+
+        for s in steps[u_idx + 1:next_u_idx]:
+            stype = s.get("type")
+            cnt = s.get("content") or ""
+            thk = s.get("thinking") or ""
+            tcalls = s.get("tool_calls") or []
+
+            if stype == "PLANNER_RESPONSE":
+                t_out += (len(cnt) + len(thk)) // 4
+            elif stype == "GENERIC":
+                t_in += len(cnt) // 4
+
+            for tc in tcalls:
+                if tc.get("name") == "invoke_subagent":
+                    args = tc.get("args", {})
+                    for sub in args.get("Subagents", []):
+                        role = clean_ascii(sub.get("Role", "Sous-Agent"))
+                        m = sub.get("Model", "flash")
+                        subagents.append((role, m))
+                        if m == "pro":
+                            model_tier = "pro"
+                        elif m == "flash_lite" and model_tier != "pro":
+                            model_tier = "flash_lite"
+
+        total_tok = t_in + t_out
+        if subagents:
+            sub_strs = [f"{r} [{m}]" for r, m in subagents[:2]]
+            model_display = f"{current_parent_model} + " + ", ".join(sub_strs)
+        else:
+            model_display = f"{current_parent_model} (Orchestrateur)"
+
+        wh = (total_tok / 1000.0) * ECO_FACTORS.get(model_tier, ECO_FACTORS["default"])["wh"]
+        ml = (total_tok / 1000.0) * ECO_FACTORS.get(model_tier, ECO_FACTORS["default"])["ml"]
+
+        ts_str = u_step.get("created_at", "")
+        time_display = ts_str[11:19] if len(ts_str) >= 19 else time.strftime("%H:%M:%S")
+
+        turns.append({
+            "time": time_display,
+            "prompt": prompt_text,
+            "model": clean_ascii(model_display),
+            "model_tier": model_tier,
+            "in_tokens": t_in,
+            "out_tokens": t_out,
+            "total_tokens": total_tok,
+            "wh": wh,
+            "ml": ml
+        })
+
+    return turns
+
+def build_rich_bar(ratio, width=10):
+    ratio = min(max(ratio, 0.0), 1.0)
     filled = int(ratio * width)
     unfilled = width - filled
-    percent = ratio * 100
+    pct = ratio * 100.0
     
-    if ratio < 0.25:
-        color = "green"
-    elif ratio < 0.60:
-        color = "yellow"
-    else:
-        color = "red"
+    col = "green" if ratio < 0.40 else ("yellow" if ratio < 0.75 else "red")
+    t = Text()
+    t.append("[" + ("#" * filled), style=f"bold {col}")
+    t.append(("-" * unfilled) + "] ", style="dim")
+    t.append(f"{pct:4.1f}%", style=f"bold {col}")
+    return t
 
-    bar = f"[{color}]{'#' * filled}[/{color}][dim]{'-' * unfilled}[/dim] {percent:>4.1f}%"
-    return bar
+def render_ascii_bar(ratio, width=10):
+    ratio = min(max(ratio, 0.0), 1.0)
+    filled = int(ratio * width)
+    unfilled = width - filled
+    pct = ratio * 100.0
+    return f"[{'#' * filled}{'-' * unfilled}] {pct:4.1f}%"
 
-def display_rich_dashboard(data):
-    if not console:
+def display_dashboard(turns, quotas, conv_id=""):
+    if not turns:
+        print("Aucune requete enregistree dans la session active.")
         return
 
-    conv_id = data["conv_id"]
-    steps = data["steps_count"]
-    tot_tokens = data["total_session_tokens"]
-    last_turn = data["last_turn"]
+    last = turns[-1]
 
-    # 1. Header
-    header_text = Text()
-    header_text.append("SHOPLOC ", style="bold white")
-    header_text.append("| ", style="dim")
-    header_text.append("MONITEUR FINOPS & TABLEAU DE BORD DE CONSOMMATION EN DIRECT", style="bold cyan")
-    header_panel = Panel(
-        header_text,
-        subtitle=f"Master 2 MIAGE (UE GLOP) - Session : {conv_id} - {time.strftime('%H:%M:%S')}",
-        style="cyan",
-        box=box.ROUNDED
-    )
-    console.print(header_panel)
+    if RICH_AVAILABLE:
+        # En-tete
+        title_text = Text()
+        title_text.append("SHOPLOC ", style="bold white")
+        title_text.append("| ", style="dim")
+        title_text.append("SUIVI DES TOKENS, ROUTAGE LLM & GREEN FINOPS", style="bold cyan")
+        
+        sub_info = f"Session : {conv_id[:16]}... | {time.strftime('%H:%M:%S')}"
+        console.print(Panel(title_text, subtitle=sub_info, style="cyan", box=box.ROUNDED))
 
-    # 2. Table Derniere Requete (Live Turn)
-    if last_turn:
-        turn_table = Table(box=box.ROUNDED, expand=True, title="[bold cyan]1. Mesure de la Derniere Requete en Direct[/bold cyan]")
-        turn_table.add_column("Requete Utilisateur", style="white", ratio=3)
-        turn_table.add_column("Appels d'Outils", style="yellow", justify="center", ratio=2)
-        turn_table.add_column("Entree (In)", style="green", justify="right", ratio=1)
-        turn_table.add_column("Sortie (Out)", style="magenta", justify="right", ratio=1)
-        turn_table.add_column("Total Tour", style="bold cyan", justify="right", ratio=1)
+        # 1. Quotas & Bilan Ecologique (Jour & Semaine)
+        quota_table = Table(box=box.ROUNDED, expand=True, title="[bold cyan]1. Quotas & Bilan Ecologique Global[/bold cyan]")
+        quota_table.add_column("Periode", style="bold white")
+        quota_table.add_column("Jauge d'Utilisation")
+        quota_table.add_column("Tokens Consommes", justify="right", style="bold white")
+        quota_table.add_column("Energie", justify="right", style="yellow")
+        quota_table.add_column("Eau", justify="right", style="blue")
 
-        tools_str = f"{last_turn['tools_count']} appel(s)"
-        if last_turn['tools']:
-            tools_str += "\n" + "\n".join(f"{k} x{v}" for k, v in list(last_turn['tools'].items())[:3])
+        j_bar = build_rich_bar(quotas["today_ratio"], width=10)
+        w_bar = build_rich_bar(quotas["week_ratio"], width=10)
 
-        turn_table.add_row(
-            f"\"{last_turn['prompt']}\"",
-            tools_str,
-            f"~{last_turn['in_tokens']:,}",
-            f"~{last_turn['out_tokens']:,}",
-            f"~{last_turn['total_tokens']:,}"
+        quota_table.add_row(
+            "Jour (24h)",
+            j_bar,
+            f"{quotas['today_total']:,} / {quotas['today_quota']:,}",
+            f"{quotas['today_wh']:.1f} Wh",
+            f"{quotas['today_ml']:.1f} mL"
         )
-        console.print(turn_table)
+        quota_table.add_row(
+            "Semaine (7j)",
+            w_bar,
+            f"{quotas['week_total']:,} / {quotas['week_quota']:,}",
+            f"{quotas['week_wh']:.1f} Wh",
+            f"{quotas['week_ml']:.1f} mL"
+        )
+        console.print(quota_table)
 
-    # 3. Tables Session Globale & Outils
-    grid = Table.grid(expand=True)
-    grid.add_column(ratio=1)
-    grid.add_column(ratio=1)
+        # 2. Derniere Requete en Direct (Carte Lisible)
+        led_sec = int((last["wh"] / 10.0) * 3600)
+        led_display = f"{led_sec} sec" if led_sec < 60 else f"{led_sec // 60} min {led_sec % 60} sec"
+        gorgees = last["ml"] / 25.0
 
-    # Table Metriques Session
-    sess_table = Table(box=box.ROUNDED, expand=True, title="[bold cyan]2. Cumul & Contexte de la Session[/bold cyan]")
-    sess_table.add_column("Indicateur", style="dim white")
-    sess_table.add_column("Valeur Mesuree", style="bold white", justify="right")
+        live_text = Text()
+        live_text.append("Heure    : ", style="dim")
+        live_text.append(f"{last['time']}   ", style="bold white")
+        live_text.append("|  LLM Utilise : ", style="dim")
+        live_text.append(f"{last['model']}\n", style="bold green")
 
-    sess_table.add_row("Etapes Enregistrees", f"{steps} etapes")
-    sess_table.add_row("Messages Utilisateur", f"{data['user_messages']}")
-    sess_table.add_row("Reponses Modele", f"{data['model_responses']}")
-    sess_table.add_row("Jetons Entree Cumules", f"~{data['total_in_tokens']:,}")
-    sess_table.add_row("Jetons Sortie Cumules", f"~{data['total_out_tokens']:,}")
-    sess_table.add_row("Charge Contexte (1M)", render_gauge(tot_tokens, 1000000, width=18))
+        live_text.append("Requete  : ", style="dim")
+        live_text.append(f"\"{last['prompt']}\"\n", style="white")
 
-    # Table Outils
-    tool_table = Table(box=box.ROUNDED, expand=True, title="[bold cyan]3. Outils les Plus Sollicites[/bold cyan]")
-    tool_table.add_column("Nom de l'Outil", style="yellow")
-    tool_table.add_column("Appels", justify="right", style="bold white")
-    tool_table.add_column("Part", justify="right", style="dim green")
+        live_text.append("Tokens   : ", style="dim")
+        live_text.append(f"Entree: {last['in_tokens']:,}  |  Sortie: {last['out_tokens']:,}  |  ", style="dim cyan")
+        live_text.append(f"Total Requete: {last['total_tokens']:,} tokens\n", style="bold cyan")
 
-    tot_tools = sum(data["tools_breakdown"].values()) or 1
-    for tname, cnt in sorted(data["tools_breakdown"].items(), key=lambda x: x[1], reverse=True)[:5]:
-        pct = (cnt / tot_tools) * 100
-        tool_table.add_row(tname, f"{cnt}", f"{pct:4.1f}%")
+        live_text.append("Green AI : ", style="dim")
+        live_text.append(f"{last['wh']:.2f} Wh ", style="bold yellow")
+        live_text.append(f"(equiv. {led_display} ampoule LED 10W)  |  ", style="dim yellow")
+        live_text.append(f"{last['ml']:.1f} mL d'eau ", style="bold blue")
+        live_text.append(f"(equiv. ~{gorgees:.1f} gorgee(s))", style="dim blue")
 
-    grid.add_row(sess_table, tool_table)
-    console.print(grid)
+        console.print(Panel(
+            live_text,
+            title="[bold cyan]2. Derniere Requete en Direct[/bold cyan]",
+            box=box.ROUNDED,
+            style="white"
+        ))
 
-    # 4. Panel Diagnostic & Statut FinOps
-    status_lines = []
-    
-    if last_turn:
-        if last_turn['total_tokens'] < 4000:
-            status_lines.append("[bold green]Statut Requete : EXCELLENT[/bold green] - Consommation unitaire tres sobre (~" + f"{last_turn['total_tokens']:,}" + " tokens).")
-        else:
-            status_lines.append("[bold yellow]Statut Requete : MODERE[/bold yellow] - Requete avec transferts de donnees (~" + f"{last_turn['total_tokens']:,}" + " tokens).")
+        # 3. Historique Recent des Requetes
+        if len(turns) > 1:
+            hist_table = Table(box=box.ROUNDED, expand=True, title="[bold cyan]3. Historique Recent des Requetes[/bold cyan]")
+            hist_table.add_column("Heure", style="dim", justify="center", width=8)
+            hist_table.add_column("LLM", style="green", width=12)
+            hist_table.add_column("Tokens", justify="right", style="cyan", width=10)
+            hist_table.add_column("Energie", justify="right", style="yellow", width=9)
+            hist_table.add_column("Eau", justify="right", style="blue", width=8)
+            hist_table.add_column("Requete Utilisateur", style="white", ratio=1)
 
-    # Analyse du contexte global
-    if tot_tokens < 150000:
-        status_lines.append("[bold green]Charge Memoire : NORMALE[/bold green] - Contexte global a " + f"{tot_tokens:,}" + " tokens (soit " + f"{(tot_tokens/1000000)*100:.1f}%" + " du million disponible).")
+            for t in turns[-5:-1]:
+                llm_short = t["model"]
+                if "Flash" in llm_short:
+                    llm_short = "Gemini Flash"
+                elif "Pro" in llm_short:
+                    llm_short = "Gemini Pro"
+                elif "Lite" in llm_short:
+                    llm_short = "Flash Lite"
+
+                prompt_s = t["prompt"]
+                if len(prompt_s) > 35:
+                    prompt_s = prompt_s[:32] + "..."
+
+                hist_table.add_row(
+                    t["time"],
+                    llm_short,
+                    f"{t['total_tokens']:,}",
+                    f"{t['wh']:.2f} Wh",
+                    f"{t['ml']:.1f} mL",
+                    prompt_s
+                )
+            console.print(hist_table)
+
     else:
-        status_lines.append("[bold yellow]Charge Memoire : ELEVEE[/bold yellow] - Contexte global volumineux. Pensez a ouvrir un nouveau chat pour votre prochaine tache.")
+        print("=" * 72)
+        print("  SHOPLOC FINOPS & GREEN AI TRACKER")
+        print("=" * 72)
+        print(f"  Quota Jour    : {render_ascii_bar(quotas['today_ratio'])} ({quotas['today_total']:,} / {quotas['today_quota']:,} tok)")
+        print(f"  Quota Semaine : {render_ascii_bar(quotas['week_ratio'])} ({quotas['week_total']:,} / {quotas['week_quota']:,} tok)")
+        print(f"  Conso Jour    : {quotas['today_wh']:.2f} Wh | {quotas['today_ml']:.1f} mL d'eau")
+        print("-" * 72)
+        print("DERNIERE REQUETE :")
+        print(f"  Heure   : {last['time']}")
+        print(f"  LLM     : {last['model']}")
+        print(f"  Prompt  : \"{last['prompt']}\"")
+        print(f"  Tokens  : In: {last['in_tokens']:,} | Out: {last['out_tokens']:,} | Total: {last['total_tokens']:,}")
+        print(f"  Energie : {last['wh']:.2f} Wh (equiv. {(last['wh']/10.0)*3600:.0f}s ampoule LED 10W)")
+        print(f"  Eau     : {last['ml']:.1f} mL (equiv. {last['ml']/25.0:.1f} gorgees)")
+        print("=" * 72)
 
-    # Conseil methodologique
-    if steps > 50:
-        status_lines.append("[bold cyan]Conseil d'Equipe :[/bold cyan] Cette conversation regroupe l'historique complet de configuration. Pour vos prochains sprints de code, vous pouvez cliquer sur '+' (Nouveau Chat) pour repartir sur un contexte vierge a 1 500 tokens.")
-    else:
-        status_lines.append("[bold cyan]Conseil d'Equipe :[/bold cyan] Session fraiche et optimale.")
-
-    recs_text = "\n".join(f"* {line}" for line in status_lines)
-
-    rec_panel = Panel(
-        recs_text,
-        title="[bold cyan]4. Diagnostic & Indicateurs de Sante FinOps[/bold cyan]",
-        box=box.ROUNDED,
-        style="white"
-    )
-    console.print(rec_panel)
-
-def display_ascii_dashboard(data):
-    print("=" * 70)
-    print(f"  SHOPLOC FINOPS MONITOR — SESSION : {data['conv_id']}")
-    print("=" * 70)
-    lt = data["last_turn"]
-    if lt:
-        print("DERNIERE REQUETE EN DIRECT :")
-        print(f"  Prompt       : \"{lt['prompt']}\"")
-        print(f"  Appels outils: {lt['tools_count']} appel(s)")
-        print(f"  Jetons Entree: ~{lt['in_tokens']:,} tokens | Sortie: ~{lt['out_tokens']:,} tokens")
-        print(f"  Total Requete: ~{lt['total_tokens']:,} tokens")
-        print("-" * 70)
-    print("CUMUL DE LA SESSION :")
-    print(f"  Etapes       : {data['steps_count']} | Messages: {data['user_messages']}")
-    print(f"  Total Jetons : ~{data['total_session_tokens']:,} tokens")
-    print("=" * 70)
-
-def render_dashboard(file_path):
-    data = parse_transcript_data(file_path)
-    if not data:
-        print("Impossible d'extraire les donnees de session.")
-        return
-    if RICH_AVAILABLE:
-        display_rich_dashboard(data)
-    else:
-        display_ascii_dashboard(data)
-
-def watch_live(file_path):
-    if RICH_AVAILABLE:
-        console.clear()
-    else:
-        os.system("cls" if os.name == "nt" else "clear")
-
-    render_dashboard(file_path)
-    last_size = os.path.getsize(file_path) if os.path.isfile(file_path) else 0
+def run_live_watch(file_path):
+    print("Demarrage du moniteur en direct ShopLoc (Ctrl+C pour quitter)...")
+    last_turn_count = -1
+    last_file_size = -1
 
     try:
         while True:
-            time.sleep(1.2)
-            if os.path.isfile(file_path):
-                cur_size = os.path.getsize(file_path)
-                if cur_size != last_size:
-                    last_size = cur_size
+            time.sleep(1.5)
+            if not os.path.isfile(file_path):
+                continue
+            cur_size = os.path.getsize(file_path)
+            if cur_size != last_file_size:
+                last_file_size = cur_size
+                turns = extract_turns_from_transcript(file_path)
+                if len(turns) != last_turn_count:
+                    last_turn_count = len(turns)
+                    quotas = compute_quotas_all_sessions()
+                    conv_id = os.path.basename(os.path.dirname(os.path.dirname(os.path.dirname(file_path))))
                     if RICH_AVAILABLE:
                         console.clear()
                     else:
                         os.system("cls" if os.name == "nt" else "clear")
-                    render_dashboard(file_path)
+                    display_dashboard(turns, quotas, conv_id)
     except KeyboardInterrupt:
-        print("\nArret du moniteur FinOps.")
+        print("\nArret du moniteur.")
+
+def run_stream_log(file_path):
+    print("Mode flux continu active (Ctrl+C pour quitter)...")
+    last_seen_count = 0
+    try:
+        while True:
+            time.sleep(1.5)
+            if not os.path.isfile(file_path):
+                continue
+            turns = extract_turns_from_transcript(file_path)
+            if len(turns) > last_seen_count:
+                quotas = compute_quotas_all_sessions()
+                for t in turns[last_seen_count:]:
+                    print(f"[{t['time']}] LLM: {t['model']}")
+                    print(f"         Prompt : \"{t['prompt']}\"")
+                    print(f"         Tokens : In {t['in_tokens']:,} / Out {t['out_tokens']:,} (Total: {t['total_tokens']:,})")
+                    print(f"         Impact : {t['wh']:.2f} Wh | {t['ml']:.1f} mL d'eau")
+                    print(f"         Quotas : Jour {quotas['today_total']:,} tok ({quotas['today_ratio']*100:.1f}%) | Semaine {quotas['week_total']:,} tok ({quotas['week_ratio']*100:.1f}%)")
+                    print("-" * 72)
+                last_seen_count = len(turns)
+    except KeyboardInterrupt:
+        print("\nArret du mode flux continu.")
 
 def main():
-    args = sys.argv[1:]
-    path = find_latest_transcript()
-    if not path:
-        print("Aucun fichier journal de session Antigravity detecte.")
+    tf = find_latest_transcript()
+    if not tf:
+        print("[ERREUR] Aucun journal de session Antigravity detecte.")
         sys.exit(1)
 
-    if "--watch" in args:
-        watch_live(path)
+    conv_id = os.path.basename(os.path.dirname(os.path.dirname(os.path.dirname(tf))))
+    args = sys.argv[1:]
+
+    if "--stream" in args:
+        run_stream_log(tf)
+    elif "--watch" in args:
+        turns = extract_turns_from_transcript(tf)
+        quotas = compute_quotas_all_sessions()
+        if RICH_AVAILABLE:
+            console.clear()
+        else:
+            os.system("cls" if os.name == "nt" else "clear")
+        display_dashboard(turns, quotas, conv_id)
+        run_live_watch(tf)
     else:
-        render_dashboard(path)
+        turns = extract_turns_from_transcript(tf)
+        quotas = compute_quotas_all_sessions()
+        display_dashboard(turns, quotas, conv_id)
 
 if __name__ == "__main__":
     main()

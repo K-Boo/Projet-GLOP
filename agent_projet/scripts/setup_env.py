@@ -8,8 +8,7 @@ REQUIRED_PACKAGES = {
     "reportlab": "reportlab",
     "pypdf": "pypdf",
     "PIL": "pillow",
-    "rich": "rich",
-    "phoenix": "arize-phoenix"
+    "rich": "rich"
 }
 
 SUBFOLDERS = [
@@ -35,7 +34,7 @@ def check_and_install_packages():
         subprocess.check_call(cmd)
         print("  -> Packages installes avec succes.")
     else:
-        print("  -> Toutes les dependances Python (y compris Arize Phoenix) sont operationnelles.")
+        print("  -> Toutes les dependances Python sont operationnelles.")
 
 def check_pdf_engine():
     print("[2/4] Verification du moteur de rendu PDF (Edge / Chromium)...")
