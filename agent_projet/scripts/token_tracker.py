@@ -235,23 +235,32 @@ def display_rich_dashboard(data):
     grid.add_row(sess_table, tool_table)
     console.print(grid)
 
-    # 4. Panel Recommandations FinOps
-    recs = []
-    if steps > 25:
-        recs.append("[bold red]ATTENTION QUOTA :[/bold red] Cette session a depasse 25 etapes. Chaque requete reinjecte l'ensemble de l'historique. Cloturez la session pour restaurer un cout minimal (1 Session = 1 Tache).")
-    if data["heavy_calls_count"] > 0:
-        recs.append(f"[bold yellow]AVERTISSEMENT FLUX :[/bold yellow] {data['heavy_calls_count']} appel(s) volumineux detecte(s). Utilisez le filtrage grep ou des limites de lignes pour alleger le contexte.")
-    if not data["subagents_invoked"]:
-        recs.append("[bold cyan]CONSEIL ARCHITECTURE :[/bold cyan] Invoquez des sous-agents avec 'flash' ou 'flash_lite' pour reduire de 70% la charge de raisonnement du modele principal.")
+    # 4. Panel Diagnostic & Statut FinOps
+    status_lines = []
+    
+    if last_turn:
+        if last_turn['total_tokens'] < 4000:
+            status_lines.append("[bold green]Statut Requete : EXCELLENT[/bold green] - Consommation unitaire tres sobre (~" + f"{last_turn['total_tokens']:,}" + " tokens).")
+        else:
+            status_lines.append("[bold yellow]Statut Requete : MODERE[/bold yellow] - Requete avec transferts de donnees (~" + f"{last_turn['total_tokens']:,}" + " tokens).")
 
-    if not recs:
-        recs_text = "[bold green]Statut Excellent :[/bold green] Consommation sobre, session propre et respect rigoureux de la frugalite agentique."
+    # Analyse du contexte global
+    if tot_tokens < 150000:
+        status_lines.append("[bold green]Charge Memoire : NORMALE[/bold green] - Contexte global a " + f"{tot_tokens:,}" + " tokens (soit " + f"{(tot_tokens/1000000)*100:.1f}%" + " du million disponible).")
     else:
-        recs_text = "\n".join(f"* {r}" for r in recs)
+        status_lines.append("[bold yellow]Charge Memoire : ELEVEE[/bold yellow] - Contexte global volumineux. Pensez a ouvrir un nouveau chat pour votre prochaine tache.")
+
+    # Conseil methodologique
+    if steps > 50:
+        status_lines.append("[bold cyan]Conseil d'Equipe :[/bold cyan] Cette conversation regroupe l'historique complet de configuration. Pour vos prochains sprints de code, vous pouvez cliquer sur '+' (Nouveau Chat) pour repartir sur un contexte vierge a 1 500 tokens.")
+    else:
+        status_lines.append("[bold cyan]Conseil d'Equipe :[/bold cyan] Session fraiche et optimale.")
+
+    recs_text = "\n".join(f"* {line}" for line in status_lines)
 
     rec_panel = Panel(
         recs_text,
-        title="[bold yellow]4. Diagnostic & Recommandations FinOps[/bold yellow]",
+        title="[bold cyan]4. Diagnostic & Indicateurs de Sante FinOps[/bold cyan]",
         box=box.ROUNDED,
         style="white"
     )
