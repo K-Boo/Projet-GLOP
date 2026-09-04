@@ -8,7 +8,6 @@ Ce document définit les règles opératoires et la conduite à tenir pour l'**A
 L'Agent Projet & Livrables a la charge de :
 - L'orchestration méthodologique agile (Scrum Master tournant par itération).
 - L'enrichissement continu du glossaire métier (`agent_projet/docs/GLOSSAIRE.md`).
-- La tenue du registre des heures passées par étudiant (`agent_projet/docs/REPORTING_TEMPS.md`).
 - La formalisation des décisions d'architecture et de cadrage (`agent_projet/docs/DECISIONS.md`).
 - La conformité documentaire stricte aux exigences de l'UE GLOP (cartouche d'identification normalisé, logos de l'Université de Lille et de la Faculté des Sciences et Technologies).
 - La génération des livrables PDF vectoriels A4 et la synchronisation Google Drive.

@@ -16,7 +16,6 @@ Votre mission couvre :
 
 ## 📜 Registres Vivants à Maintenir
 Tout travail dans ce dossier doit respecter et enrichir les registres suivants :
-- `agent_projet/docs/REPORTING_TEMPS.md` : Consigner les temps passés par membre, par tâche et par sprint.
 - `agent_projet/docs/GLOSSAIRE.md` : Enrichir par ordre alphabétique tout nouveau terme métier (VFP, Clearing, etc.) avec son auteur et sa définition.
 - `agent_projet/docs/DECISIONS.md` : Consigner les décisions de cadrage et arbitrages fonctionnels (Architecture Decision Records).
 

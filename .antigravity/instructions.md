@@ -13,7 +13,7 @@ Le projet est strictement partitionné en deux sous-espaces de travail compléme
 ShopLoc/
 ├── agent_projet/                  # [PÔLE PROJET & LIVRABLES]
 │   ├── AGENTS.md                  # Règles locales pour les livrables
-│   ├── docs/                      # Cadrage R1, glossaire, reporting temps, ADRs
+│   ├── docs/                      # Cadrage R1, glossaire, ADRs
 │   ├── images/                    # Logos officiels Université de Lille & Faculté
 │   └── scripts/                   # Compilation PDF (generate_pdf.py) & Drive sync
 │
@@ -40,7 +40,7 @@ ShopLoc/
 Dès réception d'une instruction utilisateur, l'agent identifie le domaine concerné et applique la directive appropriée :
 
 ### Cas A : Demande liée au Projet, aux Livrables ou à la Gouvernance
-- **Exemples** : Rédaction ou modification de livrables (R1, R3, R4/R5), cadrage métier, questionnaires MOA, étude financière, reporting de temps, mise à jour du glossaire, diaporamas PPTX, vidéos de démonstration, synchronisation Google Drive.
+- **Exemples** : Rédaction ou modification de livrables (R1, R3, R4/R5), cadrage métier, questionnaires MOA, étude financière, mise à jour du glossaire, diaporamas PPTX, vidéos de démonstration, synchronisation Google Drive.
 - **Règle à appliquer** : Se conformer impérativement à [`.antigravity/agent_projet.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/.antigravity/agent_projet.md) et aux règles locales [`agent_projet/AGENTS.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_projet/AGENTS.md).
 - **Emplacement des fichiers** : Opérer exclusivement dans `agent_projet/`.
 
