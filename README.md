@@ -39,11 +39,19 @@ L'agent lira automatiquement les directives d'équipe (`.antigravity/setup_equip
 
 ---
 
-## 3. Organisation du Dépôt : Deux Pôles Dédiés
+## 3. Architecture Bi-Depots : Cockpit Projet & Code Evalue
 
-Pour séparer nettement la phase de cadrage et de livrables de la phase d'implémentation logicielle, le projet est scindé en deux espaces :
-* **`agent_projet/`** : Réservé à l'**Agent Projet & Livrables** (cadrage R1, étude financière R3, registres agiles `docs/`, logos `images/`, génération PDF et synchronisation Google Drive).
-* **`agent_code/`** : Réservé à l'**Agent Ingénieur Logiciel & Code** (architecture backend/frontend `src/`, configurations `docker/` et tests).
+Pour garantir une etancheite totale entre les livrables d'ingenierie/gouvernance et le code source remis aux professeurs, l'infrastructure est scindee en deux depots distincts :
+
+1. **Depot Principal (GitHub `Projet-GLOP`) — Ce Depot** :
+   * Espace de gouvernance d'equipe, cadrage metier R1, etude financiere R3, dossiers d'architecture R4/R5, diaporamas PPTX et synchronisation Google Drive.
+   * Cockpit interne d'orchestration agentique et suivi Green FinOps.
+
+2. **Depot Applicatif (GitLab Univ-Lille `projet-glop-app`) — Remis aux Evaluateurs** :
+   * Depot officiel public consulte et evalue par les professeurs : `git@gitlab-ssh.univ-lille.fr:khalil.bouchama.etu/projet-glop-app.git`.
+   * Reserve exclusivement au code source applicatif, aux tests unitaires TDD, a la conteneurisation Docker et a la CI/CD.
+   * **Zero trace agentique** : aucun fichier d'instruction d'agent, aucun script FinOps ni mention d'IA ne figure sur ce depot. Tous les commits y sont signes au format conventionnel avec l'identite etudiante officielle.
+   * Le depot reste vide jusqu'a la validation du cadrage (R1) et de la stack technique.
 
 ---
 

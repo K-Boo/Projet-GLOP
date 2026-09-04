@@ -20,7 +20,7 @@ SUBFOLDERS = [
 ]
 
 def check_and_install_packages():
-    print("[1/4] Verification des dependances Python...")
+    print("[1/5] Verification des dependances Python...")
     missing = []
     for mod_name, pkg_name in REQUIRED_PACKAGES.items():
         try:
@@ -37,7 +37,7 @@ def check_and_install_packages():
         print("  -> Toutes les dependances Python sont operationnelles.")
 
 def check_pdf_engine():
-    print("[2/4] Verification du moteur de rendu PDF (Edge / Chromium)...")
+    print("[2/5] Verification du moteur de rendu PDF (Edge / Chromium)...")
     candidates = [
         r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
         r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
@@ -63,7 +63,7 @@ def check_pdf_engine():
         return None
 
 def check_and_setup_drive():
-    print("[3/4] Verification et configuration de Google Drive...")
+    print("[3/5] Verification et configuration de Google Drive...")
     script_dir = os.path.dirname(os.path.abspath(__file__))
     repo_root = os.path.abspath(os.path.join(script_dir, "..", ".."))
     local_cfg = os.path.join(repo_root, "config.local.json")
@@ -133,7 +133,7 @@ def check_and_setup_drive():
         return False
 
 def check_git_remote():
-    print("[4/4] Verification du depot Git...")
+    print("[4/5] Verification du depot Git principal (GitHub)...")
     try:
         out = subprocess.check_output(["git", "remote", "-v"], text=True, stderr=subprocess.DEVNULL)
         if "K-Boo/Projet-GLOP" in out:
@@ -146,6 +146,55 @@ def check_git_remote():
         print(f"  -> Erreur Git : {e}")
         return False
 
+def check_and_setup_code_repo():
+    print("[5/5] Verification du depot de code evalue (GitLab Univ-Lille)...")
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    repo_root = os.path.abspath(os.path.join(script_dir, "..", ".."))
+    parent_dir = os.path.dirname(repo_root)
+    local_cfg = os.path.join(repo_root, "config.local.json")
+    
+    gitlab_url = "git@gitlab-ssh.univ-lille.fr:khalil.bouchama.etu/projet-glop-app.git"
+    code_path = None
+
+    # 1. Verification config.local.json existante
+    cfg_data = {}
+    if os.path.isfile(local_cfg):
+        try:
+            with open(local_cfg, "r", encoding="utf-8") as f:
+                cfg_data = json.load(f)
+                code_path = cfg_data.get("code_repo_path")
+        except Exception:
+            pass
+
+    # 2. Verification emplacement par defaut
+    if not code_path or not os.path.isdir(code_path):
+        default_candidate = os.path.join(parent_dir, "projet-glop-app")
+        if os.path.isdir(default_candidate):
+            code_path = default_candidate
+
+    # 3. Clonage si absent
+    if not code_path or not os.path.isdir(code_path):
+        target_clone = os.path.join(parent_dir, "projet-glop-app")
+        print(f"  -> Clonage du depot GitLab dans {target_clone}...")
+        try:
+            cmd = ["git", "clone", gitlab_url, target_clone]
+            subprocess.check_call(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            code_path = target_clone
+            print("  -> Depot de code clone avec succes.")
+        except Exception as e:
+            print(f"  -> AVERTISSEMENT : Impossible de cloner automatiquement ({e}).")
+            print(f"     Executez manuellement : git clone {gitlab_url}")
+            return False
+
+    if code_path and os.path.isdir(code_path):
+        print(f"  -> Depot de code GitLab detecte : {code_path}")
+        cfg_data["code_repo_path"] = code_path.replace("\\", "/")
+        cfg_data["code_repo_url"] = gitlab_url
+        with open(local_cfg, "w", encoding="utf-8") as f:
+            json.dump(cfg_data, f, indent=2)
+        return True
+    return False
+
 def main():
     print("=" * 60)
     print("  ALIGNEMENT AUTOMATIQUE DE L'ENVIRONNEMENT SHOPLOC GLOP")
@@ -154,8 +203,9 @@ def main():
     check_pdf_engine()
     drive_ok = check_and_setup_drive()
     git_ok = check_git_remote()
+    code_ok = check_and_setup_code_repo()
     print("=" * 60)
-    if drive_ok and git_ok:
+    if drive_ok and git_ok and code_ok:
         print("SUCCES : La machine est 100% conforme a la configuration d'equipe.")
     else:
         print("AVERTISSEMENT : Configuration partielle (voir alertes ci-dessus).")

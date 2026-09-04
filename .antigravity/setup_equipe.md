@@ -37,15 +37,9 @@ Projet-GLOP/
 │       ├── drive_sync.py          # Synchronisation automatique Google Drive
 │       ├── token_tracker.py       # Moniteur FinOps & Green AI CLI (Quotas, LLM, Energie, Eau)
 │       ├── watch_tokens.bat       # Lanceur Windows du moniteur
-│       └── setup_env.py           # Script d'auto-alignement de l'environnement
+│       └── setup_env.py           # Script d'auto-alignement de l'environnement (5 etapes)
 │
-├── agent_code/                    # [POLE INGENIERIE LOGICIELLE & CODE]
-│   ├── AGENTS.md                  # Regles locales pour le developpement
-│   ├── src/backend/               # Services API, logique metier, modeles BDD
-│   ├── src/frontend/              # Interfaces web/mobiles accessibles RGAA (Pierre/Suzanne)
-│   ├── docker/                    # Dockerfile, docker-compose.yml
-│   └── tests/                     # Suites de tests unitaires et d'integration
-│
+├── config.local.json              # Pointeur local vers Google Drive et le depot GitLab (ignore Git)
 ├── README.md                      # Guide d'onboarding collaboratif epure (zero emoji)
 └── PROJECT_RULES.md               # Regles directrices d'ingenierie
 ```
@@ -79,7 +73,10 @@ Situe dans `agent_projet/scripts/token_tracker.py` et pilotable via `watch_token
 * **Mesure des Tokens** : Detail Entree (In), Sortie (Out) et Total.
 * **Green AI / Impact Ecologique** : Estimation scientifique de l'empreinte electrique (Wh) et en eau (mL) par requete et en cumul.
 
-### E. La Politique Stricte Zero Emoji
+### E. L'Etancheite Totale du Depot de Code Evalue (GitLab)
+Le depot officiel evalue par les professeurs (`projet-glop-app` sur GitLab Univ-Lille) est rigoureusement etanche de l'outillage agentique. Aucun fichier d'instruction, role ou prompt n'y figure.
+
+### F. La Politique Stricte Zero Emoji
 Tout fichier cree ou modifie (README, documentation, code, commentaires, commits) doit imperativement respecter la regle d'interdiction totale des emojis.
 
 ---
@@ -98,6 +95,7 @@ Ce script realise en totale autonomie :
 1. **Verification et installation des packages Python** : installe `pymupdf`, `reportlab`, `pypdf`, `pillow` et `rich`.
 2. **Verification du moteur PDF** : verifie la presence de Chromium / Edge headless pour la compilation A4.
 3. **Detection de Google Drive pour ordinateur** : localise le dossier `Projet-GLOP`, cree les 5 sous-dossiers officiels (`01_Cadrage_Metier_R1` a `05_Demonstrations_Videos`), et genere un fichier `config.local.json` si le Drive n'est pas sur le lecteur `G:\`.
-4. **Controle du depot Git** : verifie la connexion au remote `git@github.com:K-Boo/Projet-GLOP.git`.
+4. **Controle du depot Git principal (GitHub)** : verifie la connexion au remote `git@github.com:K-Boo/Projet-GLOP.git`.
+5. **Detection et liaison du depot de code evalue (GitLab)** : localise ou clone `git@gitlab-ssh.univ-lille.fr:khalil.bouchama.etu/projet-glop-app.git` dans le dossier parent et l'enregistre dans `config.local.json`.
 
 L'agent confirme ensuite au collegue que son poste est 100% conforme a l'environnement d'equipe.

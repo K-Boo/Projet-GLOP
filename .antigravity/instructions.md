@@ -7,47 +7,44 @@ Il définit l'orchestration entre les deux domaines spécialisés du projet : **
 
 ## 1. Organisation Bimodale du Workspace
 
-Le projet est strictement partitionné en deux sous-espaces de travail complémentaires :
+Le projet repose sur une architecture bi-depots strictement cloisonnee :
+* **Depot 1 (Cockpit Projet - GitHub `Projet-GLOP`)** : Gouvernance, cadrage fonctionnel R1, etude financiere R3, dossiers techniques R4/R5, outillage agentique, suivi FinOps et synchronisation Google Drive.
+* **Depot 2 (Code Pur Evalue - GitLab `projet-glop-app`)** : Depot officiel etudiant remis aux professeurs evaluateurs, reserve au code applicatif pur, aux tests TDD et au deploiement Docker/CI. Zéro trace d'IA ni de configuration agentique.
 
 ```text
-ShopLoc/
-├── agent_projet/                  # [PÔLE PROJET & LIVRABLES]
-│   ├── AGENTS.md                  # Règles locales pour les livrables
-│   ├── docs/                      # Cadrage R1, glossaire, ADRs
-│   ├── images/                    # Logos officiels Université de Lille & Faculté
-│   └── scripts/                   # Compilation PDF (generate_pdf.py) & Drive sync
+GLOP/
+├── ShopLoc/                       [COCKPIT PROJET & GOUVERNANCE - GITHUB]
+│   ├── agent_projet/              # Cadrage R1, etude financiere R3, registres agiles, Drive sync
+│   ├── .antigravity/              # Directives d'orchestration, contrats et roles agentiques
+│   ├── .agents/                   # Configuration MCP Linear et competences logicielles
+│   └── config.local.json          # Pointeur vers le depot GitLab local (ignore par Git)
 │
-├── agent_code/                    # [PÔLE INGÉNIERIE & CODE]
-│   ├── AGENTS.md                  # Règles locales pour le développement
-│   ├── src/backend/               # Services API, logique métier, modèles BDD
-│   ├── src/frontend/              # Interfaces web/mobiles accessibles RGAA
-│   ├── docker/                    # Dockerfile, docker-compose, configs infra
-│   └── tests/                     # Tests d'intégration et mocks
-│
-├── .antigravity/
-│   ├── instructions.md            # Ce fichier (routeur d'orchestration)
-│   ├── agent_projet.md            # Directives détaillées de l'Agent Projet
-│   ├── agent_code.md              # Directives détaillées de l'Agent Code
-│   └── setup_equipe.md            # Directive d'alignement d'environnement équipe
-│
-└── .agents/skills/                # 40 compétences d'ingénierie logicielle
+└── projet-glop-app/               [DEPOT DE CODE EVALUE - GITLAB UNIV-LILLE]
+    ├── .git/                      # Remote : git@gitlab-ssh.univ-lille.fr:khalil.bouchama.etu/projet-glop-app.git
+    ├── .gitignore                 # Standard de developpement (exclut tout artefact local/IA)
+    ├── README.md                  # Documentation technique pour les professeurs evaluateurs
+    ├── backend/                   # Code source backend pur (apres validation de la stack)
+    ├── frontend/                  # Code source frontend accessible RGAA
+    ├── docker/                    # Dockerfile, docker-compose.yml
+    └── tests/                     # Suites de tests unitaires et d'integration TDD
 ```
 
 ---
 
-## 2. Aiguillage des Requêtes Utilisateur
+## 2. Aiguillage des Requetes Utilisateur
 
-Dès réception d'une instruction utilisateur, l'agent identifie le domaine concerné et applique la directive appropriée :
+Des reception d'une instruction utilisateur, l'agent identifie le domaine concerne et applique la directive appropriee :
 
-### Cas A : Demande liée au Projet, aux Livrables ou à la Gouvernance
-- **Exemples** : Rédaction ou modification de livrables (R1, R3, R4/R5), cadrage métier, questionnaires MOA, étude financière, mise à jour du glossaire, diaporamas PPTX, vidéos de démonstration, synchronisation Google Drive.
-- **Règle à appliquer** : Se conformer impérativement à [`.antigravity/agent_projet.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/.antigravity/agent_projet.md) et aux règles locales [`agent_projet/AGENTS.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_projet/AGENTS.md).
-- **Emplacement des fichiers** : Opérer exclusivement dans `agent_projet/`.
+### Cas A : Demande liee au Projet, aux Livrables ou a la Gouvernance
+- **Exemples** : Redaction ou modification de livrables (R1, R3, R4/R5), cadrage metier, questionnaires MOA, etude financiere, mise a jour du glossaire, diaporamas PPTX, synchronisation Google Drive.
+- **Regle a appliquer** : Se conformer imperativement a [`.antigravity/agent_projet.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/.antigravity/agent_projet.md) et aux regles locales [`agent_projet/AGENTS.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_projet/AGENTS.md).
+- **Emplacement des fichiers** : Operer exclusivement dans `agent_projet/`.
 
-### Cas B : Demande liée au Code, à l'Architecture ou aux Tests
-- **Exemples** : Écriture de code Java/TypeScript, création d'APIs REST, modélisation SQL PostgreSQL, cycle TDD, composants React accessibles RGAA, conteneurs Docker, tests de charge, Green IT.
-- **Règle à appliquer** : Se conformer impérativement à [`.antigravity/agent_code.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/.antigravity/agent_code.md) et aux règles locales [`agent_code/AGENTS.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_code/AGENTS.md).
-- **Emplacement des fichiers** : Opérer exclusivement dans `agent_code/`.
+### Cas B : Demande liee au Code, a l'Architecture ou aux Tests
+- **Exemples** : Choix de la stack, ecriture de code applicatif, creation d'APIs REST, modelisation SQL, cycle TDD, composants React RGAA, conteneurs Docker, tests de charge, pipeline CI/CD.
+- **Regle a appliquer** : Se conformer imperativement a [`.antigravity/agent_code.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/.antigravity/agent_code.md).
+- **Emplacement des fichiers** : Operer exclusivement dans le depot de code GitLab `projet-glop-app/` (chemin local indique dans `config.local.json`).
+- **Condition prealable** : Aucune generation de code prematuree tant que le cadrage (R1) et le choix de la stack technologique ne sont pas formellement valides.
 
 ---
 
