@@ -23,14 +23,15 @@ L'agent doit s'assurer que toutes les spécifications et livrables prennent en c
 
 ---
 
-## 3. Cycle de Production Documentaire
-1. **Rédaction en Markdown** dans `agent_projet/docs/`.
-2. **Relecture et validation du style** : style naturel, fluide, rigoureux et sans emphase (« style étudiant Master »).
-3. **Compilation en PDF vectoriel A4** :
+## 3. Cycle de Production Documentaire & Règles Rédactionnelles
+1. **Interdiction stricte des emojis** : Aucun emoji dans la documentation, le README, les livrables PDF/PPTX/HTML ou les supports d'analyse.
+2. **Style sobre et académique** : Style naturel, fluide, rigoureux, sans verbiage inutile et sans fioritures (« style étudiant Master »).
+3. **Rédaction en Markdown** dans `agent_projet/docs/`.
+4. **Compilation en PDF vectoriel A4** :
    ```bash
    python agent_projet/scripts/generate_pdf.py
    ```
-4. **Synchronisation Google Drive** :
+5. **Synchronisation Google Drive** :
    Le script appelle automatiquement `agent_projet/scripts/drive_sync.py` pour déposer le livrable dans le dossier Drive approprié (`01_Cadrage_Metier_R1`, `02_Etude_Financiere_R3`, `03_Architecture_Technique_R4_R5`, `04_Presentations_Diaporamas`, `05_Demonstrations_Videos`).
 
 ---

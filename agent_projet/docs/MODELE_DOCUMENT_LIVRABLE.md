@@ -20,7 +20,7 @@
 ---
 
 <!-- CARTOUCHE D'INFORMATION OFFICIELLE SUR LE DOCUMENT -->
-## 📋 Informations Générales sur le Document
+##  Informations Générales sur le Document
 
 | Champ | Information |
 |---|---|
@@ -37,7 +37,7 @@
 
 ---
 
-## 📜 Historique des Versions du Document
+##  Historique des Versions du Document
 
 | Version | Date | Auteur(s) | Nature des Modifications apportées |
 |---|---|---|---|
@@ -47,7 +47,7 @@
 ---
 
 <!-- SOMMAIRE AUTOMATIQUE OBLIGATOIRE SI LE DOCUMENT FAIT PLUS DE 10 PAGES -->
-## 📑 Table des Matières
+##  Table des Matières
 *(À générer obligatoirement dès que le document dépasse 10 pages conformément à la consigne de la slide 31)*
 
 1. [Contexte et Objectifs](#)

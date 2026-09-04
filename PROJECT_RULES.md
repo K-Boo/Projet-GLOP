@@ -25,6 +25,7 @@
      * Rédacteur, date de rédaction, nomenclature de version, nombre total de pages, titre.
      * Cartouche de validation formelle (*qui valide, à quel titre, date de validation*).
    - **Table des matières / Index obligatoire** pour tout document dépassant 10 pages.
+   - **Interdiction stricte des emojis** : Aucun emoji dans les livrables, la documentation, le `README.md` ou les commentaires de code. Présentation épurée, sobre et digne d'un master d'ingénierie.
    - **Format de livraison** : Documents officiels systématiquement livrés en **PDF**.
    - **Glossaire du projet tenu à jour** : Tout terme métier (VFP, Click & Collect, Clearing, Multi-tenancy, etc.) consigné par ordre alphabétique avec son auteur et sa définition.
 

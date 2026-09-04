@@ -94,3 +94,11 @@ Tout agent Antigravity opérant sur ce projet doit appliquer le protocole d'alig
 ```bash
 python agent_projet/scripts/setup_env.py
 ```
+
+---
+
+## 7. Charte Rédactionnelle & Interdiction Absolue des Emojis (Règle Permanente)
+
+1. **Interdiction stricte des emojis** : Aucun emoji ne doit être utilisé dans la rédaction des fichiers du projet : `README.md`, documentation dans `agent_projet/docs/`, spécifications d'architecture dans `agent_code/`, livrables PDF/PPTX/HTML, commentaires de code et messages de commit.
+2. **Exigence de sobriété et de propreté** : Le rendu visuel doit être épuré, structuré, rigoureux et digne d'un rapport professionnel d'élèves-ingénieurs en Master 2 MIAGE.
+3. **Contrôle à chaque modification** : À chaque modification d'un document ou du `README.md`, l'agent doit impérativement s'assurer de l'absence totale d'emojis avant de valider ses changements.

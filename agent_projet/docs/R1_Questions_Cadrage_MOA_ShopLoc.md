@@ -17,7 +17,7 @@
 
 ---
 
-## 📋 Informations Générales sur le Document
+##  Informations Générales sur le Document
 
 | Champ | Information |
 |---|---|
