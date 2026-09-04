@@ -3,7 +3,7 @@ import sys
 import subprocess
 import json
 
-REQUIRED_PACKAGES = ["pymupdf", "reportlab", "pypdf", "pillow"]
+REQUIRED_PACKAGES = ["pymupdf", "reportlab", "pypdf", "pillow", "rich"]
 
 SUBFOLDERS = [
     "01_Cadrage_Metier_R1",
