@@ -47,14 +47,23 @@ Pour séparer nettement la phase de cadrage et de livrables de la phase d'implé
 
 ---
 
-## 4. Surveillance des Quotas en Direct (FinOps)
+## 4. Surveillance des Quotas et Observabilite LLM (FinOps)
 
-Pour suivre en direct la consommation de jetons de chaque requête et préserver les quotas de l'abonnement Gemini Pro, un tableau de bord en ligne de commande (bibliothèque `rich`) est disponible :
+Pour suivre en direct la consommation de jetons de chaque requete et auditer les traces de l'agent tout en preservant les quotas Gemini Pro, deux outils 100% locaux et open source sont integres :
 
-* **Sous Windows** : Double-cliquez directement sur le fichier `agent_projet/scripts/watch_tokens.bat`.
+### Option A : Tableau de Bord Web Local (Arize Phoenix - Recommande)
+* **Sous Windows** : Double-cliquez sur `agent_projet/scripts/start_monitoring.bat`.
+* **En ligne de commande** :
+  ```bash
+  python agent_projet/scripts/launch_phoenix.py
+  ```
+* **Acceder a l'interface** : Rendez-vous sur `http://localhost:6006` dans votre navigateur.
+* Visualisation des traces completes, spans, tokens d'entree/sortie, latences et evaluations, stockes integralement en local sans aucun compte ni cle API cloud.
+
+### Option B : Moniteur CLI en Direct
+* **Sous Windows** : Double-cliquez sur `agent_projet/scripts/watch_tokens.bat`.
 * **En ligne de commande** :
   ```bash
   python agent_projet/scripts/token_tracker.py --watch
   ```
-
-Le moniteur s'actualise automatiquement à chaque réponse de l'agent en affichant les jetons d'entrée, de sortie, les outils invoqués et la jauge de contexte globale.
+* Le moniteur terminal s'actualise a chaque reponse de l'agent en affichant les jetons d'entree, de sortie, les outils invoques et la jauge de contexte globale.

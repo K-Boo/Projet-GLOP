@@ -3,7 +3,14 @@ import sys
 import subprocess
 import json
 
-REQUIRED_PACKAGES = ["pymupdf", "reportlab", "pypdf", "pillow", "rich"]
+REQUIRED_PACKAGES = {
+    "pymupdf": "pymupdf",
+    "reportlab": "reportlab",
+    "pypdf": "pypdf",
+    "PIL": "pillow",
+    "rich": "rich",
+    "phoenix": "arize-phoenix"
+}
 
 SUBFOLDERS = [
     "01_Cadrage_Metier_R1",
@@ -16,11 +23,11 @@ SUBFOLDERS = [
 def check_and_install_packages():
     print("[1/4] Verification des dependances Python...")
     missing = []
-    for pkg in REQUIRED_PACKAGES:
+    for mod_name, pkg_name in REQUIRED_PACKAGES.items():
         try:
-            __import__(pkg)
+            __import__(mod_name)
         except ImportError:
-            missing.append(pkg)
+            missing.append(pkg_name)
     
     if missing:
         print(f"  -> Installation des packages manquants : {missing}...")
@@ -28,7 +35,7 @@ def check_and_install_packages():
         subprocess.check_call(cmd)
         print("  -> Packages installes avec succes.")
     else:
-        print("  -> Toutes les dependances Python sont operationnelles.")
+        print("  -> Toutes les dependances Python (y compris Arize Phoenix) sont operationnelles.")
 
 def check_pdf_engine():
     print("[2/4] Verification du moteur de rendu PDF (Edge / Chromium)...")
