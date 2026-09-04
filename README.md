@@ -44,3 +44,17 @@ L'agent lira automatiquement les directives d'équipe (`.antigravity/setup_equip
 Pour séparer nettement la phase de cadrage et de livrables de la phase d'implémentation logicielle, le projet est scindé en deux espaces :
 * **`agent_projet/`** : Réservé à l'**Agent Projet & Livrables** (cadrage R1, étude financière R3, registres agiles `docs/`, logos `images/`, génération PDF et synchronisation Google Drive).
 * **`agent_code/`** : Réservé à l'**Agent Ingénieur Logiciel & Code** (architecture backend/frontend `src/`, configurations `docker/` et tests).
+
+---
+
+## 4. Surveillance des Quotas en Direct (FinOps)
+
+Pour suivre en direct la consommation de jetons de chaque requête et préserver les quotas de l'abonnement Gemini Pro, un tableau de bord en ligne de commande (bibliothèque `rich`) est disponible :
+
+* **Sous Windows** : Double-cliquez directement sur le fichier `agent_projet/scripts/watch_tokens.bat`.
+* **En ligne de commande** :
+  ```bash
+  python agent_projet/scripts/token_tracker.py --watch
+  ```
+
+Le moniteur s'actualise automatiquement à chaque réponse de l'agent en affichant les jetons d'entrée, de sortie, les outils invoqués et la jauge de contexte globale.

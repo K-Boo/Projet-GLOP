@@ -1,69 +1,99 @@
-# DIRECTIVE D'ALIGNEMENT DE L'ENVIRONNEMENT D'ÉQUIPE (.antigravity/setup_equipe.md)
+# DIRECTIVE D'ALIGNEMENT DE L'ENVIRONNEMENT D'EQUIPE (.antigravity/setup_equipe.md)
 
-Cette instruction s'adresse à tout agent Antigravity opérant sur la machine d'un membre de l'équipe (Master 2 MIAGE - UE GLOP).
-Elle décrit l'état de référence du projet et la procédure d'auto-configuration à exécuter pour que la machine locale soit 100% conforme à l'environnement de référence de l'équipe.
-
----
-
-## 1. Contexte & Environnement de Référence
-
-L'environnement de référence du projet (initialisé par Khalil) repose sur :
-1. **Dépôt Git distant** : `git@github.com:K-Boo/Projet-GLOP.git` (branche principale : `main`).
-2. **Bibliothèque de 40 compétences Antigravity** : Située dans `.agents/skills/` à la racine (détectée automatiquement par Antigravity).
-3. **Synchronisation Google Drive** : Application officielle *Google Drive pour ordinateur* installée, connectée au compte partagé d'équipe.
-   - Dossier racine du projet sur Drive : `Projet-GLOP`.
-   - Sur la machine de référence, ce dossier est monté sous : `G:\Mon Drive\Projet-GLOP`.
-   - Il contient les 5 sous-dossiers de livrables :
-     - `01_Cadrage_Metier_R1/`
-     - `02_Etude_Financiere_R3/`
-     - `03_Architecture_Technique_R4_R5/`
-     - `04_Presentations_Diaporamas/`
-     - `05_Demonstrations_Videos/`
-4. **Moteur d'outillage & PDF** :
-   - Python 3.10+ avec les bibliothèques : `pymupdf`, `reportlab`, `pypdf`, `pillow`.
-   - Moteur Chromium / Edge headless pour le rendu PDF vectoriel A4.
+Cette directive decrit l'infrastructure complete des agents du projet ShopLoc et fournit a tout agent Antigravity operant sur la machine d'un membre de l'equipe (Master 2 MIAGE - UE GLOP 2026-2027) la procedure d'auto-configuration autonome pour repliquer exactement l'environnement de reference.
 
 ---
 
-## 2. Procédure d'Auto-Configuration par l'Agent
+## 1. Vue d'Ensemble de l'Infrastructure Agentique
 
-Dès qu'un collègue demande à son agent de vérifier son poste ou de se configurer, l'agent doit exécuter les étapes suivantes de manière totalement autonome :
+Le projet repose sur une architecture multi-agents cloisonnee et deterministe :
 
-### Étape 1 : Exécuter le script d'alignement
-L'agent doit lancer la commande :
+```text
+Projet-GLOP/
+├── .antigravity/
+│   ├── instructions.md            # Routeur d'orchestration global (chef d'orchestre)
+│   ├── setup_equipe.md            # Cette directive d'alignement pour l'agent du collegue
+│   ├── agent_projet.md            # Directives du pole Gestion de Projet & Livrables
+│   ├── agent_code.md              # Directives du pole Ingenierie Logicielle & Code
+│   ├── roles/                     # Prompts systemes et contrats des sous-agents
+│   │   ├── po_role.md             # Sous-agent PO (modele flash, US INVEST, Linear MCP)
+│   │   ├── architect_role.md      # Sous-agent Architecte (modele pro, OpenAPI, SQL 3NF)
+│   │   ├── developer_role.md      # Sous-agent Dev TDD (modele pro/flash, Clean Code)
+│   │   ├── qa_role.md             # Sous-agent QA (modele flash_lite, assertions, zero emoji)
+│   │   └── finops_role.md         # Sous-agent FinOps (modele flash_lite, audit tokens)
+│   └── workflows/
+│       └── workflow_sprint.md     # Machine a etats deterministe (pipeline en 5 etapes)
+│
+├── .agents/
+│   ├── mcp_config.json            # Configuration du serveur MCP Linear
+│   └── skills/                    # 40 competences d'ingenierie logicielle
+│
+├── agent_projet/                  # [POLE GESTION DE PROJET & LIVRABLES]
+│   ├── AGENTS.md                  # Regles locales pour les livrables
+│   ├── docs/                      # Cadrage R1, glossaire, ADR, modeles
+│   ├── images/                    # Logos officiels Universite de Lille et Faculte
+│   └── scripts/
+│       ├── generate_pdf.py        # Compilateur PDF vectoriel A4 (LaTeX/HTML)
+│       ├── drive_sync.py          # Synchronisation automatique Google Drive
+│       ├── token_tracker.py       # Moniteur FinOps CLI en direct (bibliotheque Rich)
+│       ├── watch_tokens.bat       # Lanceur Windows en un clic du moniteur
+│       └── setup_env.py           # Script d'auto-alignement de l'environnement
+│
+├── agent_code/                    # [POLE INGENIERIE LOGICIELLE & CODE]
+│   ├── AGENTS.md                  # Regles locales pour le developpement
+│   ├── src/backend/               # Services API, logique metier, modeles BDD
+│   ├── src/frontend/              # Interfaces web/mobiles accessibles RGAA (Pierre/Suzanne)
+│   ├── docker/                    # Dockerfile, docker-compose.yml
+│   └── tests/                     # Suites de tests unitaires et d'integration
+│
+├── README.md                      # Guide d'onboarding collaboratif epure (zero emoji)
+└── PROJECT_RULES.md               # Regles directrices d'ingenierie
+```
+
+---
+
+## 2. Fonctionnement des Composants Cles
+
+### A. Le Routage Multi-Modeles (Model Tiering)
+Pour ne pas saturer les quotas de l'abonnement Gemini Pro :
+* `flash_lite` : Reserve a la QA, aux verifications d'assertions et a l'audit FinOps (~90% d'economie).
+* `flash` : Reserve au cadrage PO, a la generation de tickets Linear et aux syntheses documentaires (~70% d'economie).
+* `pro` : Reserve strictement a la conception d'architecture complexe (PostgreSQL 3NF) et aux algorithmes financiers critiques.
+
+### B. Les Workflows Deterministes par Contrats JSON
+Les sous-agents ne dialoguent pas en texte libre. L'orchestrateur suit la machine a etats de `workflow_sprint.md` :
+1. Etape 1 : Le sous-agent PO analyse le besoin et genere les US dans Linear ou `sprint_N.json`.
+2. Etape 2 : Le Scrum Master etudiant valide le backlog.
+3. Etape 3 : Le sous-agent Architecte produit le contrat OpenAPI et le schema SQL.
+4. Etape 4 : Le sous-agent Dev developpe en cycle Red-Green-Refactor TDD.
+5. Etape 5 : Le sous-agent QA valide la Definition of Done et l'absence totale de regression.
+
+### C. Le Serveur MCP Linear
+Declare dans `.agents/mcp_config.json`, il utilise le package `@modelcontextprotocol/server-linear`.
+Chaque membre de l'equipe renseigne sa variable d'environnement `LINEAR_API_KEY` pour que son agent puisse creer des tickets et gerer les cycles de sprint automatiquement.
+
+### D. Le Moniteur de Tokens en Direct
+Situe dans `agent_projet/scripts/token_tracker.py` et pilotable via `watch_tokens.bat`, il utilise la bibliotheque `rich` pour afficher un tableau de bord graphique dans le terminal mesurant en temps reel la consommation d'entree/sortie pour chaque requete.
+
+### E. La Politique Stricte Zero Emoji
+Tout fichier cree ou modifie (README, documentation, code, commentaires, commits) doit impérativement respecter la regle d'interdiction totale des emojis.
+
+---
+
+## 3. Procedure d'Auto-Configuration par l'Agent
+
+Des qu'un collegue ouvre le projet dans Antigravity et demande :
+*« Aligne mon environnement sur la configuration d'equipe »* ou *« Configure ma machine »*,
+l'agent execute automatiquement :
+
 ```bash
 python agent_projet/scripts/setup_env.py
 ```
-Ce script réalise automatiquement :
-- La détection et l'installation des dépendances Python manquantes (`pymupdf`, `reportlab`, `pypdf`, `pillow`).
-- La vérification du moteur headless Chromium/Edge.
-- La détection de Google Drive pour ordinateur et la création automatique des 5 sous-dossiers de livrables si nécessaires.
-- La création du fichier de configuration local `config.local.json` si le Drive est monté sur une autre lettre que `G:\`.
-- Le contrôle du remote Git `origin`.
 
-### Étape 2 : Cas particuliers Google Drive
-Si `agent_projet/scripts/setup_env.py` indique que Google Drive n'est pas détecté :
-1. L'agent doit inviter l'utilisateur à installer l'application officielle **Google Drive pour ordinateur** et à synchroniser le dossier partagé `Projet-GLOP`.
-2. Si le collègue a son Google Drive sur un chemin personnalisé (ex : `D:\Google Drive\Projet-GLOP` ou sous macOS/Linux `~/Google Drive/Projet-GLOP`), l'agent doit créer ou mettre à jour le fichier `config.local.json` à la racine du projet :
-   ```json
-   {
-     "drive_path": "<chemin_absolu_vers_Projet-GLOP>"
-   }
-   ```
-   *(Ce fichier est ignoré par Git via le `.gitignore` et reste propre à chaque poste).*
+Ce script realise en totale autonomie :
+1. **Verification et installation des packages Python** : installe `pymupdf`, `reportlab`, `pypdf`, `pillow` et `rich`.
+2. **Verification du moteur PDF** : verifie la presence de Chromium / Edge headless pour la compilation A4.
+3. **Detection de Google Drive pour ordinateur** : localise le dossier `Projet-GLOP`, cree les 5 sous-dossiers officiels (`01_Cadrage_Metier_R1` a `05_Demonstrations_Videos`), et genere un fichier `config.local.json` si le Drive n'est pas sur le lecteur `G:\`.
+4. **Controle du depot Git** : verifie la connexion au remote `git@github.com:K-Boo/Projet-GLOP.git`.
 
-### Étape 3 : Production et Synchronisation des Livrables
-L'agent ne doit **JAMAIS** demander à l'utilisateur de synchroniser manuellement ses fichiers :
-- Dès qu'un livrable officiel est généré (ex: `python agent_projet/scripts/generate_pdf.py`), le script appelle automatiquement `agent_projet/scripts/drive_sync.py` qui pousse le fichier dans le dossier Google Drive de l'équipe.
-- Si l'agent produit un autre livrable (diaporama `.pptx`, vidéo `.mp4`, tableur `.xlsx`), l'agent doit lui-même exécuter :
-  ```bash
-  python agent_projet/scripts/drive_sync.py <chemin_du_fichier>
-  ```
-
----
-
-## 3. Règle d'Action de l'Agent
-
-Si un collègue dit à son agent Antigravity :
-*« Configure mon environnement »*, *« Synchronise ma machine »*, ou *« Est-ce que mon setup est identique à l'équipe ? »*,
-l'agent doit immédiatement lire ce fichier, exécuter `python agent_projet/scripts/setup_env.py`, appliquer les ajustements nécessaires et lui confirmer le résultat sans lui demander d'étapes manuelles complexes.
+L'agent confirme ensuite au collegue que son poste est 100% conforme a l'environnement d'equipe.
