@@ -487,13 +487,16 @@ def parse_markdown_to_latex_html(md_text, b64_univ, b64_fst):
     return full_html
 
 def main():
-    root = r"c:\Users\hpome\Documents\M2_MIAGE\GLOP\ShopLoc"
-    md_path = os.path.join(root, "docs", "QUESTIONNAIRE_METIER_DETAILLE.md")
-    html_path = os.path.join(root, "docs", "ShopLoc_Cadrage_Metier.html")
-    pdf_path = os.path.join(root, "docs", "ShopLoc_Cadrage_Metier_Livrable_R1.pdf")
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    agent_projet_dir = os.path.dirname(script_dir)
+    docs_dir = os.path.join(agent_projet_dir, "docs")
     
-    univ_logo = os.path.join(root, "docs", "assets", "logo_univ_lille.png")
-    fst_logo = os.path.join(root, "docs", "assets", "logo_fst_informatique.png")
+    md_path = os.path.join(docs_dir, "QUESTIONNAIRE_METIER_DETAILLE.md")
+    html_path = os.path.join(docs_dir, "ShopLoc_Cadrage_Metier.html")
+    pdf_path = os.path.join(docs_dir, "ShopLoc_Cadrage_Metier_Livrable_R1.pdf")
+    
+    univ_logo = os.path.join(docs_dir, "assets", "logo_univ_lille.png")
+    fst_logo = os.path.join(docs_dir, "assets", "logo_fst_informatique.png")
 
     with open(univ_logo, "rb") as f:
         b64_univ = base64.b64encode(f.read()).decode("utf-8")
@@ -511,7 +514,18 @@ def main():
 
     print("HTML generated successfully:", html_path)
 
-    edge_bin = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+    candidates = [
+        r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
+        r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
+        r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+        r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
+        "/usr/bin/google-chrome",
+        "/usr/bin/chromium",
+        "/usr/bin/chromium-browser",
+        "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+        "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge"
+    ]
+    edge_bin = next((c for c in candidates if os.path.exists(c)), "msedge")
     args = [
         edge_bin,
         "--headless=new",

@@ -32,7 +32,7 @@ Dès qu'un collègue demande à son agent de vérifier son poste ou de se config
 ### Étape 1 : Exécuter le script d'alignement
 L'agent doit lancer la commande :
 ```bash
-python scripts/setup_env.py
+python agent_projet/scripts/setup_env.py
 ```
 Ce script réalise automatiquement :
 - La détection et l'installation des dépendances Python manquantes (`pymupdf`, `reportlab`, `pypdf`, `pillow`).
@@ -42,7 +42,7 @@ Ce script réalise automatiquement :
 - Le contrôle du remote Git `origin`.
 
 ### Étape 2 : Cas particuliers Google Drive
-Si `scripts/setup_env.py` indique que Google Drive n'est pas détecté :
+Si `agent_projet/scripts/setup_env.py` indique que Google Drive n'est pas détecté :
 1. L'agent doit inviter l'utilisateur à installer l'application officielle **Google Drive pour ordinateur** et à synchroniser le dossier partagé `Projet-GLOP`.
 2. Si le collègue a son Google Drive sur un chemin personnalisé (ex : `D:\Google Drive\Projet-GLOP` ou sous macOS/Linux `~/Google Drive/Projet-GLOP`), l'agent doit créer ou mettre à jour le fichier `config.local.json` à la racine du projet :
    ```json
@@ -54,10 +54,10 @@ Si `scripts/setup_env.py` indique que Google Drive n'est pas détecté :
 
 ### Étape 3 : Production et Synchronisation des Livrables
 L'agent ne doit **JAMAIS** demander à l'utilisateur de synchroniser manuellement ses fichiers :
-- Dès qu'un livrable officiel est généré (ex: `python scripts/generate_pdf.py`), le script appelle automatiquement `scripts/drive_sync.py` qui pousse le fichier dans le dossier Google Drive de l'équipe.
+- Dès qu'un livrable officiel est généré (ex: `python agent_projet/scripts/generate_pdf.py`), le script appelle automatiquement `agent_projet/scripts/drive_sync.py` qui pousse le fichier dans le dossier Google Drive de l'équipe.
 - Si l'agent produit un autre livrable (diaporama `.pptx`, vidéo `.mp4`, tableur `.xlsx`), l'agent doit lui-même exécuter :
   ```bash
-  python scripts/drive_sync.py <chemin_du_fichier>
+  python agent_projet/scripts/drive_sync.py <chemin_du_fichier>
   ```
 
 ---
@@ -66,4 +66,4 @@ L'agent ne doit **JAMAIS** demander à l'utilisateur de synchroniser manuellemen
 
 Si un collègue dit à son agent Antigravity :
 *« Configure mon environnement »*, *« Synchronise ma machine »*, ou *« Est-ce que mon setup est identique à l'équipe ? »*,
-l'agent doit immédiatement lire ce fichier, exécuter `python scripts/setup_env.py`, appliquer les ajustements nécessaires et lui confirmer le résultat sans lui demander d'étapes manuelles complexes.
+l'agent doit immédiatement lire ce fichier, exécuter `python agent_projet/scripts/setup_env.py`, appliquer les ajustements nécessaires et lui confirmer le résultat sans lui demander d'étapes manuelles complexes.

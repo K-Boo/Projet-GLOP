@@ -58,7 +58,8 @@ def check_pdf_engine():
 
 def check_and_setup_drive():
     print("[3/4] Verification et configuration de Google Drive...")
-    repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    repo_root = os.path.abspath(os.path.join(script_dir, "..", ".."))
     local_cfg = os.path.join(repo_root, "config.local.json")
     
     drive_path = None

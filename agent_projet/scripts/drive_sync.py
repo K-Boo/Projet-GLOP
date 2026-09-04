@@ -13,15 +13,20 @@ CATEGORIES = {
 }
 
 def find_drive_root():
-    # 0. Local config file override (config.local.json at repo root)
-    repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    # 0. Local config file override (config.local.json at repo root or script parent)
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    repo_root = os.path.abspath(os.path.join(script_dir, "..", ".."))
     local_cfg = os.path.join(repo_root, "config.local.json")
+    if not os.path.isfile(local_cfg):
+        local_cfg = os.path.join(os.path.dirname(script_dir), "config.local.json")
     if os.path.isfile(local_cfg):
         try:
             import json
             with open(local_cfg, "r", encoding="utf-8") as f:
                 data = json.load(f)
                 custom_path = data.get("drive_path")
+                if custom_path and os.path.isdir(custom_path):
+                    return custom_path
                 if custom_path and os.path.isdir(custom_path):
                     return custom_path
         except Exception:

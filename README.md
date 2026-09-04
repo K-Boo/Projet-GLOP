@@ -39,8 +39,16 @@ L'agent lira automatiquement les directives d'équipe (`.antigravity/setup_equip
 
 ---
 
+## 🏛️ Organisation du Dépôt : Deux Pôles Dédiés
+
+Pour séparer nettement la phase de cadrage/livrables de la future phase d'implémentation logicielle, le projet est scindé en deux espaces :
+* 📂 **`agent_projet/`** : Réservé à l'**Agent Projet & Livrables** (cadrage R1, étude financière R3, registres agiles `docs/`, logos `images/`, génération PDF et synchronisation Google Drive).
+* 📂 **`agent_code/`** : Réservé à l'**Agent Ingénieur Logiciel & Code** (architecture backend/frontend `src/`, configurations `docker/` et tests).
+
+---
+
 ## 📋 Gouvernance & Règles d'Équipe
 
 * **Gouvernance Agile** : Responsabilité de Scrum Master tournante à chaque sprint.
 * **Tag de communication obligatoire** : Tout échange officiel avec la MOA doit comporter le tag `[GLOP]` dans l'objet du courriel.
-* **Mise à jour des registres** : Reporter ses temps de travail dans `docs/REPORTING_TEMPS.md` et consigner les termes métier dans `docs/GLOSSAIRE.md`.
+* **Mise à jour des registres** : Reporter ses temps de travail dans `agent_projet/docs/REPORTING_TEMPS.md` et consigner les termes métier dans `agent_projet/docs/GLOSSAIRE.md`.

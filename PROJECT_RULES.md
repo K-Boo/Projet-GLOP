@@ -66,7 +66,7 @@
 1. **Règle d'or : 1 Session = 1 Tâche Atomique** :
    - Ne jamais conserver une session de chat pour l'intégralité du projet.
    - Clôturer le chat dès qu'une tâche est achevée et ouvrir une nouvelle session pour la suivante.
-   - La mémoire du projet est persistée dans les fichiers Markdown de `docs/` (pas dans l'historique infini du chat).
+   - La mémoire du projet est persistée dans les fichiers Markdown de `agent_projet/docs/` (pas dans l'historique infini du chat).
 
 2. **Méthode Avant Code (Planning Mode)** :
    - Toujours formaliser un plan d'action (architecture, signatures d'APIs, schéma BDD) avant d'écrire le code source.
@@ -74,4 +74,4 @@
 
 3. **Exécution Ciblée & Propre** :
    - Limiter la verbosité des commandes terminal (utiliser des filtres et cibler précisément les fichiers de tests).
-   - Garder le workspace ordonné avec des dossiers bien cloisonnés : `docs/`, `backend/`, `frontend/`, `scripts/`.
+   - Garder le workspace ordonné avec deux pôles étanches : `agent_projet/` (docs, livrables, drive) et `agent_code/` (backend, frontend, docker, tests).
