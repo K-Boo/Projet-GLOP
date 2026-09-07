@@ -9,6 +9,10 @@ Ce document decrit la machine a etats deterministe encadrant les passages de rel
 Pour eliminer le non-determinisme, le projet fonctionne selon une sequence lineaire stricte. Aucun agent ne peut demarrer sa phase tant que la condition de garde (Guard Condition) de l'etape precedente n'est pas remplie.
 
 ```text
+[ETAPE 0 : INGESTION & PARE-FEU DOCUMENTAIRE]
+Sous-Agent Security Sentinel (modele: flash_lite)
+    │
+    ▼ Fichier genere : agent_projet/docs/*_sanitized.md + canary_registry.json
 [ETAPE 1 : CADRAGE & BACKLOG]
 Sous-Agent PO (modele: flash)
     │
@@ -28,19 +32,29 @@ Sous-Agent Dev TDD (modele: pro ou flash selon complexite)
 [ETAPE 5 : ASSURANCE QUALITE & DOD]
 Sous-Agent QA (modele: flash_lite)
     │
-    ▼ Decision QA : PASSED (Zero regression, zero emoji, cartouche valide)
+    ▼ Decision QA : PASSED (Zero regression, zero emoji, zero canari, cartouche valide)
 [CLOTURE DE TACHE & SYNCHRONISATION]
 Orchestrateur met a jour Linear et invite a fermer la session (1 Session = 1 Tache)
 ```
 
 ---
 
-## 2. Description des 5 Etapes & Conditions de Garde
+## 2. Description des 6 Etapes & Conditions de Garde
+
+### Etape 0 : Assainissement Documentaire & Pare-Feu d'Ingestion
+* **Acteur** : `security_sentinel` (Modele : `flash_lite`)
+* **Actions** :
+  1. Intercepte tout nouveau document entrant (PDF, DOCX, TXT, HTML).
+  2. Lance `python agent_projet/scripts/document_guardian.py <doc> --sanitize <doc_sanitized.md>`.
+  3. Met a jour `agent_projet/security/canary_registry.json` si des pieges sont trouves.
+* **Condition de Garde (Pour passer a l'etape 1)** :
+  - Le rapport de securite ne presente aucune alerte critique non resolue.
+  - Seule la version assainie `*_sanitized.md` est transmise au PO.
 
 ### Etape 1 : Cadrage & Extraction des User Stories
 * **Acteur** : `subagent_po` (Modele : `flash`)
 * **Actions** :
-  1. Lit les questions de cadrage dans `agent_projet/docs/`.
+  1. Lit les questions de cadrage assainies dans `agent_projet/docs/`.
   2. Cree les tickets sur Linear via MCP ou ecrit `agent_projet/backlog/sprint_{N}.json`.
 * **Condition de Garde (Pour passer a l'etape 2)** :
   - Chaque User Story possede au minimum 2 criteres d'acceptation Gherkin.
@@ -94,7 +108,7 @@ Ce schema pivot permet a l'orchestrateur de verifier l'etat du flux sans ambigui
     "sprintNumber": { "type": "integer" },
     "currentStage": { 
       "type": "string",
-      "enum": ["PO_FRAMING", "SM_APPROVAL", "ARCHITECTURE", "TDD_DEVELOPMENT", "QA_AUDIT", "COMPLETED"]
+      "enum": ["SECURITY_SANITIZATION", "PO_FRAMING", "SM_APPROVAL", "ARCHITECTURE", "TDD_DEVELOPMENT", "QA_AUDIT", "COMPLETED"]
     },
     "artifacts": {
       "type": "object",

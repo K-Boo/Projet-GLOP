@@ -528,6 +528,20 @@ def main():
     with open(fst_logo, "rb") as f:
         b64_fst = base64.b64encode(f.read()).decode("utf-8")
 
+    # 1. Verification de securite pre-compilation (Canaris, Emojis, Pieges)
+    try:
+        import verify_deliverables
+        registry = verify_deliverables.load_canary_registry()
+        md_violations = verify_deliverables.check_file(md_path, registry)
+        if md_violations:
+            print("[ECHEC SECURITE] Le document source contient des violations critiques :")
+            for v in md_violations:
+                print(f"  [{v['type']}] {v['location']} : {v['detail']}")
+            print("Generation du PDF annulee pour proteger le projet.")
+            return
+    except Exception as e:
+        print(f"[Avertissement Securite] Verification pre-compilation : {e}")
+
     with open(md_path, "r", encoding="utf-8") as f:
         md_content = f.read()
 
@@ -565,6 +579,22 @@ def main():
         size = os.path.getsize(pdf_path)
         doc = pymupdf.open(pdf_path)
         print(f"SUCCESS: Generated PDF at {pdf_path} (Size: {size} bytes, Pages: {len(doc)})")
+        doc.close()
+
+        # 2. Verification de securite post-compilation sur le PDF genere
+        try:
+            import verify_deliverables
+            registry = verify_deliverables.load_canary_registry()
+            pdf_violations = verify_deliverables.check_file(pdf_path, registry)
+            if pdf_violations:
+                print("[ALERTE CRITIQUE] Le PDF genere contient des canaris ou des violations !")
+                for v in pdf_violations:
+                    print(f"  [{v['type']}] {v['location']} : {v['detail']}")
+                os.remove(pdf_path)
+                print("PDF compromis supprime par securite.")
+                return
+        except Exception as e:
+            print(f"[Avertissement Securite] Verification post-compilation PDF : {e}")
         
         # Automatic Google Drive synchronization
         try:

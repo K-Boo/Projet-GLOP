@@ -23,7 +23,7 @@
 |---|---|
 | **Intitulé du Projet** | **Projet ShopLoc** — Marketplace & Fidélisation multi-commerces |
 | **Identifiant Officiel du Projet** | `MiageShopLoc` |
-| **Titre du Document** | *Questionnaire de cadrage fonctionnel approfondi (34 questions métiers (dont Protection Juridique) — 9 volets)* |
+| **Titre du Document** | *Questionnaire de cadrage fonctionnel approfondi (33 questions métiers consolidées — 9 volets d'ingénierie)* |
 | **Référence Documentaire** | `GLOP-2026-R1-QUESTIONNAIRE-DETAILLE-v1.0` |
 | **Contexte Académique** | Master 2 MIAGE — UE Génie Logiciel par la Pratique (GLOP) 2026-2027, Université de Lille |
 | **Destinataires (MOA)** | Laurence Duchien, Anne Etien, François Secchi, Jérémy Woirhaye |
@@ -317,11 +317,3 @@ Dans le cadre de l'UE GLOP et de la préparation de notre réponse technique et 
 * **L'intérêt** : Savoir précisément quelles mesures et quels indicateurs présenter pour justifier notre démarche d'éco-conception.
 * **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Démarche d'éco-conception logicielle rigoureuse : sobriété du code, frugalité des ressources, optimisation des requêtes SQL, déploiement conteneurisé économe et transparence totale sur l'utilisation raisonnée et tracée des outils d'intelligence artificielle (conformément au règlement des études et aux exigences Green IT).
 
-
-### Q.I2 — Protection juridique du logiciel (Axe 9 du sujet)
-* **La question** : Quelles modalités de protection juridique devons-nous prévoir pour le projet ShopLoc :
-  - Quel type de licence logicielle retenir pour le code source et la documentation ?
-  - Comment protéger la propriété intellectuelle de la plateforme vis-à-vis des collectivités territoriales et des tiers ?
-  - Quelles conditions générales d'utilisation (CGU) et mentions de protection des bases de données prévoir ?
-* **L'intérêt** : Répondre explicitement à l'axe 9 du sujet ("Protection juridique du logiciel : faire un développement sur le sujet") exigé par les enseignants.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Un développement juridique dédié sera formalisé dans les dossiers de cadrage R1 et d'architecture, articulé autour d'une licence SaaS propriétaire protégeant le patrimoine logiciel de ShopLoc, combinée aux licences open source des frameworks utilisés (Spring Boot / J2E), avec clauses contractuelles encadrant la convention Mairie-Association.
