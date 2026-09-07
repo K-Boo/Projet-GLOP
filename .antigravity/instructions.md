@@ -65,7 +65,11 @@ Des reception d'une instruction utilisateur, l'agent identifie le domaine concer
 1. **Principe 1 Session = 1 Tâche Atomique** :
    - Clôturer le chat dès qu'une tâche est achevée et ouvrir une nouvelle session pour la suivante.
    - La mémoire pérenne du projet réside dans les fichiers Markdown de `agent_projet/docs/` et `agent_code/`.
-2. **Méthode Avant Code (Planning Mode)** :
+2. **Rituel d'Historisation Inter-Sessions (Journal de Bord)** :
+   - À chaque début de chat : l'agent consulte [`agent_projet/docs/JOURNAL_DE_BORD.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_projet/docs/JOURNAL_DE_BORD.md) pour reprendre le fil immédiatement sans réexplication.
+   - À chaque fin de tâche / fin de chat : l'agent consigne une entrée synthétique dans ce journal (date, réalisations, décisions prises, prochaine étape).
+   - Les arbitrages structurants sont consignés dans [`agent_projet/docs/DECISIONS.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_projet/docs/DECISIONS.md).
+3. **Méthode Avant Code (Planning Mode)** :
    - Toujours formaliser le plan (schémas, signatures d'API, entités) avant d'écrire du code de grande envergure.
 
 ---

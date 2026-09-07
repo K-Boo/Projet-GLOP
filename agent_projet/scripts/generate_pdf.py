@@ -142,6 +142,16 @@ def parse_markdown_to_latex_html(md_text, b64_univ, b64_fst):
             i += 1
             continue
 
+        # MOA Decision / Answer
+        if stripped.startswith('* **Arbitrage MOA'):
+            if in_list:
+                html_parts.append('</ul>')
+                in_list = False
+            content = stripped.split('** :', 1)[-1].strip() if '** :' in stripped else stripped.split('**:', 1)[-1].strip()
+            html_parts.append(f'<div class="latex-moa-decision"><strong>Arbitrage MOA & Décision Validée (07/09/2026) :</strong> {clean_inline(content)}</div>')
+            i += 1
+            continue
+
         # Question interest
         if stripped.startswith('* **L\'intérêt** :'):
             if in_list:
@@ -425,6 +435,20 @@ def parse_markdown_to_latex_html(md_text, b64_univ, b64_fst):
     margin: 0 0 3pt 0;
     line-height: 1.35;
     text-align: justify;
+  }}
+
+  .latex-moa-decision {{
+    margin: 6pt 0 4pt 0;
+    padding: 6pt 10pt;
+    background-color: #f1f8f3;
+    border-left: 3.5pt solid #1b5e20;
+    border-radius: 2pt;
+    font-size: 9.5pt;
+    color: #0f3e13;
+    line-height: 1.45;
+  }}
+  .latex-moa-decision strong {{
+    color: #1b5e20;
   }}
 
   .latex-question-interest {{
