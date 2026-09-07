@@ -147,11 +147,20 @@ class DocumentGuardian:
                         trap_type = None
                         trap_details = {}
 
-                        # Test A : Texte blanc ou quasi-blanc sur fond clair (calcul du contraste reel)
+                        # Test A : Texte blanc ou quasi-blanc sur fond clair (calcul du contraste reel vectoriel et matriciel)
                         if r >= 235 and g >= 235 and b >= 235:
                             center_pt = pymupdf.Point((bbox[0] + bbox[2]) / 2, (bbox[1] + bbox[3]) / 2)
                             bg_rgb = self._get_background_color_at(page_drawings, center_pt)
                             contrast = self._calc_contrast_ratio((r/255, g/255, b/255), bg_rgb)
+                            
+                            # Si le dessin vectoriel ne montre pas de fond sombre, verifier le rendu matriciel (images/formes)
+                            if contrast < 1.5:
+                                pixel_bg = self._get_pixel_bg_at(page, bbox)
+                                pixel_contrast = self._calc_contrast_ratio((r/255, g/255, b/255), pixel_bg)
+                                if pixel_contrast >= 1.5:
+                                    contrast = pixel_contrast
+                                    bg_rgb = pixel_bg
+
                             if contrast < 1.5:
                                 is_suspicious = True
                                 trap_type = "WHITE_OR_INVISIBLE_TEXT"
@@ -378,6 +387,29 @@ class DocumentGuardian:
                     elif isinstance(fill, (int, float)):
                         bg = (float(fill), float(fill), float(fill))
         return bg
+
+    def _get_pixel_bg_at(self, page, bbox):
+        """Echantillonne les pixels de la page rendue autour du span pour determiner la couleur de fond reelle."""
+        try:
+            pix = page.get_pixmap()
+            x0, y0, x1, y1 = bbox
+            w, h = pix.width, pix.height
+            samples = [
+                (max(0, int(x0) - 3), int((y0 + y1) / 2)),
+                (min(w - 1, int(x1) + 3), int((y0 + y1) / 2)),
+                (int((x0 + x1) / 2), max(0, int(y0) - 3)),
+                (int((x0 + x1) / 2), min(h - 1, int(y1) + 3)),
+            ]
+            valid_samples = []
+            for px, py in samples:
+                p_rgb = pix.pixel(px, py)
+                valid_samples.append(p_rgb)
+            avg_r = sum(s[0] for s in valid_samples) / (255.0 * len(valid_samples))
+            avg_g = sum(s[1] for s in valid_samples) / (255.0 * len(valid_samples))
+            avg_b = sum(s[2] for s in valid_samples) / (255.0 * len(valid_samples))
+            return (avg_r, avg_g, avg_b)
+        except Exception:
+            return (1.0, 1.0, 1.0)
 
     def _calc_contrast_ratio(self, rgb1, rgb2):
         """Calcule le ratio de contraste WCAG entre deux couleurs RGB (valeurs 0.0 a 1.0)."""
