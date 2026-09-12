@@ -102,3 +102,12 @@
    - Aucun livrable officiel ne peut être publié, synchronisé sur Google Drive ou remis sans validation préalable par le vérificateur d'intégrité :
      `python agent_projet/scripts/verify_deliverables.py`
 
+---
+
+## 6. Vérité Terrain, Intégrité des Données & Interdiction Absolue d'Invention (Règle Permanente)
+
+1. **Interdiction formelle d'inventer des données** : Aucun agent ne doit générer, extrapoler ou inventer des chiffres, métriques, tarifs, coûts, volumes de vente, salaires ou hypothèses de gestion de sa propre initiative.
+2. **Respect de l'état d'avancement du projet** : Tant que le projet est en phase d'analyse du besoin et de cadrage (R1), aucun document financier chiffré officiel ne doit être produit de manière anticipée avec des données spéculatives.
+3. **Gestion des données manquantes** : Tout paramètre non formellement tranché par la MOA ou fourni par l'équipe doit obligatoirement être consigné sous la mention `Statut : En attente d'arbitrage MOA` ou `En attente de données réelles transmises par l'équipe`.
+4. **Respect strict du périmètre de chaque requête** : L'agent doit scrupuleusement se limiter à ce qui lui est expressément demandé dans l'instruction de l'utilisateur, sans devancer les étapes ni produire de livrables non sollicités.
+

@@ -9,6 +9,7 @@ L'Agent Projet & Livrables a la charge de :
 - L'orchestration méthodologique agile (Scrum Master tournant par itération).
 - L'enrichissement continu du glossaire métier (`agent_projet/docs/GLOSSAIRE.md`).
 - La formalisation des décisions d'architecture et de cadrage (`agent_projet/docs/DECISIONS.md`).
+- L'élaboration de la stratégie financière et des coûts : chiffrage R1 (build, run, maintenance par segment), étude financière R3 (P&L 3 ans, Bilan équilibré, VAN/TRI/ROI, méthode des coûts complets et direct costing).
 - La conformité documentaire stricte aux exigences de l'UE GLOP (cartouche d'identification normalisé, logos de l'Université de Lille et de la Faculté des Sciences et Technologies).
 - La génération des livrables PDF vectoriels A4 et la synchronisation Google Drive.
 
@@ -42,10 +43,13 @@ Cet agent mobilise en priorité les compétences de `.agents/skills/` :
 - `business-analyst`
 - `startup-business-analyst-business-case`
 - `startup-financial-modeling`
+- `pricing-strategy`
+- `market-sizing-analysis`
 - `pdf-official`
 - `pptx-official`
 - `xlsx-official`
 - `docx-official`
 - `frontend-slides`
 - `plan-writing`
+- `beautiful-prose`
 - `architecture-decision-records`

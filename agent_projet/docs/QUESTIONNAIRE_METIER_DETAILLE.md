@@ -349,6 +349,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 ### Question 10.1 (Q.J1 — Seuil d'achat pour la validation d'un passage VFP)
 * **Contexte** : Il est acté qu'un acte d'achat est obligatoire pour valider un passage en boutique (un simple scan de présence au comptoir sans achat n'est pas toléré). Un usager peut effectuer autant de passages qu'il le souhaite dans une même boutique sans limitation ni mixité imposée.
 * **La question** : Existe-t-il un montant minimum d'achat exigé pour valider un passage (ex: seuil minimal de 1 € ou 2 €) ou n'importe quel achat, quel que soit son montant (ex: une baguette à 1,10 € ou un paquet de bonbons à 0,50 €), valide-t-il le passage ?
+  Par ailleurs, en l'absence de seuil minimal, la MOA identifie-t-elle un risque de fraude sur ce mécanisme (ex. multiplication de micro-achats pour générer des avantages gratuits financés par la mairie) ? Si un tel risque est identifié, la MOA souhaite-t-elle que l'équipe intègre un garde-fou dès la V1, ou ce point peut-il être traité en V2 ?
 * **Intérêt pour le projet** : Paramétrage du filtre de validation dans le service de comptabilisation des passages VFP.
 
 **<span style="color: #166534;">Réponse validée MOE (Principe de l'achat) :</span>**  
@@ -402,6 +403,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 ### Question 10.6 (Q.J6 — Alertes et détection de fraude sur les avantages municipaux)
 * **Contexte** : Les notes précisent que la mairie et l'association doivent récupérer de la data pour évaluer le système et prévenir les fraudes.
 * **La question** : Quels mécanismes d'alerte automatisée doivent être intégrés au panel de pilotage (détection de fréquences de passages anormales, possibilité de suspension temporaire de compte usager suspect) ?
+  Le système de statut VFP tel que défini (aucun seuil minimal d'achat confirmé à ce stade, aucun plafond de cumul des avantages) expose potentiellement le dispositif à un usage abusif. La MOA souhaite-t-elle que l'équipe propose un mécanisme de prévention dès la V1, ou ce risque est-il jugé acceptable pour la première version du projet ?
 * **Intérêt pour le projet** : Conception du module de détection d'anomalies de fréquentation.
 
 **<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**

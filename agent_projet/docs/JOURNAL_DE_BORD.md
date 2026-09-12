@@ -186,8 +186,68 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Conservation exclusive et stricte des deux versions officielles de référence (V1 et V2).
   - Suppression de tout document intermédiaire, doublon d'images ou brouillon de travail pour maintenir un dépôt épuré, sobre et auditable.
 - **Reste à faire / Objectifs pour la Session 10** :
+  - Configuration de l'agent de gestion financière et stratégique (CFO / Contrôleur de Gestion).
+  - Implémentation du moteur de calcul déterministe Python et du modèle documentaire R3.
+
+---
+
+### [2026-09-12] Session 10 — Configuration de l'Agent Financier & Verrouillage Anti-Invention
+- **Objectif** : Configurer le rôle et le workflow de l'agent de gestion financière et stratégique sans devancer les étapes du projet, purger toute production documentaire prématurée ou contenant des chiffres inventés, et verrouiller l'ensemble des règles projet pour interdire formellement toute extrapolation de données en phase d'analyse de besoin et de cadrage.
+- **Actions réalisées** :
+  - Purge intégrale immédiate des fichiers générés prématurément contenant des données chiffrées inventées (`ShopLoc_Etude_Financiere_Modele.xlsx`, `resultats_certifies_r3.json`, `MODELE_ETUDE_FINANCIERE_R3.md`).
+  - Définition de la directive de rôle : `.antigravity/roles/cfo_strategic_finance_role.md` (4 postures : CFO Corporate, Contrôleur des Coûts ESN, Stratège Pricing, Lead Conformité), configurée avec une interdiction stricte d'inventer des données.
+  - Définition du workflow séquentiel : `.antigravity/workflows/workflow_finance_strategique.md` (Phase 0 verrouillée : aucune exécution sans données réelles validées par l'équipe).
+  - Verrouillage du script `agent_projet/scripts/financial_engine.py` : suppression des valeurs par défaut inventées, obligation absolue de fournir un fichier `--config` avec données réelles validées sous peine d'interruption immédiate (`sys.exit(1)`).
+  - Inscription de la règle permanente d'Anti-Invention et Vérité Terrain dans le socle de gouvernance :
+    * `PROJECT_RULES.md` (Section 6 : Interdiction formelle d'inventer des chiffres, respect strict de la phase de cadrage et du périmètre des requêtes).
+    * `.antigravity/instructions.md` (Section 10 : Vérité terrain, données manquantes marquées en attente d'arbitrage MOA).
+    * `agent_projet/AGENTS.md` (Section 6 : Interdiction d'extrapolation en phase de cadrage).
+  - Contrôle d'intégrité de sécurité : exécution de `verify_deliverables.py` (0 canari, 0 violation, 0 emoji).
+- **Décisions actées** :
+  - Respect strict de l'état d'avancement du projet : l'équipe est actuellement en phase de cadrage et d'analyse des besoins (Livrable R1).
+  - Aucun document financier ou chiffré ne sera produit tant que la MOA ou l'équipe n'aura pas fourni et validé les hypothèses réelles.
+  - Règle de non-invention absolue gravée dans tous les contrats d'agents.
+- **Reste à faire / Objectifs pour la Session 11** :
+  - Transmission du livrable V2 de cadrage finalisé à la MOA/MOE pour la seconde séance d'encadrement.
+  - Instruction des questions en attente d'arbitrage (vague 2 et vague 3 du questionnaire de cadrage).
+
+---
+
+### [2026-09-12] Session 11 — Enrichissement des Questions Anti-Fraude & Usage Abusif (Questionnaire V2)
+- **Objectif** : Intégrer les précisions demandées par l'équipe dans le questionnaire de cadrage approfondi (V2) concernant les risques de fraude et d'usage abusif sur le statut VFP (Questions 10.1 et 10.6), compiler et synchroniser les livrables PDF.
+- **Actions réalisées** :
+  - Mise à jour de la Question 10.1 (Q.J1) dans `agent_projet/docs/QUESTIONNAIRE_METIER_DETAILLE.md` : interrogation de la MOA sur le risque de fraude lié à la multiplication de micro-achats sans seuil minimal et l'opportunité d'intégrer un garde-fou dès la V1 ou en V2.
+  - Mise à jour de la Question 10.6 (Q.J6) dans `agent_projet/docs/QUESTIONNAIRE_METIER_DETAILLE.md` : interrogation de la MOA sur l'exposition potentielle à un usage abusif (absence de seuil minimal et de plafond de cumul VFP) et le souhait d'un mécanisme de prévention dès la V1.
+  - Recompilation unifiée des livrables PDF via `generate_pdf.py` : maintien strict de la pagination (V1 en 8 pages, V2 en 11 pages avec Question 10.1 en page 9 et Question 10.6 en page 10).
+  - Synchronisation automatique sur l'espace Google Drive partagé (`G:\Mon Drive\Projet-GLOP\01_Cadrage_Metier_R1`).
+  - Contrôle qualité et conformité : exécution de `verify_deliverables.py` (0 canari, 0 violation, 0 emoji).
+- **Décisions actées** :
+  - Formalisation explicite des questionnements de sécurité applicative et de détection de fraude dans la vague 2 pour instruction auprès de la MOA lors de la 2nde entrevue.
+- **Reste à faire / Objectifs pour la Session 12** :
+  - Configuration de l'agent financier en mode Human-in-the-Loop et rédaction du guide pratique d'assistance.
+
+---
+
+### [2026-09-12] Session 12 — Configuration de l'Agent Financier Human-in-the-Loop & Guide Pédagogique
+- **Objectif** : Configurer l'agent de gestion financière et stratégique avec 4 niveaux d'implication pédagogiques (Human-in-the-Loop) et 4 casquettes métiers spécialisées, afin d'accompagner l'équipe étudiante dans la compréhension et la maîtrise de la finance de projet sans boîte noire ni automatisation abusive.
+- **Actions réalisées** :
+  - Reconfiguration complète de la directive de rôle : `.antigravity/roles/cfo_strategic_finance_role.md` :
+    * Intégration des 4 modes d'intervention : Mode Tuteur (`[MODE: TUTEUR]`), Mode Copilote (`[MODE: COPILOTE]` par défaut), Mode Auditeur critique (`[MODE: AUDITEUR]` / `[MODE: JURY]`), et Mode Exécutant outillé (`[MODE: EXECUTANT]`).
+    * Intégration des 4 spécialités : Contrôleur de coûts MIAGE (`[ROLE: COUTS]`), CFO SaaS (`[ROLE: CFO]`), Stratège Pricing (`[ROLE: PRICING]`), et Simulateur de Jury (`[ROLE: JURY]`).
+    * Inscription du principe de maïeutique et d'interdiction formelle d'inventer des chiffres ou de décider à la place des étudiants.
+  - Mise à jour de la machine à états : `.antigravity/workflows/workflow_finance_strategique.md` (ajout de la phase préalable d'atelier Human-in-the-Loop et de co-conception des hypothèses).
+  - Rédaction intégrale du guide pratique pour les étudiants : `agent_projet/docs/GUIDE_ASSISTANCE_FINANCIERE.md` :
+    * Explication concrète des 4 modes et des 4 rôles.
+    * 10 prompts types prêts à l'emploi couvrant l'apprentissage des coûts complets, l'estimation des charges, le pricing communal, et la répétition des soutenances.
+    * Aide-mémoire méthodologique des formules clés (coûts complets, UO, MCV, SR, VAN, TRI, Payback).
+  - Mise à jour des directives d'orchestration : `.antigravity/instructions.md` et `agent_projet/AGENTS.md`.
+  - Contrôle d'intégrité : exécution de `verify_deliverables.py` (13 fichiers audités, 0 canari, 0 violation, 0 emoji).
+- **Décisions actées** :
+  - Priorité absolue à la maîtrise humaine des concepts financiers par les 5 étudiants de l'équipe ShopLoc.
+  - L'agent agit par défaut comme un copilote pédagogique bienveillant, et ne passe en mode exécutant que sur ordre explicite après validation formelle des hypothèses par l'équipe.
+- **Reste à faire / Objectifs pour la Session 13** :
   - Transmission du livrable V2 finalisé à la MOA/MOE pour la seconde séance d'encadrement.
-  - Démarrage de l'étude financière prévisionnelle R1/R3 (dimensionnement des paliers de collectivités locales).
+  - Mobilisation du mode Tuteur et Copilote pour instruire les premiers ordres de grandeur budgétaires du chiffrage R1.
 
 ---
 

@@ -115,7 +115,8 @@ python agent_projet/scripts/setup_env.py
    - Sous-Agent Architecte (`.antigravity/roles/architect_role.md`) : Contrats OpenAPI, schémas PostgreSQL 3NF, multi-tenancy. Modèle obligatoire : `pro`.
    - Sous-Agent Développeur TDD (`.antigravity/roles/developer_role.md`) : Cycle Red-Green-Refactor, Clean Code. Modèle : `pro` (calculs financiers) ou `flash` (standard).
    - Sous-Agent QA & Conformité (`.antigravity/roles/qa_role.md`) : Validation DoD, non-régression, vérification cartouche et zéro emoji. Modèle obligatoire : `flash_lite`.
-   - Sous-Agent FinOps (`.antigravity/roles/finops_role.md`) : Contrôle a priori du dimensionnement et respect de la frugalité. Modèle obligatoire : `flash_lite`.
+   - Sous-Agent FinOps (`.antigravity/roles/finops_role.md`) : Contrôle a priori du dimensionnement et respect de la frugalité des jetons LLM. Modèle obligatoire : `flash_lite`.
+   - Sous-Agent CFO & Stratégie Financière (`.antigravity/roles/cfo_strategic_finance_role.md`) : Assistant et mentor pédagogique Human-in-the-Loop (4 modes : Tuteur, Copilote, Auditeur/Jury, Exécutant). Guide pratique pour l'équipe : [`agent_projet/docs/GUIDE_ASSISTANCE_FINANCIERE.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_projet/docs/GUIDE_ASSISTANCE_FINANCIERE.md). Machine à états : [`.antigravity/workflows/workflow_finance_strategique.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/.antigravity/workflows/workflow_finance_strategique.md). Modèle : `pro` (arbitrages & simulation jury), `flash` (tuteur pédagogique & copilote), `flash_lite` (moteur arithmétique déterministe `financial_engine.py`).
    - Sous-Agent Security Sentinel (`.antigravity/roles/security_sentinel_role.md`) : Pare-feu d'ingestion Zero-Trust, assainissement vectoriel des documents et neutralisation des pièges/canaris IA. Modèle obligatoire : `flash_lite`.
 3. **Optimisation des Quotas Gemini Pro** :
    - Plus de 70% des opérations doivent être déléguées à `flash` ou `flash_lite` pour réserver le quota `pro` aux seuls arbitrages complexes d'architecture et de logique financière.
@@ -147,3 +148,12 @@ python agent_projet/scripts/setup_env.py
      python agent_projet/scripts/verify_deliverables.py
      ```
    - Tout livrable contenant un terme canari (ex: "Madagascar", "vélo violet", axe fantôme) ou un emoji est immédiatement rejeté.
+
+---
+
+## 10. Vérité Terrain, Intégrité des Données & Interdiction Absolue d'Invention
+
+1. **Interdiction formelle d'inventer des données** : L'agent ne doit jamais inventer, extrapoler ou générer des données chiffrées, des coûts, des prix, des salaires ou des volumes de vente de sa propre initiative.
+2. **Respect de l'état d'avancement réel** : En phase d'analyse du besoin et de cadrage (R1), aucun document financier ou technique prématuré ne doit être produit avec des valeurs fictives.
+3. **Respect strict du périmètre de chaque requête** : L'agent doit scrupuleusement se limiter à ce qui lui est expressément demandé dans la consigne de l'utilisateur, sans devancer les étapes ni produire de documents non sollicités.
+4. **Gestion des données manquantes** : Tout point non documenté par la MOA ou l'équipe doit rester explicitement marqué `Statut : En attente d'arbitrage MOA` ou `En attente de données réelles transmises par l'équipe`.
