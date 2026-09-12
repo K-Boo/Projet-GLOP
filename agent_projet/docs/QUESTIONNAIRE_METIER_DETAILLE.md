@@ -1,319 +1,448 @@
-<!-- EN-TÊTE GRAPHIQUE AVEC LES DEUX LOGOS OFFICIELS -->
-<div align="center" style="margin-bottom: 25px;">
-  <table style="width: 100%; border: none; background: transparent;">
-    <tr style="border: none; background: transparent;">
-      <td align="left" style="width: 50%; border: none; vertical-align: middle;">
-        <img src="assets/logo_univ_lille.png" alt="Logo Université de Lille" style="height: 60px; max-width: 250px; object-fit: contain;">
-      </td>
-      <td align="right" style="width: 50%; border: none; vertical-align: middle;">
-        <img src="assets/logo_fst_informatique.png" alt="Logo FST Département Informatique" style="height: 60px; max-width: 250px; object-fit: contain;">
-      </td>
-    </tr>
-  </table>
-</div>
+# Questionnaire de Cadrage Métier — Projet ShopLoc
 
-# QUESTIONNAIRE D'INSTRUCTION MÉTIER APPROFONDIE (SHOPLOC)
-## Cadrage Fonctionnel & Découverte du Besoin Réel (Version Consolidée)
+Ce document recense les questions de cadrage fonctionnel pour l'application ShopLoc, en distinguant :
+- Les réponses et arbitrages d'ores et déjà validés lors des échanges avec la MOE (identifiés en vert).
+- Les questions restant en attente d'arbitrage lors de la seconde entrevue (identifiées en orange).
 
 ---
 
-## Informations Générales sur le Document
-
-| Champ | Information |
-|---|---|
-| **Intitulé du Projet** | **Projet ShopLoc** — Marketplace & Fidélisation multi-commerces |
-| **Identifiant Officiel du Projet** | `MiageShopLoc` |
-| **Titre du Document** | *Questionnaire de cadrage fonctionnel approfondi (33 questions métiers consolidées — 9 volets d'ingénierie)* |
-| **Référence Documentaire** | `GLOP-2026-R1-QUESTIONNAIRE-DETAILLE-v1.0` |
-| **Contexte Académique** | Master 2 MIAGE — UE Génie Logiciel par la Pratique (GLOP) 2026-2027, Université de Lille |
-| **Destinataires (MOA)** | Laurence Duchien, Anne Etien, François Secchi, Jérémy Woirhaye |
-| **Date de Soumission** | 07 Septembre 2026 |
-| **Statut du Document** | Version 1.1 — *Consolidée suite aux arbitrages MOA (Séance du 07/09/2026)* |
-| **Tag obligatoire communications** | `[GLOP]` *(à inclure dans tout objet de courriel)* |
-
----
-
-### Objectif du Document
-Dans le cadre de l'UE GLOP et de la préparation de notre réponse technique et financière (Livrable R1), notre équipe d'étudiants a analysé l'ensemble des besoins présentés dans le sujet ShopLoc. Afin de concevoir une architecture logicielle adaptée et de lever toute ambiguïté sur les règles de gestion, nous avons réuni cette liste de questions ciblées. Pour chaque point, nous présentons notre interrogation ainsi que son intérêt concret pour le développement de l'application.
+# Première Vague : Questions de Cadrage Initiales
 
 ---
 
 ## 1. Rôles des Acteurs et Organisation Territoriale
 
-### Q.A1 — Rôle et accès de l'Association des Commerçants
+### Question 1.1 (Q.A1 — Rôle et accès de l'Association des Commerçants)
 * **La question** : L'énoncé indique que des associations de commerçants ont sollicité ShopLoc. Quel est leur rôle prévu dans l'application :
   - Doivent-elles valider l'inscription des commerçants de leur ville pour s'assurer qu'il s'agit bien de commerces locaux indépendants ?
   - Ont-elles accès à un tableau de bord pour suivre les statistiques globales de vente de leur commune ?
   - Ou n'ont-elles aucun compte dans l'application et interviennent-elles uniquement lors de la signature du projet ?
-* **L'intérêt** : Savoir si nous devons développer un espace dédié pour les associations avec des droits de modération et de suivi.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : L'association des commerçants (structure à but non lucratif loi 1901) est co-initiatrice du projet avec la mairie via une convention tripartite. Le commerçant doit être obligatoirement adhérent de l'association locale pour intégrer ShopLoc. C'est l'association qui contrôle les adhésions et débloque les accès. Elle dispose d'un panel de gestion et de visualisation des indicateurs pour suivre l'activité et prévenir les fraudes.
+* **Intérêt pour le projet** : Savoir si nous devons développer un espace dédié pour les associations avec des droits de modération et de suivi.
 
-### Q.A2 — Répartition des rôles entre la Mairie et l'Association des Commerçants
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">La demande émane conjointement de l'association des commerçants (structure à but non lucratif loi 1901) et de la mairie, qui formalisent une convention pour attirer plus de clients dans le centre-ville. Le commerçant doit obligatoirement être adhérent de l'association locale pour intégrer ShopLoc. C'est l'association qui contrôle les adhésions et débloque les accès. Elle dispose d'un panel de gestion et de visualisation des indicateurs pour suivre l'activité et prévenir les fraudes.</span>
+
+---
+
+### Question 1.2 (Q.A2 — Répartition des rôles entre la Mairie et l'Association des Commerçants)
 * **La question** : Le sujet mentionne des services à destination de la mairie (notamment via le service Citoyen Numérique). Comment s'organise la collaboration entre la mairie et l'association :
   - La mairie dispose-t-elle de son propre compte d'accès ?
   - Qui décide de lancer les campagnes de promotion et les sondages d'opinion : la mairie ou l'association ?
   - En cas d'avis divergent sur une communication, qui a la priorité décisionnelle ?
-* **L'intérêt** : Clarifier les droits de chacun pour l'envoi de messages aux usagers et définir les profils d'utilisateurs à créer.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : La mairie et l'association signent une convention définissant les objectifs d'attractivité du centre-ville. Les commerçants offrent des points de fidélité et des cadeaux sur leurs produits ; la mairie offre des avantages institutionnels de mobilité (tickets de transport en commun et 20 minutes de stationnement). Chacune des deux entités dispose d'un espace de gestion propre avec des droits séparés.
+* **Intérêt pour le projet** : Clarifier les droits de chacun pour l'envoi de messages aux usagers et définir les profils d'utilisateurs à créer.
 
-### Q.A3 — Modèle économique et facturation de la solution
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">L'association et la mairie sont liées par la convention. Les rôles et promesses sont répartis : les commerces promettent des points et des cadeaux sur leurs produits ; la mairie promet des tickets de bus et du stationnement gratuit. Chacune des deux entités dispose d'un panel de gestion ou de visualisation des données propre.</span>
+
+---
+
+### Question 1.3 (Q.A3 — Modèle économique et facturation de la solution)
 * **La question** : À qui ShopLoc vend-elle son service :
   - À la Mairie, qui finance la plateforme dans le cadre de sa politique d'attractivité du centre-ville ?
   - À l'Association des commerçants, via les cotisations de ses membres ?
   - Ou directement aux commerçants, qui paient chacun un abonnement à ShopLoc ?
-* **L'intérêt** : C'est la base de notre étude financière (Livrable R3). Cela détermine comment ShopLoc génère ses revenus et auprès de qui émettre les factures.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : ShopLoc contractualise et facture directement l'association des commerçants. La mairie verse une subvention d'amorçage et de fonctionnement à l'association pour financer le dispositif. L'équipe est libre de calibrer le modèle tarifaire exact (redevance logicielle récurrente selon la taille de la ville) en devant être capable de défendre ses choix lors du rendu R1/R3.
+* **Intérêt pour le projet** : C'est la base de notre étude financière (Livrable R3). Cela détermine comment ShopLoc génère ses revenus et auprès de qui émettre les factures.
 
-### Q.A4 — Processus d'inscription d'un commerçant
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">ShopLoc facture directement l'association des commerçants. La mairie verse une subvention à l'association pour financer le dispositif. L'équipe est totalement libre de définir et calibrer le modèle économique qu'elle souhaite. Cette liberté devra être défendue et justifiée par la suite via un prévisionnel d'activité détaillé couplé à une définition claire du modèle d'affaires (Livrables R1 et R3).</span>
+
+---
+
+### Question 1.4 (Q.A4 — Processus d'inscription d'un commerçant)
 * **La question** : Comment se déroule l'arrivée d'un nouveau commerçant sur la plateforme :
   - L'inscription est-elle libre et immédiate en ligne ?
   - Ou nécessite-t-elle une validation préalable (vérification du SIRET, conformité du commerce) par l'administrateur ShopLoc ou l'association locale avant l'ouverture de la boutique ?
-* **L'intérêt** : Déterminer si nous devons gérer un statut d'attente de validation pour les nouveaux comptes commerçants.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : L'inscription n'est pas ouverte sans contrôle : le commerçant doit être adhérent à l'association des commerçants. C'est l'association qui valide la conformité de l'établissement et lui attribue son compte commerçant actif.
+* **Intérêt pour le projet** : Déterminer si nous devons gérer un statut d'attente de validation pour les nouveaux comptes commerçants.
+
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">Le commerçant doit obligatoirement être adhérent de l'association locale. C'est l'association qui donne et valide l'accès au commerçant dans l'application.</span>
 
 ---
 
 ## 2. Déploiement et Gestion Multi-Villes
 
-### Q.B1 — Choix entre plateforme mutualisée (SaaS) ou déploiement séparé par ville
+### Question 2.1 (Q.B1 — Choix entre plateforme mutualisée (SaaS) ou déploiement séparé par ville)
 * **La question** : L'énoncé demande une architecture logicielle réutilisable dans différentes villes. Quel modèle devons-nous privilégier :
   - Une application unique et partagée (SaaS multi-tenant), où chaque ville possède son propre espace au sein d'une même base de données ?
   - Ou une application installée et hébergée séparément sur des serveurs distincts pour chaque ville cliente ?
-* **L'intérêt** : C'est un choix d'architecture majeur. Une solution mutualisée réduit les coûts d'infrastructure et simplifie les mises à jour, tandis qu'un déploiement séparé isole complètement les données de chaque commune.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Liberté totale accordée à l'équipe, sous condition de justifier et défendre rigoureusement le choix architectural. La MOE valide l'orientation SaaS multi-tenant avec partitionnement logique (tenant_id = ville_id) pour permettre un déploiement rapide dans de nouvelles communes en 18 mois avec une équipe d'ingénieurs réduite, tout en minimisant l'empreinte serveur (éco-conception).
+* **Intérêt pour le projet** : C'est un choix d'architecture majeur. Une solution mutualisée réduit les coûts d'infrastructure et simplifie les mises à jour, tandis qu'un déploiement séparé isole complètement les données de chaque commune.
 
-### Q.B2 — Ville de rattachement principale et avantages des résidents
-* **La question** : Un compte usager (ex : Julie) fonctionne dans toutes les villes partenaires. L'usager peut-il déclarer une « ville de rattachement principale » (sa commune de résidence) :
-  - Les avantages financés par une commune (ex : heures de stationnement gratuit, chèques d'achat locaux) sont-ils réservés aux seuls habitants de cette commune ?
-  - Un usager extérieur gagne-t-il les mêmes points qu'un résident local ?
-  - Les points de fidélité sont-ils utilisables uniquement dans la ville où ils ont été acquis, ou dans l'ensemble des villes du réseau ?
-* **L'intérêt** : Permettre aux mairies de réserver leurs aides financières à leurs propres contribuables et cadrer la validité des points de fidélité.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Le système gère les usagers avec flexibilité : compte unique transversal ou comptes distincts selon le choix de l'utilisateur. Les avantages financés par une collectivité (tickets bus, stationnement) restent rattachés à la ville où les passages et achats ont été effectués.
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">Libre sur le choix d'architecture, à condition d'être capable de défendre nos choix. L'écosystème associe la mairie et l'association de chaque ville. L'équipe retient l'architecture SaaS multi-tenant avec partitionnement logique (`tenant_id = ville_id`) pour concilier frugalité des serveurs et capacité de déploiement rapide.</span>
 
-### Q.B3 — Adaptation selon la taille de la commune (Petite, Moyenne, Grande Ville)
-* **La question** : Le sujet distingue 3 tailles de villes (<20k, 20k-100k, >100k habitants). Qu'implique cette distinction dans l'application :
-  - S'agit-il seulement de dimensionner les serveurs pour supporter un volume d'utilisateurs plus important ?
-  - Ou certaines fonctionnalités doivent-elles pouvoir être activées ou désactivées selon la ville (ex : désactiver le module parking dans les petites communes sans horodateurs payants, découper en quartiers pour les grandes villes) ?
-* **L'intérêt** : Savoir si nous devons concevoir des modules optionnels configurables par ville.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : L'architecture doit être hautement scalable en volume de données et nombre d'usagers. Elle doit supporter une configuration modulaire selon les paramètres locaux : présence ou non de transports en commun, présence ou non d'horodateurs payants, et découpage par quartier pour les métropoles.
+---
 
-### Q.B4 — Objectifs attendus pour le cap des 18 mois
-* **La question** : L'énoncé fixe comme objectif de devenir leader du marché à 18 mois. Sur quels indicateurs ce succès sera-t-il évalué :
-  - Le nombre de villes partenaires signées ?
-  - Le nombre de commerçants actifs et de produits proposés ?
-  - Le volume des ventes réalisées et la rentabilité financière ?
-* **L'intérêt** : Aligner nos choix techniques, notre calendrier de déploiement et notre offre financière sur les attentes concrètes du client.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Atteindre le leadership sur le marché en 18 mois en prouvant la capacité à industrialiser et déployer rapidement la solution dans de nouvelles agglomérations avec une équipe réduite, tout en démontrant la rentabilité de l'investissement (calculs de ROI et de VAN requis pour le livrable R3).
+### Question 2.2 (Q.B2 — Ville de rattachement principale et comptes usagers)
+* **La question** : Un usager (ex : Julie travaillant dans une grande ville et résidant dans une commune voisine) dispose-t-il d'un compte unique transversal lui permettant de basculer d'une ville à l'autre, ou doit-il recréer un compte distinct par commune ?
+* **Intérêt pour le projet** : Modélisation des tables d'authentification et gestion des droits selon la commune d'achat.
+
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">Si une personne souhaite disposer de plusieurs comptes distincts ou d'un compte unique, le système doit offrir cette flexibilité. Les avantages mobilité restent rattachés à la ville où les passages et achats ont été effectués.</span>
+
+---
+
+### Question 2.3 (Q.B3 — Adaptation selon la taille de la commune (Petite, Moyenne, Grande Ville))
+* **La question** : Le sujet distingue 3 tailles de villes (<20k, 20k-100k, >100k habitants). Qu'implique cette distinction dans l'application en termes de charge et de modularité ?
+* **Intérêt pour le projet** : Savoir si nous devons concevoir des modules optionnels configurables par ville.
+
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">L'architecture doit être hautement scalable en termes de volume de données et de nombre d'utilisateurs simultanés.</span>
+
+---
+
+### Question 2.4 (Q.B4 — Objectifs attendus pour le cap des 18 mois)
+* **La question** : L'énoncé fixe comme objectif de devenir leader du marché à 18 mois. Sur quels indicateurs ce succès sera-t-il évalué ?
+* **Intérêt pour le projet** : Aligner nos choix techniques et notre calendrier sur les critères d'évaluation.
+
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">L'indicateur clé pour devenir leader à 18 mois est la part de marché. Il s'agit simplement de piloter et suivre le Chiffre d'Affaires (CA) et de générer un niveau de croissance suffisant pour conquérir et asseoir cette position de leader sur le marché des villes cibles.</span>
 
 ---
 
 ## 3. Paiements, Commissions et Gestion des Litiges
 
-### Q.C1 — Circuit d'encaissement des commandes en ligne
-* **La question** : Lors d'un achat réglé en ligne sur l'application :
-  - L'argent est-il encaissé sur un compte central ShopLoc avant d'être reversé régulièrement aux commerçants ?
-  - Ou le paiement est-il automatiquement ventilé et transféré directement sur le compte bancaire de chaque commerçant au moment de l'achat (via une solution comme Stripe Connect) ?
-* **L'intérêt** : Encaisser l'argent au nom de tiers impose des contraintes réglementaires fortes (statut d'intermédiaire financier). Savoir quel modèle retenir oriente le choix de notre passerelle de paiement.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Le client peut régler une commande groupée multi-commerçants en un seul paiement en ligne. La composante transactionnelle bancaire réelle est simulée dans le cadre du projet via des interfaces de mock conformes aux standards bancaires.
+### Question 3.1 (Q.C1 — Circuit d'encaissement des commandes en ligne)
+* **La question** : Lors d'un achat réglé en ligne sur l'application, comment s'effectue le paiement d'un panier multi-commerçants ?
+* **Intérêt pour le projet** : Savoir si nous devons intégrer une passerelle de paiement réelle avec split-payment ou simuler le flux.
 
-### Q.C2 — Modèle de commissionnement sur les ventes
-* **La question** : Comment ShopLoc se rémunère-t-elle sur les commandes Click & Collect :
-  - Par un pourcentage sur chaque commande (ex : 3 % du montant) ?
-  - Par des frais fixes par panier (ex : 0,50 € par commande) ?
-  - Ou sans commission sur les ventes, si les commerçants paient déjà un abonnement mensuel ?
-  - Qui prend en charge les frais bancaires de transaction par carte ?
-* **L'intérêt** : Nécessaire pour coder le calcul automatique des montants reversés aux commerçants et construire notre plan financier prévisionnel (Livrable R3).
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : La partie financière étant simulée, le modèle économique privilégie un forfait annuel/mensuel facturé à l'association des commerçants (subventionnée par la ville), sans ponctionner excessivement les marges des artisans locaux.
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">Le client peut régler une commande multi-commerçants en un seul paiement en ligne. Le client doit ensuite passer chez tous les commerçants de son panier pour collecter ses achats. La partie bancaire et financière est entièrement simulée dans le cadre du projet académique.</span>
 
-### Q.C3 — Gestion des retours, produits manquants et litiges
-* **La question** : Que se passe-t-il si un client constate un problème lors du retrait (produit abîmé, manquant ou non conforme) :
-  - Le commerçant peut-il effectuer un remboursement partiel ou total directement depuis son application ?
-  - Le commerçant peut-il proposer un produit de remplacement en accord avec le client ?
-  - L'application doit-elle intégrer un module de réclamation pour contacter le support ShopLoc ?
-* **L'intérêt** : Savoir si nous devons développer un système de suivi des litiges en ligne ou si ces situations se règlent directement en boutique.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Gestion directe et concertée au comptoir entre le commerçant et le client. Règle stricte en cas de no-show : si le client ne vient pas retirer sa commande dans le créneau imparti, il perd sa commande et le montant reste acquis au commerçant.
+---
+
+### Question 3.2 (Q.C2 — Modèle de commissionnement sur les ventes)
+* **La question** : ShopLoc prélève-t-elle une commission sur les transactions Click & Collect ou se finance-t-elle exclusivement par forfait ?
+* **Intérêt pour le projet** : Modélisation des flux financiers et plan prévisionnel du Livrable R3.
+
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">La composante financière réelle étant simulée, le modèle de tarification est libre. L'équipe privilégie une redevance annuelle/mensuelle forfaitaire auprès de l'association sans commission sur les ventes, afin de maximiser l'adhésion des commerçants locaux.</span>
+
+---
+
+### Question 3.3 (Q.C3 — Règle de non-retrait d'une commande (No-Show))
+* **La question** : Que se passe-t-il si un client ne vient jamais retirer sa commande Click & Collect en boutique ?
+* **Intérêt pour le projet** : Définir la machine à états de la commande et la politique d'annulation pour les denrées périssables.
+
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">Si un client ne passe pas retirer sa commande dans le délai imparti (no-show), il perd définitivement sa commande. Le montant payé reste intégralement acquis au commerçant.</span>
 
 ---
 
 ## 4. Produits, Stocks, Vente au Poids et Horaires (Suzanne)
 
-### Q.D1 — Gestion des articles vendus au poids réel (Boucherie, Fromagerie, Primeur)
-* **La question** : Dans les commerces alimentaires de centre-ville, beaucoup d'articles sont vendus au poids (ex : un client commande 300g, mais la découpe finale fait 320g ou 290g). Comment gérer le paiement :
-  - Peut-on utiliser une pré-autorisation bancaire ajustée au montant exact une fois la commande pesée par le commerçant ?
-  - Ou impose-t-on des portions à prix fixe pour simplifier le système ?
-* **L'intérêt** : Permettre aux commerces de bouche d'utiliser facilement la plateforme sans bloquer les commandes pour quelques grammes d'écart.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : L'application supporte le paramétrage de l'unité de vente par le commerçant (à la pièce, au kg, aux 100g, à la part). Pour la V1, modélisation avec prix unitaire fixé à la commande pour simplifier la saisie et les transactions.
+### Question 4.1 (Q.D1 — Choix de l'unité des produits)
+* **La question** : Dans les commerces alimentaires, comment modéliser les articles vendus à la pièce, au poids ou à la part ?
+* **Intérêt pour le projet** : Modélisation de la table `Article` et flexibilité du catalogue pour les artisans de bouche.
 
-### Q.D2 — Délais de préparation et créneaux de retrait
-* **La question** : Comment s'organise la préparation des commandes côté commerçant :
-  - Le commerçant peut-il définir son délai de préparation par article (ex : 1 heure pour des fleurs, 24 heures pour un gâteau sur commande) ?
-  - Le client choisit-il un créneau précis de passage (ex : entre 17h30 et 18h) ?
-  - Le commerçant peut-il suspendre temporairement la prise de commandes en cas d'affluence en magasin ?
-* **L'intérêt** : Éviter qu'un client arrive avant que sa commande ne soit prête et permettre au commerçant de gérer son rythme de travail.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Le commerçant peut définir un délai de disponibilité et de préparation par produit ou catégorie. Le système intègre obligatoirement la gestion des emplois du temps et horaires de chaque boutique pour proposer des créneaux de retrait cohérents lors d'une tournée multi-commerçants.
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">Le commerçant a le choix de l'unité du produit (à la pièce, au kg, aux 100g, à la part). Pour la V1, le prix unitaire est fixé à la commande pour simplifier la saisie et les transactions.</span>
 
-### Q.D3 — Mise à jour des stocks et liaison avec les caisses existantes
-* **La question** : Suzanne vend ses produits à la fois aux clients en boutique et aux usagers de l'application. Comment gère-t-elle ses stocks :
-  - Doit-elle mettre à jour ses stocks manuellement dans l'application ShopLoc ?
-  - Ou devons-nous prévoir un import de catalogue par fichier (Excel/CSV), voire une connexion possible avec des logiciels de caisse courants ?
-* **L'intérêt** : Éviter aux commerçants une double saisie fastidieuse qui risquerait de provoquer des erreurs de stock et des abandons d'utilisation.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Le commerçant pilote son stock dans l'application via une saisie manuelle de ses produits et quantités Click & Collect. Fréquence journalière ou adaptée au commerce. Une interconnexion avec les caisses physiques pourra être envisagée en phase ultérieure mais n'est pas requise pour la première version (V1).
+---
 
-### Q.D4 — Gestion des horaires d'ouverture et des congés
-* **La question** : Concernant les horaires des commerces :
+### Question 4.2 (Q.D2 — Délais de disponibilité et cohérence des plannings)
+* **La question** : Comment s'organise la préparation des commandes côté commerçant et la cohérence des tournées de collecte ?
+* **Intérêt pour le projet** : Gestion des contraintes d'ordonnancement pour les retraits.
+
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">Le commerçant peut définir un délai de disponibilité par produit. Le système doit obligatoirement intégrer et rendre cohérents les articles avec une gestion des emplois du temps et horaires de chaque commerçant.</span>
+
+---
+
+### Question 4.3 (Q.D3 — Gestion des stocks en Click & Collect)
+* **La question** : Comment Suzanne gère-t-elle ses stocks : saisie manuelle ou synchronisation avec des caisses informatisées ?
+* **Intérêt pour le projet** : Définir si un module d'import de caisse est nécessaire en V1.
+
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">Le commerçant entre manuellement ses produits et gère son stock dans l'application Click & Collect. Fréquence journalière ou dépendante du commerce. Une cohérence de stock peut être mise en place, mais l'interconnexion automatique avec des caisses externes n'est pas requise pour la première version.</span>
+
+---
+
+### Question 4.4 (Q.D4 — Gestion des horaires d'ouverture et fermetures exceptionnelles)
+* **La question** : Concernant les horaires :
   - L'application bloque-t-elle automatiquement les commandes si le magasin est fermé au moment demandé pour le retrait ?
   - Le commerçant dispose-t-il d'un mode « fermeture exceptionnelle / congés » qui masque temporairement ses produits sans les supprimer ?
-* **L'intérêt** : Garantir que les clients ne commandent pas sur des plages de fermeture et afficher des horaires fiables.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Prise en compte obligatoire des horaires de chaque commerce pour le calcul de l'itinéraire optimal de collecte (plus court chemin ou plus court en temps). En cas de non-retrait d'une commande passée (no-show), celle-ci est définitivement perdue pour le client afin de protéger les stocks périssables.
+* **Intérêt pour le projet** : Garantir des créneaux fiables et éviter les déconvenues pour l'usager.
+
+**<span style="color: #166534;">Réponse validée MOE (Séance 1) :</span>**  
+<span style="color: #166534;">Prise en compte obligatoire des horaires d'ouverture de chaque commerce pour le calcul de l'itinéraire optimal de collecte (plus court chemin ou plus court en temps).</span>
+
+**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE (Fermetures exceptionnelles / congés)</span>**
 
 ---
 
 ## 5. Programme de Fidélité, Récompenses et Stationnement
 
-### Q.E1 — Valeur financière d'un point de fidélité
-* **La question** : Quelle équivalence financière souhaite-t-on donner aux points :
-  - Existe-t-il un barème commun à toute la ville (ex : 100 points = 5 € de réduction ou 1 heure de parking) ?
-  - Ou chaque commerçant fixe-t-il librement la valeur de ses points ?
-* **L'intérêt** : Établir la grille de conversion nécessaire au catalogue de cadeaux et calibrer l'échange contre du temps de stationnement.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Découplage strict entre points d'achat et statut VFP. Pour le système de points, c'est chaque commerçant qui fixe librement le nombre de points attribués par produit ou par commande. Les deux systèmes (points vs régularité) sont totalement indépendants.
+### Question 5.1 (Q.E1 — Valeur financière et barème des points)
+* **La question** : Existe-t-il un barème commun à toute la ville pour les points de fidélité ou chaque commerçant fixe-t-il son barème ?
+* **Intérêt pour le projet** : Modélisation des règles de conversion euros/points.
 
-### Q.E2 — Financement des cadeaux échangés entre commerces différents
-* **La question** : Si un client cumule des points chez un boucher et les utilise pour obtenir un cadeau chez Suzanne (boutique de vêtements) :
-  - Suzanne offre-t-elle ce cadeau sans contrepartie ?
-  - Ou existe-t-il une compensation financière (via une caisse commune gérée par l'association ou ShopLoc) pour rembourser Suzanne de la valeur de l'article offert ?
-* **L'intérêt** : Si les commerçants ne sont pas dédommagés lorsqu'un client dépense des points acquis ailleurs, ils ne proposeront pas d'articles attractifs. Il est donc crucial de clarifier s'il y a un mécanisme de remboursement inter-commerces.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Les commerçants alimentent eux-mêmes leur catalogue de lots et avantages. Pour débloquer et retirer un cadeau chez un commerçant, le client doit obligatoirement avoir effectué au moins un achat antérieur dans cette boutique et présenter sa carte lors d'un achat en cours (interdiction de venir retirer un cadeau sans consommation).
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">Découplage strict en 2 systèmes totalement indépendants : d'un côté le système de points d'achat, de l'autre la régularité VFP. Pour les points, on gagne des points quand on achète : c'est chaque commerçant qui fixe le nombre de points par produit et par achat.</span>
 
-### Q.E3 — Responsabilité du catalogue de récompenses
-* **La question** : Qui a le droit d'ajouter des cadeaux dans l'application :
-  - Chaque commerçant propose-t-il ses propres récompenses depuis son espace ?
-  - Ou l'association des commerçants gère-t-elle un catalogue commun pour tout le centre-ville (ex : bons d'achat valables partout, entrées de cinéma) ?
-* **L'intérêt** : Définir qui a les droits de gestion sur les récompenses dans la base de données.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Chaque commerçant reste maître de son offre de récompenses dans son propre catalogue (ex : Suzanne au Fournil ajustant son lot d'une part de tarte au maroilles vers une mini-viennoiserie).
+---
 
-### Q.E4 — Durée de validité des points accumulés
-* **La question** : Les points sont-ils valables indéfiniment ou expirent-ils après une période sans achat (ex : 12 mois sans commande) ?
-* **L'intérêt** : Éviter l'accumulation de points dormants qui représenteraient un engagement financier difficile à gérer pour les commerçants sur le long terme.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Les points de fidélité ont une durée de validité ferme de 1 an (12 mois). Passé ce délai sans utilisation, les points expirent automatiquement.
+### Question 5.2 (Q.E2 — Périmètre des points (Cantonnement vs Mutualisation))
+* **La question** : Un client peut-il utiliser des points gagnés chez un boucher pour retirer un lot chez Suzanne (commerce différent) ?
+* **Intérêt pour le projet** : Déterminer si une chambre de compensation financière inter-commerces est nécessaire.
 
-### Q.E5 — Prise en charge du coût du stationnement offert
-* **La question** : Qui prend en charge le coût des heures de stationnement offertes :
-  - La Mairie, qui accorde cette gratuité pour encourager les habitants à fréquenter les commerces de centre-ville ?
-  - Ou l'association des commerçants, qui rembourse la mairie pour chaque heure de stationnement consommée ?
-* **L'intérêt** : Prévoir le suivi financier et les bilans réguliers entre ShopLoc, la mairie et les commerçants.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : La Mairie prend directement en charge le coût des avantages de voirie et de mobilité (20 minutes de parking et tickets de bus journaliers) dans le cadre de sa politique d'attractivité et de soutien au commerce local.
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">Les points sont strictement propres à chaque commerçant : on ne mélange pas les points entre boutiques. Les points gagnés chez un commerçant ne sont utilisables que chez ce même commerçant. Pour obtenir un cadeau, l'usager doit en outre avoir un historique d'achat et présenter sa carte lors du paiement d'un achat en cours.</span>
+
+---
+
+### Question 5.3 (Q.E3 — Responsabilité du catalogue de récompenses)
+* **La question** : Qui a le droit d'ajouter des cadeaux dans l'application : les commerçants individuellement ou l'association ?
+* **Intérêt pour le projet** : Définition des écrans de gestion et droits CRUD sur les lots.
+
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">Chaque commerçant définit ses propres lots et cadeaux dans son propre catalogue (ex : Suzanne ajustant son lot de tarte au maroilles vers une mini-viennoiserie).</span>
+
+---
+
+### Question 5.4 (Q.E4 — Durée de validité des points accumulés)
+* **La question** : Les points sont-ils valables indéfiniment ou expirent-ils après une période sans achat ?
+* **Intérêt pour le projet** : Mise en place d'un batch d'expiration automatique des points en base de données.
+
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">Les points expirent au bout d'un an (12 mois).</span>
+
+---
+
+### Question 5.5 (Q.E5 — Prise en charge du coût des avantages mobilité)
+* **La question** : Qui prend en charge le coût des tickets de bus et des heures de stationnement offertes ?
+* **Intérêt pour le projet** : Établir la convention financière de reversement entre la ville et les opérateurs.
+
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">La mairie promet et finance directement les tickets de bus et les 20 minutes de parking dans le cadre de sa politique d'attractivité du centre-ville.</span>
 
 ---
 
 ## 6. Administration, Outils Marketing et Protection des Données (Marius)
 
-### Q.F1 — Critères de calcul du statut VFP (Very Frequent Purchaser)
-* **La question** : Quels critères précis déclenchent l'obtention du statut VFP :
-  - Un montant minimum dépensé par mois (ex : plus de 150 €) ?
-  - Un nombre minimum de commandes (ex : au moins 4 achats par mois) ?
-  - Une condition de mixité (ex : avoir acheté dans au moins 2 ou 3 commerces différents pour favoriser la diversité des achats en centre-ville) ?
-* **L'intérêt** : Coder l'algorithme qui calculera automatiquement ce statut de fidélité chaque nuit.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Le statut VFP (Very Faithful Person) repose exclusivement sur la régularité des visites (fréquence de passage dans les commerces partenaires). Règle de la fenêtre glissante : un client n'est pas VFP au départ ; il doit cumuler au moins 10 passages dans les commerces partenaires au cours des 15 derniers jours pour obtenir le statut.
+### Question 6.1 (Q.F1 — Algorithme de calcul du statut VFP (Régularité glissante))
+* **La question** : Quels critères précis déclenchent l'obtention du statut VFP et son maintien ?
+* **Intérêt pour le projet** : Coder l'algorithme exact du service VFP exécuté chaque nuit.
 
-### Q.F2 — Perte du statut VFP et relances marketing
-* **La question** : L'énoncé indique que Marius exploite les données pour relancer les clients, notamment lors de la perte du statut VFP :
-  - Le statut est-il recalculé chaque mois ?
-  - Une alerte préventive est-elle envoyée au client avant la perte de son statut (ex : un message l'informant qu'il lui reste 7 jours et 1 achat pour conserver ses avantages) ?
-  - Marius déclenche-t-il ces relances manuellement, ou le système les envoie-t-il automatiquement ?
-* **L'intérêt** : Déterminer le degré d'automatisation des relances marketing à programmer dans l'application.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Dès les 10 passages cumulés sur 15 jours, l'usager déclenche 1 ticket de bus ou 20 minutes de parking gratuit. Ensuite, tant qu'il maintient sa régularité (au moins 10 passages sur les 15 derniers jours glissants), chaque nouveau passage lui octroie 1 ticket de bus ou 20 minutes de parking supplémentaires. Dès que la fréquence passe sous le seuil des 10 passages sur 15 jours (ex : Arthur pendant les vacances scolaires), le statut VFP est suspendu. Marius peut relancer les usagers perdant leur statut.
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">1. Le statut VFP repose exclusivement sur le nombre de passages dans les commerces selon une règle de fenêtre glissante : on n'est pas VFP au début, il faut au moins 10 passages dans les 15 derniers jours pour débloquer le statut.<br>
+2. Un client peut passer autant de fois qu'il le souhaite dans une même boutique : il n'y a aucune limite de passage par jour ni obligation de mixité commerciale. L'usager peut effectuer l'ensemble de ses passages dans un seul commerce s'il le souhaite.<br>
+3. Dès les 10 passages cumulés, l'usager déclenche 1 ticket de bus ou 20 minutes de parking.<br>
+4. Il n'y a aucun plafond de cumul des avantages : chaque nouveau passage supplémentaire octroie à nouveau 1 ticket ou 20 minutes de parking tant que la régularité est maintenue.</span>
 
-### Q.F3 — Canaux de diffusion des offres promotionnelles
-* **La question** : Quand Marius diffuse une offre commerciale ou une annonce municipale :
-  - Par quel canal l'offre est-elle transmise : notifications sur smartphone, e-mails, SMS, ou bandeau dans l'application ?
-  - Si des SMS sont utilisés, qui prend en charge leur coût d'envoi ?
-* **L'intérêt** : Choisir les services d'envoi à intégrer et chiffrer leurs coûts dans notre proposition financière R1.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Diffusion par notifications web/mobile et emails à la demande du service Citoyen Numérique de la ville ou de l'association des commerçants.
+---
 
-### Q.F4 — Filtres de ciblage disponibles pour Marius
-* **La question** : Quels critères de recherche Marius peut-il combiner pour cibler ses campagnes :
-  - Les clients inactifs depuis une certaine durée (ex : aucun achat depuis 30 jours) ?
-  - Les clients fidèles détenant le statut VFP ?
-  - Les usagers résidant dans un quartier ou code postal particulier ?
-  - Les clients habitués à une catégorie de commerce (ex : boulangerie, prêt-à-porter) ?
-* **L'intérêt** : Concevoir le formulaire de filtrage et optimiser les requêtes de recherche dans la base de données.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Marius dispose de filtres basés sur les habitudes de consommation, l'activité Click & Collect, les cadeaux retirés, la régularité et la perte du statut VFP, afin de cibler les campagnes de réactivation.
+### Question 6.2 (Q.F2 — Perte du statut VFP et alertes marketing)
+* **La question** : L'énoncé indique que Marius exploite les données pour relancer les clients lors de la perte du statut VFP. Le système doit-il envoyer des alertes préventives automatisées (ex: alerte à J-3) ?
+* **Intérêt pour le projet** : Déterminer le degré d'automatisation des relances marketing à coder.
 
-### Q.F5 — Gestion des sondages de satisfaction
-* **La question** : Le sujet mentionne que Marius peut lancer des sondages auprès des usagers :
-  - Marius peut-il créer lui-même de nouvelles questions depuis son interface (notes, choix multiples, texte libre) ?
-  - L'attribution de points de fidélité bonus (ex : 10 points) est-elle prévue pour encourager les citoyens à y répondre ?
-* **L'intérêt** : Développer un module d'enquête adapté et le relier au solde de points des participants.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Marius dispose depuis son panel d'administration de la capacité d'élaborer et de diffuser des sondages de satisfaction auprès des citoyens usagers pour évaluer la perception des actions municipales et du commerce de proximité.
+**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
 
-### Q.F6 — Respect de la vie privée et conformité RGPD
-* **La question** : Le sujet insiste sur le respect de la vie privée. Quelles règles de confidentialité devons-nous appliquer :
-  - Marius a-t-il accès aux détails nominatifs des paniers d'achat des clients, ou seulement à des statistiques globales et anonymisées ?
-  - Les commerçants ont-ils l'interdiction de voir les achats réalisés par leurs clients dans les autres boutiques ?
-  - Comment le client choisit-il les communications qu'il accepte de recevoir (opt-in pour les offres de la mairie, des commerces, etc.) ?
-* **L'intérêt** : Assurer la conformité légale avec le RGPD, protéger la vie privée des citoyens et préserver le secret commercial entre boutiques partenaires.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Cloisonnement strict des données : aucun commerçant n'a accès aux achats effectués chez ses confrères. Les données exploitées par la mairie et l'association sont agrégées et pseudonymisées pour piloter la politique locale et détecter les comportements frauduleux sans porter atteinte à la vie privée des administrés.
+---
+
+### Question 6.3 (Q.F3 — Canaux de diffusion des offres promotionnelles)
+* **La question** : Par quel canal Marius diffuse-t-il les offres : notifications push web/mobile, courriels, bannières in-app, SMS ?
+* **Intérêt pour le projet** : Choisir les connecteurs d'envoi et chiffrer les coûts d'infrastructure dans le livrable R1.
+
+**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+
+---
+
+### Question 6.4 (Q.F4 — Filtres de segmentation disponibles pour Marius)
+* **La question** : Quels critères de recherche Marius peut-il combiner pour cibler ses campagnes (inactivité, statut VFP, quartier) ?
+* **Intérêt pour le projet** : Spécification de l'API de filtrage dynamique et optimisation des index PostgreSQL.
+
+**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+
+---
+
+### Question 6.5 (Q.F5 — Portée des sondages de satisfaction usagers)
+* **La question** : Le sujet mentionne (page 3, persona Marius) que l'administrateur peut *« lancer des sondages de satisfaction aux usagers »*. Quelle est la portée attendue pour cette fonctionnalité :
+  - L'application doit-elle intégrer un moteur complet d'enquêtes (création de questions à choix multiples par Marius, recueil des réponses et statistiques) ?
+  - Ou s'agit-il simplement d'un canal de diffusion permettant de pousser une notification avec un lien externe (type formulaire web) ?
+* **Intérêt pour le projet** : Déterminer l'ampleur du module d'enquête à développer et modéliser dans la base relationnelle.
+
+**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+
+---
+
+### Question 6.6 (Q.F6 — Respect de la vie privée et conformité RGPD)
+* **La question** : Quel est le cadre de conformité et de remontée de données pour la mairie et l'association ?
+* **Intérêt pour le projet** : Conception des vues SQL sécurisées et respect des exigences RGPD.
+
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">L'association et la mairie doivent récupérer de la data pour évaluer le système et détecter les fraudes. Chaque partie prenante doit disposer d'un panel de gestion ou de visualisation des données. Les flux de données détaillés doivent respecter le secret commercial entre boutiques (aucun accès croisé aux paniers des concurrents).</span>
 
 ---
 
 ## 7. Connexion, Sécurité et Accessibilité
 
-### Q.G1 — Connexion simplifiée pour les usagers seniors (Pierre, 74 ans)
-* **La question** : Pour faciliter l'accès des usagers seniors qui retiennent difficilement les mots de passe complexes :
-  - Peut-on proposer des modes de connexion simplifiés comme un code PIN à 4 chiffres, un lien de connexion envoyé par e-mail (Magic Link) ou un code par SMS ?
-  - Une connexion via FranceConnect est-elle envisageable pour réutiliser le compte officiel déjà connu des citoyens ?
-* **L'intérêt** : Rendre l'application accessible à tous les âges et éviter l'abandon d'utilisation à cause d'une étape de connexion trop contraignante.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Double modalité d'utilisation : mise à disposition d'une carte physique plastifiée avec QR code unique par abonné (scannable par les commerçants) pour les seniors, et accès direct à la carte dématérialisée via l'application web. Possibilité de charger en ligne une petite somme d'argent par carte bancaire sur la carte (type Izli) pour les menues dépenses du quotidien chez les partenaires.
+### Question 7.1 (Q.G1 — Connexion simplifiée pour les usagers seniors (Pierre, 74 ans))
+* **La question** : Pour Pierre, peut-on proposer une connexion simplifiée par Magic Link ou code PIN à 4 chiffres sans mot de passe complexe ?
+* **Intérêt pour le projet** : Ergonomie et accessibilité senior (RGAA).
 
-### Q.G2 — Sécurité des comptes commerçants et administrateur (2FA)
-* **La question** : Les comptes de Suzanne (qui gère des coordonnées bancaires) et de Marius (qui a accès à la base usagers) manipulent des données sensibles. Doit-on imposer une double sécurité (code de vérification envoyé sur téléphone / 2FA) lors de leur connexion ?
-* **L'intérêt** : Protéger les fonds des commerçants et les données personnelles contre les risques d'usurpation de compte.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Authentification robuste et segmentation des habilitations. Chaque typologie d'acteur (client, commerçant, association, collectivité) dispose d'un panel d'administration et de visualisation dédié et étanche.
+**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
 
-### Q.G3 — Gestion de plusieurs utilisateurs pour un même commerce
-* **La question** : En boutique, les personnes au comptoir sont souvent des employés ou des apprentis qui préparent les commandes de Click & Collect :
-  - Un compte commerçant peut-il comporter plusieurs profils d'accès ?
-    - Un profil « Vendeur / Préparateur » qui voit uniquement les commandes à préparer et les stocks, sans accès à la comptabilité ni aux coordonnées bancaires.
-    - Un profil « Gérant » avec tous les droits de configuration et d'accès financier.
-* **L'intérêt** : Répondre à l'organisation réelle des commerces de centre-ville et sécuriser les informations financières.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Pour le ticket de bus : association et passage de la carte de transport de la ville (ex : Ilévia). Pour le stationnement : saisie de la plaque d'immatriculation sur le smartphone et déclenchement du compteur des 20 minutes gratuites ; contrôle en voirie par la police municipale via la saisie du numéro de plaque sur smartphone.
+---
+
+### Question 7.2 (Q.G2 — Niveau de sécurité d'authentification par typologie d'utilisateur)
+* **La question** : Quel niveau d'exigence de sécurité doit-on mettre en place pour l'authentification en fonction de chaque type d'utilisateur :
+  - Pour les clients usagers (ex: Pierre, Julie, Arthur) : mot de passe standard ou authentification simplifiée sans friction ?
+  - Pour les commerçants (ex: Suzanne) et administrateurs (ex: Marius) : niveau de sécurité renforcé en fonction de la criticité des données manipulées ?
+* **Intérêt pour le projet** : Définir la politique d'authentification, les règles de complexité et la gestion des sessions dans l'architecture de sécurité backend J2E.
+
+**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+
+---
+
+### Question 7.3 (Q.G3 — Matérialisation de l'activation des avantages mobilité)
+* **La question** : Comment le client fait-il valoir son droit au ticket de bus et au stationnement gratuit ?
+* **Intérêt pour le projet** : Définition des flux de déblocage des privilèges dans l'interface usager.
+
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">Pour avoir le ticket de transport en commun, il faut passer sa carte de la ville (ex: carte Pass Pass / Ilévia). Pour le stationnement, l'usager entre son numéro de plaque d'immatriculation dans l'application et déclenche son compteur de 20 minutes offertes.</span>
 
 ---
 
 ## 8. Priorités pour la V1 (Décembre) et la V2 (Mars)
 
-### Q.H1 — Choix du composant prioritaire pour la V1 de décembre
-* **La question** : La slide 26 indique que pour le premier semestre (fin décembre), l'équipe doit réaliser un composant logiciel complet de bout en bout. Quel volet la MOA souhaite-t-elle voir réalisé en priorité :
-  - Option A : Le module commerçant (création de boutique, catalogue de produits et gestion des stocks) ?
-  - Option B : Le module client (consultation des commerces, panier d'achat et commande Click & Collect) ?
-  - Option C : Le module fidélité et stationnement (calcul des points, attribution du statut VFP et échange contre du parking) ?
-* **L'intérêt** : Concentrer nos efforts de développement dès le mois d'octobre sur le composant le plus stratégique pour la première soutenance.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Réalisation d'un composant logiciel complet de bout en bout (backend J2E, persistance relationnelle SQL, frontend accessible) déployé sous Docker avec tests automatisés. Le cœur de métier à privilégier couvre le catalogue Click & Collect avec gestion de stock simplifiée et le moteur d'attribution VFP / stationnement.
+### Question 8.1 (Q.H1 — Choix du composant prioritaire pour la V1 de décembre)
+* **La question** : Quel sous-système logiciel doit être prioritairement livré de bout en bout pour la soutenance de fin décembre ?
+* **Intérêt pour le projet** : Focalisation des sprints de développement à partir d'octobre.
 
-### Q.H2 — Systèmes externes à simuler (Mocks) pour la V1
-* **La question** : La slide 15 indique que les services partenaires seront simulés. Pour la démonstration de décembre, quels systèmes externes devons-nous simuler en priorité :
-  - Une simulation d'API de stationnement municipal ?
-  - Une simulation de passerelle de paiement par carte bancaire ?
-  - Une simulation de logiciel de caisse de magasin ?
-* **L'intérêt** : Définir dès maintenant le périmètre des simulateurs à programmer pour les tests et la démonstration orale.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Simulation complète (mocks d'APIs RESTful documentées) des services partenaires : passerelle de paiement bancaire en ligne, API de voirie municipale (contrôle stationnement par plaque) et interfaçage avec le réseau de transport public.
+**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
 
-### Q.H3 — Données de démonstration pour les présentations
-* **La question** : Pour les soutenances et les tests de validation, avec quel volume de fausses données souhaitez-vous que nous préparions nos démonstrations :
-  - Une ville témoin avec 5 à 10 commerces représentatifs (boulangerie, boucherie, prêt-à-porter, librairie) et une cinquantaine d'articles ?
-  - Des comptes pré-remplis pour les différents personas (Pierre, Julie, Arthur, Suzanne, Marius) avec des historiques d'achats réalistes ?
-* **L'intérêt** : Disposer d'un jeu de données de test complet illustrant immédiatement tous les parcours lors des revues de projet.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Constitution d'un jeu de données représentatif intégrant une sélection de commerces de centre-ville et des comptes préconfigurés incarnant les 5 personas du projet (Pierre, Julie, Arthur, Marius, Suzanne).
+---
+
+### Question 8.2 (Q.H2 — Systèmes externes à simuler (Mocks))
+* **La question** : Quels systèmes externes doivent faire l'objet d'une simulation ?
+* **Intérêt pour le projet** : Délimitation exacte des mocks RESTful à développer.
+
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">Toutes les interactions avec des systèmes externes doivent être obligatoirement simulées (mocks logiciels d'API) : passerelle bancaire de paiement, réseau de transport urbain et système de stationnement. Aucune dépendance externe réelle non maîtrisée.</span>
+
+---
+
+### Question 8.3 (Q.H3 — Périmètre des données et scénarios de démonstration pour les revues clients)
+* **La question** : Quel jeu de données représentatif et quels scénarios types la MOA souhaite-t-elle voir préparés afin de rendre les revues et démonstrations clients pleinement pertinentes ?
+* **Intérêt pour le projet** : Calibrer les scripts de seed SQL et les comptes de test pour illustrer immédiatement tous les parcours lors des revues de projet.
+
+**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
 
 ---
 
 ## 9. Démarche d'Éco-Conception (Green IT)
 
-### Q.I1 — Critères d'évaluation de l'éco-conception logicielle
-* **La question** : Les slides 16 à 19 soulignent l'importance de réduire l'impact environnemental des serveurs et du numérique. Sur quels critères concrets notre projet sera-t-il évalué sur ce point :
-  - La légèreté des pages et la rapidité de chargement (mesurées avec des outils comme EcoIndex ou GreenIT Analysis) ?
-  - L'optimisation des requêtes en base de données pour limiter la charge processeur des serveurs ?
-  - Un dossier explicatif démontrant les choix d'architecture sobre retenus par l'équipe ?
-* **L'intérêt** : Savoir précisément quelles mesures et quels indicateurs présenter pour justifier notre démarche d'éco-conception.
-* **Arbitrage MOA & Décision Validée (Séance du 07/09/2026)** : Démarche d'éco-conception logicielle rigoureuse : sobriété du code, frugalité des ressources, optimisation des requêtes SQL, déploiement conteneurisé économe et transparence totale sur l'utilisation raisonnée et tracée des outils d'intelligence artificielle (conformément au règlement des études et aux exigences Green IT).
+### Question 9.1 (Q.I1 — Critères d'évaluation de l'éco-conception logicielle)
+* **La question** : Quels indicateurs précis et outils concrets seront évalués pour la démarche d'éco-conception logicielle ?
+* **Intérêt pour le projet** : Outillage dans la chaîne CI/CD et métriques à consigner dans les dossiers techniques.
+
+**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+
+---
+
+# SECONDE VAGUE : QUESTIONS D'APPROFONDISSEMENT MÉTIER (POUR LA 2NDE ENTREVUE MOE)
+
+---
+
+## 10. Questions d'Instruction Approfondie pour le Développement
+
+### Question 10.1 (Q.J1 — Seuil d'achat pour la validation d'un passage VFP)
+* **Contexte** : Il est acté qu'un acte d'achat est obligatoire pour valider un passage en boutique (un simple scan de présence au comptoir sans achat n'est pas toléré). Un usager peut effectuer autant de passages qu'il le souhaite dans une même boutique sans limitation ni mixité imposée.
+* **La question** : Existe-t-il un montant minimum d'achat exigé pour valider un passage (ex: seuil minimal de 1 € ou 2 €) ou n'importe quel achat, quel que soit son montant (ex: une baguette à 1,10 € ou un paquet de bonbons à 0,50 €), valide-t-il le passage ?
+* **Intérêt pour le projet** : Paramétrage du filtre de validation dans le service de comptabilisation des passages VFP.
+
+**<span style="color: #166534;">Réponse validée MOE (Principe de l'achat) :</span>**  
+<span style="color: #166534;">Un acte d'achat est obligatoirement requis pour valider un passage en boutique (les scans de complaisance sans achat sont exclus).</span>
+
+**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE (Montant seuil éventuel)</span>**
+
+---
+
+### Question 10.2 (Q.J2 — Vérification applicative du retrait des cadeaux en caisse)
+* **Contexte** : Le sujet indique (page 3, persona Julie) : *« Pour obtenir un cadeau, il faut avoir fait au moins un achat antérieur dans la boutique concernée, et présenter sa carte lors du paiement de l'achat en cours (on ne peut pas juste venir prendre un cadeau). »*
+* **La question** : Comment l'application commerçant (vue Suzanne) valide-t-elle cette règle :
+  - L'application vérifie-t-elle automatiquement dans l'historique l'antériorité d'un achat client dans cette boutique ?
+  - L'application bloque-t-elle la délivrance du cadeau si aucun achat concomitant n'est enregistré lors de la session de caisse ?
+* **Intérêt pour le projet** : Spécification des règles de gestion bloquantes dans le contrôleur de distribution des lots.
+
+**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+
+---
+
+### Question 10.3 (Q.J3 — Ordonnancement du panier multi-commerçants et plages de retrait)
+* **Contexte** : Un panier unique peut regrouper des produits provenant de commerces aux horaires et délais de préparation hétérogènes.
+* **La question** : Comment le système synchronise-t-il les créneaux de retrait lors d'une commande multi-commerçants ?
+* **Intérêt pour le projet** : Algorithme d'ordonnancement de tournée et gestion des états des sous-commandes marchandes.
+
+**<span style="color: #166534;">Réponse validée MOE :</span>**  
+<span style="color: #166534;">Le système gère les créneaux boutique par boutique, combinés avec un algorithme d'optimisation du plus court chemin qui minimise le temps d'attente entre chaque créneau afin de regrouper au mieux la tournée de retrait pour l'usager.</span>
+
+---
+
+### Question 10.4 (Q.J4 — Ruptures partielles sur commande multi-commerçants)
+* **Contexte** : Dans un panier groupé réglé en un paiement unique en ligne, un artisan peut subir une rupture de stock imprévue sur l'un de ses articles.
+* **La question** : Quelle est la politique d'annulation : l'annulation de la sous-commande concernée génère-t-elle un remboursement partiel automatique tout en maintenant fermes les commandes chez les autres artisans ?
+* **Intérêt pour le projet** : Gestion des états transactionnels partiels dans la machine à états de la commande.
+
+**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+
+---
+
+### Question 10.5 (Q.J5 — Rôles et profils multiples au sein d'une même boutique)
+* **Contexte** : En boutique, les employés ou apprentis (comme Suzanne) préparent les commandes de Click & Collect et scannent les cartes en caisse, tandis que le propriétaire gère les finances et coordonnées bancaires.
+* **La question** : Doit-on prévoir une segmentation des habilitations au sein d'un compte commerçant :
+  - Profil « Préparateur / Vendeur » (accès restreint aux stocks et commandes) ?
+  - Profil « Gérant / Propriétaire » (accès complet à la configuration financière et aux coordonnées bancaires) ?
+* **Intérêt pour le projet** : Modélisation des rôles RBAC (Role-Based Access Control).
+
+**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+
+---
+
+### Question 10.6 (Q.J6 — Alertes et détection de fraude sur les avantages municipaux)
+* **Contexte** : Les notes précisent que la mairie et l'association doivent récupérer de la data pour évaluer le système et prévenir les fraudes.
+* **La question** : Quels mécanismes d'alerte automatisée doivent être intégrés au panel de pilotage (détection de fréquences de passages anormales, possibilité de suspension temporaire de compte usager suspect) ?
+* **Intérêt pour le projet** : Conception du module de détection d'anomalies de fréquentation.
+
+**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+
+---
+
+## 11. Points complémentaires identifiés dans le sujet (Seconde Vague)
+
+---
+
+### Question 11.1 (Q.K1 — Contrôle du stationnement par un agent municipal)
+* **Contexte** : Le sujet source mentionne explicitement qu'« un policier municipal voyant sa voiture pourra rentrer le numéro de plaque sur son téléphone et savoir si la voiture est en stationnement illégal ou non ».
+* **La question** : Ce cas d'usage de contrôle du stationnement par un agent municipal fait-il partie du périmètre fonctionnel attendu de l'application ShopLoc (ex. profil ou interface dédiée), ou relève-t-il exclusivement du système externe de gestion de voirie interfacé via API simulée ?
+* **Intérêt pour le projet** : Délimitation exacte du périmètre des acteurs, des rôles applicatifs et des cas d'utilisation du Livrable R4.
+
+**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+
+---
+
+### Question 11.2 (Q.K2 — Tarification de la solution selon la taille de la commune)
+* **Contexte** : Le sujet source exige expressément que « le prix de la solution doit tenir compte du segment de clients auquel elle s'adresse » (petite, moyenne ou grande ville).
+* **La question** : La redevance facturée à l'Association des commerçants doit-elle être modulée selon la taille de la collectivité locale (ex. selon des paliers démographiques ou le nombre de commerces adhérents), et existe-t-il des barèmes indicatifs attendus ?
+* **Intérêt pour le projet** : Élaboration de la grille tarifaire et de l'étude financière prévisionnelle du Livrable R3.
+
+**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+
+---
+
+### Question 11.3 (Q.K3 — Gratuité de l'inscription et de la carte pour l'usager final)
+* **Contexte** : Le persona Arthur indique qu'un client « doit pouvoir s'abonner au service et obtenir sa carte de fidélité », sans préciser les conditions tarifaires d'accès pour les administrés.
+* **La question** : L'inscription au service ShopLoc, la création du compte client et la délivrance de la carte de fidélité sont-elles strictement gratuites pour l'usager final ?
+* **Intérêt pour le projet** : Hypothèse structurante pour le modèle économique et les projections financières du Livrable R3.
+
+**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+
+---
+
+### Question 11.4 (Q.K4 — Périmètre technologique : application Web responsive ou mobile native)
+* **Contexte** : Les expressions de besoin font référence au « site » ou à « l'application web », sans mentionner de magasins d'applications mobiles (App Store, Google Play Store).
+* **La question** : Le périmètre de développement pour les livrables applicatifs porte-t-il exclusivement sur une application Web responsive accessible sur navigateur (desktop et mobile), ou une application mobile native (iOS / Android) est-elle attendue ?
+* **Intérêt pour le projet** : Choix de la pile technologique frontend, dimensionnement des charges de développement et architecture logicielle pour R4/R5.
+
+**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
 
