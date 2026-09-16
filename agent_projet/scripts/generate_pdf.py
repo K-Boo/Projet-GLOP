@@ -25,15 +25,15 @@ def parse_markdown_to_latex_html(md_text, b64_univ, b64_fst, version="2.0"):
         doc_ref = "GLOP-2026-R1-QUESTIONNAIRE-v1.0"
         doc_date = "07 Septembre 2026"
         doc_statut = "Version 1.0 — Document initial de cadrage (Première vague instruite)"
-        preamble_text = "Dans le cadre de l'UE GLOP et de la préparation de notre réponse technique et financière (Livrable R1), notre équipe d'étudiants a analysé l'ensemble des besoins présentés dans le sujet ShopLoc. Afin de concevoir une architecture logicielle adaptée et de lever toute ambiguïté sur les règles de gestion, nous formalisons dans ce document l'ensemble des questions de cadrage initiales et les premiers arbitrages validés avec la MOE."
+        preamble_text = "Dans le cadre de l'UE GLOP et de la préparation de notre réponse technique et financière (Livrable R1), notre équipe d'étudiants a analysé l'ensemble des besoins présentés dans le sujet ShopLoc. Afin de concevoir une architecture logicielle adaptée et de lever toute ambiguïté sur les règles de gestion, nous formalisons dans ce document l'ensemble des questions de cadrage initiales et les premiers arbitrages validés avec la MOA."
     else:
         doc_sub_title = "Projet ShopLoc — Clarification des Besoins & Levée des Zones d'Ombre (Livrables R1 & R3)"
         top_left_title = "Projet ShopLoc — Questionnaire de Cadrage Métier (v2.0)"
         doc_titre = "Questionnaire de cadrage fonctionnel approfondi (Première vague instruite & Seconde vague d'approfondissement)"
         doc_ref = "GLOP-2026-R1-QUESTIONNAIRE-CONSOLIDE-v2.0"
         doc_date = "12 Septembre 2026"
-        doc_statut = "Version 2.0 — Consolidée suite aux premiers retours MOE et enrichie de la seconde vague"
-        preamble_text = "Dans le cadre de l'UE GLOP et de la préparation de notre réponse technique et financière (Livrable R1), notre équipe d'étudiants a analysé l'ensemble des besoins présentés dans le sujet ShopLoc. Afin de concevoir une architecture logicielle adaptée et de lever toute ambiguïté sur les règles de gestion, nous structurons ce document en deux temps : la première vague consignant les réponses et arbitrages d'ores et déjà validés lors du premier échange avec la MOE, et la seconde vague formulant les questions d'approfondissement méthodologique pour la prochaine entrevue."
+        doc_statut = "Version 2.0 — Consolidée suite aux premiers retours MOA et enrichie de la seconde vague"
+        preamble_text = "Dans le cadre de l'UE GLOP et de la préparation de notre réponse technique et financière (Livrable R1), notre équipe d'étudiants a analysé l'ensemble des besoins présentés dans le sujet ShopLoc. Afin de concevoir une architecture logicielle adaptée et de lever toute ambiguïté sur les règles de gestion, nous structurons ce document en deux temps : la première vague consignant les réponses et arbitrages d'ores et déjà validés lors du premier échange avec la MOA, et la seconde vague formulant les questions d'approfondissement méthodologique pour la prochaine entrevue."
 
     i = 0
     while i < len(lines):
@@ -81,7 +81,7 @@ def parse_markdown_to_latex_html(md_text, b64_univ, b64_fst, version="2.0"):
             if in_list:
                 html_parts.append('</ul>')
                 in_list = False
-            html_parts.append('<div class="latex-wave-banner" style="margin-top: 24pt; border-top: 1.5pt solid #000000; padding-top: 14pt;">Seconde Vague : Questions d\'Approfondissement Métier (Pour la 2nde Entrevue MOE)</div>')
+            html_parts.append('<div class="latex-wave-banner" style="margin-top: 24pt; border-top: 1.5pt solid #000000; padding-top: 14pt;">Seconde Vague : Questions d\'Approfondissement Métier (Pour la 2nde Entrevue MOA)</div>')
             i += 1
             continue
 
@@ -140,7 +140,7 @@ def parse_markdown_to_latex_html(md_text, b64_univ, b64_fst, version="2.0"):
             i += 1
             continue
 
-        # Validated decision (MOE answer in green)
+        # Validated decision (MOA answer in green)
         if 'color: #166534' in stripped:
             if in_list:
                 html_parts.append('</ul>')
@@ -148,7 +148,7 @@ def parse_markdown_to_latex_html(md_text, b64_univ, b64_fst, version="2.0"):
             clean_text = re.sub(r'</?span[^>]*>', '', stripped)
             clean_text = re.sub(r'</?strong>', '', clean_text)
             clean_text = clean_text.strip('* ')
-            if 'Réponse validée MOE' in clean_text or 'Arbitrage MOE' in clean_text:
+            if 'Réponse validée MOA' in clean_text or 'Arbitrage MOA' in clean_text:
                 title = clean_text.rstrip(': ')
                 body_lines = []
                 j = i + 1
@@ -175,7 +175,7 @@ def parse_markdown_to_latex_html(md_text, b64_univ, b64_fst, version="2.0"):
             clean_text = re.sub(r'</?span[^>]*>', '', stripped)
             clean_text = re.sub(r'</?strong>', '', clean_text)
             clean_text = clean_text.strip('* ')
-            if 'En attente d\'arbitrage MOE' in clean_text or 'Statut :' in clean_text:
+            if 'En attente d\'arbitrage MOA' in clean_text or 'Statut :' in clean_text:
                 title = clean_text.rstrip(': ')
                 body_lines = []
                 j = i + 1
@@ -562,7 +562,7 @@ def parse_markdown_to_latex_html(md_text, b64_univ, b64_fst, version="2.0"):
     <tr><td><strong>Titre du Document</strong></td><td>{doc_titre}</td></tr>
     <tr><td><strong>Référence Documentaire</strong></td><td><code class="latex-code">{doc_ref}</code></td></tr>
     <tr><td><strong>Contexte Académique</strong></td><td>Master 2 MIAGE — UE Génie Logiciel par la Pratique (GLOP) 2026-2027, Université de Lille</td></tr>
-    <tr><td><strong>Destinataires (MOA / MOE)</strong></td><td>Laurence Duchien, Anne Etien, François Secchi, Jérémy Woirhaye</td></tr>
+    <tr><td><strong>Destinataires (MOA / MOD)</strong></td><td>Laurence Duchien, Anne Etien, François Secchi, Jérémy Woirhaye</td></tr>
     <tr><td><strong>Date de Soumission</strong></td><td>{doc_date}</td></tr>
     <tr><td><strong>Statut du Document</strong></td><td>{doc_statut}</td></tr>
     <tr><td><strong>Tag obligatoire communications</strong></td><td><code class="latex-code">[GLOP]</code> (à inclure dans tout objet de courriel)</td></tr>
@@ -696,13 +696,23 @@ def main():
                 except Exception as e:
                     print(f"[Drive Cleanup Warning] Could not remove {obsolete}: {e}")
 
-        # Deploy V1 and V2 to Drive root and subfolder
+        # Nettoyage des fichiers a la racine du Drive pour garder une arborescence propre
+        for fname in ["ShopLoc_Cadrage_Metier_Livrable_R1_v1.pdf", "ShopLoc_Cadrage_Metier_Livrable_R1_v2.pdf", "ShopLoc_Cadrage_Metier_Livrable_R1.pdf"]:
+            root_file = os.path.join(drive_root, fname)
+            if os.path.exists(root_file):
+                try:
+                    os.remove(root_file)
+                    print(f"[Drive Cleanup] Supprime de la racine Drive : {fname}")
+                except Exception as e:
+                    print(f"[Drive Cleanup Warning] Impossible de supprimer {root_file} : {e}")
+
+        # Deploiement exclusif de V1 et V2 dans le dossier dedie 01_Cadrage_Metier_R1
+        os.makedirs(drive_sub, exist_ok=True)
         for pdf_file in [pdf_v1_path, pdf_v2_path]:
             fname = os.path.basename(pdf_file)
-            shutil.copy2(pdf_file, os.path.join(drive_root, fname))
             shutil.copy2(pdf_file, os.path.join(drive_sub, fname))
         
-        print(f"[Drive Sync OK] Synchronized V1 and V2 to {drive_root} and {drive_sub}")
+        print(f"[Drive Sync OK] Synchronise V1 et V2 exclusivement dans {drive_sub}")
 
     # 6. Nettoyage des fichiers HTML intermediaires dans agent_projet/docs
     for f in ["ShopLoc_Cadrage_Metier.html", "ShopLoc_Cadrage_Metier_v2.html", "ShopLoc_Cadrage_Metier_v1_temp.html", "ShopLoc_Cadrage_Metier_v2_temp.html"]:

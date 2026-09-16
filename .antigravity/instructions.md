@@ -124,6 +124,11 @@ python agent_projet/scripts/setup_env.py
      ```bash
      python agent_projet/scripts/token_tracker.py
      ```
+4. **Passerelle Centrale LiteLLM Proxy (AI Gateway)** :
+   - Point d'accès universel OpenAI-compatible : `http://localhost:4000/v1` (configuré dans `C:\tools\LiteLLM`).
+   - Clé virtuelle isolée par projet (`sk-litellm-proj-ShopLoc`) enregistrée dans `.env` et `config.local.json`.
+   - Utilitaire Python prêt à l'emploi : `agent_projet/scripts/litellm_client.py`.
+   - Dashboard web de supervision et de suivi des coûts : `http://localhost:4000/ui`.
 
 ---
 
@@ -157,3 +162,16 @@ python agent_projet/scripts/setup_env.py
 2. **Respect de l'état d'avancement réel** : En phase d'analyse du besoin et de cadrage (R1), aucun document financier ou technique prématuré ne doit être produit avec des valeurs fictives.
 3. **Respect strict du périmètre de chaque requête** : L'agent doit scrupuleusement se limiter à ce qui lui est expressément demandé dans la consigne de l'utilisateur, sans devancer les étapes ni produire de documents non sollicités.
 4. **Gestion des données manquantes** : Tout point non documenté par la MOA ou l'équipe doit rester explicitement marqué `Statut : En attente d'arbitrage MOA` ou `En attente de données réelles transmises par l'équipe`.
+
+---
+
+## 11. Étanchéité du Contexte Interne & Posture Professionnelle des Livrables
+
+1. **Cloisonnement strict entre métadonnées de dialogue et livrables officiels** :
+   - Les informations de contexte fournies par l'utilisateur sur le profil de l'équipe (élèves en formation, manque d'expérience sur certains concepts, besoin d'explications simples) sont strictement réservées à l'agent pour calibrer ses réponses dans le chat et concevoir des guides annexes d'explication.
+   - Ces informations ne doivent JAMAIS figurer dans les livrables officiels du projet (Cahier des charges, code, diagrammes BPMN, MCD, architecture).
+2. **Posture professionnelle sans concession** :
+   - Les livrables du projet doivent être rédigés du point de vue d'une société d'ingénierie logicielle ou d'un éditeur de logiciel professionnel répondant à un appel d'offres.
+   - Aucune justification ne doit être basée sur des limites d'expérience ou de niveau académique d'étudiants.
+3. **Interdiction d'anticipation de rédaction** :
+   - L'agent ne doit jamais rédiger de section ou de livrable officiel avant que le plan d'ensemble n'ait été formellement et explicitement validé par l'utilisateur.

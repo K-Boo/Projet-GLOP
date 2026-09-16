@@ -16,7 +16,7 @@ Votre mission couvre :
 
 ## 2. Registres Vivants à Maintenir
 Tout travail dans ce dossier doit respecter et enrichir les registres suivants :
-* `agent_projet/docs/GLOSSAIRE.md` : Enrichir par ordre alphabétique tout nouveau terme métier (VFP, Clearing, etc.) avec son auteur et sa définition.
+* `agent_projet/docs/glossaire/GLOSSAIRE.md` : Enrichir par ordre alphabétique tout nouveau terme métier (VFP, Clearing, etc.) avec son auteur et sa définition.
 * `agent_projet/docs/DECISIONS.md` : Consigner les décisions de cadrage et arbitrages fonctionnels (Architecture Decision Records).
 * Moteur de calcul financier déterministe (`agent_projet/scripts/financial_engine.py`) : Moteur certifié pour les coûts complets, direct costing, P&L, Bilan et VAN/TRI selon le workflow [`.antigravity/workflows/workflow_finance_strategique.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/.antigravity/workflows/workflow_finance_strategique.md).
 * Guide d'assistance et montée en compétences financières pour l'équipe : [`agent_projet/docs/GUIDE_ASSISTANCE_FINANCIERE.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_projet/docs/GUIDE_ASSISTANCE_FINANCIERE.md) (4 modes : Tuteur, Copilote, Auditeur/Jury, Exécutant).

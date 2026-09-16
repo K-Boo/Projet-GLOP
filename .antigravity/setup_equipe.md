@@ -97,5 +97,6 @@ Ce script realise en totale autonomie :
 3. **Detection de Google Drive pour ordinateur** : localise le dossier `Projet-GLOP`, cree les 5 sous-dossiers officiels (`01_Cadrage_Metier_R1` a `05_Demonstrations_Videos`), et genere un fichier `config.local.json` si le Drive n'est pas sur le lecteur `G:\`.
 4. **Controle du depot Git principal (GitHub)** : verifie la connexion au remote `git@github.com:K-Boo/Projet-GLOP.git`.
 5. **Detection et liaison du depot de code evalue (GitLab)** : localise ou clone `git@gitlab-ssh.univ-lille.fr:khalil.bouchama.etu/projet-glop-app.git` dans le dossier parent et l'enregistre dans `config.local.json`.
+6. **Verification et liaison de la passerelle LiteLLM Proxy** : detecte `C:\tools\LiteLLM`, verifie l'endpoint `http://localhost:4000/v1` et associe la cle virtuelle de projet `ShopLoc`.
 
 L'agent confirme ensuite au collegue que son poste est 100% conforme a l'environnement d'equipe.

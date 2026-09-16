@@ -111,3 +111,17 @@
 3. **Gestion des données manquantes** : Tout paramètre non formellement tranché par la MOA ou fourni par l'équipe doit obligatoirement être consigné sous la mention `Statut : En attente d'arbitrage MOA` ou `En attente de données réelles transmises par l'équipe`.
 4. **Respect strict du périmètre de chaque requête** : L'agent doit scrupuleusement se limiter à ce qui lui est expressément demandé dans l'instruction de l'utilisateur, sans devancer les étapes ni produire de livrables non sollicités.
 
+---
+
+## 7. Étanchéité du Contexte Interne & Posture Professionnelle des Livrables (Règle Permanente)
+
+1. **Cloisonnement strict entre métadonnées de dialogue et livrables projet** :
+   - Les informations de contexte transmises par l'utilisateur concernant le profil de l'équipe (ex. élèves en formation, manque d'expérience sur certains concepts, besoins d'explications simples) sont strictement réservées à la compréhension interne de l'agent.
+   - Ces informations servent exclusivement à calibrer la pédagogie des réponses dans le chat et à concevoir, sur demande, des livrables annexes d'explication pédagogique.
+2. **Interdiction absolue d'inclure le contexte étudiant dans les livrables officiels** :
+   - Les livrables officiels du projet (Cahier des charges, spécifications fonctionnelles, diagrammes BPMN, MCD, architecture logicielle, code source, tests et compte-rendus) doivent être rédigés avec une posture 100% professionnelle, digne d'une société d'ingénierie logicielle ou d'une scale-up répondant à un appel d'offres public.
+   - Il est formellement interdit d'écrire ou de sous-entendre dans un livrable des mentions telles que *"nous sommes des élèves sans grande expérience"*, *"pour faciliter la tâche des étudiants"* ou toute justification basée sur un niveau académique. Les choix techniques doivent être justifiés uniquement par des arguments d'ingénierie (frugalité, robustesse, coût de run, maintenabilité, performance).
+3. **Interdiction d'anticipation de rédaction** :
+   - L'agent ne doit jamais générer de section ou de livrable officiel tant que le plan d'ensemble n'a pas été explicitement et formellement validé par l'utilisateur.
+
+

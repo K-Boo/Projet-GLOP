@@ -1,0 +1,44 @@
+4.4 - Lui proposer ce mode et c'est au commerçant de l'activer. Adapter au type de produit, si produit électrique par exemple, juste mettre à jour le délai de livraison
+
+6.3 - A nous de décider, possible de mettre un second moyen en V2
+
+6.2 -  Oui, c'est  à nous de déterminer le seuil, plusieurs seuil possible en fonction de à quel point le client adhere ou pas. 
+
+6.4 - On peut sélectionner par quartier, type de commerçant/catégorie de commerçant
+
+6.5 - L'application doit permettre de pousser un qcm
+
+6.6 - Oui on peut simplifier
+
+6.7 - On doit proposer des version simplifié, comme on veut. 
+
+7.1 - Pour les commerçant et admin, on doit proposer un niveau de sécurité sup
+
+8.1 - La v1 : nous de choisir les fonctionnalités de cette version
+
+8.3 - on décide 
+
+9.1 - on doit quantifier, la quantité de token et bien piloter son utilisation
+
+10.1 - Pas de montant minimum, les deux systèmes sont complémentaire, le système de point par achat et le système VFP. 
+
+10.2 - On doit se souvenir des achats, avoir un historique d'achat. il faut au moins un achat antérieur chez ce commerçant, sinon le cadeau est bloqué. 
+
+10.4 - Système transactionnel avec protocole en 2 phases, on considère qu'il y a du stock au moment de l'achat. Le stock entre son shop et l'appli doit être cohérent
+
+10.5 - 1 seul profil admin par commerçant
+
+10.6 - On est libre de définir les fraudes potentiel et de sécuriser le système en conséquence
+
+11.1 - Hors périmètre
+
+11.2 - La taille des données/infra serveur va correspondre à celle de la ville, cela va également être une métrique pour définir le succès du projet. 
+Exemple : Si gros succès 
+
+11.3 - Gratuit pour le client, on va l'inciter à passer
+
+11.4 - Faire un développement. 
+
+Présentation 15 min et 5 min de questions. 
+
+

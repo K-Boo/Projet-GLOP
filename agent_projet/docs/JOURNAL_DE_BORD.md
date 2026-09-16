@@ -23,7 +23,7 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Analyse des exigences metier ShopLoc (programme fidelite VFP, multi-tenancy, inter-commerces, RGPD, accessibilite RGAA).
   - Redaction du questionnaire exhaustif : `agent_projet/docs/QUESTIONNAIRE_METIER_DETAILLE.md`.
   - Generation du livrable officiel sous forme de page HTML et de document PDF conforme a la charte academique : `agent_projet/docs/ShopLoc_Cadrage_Metier_Livrable_R1.pdf`.
-  - Enrichissement du glossaire : `agent_projet/docs/GLOSSAIRE.md`.
+  - Enrichissement du glossaire : `agent_projet/docs/glossaire/GLOSSAIRE.md`.
 - **Decisions actees** :
   - Maintien strict de l'architecture bimodale (separation hermetique cockpit de gouvernance / code pur etudiant).
   - Interdiction absolue des emojis dans tous les livrables, documents et messages de commit.
@@ -41,7 +41,7 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Formalisation de l'algorithme de fidélité à deux systèmes indépendants : points marchands décentralisés par commerce vs statut VFP fondé sur la régularité (au moins 10 passages sur une fenêtre glissante de 15 jours consécutifs, déclenchant 1 ticket de bus ou 20 min de stationnement, puis 1 avantage supplémentaire par nouveau passage tant que la régularité est maintenue).
   - Mise à jour du document de référence `agent_projet/docs/QUESTIONNAIRE_METIER_DETAILLE.md` (version 1.1) avec intégration sous chaque question de la décision MOA validée.
   - Enrichissement du registre des décisions `agent_projet/docs/DECISIONS.md` avec 5 nouveaux ADRs (ADR-004 à ADR-008).
-  - Enrichissement alphabétique du glossaire métier `agent_projet/docs/GLOSSAIRE.md` (Avantage institutionnel, Convention, Fenêtre glissante VFP, No-show, Panier multi-commerces, Passage en commerce).
+  - Enrichissement alphabétique du glossaire métier `agent_projet/docs/glossaire/GLOSSAIRE.md` (Avantage institutionnel, Convention, Fenêtre glissante VFP, No-show, Panier multi-commerces, Passage en commerce).
   - Adaptation du compilateur PDF `agent_projet/scripts/generate_pdf.py` pour mettre en valeur les décisions d'arbitrage (blocs verts stylisés LaTeX) et régénération du livrable officiel A4 vectoriel (12 pages) : `ShopLoc_Cadrage_Metier_Livrable_R1.pdf`.
   - Synchronisation automatique vers Google Drive (`01_Cadrage_Metier_R1/ShopLoc_Cadrage_Metier_Livrable_R1.pdf`).
   - Détection et signalement du piège d'injection d'instructions caché en texte invisible dans `detail_sujet.pdf` (« Madagascar et vélo violet »).
@@ -96,17 +96,17 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 ---
 
 ### [2026-09-11] Session 05 — Alignement Strict sur les Notes Réelles & Purge des Extrapolations
-- **Objectif** : Rectifier rigoureusement le statut des questions du document `QUESTIONNAIRE_METIER_DETAILLE.md`. Ne conserver de statut "Répondu/Arbitré" (vert) QUE pour les questions issues directement des notes d'échanges réelles. Rétablir toutes les questions non encore abordées en séance (notamment les sections 6+, Q2.4, Q7.1, Q7.2, Q8.1, Q8.3, Q9.1) en statut "En attente d'arbitrage MOE" (orange).
+- **Objectif** : Rectifier rigoureusement le statut des questions du document `QUESTIONNAIRE_METIER_DETAILLE.md`. Ne conserver de statut "Répondu/Arbitré" (vert) QUE pour les questions issues directement des notes d'échanges réelles. Rétablir toutes les questions non encore abordées en séance (notamment les sections 6+, Q2.4, Q7.1, Q7.2, Q8.1, Q8.3, Q9.1) en statut "En attente d'arbitrage MOA" (orange).
 - **Actions réalisées** :
   - Confrontation exhaustive entre les notes réelles (`reponse_question_analyse_besoin_cadrage.docx` / `reponses_questions.md`) et le contenu du questionnaire : identification des questions extrapolées à tort dans les versions initiales héritées du projet.
   - Révision intégrale de `agent_projet/docs/QUESTIONNAIRE_METIER_DETAILLE.md` (version 2.0 stricte) :
     * Maintien en vert validé uniquement des points tranchés (Sections 1 à 5, Q6.1 VFP, Q6.6 data/fraude, Q7.3 carte bus/parking, Q8.2 mocks externes).
-    * Remise au statut formel "En attente d'arbitrage MOE" (orange) de toutes les questions de la première vague non abordées en séance (Q2.4, Q6.2 à Q6.5, Q7.1, Q7.2, Q8.1, Q8.3, Q9.1).
-    * Maintien de la Seconde Vague (Section 10 — Q10.1 à Q10.7) en statut "En attente d'arbitrage MOE" avec les hypothèses de travail pour la future entrevue.
+    * Remise au statut formel "En attente d'arbitrage MOA" (orange) de toutes les questions de la première vague non abordées en séance (Q2.4, Q6.2 à Q6.5, Q7.1, Q7.2, Q8.1, Q8.3, Q9.1).
+    * Maintien de la Seconde Vague (Section 10 — Q10.1 à Q10.7) en statut "En attente d'arbitrage MOA" avec les hypothèses de travail pour la future entrevue.
   - Vérification d'intégrité zéro emoji : 0 emoji détecté.
 - **Décisions actées** :
   - Zéro extrapolation : stricte séparation entre ce qui est factuellement acté avec la MOE et ce qui reste à instruire.
-  - Les questions non traitées de la vague 1 sont clairement identifiées pour être posées lors de la seconde entrevue avec la MOE, aux côtés de la vague 2.
+  - Les questions non traitées de la vague 1 sont clairement identifiées pour être posées lors de la seconde entrevue avec la MOA, aux côtés de la vague 2.
 - **Reste à faire / Objectifs pour la Session 06** :
   - Reformatage du questionnaire en pur Markdown GitHub (élimination du code HTML/CSS inline).
   - Intégration des arbitrages sur Q2.4, Q7.2, Q8.3, Q10.1, Q10.3 et suppression de la question technique sur les KPIs.
@@ -152,15 +152,15 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 ---
 
 ### [2026-09-11] Session 08 — Suppression des Hypothèses Spéculatives IA & Régénération PDF V2
-- **Objectif** : Épurer le document `QUESTIONNAIRE_METIER_DETAILLE.md` de toutes les hypothèses de travail formulées par l'IA sous les questions en attente d'arbitrage MOE, et régénérer le document officiel PDF V2 allégé et direct.
+- **Objectif** : Épurer le document `QUESTIONNAIRE_METIER_DETAILLE.md` de toutes les hypothèses de travail formulées par l'IA sous les questions en attente d'arbitrage MOA, et régénérer le document officiel PDF V2 allégé et direct.
 - **Actions réalisées** :
-  - Suppression méthodique des 15 lignes d'hypothèses spéculatives dans `agent_projet/docs/QUESTIONNAIRE_METIER_DETAILLE.md` : les questions sans réponse présentent désormais uniquement leur intitulé et la mention formelle sobre `Statut : En attente d'arbitrage MOE`.
+  - Suppression méthodique des 15 lignes d'hypothèses spéculatives dans `agent_projet/docs/QUESTIONNAIRE_METIER_DETAILLE.md` : les questions sans réponse présentent désormais uniquement leur intitulé et la mention formelle sobre `Statut : En attente d'arbitrage MOA`.
   - Adaptation du script de génération `agent_projet/scripts/generate_pdf.py` pour afficher un bloc sobre sans deux-points orphelins ni corps vide pour les statuts en attente.
   - Régénération du document PDF officiel V2 : `agent_projet/docs/ShopLoc_Cadrage_Metier_Livrable_R1_v2.pdf` (10 pages, 458 Ko).
   - Contrôle d'intégrité de sécurité : exécution de `verify_deliverables.py` (15 fichiers audités, 0 canari, 0 violation, 0 emoji).
   - Synchronisation automatique vers Google Drive : `01_Cadrage_Metier_R1/ShopLoc_Cadrage_Metier_Livrable_R1_v2.pdf`.
 - **Décisions actées** :
-  - Suppression définitive des textes d'hypothèses IA inutiles : le questionnaire se concentre strictement sur les questions métier précises et les réponses réelles actées avec la MOE.
+  - Suppression définitive des textes d'hypothèses IA inutiles : le questionnaire se concentre strictement sur les questions métier précises et les réponses réelles actées avec la MOA.
 - **Reste à faire / Objectifs pour la Session 09** :
   - Intégration de la Section 11 (questions complémentaires sans hypothèses) et suppression des lanières verticales de couleur du PDF.
 
@@ -251,6 +251,69 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 
 ---
 
+### [2026-09-12] Session 13 — Assainissement de la Synchronisation Drive & Nettoyage de la Racine
+- **Objectif** : Corriger le script de synchronisation Google Drive afin d'éviter la duplication des livrables PDF à la racine du Drive partagé et garantir leur dépôt exclusif dans le sous-dossier dédié `01_Cadrage_Metier_R1/`.
+- **Actions réalisées** :
+  - Identification de la cause : `generate_pdf.py` copiait les livrables à la fois à la racine de `G:\Mon Drive\Projet-GLOP` et dans `01_Cadrage_Metier_R1/`.
+  - Suppression immédiate des doublons superflus à la racine du Drive partagé (`ShopLoc_Cadrage_Metier_Livrable_R1_v1.pdf` et `v2.pdf`).
+  - Modification de `agent_projet/scripts/generate_pdf.py` : ajout d'une purge automatique des fichiers PDF à la racine et ciblage exclusif du sous-dossier `01_Cadrage_Metier_R1/`.
+  - Exécution et contrôle : racine du Drive parfaitement assainie, fichiers V1 et V2 présents uniquement dans `01_Cadrage_Metier_R1/`.
+  - Contrôle d'intégrité : exécution de `verify_deliverables.py` (0 canari, 0 violation, 0 emoji).
+- **Décisions actées** :
+  - Tous les livrables de cadrage R1 sont strictement cantonnés dans le sous-dossier `01_Cadrage_Metier_R1/`.
+- **Reste à faire / Objectifs pour la Session 14** :
+  - Transmission du livrable V2 finalisé à la MOA/MOE pour la seconde séance d'encadrement.
+
+---
+
+### [2026-09-14] Session 14 — Intégration et Configuration de la Passerelle Centrale LiteLLM Proxy
+- **Objectif** : Configurer et brancher le projet ShopLoc sur la passerelle centrale LiteLLM située dans `C:\tools\LiteLLM` pour unifier l'accès multi-modèles et le suivi FinOps.
+- **Actions réalisées** :
+  - Diagnostic et démarrage des conteneurs Docker LiteLLM Proxy et PostgreSQL 16.
+  - Ajustement des modèles et alias dans `C:\tools\LiteLLM\config.yaml` pour assurer la compatibilité avec l'abonnement et la clé Gemini (modèles 2026 : `gemini-3.8-flash`, `gemini-3.7-flash`, `gemini-flash-lite-latest`).
+  - Correction des scripts PowerShell d'administration (`new-project-key.ps1`, `project-metrics.ps1`, `status.ps1`).
+  - Génération de la clé virtuelle dédiée au projet (`sk-litellm-proj-ShopLoc`) et écriture de la configuration dans `.env` et `config.local.json`.
+  - Développement du module client Python standardisé `agent_projet/scripts/litellm_client.py` (testé avec succès via complétion en direct).
+  - Intégration de la vérification de LiteLLM comme étape 6 dans `agent_projet/scripts/setup_env.py`.
+  - Enregistrement de la décision d'architecture ADR-010 dans `agent_projet/docs/DECISIONS.md`.
+- **Décisions actées** :
+  - Toutes les requêtes LLM locales et automatisées du projet peuvent désormais transiter de manière transparente par `http://localhost:4000/v1`.
+  - Suivi des métriques et des dépenses centralisé sur le dashboard local `http://localhost:4000/ui`.
+### [2026-09-16] Session 15 — Analyse & Synthèse Intégrale de la Seconde Vague de Réponses MOE (Clôture Cadrage)
+- **Objectif** : Analyser les retours de la 2nde et dernière vague de réponses MOA sur le cadrage, consolider l'ensemble des questions/réponses (Vagues 1 et 2) et produire un document Markdown de référence exhaustif.
+- **Actions réalisées** :
+  - Analyse détaillée des réponses de la 2nde vague fournies par la MOE (alertes marketing VFP, QCM sondages, protocole 2PC pour les stocks/commandes, sécurité renforcée commerçant/admin, gratuité usager, périmètre hors ASVP, dimensionnement par taille de ville, Green IT/tokens, format de soutenance 15 min + 5 min).
+  - Création du document officiel [`agent_projet/docs/SYNTHESE_GLOBALE_QUESTIONS_REPONSES_CADRAGE.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_projet/docs/SYNTHESE_GLOBALE_QUESTIONS_REPONSES_CADRAGE.md) regroupant l'intégralité des 44 questions/réponses avec matrice synthétique, cartouche GLOP normalisé et déclinaison des impacts d'ingénierie.
+  - Mise à jour complète de [`agent_projet/docs/QUESTIONNAIRE_METIER_DETAILLE.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_projet/docs/QUESTIONNAIRE_METIER_DETAILLE.md) (100% des points d'arbitrage désormais validés, suppression de tous les statuts en attente).
+  - Contrôle d'intégrité via `verify_deliverables.py` validé avec succès (0 violation, 0 canari, 0 emoji).
+- **Décisions actées** :
+  - Clôture définitive de la phase de cadrage fonctionnel et métier (R1).
+  - Base stabilisée et immuable pour la finalisation du cahier des charges R1 et de l'étude financière R3.
+### [2026-09-16] Session 16 — Méthodologie d'Arborescence Inversée, Posture Professionnelle & Plan Directeur du CdC
+- **Objectif** : Structurer la démarche méthodologique de réalisation du Cahier des Charges R1 (arborescence inversée, 1 session = 1 livrable, questions spécifiques préalables), acter la règle d'étanchéité absolue entre contexte étudiant interne et livrables projet, et consigner le plan directeur validé.
+- **Actions réalisées** :
+  - Suppression immédiate de toute tentative de rédaction anticipée du fichier de section 01.
+  - Ajout de la Règle Permanente 7 dans `PROJECT_RULES.md` et Règle Permanente 11 dans `.antigravity/instructions.md` :
+    - Étanchéité stricte entre le contexte d'apprentissage étudiant interne (réservé au dialogue pour orienter la pédagogie et les guides explicatifs annexes) et les livrables officiels du projet.
+    - Posture 100% professionnelle sans concession pour les livrables officiels (Cahier des charges, BPMN, MCD, architecture, code) : interdiction absolue de toute mention de statut étudiant ou de manque d'expérience.
+    - Interdiction formelle d'anticipation de rédaction tant que le plan n'est pas formellement et explicitement validé par l'utilisateur.
+  - Formalisation des arbitrages structurants dans `agent_projet/docs/DECISIONS.md` :
+    - ADR-011 : Cadrage stratégique multi-échelle, modularité territoriale, flux physique obligatoire en boutique, KPIs à double échelle et gratuité citoyenne intégrale.
+    - ADR-012 : Rejet des microservices purs au profit d'un Monolithe Modulaire Multi-Tenant à briques activables (Feature Flags), étanchéité stricte des données et budgets municipaux, report méthodique de la tarification en fin de processus pour application de la méthode des coûts complets, intégration du tiers de confiance en V2/V3.
+  - Rédaction et formalisation du plan directeur validé dans [`agent_projet/docs/PLAN_DIRECTEUR_CAHIER_DES_CHARGES_R1.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_projet/docs/PLAN_DIRECTEUR_CAHIER_DES_CHARGES_R1.md) détaillant les 9 sections, la matrice de délégation et le protocole d'arborescence inversée.
+  - Contrôle d'intégrité via `verify_deliverables.py` (16 fichiers audités, 0 violation, 0 canari, 0 emoji).
+- **Décisions actées** :
+  - Validation formelle du plan directeur et de la trame en 9 sections du Cahier des Charges R1.
+  - Posture d'ingénierie professionnelle inviolable pour tous les livrables officiels.
+  - Clôture de la Session 16.
+- **Reste à faire / Objectifs pour la Session 17** :
+  - Choix et configuration des outils et serveurs MCP pour la modélisation graphique des livrables (MCD, BPMN).
+  - Mise en place d'un outil de pilotage visuel et définition de la charte graphique globale pour l'ensemble du projet.
+
+
+
+---
+
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
 
 A la fin de chaque session de chat, l'agent ou l'utilisateur execute la mise a jour de ce fichier selon le format suivant :
@@ -259,3 +322,5 @@ A la fin de chaque session de chat, l'agent ou l'utilisateur execute la mise a j
 3. Fichiers crees, modifies ou supprimes.
 4. Decisions ou arbitrages valides.
 5. Prochaine etape explicite pour la session suivante.
+
+

@@ -103,3 +103,49 @@ Chaque décision doit être formalisée ainsi :
   - **Verrou de Sortie (Egress Guard)** : Contrôle automatisé pré-compilation et pré-publication via `agent_projet/scripts/verify_deliverables.py` bloquant tout livrable contenant des termes canaris ou des emojis.
   - **Assainissement des Livrables R1** : Purge immédiate de la fausse question Q.I2 et de l'axe 9 contaminé dans `QUESTIONNAIRE_METIER_DETAILLE.md` et régénération propre du PDF officiel `ShopLoc_Cadrage_Metier_Livrable_R1.pdf`.
 - **Conséquences** : Immunité totale du projet contre les honeypots enseignants, intégrité académique absolue des livrables sans risque de détection d'IA naïve.
+
+### ADR-010 : Intégration de la Passerelle Centrale LiteLLM Proxy (AI Gateway)
+- **Date** : 2026-09-14
+- **Statut** : Validé
+- **Contexte** : Nécessité d'unifier l'accès aux modèles de langage (LLM) pour l'outillage agentique, les scripts d'analyse documentaire et les tests automatisés, tout en centralisant le suivi des coûts, des quotas et de l'empreinte écologique.
+- **Décision** :
+  - Déploiement et liaison de la passerelle centrale LiteLLM Proxy située dans `C:\tools\LiteLLM`.
+  - Configuration de l'endpoint standardisé OpenAI-compatible `http://localhost:4000/v1`.
+  - Génération d'une clé virtuelle de projet étiquetée (`sk-litellm-proj-ShopLoc`) avec persistance des métriques en base PostgreSQL.
+  - Mise à disposition d'un module client Python dédié (`agent_projet/scripts/litellm_client.py`) et intégration de la vérification dans le protocole d'alignement d'équipe (`setup_env.py`).
+- **Conséquences** : Routage transparent, résilience avec chaînes de repli (fallbacks) automatiques, observabilité complète via le dashboard web local (`http://localhost:4000/ui`).
+
+### ADR-011 : Cadrage Stratégique Multi-Échelle, Modularité Territoriale et Gratuité Citoyenne
+- **Date** : 2026-09-16
+- **Statut** : Validé (Cadrage Section 01 R1)
+- **Contexte** : Fixation des orientations stratégiques majeures pour le Cahier des Charges R1 suite aux arbitrages du porteur de projet : double vision politique et commerciale, scalabilité multi-villes, frontière stricte de flux physique (zéro livraison à domicile), KPIs à double échelle (locale et nationale) et gratuité totale usager.
+- **Décision** :
+  - **Double Finalité Stratégique** : Équilibre indissociable entre revitalisation du tissu commercial physique local (enjeu économique) et attractivité/cohésion de la vie de quartier (enjeu politique municipal).
+  - **Scalabilité et Modularité Territoriale** : Plateforme conçue pour s'adapter à tout type de commune (du bourg rural à la métropole) via une architecture modulaire activable par briques de services (ex. module stationnement/voirie ou transport urbain activable à la demande).
+  - **Frontière Stricte du Service** : Obligation de déplacement physique dans les commerces (Click & Collect et achats sur place). Exclusion formelle de la livraison à domicile et des tournées logistiques motorisées afin de maximiser le trafic piétonnier en centre-ville.
+  - **Pilotage de la Performance à Deux Échelles** :
+    - Échelle communale : Taux d'usagers actifs réguliers (VFP), panier moyen local, nombre de commerçants adhérents.
+    - Échelle macro / nationale : Nombre de collectivités clientes, volume global de commerçants conventionnés, base totale d'utilisateurs actifs.
+  - **Gratuité Citoyenne Intégrale** : Aucun frais direct pour le client final (application, compte fidélité et carte physique papier 100% gratuites), levier clé d'adoption massive.
+  - **Ligne Éditoriale** : Style percutant, rigoureux et engageant, calqué sur les standards d'une réponse à appel d'offres public d'une scale-up technologique.
+- **Conséquences** : Cadre structurant pour les sections 01 à 09 du Cahier des Charges, dimensionnement du TCO et justification économique solide pour l'appel d'offres municipal.
+
+### ADR-012 : Architecture en Monolithe Modulaire Multi-Tenant & Démarche Financière par Coûts Complets
+- **Date** : 2026-09-16
+- **Statut** : Validé (Arbitrages Architecture & Méthodologie)
+- **Contexte** : Arbitrage sur le dimensionnement de l'architecture logicielle, l'étanchéité multi-villes, l'inclusivité des usagers et l'ordonnancement rigoureux de l'étude financière.
+- **Décision** :
+  - **Rejet des Microservices Purs au profit d'un Monolithe Modulaire** :
+    - Évite l'écueil de la sur-ingénierie (over-engineering), les coûts d'infrastructure distribuée excessifs pour les petites communes et la latence réseau des transactions réparties.
+    - Architecture organisée en un socle applicatif unique (Core SaaS mutualisé) découpé en modules fonctionnels indépendants et briques activables par collectivité (*Feature Flags*).
+    - Cloisonnement strict des données et des services par ville : aucune passerelle ni cumul d'avantages/points VFP entre deux communes, étanchéité totale des budgets municipaux.
+  - **Inclusion & Tiers de Confiance** : Validation du principe de procuration / tiers de confiance pour permettre le retrait physique en boutique par un proche ou aidant pour les profils seniors (Pierre) ou à mobilité réduite ; planification de cette fonctionnalité en jalon V2/V3 pour préserver la simplicité du MVP V1.
+  - **Démarche Financière Post-Conception (Coûts Complets)** :
+    - Refus formel de fixer arbitrairement un prix ou une tarification prématurée sans connaître les coûts réels de fabrication et d'exploitation.
+    - Le cadrage financier s'exécute en aval du processus de spécification, une fois les choix techniques et opérationnels stabilisés.
+    - Application rigoureuse de la méthode des coûts complets (centres d'analyse, unités d'œuvre) pour évaluer le coût de revient du Run et du Build, afin d'en déduire une grille tarifaire viable et justifiable.
+  - **Méthode d'Ingénierie par Arborescence Inversée** : Construction itérative livrable par livrable, alimentée par des sessions de questions-réponses ultra-spécifiques avec historisation stricte dans le journal de bord.
+- **Conséquences** : Architecture frugale, robuste, modulaire et hautement maintenable ; modèle financier scientifiquement fondé.
+
+
+

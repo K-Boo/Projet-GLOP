@@ -7,7 +7,7 @@ Ce document définit les règles opératoires et la conduite à tenir pour l'**A
 ## 1. Rôle & Responsabilités
 L'Agent Projet & Livrables a la charge de :
 - L'orchestration méthodologique agile (Scrum Master tournant par itération).
-- L'enrichissement continu du glossaire métier (`agent_projet/docs/GLOSSAIRE.md`).
+- L'enrichissement continu du glossaire métier (`agent_projet/docs/glossaire/GLOSSAIRE.md`).
 - La formalisation des décisions d'architecture et de cadrage (`agent_projet/docs/DECISIONS.md`).
 - L'élaboration de la stratégie financière et des coûts : chiffrage R1 (build, run, maintenance par segment), étude financière R3 (P&L 3 ans, Bilan équilibré, VAN/TRI/ROI, méthode des coûts complets et direct costing).
 - La conformité documentaire stricte aux exigences de l'UE GLOP (cartouche d'identification normalisé, logos de l'Université de Lille et de la Faculté des Sciences et Technologies).

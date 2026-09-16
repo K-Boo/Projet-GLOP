@@ -195,6 +195,55 @@ def check_and_setup_code_repo():
         return True
     return False
 
+def check_and_setup_litellm():
+    print("[6/6] Verification de la passerelle LiteLLM Proxy...")
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    repo_root = os.path.abspath(os.path.join(script_dir, "..", ".."))
+    local_cfg = os.path.join(repo_root, "config.local.json")
+    env_file = os.path.join(repo_root, ".env")
+
+    # 1. Verification dossier de config LiteLLM
+    litellm_dir = r"C:\tools\LiteLLM"
+    cfg_data = {}
+    if os.path.isfile(local_cfg):
+        try:
+            with open(local_cfg, "r", encoding="utf-8") as f:
+                cfg_data = json.load(f)
+                if "litellm_config_path" in cfg_data and os.path.isdir(cfg_data["litellm_config_path"]):
+                    litellm_dir = cfg_data["litellm_config_path"]
+        except Exception:
+            pass
+
+    if os.path.isdir(litellm_dir):
+        print(f"  -> Repertoire LiteLLM detecte : {litellm_dir}")
+        cfg_data["litellm_config_path"] = litellm_dir.replace("\\", "/")
+        cfg_data["litellm_base_url"] = "http://localhost:4000/v1"
+        cfg_data["litellm_project_name"] = "ShopLoc"
+        with open(local_cfg, "w", encoding="utf-8") as f:
+            json.dump(cfg_data, f, indent=2)
+    else:
+        print(f"  -> AVERTISSEMENT : Repertoire LiteLLM introuvable ({litellm_dir}).")
+
+    # 2. Test HTTP sur le proxy
+    try:
+        import urllib.request
+        req = urllib.request.Request("http://localhost:4000/models")
+        if os.path.isfile(env_file):
+            with open(env_file, "r", encoding="utf-8") as f:
+                for line in f:
+                    if line.startswith("OPENAI_API_KEY="):
+                        k = line.split("=", 1)[1].strip()
+                        req.add_header("Authorization", f"Bearer {k}")
+        with urllib.request.urlopen(req, timeout=3) as resp:
+            if resp.status == 200:
+                print("  -> Passerelle LiteLLM en ligne (http://localhost:4000/v1) [OK]")
+                return True
+    except Exception as e:
+        print(f"  -> AVERTISSEMENT : LiteLLM Proxy non joignable sur http://localhost:4000 ({e})")
+        print("     Lancez : powershell C:\\tools\\LiteLLM\\scripts\\start.ps1")
+        return False
+    return True
+
 def main():
     print("=" * 60)
     print("  ALIGNEMENT AUTOMATIQUE DE L'ENVIRONNEMENT SHOPLOC GLOP")
@@ -204,8 +253,9 @@ def main():
     drive_ok = check_and_setup_drive()
     git_ok = check_git_remote()
     code_ok = check_and_setup_code_repo()
+    llm_ok = check_and_setup_litellm()
     print("=" * 60)
-    if drive_ok and git_ok and code_ok:
+    if drive_ok and git_ok and code_ok and llm_ok:
         print("SUCCES : La machine est 100% conforme a la configuration d'equipe.")
     else:
         print("AVERTISSEMENT : Configuration partielle (voir alertes ci-dessus).")

@@ -1,4 +1,4 @@
-﻿# Projet ShopLoc — Marketplace & Fidelisation de Centre-Ville
+# Projet ShopLoc — Marketplace & Fidelisation de Centre-Ville
 > **Master 2 MIAGE — UE Genie Logiciel par la Pratique (GLOP) 2026-2027**  
 > Universite de Lille — Faculte des Sciences et Technologies (FST)
 
@@ -167,6 +167,13 @@ Le script pousse automatiquement le fichier dans le dossier Google Drive partage
 Le fichier `.agents/mcp_config.json` integre le serveur Model Context Protocol pour Linear :
 * Chaque membre renseigne sa variable d'environnement `LINEAR_API_KEY` (cle personnelle creee sur Linear dans *Settings > Security & Access > Personal API Keys*).
 * L'agent PO peut alors synchroniser le backlog, creer les User Stories et mettre a jour les statuts de sprint en direct.
+
+### D. Passerelle Centrale LiteLLM Proxy (AI Gateway)
+La passerelle locale situee dans `C:\tools\LiteLLM` unifie l'ensemble des modeles et abonnements :
+* **Point d'acces unique** : `http://localhost:4000/v1` (compatible API OpenAI).
+* **Cle virtuelle de projet** : `sk-litellm-proj-ShopLoc` (definie dans `.env` et `config.local.json`).
+* **Client Python standardise** : `agent_projet/scripts/litellm_client.py`.
+* **Supervision Web** : [http://localhost:4000/ui](http://localhost:4000/ui) pour suivre les couts, la latence et les consommations par modele.
 
 ---
 

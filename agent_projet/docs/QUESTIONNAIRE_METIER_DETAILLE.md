@@ -1,8 +1,6 @@
 # Questionnaire de Cadrage Métier — Projet ShopLoc
 
-Ce document recense les questions de cadrage fonctionnel pour l'application ShopLoc, en distinguant :
-- Les réponses et arbitrages d'ores et déjà validés lors des échanges avec la MOE (identifiés en vert).
-- Les questions restant en attente d'arbitrage lors de la seconde entrevue (identifiées en orange).
+Ce document recense l'ensemble des questions de cadrage fonctionnel, technique et organisationnel pour l'application ShopLoc, ainsi que les réponses et arbitrages validés lors des deux vagues d'entretiens avec la MOA (100% des points sont désormais tranchés et validés).
 
 ---
 
@@ -19,7 +17,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
   - Ou n'ont-elles aucun compte dans l'application et interviennent-elles uniquement lors de la signature du projet ?
 * **Intérêt pour le projet** : Savoir si nous devons développer un espace dédié pour les associations avec des droits de modération et de suivi.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">La demande émane conjointement de l'association des commerçants (structure à but non lucratif loi 1901) et de la mairie, qui formalisent une convention pour attirer plus de clients dans le centre-ville. Le commerçant doit obligatoirement être adhérent de l'association locale pour intégrer ShopLoc. C'est l'association qui contrôle les adhésions et débloque les accès. Elle dispose d'un panel de gestion et de visualisation des indicateurs pour suivre l'activité et prévenir les fraudes.</span>
 
 ---
@@ -31,7 +29,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
   - En cas d'avis divergent sur une communication, qui a la priorité décisionnelle ?
 * **Intérêt pour le projet** : Clarifier les droits de chacun pour l'envoi de messages aux usagers et définir les profils d'utilisateurs à créer.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">L'association et la mairie sont liées par la convention. Les rôles et promesses sont répartis : les commerces promettent des points et des cadeaux sur leurs produits ; la mairie promet des tickets de bus et du stationnement gratuit. Chacune des deux entités dispose d'un panel de gestion ou de visualisation des données propre.</span>
 
 ---
@@ -43,7 +41,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
   - Ou directement aux commerçants, qui paient chacun un abonnement à ShopLoc ?
 * **Intérêt pour le projet** : C'est la base de notre étude financière (Livrable R3). Cela détermine comment ShopLoc génère ses revenus et auprès de qui émettre les factures.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">ShopLoc facture directement l'association des commerçants. La mairie verse une subvention à l'association pour financer le dispositif. L'équipe est totalement libre de définir et calibrer le modèle économique qu'elle souhaite. Cette liberté devra être défendue et justifiée par la suite via un prévisionnel d'activité détaillé couplé à une définition claire du modèle d'affaires (Livrables R1 et R3).</span>
 
 ---
@@ -54,7 +52,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
   - Ou nécessite-t-elle une validation préalable (vérification du SIRET, conformité du commerce) par l'administrateur ShopLoc ou l'association locale avant l'ouverture de la boutique ?
 * **Intérêt pour le projet** : Déterminer si nous devons gérer un statut d'attente de validation pour les nouveaux comptes commerçants.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">Le commerçant doit obligatoirement être adhérent de l'association locale. C'est l'association qui donne et valide l'accès au commerçant dans l'application.</span>
 
 ---
@@ -67,7 +65,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
   - Ou une application installée et hébergée séparément sur des serveurs distincts pour chaque ville cliente ?
 * **Intérêt pour le projet** : C'est un choix d'architecture majeur. Une solution mutualisée réduit les coûts d'infrastructure et simplifie les mises à jour, tandis qu'un déploiement séparé isole complètement les données de chaque commune.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">Libre sur le choix d'architecture, à condition d'être capable de défendre nos choix. L'écosystème associe la mairie et l'association de chaque ville. L'équipe retient l'architecture SaaS multi-tenant avec partitionnement logique (`tenant_id = ville_id`) pour concilier frugalité des serveurs et capacité de déploiement rapide.</span>
 
 ---
@@ -76,7 +74,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Un usager (ex : Julie travaillant dans une grande ville et résidant dans une commune voisine) dispose-t-il d'un compte unique transversal lui permettant de basculer d'une ville à l'autre, ou doit-il recréer un compte distinct par commune ?
 * **Intérêt pour le projet** : Modélisation des tables d'authentification et gestion des droits selon la commune d'achat.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">Si une personne souhaite disposer de plusieurs comptes distincts ou d'un compte unique, le système doit offrir cette flexibilité. Les avantages mobilité restent rattachés à la ville où les passages et achats ont été effectués.</span>
 
 ---
@@ -85,7 +83,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Le sujet distingue 3 tailles de villes (<20k, 20k-100k, >100k habitants). Qu'implique cette distinction dans l'application en termes de charge et de modularité ?
 * **Intérêt pour le projet** : Savoir si nous devons concevoir des modules optionnels configurables par ville.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">L'architecture doit être hautement scalable en termes de volume de données et de nombre d'utilisateurs simultanés.</span>
 
 ---
@@ -94,7 +92,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : L'énoncé fixe comme objectif de devenir leader du marché à 18 mois. Sur quels indicateurs ce succès sera-t-il évalué ?
 * **Intérêt pour le projet** : Aligner nos choix techniques et notre calendrier sur les critères d'évaluation.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">L'indicateur clé pour devenir leader à 18 mois est la part de marché. Il s'agit simplement de piloter et suivre le Chiffre d'Affaires (CA) et de générer un niveau de croissance suffisant pour conquérir et asseoir cette position de leader sur le marché des villes cibles.</span>
 
 ---
@@ -105,7 +103,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Lors d'un achat réglé en ligne sur l'application, comment s'effectue le paiement d'un panier multi-commerçants ?
 * **Intérêt pour le projet** : Savoir si nous devons intégrer une passerelle de paiement réelle avec split-payment ou simuler le flux.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">Le client peut régler une commande multi-commerçants en un seul paiement en ligne. Le client doit ensuite passer chez tous les commerçants de son panier pour collecter ses achats. La partie bancaire et financière est entièrement simulée dans le cadre du projet académique.</span>
 
 ---
@@ -114,7 +112,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : ShopLoc prélève-t-elle une commission sur les transactions Click & Collect ou se finance-t-elle exclusivement par forfait ?
 * **Intérêt pour le projet** : Modélisation des flux financiers et plan prévisionnel du Livrable R3.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">La composante financière réelle étant simulée, le modèle de tarification est libre. L'équipe privilégie une redevance annuelle/mensuelle forfaitaire auprès de l'association sans commission sur les ventes, afin de maximiser l'adhésion des commerçants locaux.</span>
 
 ---
@@ -123,7 +121,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Que se passe-t-il si un client ne vient jamais retirer sa commande Click & Collect en boutique ?
 * **Intérêt pour le projet** : Définir la machine à états de la commande et la politique d'annulation pour les denrées périssables.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">Si un client ne passe pas retirer sa commande dans le délai imparti (no-show), il perd définitivement sa commande. Le montant payé reste intégralement acquis au commerçant.</span>
 
 ---
@@ -134,7 +132,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Dans les commerces alimentaires, comment modéliser les articles vendus à la pièce, au poids ou à la part ?
 * **Intérêt pour le projet** : Modélisation de la table `Article` et flexibilité du catalogue pour les artisans de bouche.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">Le commerçant a le choix de l'unité du produit (à la pièce, au kg, aux 100g, à la part). Pour la V1, le prix unitaire est fixé à la commande pour simplifier la saisie et les transactions.</span>
 
 ---
@@ -143,7 +141,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Comment s'organise la préparation des commandes côté commerçant et la cohérence des tournées de collecte ?
 * **Intérêt pour le projet** : Gestion des contraintes d'ordonnancement pour les retraits.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">Le commerçant peut définir un délai de disponibilité par produit. Le système doit obligatoirement intégrer et rendre cohérents les articles avec une gestion des emplois du temps et horaires de chaque commerçant.</span>
 
 ---
@@ -152,7 +150,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Comment Suzanne gère-t-elle ses stocks : saisie manuelle ou synchronisation avec des caisses informatisées ?
 * **Intérêt pour le projet** : Définir si un module d'import de caisse est nécessaire en V1.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">Le commerçant entre manuellement ses produits et gère son stock dans l'application Click & Collect. Fréquence journalière ou dépendante du commerce. Une cohérence de stock peut être mise en place, mais l'interconnexion automatique avec des caisses externes n'est pas requise pour la première version.</span>
 
 ---
@@ -163,10 +161,8 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
   - Le commerçant dispose-t-il d'un mode « fermeture exceptionnelle / congés » qui masque temporairement ses produits sans les supprimer ?
 * **Intérêt pour le projet** : Garantir des créneaux fiables et éviter les déconvenues pour l'usager.
 
-**<span style="color: #166534;">Réponse validée MOE (Séance 1) :</span>**  
-<span style="color: #166534;">Prise en compte obligatoire des horaires d'ouverture de chaque commerce pour le calcul de l'itinéraire optimal de collecte (plus court chemin ou plus court en temps).</span>
-
-**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE (Fermetures exceptionnelles / congés)</span>**
+**<span style="color: #166534;">Réponse validée MOA (Vagues 1 & 2) :</span>**  
+<span style="color: #166534;">Prise en compte obligatoire des horaires d'ouverture pour l'itinéraire optimal. L'application propose un mode congés/fermeture exceptionnelle que le commerçant active à sa guise. Le système adapte les délais de disponibilité selon la typologie de produit (ex: mise à jour du délai de retrait pour les articles non périssables).</span>
 
 ---
 
@@ -176,7 +172,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Existe-t-il un barème commun à toute la ville pour les points de fidélité ou chaque commerçant fixe-t-il son barème ?
 * **Intérêt pour le projet** : Modélisation des règles de conversion euros/points.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">Découplage strict en 2 systèmes totalement indépendants : d'un côté le système de points d'achat, de l'autre la régularité VFP. Pour les points, on gagne des points quand on achète : c'est chaque commerçant qui fixe le nombre de points par produit et par achat.</span>
 
 ---
@@ -185,7 +181,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Un client peut-il utiliser des points gagnés chez un boucher pour retirer un lot chez Suzanne (commerce différent) ?
 * **Intérêt pour le projet** : Déterminer si une chambre de compensation financière inter-commerces est nécessaire.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">Les points sont strictement propres à chaque commerçant : on ne mélange pas les points entre boutiques. Les points gagnés chez un commerçant ne sont utilisables que chez ce même commerçant. Pour obtenir un cadeau, l'usager doit en outre avoir un historique d'achat et présenter sa carte lors du paiement d'un achat en cours.</span>
 
 ---
@@ -194,7 +190,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Qui a le droit d'ajouter des cadeaux dans l'application : les commerçants individuellement ou l'association ?
 * **Intérêt pour le projet** : Définition des écrans de gestion et droits CRUD sur les lots.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">Chaque commerçant définit ses propres lots et cadeaux dans son propre catalogue (ex : Suzanne ajustant son lot de tarte au maroilles vers une mini-viennoiserie).</span>
 
 ---
@@ -203,7 +199,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Les points sont-ils valables indéfiniment ou expirent-ils après une période sans achat ?
 * **Intérêt pour le projet** : Mise en place d'un batch d'expiration automatique des points en base de données.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">Les points expirent au bout d'un an (12 mois).</span>
 
 ---
@@ -212,7 +208,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Qui prend en charge le coût des tickets de bus et des heures de stationnement offertes ?
 * **Intérêt pour le projet** : Établir la convention financière de reversement entre la ville et les opérateurs.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">La mairie promet et finance directement les tickets de bus et les 20 minutes de parking dans le cadre de sa politique d'attractivité du centre-ville.</span>
 
 ---
@@ -223,7 +219,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Quels critères précis déclenchent l'obtention du statut VFP et son maintien ?
 * **Intérêt pour le projet** : Coder l'algorithme exact du service VFP exécuté chaque nuit.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">1. Le statut VFP repose exclusivement sur le nombre de passages dans les commerces selon une règle de fenêtre glissante : on n'est pas VFP au début, il faut au moins 10 passages dans les 15 derniers jours pour débloquer le statut.<br>
 2. Un client peut passer autant de fois qu'il le souhaite dans une même boutique : il n'y a aucune limite de passage par jour ni obligation de mixité commerciale. L'usager peut effectuer l'ensemble de ses passages dans un seul commerce s'il le souhaite.<br>
 3. Dès les 10 passages cumulés, l'usager déclenche 1 ticket de bus ou 20 minutes de parking.<br>
@@ -235,7 +231,8 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : L'énoncé indique que Marius exploite les données pour relancer les clients lors de la perte du statut VFP. Le système doit-il envoyer des alertes préventives automatisées (ex: alerte à J-3) ?
 * **Intérêt pour le projet** : Déterminer le degré d'automatisation des relances marketing à coder.
 
-**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+**<span style="color: #166534;">Réponse validée MOA (Vague 2) :</span>**  
+<span style="color: #166534;">Oui, c'est à l'équipe de déterminer les seuils d'alerte. Plusieurs seuils sont possibles en fonction du degré d'adhésion et d'activité du client.</span>
 
 ---
 
@@ -243,7 +240,8 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Par quel canal Marius diffuse-t-il les offres : notifications push web/mobile, courriels, bannières in-app, SMS ?
 * **Intérêt pour le projet** : Choisir les connecteurs d'envoi et chiffrer les coûts d'infrastructure dans le livrable R1.
 
-**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+**<span style="color: #166534;">Réponse validée MOA (Vague 2) :</span>**  
+<span style="color: #166534;">C'est à l'équipe de décider des canaux retenus. Possibilité de déployer un second moyen/canal en V2.</span>
 
 ---
 
@@ -251,7 +249,8 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Quels critères de recherche Marius peut-il combiner pour cibler ses campagnes (inactivité, statut VFP, quartier) ?
 * **Intérêt pour le projet** : Spécification de l'API de filtrage dynamique et optimisation des index PostgreSQL.
 
-**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+**<span style="color: #166534;">Réponse validée MOA (Vague 2) :</span>**  
+<span style="color: #166534;">Sélection multicritère possible par quartier, par type de commerçant et par catégorie de commerçant.</span>
 
 ---
 
@@ -261,7 +260,8 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
   - Ou s'agit-il simplement d'un canal de diffusion permettant de pousser une notification avec un lien externe (type formulaire web) ?
 * **Intérêt pour le projet** : Déterminer l'ampleur du module d'enquête à développer et modéliser dans la base relationnelle.
 
-**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+**<span style="color: #166534;">Réponse validée MOA (Vague 2) :</span>**  
+<span style="color: #166534;">L'application doit intégrer la possibilité de pousser directement un QCM (Questionnaire à Choix Multiples) aux usagers.</span>
 
 ---
 
@@ -269,7 +269,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Quel est le cadre de conformité et de remontée de données pour la mairie et l'association ?
 * **Intérêt pour le projet** : Conception des vues SQL sécurisées et respect des exigences RGPD.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">L'association et la mairie doivent récupérer de la data pour évaluer le système et détecter les fraudes. Chaque partie prenante doit disposer d'un panel de gestion ou de visualisation des données. Les flux de données détaillés doivent respecter le secret commercial entre boutiques (aucun accès croisé aux paniers des concurrents).</span>
 
 ---
@@ -280,7 +280,8 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Pour Pierre, peut-on proposer une connexion simplifiée par Magic Link ou code PIN à 4 chiffres sans mot de passe complexe ?
 * **Intérêt pour le projet** : Ergonomie et accessibilité senior (RGAA).
 
-**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+**<span style="color: #166534;">Réponse validée MOA (Vague 2) :</span>**  
+<span style="color: #166534;">Oui, on peut et on doit simplifier pour les usagers finaux afin de faciliter l'adoption et l'accessibilité.</span>
 
 ---
 
@@ -290,7 +291,8 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
   - Pour les commerçants (ex: Suzanne) et administrateurs (ex: Marius) : niveau de sécurité renforcé en fonction de la criticité des données manipulées ?
 * **Intérêt pour le projet** : Définir la politique d'authentification, les règles de complexité et la gestion des sessions dans l'architecture de sécurité backend J2E.
 
-**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+**<span style="color: #166534;">Réponse validée MOA (Vague 2) :</span>**  
+<span style="color: #166534;">Pour les commerçants et les administrateurs, obligation de proposer un niveau de sécurité supérieur (mots de passe renforcés, contrôle d'accès strict). L'accès client usager peut être simplifié.</span>
 
 ---
 
@@ -298,7 +300,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Comment le client fait-il valoir son droit au ticket de bus et au stationnement gratuit ?
 * **Intérêt pour le projet** : Définition des flux de déblocage des privilèges dans l'interface usager.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">Pour avoir le ticket de transport en commun, il faut passer sa carte de la ville (ex: carte Pass Pass / Ilévia). Pour le stationnement, l'usager entre son numéro de plaque d'immatriculation dans l'application et déclenche son compteur de 20 minutes offertes.</span>
 
 ---
@@ -309,7 +311,8 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Quel sous-système logiciel doit être prioritairement livré de bout en bout pour la soutenance de fin décembre ?
 * **Intérêt pour le projet** : Focalisation des sprints de développement à partir d'octobre.
 
-**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+**<span style="color: #166534;">Réponse validée MOA (Vague 2) :</span>**  
+<span style="color: #166534;">La V1 : c'est à nous de choisir et de justifier les fonctionnalités de cette version dans nos livrables.</span>
 
 ---
 
@@ -317,7 +320,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Quels systèmes externes doivent faire l'objet d'une simulation ?
 * **Intérêt pour le projet** : Délimitation exacte des mocks RESTful à développer.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">Toutes les interactions avec des systèmes externes doivent être obligatoirement simulées (mocks logiciels d'API) : passerelle bancaire de paiement, réseau de transport urbain et système de stationnement. Aucune dépendance externe réelle non maîtrisée.</span>
 
 ---
@@ -326,7 +329,8 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Quel jeu de données représentatif et quels scénarios types la MOA souhaite-t-elle voir préparés afin de rendre les revues et démonstrations clients pleinement pertinentes ?
 * **Intérêt pour le projet** : Calibrer les scripts de seed SQL et les comptes de test pour illustrer immédiatement tous les parcours lors des revues de projet.
 
-**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+**<span style="color: #166534;">Réponse validée MOA (Vague 2) :</span>**  
+<span style="color: #166534;">L'équipe décide de ses jeux de données et de ses scénarios de démonstration.</span>
 
 ---
 
@@ -336,11 +340,12 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Quels indicateurs précis et outils concrets seront évalués pour la démarche d'éco-conception logicielle ?
 * **Intérêt pour le projet** : Outillage dans la chaîne CI/CD et métriques à consigner dans les dossiers techniques.
 
-**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+**<span style="color: #166534;">Réponse validée MOA (Vague 2) :</span>**  
+<span style="color: #166534;">On doit quantifier les ressources, mesurer la quantité de tokens et bien piloter leur utilisation.</span>
 
 ---
 
-# SECONDE VAGUE : QUESTIONS D'APPROFONDISSEMENT MÉTIER (POUR LA 2NDE ENTREVUE MOE)
+# SECONDE VAGUE : QUESTIONS D'APPROFONDISSEMENT MÉTIER (POUR LA 2NDE ENTREVUE MOA)
 
 ---
 
@@ -352,10 +357,8 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
   Par ailleurs, en l'absence de seuil minimal, la MOA identifie-t-elle un risque de fraude sur ce mécanisme (ex. multiplication de micro-achats pour générer des avantages gratuits financés par la mairie) ? Si un tel risque est identifié, la MOA souhaite-t-elle que l'équipe intègre un garde-fou dès la V1, ou ce point peut-il être traité en V2 ?
 * **Intérêt pour le projet** : Paramétrage du filtre de validation dans le service de comptabilisation des passages VFP.
 
-**<span style="color: #166534;">Réponse validée MOE (Principe de l'achat) :</span>**  
-<span style="color: #166534;">Un acte d'achat est obligatoirement requis pour valider un passage en boutique (les scans de complaisance sans achat sont exclus).</span>
-
-**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE (Montant seuil éventuel)</span>**
+**<span style="color: #166534;">Réponse validée MOA (Vague 2) :</span>**  
+<span style="color: #166534;">Pas de montant minimum. Les deux systèmes sont complémentaires : le système de points par achat et le système VFP.</span>
 
 ---
 
@@ -366,7 +369,8 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
   - L'application bloque-t-elle la délivrance du cadeau si aucun achat concomitant n'est enregistré lors de la session de caisse ?
 * **Intérêt pour le projet** : Spécification des règles de gestion bloquantes dans le contrôleur de distribution des lots.
 
-**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+**<span style="color: #166534;">Réponse validée MOA (Vague 2) :</span>**  
+<span style="color: #166534;">Le système doit mémoriser les achats (historique d'achat obligatoire). Il faut au moins un achat antérieur chez ce commerçant, sinon le cadeau est bloqué par l'application.</span>
 
 ---
 
@@ -375,7 +379,7 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Comment le système synchronise-t-il les créneaux de retrait lors d'une commande multi-commerçants ?
 * **Intérêt pour le projet** : Algorithme d'ordonnancement de tournée et gestion des états des sous-commandes marchandes.
 
-**<span style="color: #166534;">Réponse validée MOE :</span>**  
+**<span style="color: #166534;">Réponse validée MOA :</span>**  
 <span style="color: #166534;">Le système gère les créneaux boutique par boutique, combinés avec un algorithme d'optimisation du plus court chemin qui minimise le temps d'attente entre chaque créneau afin de regrouper au mieux la tournée de retrait pour l'usager.</span>
 
 ---
@@ -385,7 +389,8 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Quelle est la politique d'annulation : l'annulation de la sous-commande concernée génère-t-elle un remboursement partiel automatique tout en maintenant fermes les commandes chez les autres artisans ?
 * **Intérêt pour le projet** : Gestion des états transactionnels partiels dans la machine à états de la commande.
 
-**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+**<span style="color: #166534;">Réponse validée MOA (Vague 2) :</span>**  
+<span style="color: #166534;">Système transactionnel avec protocole en 2 phases (2PC). On considère qu'il y a du stock au moment de l'achat. Le stock entre la boutique physique et l'application doit être maintenu strictement cohérent.</span>
 
 ---
 
@@ -396,7 +401,8 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
   - Profil « Gérant / Propriétaire » (accès complet à la configuration financière et aux coordonnées bancaires) ?
 * **Intérêt pour le projet** : Modélisation des rôles RBAC (Role-Based Access Control).
 
-**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+**<span style="color: #166534;">Réponse validée MOA (Vague 2) :</span>**  
+<span style="color: #166534;">1 seul profil administrateur par commerçant.</span>
 
 ---
 
@@ -406,7 +412,8 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
   Le système de statut VFP tel que défini (aucun seuil minimal d'achat confirmé à ce stade, aucun plafond de cumul des avantages) expose potentiellement le dispositif à un usage abusif. La MOA souhaite-t-elle que l'équipe propose un mécanisme de prévention dès la V1, ou ce risque est-il jugé acceptable pour la première version du projet ?
 * **Intérêt pour le projet** : Conception du module de détection d'anomalies de fréquentation.
 
-**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+**<span style="color: #166534;">Réponse validée MOA (Vague 2) :</span>**  
+<span style="color: #166534;">L'équipe est libre de définir les fraudes potentielles et de sécuriser le système en conséquence.</span>
 
 ---
 
@@ -419,7 +426,8 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Ce cas d'usage de contrôle du stationnement par un agent municipal fait-il partie du périmètre fonctionnel attendu de l'application ShopLoc (ex. profil ou interface dédiée), ou relève-t-il exclusivement du système externe de gestion de voirie interfacé via API simulée ?
 * **Intérêt pour le projet** : Délimitation exacte du périmètre des acteurs, des rôles applicatifs et des cas d'utilisation du Livrable R4.
 
-**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+**<span style="color: #166534;">Réponse validée MOA (Vague 2) :</span>**  
+<span style="color: #166534;">Hors périmètre direct de l'application ShopLoc (géré par le système externe de voirie de la ville).</span>
 
 ---
 
@@ -428,7 +436,8 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : La redevance facturée à l'Association des commerçants doit-elle être modulée selon la taille de la collectivité locale (ex. selon des paliers démographiques ou le nombre de commerces adhérents), et existe-t-il des barèmes indicatifs attendus ?
 * **Intérêt pour le projet** : Élaboration de la grille tarifaire et de l'étude financière prévisionnelle du Livrable R3.
 
-**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+**<span style="color: #166534;">Réponse validée MOA (Vague 2) :</span>**  
+<span style="color: #166534;">La taille des données et l'infrastructure serveur vont correspondre à celle de la ville. Cela constituera également une métrique directrice pour définir le succès et la croissance du projet.</span>
 
 ---
 
@@ -437,7 +446,8 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : L'inscription au service ShopLoc, la création du compte client et la délivrance de la carte de fidélité sont-elles strictement gratuites pour l'usager final ?
 * **Intérêt pour le projet** : Hypothèse structurante pour le modèle économique et les projections financières du Livrable R3.
 
-**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+**<span style="color: #166534;">Réponse validée MOA (Vague 2) :</span>**  
+<span style="color: #166534;">Strictement gratuit pour le client usager, afin de l'inciter à fréquenter les commerces locaux.</span>
 
 ---
 
@@ -446,5 +456,6 @@ Ce document recense les questions de cadrage fonctionnel pour l'application Shop
 * **La question** : Le périmètre de développement pour les livrables applicatifs porte-t-il exclusivement sur une application Web responsive accessible sur navigateur (desktop et mobile), ou une application mobile native (iOS / Android) est-elle attendue ?
 * **Intérêt pour le projet** : Choix de la pile technologique frontend, dimensionnement des charges de développement et architecture logicielle pour R4/R5.
 
-**<span style="color: #c2410c;">Statut : En attente d'arbitrage MOE</span>**
+**<span style="color: #166534;">Réponse validée MOA (Vague 2) :</span>**  
+<span style="color: #166534;">Faire un développement applicatif Web responsive.</span>
 
