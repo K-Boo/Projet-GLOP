@@ -56,6 +56,9 @@ CAHIER DES CHARGES SHOPLOC (LIVRABLE OFFICIEL R1)
 │
 ├── 1. Cadrage Stratégique & Expression du Besoin
 │    ├── Positionnement & Double finalité (Revitalisation commerciale & Cohésion urbaine)
+│    ├── Matrice de Positionnement Concurrentiel (2 axes : Flux physique vs Délocalisation, Gratuité/Souveraineté vs Commissions privées)
+│    ├── Synthèse Panoramique du Modèle : Le Lean Canvas (9 blocs synthétiques sur 1 page A4)
+│    ├── Formalisation Canonique du Besoin (Méthode APTE) : Diagramme Bête à Cornes & Diagramme Pieuvre (FP / FC)
 │    ├── Pyramide des Besoins (Stratégiques, Tactiques avec convention tripartite, Opérationnels)
 │    ├── Périmètre strict (Click & Collect en boutique obligatoire, zéro livraison à domicile)
 │    ├── Scalabilité territoriale & Modularité (Multi-tenancy par ville, étanchéité des données)
@@ -125,6 +128,27 @@ CAHIER DES CHARGES SHOPLOC (LIVRABLE OFFICIEL R1)
 | **08** | Gouvernance Agile & Gantt | Scrum Master (`flash`) | `agent_projet/docs/cdc_sections/08_gouvernance_agile_gantt.md` |
 | **09** | Cadrage Financier par Coûts Complets | CFO Stratégie Financière (`pro`) | `agent_projet/docs/cdc_sections/09_analyse_financiere_couts_complets.md` |
 | **10** | Document Maître Unifié & PDF A4 | QA & Security Sentinel (`flash_lite`) | `agent_projet/docs/CAHIER_DES_CHARGES_R1.md` |
+
+---
+
+## 4.1. Articulation des 3 Modèles Visuels Majeurs Intégrés
+
+Pour respecter le principe directeur de réduction drastique du texte au profit de supports visuels denses et synthétiques, trois modèles majeurs sont intégrés dès la Section 01 :
+
+1. **La Matrice de Positionnement Concurrentiel (2 axes)** :
+   - *Niveau d'intervention* : Niveau stratégique macro (Section 01, positionnement marché).
+   - *Combinaison* : Se combine directement avec la **Vision Stratégique** et la **Pyramide des Besoins**. Elle oppose le modèle ShopLoc (ancrage physique piétonnier en centre-ville, gratuité citoyenne et souveraineté communale) aux modèles prédateurs des géants du e-commerce (livraison motorisée délocalisée, prélèvement de commissions privées).
+2. **Le Lean Canvas (9 blocs sur 1 page A4)** :
+   - *Niveau d'intervention* : Synthèse panoramique de modèle économique et opérationnel (Section 01).
+   - *Combinaison* : Il agit comme la colonne vertébrale visuelle du livrable en reliant :
+     - Les *Segments Clients* aux **Personas** (Section 02).
+     - La *Solution* et les *Canaux* aux **Processus Métiers BPMN** (Section 03) et à l'**Ergonomie** (Section 05).
+     - La *Structure des Coûts* et les *Flux de Revenus* au **Cadrage Financier par Coûts Complets** (Section 09).
+3. **Le Diagramme Bête à Cornes & Diagramme Pieuvre (Méthode APTE)** :
+   - *Niveau d'intervention* : Ingénierie des exigences et frontière fonctionnelle du système (Section 01).
+   - *Combinaison* :
+     - *Bête à cornes* : Formalise en une bulle visuelle à qui le système rend service (Citoyens, Commerçants, Mairie), sur quoi il agit (le commerce de proximité et la mobilité) et dans quel but.
+     - *Diagramme Pieuvre* : Les **Fonctions Principales (FP)** alimentent directement les grandes Épiques du **User Story Mapping** (Section 06), tandis que les **Fonctions Contraintes (FC)** dictent les exigences de sécurité RGPD, d'accessibilité RGAA AA et de frugalité technique (Sections 05 et 07).
 
 ---
 
