@@ -300,12 +300,12 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Formalisation des arbitrages structurants dans `agent_projet/docs/DECISIONS.md` :
     - ADR-011 : Cadrage stratégique multi-échelle, modularité territoriale, flux physique obligatoire en boutique, KPIs à double échelle et gratuité citoyenne intégrale.
     - ADR-012 : Rejet des microservices purs au profit d'un Monolithe Modulaire Multi-Tenant à briques activables (Feature Flags), étanchéité stricte des données et budgets municipaux, report méthodique de la tarification en fin de processus pour application de la méthode des coûts complets, intégration du tiers de confiance en V2/V3.
-  - Rédaction et formalisation du plan directeur validé dans [`agent_projet/docs/PLAN_DIRECTEUR_CAHIER_DES_CHARGES_R1.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_projet/docs/PLAN_DIRECTEUR_CAHIER_DES_CHARGES_R1.md) détaillant les 9 sections, la matrice de délégation et le protocole d'arborescence inversée.
+  - Rédaction et formalisation du plan directeur validé dans [`agent_projet/docs/PLAN_DIRECTEUR_CAHIER_DES_CHARGES_R1.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_projet/docs/PLAN_DIRECTEUR_CAHIER_DES_CHARGES_R1.md) détaillant les 9 sections, la matrice de délégation, le rôle de super-conseiller (skill /grill-me) et le pipeline chronologique de fabrication par dépendances (le Lean Canvas étant produit en étape 10 en synthèse avant placement éditorial en Section 01).
   - Contrôle d'intégrité via `verify_deliverables.py` (16 fichiers audités, 0 violation, 0 canari, 0 emoji).
 - **Décisions actées** :
-  - Validation formelle du plan directeur et de la trame en 9 sections du Cahier des Charges R1.
+  - Validation formelle du plan directeur, de la distinction ordre éditorial vs pipeline chronologique, et du rôle de super-conseiller de l'agent.
   - Posture d'ingénierie professionnelle inviolable pour tous les livrables officiels.
-  - Clôture de la Session 16.
+  - Clôture formelle de la Session 16.
 - **Reste à faire / Objectifs pour la Session 17** :
   - Choix et configuration des outils et serveurs MCP pour la modélisation graphique des livrables (MCD, BPMN).
   - Mise en place d'un outil de pilotage visuel et définition de la charte graphique globale pour l'ensemble du projet.

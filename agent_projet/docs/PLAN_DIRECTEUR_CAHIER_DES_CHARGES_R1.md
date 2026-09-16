@@ -33,17 +33,55 @@ Conformément à la Règle Permanente 7 de [`PROJECT_RULES.md`](file:///c:/Users
 
 ## 2. Démarche d'Ingénierie par Arborescence Inversée
 
-La réalisation du Cahier des Charges ne s'effectue pas d'un seul bloc, mais par briques modulaires indépendantes selon le protocole séquentiel **« 1 Session = 1 Livrable »** :
+## 2. Démarche d'Ingénierie par Arborescence Inversée & Rôle de l'Agent
+
+### 2.1. Contrat de Rôle de l'Agent : Super-Conseiller & Mentor Méthodologique
+- **Aucune génération à l'aveugle** : L'agent ne produit aucun livrable de manière anticipée ou autonome.
+- **Principe Human-in-the-Loop strict** : Pour chaque livrable, une session dédiée est ouverte. L'agent applique le protocole `/grill-me` (questions ultra-spécifiques) pour challenger l'équipe, soumettre les options d'ingénierie et s'assurer que l'équipe étudiante maîtrise, comprend et valide 100% des choix avant toute écriture.
+- **Traçabilité ascendante stricte** : Chaque livrable est alimenté exclusivement par les informations consolidées des livrables précédents afin de garantir une cohérence absolue des données.
+
+### 2.2. Distinction Fondamentale : Ordre Éditorial vs Pipeline de Fabrication
+Une erreur classique consiste à confondre l'ordre de lecture d'un document et l'ordre réel de sa conception :
+- **L'Ordre Éditorial (Table des Matières finale)** : Scénarisé pour le lecteur / jury. Le Lean Canvas y figure en première section comme synthèse exécutive pour donner la vision d'ensemble en 2 minutes.
+- **Le Pipeline Chronologique de Fabrication (Graphe de dépendances réelles)** : On ne peut pas concevoir un Lean Canvas ni calculer des coûts complets au début du projet. Le Lean Canvas est un **artefact de synthèse consolidée**, fabriqué à l'étape 10 une fois que les personas, les flux BPMN, le modèle de données et l'architecture technique sont stabilisés.
 
 ```text
-[Étape 1 : Questionnement Spécifique] -> Entretien ciblé sur les arbitrages fins du livrable.
-                    │
-[Étape 2 : Production Modulaire]      -> Rédaction de la section dans agent_projet/docs/cdc_sections/
-                    │
-[Étape 3 : Revue & Validation Fine]   -> Relecture, ajustement et consignation dans JOURNAL_DE_BORD.md
-                    │
-[Étape 4 : Consolidation Finale]      -> Assemblage du document maître CAHIER_DES_CHARGES_R1.md & PDF
+PIPELINE CHRONOLOGIQUE DE FABRICATION (ORDRE RÉEL DE PRODUCTION) :
+
+[Étape 01] Cadrage du Besoin Canonique (APTE : Bête à cornes & Pieuvre, Positionnement 2 axes)
+     │   -> Fixe à qui l'on rend service, les fonctions principales (FP) et contraintes (FC).
+     ▼
+[Étape 02] Personas Approfondis & Parcours Utilisateurs (User Journeys)
+     │   -> Incarnation vivante des acteurs identifiés en Étape 01 (Pierre, Suzanne, Marius, etc.).
+     ▼
+[Étape 03] Modélisation des Processus Métiers (BPMN)
+     │   -> Met en mouvement les parcours des personas (commandes, passage caisse, statut VFP 15j).
+     ▼
+[Étape 04] Modèle Conceptuel de Données (MCD / ERD)
+     │   -> Déduit directement des entités et données manipulées dans les flux BPMN (Étape 03).
+     ▼
+[Étape 05] Architecture de l'Information, Ergonomie & Accessibilité RGAA AA
+     │   -> Traduit les étapes des flux BPMN et les contraintes seniors en écrans et zonings clairs.
+     ▼
+[Étape 06] User Story Mapping & Backlog MoSCoW (Critères Gherkin)
+     │   -> Découpe les fonctions des BPMN et des zonings en briques de dev INVEST (V1 MVP vs V2/V3).
+     ▼
+[Étape 07] Cadrage Technique Préliminaire & Trajectoire d'Architecture (C4)
+     │   -> Dimensionne le socle (Monolithe Modulaire, PostgreSQL) pour faire tourner le backlog.
+     ▼
+[Étape 08] Gouvernance Projet, WBS & Diagramme de Gantt
+     │   -> Planifie dans le temps le développement du backlog (Étape 06) sur l'architecture (Étape 07).
+     ▼
+[Étape 09] Analyse Financière par Coûts Complets (Centres d'Analyse & UO)
+     │   -> Évalue le coût réel de revient du Run (serveurs Étape 07) et du Build (temps Étape 08).
+     ▼
+[Étape 10] Synthèse Panoramique : LE LEAN CANVAS
+     │   -> Rempli en toute fin : ses 9 cases sont alors 100% maîtrisées, chiffrées et cohérentes !
+     ▼
+[Étape 11] Consolidation du Cahier des Charges Maître & Compilation PDF A4
+         -> Assemblage dans l'ordre éditorial officiel (le Lean Canvas est placé en Section 01).
 ```
+
 
 ---
 
