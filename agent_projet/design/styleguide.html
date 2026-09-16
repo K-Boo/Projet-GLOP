@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guide de Style & Identite Visuelle — Projet ShopLoc</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/latin-modern-web@1.0.0/style.css">
+  <link rel="stylesheet" href="theme.css">
+  <style>
+    body {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #F8FAFC;
+    }
+    .styleguide-sheet {
+      background: #FFFFFF;
+      padding: 40px 50px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      border-radius: 4px;
+      border: 1px solid #E2E8F0;
+    }
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 12px 0 20px 0;
+    }
+    .swatch-card {
+      border: 1px solid #CBD5E1;
+      border-radius: 4px;
+      overflow: hidden;
+      font-size: 8.5pt;
+      font-family: var(--font-sans);
+    }
+    .swatch-color {
+      height: 48px;
+    }
+    .swatch-info {
+      padding: 6px 8px;
+      background: #FFFFFF;
+    }
+    .swatch-name {
+      font-weight: bold;
+      color: #0F172A;
+    }
+    .swatch-hex {
+      font-family: var(--font-mono);
+      color: #475569;
+    }
+    .swatch-ratio {
+      font-size: 7.5pt;
+      color: #166534;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<div class="styleguide-sheet">
+
+  <div class="institution-header">
+    <img class="institution-logo" src="../docs/assets/logo_univ_lille.png" alt="Universite de Lille">
+    <img class="institution-logo" src="../docs/assets/logo_fst_informatique.png" alt="Faculte des Sciences et Technologies">
+  </div>
+
+  <div class="title-block">
+    <h1 class="latex-main-title">Charte Graphique & Design Tokens</h1>
+    <div class="latex-sub-title">Systeme Visuel Unifie pour l Ensemble des Livrables — Master 2 MIAGE GLOP</div>
+  </div>
+
+  <div class="abstract-box">
+    <div class="abstract-title">Principes Fondamentaux de Conception</div>
+    <p class="abstract-text">
+      Ce referentiel fixe l identite visuelle du projet ShopLoc. Il repose sur trois exigences cardinales :
+      une elegance academique sobre inspiree des publications LaTeX, une conformite stricte aux standards d accessibilite
+      numerique RGAA AA / WCAG 2.1 (notamment pour le persona senior Pierre), et l application rigoureuse de la regle
+      permanente zero emoji sur l integralite des supports ecrits et visuels.
+    </p>
+  </div>
+
+  <h2 class="section-heading">1. Palette Chromatique Harmonisee</h2>
+  <div class="swatch-grid">
+    <div class="swatch-card">
+      <div class="swatch-color" style="background: #0F2A4A;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Bleu Institutionnel</div>
+        <div class="swatch-hex">#0F2A4A</div>
+        <div class="swatch-ratio">Contraste : 14.8:1 (AAA)</div>
+      </div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-color" style="background: #6A1B29;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Bordeaux Academique</div>
+        <div class="swatch-hex">#6A1B29</div>
+        <div class="swatch-ratio">Contraste : 10.4:1 (AAA)</div>
+      </div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-color" style="background: #166534;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Vert Validation MOA</div>
+        <div class="swatch-hex">#166534</div>
+        <div class="swatch-ratio">Contraste : 7.2:1 (AAA)</div>
+      </div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch-color" style="background: #B45309;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Ambre Commerce Local</div>
+        <div class="swatch-hex">#B45309</div>
+        <div class="swatch-ratio">Contraste : 4.8:1 (AA)</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-heading">2. Cartouche Normalise GLOP</h2>
+  <div class="cartouche-container">
+    <table class="cartouche-table">
+      <tr><th>Champ</th><th>Information Normalisee</th></tr>
+      <tr><td><strong>Intitule du Projet</strong></td><td>Plateforme ShopLoc — Marketplace & Fidelisation Territoriale</td></tr>
+      <tr><td><strong>Identifiant Officiel</strong></td><td><code class="latex-code">MiageShopLoc</code></td></tr>
+      <tr><td><strong>Reference Documentaire</strong></td><td><code class="latex-code">GLOP-2026-R1-SPEC-v1.0</code></td></tr>
+      <tr><td><strong>Contexte Academique</strong></td><td>Master 2 MIAGE — UE Genie Logiciel par la Pratique (2026-2027)</td></tr>
+      <tr><td><strong>Destinataires (MOA / MOD)</strong></td><td>Laurence Duchien, Anne Etien, Francois Secchi, Jeremy Woirhaye</td></tr>
+      <tr><td><strong>Statut du Document</strong></td><td>Version 1.0 — <span class="badge badge-success">Valide</span></td></tr>
+      <tr><td><strong>Tag de Communication</strong></td><td><code class="latex-code">[GLOP]</code> (obligatoire dans l objet de courriel)</td></tr>
+    </table>
+  </div>
+
+  <h2 class="section-heading">3. Tableau de Donnees au Format Booktabs</h2>
+  <div class="table-wrapper">
+    <table class="booktabs">
+      <thead>
+        <tr>
+          <th>Persona Cible</th>
+          <th>Profil Metier</th>
+          <th>Exigence d Accessibilite</th>
+          <th>Priorite</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Pierre (74 ans)</strong></td>
+          <td>Client senior en centre-ville</td>
+          <td>Typographie agrandie, carte physique avec QR code</td>
+          <td><span class="badge badge-brand">Critique RGAA</span></td>
+        </tr>
+        <tr>
+          <td><strong>Suzanne (22 ans)</strong></td>
+          <td>Commerçante independante</td>
+          <td>Saisie rapide des stocks, scan retrait express</td>
+          <td><span class="badge badge-success">Haute</span></td>
+        </tr>
+        <tr>
+          <td><strong>Marius (27 ans)</strong></td>
+          <td>Administrateur communal</td>
+          <td>Donnees anonymisees, conformite stricte RGPD</td>
+          <td><span class="badge badge-warning">Reglementaire</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="section-heading">4. Typologie des Encarts Decisionnels</h2>
+  
+  <div class="callout-box callout-success">
+    <strong>Decision Validee MOA :</strong> Le programme de fidelite est strictement segmente en deux moteurs independants. Les points marchands restent cantonnes a chaque boutique partenaire, tandis que le statut VFP communal repose sur une regularite d au moins 10 passages sur une fenetre glissante de 15 jours.
+  </div>
+
+  <div class="callout-box callout-warning">
+    <strong>Point d Attention / Arbitrage en Cours :</strong> Le bareme precis de valorisation des tickets de transport en commun et du forfait stationnement sera arrete lors de l atelier tripartite Ville-Association.
+  </div>
+
+  <div class="callout-box callout-info">
+    <strong>Note d Architecture :</strong> Le choix d un Monolithe Modulaire Multi-Tenant garantit l etancheite complete des bases de donnees de chaque collectivite adherente tout en maintenant les couts d infrastructure Run a un niveau frugal.
+  </div>
+
+</div>
+
+</body>
+</html>

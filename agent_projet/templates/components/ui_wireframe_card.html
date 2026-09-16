@@ -1,0 +1,132 @@
+<!-- COMPOSANTS DE MAQUETTES D'ECRANS CLES (ERGONOMIE & ACCESSIBILITE RGAA AA) -->
+<div class="wireframe-collection" style="font-family: var(--font-sans); margin: 16pt 0;">
+
+  <!-- 1. VUE PIERRE (SENIOR 74 ANS) — CARTE PHYSIQUE / APPLICATION SIMPLIFIEE -->
+  <div class="diagram-container" style="text-align: left; padding: 12pt; border: 1.5pt solid var(--color-brand-primary); margin-bottom: 16pt;">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1pt solid var(--color-border-light); padding-bottom: 6pt; margin-bottom: 8pt;">
+      <div>
+        <span style="font-weight: bold; font-size: 11pt; color: var(--color-brand-primary);">Maquette 1 — Interface Citoyen Senior & Carte de Fidelite (Persona Pierre)</span>
+        <div style="font-size: 8pt; color: var(--color-text-secondary);">Accessibilite RGAA AA : Contraste renforce, police agrandie (> 16px), parcours epure</div>
+      </div>
+      <span class="badge badge-brand">RGAA AA Conforme</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 260px 1fr; gap: 14pt; align-items: start;">
+      <!-- Representation de la carte physique papier QR -->
+      <div style="background: #0F2A4A; color: #FFFFFF; border-radius: 8pt; padding: 12pt; box-shadow: 0 2px 4px rgba(0,0,0,0.15);">
+        <div style="display: flex; justify-content: space-between; font-size: 8pt; margin-bottom: 8pt;">
+          <span style="font-weight: bold; letter-spacing: 0.05em;">CARTE SHOPLOC</span>
+          <span>VILLE PARTENAIRE</span>
+        </div>
+        <div style="font-size: 11pt; font-weight: bold; margin-bottom: 4pt;">Pierre DUPONT</div>
+        <div style="font-size: 8pt; opacity: 0.8; margin-bottom: 10pt;">ID : <code>SL-SENIOR-74-8842</code></div>
+        
+        <!-- Simulation QR Code SVG -->
+        <div style="background: #FFFFFF; padding: 6pt; border-radius: 4pt; width: 80px; height: 80px; margin: 0 auto 8pt auto;">
+          <svg viewBox="0 0 100 100" width="100%" height="100%">
+            <rect x="5" y="5" width="30" height="30" fill="#000" />
+            <rect x="65" y="5" width="30" height="30" fill="#000" />
+            <rect x="5" y="65" width="30" height="30" fill="#000" />
+            <rect x="12" y="12" width="16" height="16" fill="#FFF" />
+            <rect x="72" y="12" width="16" height="16" fill="#FFF" />
+            <rect x="12" y="72" width="16" height="16" fill="#FFF" />
+            <rect x="42" y="42" width="16" height="16" fill="#000" />
+            <rect x="65" y="65" width="14" height="14" fill="#000" />
+          </svg>
+        </div>
+        <div style="font-size: 7pt; text-align: center; opacity: 0.8;">Presentez cette carte en caisse</div>
+      </div>
+
+      <!-- Ecran mobile associe -->
+      <div style="background: #FFFFFF; border: 1pt solid var(--color-border-light); border-radius: 6pt; padding: 10pt;">
+        <div style="font-size: 12pt; font-weight: bold; color: var(--color-brand-primary); margin-bottom: 6pt;">
+          Bonjour Pierre,
+        </div>
+        <div style="background: #F0FDF4; border: 1pt solid #166534; border-radius: 4pt; padding: 8pt; margin-bottom: 8pt;">
+          <div style="font-size: 9.5pt; font-weight: bold; color: #166534;">Statut de Fidelite VFP en cours :</div>
+          <div style="font-size: 13pt; font-weight: bold; color: #0F172A; margin: 2pt 0;">8 / 10 passages effectues</div>
+          <div style="font-size: 8.5pt; color: #334155;">Il vous reste <strong>2 passages</strong> d ici le 22/09 pour obtenir 1 ticket de bus offert.</div>
+        </div>
+
+        <div style="font-size: 9pt; font-weight: bold; margin-bottom: 4pt;">Vos commandes Click & Collect a retirer :</div>
+        <div style="border: 0.5pt solid var(--color-border-light); border-radius: 4pt; padding: 6pt; font-size: 8.5pt; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <strong>Boulangerie du Centre</strong> — 1 Pain de campagne<br>
+            <span style="font-size: 7.5pt; color: var(--color-text-secondary);">Retrait aujourd hui avant 18h30</span>
+          </div>
+          <span class="badge badge-success">Pret a retirer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. VUE SUZANNE (COMMERCANTE 22 ANS) — ENREGISTREMENT CAISSE & RETRAIT -->
+  <div class="diagram-container" style="text-align: left; padding: 12pt; border: 1.5pt solid var(--color-brand-primary); margin-bottom: 16pt;">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1pt solid var(--color-border-light); padding-bottom: 6pt; margin-bottom: 8pt;">
+      <div>
+        <span style="font-weight: bold; font-size: 11pt; color: var(--color-brand-primary);">Maquette 2 — Terminal de Caisse Commerçant (Persona Suzanne)</span>
+        <div style="font-size: 8pt; color: var(--color-text-secondary);">Ergonomie operative : Enregistrement de passage en moins de 3 secondes, scan QR</div>
+      </div>
+      <span class="badge badge-success">Operationnel V1</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12pt;">
+      <div style="background: #F8FAFC; border: 1pt solid var(--color-border-light); border-radius: 6pt; padding: 8pt;">
+        <div style="font-size: 9pt; font-weight: bold; color: var(--color-brand-primary); margin-bottom: 6pt;">1. Validation Passage & Fidelite</div>
+        <div style="font-size: 8pt; color: var(--color-text-secondary); margin-bottom: 6pt;">Scanner la carte client ou saisir l identifiant :</div>
+        <div style="display: flex; gap: 6pt; margin-bottom: 8pt;">
+          <input type="text" value="SL-SENIOR-74-8842" style="font-family: var(--font-mono); font-size: 8.5pt; padding: 4pt; border: 1pt solid #CBD5E1; border-radius: 3pt; width: 65%;" readonly>
+          <button style="background: var(--color-brand-primary); color: #FFF; border: none; padding: 4pt 8pt; border-radius: 3pt; font-size: 8pt; font-weight: bold;">Valider Passage</button>
+        </div>
+        <div style="font-size: 7.5pt; color: #166534; background: #DCFCE7; padding: 4pt; border-radius: 3pt;">
+          Validation automatique : Passage VFP incremente & 1 point marchand ajoute.
+        </div>
+      </div>
+
+      <div style="background: #F8FAFC; border: 1pt solid var(--color-border-light); border-radius: 6pt; padding: 8pt;">
+        <div style="font-size: 9pt; font-weight: bold; color: var(--color-brand-primary); margin-bottom: 6pt;">2. Retrait Commande Click & Collect</div>
+        <div style="font-size: 8pt; color: var(--color-text-secondary); margin-bottom: 4pt;">Commande #CC-2026-1049 (Pierre D.)</div>
+        <div style="font-size: 8pt; margin-bottom: 6pt;">Articles : 1x Pain campagne (2.10 €) — Paye en ligne</div>
+        <button style="background: #166534; color: #FFF; border: none; padding: 6pt 10pt; border-radius: 3pt; font-size: 8.5pt; font-weight: bold; width: 100%;">
+          Confirmer la Remise au Client (Clôture)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. VUE MARIUS (ADMINISTRATEUR COMMUNAL 27 ANS) — TABLEAU DE BORD RGPD -->
+  <div class="diagram-container" style="text-align: left; padding: 12pt; border: 1.5pt solid var(--color-brand-primary);">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1pt solid var(--color-border-light); padding-bottom: 6pt; margin-bottom: 8pt;">
+      <div>
+        <span style="font-weight: bold; font-size: 11pt; color: var(--color-brand-primary);">Maquette 3 — Tableau de Bord de Pilotage Territorial (Persona Marius)</span>
+        <div style="font-size: 8pt; color: var(--color-text-secondary);">Supervision municipale : Indicateurs macroscopiques agreges, anonymisation totale RGPD</div>
+      </div>
+      <span class="badge badge-warning">RGPD Zero Nominatif</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8pt; margin-bottom: 10pt;">
+      <div style="background: #EFF6FF; border: 1pt solid #BFDBFE; border-radius: 4pt; padding: 8pt; text-align: center;">
+        <div style="font-size: 8pt; color: #1E40AF; text-transform: uppercase;">Commerces Adherents</div>
+        <div style="font-size: 16pt; font-weight: bold; color: #0F2A4A; margin-top: 2pt;">42 boutiques</div>
+        <div style="font-size: 7pt; color: #166534;">+12% ce trimestre</div>
+      </div>
+
+      <div style="background: #F0FDF4; border: 1pt solid #BBF7D0; border-radius: 4pt; padding: 8pt; text-align: center;">
+        <div style="font-size: 8pt; color: #166534; text-transform: uppercase;">Passages en Centre-Ville</div>
+        <div style="font-size: 16pt; font-weight: bold; color: #0F2A4A; margin-top: 2pt;">14 820 flux</div>
+        <div style="font-size: 7pt; color: #166534;">Fenetre 15 jours active</div>
+      </div>
+
+      <div style="background: #FFFBEB; border: 1pt solid #FDE68A; border-radius: 4pt; padding: 8pt; text-align: center;">
+        <div style="font-size: 8pt; color: #B45309; text-transform: uppercase;">Avantages Mobilite Delivres</div>
+        <div style="font-size: 16pt; font-weight: bold; color: #0F2A4A; margin-top: 2pt;">610 tickets</div>
+        <div style="font-size: 7pt; color: #475569;">Bus & 20 min parking</div>
+      </div>
+    </div>
+
+    <div style="font-size: 7.5pt; color: var(--color-text-secondary); background: #F1F5F9; padding: 4pt 8pt; border-radius: 3pt;">
+      <strong>Garantie de souverainete :</strong> Aucune donnee nominative ni panier detaille d achat n est accessible a la collectivite territoriale.
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,264 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "document_cible": "Livrable R1 — Cahier des Charges ShopLoc (GLOP-2026-R1-CDC-v1.0)",
+  "derniere_mise_a_jour": "2026-09-16T19:58:00+02:00",
+  "statut_global": "INITIALISE_PRET_POUR_REDACTION",
+  "directives_de_collaboration_multi_agents": {
+    "regle_01_unicite": "Aucun agent ou collaborateur ne doit entreprendre la redaction d'une section deja marquee 'IN_PROGRESS' ou 'COMPLETED'. Avant tout travail, verifier l'etat dans ce fichier.",
+    "regle_02_ordre_de_dependance_strict": "Il est FORMELLEMENT INTERDIT d'initier une section si 100% de ses dependances amont ('prerequisites') ne sont pas a l'etat 'COMPLETED'. Le graphe de dependances decoule de la demarche d'arborescence inversee (PLAN_DIRECTEUR_CAHIER_DES_CHARGES_R1.md).",
+    "regle_03_reservation_de_tache": "Des qu'un agent ou membre demarre une section, il doit obligatoirement passer son statut a 'IN_PROGRESS' et renseigner son 'assigne_a' et la 'date_debut'. A l'achevement et verification DoD, passer a 'COMPLETED'.",
+    "regle_04_verification_obligatoire": "Aucune section ne peut etre marquee 'COMPLETED' sans verification du respect de la charte graphique, de l'absence d'emojis et de la conformite verify_deliverables.py."
+  },
+  "pipeline_chronologique": [
+    {
+      "step_id": "STEP-01",
+      "section_code": "SEC-01",
+      "titre": "Cadrage Strategique, Expression du Besoin & Methode APTE",
+      "statut": "NOT_STARTED",
+      "assigne_a": null,
+      "date_debut": null,
+      "date_achevement": null,
+      "prerequisites": [],
+      "fichier_source": "agent_projet/docs/cdc_sections/01_cadrage_strategique_besoins.md",
+      "modeles_visuels_requis": [
+        "Bete a Cornes APTE (SVG)",
+        "Diagramme Pieuvre APTE (SVG)",
+        "Matrice de Positionnement Concurrentiel 2 axes (SVG)"
+      ],
+      "skills_recommandes": [
+        "apte-functional-analysis",
+        "competitive-landscape",
+        "product-manager-toolkit"
+      ],
+      "agent_responsable": "Product Owner (flash)"
+    },
+    {
+      "step_id": "STEP-02",
+      "section_code": "SEC-02",
+      "titre": "Personas Approfondis & Parcours Utilisateurs Cibles (User Journeys)",
+      "statut": "NOT_STARTED",
+      "assigne_a": null,
+      "date_debut": null,
+      "date_achevement": null,
+      "prerequisites": ["STEP-01"],
+      "fichier_source": "agent_projet/docs/cdc_sections/02_personas_et_parcours_utilisateurs.md",
+      "modeles_visuels_requis": [
+        "Tableaux de bord des 4 personas (Pierre, Suzanne, Marius, Julie & Arthur)",
+        "User Journey Maps sans carte d'empathie"
+      ],
+      "skills_recommandes": [
+        "product-manager-toolkit",
+        "beautiful-prose"
+      ],
+      "agent_responsable": "Business Analyst (flash)"
+    },
+    {
+      "step_id": "STEP-03",
+      "section_code": "SEC-03",
+      "titre": "Modelisation des Processus Metiers (BPMN 2.0)",
+      "statut": "NOT_STARTED",
+      "assigne_a": null,
+      "date_debut": null,
+      "date_achevement": null,
+      "prerequisites": ["STEP-02"],
+      "fichier_source": "agent_projet/docs/cdc_sections/03_processus_metier_bpmn.md",
+      "modeles_visuels_requis": [
+        "P1 : Conventionnement et adhesion",
+        "P2 : Commande Click & Collect et retrait 2PC",
+        "P3 : Caisse commerçant et calcul VFP fenetre 15j",
+        "P4 : Conversion fidelite mobilite (bus/parking)",
+        "P5 : Anomalies, no-show et annulations"
+      ],
+      "skills_recommandes": [
+        "bpmn-process-modeling",
+        "mermaid-expert"
+      ],
+      "agent_responsable": "Architecte Fonctionnel (pro)"
+    },
+    {
+      "step_id": "STEP-04",
+      "section_code": "SEC-04",
+      "titre": "Modelisation Conceptuelle des Donnees (MCD Merise & Dictionnaire)",
+      "statut": "NOT_STARTED",
+      "assigne_a": null,
+      "date_debut": null,
+      "date_achevement": null,
+      "prerequisites": ["STEP-03"],
+      "fichier_source": "agent_projet/docs/cdc_sections/04_modele_conceptuel_donnees_mcd.md",
+      "modeles_visuels_requis": [
+        "Schema Conceptuel Merise Pastel (Entites, Associations, Cardinalites)",
+        "Dictionnaire Formel des Donnees Booktabs"
+      ],
+      "skills_recommandes": [
+        "merise-data-modeling",
+        "database-design",
+        "postgresql"
+      ],
+      "agent_responsable": "Architecte Donnees (pro)"
+    },
+    {
+      "step_id": "STEP-05",
+      "section_code": "SEC-05",
+      "titre": "Architecture de l'Information, Ergonomie & Accessibilite RGAA AA",
+      "statut": "NOT_STARTED",
+      "assigne_a": null,
+      "date_debut": null,
+      "date_achevement": null,
+      "prerequisites": ["STEP-02", "STEP-03"],
+      "fichier_source": "agent_projet/docs/cdc_sections/05_ergonomie_accessibilite_rgaa.md",
+      "modeles_visuels_requis": [
+        "Zonings d'ecrans Pierre (carte papier QR / mobile senior)",
+        "Zoning caisse express Suzanne",
+        "Tableau de bord communal Marius anonymise RGPD"
+      ],
+      "skills_recommandes": [
+        "ui-ux-pro-max",
+        "accessibility-compliance-accessibility-audit"
+      ],
+      "agent_responsable": "Expert UX & Accessibilite (flash)"
+    },
+    {
+      "step_id": "STEP-06",
+      "section_code": "SEC-06",
+      "titre": "User Story Mapping & Backlog Priorise MoSCoW",
+      "statut": "NOT_STARTED",
+      "assigne_a": null,
+      "date_debut": null,
+      "date_achevement": null,
+      "prerequisites": ["STEP-03", "STEP-05"],
+      "fichier_source": "agent_projet/docs/cdc_sections/06_backlog_user_story_mapping.md",
+      "modeles_visuels_requis": [
+        "Grille Story Mapping V1 MVP vs V2/V3",
+        "Tableau du Backlog MoSCoW Booktabs",
+        "Fiches User Stories INVEST avec criteres Gherkin"
+      ],
+      "skills_recommandes": [
+        "product-manager-toolkit",
+        "business-analyst"
+      ],
+      "agent_responsable": "Product Owner (flash)"
+    },
+    {
+      "step_id": "STEP-07",
+      "section_code": "SEC-07",
+      "titre": "Cadrage Technique Preliminaire & Architecture C4",
+      "statut": "NOT_STARTED",
+      "assigne_a": null,
+      "date_debut": null,
+      "date_achevement": null,
+      "prerequisites": ["STEP-04", "STEP-06"],
+      "fichier_source": "agent_projet/docs/cdc_sections/07_cadrage_technique_architecture.md",
+      "modeles_visuels_requis": [
+        "Diagramme C4 Contexte",
+        "Diagramme C4 Conteneurs (Monolithe Modulaire Docker)",
+        "Tableau des Contrats OpenAPI REST 3.1"
+      ],
+      "skills_recommandes": [
+        "domain-driven-design",
+        "c4-architecture-c4-architecture",
+        "openapi-spec-generation",
+        "api-design-principles"
+      ],
+      "agent_responsable": "Architecte Logiciel (pro)"
+    },
+    {
+      "step_id": "STEP-08",
+      "section_code": "SEC-08",
+      "titre": "Gouvernance Agile, Organigramme WBS & Planning Gantt",
+      "statut": "NOT_STARTED",
+      "assigne_a": null,
+      "date_debut": null,
+      "date_achevement": null,
+      "prerequisites": ["STEP-06", "STEP-07"],
+      "fichier_source": "agent_projet/docs/cdc_sections/08_gouvernance_agile_gantt.md",
+      "modeles_visuels_requis": [
+        "Matrice RACI",
+        "WBS visuel par lots",
+        "Diagramme de Gantt des jalons contractuels R1 a R5"
+      ],
+      "skills_recommandes": [
+        "plan-writing",
+        "kpi-dashboard-design"
+      ],
+      "agent_responsable": "Scrum Master (flash)"
+    },
+    {
+      "step_id": "STEP-09",
+      "section_code": "SEC-09",
+      "titre": "Cadrage Economique & Analyse par Couts Complets",
+      "statut": "NOT_STARTED",
+      "assigne_a": null,
+      "date_debut": null,
+      "date_achevement": null,
+      "prerequisites": ["STEP-07", "STEP-08"],
+      "fichier_source": "agent_projet/docs/cdc_sections/09_analyse_financiere_couts_complets.md",
+      "modeles_visuels_requis": [
+        "Tableau de repartition des centres d'analyse et Unites d'Oeuvre",
+        "Compte de resultat previsionnel 3 ans",
+        "Calcul de seuil de rentabilite communal"
+      ],
+      "skills_recommandes": [
+        "strategic-cost-accounting",
+        "pricing-strategy"
+      ],
+      "agent_responsable": "CFO Strategie Financiere (pro)"
+    },
+    {
+      "step_id": "STEP-10",
+      "section_code": "SEC-01-CANVAS",
+      "titre": "Synthese Panoramique : Le Lean Canvas ShopLoc",
+      "statut": "NOT_STARTED",
+      "assigne_a": null,
+      "date_debut": null,
+      "date_achevement": null,
+      "prerequisites": [
+        "STEP-01",
+        "STEP-02",
+        "STEP-03",
+        "STEP-04",
+        "STEP-07",
+        "STEP-09"
+      ],
+      "fichier_source": "agent_projet/templates/components/lean_canvas.html",
+      "modeles_visuels_requis": [
+        "Grille 9 cases A4 Paysage consolidee et integree en tete de Section 01"
+      ],
+      "skills_recommandes": [
+        "product-manager-toolkit",
+        "strategic-cost-accounting"
+      ],
+      "agent_responsable": "Lead PO & CFO (pro)"
+    },
+    {
+      "step_id": "STEP-11",
+      "section_code": "LIVRABLE-FINAL",
+      "titre": "Assemblage du Cahier des Charges Maitre & Compilation PDF A4",
+      "statut": "NOT_STARTED",
+      "assigne_a": null,
+      "date_debut": null,
+      "date_achevement": null,
+      "prerequisites": [
+        "STEP-01",
+        "STEP-02",
+        "STEP-03",
+        "STEP-04",
+        "STEP-05",
+        "STEP-06",
+        "STEP-07",
+        "STEP-08",
+        "STEP-09",
+        "STEP-10"
+      ],
+      "fichier_source": "agent_projet/docs/CAHIER_DES_CHARGES_R1.md",
+      "fichier_sortie_pdf": "agent_projet/docs/ShopLoc_Cahier_des_Charges_Livrable_R1.pdf",
+      "modeles_visuels_requis": [
+        "Document unifie complet avec pagination dynamique et cartouche officiel"
+      ],
+      "skills_recommandes": [
+        "verification-before-completion",
+        "beautiful-prose"
+      ],
+      "agent_responsable": "QA & Security Sentinel (flash_lite)"
+    }
+  ]
+}

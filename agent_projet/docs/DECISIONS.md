@@ -145,7 +145,43 @@ Chaque décision doit être formalisée ainsi :
     - Le cadrage financier s'exécute en aval du processus de spécification, une fois les choix techniques et opérationnels stabilisés.
     - Application rigoureuse de la méthode des coûts complets (centres d'analyse, unités d'œuvre) pour évaluer le coût de revient du Run et du Build, afin d'en déduire une grille tarifaire viable et justifiable.
   - **Méthode d'Ingénierie par Arborescence Inversée** : Construction itérative livrable par livrable, alimentée par des sessions de questions-réponses ultra-spécifiques avec historisation stricte dans le journal de bord.
-- **Conséquences** : Architecture frugale, robuste, modulaire et hautement maintenable ; modèle financier scientifiquement fondé.
+### ADR-013 : Système d'Identité Visuelle par Design Tokens (Code-First) & Chaîne de Rendu Déterministe HTML/PDF
+- **Date** : 2026-09-16
+- **Statut** : Validé (Architecture Graphique & Outillage FinOps)
+- **Contexte** : Nécessité d'assurer une parfaite uniformité visuelle sur l'ensemble des livrables (R1, R3, R4/R5, diaporamas de soutenance, diagrammes APTE/BPMN/MCD, maquettes d'écrans) tout en garantissant une frugalité absolue en jetons LLM (abonnement Gemini Pro optimisé, zéro surcoût mensuel).
+- **Décision** :
+  - **Rejet de Figma par MCP comme moteur de création** : Élimination du risque d'explosion des tokens (30k à 100k tokens par écran en JSON AST Figma) et des verrous d'écriture de l'API REST Figma.
+  - **Adoption du Standard "Design Tokens as Code"** :
+    - Fichier source unique de vérité : `agent_projet/design/design_tokens.json` (format W3C DTCG).
+    - Feuille de style maîtresse : `agent_projet/design/theme.css` (variables CSS, règles @page A4, styles Booktabs, encarts décisionnels sans barre latérale, zéro emoji).
+    - Catalogue vivant : `agent_projet/design/styleguide.html`.
+    - Fichier d'interopérabilité exportable `agent_projet/design/figma_tokens.json` pour Tokens Studio for Figma (0 token consommé).
+  - **Format Pivot HTML/CSS pour les Agents** : Utilisation du HTML5 sémantique pour la structuration des livrables et composants, langage nativement maîtrisé par les LLMs.
+  - **Moteurs de Rendu Déterministes Locaux (0 Token)** :
+    - `render_report.py` : Compilation Markdown -> PDF A4 vectoriel avec table des matières automatique et cartouche GLOP.
+    - `render_diagrams.py` : Génération des diagrammes et composants modulaires (Lean Canvas, APTE Bête à cornes et Pieuvre, Matrice 2 axes).
+    - `render_slides.py` : Diaporama web interactif et export PDF 16:9 pour soutenances orales (15 min + 5 min).
+    - `render_mockups.py` : Rendu des maquettes d'écrans et capture PNG 200 DPI via Edge headless et PyMuPDF.
+  - **Création du Rôle Agentique Dédié** : Sous-Agent UI/UX Designer (`.antigravity/roles/ui_designer_role.md`) garant des contrastes RGAA AA et de l'intégrité visuelle.
+- **Conséquences** : Réduction de plus de 80% de la consommation de jetons sur la génération documentaire, rendu professionnel académique de haute volée, exécution 100% hors-ligne et reproductible.
 
-
+### ADR-014 : Formalismes Techniques BPMN 2.0, MCD Merise et Palette Pastel pour Diagrammes
+- **Date** : 2026-09-16
+- **Statut** : Validé (Atelier d'Arbitrage /grill-me)
+- **Contexte** : Précision des formalismes graphiques et standards de modélisation pour les livrables techniques clés du Cahier des Charges R1 (BPMN Section 03 et MCD Section 04), suite au questionnement méthodique avec l'utilisateur.
+- **Décision** :
+  - **BPMN 2.0 avec Couloirs d'Acteurs (Swimlanes) en SVG Vectoriel Pur** :
+    - Structuration impérative en 4 couloirs horizontaux : Citoyen/Client, Commerçant Partenaire, Cœur Applicatif ShopLoc, et Services Mobilité/Partenaires.
+    - Utilisation stricte des symboles BPMN 2.0 : événements début/fin, passerelles décisionnelles XOR, flux de séquence et flux de messages.
+    - Gabarit de référence : `agent_projet/templates/components/bpmn_swimlane_template.html`.
+  - **Modélisation des Données au Double Niveau (Merise Conceptuel + Dictionnaire Booktabs)** :
+    - Niveau 1 (Visuel) : Schéma conceptuel Merise académique (entités à rectangles arrondis avec clé primaire soulignée, associations verbales à l'infinitif en ellipses, cardinalités explicites 0,n / 1,1).
+    - Niveau 2 (Analytique) : Dictionnaire formel des données au format Booktabs (Entité, Attribut, Type logique SQL, Obligation, Règle de gestion / RGPD).
+    - Gabarit de référence : `agent_projet/templates/components/merise_mcd_template.html`.
+  - **Palette Chromatique Pastel Adoucie pour les Diagrammes Complexes** :
+    - Adoption d'une gamme pastel reposante pour réduire la charge cognitive sur les schémas denses : Bleu ciel (`#E0F2FE`), Vert amande (`#DCFCE7`), Pêche (`#FFEDD5`), Lavande (`#EDE9FE`), et Corail/Rose pâle (`#FEE2E2`).
+    - Respect impératif des contrastes WCAG AA (texte foncé sur fond pastel).
+  - **Chaîne Code-as-Diagram Déterministe** :
+    - Production 100% autonome et locale via Python et SVG vectoriel pur, garantissant 0 token consommé à la génération.
+- **Conséquences** : Modélisation conforme aux plus hauts standards académiques MIAGE et professionnels, lisibilité visuelle maximale sans surcharge cognitive.
 

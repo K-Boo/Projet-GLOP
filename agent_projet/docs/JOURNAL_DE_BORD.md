@@ -306,13 +306,42 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Validation formelle du plan directeur, de la distinction ordre éditorial vs pipeline chronologique, et du rôle de super-conseiller de l'agent.
   - Posture d'ingénierie professionnelle inviolable pour tous les livrables officiels.
   - Clôture formelle de la Session 16.
-- **Reste à faire / Objectifs pour la Session 17** :
-  - Choix et configuration des outils et serveurs MCP pour la modélisation graphique des livrables (MCD, BPMN).
-  - Mise en place d'un outil de pilotage visuel et définition de la charte graphique globale pour l'ensemble du projet.
-
-
+### [2026-09-16] Session 17 — Définition de l'Identité Visuelle, Chaîne de Rendu Déterministe & Rôle UI Designer
+- **Objectif** : Configurer l'ensemble du projet pour définir une identité visuelle unifiée et sobre, concevoir la chaîne de rendu documentaire agentique (Markdown -> HTML -> PDF/PNG/Slides), écarter les pièges d'explosion de tokens (Figma MCP), et créer les moteurs et gabarits de production visuelle.
+- **Actions réalisées** :
+  - Création du référentiel des **Design Tokens normalisés** : `agent_projet/design/design_tokens.json` (couleurs institutionnelles Université de Lille `#0F2A4A`, bordeaux `#6A1B29`, vert validation `#166534`, ambre `#B45309`, typographies Latin Modern, Inter, Fira Code).
+  - Création de la feuille de style maîtresse : `agent_projet/design/theme.css` (variables CSS, formatage Booktabs, en-têtes `@page`, encarts décisionnels sans barre latérale, zéro emoji).
+  - Création du catalogue visuel vivant : `agent_projet/design/styleguide.html` et compilation vérifiée en PDF (`Styleguide_ShopLoc_Officiel.pdf`, 443 Ko).
+  - Création du fichier d'interopérabilité `agent_projet/design/figma_tokens.json` (format Tokens Studio for Figma).
+  - Développement du **moteur de compilation universel** : `agent_projet/scripts/render_report.py` (parseur Markdown, Table des Matières dynamique, Booktabs, cartouche officiel GLOP, logos intégrés, gardes-fous canaris et zéro emoji).
+  - Développement des **gabarits et composants visuels modulaires** dans `agent_projet/templates/components/` :
+    * `lean_canvas.html` : Format grille 9 cases A4 paysage pour la Section 01 du CdC.
+    * `apte_pieuvre.html` : Bête à cornes et diagramme pieuvre fonctionnel (APTE) en SVG vectoriel pur.
+    * `matrice_positionnement.html` : Matrice 2 axes (ancrage physique vs délocalisé ; gratuité citoyenne vs commissions privées).
+    * `ui_wireframe_card.html` : Maquettes d'écrans clés pour Pierre (senior 74 ans, carte QR papier, accessibilité RGAA AA), Suzanne (caisse commerçante 22 ans) et Marius (tableau de bord territorial anonymisé).
+    * `bpmn_swimlane_template.html` : Processus BPMN 2.0 à 4 couloirs horizontaux (Citoyen, Commerçant, ShopLoc, Mobilités) sous palette pastel adoucie.
+    * `merise_mcd_template.html` : Schéma conceptuel Merise académique (Entités, Associations, cardinalités explicites 0,n / 1,1) et extrait Booktabs du dictionnaire de données.
+  - Enrichissement de la banque de skills dans `.agents/skills/` :
+    * Importation et vérification de 8 skills depuis le backup : `mermaid-expert`, `domain-driven-design`, `openapi-spec-generation`, `competitive-landscape`, `kpi-dashboard-design`, `verification-before-completion`, `subagent-driven-development`, `api-design-principles`.
+    * Création et formalisation de 4 skills spécialisés conformes aux standards MIAGE/AFNOR : `bpmn-process-modeling`, `merise-data-modeling`, `apte-functional-analysis`, `strategic-cost-accounting`.
+  - Génération de la galerie de validation visuelle minimale :
+    * Script `agent_projet/scripts/generate_gallery_previews.py` générant les aperçus et vignettes pour l'ensemble des livrables (R1 CdC, R3 Étude financière, R4/R5 Architecture, Diaporama, Modèles visuels).
+    * Fiche de synthèse visuelle interactive : `agent_projet/docs/GALERIE_LIVRABLES.html` (10 cartes de livrables visualisables immédiatement).
+  - Mise en place du dispositif de pilotage et d'ordonnancement multi-agents :
+    * Création de la matrice d'état machine : `agent_projet/config/cdc_progress.json` verrouillant l'unicité de travail, le statut de chaque étape et les dépendances amont strictes (prerequisites).
+    * Rédaction du guide de gouvernance humaine et agentique : `agent_projet/docs/AVANCEMENT_CAHIER_DES_CHARGES.md` interdisant formellement l'entame d'une section sans complétion vérifiée de ses prérequis.
+    * Intégration des règles d'ordonnancement dans `.antigravity/instructions.md` (Sections 2 et 8).
+- **Décisions actées** :
+  - Validation formelle par atelier `/grill-me` des standards de modélisation pour l'ensemble des livrables : BPMN 2.0 à swimlanes stricts, modélisation des données double niveau (Merise conceptuel + dictionnaire de données tabulaire), palette pastel adoucie contre la fatigue cognitive, et chaîne locale Code-as-Diagram 100% autonome.
+  - Abandon du pilotage Figma par MCP au profit du standard "Design Tokens as Code" (zéro token gaspillé, 100% reproductible en intégration continue).
+  - Frugalité FinOps confirmée : aucun abonnement LLM mensuel additionnel n'est nécessaire.
+  - La chaîne complète de génération visuelle et la galerie sont opérationnelles et vérifiées.
+  - Ordonnancement séquentiel inviolable consigné dans `cdc_progress.json` : aucun agent ne peut court-circuiter l'arborescence inversée ou travailler sur une tâche déjà réservée / en cours.
+- **Reste à faire / Objectifs pour la Session 18** :
+  - Lancement de la rédaction de la **Section 01 du Cahier des Charges R1 (Cadrage Stratégique & Expression du Besoin / Méthode APTE)** par le Product Owner en réservant l'étape `STEP-01` (`IN_PROGRESS`) dans `cdc_progress.json` et en mobilisant le protocole `/grill-me`.
 
 ---
+
 
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
 

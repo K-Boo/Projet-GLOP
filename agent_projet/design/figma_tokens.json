@@ -1,0 +1,37 @@
+{
+  "global": {
+    "colors": {
+      "brand-primary": { "value": "#0F2A4A", "type": "color" },
+      "brand-secondary": { "value": "#6A1B29", "type": "color" },
+      "brand-accent": { "value": "#1E3A8A", "type": "color" },
+      "functional-success": { "value": "#166534", "type": "color" },
+      "functional-warning": { "value": "#B45309", "type": "color" },
+      "functional-error": { "value": "#991B1B", "type": "color" },
+      "text-primary": { "value": "#0F172A", "type": "color" },
+      "text-secondary": { "value": "#475569", "type": "color" },
+      "border-dark": { "value": "#0F172A", "type": "color" },
+      "border-light": { "value": "#CBD5E1", "type": "color" },
+      "surface-card": { "value": "#FFFFFF", "type": "color" },
+      "surface-page": { "value": "#F8FAFC", "type": "color" }
+    },
+    "fontFamilies": {
+      "serif": { "value": "Latin Modern Roman", "type": "fontFamilies" },
+      "sans": { "value": "Inter", "type": "fontFamilies" },
+      "mono": { "value": "Fira Code", "type": "fontFamilies" }
+    },
+    "fontSizes": {
+      "title": { "value": "20", "type": "fontSizes" },
+      "h1": { "value": "17", "type": "fontSizes" },
+      "h2": { "value": "15", "type": "fontSizes" },
+      "h3": { "value": "13", "type": "fontSizes" },
+      "body": { "value": "12", "type": "fontSizes" },
+      "caption": { "value": "11", "type": "fontSizes" }
+    },
+    "spacing": {
+      "xs": { "value": "4", "type": "spacing" },
+      "sm": { "value": "8", "type": "spacing" },
+      "md": { "value": "16", "type": "spacing" },
+      "lg": { "value": "24", "type": "spacing" }
+    }
+  }
+}
