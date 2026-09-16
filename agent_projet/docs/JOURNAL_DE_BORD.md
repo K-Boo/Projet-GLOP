@@ -331,6 +331,7 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
     * Création de la matrice d'état machine : `agent_projet/config/cdc_progress.json` verrouillant l'unicité de travail, le statut de chaque étape et les dépendances amont strictes (prerequisites).
     * Rédaction du guide de gouvernance humaine et agentique : `agent_projet/docs/AVANCEMENT_CAHIER_DES_CHARGES.md` interdisant formellement l'entame d'une section sans complétion vérifiée de ses prérequis.
     * Intégration des règles d'ordonnancement dans `.antigravity/instructions.md` (Sections 2 et 8).
+    * Ajout du protocole opérationnel de briefing d'Antigravity avec prompt type dans `README.md` (Section 6) à destination des collaborateurs de l'équipe.
 - **Décisions actées** :
   - Validation formelle par atelier `/grill-me` des standards de modélisation pour l'ensemble des livrables : BPMN 2.0 à swimlanes stricts, modélisation des données double niveau (Merise conceptuel + dictionnaire de données tabulaire), palette pastel adoucie contre la fatigue cognitive, et chaîne locale Code-as-Diagram 100% autonome.
   - Abandon du pilotage Figma par MCP au profit du standard "Design Tokens as Code" (zéro token gaspillé, 100% reproductible en intégration continue).
