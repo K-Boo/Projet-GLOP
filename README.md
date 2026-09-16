@@ -191,3 +191,48 @@ Pour preserver la qualite de la notation et l'homogeneite du projet, chaque memb
    * Vos commits sur GitLab doivent respecter la norme : `feat(...)`, `fix(...)`, `test(...)`, `refactor(...)`, `chore(...)`.
 4. **Pas de Code Premature** :
    * Le depot de code reste vierge tant que le cadrage fonctionnel (Livrable R1) et le choix formel de la stack technologique (ADR d'architecture) n'ont pas ete arretes par le groupe.
+
+---
+
+## 6. Protocole de Redaction & Briefing d'Antigravity (Travail d'Equipe)
+
+Pour eviter tout doublon et garantir l'ordre de dependance methodologique (arborescence inversee), chaque membre doit suivre ce protocole avant de travailler sur une section de rapport.
+
+### Etape 1 : Verifier la disponibilite et les prerequis
+Consultez [`agent_projet/config/cdc_progress.json`](agent_projet/config/cdc_progress.json) ou demandez a votre agent :
+> *« Quel est l'etat d'avancement du Cahier des Charges et quelle etape puis-je demarrer ? »*
+
+**Regle d'or** : Une section ne peut **JAMAIS** etre demarree si ses dependances amont (`prerequisites`) ne sont pas a l'etat `COMPLETED`.
+
+### Etape 2 : Reserver la tache (Anti-collision)
+Passez le statut de la section a `"IN_PROGRESS"` avec votre nom dans `cdc_progress.json` afin qu'aucun autre collaborateur ne la traite en parallele.
+
+### Etape 3 : Briefer votre agent Antigravity (Prompt type)
+Copiez-collez ce prompt en adaptant le code et le titre de la section :
+
+```text
+Nous demarrons la redaction de la section [Code STEP-XX : Titre de la section].
+1. Verifie dans agent_projet/config/cdc_progress.json que tous les prerequis amont sont a l'etat COMPLETED et reserve l'etape a mon nom.
+2. Adopte le role approprie et mobilise les skills recommandes indiques dans le JSON.
+3. Lance un cycle d'alignement (/grill-me) pour arbitrer avec moi les choix structurants avant de rediger.
+4. Redige le contenu dans agent_projet/docs/cdc_sections/XX_nom.md en respectant strictement :
+   - La posture d'ingenierie professionnelle (aucune mention de statut etudiant).
+   - Les sources de cadrage validees (SYNTHESE_GLOBALE_QUESTIONS_REPONSES_CADRAGE.md).
+   - Les tokens de style (theme.css, palette pastel pour les diagrammes).
+   - La regle absolue ZERO emoji.
+```
+
+### Etape 4 : Valider, marquer termine et synchroniser
+Une fois la section redigee :
+1. Executer le controle d'integrite :
+   ```bash
+   python agent_projet/scripts/verify_deliverables.py
+   ```
+2. Passer le statut a `"COMPLETED"` dans `cdc_progress.json`.
+3. Commiter et pusher sur GitHub :
+   ```bash
+   git add .
+   git commit -m "docs(cdc): finalisation de la section XX [titre]"
+   git push origin main
+   ```
+
