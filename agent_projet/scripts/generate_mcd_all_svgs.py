@@ -1,0 +1,374 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+GÉNÉRATEUR DU MODÈLE CONCEPTUEL DE DONNÉES (MCD MERISE) SHOPLOC
+Master 2 MIAGE — Université de Lille — UE GLOP (2026-2027)
+
+Génère le schéma conceptuel normalisé Merise (Figure 4.1) avec 10 entités canoniques,
+13 associations verbales, cardinalités normalisées et respect strict des tokens pastel ShopLoc.
+Exporte le composant HTML5 et le PNG haute définition (200 DPI) via Chromium headless.
+"""
+
+import os
+import subprocess
+
+BROWSER = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+
+def generate_mcd_svg():
+    return """<svg viewBox="0 0 1180 770" width="100%" height="auto" style="overflow:visible; font-family:'Poppins', sans-serif;">
+  <defs>
+    <!-- Filtres d'ombres portées douces -->
+    <filter id="shadow-soft" x="-8%" y="-8%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#243342" flood-opacity="0.07"/>
+    </filter>
+    <filter id="shadow-card" x="-5%" y="-5%" width="112%" height="112%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#243342" flood-opacity="0.09"/>
+    </filter>
+  </defs>
+
+  <!-- ======================================================== -->
+  <!-- ZONES FONCTIONNELLES (FOND PASTEL TRÈS LÉGER)            -->
+  <!-- ======================================================== -->
+  <!-- Zone 1 : Territoire & Gouvernance (Bleu / Cyan très pâle) -->
+  <rect x="30" y="20" width="560" height="200" rx="12" fill="#F0F9FF" fill-opacity="0.5" stroke="#BAE6FD" stroke-width="1" stroke-dasharray="4 4" />
+  <text x="45" y="40" font-size="10" font-weight="700" fill="#0284C7" letter-spacing="0.05em">DOMAINE 1 : GOUVERNANCE TERRITORIALE &amp; ACTEURS LOCAUX</text>
+
+  <!-- Zone 2 : Ventes & Catalogue Click & Collect (Sauge / Ardoise très pâle) -->
+  <rect x="610" y="20" width="540" height="430" rx="12" fill="#F0FDF4" fill-opacity="0.4" stroke="#BBF7D0" stroke-width="1" stroke-dasharray="4 4" />
+  <text x="625" y="40" font-size="10" font-weight="700" fill="#16A34A" letter-spacing="0.05em">DOMAINE 2 : CATALOGUE &amp; COMMANDES CLICK &amp; COLLECT (2PC)</text>
+
+  <!-- Zone 3 : Double Moteur Fidélité Découplé (Ocre / Ambre très pâle) -->
+  <rect x="30" y="490" width="1120" height="260" rx="12" fill="#FFFBEB" fill-opacity="0.5" stroke="#FDE68A" stroke-width="1" stroke-dasharray="4 4" />
+  <text x="45" y="510" font-size="10" font-weight="700" fill="#D97706" letter-spacing="0.05em">DOMAINE 3 : DOUBLE MOTEUR DE FIDÉLITÉ DÉCOUPLÉ &amp; MOBILITÉ URBAINE (ADR-005)</text>
+
+  <!-- ======================================================== -->
+  <!-- ENTITÉS CANONIQUES (10 RECTANGLES ARRONDIS MERISE)       -->
+  <!-- ======================================================== -->
+
+  <!-- ENTITÉ 1 : COMMUNE (BLEU CIEL / ARDOISE) -->
+  <g filter="url(#shadow-soft)">
+    <rect x="45" y="55" width="170" height="145" rx="8" fill="#FFFFFF" stroke="#38BDF8" stroke-width="1.4" />
+    <path d="M 45 63 A 8 8 0 0 1 53 55 L 207 55 A 8 8 0 0 1 215 63 L 215 82 L 45 82 Z" fill="#0284C7" />
+    <text x="130" y="73" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">COMMUNE</text>
+    <text x="57" y="102" font-size="9.5" font-weight="700" text-decoration="underline" fill="#243342"># code_insee</text>
+    <text x="145" y="102" font-size="8.5" font-weight="500" fill="#0284C7">VARCHAR(5)</text>
+    <text x="57" y="120" font-size="9" font-weight="500" fill="#243342">nom_commune</text>
+    <text x="57" y="137" font-size="9" font-weight="500" fill="#243342">code_postal</text>
+    <text x="57" y="154" font-size="9" font-weight="500" fill="#243342">date_convention</text>
+    <text x="57" y="171" font-size="9" font-weight="500" fill="#243342">budget_mobilite</text>
+    <text x="57" y="188" font-size="9" font-weight="500" fill="#243342">statut_actif</text>
+  </g>
+
+  <!-- ENTITÉ 2 : ASSOCIATION (BLEU CANARD) -->
+  <g filter="url(#shadow-soft)">
+    <rect x="295" y="55" width="175" height="145" rx="8" fill="#FFFFFF" stroke="#2DD4BF" stroke-width="1.4" />
+    <path d="M 295 63 A 8 8 0 0 1 303 55 L 462 55 A 8 8 0 0 1 470 63 L 470 82 L 295 82 Z" fill="#0D9488" />
+    <text x="382" y="73" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">ASSOCIATION</text>
+    <text x="307" y="102" font-size="9.5" font-weight="700" text-decoration="underline" fill="#243342"># id_association</text>
+    <text x="408" y="102" font-size="8.5" font-weight="500" fill="#0D9488">UUID</text>
+    <text x="307" y="120" font-size="9" font-weight="500" fill="#243342">nom_association</text>
+    <text x="307" y="137" font-size="9" font-weight="500" fill="#243342">siren_loi_1901</text>
+    <text x="307" y="154" font-size="9" font-weight="500" fill="#243342">contact_referent</text>
+    <text x="307" y="171" font-size="9" font-weight="500" fill="#243342">date_adhesion</text>
+    <text x="307" y="188" font-size="9" font-weight="500" fill="#243342">role_mediation</text>
+  </g>
+
+  <!-- ENTITÉ 3 : COMMERÇANT (SAUGE / VERT FORÊT) -->
+  <g filter="url(#shadow-soft)">
+    <rect x="560" y="55" width="180" height="150" rx="8" fill="#FFFFFF" stroke="#86EFAC" stroke-width="1.4" />
+    <path d="M 560 63 A 8 8 0 0 1 568 55 L 732 55 A 8 8 0 0 1 740 63 L 740 82 L 560 82 Z" fill="#16A34A" />
+    <text x="650" y="73" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">COMMERCANT</text>
+    <text x="572" y="101" font-size="9.5" font-weight="700" text-decoration="underline" fill="#243342"># id_commercant</text>
+    <text x="682" y="101" font-size="8.5" font-weight="500" fill="#16A34A">UUID</text>
+    <text x="572" y="119" font-size="9" font-weight="500" fill="#243342">nom_enseigne</text>
+    <text x="572" y="136" font-size="9" font-weight="500" fill="#243342">siret_14_chiffres</text>
+    <text x="572" y="153" font-size="9" font-weight="500" fill="#243342">iban_virement_sepa</text>
+    <text x="572" y="170" font-size="9" font-weight="500" fill="#243342">taux_points_euro</text>
+    <text x="572" y="187" font-size="9" font-weight="500" fill="#243342">statut_adhesion</text>
+  </g>
+
+  <!-- ENTITÉ 4 : ARTICLE (SAUGE PÂLE) -->
+  <g filter="url(#shadow-soft)">
+    <rect x="925" y="55" width="185" height="150" rx="8" fill="#FFFFFF" stroke="#4ADE80" stroke-width="1.4" />
+    <path d="M 925 63 A 8 8 0 0 1 933 55 L 1102 55 A 8 8 0 0 1 1110 63 L 1110 82 L 925 82 Z" fill="#22C55E" />
+    <text x="1017" y="73" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">ARTICLE</text>
+    <text x="937" y="101" font-size="9.5" font-weight="700" text-decoration="underline" fill="#243342"># id_article</text>
+    <text x="1045" y="101" font-size="8.5" font-weight="500" fill="#22C55E">UUID</text>
+    <text x="937" y="119" font-size="9" font-weight="500" fill="#243342">reference_sku</text>
+    <text x="937" y="136" font-size="9" font-weight="500" fill="#243342">libelle_produit</text>
+    <text x="937" y="153" font-size="9" font-weight="500" fill="#243342">prix_unitaire_ttc</text>
+    <text x="937" y="170" font-size="9" font-weight="500" fill="#243342">taux_tva</text>
+    <text x="937" y="187" font-size="9" font-weight="500" fill="#243342">stock_disponible</text>
+  </g>
+
+  <!-- ENTITÉ 5 : CITOYEN (TERRACOTTA) -->
+  <g filter="url(#shadow-soft)">
+    <rect x="45" y="275" width="195" height="150" rx="8" fill="#FFFFFF" stroke="#F87171" stroke-width="1.4" />
+    <path d="M 45 283 A 8 8 0 0 1 53 275 L 232 275 A 8 8 0 0 1 240 283 L 240 302 L 45 302 Z" fill="#DC2626" />
+    <text x="142" y="293" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">CITOYEN</text>
+    <text x="57" y="321" font-size="9.5" font-weight="700" text-decoration="underline" fill="#243342"># id_citoyen</text>
+    <text x="165" y="321" font-size="8.5" font-weight="500" fill="#DC2626">UUID</text>
+    <text x="57" y="339" font-size="9" font-weight="500" fill="#243342">email_unique</text>
+    <text x="57" y="356" font-size="9" font-weight="500" fill="#243342">hash_pass_optique</text>
+    <text x="57" y="373" font-size="9" font-weight="500" fill="#243342">pseudonyme_audit</text>
+    <text x="57" y="390" font-size="9" font-weight="500" fill="#243342">telephone_mobile</text>
+    <text x="57" y="407" font-size="9" font-weight="500" fill="#243342">date_inscription</text>
+  </g>
+
+  <!-- ENTITÉ 6 : COMMANDE (ARDOISE CORE) -->
+  <g filter="url(#shadow-soft)">
+    <rect x="460" y="275" width="195" height="150" rx="8" fill="#FFFFFF" stroke="#64748B" stroke-width="1.4" />
+    <path d="M 460 283 A 8 8 0 0 1 468 275 L 647 275 A 8 8 0 0 1 655 283 L 655 302 L 460 302 Z" fill="#243342" />
+    <text x="557" y="293" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">COMMANDE</text>
+    <text x="472" y="321" font-size="9.5" font-weight="700" text-decoration="underline" fill="#243342"># id_commande</text>
+    <text x="580" y="321" font-size="8.5" font-weight="500" fill="#64748B">UUID</text>
+    <text x="472" y="339" font-size="9" font-weight="500" fill="#243342">ref_facturation</text>
+    <text x="472" y="356" font-size="9" font-weight="500" fill="#243342">date_creation</text>
+    <text x="472" y="373" font-size="9" font-weight="500" fill="#243342">creneau_retrait</text>
+    <text x="472" y="390" font-size="9" font-weight="500" fill="#243342">montant_total_ttc</text>
+    <text x="472" y="407" font-size="9" font-weight="500" fill="#243342">statut_commande</text>
+  </g>
+
+  <!-- ENTITÉ 7 : LIGNE_COMMANDE (ARDOISE DOUCE) -->
+  <g filter="url(#shadow-soft)">
+    <rect x="910" y="275" width="205" height="150" rx="8" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.4" />
+    <path d="M 910 283 A 8 8 0 0 1 918 275 L 1107 275 A 8 8 0 0 1 1115 283 L 1115 302 L 910 302 Z" fill="#475569" />
+    <text x="1012" y="293" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">LIGNE_COMMANDE</text>
+    <text x="922" y="321" font-size="9.5" font-weight="700" text-decoration="underline" fill="#243342"># id_ligne</text>
+    <text x="1025" y="321" font-size="8.5" font-weight="500" fill="#475569">UUID</text>
+    <text x="922" y="339" font-size="9" font-weight="500" fill="#243342">quantite_commandee</text>
+    <text x="922" y="356" font-size="9" font-weight="500" fill="#243342">prix_unitaire_fact</text>
+    <text x="922" y="373" font-size="9" font-weight="500" fill="#243342">taux_tva_applique</text>
+    <text x="922" y="390" font-size="9" font-weight="500" fill="#243342">statut_ensachage</text>
+    <text x="922" y="407" font-size="9" font-weight="500" fill="#243342">horodatage_retrait</text>
+  </g>
+
+  <!-- ENTITÉ 8 : AVANTAGE_MOBILITE (OCRE MIEL - SYSTÈME 2 CITOYEN VFP) -->
+  <g filter="url(#shadow-soft)">
+    <rect x="45" y="540" width="215" height="160" rx="8" fill="#FFFFFF" stroke="#FBBF24" stroke-width="1.4" />
+    <path d="M 45 548 A 8 8 0 0 1 53 540 L 252 540 A 8 8 0 0 1 260 548 L 260 567 L 45 567 Z" fill="#D97706" />
+    <text x="152" y="558" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">AVANTAGE_MOBILITE</text>
+    <text x="57" y="586" font-size="9.5" font-weight="700" text-decoration="underline" fill="#243342"># id_avantage</text>
+    <text x="172" y="586" font-size="8.5" font-weight="500" fill="#D97706">UUID</text>
+    <text x="57" y="604" font-size="9" font-weight="500" fill="#243342">type_avantage (BUS/PARK)</text>
+    <text x="57" y="621" font-size="9" font-weight="500" fill="#243342">code_titre_optique</text>
+    <text x="57" y="638" font-size="9" font-weight="500" fill="#243342">plaque_immatriculation</text>
+    <text x="57" y="655" font-size="9" font-weight="500" fill="#243342">date_attribution</text>
+    <text x="57" y="672" font-size="9" font-weight="500" fill="#243342">date_consommation</text>
+    <text x="57" y="689" font-size="9" font-weight="500" fill="#243342">statut_validite</text>
+  </g>
+
+  <!-- ENTITÉ 9 : PASSAGE_CAISSE (AMBRE / OCRE - RÉGULARITÉ 15 JOURS) -->
+  <g filter="url(#shadow-soft)">
+    <rect x="460" y="540" width="205" height="150" rx="8" fill="#FFFFFF" stroke="#FB923C" stroke-width="1.4" />
+    <path d="M 460 548 A 8 8 0 0 1 468 540 L 657 540 A 8 8 0 0 1 665 548 L 665 567 L 460 567 Z" fill="#EA580C" />
+    <text x="562" y="558" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">PASSAGE_CAISSE</text>
+    <text x="472" y="586" font-size="9.5" font-weight="700" text-decoration="underline" fill="#243342"># id_passage</text>
+    <text x="580" y="586" font-size="8.5" font-weight="500" fill="#EA580C">UUID</text>
+    <text x="472" y="604" font-size="9" font-weight="500" fill="#243342">date_heure_passage</text>
+    <text x="472" y="621" font-size="9" font-weight="500" fill="#243342">hash_ticket_preuve</text>
+    <text x="472" y="638" font-size="9" font-weight="500" fill="#243342">montant_achat_opt</text>
+    <text x="472" y="655" font-size="9" font-weight="500" fill="#243342">mode_scan (NFC/QR)</text>
+    <text x="472" y="672" font-size="9" font-weight="500" fill="#243342">terminal_caisse_id</text>
+  </g>
+
+  <!-- ENTITÉ 10 : COMPTE_FIDELITE_MARCHAND (VERT FORÊT - SYSTÈME 1 DÉCENTRALISÉ) -->
+  <g filter="url(#shadow-soft)">
+    <rect x="870" y="540" width="230" height="150" rx="8" fill="#FFFFFF" stroke="#4ADE80" stroke-width="1.4" />
+    <path d="M 870 548 A 8 8 0 0 1 878 540 L 1092 540 A 8 8 0 0 1 1100 548 L 1100 567 L 870 567 Z" fill="#15803D" />
+    <text x="985" y="558" text-anchor="middle" font-size="10.5" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">COMPTE_FIDELITE_MARCHAND</text>
+    <text x="882" y="586" font-size="9.5" font-weight="700" text-decoration="underline" fill="#243342"># id_compte_fidelite</text>
+    <text x="1010" y="586" font-size="8.5" font-weight="500" fill="#15803D">UUID</text>
+    <text x="882" y="604" font-size="9" font-weight="500" fill="#243342">solde_points_boutique</text>
+    <text x="882" y="621" font-size="9" font-weight="500" fill="#243342">date_derniere_activite</text>
+    <text x="882" y="638" font-size="9" font-weight="500" fill="#243342">date_peremption_points</text>
+    <text x="882" y="655" font-size="9" font-weight="500" fill="#243342">cumul_achats_euros</text>
+    <text x="882" y="672" font-size="9" font-weight="500" fill="#243342">statut_actif</text>
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- ASSOCIATIONS VERBALES MERISE (SQUIRCLES & CARDINALITÉS)  -->
+  <!-- ======================================================== -->
+
+  <!-- ASSOC 1 : IMPLANTER (COMMUNE <-> ASSOCIATION) -->
+  <line x1="215" y1="125" x2="295" y2="125" stroke="#243342" stroke-width="1.3" />
+  <rect x="228" y="112" width="58" height="26" rx="13" fill="#FAF9F6" stroke="#0284C7" stroke-width="1.3" />
+  <text x="257" y="128" text-anchor="middle" font-size="8" font-weight="700" fill="#0284C7">Implanter</text>
+  <text x="221" y="118" font-size="8.5" font-weight="700" fill="#0284C7">1,n</text>
+  <text x="282" y="118" font-size="8.5" font-weight="700" fill="#0D9488">1,1</text>
+
+  <!-- ASSOC 2 : ADHÉRER (ASSOCIATION <-> COMMERÇANT) -->
+  <line x1="470" y1="125" x2="560" y2="125" stroke="#243342" stroke-width="1.3" />
+  <rect x="485" y="112" width="60" height="26" rx="13" fill="#FAF9F6" stroke="#0D9488" stroke-width="1.3" />
+  <text x="515" y="128" text-anchor="middle" font-size="8" font-weight="700" fill="#0D9488">Adhérer</text>
+  <text x="476" y="118" font-size="8.5" font-weight="700" fill="#0D9488">1,n</text>
+  <text x="546" y="118" font-size="8.5" font-weight="700" fill="#16A34A">1,1</text>
+
+  <!-- ASSOC 3 : COMMERCIALISER (COMMERÇANT <-> ARTICLE) -->
+  <line x1="740" y1="125" x2="925" y2="125" stroke="#243342" stroke-width="1.3" />
+  <rect x="805" y="112" width="72" height="26" rx="13" fill="#FAF9F6" stroke="#16A34A" stroke-width="1.3" />
+  <text x="841" y="128" text-anchor="middle" font-size="7.5" font-weight="700" fill="#16A34A">Commercialiser</text>
+  <text x="748" y="118" font-size="8.5" font-weight="700" fill="#16A34A">1,n</text>
+  <text x="908" y="118" font-size="8.5" font-weight="700" fill="#22C55E">1,1</text>
+
+  <!-- ASSOC 4 : COMMANDER (CITOYEN <-> COMMANDE) -->
+  <line x1="240" y1="350" x2="460" y2="350" stroke="#243342" stroke-width="1.3" />
+  <rect x="320" y="337" width="65" height="26" rx="13" fill="#FAF9F6" stroke="#DC2626" stroke-width="1.3" />
+  <text x="352" y="353" text-anchor="middle" font-size="8" font-weight="700" fill="#DC2626">Commander</text>
+  <text x="248" y="343" font-size="8.5" font-weight="700" fill="#DC2626">0,n</text>
+  <text x="442" y="343" font-size="8.5" font-weight="700" fill="#243342">1,1</text>
+
+  <!-- ASSOC 5 : CONTENIR (COMMANDE <-> LIGNE_COMMANDE) -->
+  <line x1="655" y1="350" x2="910" y2="350" stroke="#243342" stroke-width="1.3" />
+  <rect x="755" y="337" width="60" height="26" rx="13" fill="#FAF9F6" stroke="#243342" stroke-width="1.3" />
+  <text x="785" y="353" text-anchor="middle" font-size="8" font-weight="700" fill="#243342">Contenir</text>
+  <text x="665" y="343" font-size="8.5" font-weight="700" fill="#243342">1,n</text>
+  <text x="892" y="343" font-size="8.5" font-weight="700" fill="#475569">1,1</text>
+
+  <!-- ASSOC 6 : CONCERNER (ARTICLE <-> LIGNE_COMMANDE) - VERTICALE -->
+  <line x1="1015" y1="205" x2="1015" y2="275" stroke="#243342" stroke-width="1.3" />
+  <rect x="985" y="227" width="60" height="26" rx="13" fill="#FAF9F6" stroke="#22C55E" stroke-width="1.3" />
+  <text x="1015" y="243" text-anchor="middle" font-size="8" font-weight="700" fill="#22C55E">Concerner</text>
+  <text x="1023" y="220" font-size="8.5" font-weight="700" fill="#22C55E">0,n</text>
+  <text x="1023" y="268" font-size="8.5" font-weight="700" fill="#475569">1,1</text>
+
+  <!-- ASSOC 7 : BÉNÉFICIER (CITOYEN <-> AVANTAGE_MOBILITE) - VERTICALE -->
+  <line x1="142" y1="425" x2="142" y2="540" stroke="#243342" stroke-width="1.3" />
+  <rect x="112" y="468" width="60" height="26" rx="13" fill="#FAF9F6" stroke="#D97706" stroke-width="1.3" />
+  <text x="142" y="484" text-anchor="middle" font-size="8" font-weight="700" fill="#D97706">Bénéficier</text>
+  <text x="150" y="442" font-size="8.5" font-weight="700" fill="#DC2626">0,n</text>
+  <text x="150" y="528" font-size="8.5" font-weight="700" fill="#D97706">1,1</text>
+
+  <!-- ASSOC 8 : SUBVENTIONNER (COMMUNE <-> AVANTAGE_MOBILITE) - GAUCHE DÉGAGÉE -->
+  <path d="M 45 125 L 18 125 L 18 620 L 45 620" fill="none" stroke="#0284C7" stroke-width="1.3" stroke-dasharray="3 3" />
+  <rect x="6" y="340" width="24" height="65" rx="5" fill="#FAF9F6" stroke="#0284C7" stroke-width="1.2" />
+  <text x="18" y="373" text-anchor="middle" font-size="7" font-weight="700" fill="#0284C7" transform="rotate(-90 18 373)">Subventionner</text>
+  <text x="25" y="140" font-size="8" font-weight="700" fill="#0284C7">0,n</text>
+  <text x="25" y="612" font-size="8" font-weight="700" fill="#D97706">1,1</text>
+
+  <!-- ASSOC 9 : EFFECTUER (CITOYEN <-> PASSAGE_CAISSE) - DÉTOURNÉE SANS CROISEMENT -->
+  <path d="M 210 425 L 210 460 L 485 460 L 485 540" fill="none" stroke="#243342" stroke-width="1.3" />
+  <rect x="315" y="447" width="60" height="26" rx="13" fill="#FAF9F6" stroke="#EA580C" stroke-width="1.3" />
+  <text x="345" y="463" text-anchor="middle" font-size="8" font-weight="700" fill="#EA580C">Effectuer</text>
+  <text x="218" y="442" font-size="8.5" font-weight="700" fill="#DC2626">0,n</text>
+  <text x="492" y="528" font-size="8.5" font-weight="700" fill="#EA580C">1,1</text>
+
+  <!-- ASSOC 10 : ENREGISTRER (COMMERÇANT <-> PASSAGE_CAISSE) - CONTOURNE COMMANDE À DROITE -->
+  <path d="M 685 205 L 685 465 L 600 465 L 600 540" fill="none" stroke="#243342" stroke-width="1.3" />
+  <rect x="655" y="452" width="60" height="26" rx="13" fill="#FAF9F6" stroke="#16A34A" stroke-width="1.3" />
+  <text x="685" y="468" text-anchor="middle" font-size="7.5" font-weight="700" fill="#16A34A">Enregistrer</text>
+  <text x="692" y="222" font-size="8.5" font-weight="700" fill="#16A34A">0,n</text>
+  <text x="607" y="528" font-size="8.5" font-weight="700" fill="#EA580C">1,1</text>
+
+  <!-- ASSOC 11 : OUVRIR (COMMERÇANT <-> COMPTE_FIDELITE_MARCHAND) -->
+  <path d="M 725 205 L 725 585 L 870 585" fill="none" stroke="#243342" stroke-width="1.3" />
+  <rect x="740" y="572" width="55" height="26" rx="13" fill="#FAF9F6" stroke="#15803D" stroke-width="1.3" />
+  <text x="767" y="588" text-anchor="middle" font-size="8" font-weight="700" fill="#15803D">Ouvrir</text>
+  <text x="732" y="225" font-size="8.5" font-weight="700" fill="#16A34A">0,n</text>
+  <text x="852" y="580" font-size="8.5" font-weight="700" fill="#15803D">1,1</text>
+
+  <!-- ASSOC 12 : DÉTENIR (CITOYEN <-> COMPTE_FIDELITE_MARCHAND) - LIAISON EN POINTILLÉS -->
+  <path d="M 240 395 L 840 395 L 840 645 L 870 645" fill="none" stroke="#243342" stroke-width="1.2" stroke-dasharray="4 3" />
+  <rect x="812" y="470" width="55" height="26" rx="13" fill="#FAF9F6" stroke="#15803D" stroke-width="1.3" />
+  <text x="839" y="486" text-anchor="middle" font-size="8" font-weight="700" fill="#15803D">Détenir</text>
+  <text x="250" y="390" font-size="8.5" font-weight="700" fill="#DC2626">0,n</text>
+  <text x="852" y="640" font-size="8.5" font-weight="700" fill="#15803D">1,1</text>
+
+  <!-- ENCADRÉ PÉDAGOGIQUE DÉCOUPLAGE (SANS LANGUETTE / SYMÉTRIQUE) -->
+  <g filter="url(#shadow-card)">
+    <rect x="275" y="620" width="170" height="70" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2" />
+    <text x="360" y="637" text-anchor="middle" font-size="8.5" font-weight="700" fill="#243342">DÉCOUPLAGE ADR-005</text>
+    <text x="285" y="653" font-size="7.5" fill="#64748B">• VFP : Passages temporels 15j</text>
+    <text x="285" y="665" font-size="7.5" fill="#64748B">• Marchand : Points par boutique</text>
+    <text x="285" y="677" font-size="7.5" font-weight="600" fill="#D97706">Zéro jointure de calcul</text>
+  </g>
+
+</svg>
+"""
+
+def export_png(svg_str, width, height, output_png):
+    temp_html = output_png.replace(".png", "_temp.html")
+    html_doc = f"""<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {{ margin: 0; padding: 0; box-sizing: border-box; }}
+    body {{
+      background: #FFFFFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: {width}px;
+      height: {height}px;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+    }}
+    .container {{
+      width: {width}px;
+      height: {height}px;
+      padding: 10px;
+    }}
+  </style>
+</head>
+<body>
+  <div class="container">
+    {svg_str}
+  </div>
+</body>
+</html>"""
+    with open(temp_html, "w", encoding="utf-8") as f:
+        f.write(html_doc)
+
+    cmd = [
+        BROWSER,
+        "--headless",
+        "--disable-gpu",
+        "--hide-scrollbars",
+        "--force-device-scale-factor=2",
+        f"--window-size={width},{height}",
+        f"--screenshot={output_png}",
+        f"file://{os.path.abspath(temp_html)}"
+    ]
+    subprocess.run(cmd, check=True, stderr=subprocess.DEVNULL)
+    if os.path.exists(temp_html):
+        os.remove(temp_html)
+    print(f"Exported: {output_png} ({width}x{height})")
+
+def main():
+    repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    
+    # 1. Sauvegarde du composant HTML
+    html_path = os.path.join(repo_root, "agent_projet/templates/components/merise_mcd_global.html")
+    os.makedirs(os.path.dirname(html_path), exist_ok=True)
+    
+    svg_content = generate_mcd_svg()
+    
+    component_content = f"""<!-- FIGURE 4.1 : MODELE CONCEPTUEL DE DONNEES (MCD MERISE) -->
+<div class="figure-card" style="background:#FFFFFF; border:1px solid #E8E6DF; border-radius:16px; padding:24px; margin-bottom:28px; box-shadow:0 4px 16px rgba(36,51,66,0.06);">
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; border-bottom:1px solid #E8E6DF; padding-bottom:12px;">
+    <div>
+      <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:4px;">
+        <span style="width:8px; height:8px; border-radius:50%; background:#243342;"></span>
+        <span style="font-size:11px; font-weight:700; color:#243342; text-transform:uppercase; letter-spacing:0.08em;">Modélisation Conceptuelle Merise</span>
+      </div>
+      <h3 style="font-size:17px; font-weight:700; color:#243342; margin:0;">Figure 4.1 — Modèle Conceptuel de Données (MCD) &amp; Découplage des Moteurs</h3>
+    </div>
+    <span style="font-size:11px; background:#FAF9F6; border:1px solid #E8E6DF; padding:4px 12px; border-radius:9999px; color:#5A6578; font-weight:600;">3e Forme Normale (3FN) · ADR-005</span>
+  </div>
+{svg_content}
+</div>
+"""
+    with open(html_path, "w", encoding="utf-8") as f:
+        f.write(component_content)
+    print(f"HTML écrit : {html_path}")
+
+    # 2. Export PNG haute résolution
+    png_path = os.path.join(repo_root, "agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_4_1_mcd_merise_global.png")
+    os.makedirs(os.path.dirname(png_path), exist_ok=True)
+    export_png(svg_content, 1180, 770, png_path)
+    print("Génération terminée avec succès !")
+
+if __name__ == "__main__":
+    main()

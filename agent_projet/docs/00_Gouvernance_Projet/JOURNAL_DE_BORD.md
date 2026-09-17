@@ -6,7 +6,7 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 
 ## 1. Etat Courant du Projet
 
-- **Phase active** : Cadrage Metier & Redaction du Livrable R1 (Etapes 01, 02 et 03 COMPLETED — Prochaine Etape : 04 MCD Merise)
+- **Phase active** : Cadrage Metier & Redaction du Livrable R1 (Etapes 01, 02, 03 et 04 COMPLETED — Prochaine Etape : 05 Ergonomie & Accessibilite RGAA AA)
 - **Derniere mise a jour** : 2026-09-17
 - **Responsable / Scrum Master** : Equipe ShopLoc (M2 MIAGE GLOP)
 - **Depot Projet (Cockpit / Gouvernance)** : GitHub `Projet-GLOP`
@@ -475,6 +475,32 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Clôture officielle de l'Étape 03 (`COMPLETED`), satisfaisant l'intégralité des prérequis pour l'**Étape 04 (`STEP-04` : Modélisation Conceptuelle des Données MCD Merise & Dictionnaire)**.
 - **Reste à faire / Objectifs pour la Session 24** :
   - Démarrage de l'**Étape 04 (`STEP-04` / `SEC-04`)** : *Modélisation Conceptuelle des Données (MCD Merise & Dictionnaire formel)* déduit des entités manipulées dans les flux BPMN P1 à P5.
+
+---
+
+### [2026-09-17] Session 24 — Réalisation & Finalisation de l'Étape 04 (SEC-04 : MCD Merise & Dictionnaire Formel)
+- **Objectif** : Modéliser le patrimoine informationnel de ShopLoc selon la méthode Merise (norme AFNOR, 3FN), générer le schéma conceptuel vectoriel SVG sous les tokens pastel du projet, exporter le PNG haute définition (Figure 4.1), rédiger le dictionnaire de données formel et compiler la Section 04 calibrée sur exactement 5 pages A4 strictes selon l'ADR-015.
+- **Actions réalisées** :
+  - Réservation et passage de `STEP-04` à l'état `IN_PROGRESS` puis `COMPLETED` dans `agent_projet/config/cdc_progress.json` et `AVANCEMENT_CAHIER_DES_CHARGES.md`.
+  - Conception et génération déterministe du schéma conceptuel Merise global (Figure 4.1) :
+    * 10 entités canoniques réparties en 3 domaines étanches : Gouvernance (`COMMUNE`, `ASSOCIATION`, `COMMERCANT`, `CITOYEN`), Catalogue & C&C (`ARTICLE`, `COMMANDE`, `LIGNE_COMMANDE`), Double Fidélité & Mobilité (`PASSAGE_CAISSE`, `COMPTE_FIDELITE_MARCHAND`, `AVANTAGE_MOBILITE`).
+    * Matérialisation visuelle éclatante du découplage strict (ADR-005) : zéro jointure entre points marchands et avantages mobilité.
+    * Création du composant HTML réutilisable : `agent_projet/templates/components/merise_mcd_global.html`.
+    * Exportation du PNG haute résolution (200 DPI) : `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_4_1_mcd_merise_global.png`.
+  - Rédaction intégrale de `04_modele_conceptuel_donnees_mcd.md` avec gabarit dictionnaire par entité et page budgeting strict :
+    * Page 1 : Cadre méthodologique Merise & Schéma Conceptuel Global (4.1) + Figure 4.1 + principes de découplage et multi-tenancy.
+    * Page 2 : Dictionnaire formel Domaine Gouvernance & Acteurs (4.2) + règles de gestion au format analyste (RG-ACT-01 à 04).
+    * Page 3 : Dictionnaire formel Domaine Catalogue & Commandes Click & Collect (4.3) + règles C&C et snapshotting (RG-CMD-01 à 04).
+    * Page 4 : Dictionnaire formel Domaine Double Fidélité & Mobilité Urbaine (4.4) + spécification SQL glissante 15j (RG-FID-01 à 03).
+    * Page 5 : Règles d'intégrité conceptuelle, matrice des cardinalités A01 à A12 (4.5), cohérence ACID et conformité RGPD.
+  - Compilation vectorielle du PDF officiel : `04_modele_conceptuel_donnees_mcd.pdf` (exactement 5 pages A4 vérifiées au pixel près, zéro débordement).
+  - Contrôle d'intégrité de sécurité validé (`verify_deliverables.py` : 49 fichiers audités, 0 violation, 0 canari, 0 emoji).
+  - Synchronisation automatique vers Google Drive (`01_Cadrage_Metier_R1/04_modele_conceptuel_donnees_mcd.pdf`).
+- **Décisions actées** :
+  - Validation officielle de la Section 04 du Cahier des Charges R1.
+  - Clôture officielle de l'Étape 04 (`COMPLETED`), ouvrant la voie à l'**Étape 05 (`STEP-05` : Architecture de l'Information, Ergonomie & Accessibilité RGAA AA)**.
+- **Reste à faire / Objectifs pour la Session 25** :
+  - Lancement de l'**Étape 05 (`STEP-05` / `SEC-05`)** : *Architecture de l'Information, Ergonomie & Accessibilité RGAA AA* (Zonings d'écrans Pierre senior / carte papier QR, caisse Suzanne, tableau de bord anonymisé Marius).
 
 ---
 
