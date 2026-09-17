@@ -94,6 +94,16 @@ Pour chaque objectif opérationnel du système :
   - Les forces et faiblesses observées (taux de commissionnement, mode de livraison, absence d'e-commerce).
   - La justification stratégique du positionnement cible de ShopLoc au regard de ce benchmark.
 
+### Règle 4.5 — Calibrage Strict des Conteneurs Textuels & Anti-Débordement (Zero Text Overflow)
+* **Principe d'Isolation Usager (1 Persona = 1 Document / 1 Pleine Page A4)** :
+  - Chaque persona approfondi fait impérativement l'objet d'un **document ou d'une page pleine dédiée** (A4 Paysage ou Portrait).
+  - Il est formellement interdit de comprimer 4 personas sur une seule planche A4 sous peine d'écrasement typographique et de collision de texte.
+* **Marges de Sécurité Textuelle Obligatoires (Safety Margins)** :
+  - Dans tout conteneur délimité (`<rect>`, carte, encart), une marge d'au moins **30px** doit sanctuariser l'espace entre la dernière ligne de texte et la bordure inférieure.
+  - Tout intitulé, titre de poste ou sous-titre excédant 30 caractères doit être **découpé sur 2 lignes distinctes** pour éliminer tout risque de chevauchement avec les séparateurs verticaux, icônes ou badges de statut.
+* **Largeur Confortable des Blocs de Texte** :
+  - Les conteneurs textuels descriptifs doivent offrir une largeur minimale de **500px** en format paysage pour garantir une lecture fluide sans rupture intempestive de phrase.
+
 ---
 
 ## 5. Tableaux & Indicateurs de Performance (KPIs)

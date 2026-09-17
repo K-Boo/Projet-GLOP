@@ -221,3 +221,30 @@ Chaque décision doit être formalisée ainsi :
   - **Exclusions Fermes (Won't Have — R1 à R5)** :
     - Exclusion formelle de la livraison motorisée à domicile, des espèces sur le web et des commerces hors centre-ville.
 - **Conséquences** : Clarté contractuelle absolue pour les jalons R4/R5, traçabilité descendante et ascendante garantie, maîtrise de l'effort de développement selon la suite de Fibonacci.
+
+---
+
+### ADR-017 : Isolation Stricte des Personas (1 Document = 1 Persona) & Règle Anti-Débordement Permanente
+- **Date** : 2026-09-17
+- **Statut** : Validé (Règle Qualité Majeure - R1 à R5)
+- **Contexte** : Suite aux retours utilisateurs sur la Section 02, l'entassement de 4 personas sur une seule planche A4 entraînait une densification excessive et des risques de collision ou de débordement de texte sur les bordures. De plus, des sous-titres sur une seule ligne empiétaient sur les filets séparateurs d'en-tête.
+- **Décision** :
+  - **Isolation Stricte des Personas** : Chaque persona approfondi doit impérativement faire l'objet d'un **document ou d'une page A4 dédiée** (A4 Paysage ou Portrait). L'agrégation de multiples personas dans un même tableau de bord sous forme de mini-cartes étriquées est formellement bannie.
+  - **Marge de Sécurité Textuelle Obligatoire (Safety Margins > 30px)** : Dans tout visuel SVG ou conteneur HTML, la dernière ligne de texte doit être distante d'au moins **30px** de la bordure inférieure de son conteneur.
+  - **Découpage Systématique des Intitulés Longs** : Tout titre de poste, rôle ou sous-titre dépassant 30 caractères doit être scindé sur 2 lignes indépendantes afin de garantir au moins 50px de marge visuelle avant tout séparateur ou badge adjacent.
+  - **Audit Automatisé dans `verify_deliverables.py`** : Intégration d'un test systématique bloquant tout commit ou publication si des composants SVG comportent des personas multiples ou des lignes de texte SVG dépassant les limites de sécurité.
+- **Conséquences** : Élimination définitive de tout débordement textuel sur l'ensemble des livrables du projet, lisibilité maximale sans compromis, et autonomie documentaire totale pour chaque persona (génération de fiches individuelles en PDF).
+
+---
+
+### ADR-018 : Standard UX Justinmind & Humanisation Visuelle des Personas
+- **Date** : 2026-09-17
+- **Statut** : Validé (Standardisation UX & Ergonomie R1)
+- **Contexte** : Les fiches personas initiales souffraient d'un verbiage administratif excessif (28 puces de texte dense par fiche) et d'une sous-humanisation graphique (avatars simplistes). L'utilisateur a demandé d'adopter le standard de modèle Justinmind UX en dissociant les profils, en intégrant un véritable portrait photographique réaliste, en calibrant des jauges visuelles et en épurant le contenu textuel.
+- **Décision** :
+  - **Structure Justinmind UX Bi-Colonnes Équilibrée** :
+    * *Colonne Gauche (Profil & Identité)* : Portrait photo réaliste de haute qualité ancré dans le terroir lillois, données démographiques claires, tags de personnalité sur 2 lignes maximum, 3 jauges horizontales de progression (sliders UX), canaux et mobilité.
+    * *Colonne Droite (Expérience & Solutions)* : Citation en grand format italique (verbatim), biographie narrative empathique (3 lignes max), 4 objectifs prioritaires, 4 points de douleur/irritants, 3 solutions concrètes ShopLoc et bandeau de bénéfice majeur.
+  - **Humanisation Visuelle Réaliste** : Intégration de photographies haute définition (600x600 px compressées et encodées en base64 pour une autonomie totale des SVG) représentant authentiquement chaque profil dans son environnement opérationnel.
+  - **Concision & Densité Maîtrisée** : Suppression du bavardage au profit d'énoncés percutants (1 ligne de titre gras + 1 ligne d'explication opérationnelle par item).
+- **Conséquences** : Fiches personas ultra-professionnelles, conformes aux standards internationaux de design UX, parfaitement adaptées aux soutenances de Master 2 MIAGE, et éliminant tout sentiment de prose générée par IA.

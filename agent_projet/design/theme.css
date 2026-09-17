@@ -139,6 +139,48 @@
   @bottom-center { content: "1"; }
 }
 
+/* CONFIGURATION SPECIFIQUE DES PAGES PAYSAGE (A4 LANDSCAPE) POUR GRAPHIQUES ET CARTOGRAPHIES */
+@page landscape-page {
+  size: A4 landscape;
+  margin: 10mm 15mm 10mm 15mm;
+
+  @top-left {
+    content: "Projet ShopLoc — Master 2 MIAGE GLOP";
+    font-family: var(--font-serif);
+    font-size: var(--font-size-meta);
+    font-style: italic;
+    color: var(--color-text-secondary);
+    border-bottom: 0.5pt solid var(--color-border-light);
+    padding-bottom: 4pt;
+    margin-bottom: 6pt;
+  }
+
+  @top-right {
+    content: "Universite de Lille — FST Informatique";
+    font-family: var(--font-serif);
+    font-size: var(--font-size-meta);
+    font-style: italic;
+    color: var(--color-text-secondary);
+    border-bottom: 0.5pt solid var(--color-border-light);
+    padding-bottom: 4pt;
+    margin-bottom: 6pt;
+  }
+
+  @bottom-center {
+    content: counter(page);
+    font-family: var(--font-serif);
+    font-size: var(--font-size-meta);
+    color: var(--color-text-primary);
+  }
+}
+
+.landscape-page {
+  page: landscape-page;
+  break-before: page;
+  break-after: page;
+  width: 100%;
+}
+
 /* REGLES GENERALES */
 *, *:before, *:after {
   box-sizing: border-box;

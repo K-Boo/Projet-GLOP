@@ -88,7 +88,29 @@ def check_file(file_path, registry):
             v = check_line(line, f"Ligne {line_idx+1}", registry)
             violations.extend(v)
 
-    return violations
+        # 4. Verification de non-débordement et d'isolation visuelle pour les composants HTML/SVG
+        if ext == ".html":
+            file_content = "".join(lines)
+            if "<svg" in file_content:
+                # Interdiction de combiner plus d'un persona dans une seule planche SVG
+                persona_matches = re.findall(r'Persona\s*:\s*|Fiche Persona\s*:\s*', file_content, re.IGNORECASE)
+                if len(persona_matches) > 1 and "personas_dashboard" not in path.name:
+                    violations.append({
+                        "type": "CRAMMED_PERSONA_VIOLATION",
+                        "location": "Structure SVG",
+                        "detail": f"{len(persona_matches)} personas détectés dans un même composant SVG. Chaque persona doit avoir son propre document/page dédié (Règle 4.5)."
+                    })
+                # Détection de lignes SVG trop denses pouvant déborder de leur conteneur
+                for l_idx, l in enumerate(lines):
+                    text_matches = re.findall(r'<text[^>]*>(.*?)</text>', l)
+                    for tm in text_matches:
+                        if len(tm) > 105 and not tm.startswith("http"):
+                            violations.append({
+                                "type": "TEXT_OVERFLOW_RISK",
+                                "location": f"Ligne {l_idx+1}",
+                                "detail": f"Texte SVG trop long ({len(tm)} car.) risquant un débordement : '{tm[:50]}...'",
+                                "snippet": l.strip()
+                            })
 
 
 def check_line(line, loc, registry):

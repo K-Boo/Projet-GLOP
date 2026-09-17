@@ -441,11 +441,50 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Compilation vectorielle du PDF officiel : `02_personas_et_parcours_utilisateurs.pdf` (5 pages strictes, équilibrées et aérées).
   - Contrôle qualité de sécurité automatisé via `verify_deliverables.py` (44 fichiers audités, 0 violation, 0 canari, 0 emoji).
   - Mise à jour de `cdc_progress.json` (`STEP-02` passé à `COMPLETED`).
+### [2026-09-17] Session 23 — Séparation des 4 Personas & Règle Permanente Anti-Débordement
+- **Objectif** : Séparer les 4 personas pour leur dédier un document/page pleine chacun, corriger tous les débordements et collisions textuelles sur les gabarits, acter la règle permanente anti-débordement (Règle 4.5) et recompiler la Section 02 en format mixte (11 pages : 5 portrait, 6 paysage full A4).
+- **Actions réalisées** :
+  - Création de 4 gabarits de fiches personas approfondies autonomes A4 Paysage (1140x760 px) :
+    * `persona_pierre_dupont.html` -> `fig_2_1a_persona_pierre.png`
+    * `persona_suzanne_lemaire.html` -> `fig_2_1b_persona_suzanne.png`
+    * `persona_marius_vasseur.html` -> `fig_2_1c_persona_marius.png`
+    * `persona_julie_arthur.html` -> `fig_2_1d_persona_julie_arthur.png`
+  - Correction définitive des collisions de texte :
+    * Découpage du sous-titre de l'en-tête sur 2 lignes distinctes avec dégagement de plus de 70px avant les filets séparateurs.
+    * Élargissement des badges de repères émotionnels sur les Journey Maps (Pierre, Julie & Arthur).
+    * Respect strict d'une marge de sécurité (safety margin > 30px) entre le texte et la bordure inférieure des cartes.
+  - Génération de 4 documents PDF autonomes dans `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/personas/` (`02_persona_pierre_dupont.pdf`, `02_persona_suzanne_lemaire.pdf`, `02_persona_marius_vasseur.pdf`, `02_persona_julie_arthur.pdf`).
+  - Restructuration de `02_personas_et_parcours_utilisateurs.md` pour intégrer chaque persona sur sa propre page paysage A4.
+  - Recompilation vectorielle du livrable maître `02_personas_et_parcours_utilisateurs.pdf` (11 pages au total : 5 portrait, 6 paysage, 0 page orpheline).
+  - Intégration de la **Règle 4.5 (Calibrage Strict des Conteneurs Textuels & Anti-Débordement)** dans la charte normative `CHARTE_ET_RETROSPECTIVE_SECTION_01.md`.
+  - Intégration d'un audit automatisé anti-débordement et d'isolation des personas dans `agent_projet/scripts/verify_deliverables.py`.
+  - Validation avec `verify_deliverables.py` (48 fichiers audités, 0 violation, 0 canari, 0 emoji).
 - **Décisions actées** :
-  - Validation officielle de la Section 02 du Cahier des Charges R1.
-  - Étape 02 formellement clôturée (`COMPLETED`), ouvrant la voie à l'Étape 03 (`STEP-03` : Modélisation des Processus Métiers BPMN 2.0).
-- **Reste à faire / Objectifs pour la Session 23** :
-  - Lancement de l'**Étape 03 (`STEP-03` / `SEC-03`)** : *Modélisation des Processus Métiers (BPMN 2.0)* (Conventionnement municipal, Commande C&C, Enregistrement caisse/VFP, Conversion mobilité).
+  - **ADR-016** : Règle permanente d'isolation (1 Persona = 1 Document / 1 Pleine Page A4) et marge de garde textuelle (> 30px) obligatoire sur 100% des visuels du projet.
+### [2026-09-17] Session 24 — Humanisation & Refonte des Personas au Standard Justinmind UX
+- **Objectif** : Refondre intégralement les 4 fiches personas pour les aligner sur le standard de modèle UX Justinmind (structure 2 colonnes avec photo portrait réaliste, suppression du verbiage excessif, humanisation empathique, jauges/sliders visuels, tags de personnalité, citation en exergue et proposition de valeur ShopLoc).
+- **Actions réalisées** :
+  - Génération de 4 portraits photographiques haute résolution et réalistes ancrés dans le contexte lillois :
+    * Pierre Dupont (74 ans, retraité chaleureux dans un café lillois)
+    * Suzanne Lemaire (22 ans, jeune boulangère artisane avec tablier et pain artisanal)
+    * Marius Vasseur (27 ans, chargé de mission attractivité dans un bureau d'urbanisme moderne)
+    * Julie & Arthur (31 et 34 ans, jeune couple actif souriant dans une rue piétonne du centre de Lille)
+  - Intégration optimisée en base64 dans les gabarits SVG vectoriels (75 à 90 Ko par photo, ratio 3:2, 1140x760 px).
+  - Restructuration des 4 gabarits selon l'architecture Justinmind UX :
+    * *Colonne Gauche (330px)* : Archétype, photo portrait détourée avec coins arrondis, démographie (âge, profession, situation, localisation), tags de personnalité auto-calibrés sur 2 lignes, 3 jauges/sliders visuels de caractérisation (aisance numérique, fidélité locale, etc.), canaux et mobilité.
+    * *Colonne Droite (745px)* : Citation directe en grand format italique, biographie narrative humanisée et concise (3 lignes), 4 objectifs prioritaires, 4 points de douleur/frustrations, 3 réponses concrètes ShopLoc et bandeau de bénéfice majeur.
+  - Élimination de tout verbiage administratif au profit d'un ton empathique, percutant et centré usager.
+  - Calibrage strict anti-débordement : correction des décalages verticaux, marges de garde > 30px, auto-wrap des badges de traits de personnalité pour garantir zéro dépassement.
+  - Re-génération des 4 visuels PNG haute définition (`fig_2_1a`, `fig_2_1b`, `fig_2_1c`, `fig_2_1d`).
+  - Re-génération des 4 documents PDF autonomes A4 Paysage dans `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/personas/`.
+  - Recompilation vectorielle du document maître `02_personas_et_parcours_utilisateurs.pdf` (11 pages mixtes A4, rendu impeccable).
+  - Synchronisation réussie vers Google Drive (`01_Cadrage_Metier_R1/`).
+  - Contrôle d'intégrité exécuté via `verify_deliverables.py` (0 violation, 0 canari, 0 emoji).
+- **Décisions actées** :
+  - Adoption définitive du standard Justinmind UX pour toutes les fiches personas du projet.
+  - Règle de concision : 4 objectifs et 4 freins maximum par profil, formulés en une phrase claire sans pavé de texte.
+- **Reste à faire / Objectifs pour la Session 25** :
+  - Démarrage de l'**Étape 03 (`STEP-03` / `SEC-03`)** : *Modélisation des Processus Métiers (BPMN 2.0)*.
 
 ---
 

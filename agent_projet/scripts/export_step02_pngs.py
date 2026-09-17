@@ -116,7 +116,10 @@ def main():
     artifact_dir = r"C:\Users\hpome\.gemini\antigravity\brain\dffeb669-85f2-442c-85f2-eaba15fd3f95"
 
     targets = [
-        ("personas_dashboard.html", "fig_2_1_personas_approfondis.png"),
+        ("persona_pierre_dupont.html", "fig_2_1a_persona_pierre.png"),
+        ("persona_suzanne_lemaire.html", "fig_2_1b_persona_suzanne.png"),
+        ("persona_marius_vasseur.html", "fig_2_1c_persona_marius.png"),
+        ("persona_julie_arthur.html", "fig_2_1d_persona_julie_arthur.png"),
         ("user_journey_map_pierre.html", "fig_2_2_user_journey_pierre.png"),
         ("user_journey_map_actifs.html", "fig_2_3_user_journey_actifs.png"),
     ]
