@@ -1,0 +1,706 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+GÉNÉRATEUR DE SCHÉMAS FINANCIERS & ANALYTIQUES SHOPLOC (FIGURES 9.1, 9.2 ET 9.3)
+Master 2 MIAGE — Université de Lille — UE GLOP (2026-2027)
+
+Génère trois schémas vectoriels pour la Section 09 :
+- Figure 9.1 : Matrice de Répartition des Coûts Complets & Unités d'Œuvre (1180 x 660)
+- Figure 9.2 : Modélisation Direct Costing & Seuil de Rentabilité Communal (1180 x 640)
+- Figure 9.3 : Synthèse du Compte de Résultat Prévisionnel (P&L 3 Ans) & Ratios d'Investissement (1180 x 680)
+
+Conformité stricte à la charte graphique pastel ShopLoc (ADR-014, ADR-015), sans emoji, sans languette asymétrique.
+"""
+
+import os
+import sys
+
+COMMON_DEFS = """
+  <defs>
+    <filter id="shadow-card" x="-5%" y="-5%" width="110%" height="114%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#243342" flood-opacity="0.06"/>
+    </filter>
+    <filter id="shadow-box" x="-3%" y="-4%" width="106%" height="110%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#243342" flood-opacity="0.05"/>
+    </filter>
+    <marker id="arrow-slate" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#334155" />
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284C7" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669" />
+    </marker>
+  </defs>
+"""
+
+# ==============================================================================
+# FIGURE 9.1 : MATRICE DE RÉPARTITION DES COÛTS COMPLETS & UO (1180 x 660)
+# ==============================================================================
+def generate_couts_complets_svg():
+    return f"""<svg viewBox="0 0 1180 660" width="1180" height="660" style="overflow:visible; font-family:'Poppins', sans-serif;">
+{COMMON_DEFS}
+
+  <!-- CADRE GLOBAL -->
+  <rect x="10" y="10" width="1160" height="640" rx="14" fill="#FAFAFA" stroke="#E2E8F0" stroke-width="1.2" />
+
+  <!-- EN-TETE BANDEAU -->
+  <rect x="25" y="22" width="1130" height="42" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+  <rect x="35" y="32" width="22" height="22" rx="4" fill="#0284C7" />
+  <text x="46" y="47" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">CC</text>
+  <text x="68" y="46" font-size="13" font-weight="700" fill="#1E293B">Matrice des Coûts Complets &amp; Calcul des Unités d'Œuvre (UO)</text>
+  <text x="1140" y="46" text-anchor="end" font-size="11" font-weight="500" fill="#64748B">Méthode des Centres d'Analyse (Chaîne de Valeur ESN / Michael Porter) · Répartition Primaire &amp; Secondaire</text>
+
+  <!-- TABLEAU MATRICIEL PRINCIPAL -->
+  <g filter="url(#shadow-card)">
+    <rect x="25" y="76" width="1130" height="340" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+
+    <!-- ENTETE TABLEAU -->
+    <rect x="25" y="76" width="1130" height="38" rx="10" fill="#243342" />
+    <text x="40" y="100" font-size="10" font-weight="700" fill="#FFFFFF">CENTRE D'ANALYSE</text>
+    <text x="230" y="100" font-size="10" font-weight="700" fill="#FFFFFF">TYPE</text>
+    <text x="320" y="100" font-size="10" font-weight="700" fill="#FFFFFF">RÉP. PRIMAIRE</text>
+    <text x="440" y="100" font-size="10" font-weight="700" fill="#FFFFFF">CLÉS DE DÉVERSEMENT SECONDAIRE</text>
+    <text x="730" y="100" font-size="10" font-weight="700" fill="#FFFFFF">TOTAL SECONDAIRE</text>
+    <text x="860" y="100" font-size="10" font-weight="700" fill="#FFFFFF">NATURE DE L'UO</text>
+    <text x="1000" y="100" font-size="10" font-weight="700" fill="#FFFFFF">VOLUME</text>
+    <text x="1080" y="100" font-size="10" font-weight="700" fill="#FFFFFF">COÛT UO</text>
+
+    <!-- LIGNE 1 : ADMIN (AUXILIAIRE) -->
+    <rect x="25" y="114" width="1130" height="46" fill="#FAF9F6" />
+    <line x1="25" y1="160" x2="1155" y2="160" stroke="#E8E6DF" stroke-width="1" />
+    <text x="40" y="136" font-size="11" font-weight="700" fill="#1E293B">Administration &amp; Direction</text>
+    <text x="40" y="150" font-size="9" fill="#64748B">Gestion, RH, comptabilité, juridique</text>
+    <rect x="230" y="127" width="68" height="20" rx="4" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1" />
+    <text x="264" y="141" text-anchor="middle" font-size="9" font-weight="600" fill="#475569">Auxiliaire</text>
+    <text x="320" y="141" font-size="11" font-weight="700" fill="#0284C7">12 000,00 €</text>
+    <text x="440" y="141" font-size="10" fill="#334155">Vers Vente (20%), Réalisation (50%), Maintenance (30%)</text>
+    <text x="730" y="141" font-size="10.5" font-weight="600" fill="#94A3B8">-12 000,00 €</text>
+    <text x="860" y="141" font-size="10" fill="#94A3B8">—</text>
+    <text x="1000" y="141" font-size="10" fill="#94A3B8">—</text>
+    <text x="1080" y="141" font-size="10" fill="#94A3B8">—</text>
+
+    <!-- LIGNE 2 : SUPPORT TECH (AUXILIAIRE) -->
+    <rect x="25" y="160" width="1130" height="46" fill="#FFFFFF" />
+    <line x1="25" y1="206" x2="1155" y2="206" stroke="#E8E6DF" stroke-width="1" />
+    <text x="40" y="182" font-size="11" font-weight="700" fill="#1E293B">Support Technique &amp; FinOps</text>
+    <text x="40" y="196" font-size="9" fill="#64748B">CI/CD, serveurs staging, monitoring</text>
+    <rect x="230" y="173" width="68" height="20" rx="4" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1" />
+    <text x="264" y="187" text-anchor="middle" font-size="9" font-weight="600" fill="#475569">Auxiliaire</text>
+    <text x="320" y="187" font-size="11" font-weight="700" fill="#0284C7">6 000,00 €</text>
+    <text x="440" y="187" font-size="10" fill="#334155">Vers Vente (10%), Réalisation (45%), Maintenance (45%)</text>
+    <text x="730" y="187" font-size="10.5" font-weight="600" fill="#94A3B8">-6 000,00 €</text>
+    <text x="860" y="187" font-size="10" fill="#94A3B8">—</text>
+    <text x="1000" y="187" font-size="10" fill="#94A3B8">—</text>
+    <text x="1080" y="187" font-size="10" fill="#94A3B8">—</text>
+
+    <!-- LIGNE 3 : VENTE (PRINCIPAL) -->
+    <rect x="25" y="206" width="1130" height="48" fill="#FAF9F6" />
+    <line x1="25" y1="254" x2="1155" y2="254" stroke="#E8E6DF" stroke-width="1" />
+    <text x="40" y="228" font-size="11" font-weight="700" fill="#1E293B">Vente &amp; Prospection Communale</text>
+    <text x="40" y="242" font-size="9" fill="#64748B">Prospection mairies &amp; conventions tripartites</text>
+    <rect x="230" y="220" width="68" height="20" rx="4" fill="#E0F2FE" stroke="#BAE6FD" stroke-width="1" />
+    <text x="264" y="234" text-anchor="middle" font-size="9" font-weight="700" fill="#0284C7">Principal</text>
+    <text x="320" y="234" font-size="11" font-weight="700" fill="#0284C7">6 000,00 €</text>
+    <text x="440" y="234" font-size="10" fill="#059669">+2 400 € (Admin 20%) + 600 € (Support 10%)</text>
+    <text x="730" y="234" font-size="11" font-weight="700" fill="#0284C7">9 000,00 €</text>
+    <text x="860" y="234" font-size="10" font-weight="600" fill="#1E293B">100 € de CA généré</text>
+    <text x="1000" y="234" font-size="10.5" font-weight="600" fill="#1E293B">880 UO</text>
+    <rect x="1075" y="222" width="70" height="24" rx="4" fill="#E0F2FE" stroke="#0284C7" stroke-width="1" />
+    <text x="1110" y="238" text-anchor="middle" font-size="10" font-weight="700" fill="#0284C7">10,23 €</text>
+
+    <!-- LIGNE 4 : RÉALISATION (PRINCIPAL) -->
+    <rect x="25" y="254" width="1130" height="48" fill="#FFFFFF" />
+    <line x1="25" y1="302" x2="1155" y2="302" stroke="#E8E6DF" stroke-width="1" />
+    <text x="40" y="276" font-size="11" font-weight="700" fill="#1E293B">Réalisation &amp; Ingénierie (Build)</text>
+    <text x="40" y="290" font-size="9" fill="#64748B">Conception R&amp;D, socle Docker, API OpenAPI</text>
+    <rect x="230" y="268" width="68" height="20" rx="4" fill="#E0F2FE" stroke="#BAE6FD" stroke-width="1" />
+    <text x="264" y="282" text-anchor="middle" font-size="9" font-weight="700" fill="#0284C7">Principal</text>
+    <text x="320" y="282" font-size="11" font-weight="700" fill="#0284C7">8 000,00 €</text>
+    <text x="440" y="282" font-size="10" fill="#059669">+6 000 € (Admin 50%) + 2 700 € (Support 45%)</text>
+    <text x="730" y="282" font-size="11" font-weight="700" fill="#0284C7">16 700,00 €</text>
+    <text x="860" y="282" font-size="10" font-weight="600" fill="#1E293B">Heure ingénieur dev</text>
+    <text x="1000" y="282" font-size="10.5" font-weight="600" fill="#1E293B">6 000 h</text>
+    <rect x="1075" y="270" width="70" height="24" rx="4" fill="#E0F2FE" stroke="#0284C7" stroke-width="1" />
+    <text x="1110" y="286" text-anchor="middle" font-size="10" font-weight="700" fill="#0284C7">2,78 €</text>
+
+    <!-- LIGNE 5 : MAINTENANCE (PRINCIPAL) -->
+    <rect x="25" y="302" width="1130" height="48" fill="#FAF9F6" />
+    <line x1="25" y1="350" x2="1155" y2="350" stroke="#E8E6DF" stroke-width="1" />
+    <text x="40" y="324" font-size="11" font-weight="700" fill="#1E293B">Maintenance &amp; Exploitation (Run)</text>
+    <text x="40" y="338" font-size="9" fill="#64748B">Exploitation cloud multi-tenant, SLA 99,8%</text>
+    <rect x="230" y="316" width="68" height="20" rx="4" fill="#E0F2FE" stroke="#BAE6FD" stroke-width="1" />
+    <text x="264" y="330" text-anchor="middle" font-size="9" font-weight="700" fill="#0284C7">Principal</text>
+    <text x="320" y="330" font-size="11" font-weight="700" fill="#0284C7">4 000,00 €</text>
+    <text x="440" y="330" font-size="10" fill="#059669">+3 600 € (Admin 30%) + 2 700 € (Support 45%)</text>
+    <text x="730" y="330" font-size="11" font-weight="700" fill="#0284C7">10 300,00 €</text>
+    <text x="860" y="330" font-size="10" font-weight="600" fill="#1E293B">Collectivité active</text>
+    <text x="1000" y="330" font-size="10.5" font-weight="600" fill="#1E293B">6 villes</text>
+    <rect x="1075" y="318" width="70" height="24" rx="4" fill="#E0F2FE" stroke="#0284C7" stroke-width="1" />
+    <text x="1110" y="334" text-anchor="middle" font-size="10" font-weight="700" fill="#0284C7">1 716,67 €</text>
+
+    <!-- LIGNE DE TOTALISATION -->
+    <rect x="25" y="350" width="1130" height="42" fill="#F8FAFC" />
+    <line x1="25" y1="350" x2="1155" y2="350" stroke="#CBD5E1" stroke-width="1.5" />
+    <text x="40" y="376" font-size="11" font-weight="800" fill="#0F172A">TOTAL DES CHARGES INDIRECTES</text>
+    <text x="320" y="376" font-size="12" font-weight="800" fill="#0F172A">36 000,00 €</text>
+    <text x="440" y="376" font-size="10" font-weight="600" fill="#64748B">Équilibre parfait primaire == secondaire (0,00 € résiduel)</text>
+    <text x="730" y="376" font-size="12" font-weight="800" fill="#0F172A">36 000,00 €</text>
+    <text x="860" y="376" font-size="9.5" font-style="italic" fill="#64748B">Régularisation certifiée</text>
+    <text x="1000" y="376" font-size="9.5" font-style="italic" fill="#64748B">Conforme DoD</text>
+    <text x="1080" y="376" font-size="9.5" font-weight="700" fill="#059669">Audit OK</text>
+  </g>
+
+  <!-- ENCART CAS D'USAGE : COÛT DE REVIENT D'UNE PETITE VILLE (1130 x 200) -->
+  <g filter="url(#shadow-card)">
+    <rect x="25" y="434" width="1130" height="200" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+    <rect x="25" y="434" width="1130" height="34" rx="10" fill="#F1F5F9" />
+    <text x="40" y="456" font-size="11" font-weight="700" fill="#1E293B">Cas d'Application : Coût de Revient Complet d'un Déploiement Petite Ville (&lt; 20k hab.)</text>
+    <text x="1140" y="456" text-anchor="end" font-size="10" font-weight="600" fill="#0284C7">Prix Vente Forfaitaire Y1 : 10 500,00 € (Setup 4 500 € + Abonnement 6 000 €)</text>
+
+    <!-- 3 COLONNES DÉTAILLÉES -->
+    <!-- Col 1 : Charges Directes -->
+    <rect x="40" y="480" width="340" height="136" rx="8" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <rect x="52" y="492" width="14" height="14" rx="3" fill="#64748B" />
+    <text x="74" y="504" font-size="11" font-weight="700" fill="#1E293B">1. Charges Directes Dédiées</text>
+    <text x="52" y="530" font-size="10" fill="#475569">• Main d'œuvre dev (80 h * 25,00 €) :</text>
+    <text x="360" y="530" text-anchor="end" font-size="10" font-weight="600" fill="#1E293B">2 000,00 €</text>
+    <text x="52" y="550" font-size="10" fill="#475569">• Frais logistiques / déplacement sur site :</text>
+    <text x="360" y="550" text-anchor="end" font-size="10" font-weight="600" fill="#1E293B">400,00 €</text>
+    <line x1="52" y1="566" x2="360" y2="566" stroke="#CBD5E1" stroke-width="1" />
+    <text x="52" y="586" font-size="10.5" font-weight="700" fill="#1E293B">Sous-total Charges Directes :</text>
+    <text x="360" y="586" text-anchor="end" font-size="11.5" font-weight="800" fill="#0284C7">2 400,00 €</text>
+
+    <!-- Col 2 : Charges Indirectes Imputées -->
+    <rect x="395" y="480" width="370" height="136" rx="8" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <rect x="407" y="492" width="14" height="14" rx="3" fill="#0284C7" />
+    <text x="429" y="504" font-size="11" font-weight="700" fill="#1E293B">2. Charges Indirectes Imputées (UO)</text>
+    <text x="407" y="526" font-size="9.5" fill="#475569">• Vente (105 UO * 10,23 €) :</text>
+    <text x="745" y="526" text-anchor="end" font-size="9.5" font-weight="600" fill="#1E293B">1 073,86 €</text>
+    <text x="407" y="544" font-size="9.5" fill="#475569">• Réalisation (80 h * 2,78 €) :</text>
+    <text x="745" y="544" text-anchor="end" font-size="9.5" font-weight="600" fill="#1E293B">222,67 €</text>
+    <text x="407" y="562" font-size="9.5" fill="#475569">• Maintenance (1 collectivité * 1 716,67 €) :</text>
+    <text x="745" y="562" text-anchor="end" font-size="9.5" font-weight="600" fill="#1E293B">1 716,67 €</text>
+    <line x1="407" y1="574" x2="745" y2="574" stroke="#CBD5E1" stroke-width="1" />
+    <text x="407" y="594" font-size="10.5" font-weight="700" fill="#1E293B">Sous-total Charges Indirectes :</text>
+    <text x="745" y="594" text-anchor="end" font-size="11.5" font-weight="800" fill="#0284C7">3 013,20 €</text>
+
+    <!-- Col 3 : Synthèse Économique & Marge -->
+    <rect x="780" y="480" width="360" height="136" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1" />
+    <rect x="792" y="492" width="14" height="14" rx="3" fill="#059669" />
+    <text x="814" y="504" font-size="11" font-weight="700" fill="#065F46">3. Rentabilité Commerciale Nette</text>
+    <text x="792" y="528" font-size="10" fill="#047857">• Coût de Revient Complet (1 + 2) :</text>
+    <text x="1120" y="528" text-anchor="end" font-size="10.5" font-weight="700" fill="#1E293B">5 413,20 €</text>
+    <text x="792" y="548" font-size="10" fill="#047857">• Chiffre d'Affaires Facturé :</text>
+    <text x="1120" y="548" text-anchor="end" font-size="10.5" font-weight="700" fill="#0284C7">10 500,00 €</text>
+    <line x1="792" y1="564" x2="1120" y2="564" stroke="#86EFAC" stroke-width="1" />
+    <text x="792" y="584" font-size="11" font-weight="800" fill="#065F46">Bénéfice Net Unitaire :</text>
+    <text x="1120" y="584" text-anchor="end" font-size="12" font-weight="800" fill="#059669">+5 086,80 €</text>
+    <text x="792" y="602" font-size="9.5" font-weight="600" fill="#047857">Taux de Marge Commerciale :</text>
+    <text x="1120" y="602" text-anchor="end" font-size="10.5" font-weight="800" fill="#059669">48,45 %</text>
+  </g>
+
+</svg>"""
+
+# ==============================================================================
+# FIGURE 9.2 : MODÉLISATION DIRECT COSTING & SEUIL DE RENTABILITÉ (1180 x 640)
+# ==============================================================================
+def generate_direct_costing_svg():
+    return f"""<svg viewBox="0 0 1180 640" width="1180" height="640" style="overflow:visible; font-family:'Poppins', sans-serif;">
+{COMMON_DEFS}
+
+  <!-- CADRE GLOBAL -->
+  <rect x="10" y="10" width="1160" height="620" rx="14" fill="#FAFAFA" stroke="#E2E8F0" stroke-width="1.2" />
+
+  <!-- EN-TETE BANDEAU -->
+  <rect x="25" y="22" width="1130" height="42" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+  <rect x="35" y="32" width="22" height="22" rx="4" fill="#059669" />
+  <text x="46" y="47" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">DC</text>
+  <text x="68" y="46" font-size="13" font-weight="700" fill="#1E293B">Modélisation Direct Costing &amp; Seuil de Rentabilité Communal (Point Mort)</text>
+  <text x="1140" y="46" text-anchor="end" font-size="11" font-weight="500" fill="#64748B">Décomposition Charges Fixes vs Variables · Année 1 (Amorçage) · SR = 75 365,24 € au Jour 312</text>
+
+  <!-- ZONE DE GAUCHE : GRAPHIQUE ÉCONOMIQUE (LARGEUR 680) -->
+  <g filter="url(#shadow-card)">
+    <rect x="25" y="76" width="680" height="536" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+
+    <!-- TITRE CARTE GRAPHIQUE -->
+    <rect x="25" y="76" width="680" height="34" rx="10" fill="#F8FAFC" />
+    <text x="40" y="98" font-size="11" font-weight="700" fill="#1E293B">Trajectoire Économique de Rentabilité (Y1) : Coûts vs Revenus</text>
+    <text x="690" y="98" text-anchor="end" font-size="10" font-weight="600" fill="#64748B">Échelle en milliers d'euros (k€)</text>
+
+    <!-- AXES DU GRAPHIQUE -->
+    <!-- Grille de fond -->
+    <line x1="100" y1="520" x2="650" y2="520" stroke="#CBD5E1" stroke-width="1.5" />
+    <line x1="100" y1="442" x2="650" y2="442" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3" />
+    <line x1="100" y1="364" x2="650" y2="364" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3" />
+    <line x1="100" y1="286" x2="650" y2="286" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3" />
+    <line x1="100" y1="208" x2="650" y2="208" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3" />
+    <line x1="100" y1="130" x2="650" y2="130" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3" />
+
+    <line x1="100" y1="520" x2="100" y2="130" stroke="#CBD5E1" stroke-width="1.5" />
+    <line x1="210" y1="520" x2="210" y2="130" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3" />
+    <line x1="320" y1="520" x2="320" y2="130" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3" />
+    <line x1="430" y1="520" x2="430" y2="130" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3" />
+    <line x1="540" y1="520" x2="540" y2="130" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3" />
+    <line x1="650" y1="520" x2="650" y2="130" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3" />
+
+    <!-- Graduations Y -->
+    <text x="90" y="524" text-anchor="end" font-size="9" fill="#64748B">0 €</text>
+    <text x="90" y="446" text-anchor="end" font-size="9" fill="#64748B">20 k€</text>
+    <text x="90" y="368" text-anchor="end" font-size="9" fill="#64748B">40 k€</text>
+    <text x="90" y="290" text-anchor="end" font-size="9" fill="#64748B">60 k€</text>
+    <text x="90" y="212" text-anchor="end" font-size="9" fill="#64748B">80 k€</text>
+    <text x="90" y="134" text-anchor="end" font-size="9" fill="#64748B">100 k€</text>
+
+    <!-- Graduations X -->
+    <text x="100" y="538" text-anchor="middle" font-size="9" fill="#64748B">0</text>
+    <text x="210" y="538" text-anchor="middle" font-size="9" fill="#64748B">20 k€</text>
+    <text x="320" y="538" text-anchor="middle" font-size="9" fill="#64748B">40 k€</text>
+    <text x="430" y="538" text-anchor="middle" font-size="9" fill="#64748B">60 k€</text>
+    <text x="540" y="538" text-anchor="middle" font-size="9" fill="#64748B">80 k€</text>
+    <text x="650" y="538" text-anchor="middle" font-size="9" fill="#64748B">100 k€</text>
+
+    <!-- ZONES PASTEL : DEFICIT & PROFIT -->
+    <!-- Zone de perte -->
+    <polygon points="100,254.8 514.5,226.1 100,520" fill="#FEE2E2" opacity="0.45" />
+    <text x="250" y="380" font-size="10" font-weight="700" fill="#DC2626" opacity="0.8">ZONE DE PERTE</text>
+
+    <!-- Zone de profit -->
+    <polygon points="514.5,226.1 584,176.8 584,221.3" fill="#D1FAE5" opacity="0.55" />
+    <text x="525" y="195" font-size="9" font-weight="700" fill="#059669">PROFIT</text>
+
+    <!-- DROITE 1 : CHARGES FIXES (CF = 68 000 €) -->
+    <line x1="100" y1="254.8" x2="650" y2="254.8" stroke="#64748B" stroke-width="2" stroke-dasharray="5 3" />
+    <text x="645" y="246" text-anchor="end" font-size="9.5" font-weight="700" fill="#64748B">Charges Fixes (CF) = 68 000 €</text>
+
+    <!-- DROITE 2 : COUTS TOTAUX (CT = CF + CV) -->
+    <line x1="100" y1="254.8" x2="650" y2="216.7" stroke="#D97706" stroke-width="2.5" />
+    <text x="645" y="208" text-anchor="end" font-size="9.5" font-weight="700" fill="#D97706">Coûts Totaux (CF + CV)</text>
+
+    <!-- DROITE 3 : CHIFFRE D'AFFAIRES (CA) -->
+    <line x1="100" y1="520" x2="650" y2="130" stroke="#0284C7" stroke-width="2.5" />
+    <text x="645" y="145" text-anchor="end" font-size="9.5" font-weight="700" fill="#0284C7">Chiffre d'Affaires (CA = 100% Volume)</text>
+
+    <!-- LIGNE POINTILLÉE SEUIL DE RENTABILITÉ (SR) -->
+    <line x1="514.5" y1="520" x2="514.5" y2="226.1" stroke="#059669" stroke-width="1.5" stroke-dasharray="4 2" />
+    <circle cx="514.5" cy="226.1" r="5" fill="#059669" stroke="#FFFFFF" stroke-width="2" />
+    <rect x="440" y="260" width="150" height="36" rx="6" fill="#059669" />
+    <text x="515" y="275" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF">SEUIL DE RENTABILITÉ</text>
+    <text x="515" y="289" text-anchor="middle" font-size="10.5" font-weight="800" fill="#FFFFFF">SR = 75 365,24 €</text>
+
+    <!-- LIGNE POINTILLÉE ACTIVITÉ RÉELLE Y1 (88 k€) -->
+    <line x1="584" y1="520" x2="584" y2="176.8" stroke="#0284C7" stroke-width="1.5" stroke-dasharray="3 2" />
+    <circle cx="584" cy="176.8" r="4.5" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.5" />
+
+    <!-- MARGE DE SÉCURITÉ FLÈCHE HORIZONTALE -->
+    <line x1="514.5" y1="480" x2="584" y2="480" stroke="#0284C7" stroke-width="2" marker-start="url(#arrow-blue)" marker-end="url(#arrow-blue)" />
+    <rect x="490" y="492" width="120" height="20" rx="4" fill="#E0F2FE" stroke="#BAE6FD" stroke-width="1" />
+    <text x="550" y="506" text-anchor="middle" font-size="8.5" font-weight="700" fill="#0284C7">MS = 12 635 € (+14,4%)</text>
+
+    <!-- LÉGENDE INFÉRIEURE -->
+    <rect x="40" y="566" width="650" height="32" rx="6" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <circle cx="56" cy="582" r="4" fill="#0284C7" />
+    <text x="66" y="586" font-size="9" fill="#1E293B">CA : 88 000 €</text>
+    <circle cx="160" cy="582" r="4" fill="#D97706" />
+    <text x="170" y="586" font-size="9" fill="#1E293B">Coûts Totaux : 76 600 €</text>
+    <circle cx="300" cy="582" r="4" fill="#64748B" />
+    <text x="310" y="586" font-size="9" fill="#1E293B">Charges Fixes : 68 000 €</text>
+    <circle cx="450" cy="582" r="4" fill="#059669" />
+    <text x="460" y="586" font-size="9" font-weight="700" fill="#059669">Point Mort : 312 jours (Nov.)</text>
+  </g>
+
+  <!-- ZONE DE DROITE : PANNEAUX KPIS & DIRECT COSTING ÉVOLUÉ (LARGEUR 440) -->
+  <g filter="url(#shadow-card)">
+    <rect x="715" y="76" width="440" height="230" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+    <rect x="715" y="76" width="440" height="32" rx="10" fill="#F1F5F9" />
+    <text x="730" y="97" font-size="10.5" font-weight="700" fill="#1E293B">1. Compte de Résultat Simplifié en Direct Costing (Y1)</text>
+
+    <!-- Tableau Booktabs mini -->
+    <text x="730" y="126" font-size="10" fill="#475569">Chiffre d'Affaires HT (6 Villes) :</text>
+    <text x="1135" y="126" text-anchor="end" font-size="10.5" font-weight="700" fill="#0284C7">88 000,00 €</text>
+
+    <text x="730" y="146" font-size="10" fill="#475569">- Charges Variables (Cloud, Passerelle, SMS) :</text>
+    <text x="1135" y="146" text-anchor="end" font-size="10.5" font-weight="600" fill="#DC2626">8 600,00 €</text>
+
+    <line x1="730" y1="156" x2="1135" y2="156" stroke="#CBD5E1" stroke-width="1" />
+
+    <text x="730" y="174" font-size="10.5" font-weight="700" fill="#059669">= Marge sur Coûts Variables (MCV) :</text>
+    <text x="1135" y="174" text-anchor="end" font-size="11" font-weight="800" fill="#059669">79 400,00 €</text>
+    <text x="730" y="190" font-size="9" font-weight="600" fill="#047857">Taux de Marge sur Coût Variable (TMCV) :</text>
+    <text x="1135" y="190" text-anchor="end" font-size="10" font-weight="800" fill="#047857">90,23 %</text>
+
+    <text x="730" y="210" font-size="10" fill="#475569">- Charges Fixes Globales (Salaires, licences, immo) :</text>
+    <text x="1135" y="210" text-anchor="end" font-size="10.5" font-weight="600" fill="#DC2626">68 000,00 €</text>
+
+    <line x1="730" y1="220" x2="1135" y2="220" stroke="#CBD5E1" stroke-width="1" />
+
+    <text x="730" y="238" font-size="11" font-weight="800" fill="#1E293B">= Résultat Courant Avant Impôt :</text>
+    <text x="1135" y="238" text-anchor="end" font-size="12" font-weight="800" fill="#0284C7">+11 400,00 €</text>
+
+    <rect x="730" y="254" width="405" height="42" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+    <text x="740" y="270" font-size="9" font-weight="600" fill="#64748B">Formule Fondamentale :</text>
+    <text x="740" y="286" font-size="9.5" font-weight="700" fill="#0F172A">SR = Charges Fixes / TMCV = 68 000 € / 0,9023 = 75 365,24 €</text>
+  </g>
+
+  <!-- Bloc 2 : Direct Costing Évolué (Marges de Contribution Territoriales) -->
+  <g filter="url(#shadow-card)">
+    <rect x="715" y="320" width="440" height="292" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+    <rect x="715" y="320" width="440" height="32" rx="10" fill="#F1F5F9" />
+    <text x="730" y="341" font-size="10.5" font-weight="700" fill="#1E293B">2. Direct Costing Évolué (Contribution par Segment)</text>
+
+    <!-- Segment 1 : Petite Ville -->
+    <rect x="730" y="364" width="410" height="110" rx="6" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <rect x="740" y="374" width="10" height="10" rx="2" fill="#0284C7" />
+    <text x="756" y="383" font-size="10" font-weight="700" fill="#1E293B">Petite Collectivité (&lt; 20k hab. · 25 commerces)</text>
+    <text x="740" y="405" font-size="9.5" fill="#475569">Prix de Vente Total (Setup + Abonnement) :</text>
+    <text x="1125" y="405" text-anchor="end" font-size="9.5" font-weight="700" fill="#1E293B">10 500,00 €</text>
+    <text x="740" y="423" font-size="9.5" fill="#475569">Coût Spécifique (CV 800 € + CF Directes 1 200 €) :</text>
+    <text x="1125" y="423" text-anchor="end" font-size="9.5" font-weight="600" fill="#DC2626">2 000,00 €</text>
+    <line x1="740" y1="433" x2="1125" y2="433" stroke="#CBD5E1" stroke-width="1" />
+    <text x="740" y="451" font-size="10" font-weight="700" fill="#059669">Marge sur Coût Spécifique (MCS) :</text>
+    <text x="1125" y="451" text-anchor="end" font-size="10.5" font-weight="800" fill="#059669">8 500,00 € (80,95 %)</text>
+    <text x="740" y="465" font-size="8.5" fill="#64748B">Couvre les charges fixes communes et dégage un surplus solide.</text>
+
+    <!-- Segment 2 : Ville Moyenne -->
+    <rect x="730" y="484" width="410" height="116" rx="6" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <rect x="740" y="494" width="10" height="10" rx="2" fill="#7C3AED" />
+    <text x="756" y="503" font-size="10" font-weight="700" fill="#1E293B">Ville Moyenne (20k à 100k hab. · 70 commerces)</text>
+    <text x="740" y="525" font-size="9.5" fill="#475569">Prix de Vente Total (Setup + Abonnement) :</text>
+    <text x="1125" y="525" text-anchor="end" font-size="9.5" font-weight="700" fill="#1E293B">23 000,00 €</text>
+    <text x="740" y="543" font-size="9.5" fill="#475569">Coût Spécifique (CV 1 800 € + CF Directes 2 800 €) :</text>
+    <text x="1125" y="543" text-anchor="end" font-size="9.5" font-weight="600" fill="#DC2626">4 600,00 €</text>
+    <line x1="740" y1="553" x2="1125" y2="553" stroke="#CBD5E1" stroke-width="1" />
+    <text x="740" y="571" font-size="10" font-weight="700" fill="#7C3AED">Marge sur Coût Spécifique (MCS) :</text>
+    <text x="1125" y="571" text-anchor="end" font-size="10.5" font-weight="800" fill="#7C3AED">18 400,00 € (80,00 %)</text>
+    <text x="740" y="586" font-size="8.5" fill="#64748B">Contribution majeure à l'amortissement du socle logiciel central.</text>
+  </g>
+
+</svg>"""
+
+# ==============================================================================
+# FIGURE 9.3 : SYNTHÈSE COMPTE DE RÉSULTAT P&L 3 ANS & RATIOS (1180 x 680)
+# ==============================================================================
+def generate_pnl_previsionnel_svg():
+    return f"""<svg viewBox="0 0 1180 680" width="1180" height="680" style="overflow:visible; font-family:'Poppins', sans-serif;">
+{COMMON_DEFS}
+
+  <!-- CADRE GLOBAL -->
+  <rect x="10" y="10" width="1160" height="660" rx="14" fill="#FAFAFA" stroke="#E2E8F0" stroke-width="1.2" />
+
+  <!-- EN-TETE BANDEAU -->
+  <rect x="25" y="22" width="1130" height="42" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+  <rect x="35" y="32" width="22" height="22" rx="4" fill="#7C3AED" />
+  <text x="46" y="47" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">PL</text>
+  <text x="68" y="46" font-size="13" font-weight="700" fill="#1E293B">Synthèse du Compte de Résultat Prévisionnel (P&amp;L 3 Ans) &amp; Ratios d'Investissement</text>
+  <text x="1140" y="46" text-anchor="end" font-size="11" font-weight="500" fill="#64748B">Dynamique Pluriannuelle Y1 à Y3 · Passage à l'Échelle (Scale-up) · VAN = 170 482 € · TRI = 101,5 %</text>
+
+  <!-- 3 COLONNES DE PROJECTIONS (Y1, Y2, Y3) (LARGEUR TOTALE 730) -->
+  <!-- Col 1 : Y1 (Amorçage R&D) -->
+  <g filter="url(#shadow-card)">
+    <rect x="25" y="76" width="234" height="410" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+    <rect x="25" y="76" width="234" height="42" rx="10" fill="#F8FAFC" />
+    <rect x="37" y="86" width="22" height="22" rx="4" fill="#0284C7" />
+    <text x="48" y="101" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">Y1</text>
+    <text x="67" y="96" font-size="11" font-weight="700" fill="#1E293B">Année 1 : Amorçage</text>
+    <text x="67" y="110" font-size="8.5" fill="#64748B">6 Collectivités (4 P. + 2 M.)</text>
+
+    <!-- Métriques Y1 -->
+    <rect x="37" y="130" width="210" height="48" rx="6" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <text x="47" y="148" font-size="9" fill="#64748B">Chiffre d'Affaires HT</text>
+    <text x="47" y="168" font-size="15" font-weight="800" fill="#0284C7">88 000 €</text>
+
+    <rect x="37" y="186" width="210" height="34" rx="6" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="47" y="200" font-size="8.5" fill="#64748B">COGS &amp; Hébergement Cloud :</text>
+    <text x="237" y="200" text-anchor="end" font-size="9" font-weight="600" fill="#DC2626">10 680 €</text>
+    <text x="47" y="213" font-size="8.5" fill="#059669">Marge Brute :</text>
+    <text x="237" y="213" text-anchor="end" font-size="9" font-weight="700" fill="#059669">77 320 €</text>
+
+    <rect x="37" y="228" width="210" height="54" rx="6" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="47" y="244" font-size="8.5" fill="#64748B">Charges de Personnel (5 Stagiaires) :</text>
+    <text x="237" y="244" text-anchor="end" font-size="9" font-weight="600" fill="#1E293B">55 000 €</text>
+    <text x="47" y="260" font-size="8.5" fill="#64748B">Frais Généraux (Opex) :</text>
+    <text x="237" y="260" text-anchor="end" font-size="9" font-weight="600" fill="#1E293B">14 600 €</text>
+    <text x="47" y="275" font-size="8.5" fill="#64748B">Amortissement (45k€ sur 5 ans) :</text>
+    <text x="237" y="275" text-anchor="end" font-size="9" font-weight="600" fill="#1E293B">9 000 €</text>
+
+    <!-- Résultats Y1 -->
+    <rect x="37" y="290" width="210" height="42" rx="6" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <text x="47" y="306" font-size="9" font-weight="700" fill="#1E293B">EBE : +7 720 €</text>
+    <text x="237" y="306" text-anchor="end" font-size="9" font-weight="600" fill="#DC2626">EBIT : -1 280 €</text>
+    <text x="47" y="324" font-size="9" font-weight="600" fill="#475569">Intérêts emprunt (4,5%) :</text>
+    <text x="237" y="324" text-anchor="end" font-size="9" font-weight="600" fill="#DC2626">900 €</text>
+
+    <rect x="37" y="340" width="210" height="52" rx="6" fill="#FFF1F2" stroke="#FECDD3" stroke-width="1" />
+    <text x="47" y="358" font-size="9" font-weight="700" fill="#9F1239">RÉSULTAT NET COMPTABLE</text>
+    <text x="47" y="380" font-size="15" font-weight="800" fill="#BE123C">-2 180,00 €</text>
+    <text x="237" y="380" text-anchor="end" font-size="8.5" font-weight="600" fill="#9F1239">Amorçage sain</text>
+
+    <rect x="37" y="400" width="210" height="74" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+    <text x="47" y="416" font-size="8.5" font-weight="700" fill="#1E293B">Trésorerie &amp; Solvabilité</text>
+    <text x="47" y="432" font-size="8" fill="#475569">• Cash-Flow Net : +1 053 €</text>
+    <text x="47" y="446" font-size="8" fill="#475569">• Solde Banque Fin : 1 550 €</text>
+    <text x="47" y="460" font-size="8" font-weight="600" fill="#059669">Autonomie financière préservée</text>
+  </g>
+
+  <!-- Col 2 : Y2 (Croissance & Passage CDI) -->
+  <g filter="url(#shadow-card)">
+    <rect x="273" y="76" width="234" height="410" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+    <rect x="273" y="76" width="234" height="42" rx="10" fill="#F8FAFC" />
+    <rect x="285" y="86" width="22" height="22" rx="4" fill="#059669" />
+    <text x="296" y="101" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">Y2</text>
+    <text x="315" y="96" font-size="11" font-weight="700" fill="#1E293B">Année 2 : Croissance</text>
+    <text x="315" y="110" font-size="8.5" fill="#64748B">18 Villes (10 P. + 6 M. + 2 G.)</text>
+
+    <!-- Métriques Y2 -->
+    <rect x="285" y="130" width="210" height="48" rx="6" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <text x="295" y="148" font-size="9" fill="#64748B">Chiffre d'Affaires HT (+240%)</text>
+    <text x="295" y="168" font-size="15" font-weight="800" fill="#059669">299 000 €</text>
+
+    <rect x="285" y="186" width="210" height="34" rx="6" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="295" y="200" font-size="8.5" fill="#64748B">COGS &amp; Hébergement Cloud :</text>
+    <text x="485" y="200" text-anchor="end" font-size="9" font-weight="600" fill="#DC2626">23 640 €</text>
+    <text x="295" y="213" font-size="8.5" fill="#059669">Marge Brute :</text>
+    <text x="485" y="213" text-anchor="end" font-size="9" font-weight="700" fill="#059669">275 360 €</text>
+
+    <rect x="285" y="228" width="210" height="54" rx="6" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="295" y="244" font-size="8.5" fill="#64748B">Charges Personnel (3 CDI Juniors) :</text>
+    <text x="485" y="244" text-anchor="end" font-size="9" font-weight="600" fill="#1E293B">125 000 €</text>
+    <text x="295" y="260" font-size="8.5" fill="#64748B">Frais Généraux (Opex +15%) :</text>
+    <text x="485" y="260" text-anchor="end" font-size="9" font-weight="600" fill="#1E293B">16 790 €</text>
+    <text x="295" y="275" font-size="8.5" fill="#64748B">Amortissement &amp; Intérêts :</text>
+    <text x="485" y="275" text-anchor="end" font-size="9" font-weight="600" fill="#1E293B">9 600 €</text>
+
+    <!-- Résultats Y2 -->
+    <rect x="285" y="290" width="210" height="42" rx="6" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <text x="295" y="306" font-size="9" font-weight="700" fill="#1E293B">EBE : +133 570 €</text>
+    <text x="485" y="306" text-anchor="end" font-size="9" font-weight="700" fill="#059669">EBIT : +124 570 €</text>
+    <text x="295" y="324" font-size="8.5" fill="#475569">Impôt Sociétés (15% &amp; 25%) :</text>
+    <text x="485" y="324" text-anchor="end" font-size="9" font-weight="600" fill="#DC2626">26 742,50 €</text>
+
+    <rect x="285" y="340" width="210" height="52" rx="6" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1" />
+    <text x="295" y="358" font-size="9" font-weight="700" fill="#047857">RÉSULTAT NET COMPTABLE</text>
+    <text x="295" y="380" font-size="15" font-weight="800" fill="#059669">+97 227,50 €</text>
+    <text x="485" y="380" text-anchor="end" font-size="8.5" font-weight="600" fill="#047857">Rentabilité forte</text>
+
+    <rect x="285" y="400" width="210" height="74" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+    <text x="295" y="416" font-size="8.5" font-weight="700" fill="#1E293B">Trésorerie &amp; Solvabilité</text>
+    <text x="295" y="432" font-size="8" fill="#475569">• Cash-Flow Net : +100 161 €</text>
+    <text x="295" y="446" font-size="8" fill="#475569">• Solde Banque Fin : 114 854 €</text>
+    <text x="295" y="460" font-size="8" font-weight="700" fill="#059669">Payback atteint au 17ᵉ mois</text>
+  </g>
+
+  <!-- Col 3 : Y3 (Maturité & Échelle) -->
+  <g filter="url(#shadow-card)">
+    <rect x="521" y="76" width="234" height="410" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+    <rect x="521" y="76" width="234" height="42" rx="10" fill="#F8FAFC" />
+    <rect x="533" y="86" width="22" height="22" rx="4" fill="#7C3AED" />
+    <text x="544" y="101" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">Y3</text>
+    <text x="563" y="96" font-size="11" font-weight="700" fill="#1E293B">Année 3 : Plein Régime</text>
+    <text x="563" y="110" font-size="8.5" fill="#64748B">33 Villes (18 P. + 11 M. + 4 G.)</text>
+
+    <!-- Métriques Y3 -->
+    <rect x="533" y="130" width="210" height="48" rx="6" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <text x="543" y="148" font-size="9" fill="#64748B">Chiffre d'Affaires HT (+64%)</text>
+    <text x="543" y="168" font-size="15" font-weight="800" fill="#7C3AED">491 000 €</text>
+
+    <rect x="533" y="186" width="210" height="34" rx="6" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="543" y="200" font-size="8.5" fill="#64748B">COGS &amp; Hébergement Cloud :</text>
+    <text x="733" y="200" text-anchor="end" font-size="9" font-weight="600" fill="#DC2626">39 840 €</text>
+    <text x="543" y="213" font-size="8.5" fill="#059669">Marge Brute :</text>
+    <text x="733" y="213" text-anchor="end" font-size="9" font-weight="700" fill="#059669">451 160 €</text>
+
+    <rect x="533" y="228" width="210" height="54" rx="6" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="543" y="244" font-size="8.5" fill="#64748B">Charges Personnel (5 CDI Conf.) :</text>
+    <text x="733" y="244" text-anchor="end" font-size="9" font-weight="600" fill="#1E293B">216 000 €</text>
+    <text x="543" y="260" font-size="8.5" fill="#64748B">Frais Généraux (Opex +30%) :</text>
+    <text x="733" y="260" text-anchor="end" font-size="9" font-weight="600" fill="#1E293B">18 980 €</text>
+    <text x="543" y="275" font-size="8.5" fill="#64748B">Amortissement &amp; Intérêts :</text>
+    <text x="733" y="275" text-anchor="end" font-size="9" font-weight="600" fill="#1E293B">9 300 €</text>
+
+    <!-- Résultats Y3 -->
+    <rect x="533" y="290" width="210" height="42" rx="6" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <text x="543" y="306" font-size="9" font-weight="700" fill="#1E293B">EBE : +216 180 €</text>
+    <text x="733" y="306" text-anchor="end" font-size="9" font-weight="700" fill="#7C3AED">EBIT : +207 180 €</text>
+    <text x="543" y="324" font-size="8.5" fill="#475569">Impôt Sociétés (25%) :</text>
+    <text x="733" y="324" text-anchor="end" font-size="9" font-weight="600" fill="#DC2626">47 470,00 €</text>
+
+    <rect x="533" y="340" width="210" height="52" rx="6" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1" />
+    <text x="543" y="358" font-size="9" font-weight="700" fill="#5B21B6">RÉSULTAT NET COMPTABLE</text>
+    <text x="543" y="380" font-size="15" font-weight="800" fill="#7C3AED">+159 410,00 €</text>
+    <text x="733" y="380" text-anchor="end" font-size="8.5" font-weight="600" fill="#5B21B6">Marge Nette 32,5%</text>
+
+    <rect x="533" y="400" width="210" height="74" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+    <text x="543" y="416" font-size="8.5" font-weight="700" fill="#1E293B">Trésorerie &amp; Solvabilité</text>
+    <text x="543" y="432" font-size="8" fill="#475569">• Cash-Flow Net : +162 043 €</text>
+    <text x="543" y="446" font-size="8" fill="#475569">• Solde Banque Fin : 285 938 €</text>
+    <text x="543" y="460" font-size="8" font-weight="700" fill="#7C3AED">Capacité d'autofinancement</text>
+  </g>
+
+  <!-- ZONE DE DROITE : RATIOS D'INVESTISSEMENT & CRITÈRES FINANCIERS (LARGEUR 380) -->
+  <g filter="url(#shadow-card)">
+    <rect x="770" y="76" width="385" height="410" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+    <rect x="770" y="76" width="385" height="34" rx="10" fill="#F1F5F9" />
+    <text x="785" y="98" font-size="11" font-weight="700" fill="#1E293B">Indicateurs de Rentabilité &amp; Valeur Actionnariale</text>
+
+    <!-- CARTE 1 : VAN -->
+    <rect x="785" y="122" width="355" height="72" rx="8" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1" />
+    <text x="797" y="140" font-size="9.5" font-weight="700" fill="#047857">VALEUR ACTUELLE NETTE (VAN à k = 8,0 %)</text>
+    <text x="797" y="166" font-size="18" font-weight="800" fill="#059669">170 482,30 €</text>
+    <text x="1125" y="166" text-anchor="end" font-size="10" font-weight="700" fill="#047857">VAN &gt; 0 (Succès Majeur)</text>
+    <text x="797" y="184" font-size="8.5" fill="#065F46">Le projet enrichit l'entité au-delà du taux d'actualisation cible de 8%.</text>
+
+    <!-- CARTE 2 : TRI -->
+    <rect x="785" y="204" width="355" height="72" rx="8" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1" />
+    <text x="797" y="222" font-size="9.5" font-weight="700" fill="#5B21B6">TAUX DE RENTABILITÉ INTERNE (TRI)</text>
+    <text x="797" y="248" font-size="18" font-weight="800" fill="#7C3AED">101,50 %</text>
+    <text x="1125" y="248" text-anchor="end" font-size="10" font-weight="700" fill="#5B21B6">TRI &gt;&gt; Coût du Capital</text>
+    <text x="797" y="266" font-size="8.5" fill="#4C1D95">Rentabilité interne exceptionnelle traduisant l'effet de levier SaaS.</text>
+
+    <!-- CARTE 3 : PAYBACK -->
+    <rect x="785" y="286" width="355" height="58" rx="8" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <text x="797" y="304" font-size="9" font-weight="700" fill="#1E293B">DÉLAI DE RÉCUPÉRATION DU CAPITAL (PAYBACK)</text>
+    <text x="797" y="328" font-size="14" font-weight="800" fill="#0284C7">17,3 mois</text>
+    <text x="1125" y="328" text-anchor="end" font-size="9.5" font-weight="700" fill="#0284C7">Courant Année 2</text>
+    <text x="797" y="338" font-size="8" fill="#64748B">Investissement initial I0 (45 000 €) amorti en moins de 18 mois.</text>
+
+    <!-- CARTE 4 : BFR SAAS -->
+    <rect x="785" y="352" width="355" height="58" rx="8" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <text x="797" y="370" font-size="9" font-weight="700" fill="#1E293B">BESOIN EN FONDS DE ROULEMENT (BFR SAAS)</text>
+    <text x="797" y="394" font-size="14" font-weight="800" fill="#059669">BFR Structurant Négatif</text>
+    <text x="1125" y="394" text-anchor="end" font-size="9.5" font-weight="700" fill="#059669">Ressource en Trésorerie</text>
+    <text x="797" y="404" font-size="8" fill="#64748B">Abonnements annuels payés d'avance par les associations communales.</text>
+
+    <!-- CARTE 5 : ÉQUILIBRE DU BILAN -->
+    <rect x="785" y="418" width="355" height="56" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+    <text x="797" y="434" font-size="8.5" font-weight="700" fill="#0F172A">Équilibre Comptable du Bilan Prévisionnel :</text>
+    <text x="797" y="450" font-size="8.5" fill="#475569">• Y1 : Actif = Passif = 43 577,44 € (Écart = 0,00 €)</text>
+    <text x="797" y="464" font-size="8.5" fill="#475569">• Y2 : 162 333,52 € | Y3 : 337 567,77 € (Certifié par Financial Engine)</text>
+  </g>
+
+  <!-- BANDEAU INFÉRIEUR RÉCAPITULATIF SYNTHÈSE DES 3 ANNÉES (1130 x 138) -->
+  <g filter="url(#shadow-card)">
+    <rect x="25" y="498" width="1130" height="138" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+    <rect x="25" y="498" width="1130" height="30" rx="10" fill="#F1F5F9" />
+    <text x="40" y="518" font-size="10.5" font-weight="700" fill="#1E293B">Synthèse de Trajectoire : De l'Amorçage R&amp;D (Y1) au Leadership Territorial Éco-Responsable (Y3)</text>
+    <text x="1140" y="518" text-anchor="end" font-size="9.5" font-weight="600" fill="#0284C7">Modèle 100% Autonome sans Prise de Participation Spéculative</text>
+
+    <!-- 4 Encarts récapitulatifs -->
+    <rect x="40" y="538" width="260" height="86" rx="6" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <text x="50" y="554" font-size="9" font-weight="700" fill="#1E293B">Paliers de Collectivités</text>
+    <text x="50" y="572" font-size="8.5" fill="#475569">• Y1 : 6 villes raccordées (190 com.)</text>
+    <text x="50" y="588" font-size="8.5" fill="#475569">• Y2 : 18 villes raccordées (1 030 com.)</text>
+    <text x="50" y="604" font-size="8.5" fill="#475569">• Y3 : 33 villes raccordées (1 940 com.)</text>
+
+    <rect x="320" y="538" width="260" height="86" rx="6" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <text x="330" y="554" font-size="9" font-weight="700" fill="#1E293B">Structure de l'Équipe Salariée</text>
+    <text x="330" y="572" font-size="8.5" fill="#475569">• Y1 : 5 gratifications stagiaires M2 (55 k€)</text>
+    <text x="330" y="588" font-size="8.5" fill="#475569">• Y2 : Embauche 3 CDI juniors (125 k€)</text>
+    <text x="330" y="604" font-size="8.5" fill="#475569">• Y3 : Consolidation 5 CDI confirmés (216 k€)</text>
+
+    <rect x="600" y="538" width="260" height="86" rx="6" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <text x="610" y="554" font-size="9" font-weight="700" fill="#1E293B">Évolution des Marges &amp; Maintien</text>
+    <text x="610" y="572" font-size="8.5" fill="#475569">• Marge Brute SaaS : 87,8% à 91,8%</text>
+    <text x="610" y="588" font-size="8.5" fill="#475569">• Marge Nette : -2,5% (Y1) à +32,5% (Y3)</text>
+    <text x="610" y="604" font-size="8.5" fill="#475569">• Cloud Frugal : 350 € base + 40 €/ville/mois</text>
+
+    <rect x="880" y="538" width="260" height="86" rx="6" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1" />
+    <text x="890" y="554" font-size="9" font-weight="700" fill="#047857">Solvabilité &amp; Capital Propre</text>
+    <text x="890" y="572" font-size="8.5" fill="#065F46">• Emprunt bancaire 20k€ remboursé sur 3 ans</text>
+    <text x="890" y="588" font-size="8.5" fill="#065F46">• Trésorerie Y3 : 285 938 €</text>
+    <text x="890" y="604" font-size="8.5" font-weight="700" fill="#059669">• Capitaux Propres Y3 : 284 458 €</text>
+  </g>
+
+</svg>"""
+
+def export_png(svg_content, width, height, output_png):
+    svg_path = output_png.replace(".png", ".svg")
+    with open(svg_path, "w", encoding="utf-8") as f:
+        f.write(svg_content)
+    
+    try:
+        import pymupdf
+        doc = pymupdf.open(stream=svg_content.encode("utf-8"), filetype="svg")
+        page = doc[0]
+        mat = pymupdf.Matrix(2.0, 2.0)
+        pix = page.get_pixmap(matrix=mat, alpha=False)
+        pix.save(output_png)
+        print(f"Exporté avec succès (PyMuPDF HD) : {output_png} ({pix.width}x{pix.height})")
+    except Exception as e:
+        print(f"Erreur PyMuPDF : {e}, tentative de fallback...")
+        raise
+
+def main():
+    repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    figures_dir = os.path.join(repo_root, "agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures")
+    components_dir = os.path.join(repo_root, "agent_projet/templates/components")
+    os.makedirs(figures_dir, exist_ok=True)
+    os.makedirs(components_dir, exist_ok=True)
+
+    # 1. Génération Coûts Complets (Figure 9.1)
+    svg_cc = generate_couts_complets_svg()
+    png_cc = os.path.join(figures_dir, "fig_9_1_matrice_couts_complets_uo.png")
+    export_png(svg_cc, 1180, 660, png_cc)
+
+    # 2. Génération Direct Costing (Figure 9.2)
+    svg_dc = generate_direct_costing_svg()
+    png_dc = os.path.join(figures_dir, "fig_9_2_direct_costing_seuil_rentabilite.png")
+    export_png(svg_dc, 1180, 640, png_dc)
+
+    # 3. Génération P&L 3 ans (Figure 9.3)
+    svg_pnl = generate_pnl_previsionnel_svg()
+    png_pnl = os.path.join(figures_dir, "fig_9_3_pnl_previsionnel_3ans.png")
+    export_png(svg_pnl, 1180, 680, png_pnl)
+
+    # 4. Sauvegarde composant HTML unifié
+    comp_html_path = os.path.join(components_dir, "finance_views.html")
+    comp_content = f"""<!-- FIGURE 9.1, 9.2 & 9.3 : SCHÉMAS FINANCIERS ET ANALYTIQUES SHOPLOC -->
+<div class="figure-card" style="background:#FFFFFF; border:1px solid #E8E6DF; border-radius:16px; padding:24px; margin-bottom:28px; box-shadow:0 4px 16px rgba(36,51,66,0.06);">
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; border-bottom:1px solid #E8E6DF; padding-bottom:12px;">
+    <div>
+      <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:4px;">
+        <span style="width:8px; height:8px; border-radius:50%; background:#0284C7;"></span>
+        <span style="font-size:11px; font-weight:700; color:#0284C7; text-transform:uppercase; letter-spacing:0.08em;">Méthode des Coûts Complets</span>
+      </div>
+      <h3 style="font-size:17px; font-weight:700; color:#243342; margin:0;">Figure 9.1 — Matrice des Coûts Complets, Déversements &amp; Unités d'Œuvre (UO)</h3>
+    </div>
+    <span style="font-size:11px; background:#FAF9F6; border:1px solid #E8E6DF; padding:4px 12px; border-radius:9999px; color:#5A6578; font-weight:600;">Chaîne de Valeur ESN / Porter · Équilibre Primaire/Secondaire 36 000 €</span>
+  </div>
+{svg_cc}
+</div>
+
+<div class="figure-card" style="background:#FFFFFF; border:1px solid #E8E6DF; border-radius:16px; padding:24px; margin-bottom:28px; box-shadow:0 4px 16px rgba(36,51,66,0.06);">
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; border-bottom:1px solid #E8E6DF; padding-bottom:12px;">
+    <div>
+      <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:4px;">
+        <span style="width:8px; height:8px; border-radius:50%; background:#059669;"></span>
+        <span style="font-size:11px; font-weight:700; color:#059669; text-transform:uppercase; letter-spacing:0.08em;">Direct Costing &amp; Rentabilité</span>
+      </div>
+      <h3 style="font-size:17px; font-weight:700; color:#243342; margin:0;">Figure 9.2 — Modélisation Direct Costing &amp; Seuil de Rentabilité Communal</h3>
+    </div>
+    <span style="font-size:11px; background:#FAF9F6; border:1px solid #E8E6DF; padding:4px 12px; border-radius:9999px; color:#5A6578; font-weight:600;">Point Mort : 75 365,24 € · Jour 312 · Marge Sécurité 12 635 €</span>
+  </div>
+{svg_dc}
+</div>
+
+<div class="figure-card" style="background:#FFFFFF; border:1px solid #E8E6DF; border-radius:16px; padding:24px; margin-bottom:28px; box-shadow:0 4px 16px rgba(36,51,66,0.06);">
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; border-bottom:1px solid #E8E6DF; padding-bottom:12px;">
+    <div>
+      <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:4px;">
+        <span style="width:8px; height:8px; border-radius:50%; background:#7C3AED;"></span>
+        <span style="font-size:11px; font-weight:700; color:#7C3AED; text-transform:uppercase; letter-spacing:0.08em;">Business Plan 3 Ans</span>
+      </div>
+      <h3 style="font-size:17px; font-weight:700; color:#243342; margin:0;">Figure 9.3 — Synthèse du Compte de Résultat Prévisionnel (P&amp;L 3 Ans) &amp; Ratios</h3>
+    </div>
+    <span style="font-size:11px; background:#FAF9F6; border:1px solid #E8E6DF; padding:4px 12px; border-radius:9999px; color:#5A6578; font-weight:600;">VAN = 170 482 € · TRI = 101,5 % · Payback 17,3 mois</span>
+  </div>
+{svg_pnl}
+</div>
+"""
+    with open(comp_html_path, "w", encoding="utf-8") as f:
+        f.write(comp_content)
+    print(f"Composant HTML écrit : {comp_html_path}")
+    print("Génération des schémas financiers terminée avec succès !")
+
+if __name__ == "__main__":
+    main()

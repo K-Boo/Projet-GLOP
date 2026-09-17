@@ -1,0 +1,188 @@
+<svg viewBox="0 0 1180 640" width="1180" height="640" style="overflow:visible; font-family:'Poppins', sans-serif;">
+
+  <defs>
+    <filter id="shadow-card" x="-5%" y="-5%" width="110%" height="114%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#243342" flood-opacity="0.06"/>
+    </filter>
+    <filter id="shadow-box" x="-3%" y="-4%" width="106%" height="110%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#243342" flood-opacity="0.05"/>
+    </filter>
+    <marker id="arrow-slate" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#334155" />
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284C7" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#059669" />
+    </marker>
+  </defs>
+
+
+  <!-- CADRE GLOBAL -->
+  <rect x="10" y="10" width="1160" height="620" rx="14" fill="#FAFAFA" stroke="#E2E8F0" stroke-width="1.2" />
+
+  <!-- EN-TETE BANDEAU -->
+  <rect x="25" y="22" width="1130" height="42" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+  <rect x="35" y="32" width="22" height="22" rx="4" fill="#059669" />
+  <text x="46" y="47" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">DC</text>
+  <text x="68" y="46" font-size="13" font-weight="700" fill="#1E293B">Modélisation Direct Costing &amp; Seuil de Rentabilité Communal (Point Mort)</text>
+  <text x="1140" y="46" text-anchor="end" font-size="11" font-weight="500" fill="#64748B">Décomposition Charges Fixes vs Variables · Année 1 (Amorçage) · SR = 75 365,24 € au Jour 312</text>
+
+  <!-- ZONE DE GAUCHE : GRAPHIQUE ÉCONOMIQUE (LARGEUR 680) -->
+  <g filter="url(#shadow-card)">
+    <rect x="25" y="76" width="680" height="536" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+
+    <!-- TITRE CARTE GRAPHIQUE -->
+    <rect x="25" y="76" width="680" height="34" rx="10" fill="#F8FAFC" />
+    <text x="40" y="98" font-size="11" font-weight="700" fill="#1E293B">Trajectoire Économique de Rentabilité (Y1) : Coûts vs Revenus</text>
+    <text x="690" y="98" text-anchor="end" font-size="10" font-weight="600" fill="#64748B">Échelle en milliers d'euros (k€)</text>
+
+    <!-- AXES DU GRAPHIQUE -->
+    <!-- Grille de fond -->
+    <line x1="100" y1="520" x2="650" y2="520" stroke="#CBD5E1" stroke-width="1.5" />
+    <line x1="100" y1="442" x2="650" y2="442" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3" />
+    <line x1="100" y1="364" x2="650" y2="364" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3" />
+    <line x1="100" y1="286" x2="650" y2="286" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3" />
+    <line x1="100" y1="208" x2="650" y2="208" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3" />
+    <line x1="100" y1="130" x2="650" y2="130" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3" />
+
+    <line x1="100" y1="520" x2="100" y2="130" stroke="#CBD5E1" stroke-width="1.5" />
+    <line x1="210" y1="520" x2="210" y2="130" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3" />
+    <line x1="320" y1="520" x2="320" y2="130" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3" />
+    <line x1="430" y1="520" x2="430" y2="130" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3" />
+    <line x1="540" y1="520" x2="540" y2="130" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3" />
+    <line x1="650" y1="520" x2="650" y2="130" stroke="#F1F5F9" stroke-width="1" stroke-dasharray="3 3" />
+
+    <!-- Graduations Y -->
+    <text x="90" y="524" text-anchor="end" font-size="9" fill="#64748B">0 €</text>
+    <text x="90" y="446" text-anchor="end" font-size="9" fill="#64748B">20 k€</text>
+    <text x="90" y="368" text-anchor="end" font-size="9" fill="#64748B">40 k€</text>
+    <text x="90" y="290" text-anchor="end" font-size="9" fill="#64748B">60 k€</text>
+    <text x="90" y="212" text-anchor="end" font-size="9" fill="#64748B">80 k€</text>
+    <text x="90" y="134" text-anchor="end" font-size="9" fill="#64748B">100 k€</text>
+
+    <!-- Graduations X -->
+    <text x="100" y="538" text-anchor="middle" font-size="9" fill="#64748B">0</text>
+    <text x="210" y="538" text-anchor="middle" font-size="9" fill="#64748B">20 k€</text>
+    <text x="320" y="538" text-anchor="middle" font-size="9" fill="#64748B">40 k€</text>
+    <text x="430" y="538" text-anchor="middle" font-size="9" fill="#64748B">60 k€</text>
+    <text x="540" y="538" text-anchor="middle" font-size="9" fill="#64748B">80 k€</text>
+    <text x="650" y="538" text-anchor="middle" font-size="9" fill="#64748B">100 k€</text>
+
+    <!-- ZONES PASTEL : DEFICIT & PROFIT -->
+    <!-- Zone de perte -->
+    <polygon points="100,254.8 514.5,226.1 100,520" fill="#FEE2E2" opacity="0.45" />
+    <text x="250" y="380" font-size="10" font-weight="700" fill="#DC2626" opacity="0.8">ZONE DE PERTE</text>
+
+    <!-- Zone de profit -->
+    <polygon points="514.5,226.1 584,176.8 584,221.3" fill="#D1FAE5" opacity="0.55" />
+    <text x="525" y="195" font-size="9" font-weight="700" fill="#059669">PROFIT</text>
+
+    <!-- DROITE 1 : CHARGES FIXES (CF = 68 000 €) -->
+    <line x1="100" y1="254.8" x2="650" y2="254.8" stroke="#64748B" stroke-width="2" stroke-dasharray="5 3" />
+    <text x="645" y="246" text-anchor="end" font-size="9.5" font-weight="700" fill="#64748B">Charges Fixes (CF) = 68 000 €</text>
+
+    <!-- DROITE 2 : COUTS TOTAUX (CT = CF + CV) -->
+    <line x1="100" y1="254.8" x2="650" y2="216.7" stroke="#D97706" stroke-width="2.5" />
+    <text x="645" y="208" text-anchor="end" font-size="9.5" font-weight="700" fill="#D97706">Coûts Totaux (CF + CV)</text>
+
+    <!-- DROITE 3 : CHIFFRE D'AFFAIRES (CA) -->
+    <line x1="100" y1="520" x2="650" y2="130" stroke="#0284C7" stroke-width="2.5" />
+    <text x="645" y="145" text-anchor="end" font-size="9.5" font-weight="700" fill="#0284C7">Chiffre d'Affaires (CA = 100% Volume)</text>
+
+    <!-- LIGNE POINTILLÉE SEUIL DE RENTABILITÉ (SR) -->
+    <line x1="514.5" y1="520" x2="514.5" y2="226.1" stroke="#059669" stroke-width="1.5" stroke-dasharray="4 2" />
+    <circle cx="514.5" cy="226.1" r="5" fill="#059669" stroke="#FFFFFF" stroke-width="2" />
+    <rect x="440" y="260" width="150" height="36" rx="6" fill="#059669" />
+    <text x="515" y="275" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF">SEUIL DE RENTABILITÉ</text>
+    <text x="515" y="289" text-anchor="middle" font-size="10.5" font-weight="800" fill="#FFFFFF">SR = 75 365,24 €</text>
+
+    <!-- LIGNE POINTILLÉE ACTIVITÉ RÉELLE Y1 (88 k€) -->
+    <line x1="584" y1="520" x2="584" y2="176.8" stroke="#0284C7" stroke-width="1.5" stroke-dasharray="3 2" />
+    <circle cx="584" cy="176.8" r="4.5" fill="#0284C7" stroke="#FFFFFF" stroke-width="1.5" />
+
+    <!-- MARGE DE SÉCURITÉ FLÈCHE HORIZONTALE -->
+    <line x1="514.5" y1="480" x2="584" y2="480" stroke="#0284C7" stroke-width="2" marker-start="url(#arrow-blue)" marker-end="url(#arrow-blue)" />
+    <rect x="490" y="492" width="120" height="20" rx="4" fill="#E0F2FE" stroke="#BAE6FD" stroke-width="1" />
+    <text x="550" y="506" text-anchor="middle" font-size="8.5" font-weight="700" fill="#0284C7">MS = 12 635 € (+14,4%)</text>
+
+    <!-- LÉGENDE INFÉRIEURE -->
+    <rect x="40" y="566" width="650" height="32" rx="6" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <circle cx="56" cy="582" r="4" fill="#0284C7" />
+    <text x="66" y="586" font-size="9" fill="#1E293B">CA : 88 000 €</text>
+    <circle cx="160" cy="582" r="4" fill="#D97706" />
+    <text x="170" y="586" font-size="9" fill="#1E293B">Coûts Totaux : 76 600 €</text>
+    <circle cx="300" cy="582" r="4" fill="#64748B" />
+    <text x="310" y="586" font-size="9" fill="#1E293B">Charges Fixes : 68 000 €</text>
+    <circle cx="450" cy="582" r="4" fill="#059669" />
+    <text x="460" y="586" font-size="9" font-weight="700" fill="#059669">Point Mort : 312 jours (Nov.)</text>
+  </g>
+
+  <!-- ZONE DE DROITE : PANNEAUX KPIS & DIRECT COSTING ÉVOLUÉ (LARGEUR 440) -->
+  <g filter="url(#shadow-card)">
+    <rect x="715" y="76" width="440" height="230" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+    <rect x="715" y="76" width="440" height="32" rx="10" fill="#F1F5F9" />
+    <text x="730" y="97" font-size="10.5" font-weight="700" fill="#1E293B">1. Compte de Résultat Simplifié en Direct Costing (Y1)</text>
+
+    <!-- Tableau Booktabs mini -->
+    <text x="730" y="126" font-size="10" fill="#475569">Chiffre d'Affaires HT (6 Villes) :</text>
+    <text x="1135" y="126" text-anchor="end" font-size="10.5" font-weight="700" fill="#0284C7">88 000,00 €</text>
+
+    <text x="730" y="146" font-size="10" fill="#475569">- Charges Variables (Cloud, Passerelle, SMS) :</text>
+    <text x="1135" y="146" text-anchor="end" font-size="10.5" font-weight="600" fill="#DC2626">8 600,00 €</text>
+
+    <line x1="730" y1="156" x2="1135" y2="156" stroke="#CBD5E1" stroke-width="1" />
+
+    <text x="730" y="174" font-size="10.5" font-weight="700" fill="#059669">= Marge sur Coûts Variables (MCV) :</text>
+    <text x="1135" y="174" text-anchor="end" font-size="11" font-weight="800" fill="#059669">79 400,00 €</text>
+    <text x="730" y="190" font-size="9" font-weight="600" fill="#047857">Taux de Marge sur Coût Variable (TMCV) :</text>
+    <text x="1135" y="190" text-anchor="end" font-size="10" font-weight="800" fill="#047857">90,23 %</text>
+
+    <text x="730" y="210" font-size="10" fill="#475569">- Charges Fixes Globales (Salaires, licences, immo) :</text>
+    <text x="1135" y="210" text-anchor="end" font-size="10.5" font-weight="600" fill="#DC2626">68 000,00 €</text>
+
+    <line x1="730" y1="220" x2="1135" y2="220" stroke="#CBD5E1" stroke-width="1" />
+
+    <text x="730" y="238" font-size="11" font-weight="800" fill="#1E293B">= Résultat Courant Avant Impôt :</text>
+    <text x="1135" y="238" text-anchor="end" font-size="12" font-weight="800" fill="#0284C7">+11 400,00 €</text>
+
+    <rect x="730" y="254" width="405" height="42" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+    <text x="740" y="270" font-size="9" font-weight="600" fill="#64748B">Formule Fondamentale :</text>
+    <text x="740" y="286" font-size="9.5" font-weight="700" fill="#0F172A">SR = Charges Fixes / TMCV = 68 000 € / 0,9023 = 75 365,24 €</text>
+  </g>
+
+  <!-- Bloc 2 : Direct Costing Évolué (Marges de Contribution Territoriales) -->
+  <g filter="url(#shadow-card)">
+    <rect x="715" y="320" width="440" height="292" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+    <rect x="715" y="320" width="440" height="32" rx="10" fill="#F1F5F9" />
+    <text x="730" y="341" font-size="10.5" font-weight="700" fill="#1E293B">2. Direct Costing Évolué (Contribution par Segment)</text>
+
+    <!-- Segment 1 : Petite Ville -->
+    <rect x="730" y="364" width="410" height="110" rx="6" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <rect x="740" y="374" width="10" height="10" rx="2" fill="#0284C7" />
+    <text x="756" y="383" font-size="10" font-weight="700" fill="#1E293B">Petite Collectivité (&lt; 20k hab. · 25 commerces)</text>
+    <text x="740" y="405" font-size="9.5" fill="#475569">Prix de Vente Total (Setup + Abonnement) :</text>
+    <text x="1125" y="405" text-anchor="end" font-size="9.5" font-weight="700" fill="#1E293B">10 500,00 €</text>
+    <text x="740" y="423" font-size="9.5" fill="#475569">Coût Spécifique (CV 800 € + CF Directes 1 200 €) :</text>
+    <text x="1125" y="423" text-anchor="end" font-size="9.5" font-weight="600" fill="#DC2626">2 000,00 €</text>
+    <line x1="740" y1="433" x2="1125" y2="433" stroke="#CBD5E1" stroke-width="1" />
+    <text x="740" y="451" font-size="10" font-weight="700" fill="#059669">Marge sur Coût Spécifique (MCS) :</text>
+    <text x="1125" y="451" text-anchor="end" font-size="10.5" font-weight="800" fill="#059669">8 500,00 € (80,95 %)</text>
+    <text x="740" y="465" font-size="8.5" fill="#64748B">Couvre les charges fixes communes et dégage un surplus solide.</text>
+
+    <!-- Segment 2 : Ville Moyenne -->
+    <rect x="730" y="484" width="410" height="116" rx="6" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <rect x="740" y="494" width="10" height="10" rx="2" fill="#7C3AED" />
+    <text x="756" y="503" font-size="10" font-weight="700" fill="#1E293B">Ville Moyenne (20k à 100k hab. · 70 commerces)</text>
+    <text x="740" y="525" font-size="9.5" fill="#475569">Prix de Vente Total (Setup + Abonnement) :</text>
+    <text x="1125" y="525" text-anchor="end" font-size="9.5" font-weight="700" fill="#1E293B">23 000,00 €</text>
+    <text x="740" y="543" font-size="9.5" fill="#475569">Coût Spécifique (CV 1 800 € + CF Directes 2 800 €) :</text>
+    <text x="1125" y="543" text-anchor="end" font-size="9.5" font-weight="600" fill="#DC2626">4 600,00 €</text>
+    <line x1="740" y1="553" x2="1125" y2="553" stroke="#CBD5E1" stroke-width="1" />
+    <text x="740" y="571" font-size="10" font-weight="700" fill="#7C3AED">Marge sur Coût Spécifique (MCS) :</text>
+    <text x="1125" y="571" text-anchor="end" font-size="10.5" font-weight="800" fill="#7C3AED">18 400,00 € (80,00 %)</text>
+    <text x="740" y="586" font-size="8.5" fill="#64748B">Contribution majeure à l'amortissement du socle logiciel central.</text>
+  </g>
+
+</svg>

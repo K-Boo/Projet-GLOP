@@ -6,8 +6,8 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 
 ## 1. Etat Courant du Projet
 
-- **Phase active** : Cadrage Métier & Rédaction du Livrable R1 (Étapes 01, 02, 03, 04, 06, 07 et 08 COMPLETED — Étape 05 supprimée par ADR-019 — Prochaine Étape : 09 Cadrage Financier par Coûts Complets)
-- **Dernière mise à jour** : 2026-09-17 (Session 28)
+- **Phase active** : Cadrage Métier & Rédaction du Livrable R1 (Étapes 01, 02, 03, 04, 06, 07, 08 et 09 COMPLETED — Étape 05 supprimée par ADR-019 — Prochaine Étape : 10 Le Lean Canvas ShopLoc)
+- **Dernière mise à jour** : 2026-09-17 (Session 29)
 - **Responsable / Scrum Master** : Équipe ShopLoc (M2 MIAGE GLOP)
 - **Dépôt Projet (Cockpit / Gouvernance)** : GitHub `Projet-GLOP`
 - **Dépôt Applicatif (Code étudiant évalué)** : GitLab `projet-glop-app`
@@ -665,8 +665,41 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 - **Décisions actées** :
   - Validation officielle de la Section 08 du Cahier des Charges R1.
   - Clôture officielle de l'Étape 08 (`COMPLETED`).
-- **Reste à faire / Objectifs pour la Session 29** :
-  - Réalisation de l'**Étape 09 (`STEP-09` / `SEC-09`)** : *Cadrage Économique & Analyse par Coûts Complets*.
+### [2026-09-17] Session 29 — Réalisation & Finalisation de l'Étape 09 (SEC-09 : Cadrage Économique & Analyse par Coûts Complets)
+- **Objectif** : Structurer l'étude économique et financière du projet ShopLoc conformément aux enseignements de M2 MIAGE (Chaîne de valeur ESN / Porter, méthode des coûts complets, unités d'œuvre, direct costing, compte de résultat prévisionnel P&L 3 ans, bilan équilibré, VAN & TRI), concevoir les 3 schémas vectoriels SVG autonomes, exporter les figures haute résolution (2360px HD), rédiger la Section 09 calibrée sur 5 pages A4 et compiler le livrable officiel en PDF.
+- **Actions réalisées** :
+  - Réservation et actualisation des statuts (`STEP-09` passé à `IN_PROGRESS` puis `COMPLETED`) dans `agent_projet/config/cdc_progress.json` et `AVANCEMENT_CAHIER_DES_CHARGES.md`.
+  - Élaboration du script générateur vectoriel `agent_projet/scripts/generate_finance_diagrams_svg.py` et du composant HTML `agent_projet/templates/components/finance_views.html` :
+    * Figure 9.1 : Matrice des Coûts Complets & Calcul des Unités d'Œuvre (5 centres d'analyse : Administration 12k€, Support 6k€ déversés sur Vente 9k€, Réalisation 16,7k€, Maintenance 10,3k€ ; UO Vente à 10,23 €/100€ CA, Réalisation à 2,78 €/h dev, Maintenance à 1 716,67 €/ville ; application au coût de revient Petite Ville dégageant 48,45% de marge nette commerciale).
+    * Figure 9.2 : Modélisation Direct Costing & Seuil de Rentabilité Communal (Graphique économique : CA 88k€, Coûts Totaux 76,6k€, Charges Fixes 68k€, Seuil de rentabilité à 75 365,24 € au 312ᵉ jour calendaire, marge de sécurité de 12 635 € et direct costing évolué par typologie de ville).
+    * Figure 9.3 : Synthèse du Compte de Résultat Prévisionnel (P&L 3 Ans) & Ratios d'Investissement (Dynamique Y1 à Y3 : CA passant de 88k€ à 491k€, passage de 5 gratifications stagiaires à 5 CDI confirmés, Résultat Net de +159 410 € en Y3, VAN = 170 482,30 € à k=8%, TRI = 101,50%, Payback de 17,3 mois, trésorerie de 285 938 € et BFR négatif structurant).
+    * Exportation des PNGs haute résolution (2360px HD via PyMuPDF) dans `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_9_1_matrice_couts_complets_uo.png`, `fig_9_2_direct_costing_seuil_rentabilite.png` et `fig_9_3_pnl_previsionnel_3ans.png`.
+  - Rédaction intégrale du livrable modulaire `09_analyse_financiere_couts_complets.md` rigoureusement calibré sur 5 pages A4 :
+    * Page 1 (9.1) : Modèle Économique Contractuel, Gouvernance Tripartite & Gratuité Citoyenne (convention tripartite ADR-004, subvention municipale, 0% commission marchande, prise en charge mobilité par la Mairie, grille forfaitaire 3 paliers).
+    * Page 2 (9.2) : Démarche d'Analyse des Coûts Complets & Architecture des Centres d'Analyse (chaîne de valeur ESN / Porter, distinction charges directes/indirectes, 2 centres auxiliaires et 3 centres principaux).
+    * Page 3 (9.3) : Clés de Répartition Primaire, Secondaire & Détermination du Coût de Revient (Figure 9.1 intégrée + Tableau Booktabs des répartitions + calcul détaillé du coût de revient petite ville 5 413,20 € contre 10 500 € de CA).
+    * Page 4 (9.4) : Modélisation Direct Costing, Seuil de Rentabilité Communal & Point Mort (Figure 9.2 intégrée + MCV à 79 400 €, SR à 75 365,24 €, point mort à 312 jours et direct costing évolué).
+    * Page 5 (9.5) : Synthèse Prévisionnelle Pluriannuelle (P&L 3 Ans) & Trajectoire Économique (Figure 9.3 intégrée + Tableau consolidé P&L Y1-Y3 + trajectoire d'emploi CDI + VAN, TRI, Payback et BFR négatif).
+  - Compilation vectorielle du PDF officiel : `09_analyse_financiere_couts_complets.pdf` (1,58 Mo).
+  - Contrôle d'intégrité de sécurité validé avec succès (`verify_deliverables.py` : 61 fichiers audités, 0 violation, 0 canari, 0 emoji).
+- **Fichiers créés, modifiés ou supprimés** :
+  - *Créés* :
+    * `agent_projet/scripts/generate_finance_diagrams_svg.py`
+    * `agent_projet/templates/components/finance_views.html`
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_9_1_matrice_couts_complets_uo.png` (.svg)
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_9_2_direct_costing_seuil_rentabilite.png` (.svg)
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_9_3_pnl_previsionnel_3ans.png` (.svg)
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/sections/09_analyse_financiere_couts_complets.md`
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/sections/09_analyse_financiere_couts_complets.pdf`
+  - *Modifiés* :
+    * `agent_projet/config/cdc_progress.json` (statut STEP-09 COMPLETED)
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/AVANCEMENT_CAHIER_DES_CHARGES.md`
+    * `agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md`
+- **Décisions actées** :
+  - Validation officielle de la Section 09 du Cahier des Charges R1.
+  - Clôture officielle de l'Étape 09 (`COMPLETED`).
+- **Reste à faire / Objectifs pour la Session 30** :
+  - Réalisation de l'**Étape 10 (`STEP-10` / `SEC-01-CANVAS`)** : *Le Lean Canvas ShopLoc* (9 cases consolidant la totalité du CdC, intégrée en tête de Section 01).
 
 ---
 
@@ -678,6 +711,7 @@ A la fin de chaque session de chat, l'agent ou l'utilisateur execute la mise a j
 3. Fichiers crees, modifies ou supprimes.
 4. Decisions ou arbitrages valides.
 5. Prochaine etape explicite pour la session suivante.
+
 
 
 
