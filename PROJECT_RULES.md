@@ -124,4 +124,19 @@
 3. **Interdiction d'anticipation de rédaction** :
    - L'agent ne doit jamais générer de section ou de livrable officiel tant que le plan d'ensemble n'a pas été explicitement et formellement validé par l'utilisateur.
 
+---
+
+## 8. Identité Visuelle Sur-Mesure & Interdiction Absolue des Languettes (Anti-Slop AI)
+
+1. **Interdiction formelle des languettes et bordures asymétriques** :
+   - Aucun conteneur, carte, encart pédagogique, cartouche ou bloc d'information ne doit comporter de bande ou languette de couleur (`border-left: 3px/4px/5px solid ...`, `border-top: 4px/5px solid ...`). Ce style stéréotypé et conventionnel trahit une génération automatisée d'IA (« slop AI ») et nuit à la crédibilité du projet.
+2. **Exigence d'une UI unique, ergonomique et haut de gamme** :
+   - Chaque composant visuel doit refléter les meilleures pratiques d'interface utilisateur et de design éditorial :
+     - Conteneurs symétriques aux contours nets et fins (1px solid `#E8E6DF` ou teintes douces normalisées).
+     - Typographie soignée, hiérarchisée, sans aucun débordement et avec un centrage rigoureux.
+     - Badges pills élégants et centrés au sein du flux de la carte, sans effet de découpe brutale.
+     - Ombres portées douces, naturelles et équilibrées.
+3. **Périmètre permanent** : Cette interdiction s'applique à tous les composants HTML/SVG, pages de prévisualisation, diaporamas et livrables officiels du projet.
+
+
 

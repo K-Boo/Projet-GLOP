@@ -1,118 +1,157 @@
-<!-- FIGURE 1.3 : MATRICE DE POSITIONNEMENT STRATEGIQUE (2 AXES) -->
-<div class="figure-card" style="background:#FFFFFF; border:1px solid #E8E6DF; border-radius:16px; padding:28px; margin-bottom:36px; box-shadow:0 4px 16px rgba(36,51,66,0.06);">
+<!-- FIGURE 1.3 : MATRICE DE POSITIONNEMENT STRATEGIQUE & CONCURRENTIEL (2 AXES) -->
+<div class="figure-card" style="background:#FFFFFF; border:1px solid #E8E6DF; border-radius:16px; padding:32px 28px; box-shadow:0 4px 16px rgba(36,51,66,0.05);">
   
-  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px; border-bottom:1px solid #E8E6DF; padding-bottom:14px;">
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:24px; border-bottom:1px solid #E8E6DF; padding-bottom:14px;">
     <div>
       <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:4px;">
         <span style="width:8px; height:8px; border-radius:50%; background:#C48B28;"></span>
         <span style="font-size:11px; font-weight:700; color:#C48B28; text-transform:uppercase; letter-spacing:0.08em;">Analyse Concurrentielle</span>
       </div>
-      <h3 style="font-size:18px; font-weight:700; color:#243342; margin:0;">Figure 1.3 — Matrice de Positionnement Stratégique &amp; Concurrentiel</h3>
+      <h3 style="font-size:18px; font-weight:700; color:#243342; margin:0;">Figure 1.2 — Matrice de Positionnement Stratégique &amp; Concurrentiel</h3>
     </div>
     <span style="font-size:11px; background:#FAF9F6; border:1px solid #E8E6DF; padding:4px 12px; border-radius:9999px; color:#5A6578; font-weight:600;">Différenciation de Marché</span>
   </div>
 
-  <svg viewBox="0 0 940 580" width="100%" height="auto" style="overflow:visible; font-family:'Poppins', sans-serif;">
+  <svg viewBox="0 0 960 620" width="100%" height="auto" style="display:block; overflow:visible; font-family:'Poppins', sans-serif;">
     
-  <defs>
-    <!-- Filtre ombre portee douce -->
-    <filter id="shadow-soft" x="-8%" y="-8%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#243342" flood-opacity="0.06"/>
-    </filter>
-    <filter id="shadow-elevated" x="-8%" y="-8%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#243342" flood-opacity="0.10"/>
-    </filter>
+    <defs>
+      <!-- Ombres douces uniformes -->
+      <filter id="shadow-matrix-soft" x="-8%" y="-8%" width="120%" height="120%">
+        <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#243342" flood-opacity="0.06"/>
+      </filter>
+      <filter id="shadow-matrix-target" x="-8%" y="-8%" width="120%" height="120%">
+        <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#243342" flood-opacity="0.10"/>
+      </filter>
+      <!-- Marqueur flèche ardoise -->
+      <marker id="arrow-axis" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#243342" />
+      </marker>
+    </defs>
 
-    <!-- Marqueurs de fleches sémantiques parfaitement orientes -->
-    <marker id="arrow-slate" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#243342" />
-    </marker>
-    <marker id="arrow-terracotta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#C26750" />
-    </marker>
-    <marker id="arrow-sage" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#4A7A5B" />
-    </marker>
-    <marker id="arrow-honey" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#C48B28" />
-    </marker>
-    <marker id="arrow-plum" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#6E3946" />
-    </marker>
-    <marker id="arrow-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#8C96A5" />
-    </marker>
-  </defs>
-
-
-    <!-- 4 QUADRANTS SEMANTIQUES DOUX -->
-    <!-- Q1 Haut-Gauche : E-commerce commissionne -->
-    <rect x="80" y="60" width="370" height="230" rx="12" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+    <!-- 4 QUADRANTS STRUCTURÉS -->
+    <!-- Q1 Haut-Gauche : Marketplace commissionnée -->
+    <rect x="45" y="45" width="410" height="245" rx="14" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
     
-    <!-- Q2 Haut-Droite : ZONE CIBLE SHOPLOC (SAUGE / LIN DOUX) -->
-    <rect x="490" y="60" width="370" height="230" rx="12" fill="#EBF3ED" stroke="#7EA88D" stroke-width="2" stroke-dasharray="6,4" />
-    <rect x="730" y="70" width="120" height="22" rx="11" fill="#4A7A5B" />
-    <text x="790" y="85" text-anchor="middle" font-size="9" font-weight="700" fill="#FFFFFF" text-transform="uppercase" letter-spacing="0.06em">Cible ShopLoc</text>
+    <!-- Q2 Haut-Droite : ZONE CIBLE SHOPLOC (VERT PASTEL) -->
+    <rect x="505" y="45" width="410" height="245" rx="14" fill="#F0FDF4" stroke="#86EFAC" stroke-width="2" stroke-dasharray="6,4" />
+    <!-- Badge Zone Cible -->
+    <rect x="740" y="58" width="160" height="22" rx="11" fill="#4A7A5B" />
+    <text x="820" y="69" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="700" fill="#FFFFFF" letter-spacing="0.06em">CIBLE STRATÉGIQUE</text>
 
-    <!-- Q3 Bas-Gauche : Marketplaces predatrices -->
-    <rect x="80" y="310" width="370" height="210" rx="12" fill="#FBF8F6" stroke="#EDE8E1" stroke-width="1" />
-    
-    <!-- Q4 Bas-Droite : Fidelite institutionnelle -->
-    <rect x="490" y="310" width="370" height="210" rx="12" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+    <!-- Q3 Bas-Gauche : Commerce prédateur -->
+    <rect x="45" y="330" width="410" height="245" rx="14" fill="#FFF1F2" stroke="#FECDD3" stroke-width="1" />
 
-    <!-- AXES ORTHOGONAUX MAJEURS AVEC FLECHES COMPLETES -->
+    <!-- Q4 Bas-Droite : Fidélité institutionnelle pure -->
+    <rect x="505" y="330" width="410" height="245" rx="14" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+
+    <!-- AXES ORTHOGONAUX CENTRAUX -->
     <!-- Axe Horizontal (Modèle Économique) -->
-    <line x1="50" y1="300" x2="890" y2="300" stroke="#243342" stroke-width="2.2" marker-end="url(#arrow-slate)" marker-start="url(#arrow-slate)" />
-    <!-- Axe Vertical (Ancrage Territorial) -->
-    <line x1="470" y1="540" x2="470" y2="40" stroke="#243342" stroke-width="2.2" marker-end="url(#arrow-slate)" marker-start="url(#arrow-slate)" />
+    <line x1="30" y1="310" x2="930" y2="310" stroke="#243342" stroke-width="2.2" marker-start="url(#arrow-axis)" marker-end="url(#arrow-axis)" />
+    <!-- Axe Vertical (Ancrage Spatial) -->
+    <line x1="480" y1="590" x2="480" y2="30" stroke="#243342" stroke-width="2.2" marker-start="url(#arrow-axis)" marker-end="url(#arrow-axis)" />
 
-    <!-- LABELS DES AXES (HAUTE LISIBILITE) -->
-    <text x="470" y="25" text-anchor="middle" font-size="11.5" font-weight="700" fill="#243342" text-transform="uppercase" letter-spacing="0.05em">▲ Ancrage Physique en Boutique (Flux Piétonnier Réel)</text>
-    <text x="470" y="565" text-anchor="middle" font-size="11.5" font-weight="700" fill="#5A6578" text-transform="uppercase" letter-spacing="0.05em">▼ Délocalisation Logistique Pure (Entrepôt &amp; Écran)</text>
-    
-    <text x="895" y="295" text-anchor="end" font-size="11" font-weight="700" fill="#243342">Souveraineté &amp; Gratuité Citoyenne (0% Commission) ►</text>
-    <text x="45" y="295" text-anchor="start" font-size="11" font-weight="700" fill="#5A6578">◄ Prélèvement Lucratif / Commission Élevée (15-30%)</text>
-
-    <!-- ACTEUR 1 : SHOPLOC (NOTRE SOLUTION) -->
-    <g filter="url(#shadow-elevated)">
-      <rect x="520" y="95" width="310" height="155" rx="12" fill="#FFFFFF" stroke="#4A7A5B" stroke-width="2" />
-      <path d="M 520 107 A 12 12 0 0 1 532 95 L 818 95 A 12 12 0 0 1 830 107 L 830 120 L 520 120 Z" fill="#4A7A5B" />
-      <text x="535" y="113" font-size="10" font-weight="700" fill="#FFFFFF" text-transform="uppercase">Modèle Souverain &amp; Mutualisé</text>
-      <text x="535" y="145" font-size="16" font-weight="700" fill="#243342">ShopLoc (Projet MIAGE)</text>
-      <text x="535" y="168" font-size="11" font-weight="500" fill="#4A7A5B">• 0% de commission sur les paniers artisans</text>
-      <text x="535" y="188" font-size="11" font-weight="500" fill="#4A7A5B">• Retrait obligatoire en boutique (flux piéton)</text>
-      <text x="535" y="208" font-size="11" font-weight="500" fill="#4A7A5B">• Financement tripartite Mairie / Collectivité</text>
-      <text x="535" y="228" font-size="11" font-weight="500" fill="#C48B28">• Avantages mobilité urbaine (Parking / Bus)</text>
+    <!-- LABELS D'EXTRÉMITÉS D'AXES EN BADGES PROTÉGÉS -->
+    <!-- Haut (Y+) -->
+    <g filter="url(#shadow-matrix-soft)">
+      <rect x="330" y="14" width="300" height="28" rx="14" fill="#FFFFFF" stroke="#243342" stroke-width="1.5" />
+      <text x="480" y="28" text-anchor="middle" dominant-baseline="central" font-size="10.5" font-weight="700" fill="#243342" letter-spacing="0.04em">▲ ANCRAGE EN BOUTIQUE (FLUX PIÉTON)</text>
     </g>
 
-    <!-- ACTEUR 2 : OLLCA / EPICERY (HAUT-GAUCHE) -->
-    <g filter="url(#shadow-soft)">
-      <rect x="110" y="105" width="310" height="130" rx="10" fill="#FFFFFF" stroke="#C26750" stroke-width="1.5" />
-      <text x="125" y="132" font-size="14" font-weight="700" fill="#243342">Ollca / Epicery</text>
-      <text x="125" y="152" font-size="10.5" font-weight="600" fill="#C26750">Marketplace d'Artisans Commissionnée</text>
-      <text x="125" y="174" font-size="11" font-weight="400" fill="#5A6578">• Artisans locaux valorisés avec belle UI</text>
-      <text x="125" y="193" font-size="11" font-weight="400" fill="#5A6578">• Commission marchande de 8% à 15%</text>
-      <text x="125" y="212" font-size="11" font-weight="400" fill="#5A6578">• Livraison dominante (réduit le flux boutique)</text>
+    <!-- Bas (Y-) -->
+    <g filter="url(#shadow-matrix-soft)">
+      <rect x="330" y="578" width="300" height="28" rx="14" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.2" />
+      <text x="480" y="592" text-anchor="middle" dominant-baseline="central" font-size="10.5" font-weight="600" fill="#64748B" letter-spacing="0.04em">▼ DÉLOCALISATION PURE (ENTREPÔT / ÉCRAN)</text>
     </g>
 
-    <!-- ACTEUR 3 : PROXITY / PASS COMMERCE (BAS-DROITE) -->
-    <g filter="url(#shadow-soft)">
-      <rect x="520" y="335" width="310" height="130" rx="10" fill="#FFFFFF" stroke="#DCB162" stroke-width="1.5" />
-      <text x="535" y="362" font-size="14" font-weight="700" fill="#243342">Proxity / Pass Commerce Ville</text>
-      <text x="535" y="382" font-size="10.5" font-weight="600" fill="#845A11">Programmes Fidélité Territoriaux</text>
-      <text x="535" y="404" font-size="11" font-weight="400" fill="#5A6578">• Soutien public aux commerces de quartier</text>
-      <text x="535" y="423" font-size="11" font-weight="400" fill="#5A6578">• Carte de fidélité physique acceptée</text>
-      <text x="535" y="442" font-size="11" font-weight="400" fill="#5A6578">• Absence de commande Click &amp; Collect</text>
+    <!-- Droite (X+) -->
+    <g filter="url(#shadow-matrix-soft)">
+      <rect x="690" y="296" width="250" height="28" rx="14" fill="#FFFFFF" stroke="#4A7A5B" stroke-width="1.5" />
+      <text x="815" y="310" text-anchor="middle" dominant-baseline="central" font-size="10" font-weight="700" fill="#166534">SOUVERAINETÉ &amp; 0% COMMISSION ►</text>
     </g>
 
-    <!-- ACTEUR 4 : AMAZON / UBEREATS (BAS-GAUCHE) -->
-    <g filter="url(#shadow-soft)">
-      <rect x="110" y="335" width="310" height="130" rx="10" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1.5" />
-      <text x="125" y="362" font-size="14" font-weight="700" fill="#243342">Amazon / UberEats / Deliveroo</text>
-      <text x="125" y="382" font-size="10.5" font-weight="600" fill="#8C2E25">Plateformes Globales Délocalisées</text>
-      <text x="125" y="404" font-size="11" font-weight="400" fill="#5A6578">• Commissions élevées (25% à 35%)</text>
-      <text x="125" y="423" font-size="11" font-weight="400" fill="#5A6578">• Fuite de la valeur économique du territoire</text>
-      <text x="125" y="442" font-size="11" font-weight="400" fill="#5A6578">• Dégradation du lien social de proximité</text>
+    <!-- Gauche (X-) -->
+    <g filter="url(#shadow-matrix-soft)">
+      <rect x="20" y="296" width="245" height="28" rx="14" fill="#FFFFFF" stroke="#FDA4AF" stroke-width="1.2" />
+      <text x="142" y="310" text-anchor="middle" dominant-baseline="central" font-size="10" font-weight="600" fill="#BE123C">◄ COMMISSIONS ÉLEVÉES (15-30%)</text>
+    </g>
+
+    <!-- CARTE 1 : SHOPLOC (HAUT-DROITE - ZONE CIBLE) -->
+    <g filter="url(#shadow-matrix-target)">
+      <rect x="535" y="85" width="350" height="170" rx="14" fill="#FFFFFF" stroke="#4A7A5B" stroke-width="2" />
+      <!-- Badge Pill -->
+      <rect x="555" y="100" width="180" height="20" rx="10" fill="#EBF3ED" stroke="#7EA88D" stroke-width="1" />
+      <text x="645" y="110" text-anchor="middle" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#2E583D" letter-spacing="0.05em">MODÈLE SOUVERAIN MUTUALISÉ</text>
+      <!-- Titre -->
+      <text x="555" y="138" dominant-baseline="central" font-size="16" font-weight="700" fill="#243342">Plateforme ShopLoc</text>
+      <!-- Items structurés -->
+      <circle cx="560" cy="165" r="3" fill="#4A7A5B" />
+      <text x="572" y="165" dominant-baseline="central" font-size="11" font-weight="500" fill="#2E583D">0% de commission sur les ventes artisans</text>
+      
+      <circle cx="560" cy="187" r="3" fill="#4A7A5B" />
+      <text x="572" y="187" dominant-baseline="central" font-size="11" font-weight="500" fill="#2E583D">Retrait physique obligatoire en boutique</text>
+      
+      <circle cx="560" cy="209" r="3" fill="#4A7A5B" />
+      <text x="572" y="209" dominant-baseline="central" font-size="11" font-weight="500" fill="#2E583D">Financement public tripartite (Mairie / Asso)</text>
+      
+      <circle cx="560" cy="231" r="3" fill="#C48B28" />
+      <text x="572" y="231" dominant-baseline="central" font-size="11" font-weight="600" fill="#845A11">Avantages mobilité urbaine (Bus &amp; Parking)</text>
+    </g>
+
+    <!-- CARTE 2 : OLLCA / EPICERY (HAUT-GAUCHE) -->
+    <g filter="url(#shadow-matrix-soft)">
+      <rect x="75" y="85" width="350" height="170" rx="14" fill="#FFFFFF" stroke="#D88B77" stroke-width="1.5" />
+      <!-- Badge Pill -->
+      <rect x="95" y="100" width="180" height="20" rx="10" fill="#FBEEEA" stroke="#D88B77" stroke-width="1" />
+      <text x="185" y="110" text-anchor="middle" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#8E3D2A" letter-spacing="0.05em">MARKETPLACE D'ARTISANS</text>
+      <!-- Titre -->
+      <text x="95" y="138" dominant-baseline="central" font-size="16" font-weight="700" fill="#243342">Ollca &amp; Epicery</text>
+      <!-- Items -->
+      <circle cx="100" cy="168" r="3" fill="#C26750" />
+      <text x="112" y="168" dominant-baseline="central" font-size="11" font-weight="400" fill="#475569">Artisans locaux valorisés avec catalogue soigné</text>
+      
+      <circle cx="100" cy="194" r="3" fill="#C26750" />
+      <text x="112" y="194" dominant-baseline="central" font-size="11" font-weight="600" fill="#8E3D2A">Commission marchande élevée de 8% à 15%</text>
+      
+      <circle cx="100" cy="220" r="3" fill="#C26750" />
+      <text x="112" y="220" dominant-baseline="central" font-size="11" font-weight="400" fill="#475569">Livraison à domicile dominante (flux réduit)</text>
+    </g>
+
+    <!-- CARTE 3 : AMAZON / DELIVEROO (BAS-GAUCHE) -->
+    <g filter="url(#shadow-matrix-soft)">
+      <rect x="75" y="365" width="350" height="170" rx="14" fill="#FFFFFF" stroke="#FDA4AF" stroke-width="1.5" />
+      <!-- Badge Pill -->
+      <rect x="95" y="380" width="200" height="20" rx="10" fill="#FFF1F2" stroke="#FDA4AF" stroke-width="1" />
+      <text x="195" y="390" text-anchor="middle" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#BE123C" letter-spacing="0.05em">COMMERCE DÉLOCALISÉ</text>
+      <!-- Titre -->
+      <text x="95" y="418" dominant-baseline="central" font-size="16" font-weight="700" fill="#243342">Amazon &amp; Plateformes Globales</text>
+      <!-- Items -->
+      <circle cx="100" cy="448" r="3" fill="#BE123C" />
+      <text x="112" y="448" dominant-baseline="central" font-size="11" font-weight="600" fill="#BE123C">Commissions marchandes lourdes (15% à 30%)</text>
+      
+      <circle cx="100" cy="474" r="3" fill="#BE123C" />
+      <text x="112" y="474" dominant-baseline="central" font-size="11" font-weight="400" fill="#475569">Délocalisation intégrale &amp; livraisons motorisées</text>
+      
+      <circle cx="100" cy="500" r="3" fill="#BE123C" />
+      <text x="112" y="500" dominant-baseline="central" font-size="11" font-weight="400" fill="#475569">Évasion de valeur &amp; dévitalisation urbaine</text>
+    </g>
+
+    <!-- CARTE 4 : PROXITY / CARTES VILLE (BAS-DROITE) -->
+    <g filter="url(#shadow-matrix-soft)">
+      <rect x="535" y="365" width="350" height="170" rx="14" fill="#FFFFFF" stroke="#DCB162" stroke-width="1.5" />
+      <!-- Badge Pill -->
+      <rect x="555" y="380" width="190" height="20" rx="10" fill="#FEF7EB" stroke="#DCB162" stroke-width="1" />
+      <text x="650" y="390" text-anchor="middle" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#845A11" letter-spacing="0.05em">FIDÉLITÉ INSTITUTIONNELLE PURE</text>
+      <!-- Titre -->
+      <text x="555" y="418" dominant-baseline="central" font-size="16" font-weight="700" fill="#243342">Proxity &amp; Cartes de Ville</text>
+      <!-- Items -->
+      <circle cx="560" cy="448" r="3" fill="#C48B28" />
+      <text x="572" y="448" dominant-baseline="central" font-size="11" font-weight="400" fill="#475569">Soutien municipal et cartes physiques locales</text>
+      
+      <circle cx="560" cy="474" r="3" fill="#C48B28" />
+      <text x="572" y="474" dominant-baseline="central" font-size="11" font-weight="600" fill="#845A11">Absence de commande en ligne ni catalogue</text>
+      
+      <circle cx="560" cy="500" r="3" fill="#C48B28" />
+      <text x="572" y="500" dominant-baseline="central" font-size="11" font-weight="400" fill="#475569">Aucun service de Click &amp; Collect mutualisé</text>
     </g>
 
   </svg>

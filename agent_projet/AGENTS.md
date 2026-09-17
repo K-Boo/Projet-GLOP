@@ -32,6 +32,17 @@ Tout document rédigé dans ce dossier et le README du projet doivent respecter 
   - Style naturel, professionnel et structuré, sans emphase ni tournures artificielles.
   - Format de livraison officiel en PDF vectoriel A4 (généré via `python agent_projet/scripts/generate_pdf.py`).
   - Synchronisation systématique vers Google Drive via `python agent_projet/scripts/drive_sync.py <fichier>`.
+* **Charte Directrice & Rétrospective du Cahier des Charges (Norme Obligatoire ADR-015)** :
+  Pour toutes les sections du CdC (01 à 11), application impérative de [`agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/CHARTE_ET_RETROSPECTIVE_SECTION_01.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/CHARTE_ET_RETROSPECTIVE_SECTION_01.md) :
+  - Alignement au fer à gauche strict (`text-align: left`), interdiction absolue de la justification pleine (`text-align: justify`).
+  - Gabarit « 1 Sujet = 1 Page A4 » (page budgeting rigoureux, 0 débordement orphelin).
+  - Équilibre éditorial puces / prose (structuration par bloc avec lead-in en gras, énoncé simple + explication opérationnelle).
+  - Objectifs au format analyste métier (par profil avec finalité d'usage, ID formel `OP-XXX-XX`, énoncé cible, règles d'exécution).
+  - Protection géométrique des figures (ratio d'aspect 100% préservé, `height: auto`, détourage SVG pur sans marges parasites).
+  - Tableaux académiques Booktabs (filets horizontaux contrastés, zéro filet vertical).
+  - Anti-AI Slop & zéro languette (bannissement des `border-left`, cartes fines `#E8E6DF`).
+  - KPIs sobres à double échelle (Scope 1 Local / Scope 2 SaaS National, cibles « À déterminer », 0 métrique d'infrastructure prématurée).
+  - Légende de benchmark obligatoire pour toute mention de concurrents/partenaires.
 
 ---
 
@@ -64,4 +75,11 @@ Tout document rédigé dans ce dossier et le README du projet doivent respecter 
   4. Screenshot / export PNG de l'HTML et insertion dans le Markdown (`![Figure](assets/...)`).
   5. Rédaction de la prose de la section une fois tous les visuels validés.
 * **Frugalité PDF** : Pas de compilation PDF par micro-section. Les sections restent en Markdown enrichi d'images. Le PDF complet unifié est généré uniquement lors de l'assemblage final (Étape 11).
+
+---
+
+## 8. Identité Visuelle Sur-Mesure & Interdiction des Languettes (Anti-Slop AI)
+* **Zéro languette ni bande asymétrique** : Proscription absolue des bordures d'accent (`border-left: 3px/4px/5px solid ...`, `border-top: 4px/5px solid ...`) caractéristiques du style générique IA (« slop AI »).
+* **UI d'inspiration éditoriale haut de gamme** : Cartes symétriques aux contours complets fins (1px solid `#E8E6DF`), micro-surfaces douces (fonds lin et blanc pur), badges centrés avec précision (`dominant-baseline="central"`), zéro débordement de police et contrastes nets.
+
 

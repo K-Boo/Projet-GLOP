@@ -152,9 +152,11 @@ body {
   background: var(--color-surface-print);
   margin: 0;
   padding: 0;
-  text-align: justify;
-  text-justify: inter-word;
-  hyphens: auto;
+  text-align: left;
+}
+
+p, li {
+  text-align: left;
 }
 
 /* EN-TETE INSTITUTIONNEL AVEC LOGOS OFFICIELS */
@@ -228,6 +230,15 @@ h3.subsection-heading {
   font-weight: bold;
   color: var(--color-text-primary);
   margin: 10pt 0 4pt 0;
+  page-break-after: avoid;
+  text-align: left;
+}
+
+h4.category-heading {
+  font-size: 10pt;
+  font-weight: 700;
+  color: var(--color-brand-primary);
+  margin: 7pt 0 2pt 0;
   page-break-after: avoid;
   text-align: left;
 }
@@ -307,6 +318,20 @@ table.booktabs code {
   border-bottom: none;
 }
 
+.cartouche-compact {
+  text-align: center;
+  margin: 6pt 0 14pt 0;
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
+  border-bottom: 0.75pt solid var(--color-border-light);
+  padding-bottom: 6pt;
+}
+
+.cartouche-compact code {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-meta);
+}
+
 /* ENCARTS ET DECISIONS VALIDATION / ATTENTE (ZERO BARRE LATERALE) */
 .callout-box {
   margin: 6pt 0 6pt 0;
@@ -372,7 +397,7 @@ table.booktabs code {
   font-style: italic;
   line-height: 1.35;
   margin: 0;
-  text-align: justify;
+  text-align: left;
 }
 
 /* BADGES ET METADONNEES EN LIGNE */

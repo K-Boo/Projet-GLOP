@@ -357,11 +357,97 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 - **Décisions actées** :
   - Validation formelle de la Section 01 comme socle d'exigences pour les sections suivantes du CdC.
   - Étape 01 formellement déclarée `COMPLETED` (100% des prérequis satisfaits pour l'Étape 02).
-- **Reste à faire / Objectifs pour la Session 19** :
-  - Démarrage de l'**Étape 02 (`STEP-02` / `SEC-02`)** : Rédaction de la section *Personas Approfondis & Parcours Utilisateurs Cibles (User Journeys)* par le Business Analyst (Pierre senior 74 ans, Suzanne commerçante 22 ans, Marius collectivité 27 ans, Julie 31 ans & Arthur 34 ans), avec User Journey Maps nominales et dispositif d'inclusion.
+---
+
+### [2026-09-17] Session 19 — Refonte Visuelle Anti-Slop AI & Rédaction Consolidée de la Section 01 (Livrable R1)
+- **Objectif** : Épurer les visuels de l'Étape 01 en supprimant le diagramme Pieuvre conformément aux ordres utilisateurs, éradiquer tout effet "languette" (AI slop / bandes d'accent asymétriques) au profit d'un design éditorial symétrique haut de gamme, valider le rendu en direct sous Google Chrome via MCP, et finaliser la rédaction intégrale de la Section 01 du Cahier des Charges R1 avec intégration formelle des figures.
+- **Actions réalisées** :
+  - Mise à jour des règles projet permanentes interdisant de façon absolue les languettes et le style générique d'IA (`PROJECT_RULES.md`, `.antigravity/instructions.md`, `agent_projet/AGENTS.md`).
+  - Suppression définitive du Diagramme des Interacteurs (Pieuvre APTE) du périmètre de l'Étape 01.
+  - Refonte complète des deux modèles visuels vectoriels :
+    * `agent_projet/templates/components/bete_a_cornes.html` : Bête à Cornes AFNOR NF X 50-151 symétrique, boîtes fermées 1px `#E8E6DF`, badges "pill" centrés, zéro débordement.
+    * `agent_projet/templates/components/matrice_positionnement.html` : Matrice 2 axes à 4 quadrants rigoureusement proportionnés, cibles claires, typographie Poppins.
+  - Génération des exports haute résolution (200 DPI PNG) : `fig_1_1_bete_a_cornes.png` et `fig_1_2_matrice_positionnement.png`.
+  - Création de la page de revue interactive `revue_visuels_etape_01.html` et inspection visuelle validée en direct sous Google Chrome via le serveur MCP `chrome-devtools-mcp`.
+  - Rédaction exhaustive et professionnelle de `01_cadrage_strategique_besoins.md` (11 sous-sections, intégration des balises figures, caractérisation AFNOR NF X 50-151 des fonctions FP1-FP2 et contraintes FC1-FC6, frontières in-scope/out-of-scope, justification Monolithe Modulaire multi-tenant ADR-012, KPIs à double échelle).
+  - Contrôle d'intégrité de sécurité : exécution de `verify_deliverables.py` (40 fichiers audités, 0 canari, 0 violation, 0 emoji).
+  - Mise à jour des registres de suivi : `cdc_progress.json` (`STEP-01` passé à `COMPLETED`) et `AVANCEMENT_CAHIER_DES_CHARGES.md`.
+- **Décisions actées** :
+  - Validation définitive des figures Figure 1.1 et Figure 1.2 pour le Livrable R1.
+  - Clôture formelle de l'Étape 01 du Cahier des Charges.
 
 ---
 
+### [2026-09-17] Session 20 — Optimisation Éditoriale en Prose, Calibrage des KPIs & Préservation des Ratios Visuels (Section 01)
+- **Objectif** : Restructurer en profondeur la Section 01 du Cahier des Charges R1 suite aux retours de l'utilisateur : supprimer les objectifs organisationnels, enrichir massivement les objectifs opérationnels en prose fluide (élimination de la surutilisation des listes à puces), éliminer la section d'architecture (réservée à la Section 07 du plan directeur), supprimer la table d'informations documentaires et le cartouche pleine page, calibrer strictement les KPIs à exactement 2 indicateurs par scope sans valeur exemple fictive (cibles marquées « À déterminer »), et préserver rigoureusement le ratio naturel des graphiques sans aucune déformation visuelle tout en verrouillant la pagination à 5 pages thématiques.
+- **Actions réalisées** :
+  - Mise à jour de `render_report.py` avec le support du drapeau `--no-cartouche` et génération d'un bandeau de métadonnées compact, supprimant le saut de page forcé en couverture.
+  - Ajout des règles de style `.cartouche-compact` dans `agent_projet/design/theme.css`.
+  - Réécriture complète de `01_cadrage_strategique_besoins.md` sous le style rédactionnel en prose continue du premier livrable :
+    * Suppression de la table "Informations Documentaires" et du H1 redondant.
+    * Page 1 : Présentation du Projet (1.1) + Expression du Besoin (1.2 Bête à Cornes) + Figure 1.1 à ratio 2:1 natif strict (width 100%, max-width 520px, height auto, zéro déformation).
+    * Page 2 : Matrice de Positionnement Concurrentiel (1.3) avec explication des 2 axes, Figure 1.2 à ratio 1.55:1 natif strict et analyse des 4 quadrants sur la même page sans rupture.
+    * Page 3 : Objectifs du Projet (1.4) rédigés en paragraphes structurés avec lead-ins en gras (suppression des listes à puces et des objectifs organisationnels, enrichissement opérationnel : commande C&C, caisse/VFP, mobilités, gestion commerçant, inclusion).
+    * Page 4 : Périmètre du Système (1.5 In-Scope / Out-of-Scope) + Gratuité Citoyenne & Inclusion universelle (1.6 Pierre, seniors, RGAA AA, procuration, RGPD) en prose continue.
+    * Page 5 : Indicateurs Clés de Performance (1.7) avec exactement 2 KPIs par scope sans chiffres fictifs (Scope 1 Ville pilote : Taux VFP & Pénétration locale ; Scope 2 SaaS national : Volume de collectivités & Disponibilité SLA ; cibles marquées « À déterminer »).
+  - Suppression de l'ancienne section 1.6 Architecture (réservée à la Section 07 du CdC).
+  - Compilation vectorielle d'un PDF d'exactement 5 pages, équilibré, lisible et aéré : `01_cadrage_strategique_besoins.pdf`.
+  - Contrôle d'intégrité de sécurité : validation par `verify_deliverables.py` (40 fichiers audités, 0 violation, 0 canari, 0 emoji).
+  - Synchronisation Google Drive automatique vers `01_Cadrage_Metier_R1/` et actualisation directe de l'onglet Chrome via le serveur MCP `chrome-devtools-mcp`.
+- **Décisions actées** :
+  - Style éditorial du CdC aligné sur la prose continue du premier livrable (interdiction de l'accumulation artificielle de puces).
+  - Intégrité géométrique absolue des figures (height auto, zéro contrainte de déformation).
+  - Les KPIs sont limités à 2 par échelle avec valeurs cibles à arbitrer sur le terrain.
+  - Pagination de la Section 01 verrouillée à 5 pages thématiques équilibrées.
+- **Reste à faire / Objectifs pour la Session 21** :
+  - Démarrage de l'**Étape 02 (`STEP-02` / `SEC-02`)** : *Personas Approfondis & Parcours Utilisateurs Cibles* (fiches personas Pierre, Suzanne, Marius, Julie & Arthur et User Journey Maps nominales).
+
+### [2026-09-17] Session 21 — Alignement au Fer à Gauche, Objectifs Format Analyste, Benchmark Concurrentiel & Charte Rétrospective
+- **Objectif** : Éliminer la justification du texte (`text-align: justify`) générant des rivières de blanc, établir le juste milieu entre structuration par puces et prose, reformuler les objectifs opérationnels au format analyste par catégorie d'acteur, enrichir la matrice de positionnement d'une légende analytique de benchmark, supprimer la KPI SLA et l'annotation finale, et formaliser une charte directrice/rétrospective normative pour toutes les sections du Cahier des Charges.
+- **Actions réalisées** :
+  - Remplacement de `text-align: justify` par `text-align: left` dans `agent_projet/design/theme.css`, `agent_projet/scripts/render_report.py` et `agent_projet/scripts/generate_pdf.py`.
+  - Amélioration du moteur `render_report.py` : support des titres `####` (H4) et prise en charge native des lignes de continuation indentées sous les listes à puces.
+  - Réécriture et équilibrage de `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/sections/01_cadrage_strategique_besoins.md` :
+    * Page 1 : Double finalité et dimensions canoniques de la Bête à Cornes rythmées par catégorie (lead-ins en gras + énoncés concis), Figure 1.1 centrée sans distorsion.
+    * Page 2 : Matrice de positionnement (Figure 1.2) complétée par une légende analytique explicite démontrant la réalisation d'un benchmark concurrentiel (Ollca, Epicery, Amazon, Deliveroo, Proxity).
+    * Page 3 : Objectifs au format analyste pur : objectifs stratégiques (OS-01 à OS-03) et opérationnels par profil (Citoyen, Commerçant, Collectivité) rappelant leur finalité principale, avec identifiants formels, énoncé direct et explications opérationnelles (Two-Phase Commit, fenêtres glissantes 15j, scan caisse < 3s, RGPD).
+    * Page 4 : Périmètre Booktabs et principes d'inclusion universelle / gratuité citoyenne équilibrés.
+    * Page 5 : KPIs épurés (suppression de la KPI technique SLA hébergeur et suppression de l'annotation finale renvoyant à R3).
+  - Rédaction du document de référence normatif : `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/CHARTE_ET_RETROSPECTIVE_SECTION_01.md`.
+  - Intégration contractuelle de la charte dans `.antigravity/instructions.md`, `.antigravity/agent_projet.md` et `agent_projet/AGENTS.md`.
+  - Formalisation de l'arbitrage dans `agent_projet/docs/00_Gouvernance_Projet/DECISIONS.md` (**ADR-015**).
+  - Compilation vectorielle du PDF officiel : `01_cadrage_strategique_besoins.pdf` (5 pages strictes, parfaitement lisibles et équilibrées).
+  - Contrôle d'intégrité validé (`verify_deliverables.py` : 0 violation, 0 canari, 0 emoji sur 41 fichiers).
+  - Synchronisation Google Drive automatique vers `01_Cadrage_Metier_R1/` et actualisation de l'onglet Chrome DevTools.
+- **Décisions actées** :
+  - **ADR-015** : L'ensemble du Cahier des Charges R1 (Sections 01 à 11) doit obligatoirement respecter les règles fixées dans la charte rétrospective (alignement à gauche, page budgeting 1 sujet = 1 page, objectifs au format analyste, ratio des figures 100% protégé, tableaux Booktabs sans barres verticales, zéro languette latérale, zéro emoji).
+### [2026-09-17] Session 22 — Réalisation & Finalisation de l'Étape 02 (SEC-02 : Personas & User Journey Maps)
+- **Objectif** : Concevoir les fiches complètes des 4 personas (Pierre, Suzanne, Marius, Julie & Arthur) et les User Journey Maps cibles au format Justinmind (zéro languette, zéro emoji, suppression intégrale de tout jargon et mention RGAA), valider les visuels avec l'utilisateur, et rédiger la Section 02 du Cahier des Charges R1 selon les règles strictes de l'ADR-015 (alignement au fer à gauche, page budgeting 5 pages strictes, tableaux Booktabs).
+- **Actions réalisées** :
+  - Réservation de `STEP-02` dans `agent_projet/config/cdc_progress.json` et mise à jour de `AVANCEMENT_CAHIER_DES_CHARGES.md`.
+  - Conception et refonte des modèles visuels :
+    * `personas_dashboard.html` : Tableau de bord des 4 personas épuré de tout jargon, badges pastel harmonisés.
+    * `user_journey_map_pierre.html` : User Journey Map nominale de Pierre Dupont (74 ans) conforme aux standards Justinmind (bandeau persona/scénario, 5 phases chronologiques, 6 swimlanes : actions, touchpoints, pensées, frictions, courbe émotionnelle continue vectorielle SVG, solutions ShopLoc).
+    * `user_journey_map_actifs.html` : User Journey Map nominale des actifs urbains (Julie & Arthur) selon les mêmes standards UX Justinmind.
+  - Export haute résolution des graphiques à 2x : `fig_2_1_personas_approfondis.png`, `fig_2_2_user_journey_pierre.png`, `fig_2_3_user_journey_actifs.png`.
+  - Génération de la page de revue interactive `revue_visuels_etape_02.html` et inspection sous Google Chrome.
+  - Présentation à l'utilisateur et validation formelle des graphiques dans le chat.
+  - Rédaction intégrale de `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/sections/02_personas_et_parcours_utilisateurs.md` :
+    * Page 1 : Démarche d'analyse usager (2.1) + Cartographie des personas (2.2) + Figure 2.1.
+    * Page 2 : Fiches détaillées des personas au format analyste (2.3) + tableau comparatif Booktabs.
+    * Page 3 : Parcours cible Pierre Dupont (2.4) + Figure 2.2 + analyse chronologique et émotionnelle.
+    * Page 4 : Parcours cible Julie & Arthur (2.5) + Figure 2.3 + analyse chronologique et émotionnelle.
+    * Page 5 : Dispositif d'inclusion sociale, procuration tiers de confiance et trajectoire de release V1/V2/V3 (2.6).
+  - Compilation vectorielle du PDF officiel : `02_personas_et_parcours_utilisateurs.pdf` (5 pages strictes, équilibrées et aérées).
+  - Contrôle qualité de sécurité automatisé via `verify_deliverables.py` (44 fichiers audités, 0 violation, 0 canari, 0 emoji).
+  - Mise à jour de `cdc_progress.json` (`STEP-02` passé à `COMPLETED`).
+- **Décisions actées** :
+  - Validation officielle de la Section 02 du Cahier des Charges R1.
+  - Étape 02 formellement clôturée (`COMPLETED`), ouvrant la voie à l'Étape 03 (`STEP-03` : Modélisation des Processus Métiers BPMN 2.0).
+- **Reste à faire / Objectifs pour la Session 23** :
+  - Lancement de l'**Étape 03 (`STEP-03` / `SEC-03`)** : *Modélisation des Processus Métiers (BPMN 2.0)* (Conventionnement municipal, Commande C&C, Enregistrement caisse/VFP, Conversion mobilité).
+
+---
 
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
 

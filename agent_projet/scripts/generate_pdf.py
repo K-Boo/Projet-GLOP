@@ -303,9 +303,7 @@ def parse_markdown_to_latex_html(md_text, b64_univ, b64_fst, version="2.0"):
     background: #ffffff;
     margin: 0;
     padding: 0;
-    text-align: justify;
-    text-justify: inter-word;
-    hyphens: auto;
+    text-align: left;
   }}
 
   /* HEADER WITH LOGOS */
@@ -420,7 +418,7 @@ def parse_markdown_to_latex_html(md_text, b64_univ, b64_fst, version="2.0"):
     font-style: italic;
     line-height: 1.35;
     margin: 0;
-    text-align: justify;
+    text-align: left;
   }}
 
   /* WAVE BANNER */
@@ -470,7 +468,7 @@ def parse_markdown_to_latex_html(md_text, b64_univ, b64_fst, version="2.0"):
     font-size: 9.5pt;
     margin: 0 0 3pt 0;
     line-height: 1.35;
-    text-align: justify;
+    text-align: left;
   }}
 
   .latex-moa-decision {{
@@ -505,7 +503,7 @@ def parse_markdown_to_latex_html(md_text, b64_univ, b64_fst, version="2.0"):
     font-size: 9.5pt;
     margin: 4pt 0 0 0;
     line-height: 1.35;
-    text-align: justify;
+    text-align: left;
     font-style: italic;
   }}
 
@@ -523,14 +521,14 @@ def parse_markdown_to_latex_html(md_text, b64_univ, b64_fst, version="2.0"):
 
   ul.latex-itemize li {{
     margin-bottom: 2pt;
-    text-align: justify;
+    text-align: left;
   }}
 
   .latex-p {{
     font-size: 9.5pt;
     line-height: 1.35;
     margin: 4pt 0;
-    text-align: justify;
+    text-align: left;
   }}
 
   .latex-code {{

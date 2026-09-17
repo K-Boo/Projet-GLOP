@@ -39,6 +39,7 @@ Des reception d'une instruction utilisateur, l'agent identifie le domaine concer
 - **Exemples** : Redaction ou modification de livrables (R1, R3, R4/R5), cadrage metier, questionnaires MOA, etude financiere, mise a jour du glossaire, diaporamas PPTX, synchronisation Google Drive.
 - **Regle a appliquer** : Se conformer imperativement a [`.antigravity/agent_projet.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/.antigravity/agent_projet.md) et aux regles locales [`agent_projet/AGENTS.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_projet/AGENTS.md).
 - **Coordination Multi-Collaborateurs CdC** : Pour toute tâche liée au Cahier des Charges R1, l'agent doit impérativement consulter [`agent_projet/config/cdc_progress.json`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_projet/config/cdc_progress.json) et respecter le graphe d'ordonnancement strict (interdiction formelle de débuter une section si 100% de ses prérequis ne sont pas `COMPLETED`, interdiction de refaire une section déjà prise en charge).
+- **Charte Normative & Rétrospective CdC (ADR-015)** : Application obligatoire de [`agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/CHARTE_ET_RETROSPECTIVE_SECTION_01.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/CHARTE_ET_RETROSPECTIVE_SECTION_01.md) pour la rédaction, la mise en page et les visuels de l'ensemble des sections (01 à 11).
 - **Emplacement des fichiers** : Operer exclusivement dans `agent_projet/`.
 
 ### Cas B : Demande liee au Code, a l'Architecture ou aux Tests
@@ -200,3 +201,18 @@ python agent_projet/scripts/setup_env.py
    - Aucune justification ne doit être basée sur des limites d'expérience ou de niveau académique d'étudiants.
 3. **Interdiction d'anticipation de rédaction** :
    - L'agent ne doit jamais rédiger de section ou de livrable officiel avant que le plan d'ensemble n'ait été formellement et explicitement validé par l'utilisateur.
+
+---
+
+## 12. Identité Visuelle Sur-Mesure & Interdiction Absolue des Languettes (Anti-Slop AI)
+
+1. **Interdiction formelle des languettes et bordures asymétriques** :
+   - Aucun conteneur, carte, encart pédagogique, cartouche ou bloc d'information ne doit comporter de bande ou languette d'accentuation (`border-left: 3px/4px/5px solid ...`, `border-top: 4px/5px solid ...`). Ce motif stéréotypé est typique d'une génération IA générique (« slop AI »).
+2. **Exigence d'une UI sur-mesure et d'inspiration éditoriale** :
+   - Proposer une identité visuelle unique et singulière respectant les meilleures pratiques ergonomiques :
+     - Conteneurs réguliers et symétriques aux bordures intégrales fines (1px solid `#E8E6DF`).
+     - Micro-surfaces harmonieuses avec fonds subtilement nuancés (lin `#FAF9F6`, blanc pur, gris feutré).
+     - Badges pills élégants intégrés dans le flux textuel avec centrage mathématique strict (`dominant-baseline="central"`).
+     - Typographie sobre, aérée, sans aucune collision de bordure ni texte tronqué.
+3. **Règle permanente** : Applicable à 100% des visuels, composants HTML/SVG, maquettes, diaporamas et livrables du projet.
+

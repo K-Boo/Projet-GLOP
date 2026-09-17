@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "document_cible": "Livrable R1 — Cahier des Charges ShopLoc (GLOP-2026-R1-CDC-v1.0)",
-  "derniere_mise_a_jour": "2026-09-16T19:58:00+02:00",
+  "derniere_mise_a_jour": "2026-09-17T19:26:00+02:00",
   "statut_global": "INITIALISE_PRET_POUR_REDACTION",
   "directives_de_collaboration_multi_agents": {
     "regle_01_unicite": "Aucun agent ou collaborateur ne doit entreprendre la redaction d'une section deja marquee 'IN_PROGRESS' ou 'COMPLETED'. Avant tout travail, verifier l'etat dans ce fichier.",
@@ -14,15 +14,14 @@
       "step_id": "STEP-01",
       "section_code": "SEC-01",
       "titre": "Cadrage Strategique, Expression du Besoin & Methode APTE",
-      "statut": "IN_PROGRESS",
+      "statut": "COMPLETED",
       "assigne_a": "Equipe ShopLoc & Product Owner (Co-Design)",
       "date_debut": "2026-09-17T09:05:00+02:00",
-      "date_achevement": null,
+      "date_achevement": "2026-09-17T16:28:00+02:00",
       "prerequisites": [],
       "fichier_source": "agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/sections/01_cadrage_strategique_besoins.md",
       "modeles_visuels_requis": [
         "Bete a Cornes APTE (SVG)",
-        "Diagramme Pieuvre APTE (SVG)",
         "Matrice de Positionnement Concurrentiel 2 axes (SVG)"
       ],
       "skills_recommandes": [
@@ -36,10 +35,10 @@
       "step_id": "STEP-02",
       "section_code": "SEC-02",
       "titre": "Personas Approfondis & Parcours Utilisateurs Cibles (User Journeys)",
-      "statut": "NOT_STARTED",
-      "assigne_a": null,
-      "date_debut": null,
-      "date_achevement": null,
+      "statut": "COMPLETED",
+      "assigne_a": "Equipe ShopLoc & Business Analyst (Co-Design)",
+      "date_debut": "2026-09-17T18:50:00+02:00",
+      "date_achevement": "2026-09-17T19:26:00+02:00",
       "prerequisites": ["STEP-01"],
       "fichier_source": "agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/sections/02_personas_et_parcours_utilisateurs.md",
       "modeles_visuels_requis": [

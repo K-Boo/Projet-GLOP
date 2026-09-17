@@ -185,3 +185,19 @@ Chaque décision doit être formalisée ainsi :
     - Production 100% autonome et locale via Python et SVG vectoriel pur, garantissant 0 token consommé à la génération.
 - **Conséquences** : Modélisation conforme aux plus hauts standards académiques MIAGE et professionnels, lisibilité visuelle maximale sans surcharge cognitive.
 
+### ADR-015 : Charte Éditoriale, Typographique & Rétrospective Méthodologique du Cahier des Charges
+- **Date** : 2026-09-17
+- **Statut** : Validé (Rétrospective Section 01 & Standardisation Globale CdC)
+- **Contexte** : Capitalisation sur les itérations de la Section 01 (Cadrage Stratégique & Besoins) pour fixer des règles intangibles de mise en page, de style rédactionnel et d'ergonomie documentaire applicables à l'ensemble du Cahier des Charges R1.
+- **Décision** :
+  - **Alignement Typographique au Fer à Gauche (`text-align: left`)** : Interdiction absolue de la justification pleine (`text-align: justify`) qui génère des rivières de blanc inesthétiques. L'ensemble des textes, paragraphes et listes est aligné à gauche.
+  - **Gabarit Strict « 1 Sujet = 1 Page A4 » (Page Budgeting)** : Chaque concept majeur ou couple (texte + figure) forme une unité autonome occupant une seule page A4 sans débordement résiduel.
+  - **Équilibre Éditorial Puces / Texte (Anti-AI Slop)** : Interdiction des pavés monolithiques (> 8 lignes) et des listes à puces interminables. Structuration par catégories d'acteurs avec lead-in en gras.
+  - **Format Objectifs Propre au Métier d'Analyste** : Pour chaque acteur, rappel de la finalité d'usage principale, identifiant formel (`OP-XXX-XX`), *Énoncé cible* simple et mesurable, suivi d'une *Explication opérationnelle* concise.
+  - **Protection Géométrique des Figures (Zéro Déformation)** : Conservation stricte du ratio d'aspect (`height: auto`), centrage horizontal, détourage pur du SVG sans marges A4 parasites.
+  - **Exclusion des Languettes Latérales & Badges Sobres** : Suppression définitive des bordures gauches colorées (`border-left`) d'aspect IA générique au profit de cartes épurées à bordure fine (`#E8E6DF`).
+  - **Légende Analytique de Benchmark Obligatoire** : Toute mention de solution concurrente ou tierce dans un schéma (Amazon, Ollca, Proxity) doit être accompagnée d'une synthèse textuelle démontrant l'existence d'un benchmark préalable.
+  - **Indicateurs Clés (KPIs) Sobres & Double Échelle** : 1 à 2 KPIs ciblés par scope (Scope 1 Ville pilote, Scope 2 SaaS national), sans valeurs inventées (« À déterminer » en R3) et sans métriques d'infrastructure prématurées.
+  - **Document de référence complet** : `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/CHARTE_ET_RETROSPECTIVE_SECTION_01.md`.
+- **Conséquences** : Harmonisation visuelle et rédactionnelle parfaite de l'ensemble du Cahier des Charges (Sections 01 à 11), suppression de toute dérive typographique, conformité garantie aux attentes de la soutenance académique MIAGE.
+

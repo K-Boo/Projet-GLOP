@@ -85,14 +85,24 @@ def markdown_table_to_booktabs(table_lines):
     return '\n'.join(html)
 
 # Parseur générique Markdown vers structure HTML élégante
-def parse_markdown_to_html(md_text, meta, b64_univ, b64_fst, css_content, generate_toc=False):
+def parse_markdown_to_html(md_text, meta, b64_univ, b64_fst, css_content, generate_toc=False, no_cartouche=False):
     lines = md_text.split('\n')
     body_html = []
     toc_items = []
     
     in_list = False
+    in_item = False
     in_table = False
     table_buffer = []
+
+    def close_list():
+        nonlocal in_list, in_item
+        if in_item:
+            body_html.append('</li>')
+            in_item = False
+        if in_list:
+            body_html.append('</ul>')
+            in_list = False
     
     i = 0
     while i < len(lines):
@@ -114,24 +124,17 @@ def parse_markdown_to_html(md_text, meta, b64_univ, b64_fst, css_content, genera
 
         # Separateur horizontal
         if stripped == '---':
-            if in_list:
-                body_html.append('</ul>')
-                in_list = False
+            close_list()
             i += 1
             continue
 
         if not stripped:
-            if in_list:
-                body_html.append('</ul>')
-                in_list = False
             i += 1
             continue
 
         # Banniere de section majeure (H1)
         if stripped.startswith('# '):
-            if in_list:
-                body_html.append('</ul>')
-                in_list = False
+            close_list()
             title = clean_inline(stripped[2:])
             sec_id = f"sec-{len(toc_items)+1}"
             toc_items.append((1, title, sec_id))
@@ -141,9 +144,7 @@ def parse_markdown_to_html(md_text, meta, b64_univ, b64_fst, css_content, genera
 
         # Titre de section H2
         if stripped.startswith('## '):
-            if in_list:
-                body_html.append('</ul>')
-                in_list = False
+            close_list()
             title = clean_inline(stripped[3:])
             sec_id = f"sec-{len(toc_items)+1}"
             toc_items.append((2, title, sec_id))
@@ -153,9 +154,7 @@ def parse_markdown_to_html(md_text, meta, b64_univ, b64_fst, css_content, genera
 
         # Titre de sous-section H3
         if stripped.startswith('### '):
-            if in_list:
-                body_html.append('</ul>')
-                in_list = False
+            close_list()
             title = clean_inline(stripped[4:])
             sec_id = f"sec-{len(toc_items)+1}"
             toc_items.append((3, title, sec_id))
@@ -163,8 +162,17 @@ def parse_markdown_to_html(md_text, meta, b64_univ, b64_fst, css_content, genera
             i += 1
             continue
 
+        # Titre de sous-sous-section H4
+        if stripped.startswith('#### '):
+            close_list()
+            title = clean_inline(stripped[5:])
+            body_html.append(f'<h4 class="category-heading">{title}</h4>')
+            i += 1
+            continue
+
         # Encarts de décision / validation
         if 'color: #166534' in stripped or 'Arbitrage MOA' in stripped or 'Décision validée' in stripped or 'Decision validee' in stripped:
+            close_list()
             clean_txt = re.sub(r'</?span[^>]*>', '', stripped)
             clean_txt = re.sub(r'</?strong>', '', clean_txt).strip('* -')
             body_html.append(f'<div class="callout-box callout-success"><strong>Validation MOA :</strong> {clean_inline(clean_txt)}</div>')
@@ -173,35 +181,42 @@ def parse_markdown_to_html(md_text, meta, b64_univ, b64_fst, css_content, genera
 
         # Encarts d'attente d'arbitrage
         if 'color: #c2410c' in stripped or 'Statut : En attente' in stripped or 'arbitrage MOA' in stripped:
+            close_list()
             clean_txt = re.sub(r'</?span[^>]*>', '', stripped)
             clean_txt = re.sub(r'</?strong>', '', clean_txt).strip('* -')
             body_html.append(f'<div class="callout-box callout-warning"><strong>{clean_inline(clean_txt)}</strong></div>')
             i += 1
             continue
 
+        # Lignes d'indentation / continuation d'un item de liste
+        if (line.startswith('  ') or line.startswith('\t')) and in_item and stripped:
+            body_html.append(f'<br><span style="display:inline-block; margin-top: 1.5pt; color: #334155;">{clean_inline(stripped)}</span>')
+            i += 1
+            continue
+
         # Listes a puces
         if stripped.startswith('- ') or stripped.startswith('* '):
+            if in_item:
+                body_html.append('</li>')
+                in_item = False
             if not in_list:
-                body_html.append('<ul style="margin: 3pt 0 4pt 16pt; padding: 0; font-size: 9.5pt; line-height: 1.35;">')
+                body_html.append('<ul style="margin: 3pt 0 4pt 16pt; padding: 0; font-size: 9.5pt; line-height: 1.35; text-align: left;">')
                 in_list = True
-            body_html.append(f'<li style="margin-bottom: 2pt;">{clean_inline(stripped[2:])}</li>')
+            body_html.append(f'<li style="margin-bottom: 4pt; text-align: left;">{clean_inline(stripped[2:])}')
+            in_item = True
             i += 1
             continue
 
         # Balises et blocs HTML bruts (SVG, div, conteneurs)
         if stripped.startswith('<') and not (stripped.startswith('<code') or stripped.startswith('<span') or stripped.startswith('<strong>') or stripped.startswith('<em>')):
-            if in_list:
-                body_html.append('</ul>')
-                in_list = False
+            close_list()
             body_html.append(stripped)
             i += 1
             continue
 
         # Blocs de code preformate (```)
         if stripped.startswith('```'):
-            if in_list:
-                body_html.append('</ul>')
-                in_list = False
+            close_list()
             code_lines = []
             i += 1
             while i < len(lines) and not lines[i].strip().startswith('```'):
@@ -213,14 +228,11 @@ def parse_markdown_to_html(md_text, meta, b64_univ, b64_fst, css_content, genera
             continue
 
         # Paragraphes normaux
-        if in_list:
-            body_html.append('</ul>')
-            in_list = False
-        body_html.append(f'<p style="margin: 4pt 0; text-align: justify;">{clean_inline(stripped)}</p>')
+        close_list()
+        body_html.append(f'<p style="margin: 4pt 0; text-align: left;">{clean_inline(stripped)}</p>')
         i += 1
 
-    if in_list:
-        body_html.append('</ul>')
+    close_list()
     if in_table:
         body_html.append(markdown_table_to_booktabs(table_buffer))
 
@@ -235,8 +247,18 @@ def parse_markdown_to_html(md_text, meta, b64_univ, b64_fst, css_content, genera
         toc_lines.append('</ul><div style="page-break-after: always;"></div>')
         toc_html = '\n'.join(toc_lines)
 
-    # Cartouche administratif normalise
-    cartouche_html = f"""
+    # Cartouche administratif normalise ou en-tete compact
+    if no_cartouche:
+        header_meta_html = f"""
+    <div class="cartouche-compact">
+      <span><strong>Reference :</strong> <code class="latex-code">{meta.get('ref', 'GLOP-2026-LIVRABLE-v1.0')}</code></span> &nbsp;|&nbsp;
+      <span><strong>Statut :</strong> <span class="badge badge-success">{meta.get('status', 'Version 1.0 Formelle')}</span></span> &nbsp;|&nbsp;
+      <span><strong>Date :</strong> {meta.get('date', '17 Septembre 2026')}</span>
+    </div>
+        """
+        page_break_after_header = ""
+    else:
+        header_meta_html = f"""
     <div class="cartouche-container">
       <table class="cartouche-table">
         <tr><th>Intitule du Projet</th><td>Plateforme ShopLoc — Marketplace & Fidelisation Territoriale</td></tr>
@@ -245,12 +267,13 @@ def parse_markdown_to_html(md_text, meta, b64_univ, b64_fst, css_content, genera
         <tr><th>Reference Documentaire</th><td><code class="latex-code">{meta.get('ref', 'GLOP-2026-LIVRABLE-v1.0')}</code></td></tr>
         <tr><th>Contexte Academique</th><td>Master 2 MIAGE — UE Genie Logiciel par la Pratique (2026-2027)</td></tr>
         <tr><th>Maitrise d Ouvrage (MOA)</th><td>Laurence Duchien, Anne Etien, Francois Secchi, Jeremy Woirhaye</td></tr>
-        <tr><th>Date & Statut</th><td>{meta.get('date', '16 Septembre 2026')} — <span class="badge badge-success">{meta.get('status', 'Version 1.0 Formelle')}</span></td></tr>
+        <tr><th>Date & Statut</th><td>{meta.get('date', '17 Septembre 2026')} — <span class="badge badge-success">{meta.get('status', 'Version 1.0 Formelle')}</span></td></tr>
         <tr><th>Tag Communications</th><td><code class="latex-code">[GLOP]</code> (obligatoire dans tout objet de courriel)</td></tr>
         <tr><th>Transparence IA</th><td>Ce document a ete structure avec l assistance d outils d ingenierie logicielle.</td></tr>
       </table>
     </div>
-    """
+        """
+        page_break_after_header = '<div style="page-break-after: always;"></div>'
 
     full_html = f"""<!DOCTYPE html>
 <html lang="fr">
@@ -274,11 +297,11 @@ def parse_markdown_to_html(md_text, meta, b64_univ, b64_fst, css_content, genera
   <div class="latex-sub-title">{meta.get('subtitle', 'Master 2 MIAGE — UE GLOP 2026-2027')}</div>
 </div>
 
-{cartouche_html}
+{header_meta_html}
 
 {f'<div class="abstract-box"><div class="abstract-title">Preambule</div><p class="abstract-text">{meta.get("preamble")}</p></div>' if meta.get("preamble") else ''}
 
-<div style="page-break-after: always;"></div>
+{page_break_after_header}
 
 {toc_html}
 
@@ -324,6 +347,7 @@ def main():
     parser.add_argument("--subtitle", "-s", default="Master 2 MIAGE — UE GLOP", help="Sous-titre du document")
     parser.add_argument("--ref", "-r", default="GLOP-2026-LIVRABLE-v1.0", help="Reference documentaire")
     parser.add_argument("--toc", action="store_true", help="Generer automatiquement une Table des Matieres")
+    parser.add_argument("--no-cartouche", action="store_true", help="Ne pas afficher le grand cartouche administratif et permettre l enchainement direct du contenu")
     parser.add_argument("--preview-styleguide", action="store_true", help="Compiler le guide de style visuel en PDF")
 
     args = parser.parse_args()
@@ -381,7 +405,7 @@ def main():
         "status": "Version 1.0 — Validee"
     }
 
-    html_content = parse_markdown_to_html(source_content, meta, b64_univ, b64_fst, theme_css, generate_toc=args.toc)
+    html_content = parse_markdown_to_html(source_content, meta, b64_univ, b64_fst, theme_css, generate_toc=args.toc, no_cartouche=args.no_cartouche)
     compile_html_to_pdf(html_content, output_pdf, edge_bin)
 
     # Verification de securite post-compilation sur le PDF

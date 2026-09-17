@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revue Visuelle Étape 02 — Personas Approfondis &amp; Parcours Utilisateurs Cibles (ShopLoc)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: #FAF9F6;
+      color: #1E252D;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      padding: 44px 24px 88px;
+    }
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    /* HEADER CARD — DESIGN ÉDITORIAL SYMÉTRIQUE SANS LANGUETTE */
+    .header-card {
+      background: #FFFFFF;
+      border: 1px solid #E8E6DF;
+      border-radius: 16px;
+      padding: 36px 36px 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 20px -2px rgba(36, 51, 66, 0.05);
+    }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #F0EDE8;
+    }
+    .meta-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #243342;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .meta-tag-pill {
+      display: inline-flex;
+      align-items: center;
+      background: #F4F2ED;
+      border: 1px solid #E2DDD5;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #5A6578;
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #243342;
+      margin-bottom: 8px;
+      letter-spacing: -0.015em;
+    }
+    .subtitle {
+      font-size: 13.5px;
+      color: #5A6578;
+      margin-bottom: 22px;
+    }
+    .toc-bar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      padding-top: 14px;
+      border-top: 1px solid #F0EDE8;
+    }
+    .toc-label {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #243342;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-right: 6px;
+    }
+    .toc-link {
+      font-size: 12px;
+      font-weight: 600;
+      color: #243342;
+      text-decoration: none;
+      background: #FAF9F6;
+      border: 1px solid #E2DDD5;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      transition: all 0.15s ease;
+    }
+    .toc-link:hover {
+      background: #243342;
+      color: #FAF9F6;
+      border-color: #243342;
+    }
+
+    /* SECTION WRAPPER */
+    .review-section {
+      margin-bottom: 52px;
+    }
+    .section-title-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1.5px solid #E8E6DF;
+    }
+    .section-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: #C26750;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .section-heading {
+      font-size: 20px;
+      font-weight: 700;
+      color: #243342;
+    }
+    .badge-norme {
+      background: #EBF3ED;
+      border: 1px solid #7EA88D;
+      color: #2E583D;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      letter-spacing: 0.04em;
+    }
+
+    /* CADRE D'EXPLICATION PEDAGOGIQUE */
+    .pedago-box {
+      background: #FFFFFF;
+      border: 1px solid #E8E6DF;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-top: 18px;
+      font-size: 12.5px;
+      color: #374151;
+      box-shadow: 0 2px 8px rgba(36, 51, 66, 0.03);
+    }
+    .pedago-box h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #243342;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pedago-box p {
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+    .pedago-box p:last-child {
+      margin-bottom: 0;
+    }
+    .pedago-box ul {
+      margin-left: 20px;
+      margin-top: 6px;
+      margin-bottom: 8px;
+    }
+    .pedago-box li {
+      margin-bottom: 4px;
+    }
+
+    /* TABLE DE SYNTHÈSE */
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 11.5px;
+    }
+    .summary-table th {
+      background: #F4F2ED;
+      color: #243342;
+      font-weight: 700;
+      text-align: left;
+      padding: 8px 12px;
+      border-bottom: 1.5px solid #243342;
+      border-top: 1.5px solid #243342;
+    }
+    .summary-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #E8E6DF;
+      color: #374151;
+      vertical-align: top;
+    }
+    .summary-table tr:last-child td {
+      border-bottom: 1.5px solid #243342;
+    }
+
+    /* ACTION BAR */
+    .validation-card {
+      background: #FFFFFF;
+      border: 1px solid #BBF7D0;
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin-top: 36px;
+      box-shadow: 0 4px 16px rgba(34, 197, 94, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .validation-text h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #166534;
+      margin-bottom: 4px;
+    }
+    .validation-text p {
+      font-size: 12.5px;
+      color: #4B5563;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER EDITORIAL CARD -->
+  <div class="header-card">
+    <div class="header-top">
+      <div class="meta-tag">
+        <span style="width:10px; height:10px; border-radius:50%; background:#4A7A5B;"></span>
+        <span>ShopLoc • UE GLOP 2026-2027 • Master 2 MIAGE</span>
+      </div>
+      <div class="meta-tag-pill">Étape 02 (SEC-02) • Revue Visuelle de Co-Design</div>
+    </div>
+    <h1>Revue Visuelle : Personas Approfondis &amp; Parcours Cibles</h1>
+    <p class="subtitle">
+      Conformément aux règles du projet et au standard UX Justinmind, cette page permet de vérifier et valider les 3 modèles visuels avant la conversion en images PNG et la rédaction finale de la Section 02.
+    </p>
+    <div class="toc-bar">
+      <span class="toc-label">Modèles Visuels :</span>
+      <a href="#fig-2-1" class="toc-link">Figure 2.1 — Tableau de Bord des 4 Personas</a>
+      <a href="#fig-2-2" class="toc-link">Figure 2.2 — User Journey Map : Pierre (74 ans)</a>
+      <a href="#fig-2-3" class="toc-link">Figure 2.3 — User Journey Map : Julie &amp; Arthur</a>
+      <a href="#validation" class="toc-link" style="background:#EBF3ED; color:#2E583D; border-color:#7EA88D;">Point de Validation</a>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 1. FIGURE 2.1 : TABLEAU DE BORD DES 4 PERSONAS                            -->
+  <!-- ========================================================================= -->
+  <section id="fig-2-1" class="review-section">
+    <div class="section-title-bar">
+      <div>
+        <div class="section-num">Modèle Visuel 01 / 03 • Cadrage Acteurs</div>
+        <h2 class="section-heading">Figure 2.1 — Fiches des 4 Personas Approfondis</h2>
+      </div>
+      <span class="badge-norme">Accessibilité &amp; Clarté Universelle</span>
+    </div>
+
+    <!-- INSERTION DU COMPOSANT AUTONOME -->
+    <!-- FIGURE 2.1 : TABLEAU DE BORD DES 4 PERSONAS APPROFONDIS (SHOPLOC) -->
+<!-- Charte éditoriale Pastel Craft : Zéro Languette, Bords symétriques 1px #E8E6DF, Zéro Emoji, Zéro Jargon Technique -->
+<div class="figure-card" style="background:#FFFFFF; border:1px solid #E8E6DF; border-radius:16px; padding:28px 24px; box-shadow:0 4px 16px rgba(36,51,66,0.05); font-family:'Poppins', sans-serif;">
+  
+  <!-- EN-TETE DE FIGURE SOBRE -->
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px; border-bottom:1px solid #E8E6DF; padding-bottom:14px;">
+    <div>
+      <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:4px;">
+        <span style="width:8px; height:8px; border-radius:50%; background:#C26750;"></span>
+        <span style="font-size:11px; font-weight:700; color:#C26750; text-transform:uppercase; letter-spacing:0.08em;">Profils Cibles &amp; Cadrage Usagers</span>
+      </div>
+      <h3 style="font-size:17px; font-weight:700; color:#243342; margin:0;">Figure 2.1 — Cartographie Approfondie des Personas : Citoyen, Commerçant, Collectivité &amp; Actifs</h3>
+    </div>
+    <div style="display:flex; gap:8px;">
+      <span style="font-size:10.5px; background:#FAF9F6; border:1px solid #E8E6DF; padding:4px 12px; border-radius:9999px; color:#5A6578; font-weight:600;">4 Profils Métier</span>
+      <span style="font-size:10.5px; background:#FBEEEA; border:1px solid #D88B77; padding:4px 12px; border-radius:9999px; color:#8E3D2A; font-weight:700;">Simplicité &amp; Inclusion</span>
+    </div>
+  </div>
+
+  <!-- SVG VECTORIEL PUR HAUTE DÉFINITION — RATIO 3:2 (1140 x 760) -->
+  <svg viewBox="0 0 1140 760" width="100%" height="auto" style="display:block; overflow:visible; font-family:'Poppins', -apple-system, sans-serif;">
+    
+    <defs>
+      <filter id="card-soft-shadow" x="-4%" y="-4%" width="108%" height="108%">
+        <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#243342" flood-opacity="0.05"/>
+      </filter>
+    </defs>
+
+    <!-- ==================================================================== -->
+    <!-- PERSONA 1 : PIERRE DUPONT (HAUT-GAUCHE) — CITOYEN SENIOR             -->
+    <!-- ==================================================================== -->
+    <g filter="url(#card-soft-shadow)">
+      <rect x="20" y="10" width="535" height="360" rx="14" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+      
+      <rect x="21" y="11" width="533" height="66" rx="13" fill="#FBEEEA" />
+      <rect x="21" y="60" width="533" height="17" fill="#FBEEEA" />
+      <line x1="21" y1="77" x2="554" y2="77" stroke="#E8E6DF" stroke-width="1" />
+
+      <circle cx="58" cy="44" r="24" fill="#FFFFFF" stroke="#D88B77" stroke-width="1.5" />
+      <circle cx="58" cy="38" r="7" fill="#8E3D2A" />
+      <path d="M 46 54 C 46 47, 70 47, 70 54" fill="#8E3D2A" />
+
+      <text x="94" y="38" dominant-baseline="central" font-size="14" font-weight="700" fill="#243342">Pierre Dupont (74 ans)</text>
+      <text x="94" y="56" dominant-baseline="central" font-size="10" font-weight="500" fill="#8E3D2A">Retraité citoyen du centre-ville • Mémoire locale</text>
+      
+      <rect x="375" y="33" width="165" height="22" rx="11" fill="#FFFFFF" stroke="#D88B77" stroke-width="1" />
+      <text x="457" y="44" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="700" fill="#8E3D2A" letter-spacing="0.04em">ACCESSIBILITÉ SENIORS</text>
+
+      <!-- BLOC 1 : Routine & Contexte -->
+      <rect x="35" y="90" width="240" height="98" rx="8" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+      <text x="45" y="105" dominant-baseline="central" font-size="9.5" font-weight="700" fill="#243342">Routine &amp; Contexte</text>
+      <text x="45" y="123" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Tournée matinale rue Solférino (Lille).</text>
+      <text x="45" y="139" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Rituels : Fournil, boucherie flamande,</text>
+      <text x="45" y="155" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">  café des sports, tabac-presse, bus retour.</text>
+      <text x="45" y="171" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Primeur fermé : contrainte de 2 bus.</text>
+
+      <!-- BLOC 2 : Attentes & Objectifs -->
+      <rect x="290" y="90" width="250" height="98" rx="8" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+      <text x="300" y="105" dominant-baseline="central" font-size="9.5" font-weight="700" fill="#243342">Attentes &amp; Objectifs</text>
+      <text x="300" y="123" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Préserver le lien humain et ses commerces.</text>
+      <text x="300" y="139" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Faciliter sa mobilité quotidienne en bus.</text>
+      <text x="300" y="155" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Profiter des avantages fidélité en caisse</text>
+      <text x="300" y="171" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">  sans devoir utiliser de smartphone.</text>
+
+      <!-- BLOC 3 : Freins & Frustrations -->
+      <rect x="35" y="198" width="240" height="114" rx="8" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+      <text x="45" y="213" dominant-baseline="central" font-size="9.5" font-weight="700" fill="#B44C43">Freins &amp; Frustrations</text>
+      <text x="45" y="231" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Rejet des applications mobiles complexes</text>
+      <text x="45" y="247" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">  et des mots de passe difficiles à retenir.</text>
+      <text x="45" y="263" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Fatigue physique pour aller au marché.</text>
+      <text x="45" y="279" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Sentiment d'exclusion face aux caisses</text>
+      <text x="45" y="295" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">  automatiques des grandes surfaces.</text>
+
+      <!-- BLOC 4 : Dispositif ShopLoc -->
+      <rect x="290" y="198" width="250" height="114" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1" />
+      <text x="300" y="213" dominant-baseline="central" font-size="9.5" font-weight="700" fill="#166534">Dispositif ShopLoc Dédié</text>
+      <text x="300" y="231" dominant-baseline="central" font-size="8" font-weight="500" fill="#2E583D">• Carte Pass papier avec QR code bien visible.</text>
+      <text x="300" y="247" dominant-baseline="central" font-size="8" font-weight="500" fill="#2E583D">• Statut fidélité accordé après 10 achats</text>
+      <text x="300" y="263" dominant-baseline="central" font-size="8" font-weight="500" fill="#2E583D">  réalisés en boutique sur 15 jours.</text>
+      <text x="300" y="279" dominant-baseline="central" font-size="8" font-weight="500" fill="#2E583D">• 1 ticket de bus gratuit offert par jour.</text>
+      <text x="300" y="295" dominant-baseline="central" font-size="8" font-weight="500" fill="#2E583D">• Procuration possible pour un proche aidant.</text>
+
+      <!-- Barre d'indicateurs de synthèse -->
+      <rect x="35" y="322" width="505" height="34" rx="7" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+      <text x="48" y="339" dominant-baseline="central" font-size="8" font-weight="700" fill="#243342">CANAL PRINCIPAL :</text>
+      <text x="135" y="339" dominant-baseline="central" font-size="8" font-weight="500" fill="#5A6578">Carte papier avec QR code</text>
+      <text x="260" y="339" dominant-baseline="central" font-size="8" font-weight="700" fill="#243342">FRÉQUENCE :</text>
+      <text x="320" y="339" dominant-baseline="central" font-size="8" font-weight="500" fill="#5A6578">Quotidienne</text>
+      <text x="395" y="339" dominant-baseline="central" font-size="8" font-weight="700" fill="#243342">AVANTAGE :</text>
+      <text x="450" y="339" dominant-baseline="central" font-size="8" font-weight="600" fill="#166534">Ticket de bus gratuit</text>
+    </g>
+
+    <!-- ==================================================================== -->
+    <!-- PERSONA 2 : SUZANNE LEMAIRE (HAUT-DROITE) — COMMERÇANTE FOURNIL     -->
+    <!-- ==================================================================== -->
+    <g filter="url(#card-soft-shadow)">
+      <rect x="585" y="10" width="535" height="360" rx="14" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+      
+      <rect x="586" y="11" width="533" height="66" rx="13" fill="#EBF3ED" />
+      <rect x="586" y="60" width="533" height="17" fill="#EBF3ED" />
+      <line x1="586" y1="77" x2="1119" y2="77" stroke="#E8E6DF" stroke-width="1" />
+
+      <circle cx="623" cy="44" r="24" fill="#FFFFFF" stroke="#7EA88D" stroke-width="1.5" />
+      <path d="M 613 40 L 633 40 L 631 52 L 615 52 Z" fill="#2E583D" />
+      <path d="M 610 36 L 636 36 L 633 40 L 613 40 Z" fill="#4A7A5B" />
+
+      <text x="659" y="38" dominant-baseline="central" font-size="14" font-weight="700" fill="#243342">Suzanne Lemaire (22 ans)</text>
+      <text x="659" y="56" dominant-baseline="central" font-size="10" font-weight="500" fill="#2E583D">Vendeuse en boulangerie • Le Fournil</text>
+      
+      <rect x="945" y="33" width="160" height="22" rx="11" fill="#FFFFFF" stroke="#7EA88D" stroke-width="1" />
+      <text x="1025" y="44" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="700" fill="#2E583D" letter-spacing="0.04em">CAISSE EXPRESS RAPIDE</text>
+
+      <!-- BLOC 1 : Routine Professionnelle -->
+      <rect x="600" y="90" width="240" height="98" rx="8" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+      <text x="610" y="105" dominant-baseline="central" font-size="9.5" font-weight="700" fill="#243342">Routine en Magasin</text>
+      <text x="610" y="123" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Accueil des clients et encaissement.</text>
+      <text x="610" y="139" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Forts pics d'affluence le matin et à midi.</text>
+      <text x="610" y="155" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Préparation des commandes à emporter.</text>
+      <text x="610" y="171" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Adhérente au programme depuis 1 mois.</text>
+
+      <!-- BLOC 2 : Attentes & Objectifs -->
+      <rect x="855" y="90" width="250" height="98" rx="8" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+      <text x="865" y="105" dominant-baseline="central" font-size="9.5" font-weight="700" fill="#243342">Attentes &amp; Objectifs</text>
+      <text x="865" y="123" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Encaissement rapide sans ralentir la file.</text>
+      <text x="865" y="139" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Prouver les gains de vente à ses patrons.</text>
+      <text x="865" y="155" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Choisir facilement les cadeaux offerts</text>
+      <text x="865" y="171" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">  (part de tarte ou mini-viennoiserie).</text>
+
+      <!-- BLOC 3 : Freins & Frustrations -->
+      <rect x="600" y="198" width="240" height="114" rx="8" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+      <text x="610" y="213" dominant-baseline="central" font-size="9.5" font-weight="700" fill="#B44C43">Freins &amp; Frustrations</text>
+      <text x="610" y="231" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Crainte d'allonger la file d'attente par</text>
+      <text x="610" y="247" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">  des manipulations informatiques lentes.</text>
+      <text x="610" y="263" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Inquiétude des gérants sur le coût des lots.</text>
+      <text x="610" y="279" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Concurrence d'une autre boulangerie proche</text>
+      <text x="610" y="295" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">  qui n'a pas rejoint le réseau.</text>
+
+      <!-- BLOC 4 : Dispositif ShopLoc -->
+      <rect x="855" y="198" width="250" height="114" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1" />
+      <text x="865" y="213" dominant-baseline="central" font-size="9.5" font-weight="700" fill="#166534">Dispositif ShopLoc Dédié</text>
+      <text x="865" y="231" dominant-baseline="central" font-size="8" font-weight="500" fill="#2E583D">• Scan ultra-rapide en caisse en moins de 3s.</text>
+      <text x="865" y="247" dominant-baseline="central" font-size="8" font-weight="500" fill="#2E583D">• Validation du retrait et des lots en 1 clic.</text>
+      <text x="865" y="263" dominant-baseline="central" font-size="8" font-weight="500" fill="#2E583D">• Alertes directes en cas de stock faible.</text>
+      <text x="865" y="279" dominant-baseline="central" font-size="8" font-weight="500" fill="#2E583D">• Tableau de bord clair montrant le panier moyen</text>
+      <text x="865" y="295" dominant-baseline="central" font-size="8" font-weight="500" fill="#2E583D">  plus élevé des clients porteurs de carte.</text>
+
+      <!-- Barre d'indicateurs de synthèse -->
+      <rect x="600" y="322" width="505" height="34" rx="7" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+      <text x="613" y="339" dominant-baseline="central" font-size="8" font-weight="700" fill="#243342">CANAL PRINCIPAL :</text>
+      <text x="705" y="339" dominant-baseline="central" font-size="8" font-weight="500" fill="#5A6578">Tablette tactile de caisse</text>
+      <text x="830" y="339" dominant-baseline="central" font-size="8" font-weight="700" fill="#243342">VITESSE :</text>
+      <text x="885" y="339" dominant-baseline="central" font-size="8" font-weight="500" fill="#5A6578">Moins de 3s / 1 clic</text>
+      <text x="980" y="339" dominant-baseline="central" font-size="8" font-weight="700" fill="#243342">BÉNÉFICE :</text>
+      <text x="1035" y="339" dominant-baseline="central" font-size="8" font-weight="600" fill="#166534">CA en hausse</text>
+    </g>
+
+    <!-- ==================================================================== -->
+    <!-- PERSONA 3 : MARIUS VASSEUR (BAS-GAUCHE) — ADMINISTRATEUR MAIRIE      -->
+    <!-- ==================================================================== -->
+    <g filter="url(#card-soft-shadow)">
+      <rect x="20" y="390" width="535" height="360" rx="14" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+      
+      <rect x="21" y="391" width="533" height="66" rx="13" fill="#FEF7EB" />
+      <rect x="21" y="440" width="533" height="17" fill="#FEF7EB" />
+      <line x1="21" y1="457" x2="554" y2="457" stroke="#E8E6DF" stroke-width="1" />
+
+      <circle cx="58" cy="424" r="24" fill="#FFFFFF" stroke="#DCB162" stroke-width="1.5" />
+      <path d="M 47 433 L 69 433 L 69 435 L 47 435 Z" fill="#845A11" />
+      <path d="M 58 414 L 46 422 L 70 422 Z" fill="#845A11" />
+      <rect x="50" y="423" width="3" height="9" fill="#845A11" />
+      <rect x="57" y="423" width="3" height="9" fill="#845A11" />
+      <rect x="64" y="423" width="3" height="9" fill="#845A11" />
+
+      <text x="94" y="418" dominant-baseline="central" font-size="14" font-weight="700" fill="#243342">Marius Vasseur (27 ans)</text>
+      <text x="94" y="436" dominant-baseline="central" font-size="10" font-weight="500" fill="#845A11">Responsable numérique • Mairie de Lille</text>
+      
+      <rect x="375" y="413" width="165" height="22" rx="11" fill="#FFFFFF" stroke="#DCB162" stroke-width="1" />
+      <text x="457" y="424" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="700" fill="#845A11" letter-spacing="0.04em">PILOTAGE COMMUNAL</text>
+
+      <!-- BLOC 1 : Routine Institutionnelle -->
+      <rect x="35" y="470" width="240" height="98" rx="8" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+      <text x="45" y="485" dominant-baseline="central" font-size="9.5" font-weight="700" fill="#243342">Mission Municipale</text>
+      <text x="45" y="503" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Gestion des partenariats bus et stationnement.</text>
+      <text x="45" y="519" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Travail avec l'Association des Commerçants</text>
+      <text x="45" y="535" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">  pour dynamiser les quartiers.</text>
+      <text x="45" y="551" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Présentation des bilans aux élus municipaux.</text>
+
+      <!-- BLOC 2 : Attentes & Objectifs -->
+      <rect x="290" y="470" width="250" height="98" rx="8" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+      <text x="300" y="485" dominant-baseline="central" font-size="9.5" font-weight="700" fill="#243342">Attentes &amp; Objectifs</text>
+      <text x="300" y="503" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Mesurer l'utilité des aides publiques versées.</text>
+      <text x="300" y="519" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Comparer le coût du parking/bus avec les</text>
+      <text x="300" y="535" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">  achats réalisés dans les commerces du centre.</text>
+      <text x="300" y="551" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Encourager les usagers à revenir régulièrement.</text>
+
+      <!-- BLOC 3 : Freins & Frustrations -->
+      <rect x="35" y="578" width="240" height="114" rx="8" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+      <text x="45" y="593" dominant-baseline="central" font-size="9.5" font-weight="700" fill="#B44C43">Freins &amp; Frustrations</text>
+      <text x="45" y="611" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Devoir justifier les subventions devant les élus</text>
+      <text x="45" y="627" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">  sans disposer d'indicateurs simples et fiables.</text>
+      <text x="45" y="643" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Règle stricte : interdiction absolue de savoir</text>
+      <text x="45" y="659" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">  qui achète quoi (respect de la vie privée).</text>
+      <text x="45" y="675" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Risque de gaspiller les dotations de stationnement.</text>
+
+      <!-- BLOC 4 : Dispositif ShopLoc -->
+      <rect x="290" y="578" width="250" height="114" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1" />
+      <text x="300" y="593" dominant-baseline="central" font-size="9.5" font-weight="700" fill="#166534">Dispositif ShopLoc Dédié</text>
+      <text x="300" y="611" dominant-baseline="central" font-size="8" font-weight="500" fill="#2E583D">• Tableau de bord global réservé à la mairie.</text>
+      <text x="300" y="627" dominant-baseline="central" font-size="8" font-weight="500" fill="#2E583D">• Données 100% anonymisées : aucune liste d'achats.</text>
+      <text x="300" y="643" dominant-baseline="central" font-size="8" font-weight="500" fill="#2E583D">• Chiffre clair : montant investi vs achats générés.</text>
+      <text x="300" y="659" dominant-baseline="central" font-size="8" font-weight="500" fill="#2E583D">• Messages automatiques pour relancer les clients.</text>
+      <text x="300" y="675" dominant-baseline="central" font-size="8" font-weight="500" fill="#2E583D">• Petits sondages de satisfaction faciles à remplir.</text>
+
+      <!-- Barre d'indicateurs de synthèse -->
+      <rect x="35" y="702" width="505" height="34" rx="7" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+      <text x="48" y="719" dominant-baseline="central" font-size="8" font-weight="700" fill="#243342">CANAL PRINCIPAL :</text>
+      <text x="135" y="719" dominant-baseline="central" font-size="8" font-weight="500" fill="#5A6578">Espace web mairie sécurisé</text>
+      <text x="270" y="719" dominant-baseline="central" font-size="8" font-weight="700" fill="#243342">VIE PRIVÉE :</text>
+      <text x="325" y="719" dominant-baseline="central" font-size="8" font-weight="500" fill="#5A6578">Données 100% anonymes</text>
+      <text x="435" y="719" dominant-baseline="central" font-size="8" font-weight="700" fill="#243342">BÉNÉFICE :</text>
+      <text x="485" y="719" dominant-baseline="central" font-size="8" font-weight="600" fill="#166534">Budget justifié</text>
+    </g>
+
+    <!-- ==================================================================== -->
+    <!-- PERSONA 4 : JULIE & ARTHUR (BAS-DROITE) — ACTIFS & PARENTS URBAINS  -->
+    <!-- ==================================================================== -->
+    <g filter="url(#card-soft-shadow)">
+      <rect x="585" y="390" width="535" height="360" rx="14" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+      
+      <rect x="586" y="391" width="533" height="66" rx="13" fill="#EBF0F5" />
+      <rect x="586" y="440" width="533" height="17" fill="#EBF0F5" />
+      <line x1="586" y1="457" x2="1119" y2="457" stroke="#E8E6DF" stroke-width="1" />
+
+      <circle cx="623" cy="424" r="24" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1.5" />
+      <circle cx="616" cy="418" r="5" fill="#1C2D3D" />
+      <path d="M 609 432 C 609 426, 623 426, 623 432" fill="#1C2D3D" />
+      <circle cx="630" cy="420" r="5" fill="#5A6578" />
+      <path d="M 624 433 C 624 427, 636 427, 636 433" fill="#5A6578" />
+
+      <text x="659" y="418" dominant-baseline="central" font-size="14" font-weight="700" fill="#243342">Julie (31 ans) &amp; Arthur (34 ans)</text>
+      <text x="659" y="436" dominant-baseline="central" font-size="10" font-weight="500" fill="#1C2D3D">Actifs urbains pressés • Parents de Théo (7 ans)</text>
+      
+      <rect x="945" y="413" width="160" height="22" rx="11" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1" />
+      <text x="1025" y="424" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="700" fill="#1C2D3D" letter-spacing="0.04em">COMMANDES &amp; PARKING</text>
+
+      <!-- BLOC 1 : Routine Urbaine Active -->
+      <rect x="600" y="470" width="240" height="98" rx="8" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+      <text x="610" y="485" dominant-baseline="central" font-size="9.5" font-weight="700" fill="#243342">Vie Quotidienne Active</text>
+      <text x="610" y="503" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Julie covoiture pour travailler, zéro temps.</text>
+      <text x="610" y="519" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Arthur va chercher son fils à l'école à 16h30.</text>
+      <text x="610" y="535" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Achat rapide du goûter à la boulangerie.</text>
+      <text x="610" y="551" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Volonté de faire vivre les artisans locaux.</text>
+
+      <!-- BLOC 2 : Attentes & Objectifs -->
+      <rect x="855" y="470" width="250" height="98" rx="8" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+      <text x="865" y="485" dominant-baseline="central" font-size="9.5" font-weight="700" fill="#243342">Attentes &amp; Objectifs</text>
+      <text x="865" y="503" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Commander chez plusieurs artisans d'un coup.</text>
+      <text x="865" y="519" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Retrait rapide à pied sans attente.</text>
+      <text x="865" y="535" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• 20 min de parking gratuit à l'école (Arthur).</text>
+      <text x="865" y="551" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Connaître les horaires exacts des magasins.</text>
+
+      <!-- BLOC 3 : Freins & Frustrations -->
+      <rect x="600" y="578" width="240" height="114" rx="8" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+      <text x="610" y="593" dominant-baseline="central" font-size="9.5" font-weight="700" fill="#B44C43">Freins &amp; Frustrations</text>
+      <text x="610" y="611" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Places de parking très chères autour de l'école.</text>
+      <text x="610" y="627" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Horaires des commerces parfois imprévisibles.</text>
+      <text x="610" y="643" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Perte de l'avantage fidélité pendant les vacances</text>
+      <text x="610" y="659" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">  scolaires car Arthur ne vient plus à l'école.</text>
+      <text x="610" y="675" dominant-baseline="central" font-size="8" font-weight="400" fill="#5A6578">• Refus d'aller en hypermarché le week-end.</text>
+
+      <!-- BLOC 4 : Dispositif ShopLoc -->
+      <rect x="855" y="578" width="250" height="114" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1" />
+      <text x="865" y="593" dominant-baseline="central" font-size="9.5" font-weight="700" fill="#166534">Dispositif ShopLoc Dédié</text>
+      <text x="865" y="611" dominant-baseline="central" font-size="8" font-weight="500" fill="#2E583D">• Panier commun pour plusieurs commerces.</text>
+      <text x="865" y="627" dominant-baseline="central" font-size="8" font-weight="500" fill="#2E583D">• Calcul du chemin à pied le plus court.</text>
+      <text x="865" y="643" dominant-baseline="central" font-size="8" font-weight="500" fill="#2E583D">• 20 min de parking gratuit via sa plaque d'auto.</text>
+      <text x="865" y="659" dominant-baseline="central" font-size="8" font-weight="500" fill="#2E583D">• Notification si les horaires changent.</text>
+      <text x="865" y="675" dominant-baseline="central" font-size="8" font-weight="500" fill="#2E583D">• Choix de cadeaux fidélité chez les artisans.</text>
+
+      <!-- Barre d'indicateurs de synthèse -->
+      <rect x="600" y="702" width="505" height="34" rx="7" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+      <text x="613" y="719" dominant-baseline="central" font-size="8" font-weight="700" fill="#243342">CANAL PRINCIPAL :</text>
+      <text x="705" y="719" dominant-baseline="central" font-size="8" font-weight="500" fill="#5A6578">Application mobile simple</text>
+      <text x="830" y="719" dominant-baseline="central" font-size="8" font-weight="700" fill="#243342">DÉCLENCHEUR :</text>
+      <text x="898" y="719" dominant-baseline="central" font-size="8" font-weight="500" fill="#5A6578">Plaque d'immatriculation</text>
+      <text x="1005" y="719" dominant-baseline="central" font-size="8" font-weight="700" fill="#243342">AVANTAGE :</text>
+      <text x="1055" y="719" dominant-baseline="central" font-size="8" font-weight="600" fill="#166534">20 min parking</text>
+    </g>
+
+  </svg>
+
+</div>
+
+
+    <!-- CADRE PÉDAGOGIQUE D'ANALYSE -->
+    <div class="pedago-box">
+      <h4>Rôle Stratégique &amp; Justification du Modèle Personas</h4>
+      <p>
+        Ce tableau de bord synthétise les 4 profils fondamentaux dégagés lors du cadrage métier :
+      </p>
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>Persona &amp; Âge</th>
+            <th>Rôle &amp; Contexte Métier</th>
+            <th>Canal Principal</th>
+            <th>Avantage / Dispositif ShopLoc Clé</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Pierre Dupont (74 ans)</strong></td>
+            <td>Retraité du centre-ville, tournée pédestre matinale rue Solférino. Exclu des applications mobiles complexes.</td>
+            <td>Carte Pass Papier QR / NFC</td>
+            <td>1 ticket de bus offert par jour après 10 achats sur 15 jours. Possibilité de procuration pour un proche.</td>
+          </tr>
+          <tr>
+            <td><strong>Suzanne Lemaire (22 ans)</strong></td>
+            <td>Vendeuse au Fournil, gestion des heures de pointe et préparation des paniers en boutique.</td>
+            <td>Tablette Caisse Tactile</td>
+            <td>Scan express en moins de 3 secondes, validation 1 clic, tableau de bord montrant la hausse des ventes.</td>
+          </tr>
+          <tr>
+            <td><strong>Marius Vasseur (27 ans)</strong></td>
+            <td>Responsable numérique en mairie, copilote avec les associations de commerçants.</td>
+            <td>Portail Web Mairie</td>
+            <td>Tableau de bord territorial avec données 100% anonymisées, mesure claire de l'impact des aides publiques.</td>
+          </tr>
+          <tr>
+            <td><strong>Julie (31 ans) &amp; Arthur (34 ans)</strong></td>
+            <td>Actifs urbains pressés et parents du jeune Théo (7 ans, école Jules Ferry). Temps compté et stationnement difficile.</td>
+            <td>Application Mobile Simple</td>
+            <td>Panier groupé multi-boutiques (Julie) et 20 minutes de parking école gratuites via plaque auto (Arthur).</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin-top: 10px; font-size: 11.5px; color: #5A6578;">
+        <strong>Alignement Charte Graphique :</strong> Présentation symétrique sans languette, bordures complètes 1px `#E8E6DF`, badges arrondis centrés avec précision, palettes pastel adaptées à chaque rôle (Terracotta, Sauge, Ocre miel, Ardoise).
+      </p>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 2. FIGURE 2.2 : USER JOURNEY MAP — PIERRE DUPONT (74 ANS)                 -->
+  <!-- ========================================================================= -->
+  <section id="fig-2-2" class="review-section">
+    <div class="section-title-bar">
+      <div>
+        <div class="section-num">Modèle Visuel 02 / 03 • Parcours Citoyen Présentiel</div>
+        <h2 class="section-heading">Figure 2.2 — User Journey Map : Pierre Dupont (74 ans)</h2>
+      </div>
+      <span class="badge-norme">Format Justinmind • Gabarit 1 Page</span>
+    </div>
+
+    <!-- INSERTION DU COMPOSANT AUTONOME -->
+    <!-- FIGURE 2.2 : USER JOURNEY MAP — PARCOURS CITOYEN SENIOR (PIERRE DUPONT, 74 ANS) -->
+<!-- Conforme aux standards Justinmind / UX Design : Persona, Scénario, 5 Phases, Actions, Touchpoints, Pensées, Frustrations, Courbe Émotionnelle, Solutions -->
+<!-- Zéro Languette, Zéro Emoji, Zéro Jargon Technique (clair et accessible à tous) -->
+<div class="figure-card" style="background:#FFFFFF; border:1px solid #E8E6DF; border-radius:16px; padding:28px 24px; box-shadow:0 4px 16px rgba(36,51,66,0.05); font-family:'Poppins', sans-serif;">
+  
+  <!-- EN-TETE DE FIGURE SOBRE -->
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:18px; border-bottom:1px solid #E8E6DF; padding-bottom:14px;">
+    <div>
+      <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:4px;">
+        <span style="width:8px; height:8px; border-radius:50%; background:#C26750;"></span>
+        <span style="font-size:11px; font-weight:700; color:#C26750; text-transform:uppercase; letter-spacing:0.08em;">Parcours Utilisateur Cible (User Journey Map)</span>
+      </div>
+      <h3 style="font-size:17px; font-weight:700; color:#243342; margin:0;">Figure 2.2 — User Journey Map : Parcours Citoyen Présentiel &amp; Mobilité (Pierre Dupont, 74 ans)</h3>
+    </div>
+    <div style="display:flex; gap:8px;">
+      <span style="font-size:10.5px; background:#FAF9F6; border:1px solid #E8E6DF; padding:4px 12px; border-radius:9999px; color:#5A6578; font-weight:600;">Gabarit 1 Page A4</span>
+      <span style="font-size:10.5px; background:#FBEEEA; border:1px solid #D88B77; padding:4px 12px; border-radius:9999px; color:#8E3D2A; font-weight:700;">Format Justinmind</span>
+    </div>
+  </div>
+
+  <!-- SVG VECTORIEL PUR HAUTE DÉFINITION — RATIO 3:2 (1140 x 760) -->
+  <svg viewBox="0 0 1140 760" width="100%" height="auto" style="display:block; overflow:visible; font-family:'Poppins', -apple-system, sans-serif;">
+    
+    <defs>
+      <filter id="ujm-shadow" x="-3%" y="-3%" width="106%" height="106%">
+        <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#243342" flood-opacity="0.04"/>
+      </filter>
+      <!-- Dégradé doux pour la zone émotionnelle -->
+      <linearGradient id="curve-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#C26750" stop-opacity="0.15" />
+        <stop offset="100%" stop-color="#C26750" stop-opacity="0.0" />
+      </linearGradient>
+    </defs>
+
+    <!-- ==================================================================== -->
+    <!-- BANDEAU HAUT : FICHE PERSONA & SCÉNARIO D'USAGE                      -->
+    <!-- ==================================================================== -->
+    <g filter="url(#ujm-shadow)">
+      <rect x="10" y="10" width="1120" height="72" rx="10" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+      <rect x="11" y="11" width="1118" height="70" rx="9" fill="#FBEEEA" />
+      
+      <!-- Avatar Pierre -->
+      <circle cx="48" cy="46" r="24" fill="#FFFFFF" stroke="#D88B77" stroke-width="1.5" />
+      <circle cx="48" cy="40" r="7" fill="#8E3D2A" />
+      <path d="M 36 56 C 36 49, 60 49, 60 56" fill="#8E3D2A" />
+
+      <!-- Identité & Rôle -->
+      <text x="86" y="38" dominant-baseline="central" font-size="14" font-weight="700" fill="#243342">Persona : Pierre Dupont (74 ans)</text>
+      <text x="86" y="56" dominant-baseline="central" font-size="9.5" font-weight="500" fill="#8E3D2A">Retraité citoyen du centre-ville • Lille (Quartier Solférino)</text>
+
+      <!-- Scénario & Objectif (Format Justinmind) -->
+      <line x1="370" y1="20" x2="370" y2="72" stroke="#E2DDD5" stroke-width="1" />
+      <text x="385" y="36" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#243342">SCÉNARIO :</text>
+      <text x="445" y="36" dominant-baseline="central" font-size="8.5" font-weight="400" fill="#5A6578">Faire sa tournée matinale de commerces sans complication numérique et voyager gratuitement en bus.</text>
+      
+      <text x="385" y="56" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#243342">OBJECTIF :</text>
+      <text x="445" y="56" dominant-baseline="central" font-size="8.5" font-weight="500" fill="#2E583D">Préserver le contact humain de proximité et maintenir sa mobilité quotidienne sans stress.</text>
+
+      <!-- Badge canal -->
+      <rect x="940" y="33" width="175" height="26" rx="13" fill="#FFFFFF" stroke="#D88B77" stroke-width="1" />
+      <text x="1027" y="46" text-anchor="middle" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#8E3D2A">CARTE PASS PAPIER QR</text>
+    </g>
+
+    <!-- ==================================================================== -->
+    <!-- COLONNES : LES 5 PHASES DU PARCOURS (TIMELINE HORIZONTALE)           -->
+    <!-- ==================================================================== -->
+    <rect x="175" y="92" width="183" height="32" rx="6" fill="#F4F2ED" stroke="#E2DDD5" stroke-width="1" />
+    <text x="266" y="108" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="700" fill="#243342">1. DÉCOUVERTE &amp; CARTE</text>
+
+    <rect x="368" y="92" width="183" height="32" rx="6" fill="#F4F2ED" stroke="#E2DDD5" stroke-width="1" />
+    <text x="459" y="108" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="700" fill="#243342">2. TOURNÉE DU MATIN</text>
+
+    <rect x="561" y="92" width="183" height="32" rx="6" fill="#F4F2ED" stroke="#E2DDD5" stroke-width="1" />
+    <text x="652" y="108" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="700" fill="#243342">3. ACHAT &amp; SCAN CAISSE</text>
+
+    <rect x="754" y="92" width="183" height="32" rx="6" fill="#F4F2ED" stroke="#E2DDD5" stroke-width="1" />
+    <text x="845" y="108" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="700" fill="#243342">4. GAIN DU TICKET DE BUS</text>
+
+    <rect x="947" y="92" width="183" height="32" rx="6" fill="#F4F2ED" stroke="#E2DDD5" stroke-width="1" />
+    <text x="1038" y="108" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="700" fill="#243342">5. ROUTINE &amp; FIDÉLITÉ</text>
+
+    <!-- ==================================================================== -->
+    <!-- LIGNE 1 : ACTIONS DE L'UTILISATEUR (USER ACTIONS)                    -->
+    <!-- ==================================================================== -->
+    <rect x="10" y="132" width="155" height="82" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="20" y="162" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#243342">ACTIONS DE</text>
+    <text x="20" y="176" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#243342">L'UTILISATEUR</text>
+    <text x="20" y="194" dominant-baseline="central" font-size="7" font-weight="500" fill="#5A6578">Ce qu'il fait pas à pas</text>
+
+    <!-- Actions Col 1 -->
+    <rect x="175" y="132" width="183" height="82" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="185" y="148" dominant-baseline="central" font-size="7.5" font-weight="600" fill="#243342">Reçoit la carte papier</text>
+    <text x="185" y="164" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">Pierre remarque l'affiche chez</text>
+    <text x="185" y="177" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">Suzanne. Elle lui remet une</text>
+    <text x="185" y="190" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">carte pré-imprimée avec QR code.</text>
+
+    <!-- Actions Col 2 -->
+    <rect x="368" y="132" width="183" height="82" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="378" y="148" dominant-baseline="central" font-size="7.5" font-weight="600" fill="#243342">Visite ses commerces habituels</text>
+    <text x="378" y="164" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">Fait sa balade matinale à pied :</text>
+    <text x="378" y="177" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">baguette au Fournil, viande du jour,</text>
+    <text x="378" y="190" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">café des sports, journal au tabac.</text>
+
+    <!-- Actions Col 3 -->
+    <rect x="561" y="132" width="183" height="82" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="571" y="148" dominant-baseline="central" font-size="7.5" font-weight="600" fill="#243342">Tend sa carte en payant</text>
+    <text x="571" y="164" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">Présente sa carte lors du paiement.</text>
+    <text x="571" y="177" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">Suzanne la scanne en moins de 3s</text>
+    <text x="571" y="190" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">devant sa tablette de caisse.</text>
+
+    <!-- Actions Col 4 -->
+    <rect x="754" y="132" width="183" height="82" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="764" y="148" dominant-baseline="central" font-size="7.5" font-weight="600" fill="#243342">Obtient son ticket de bus</text>
+    <text x="764" y="164" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">Après 10 achats sur 15 jours,</text>
+    <text x="764" y="177" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">sa carte débloque 1 ticket de bus</text>
+    <text x="764" y="190" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">gratuit par jour pour rentrer chez lui.</text>
+
+    <!-- Actions Col 5 -->
+    <rect x="947" y="132" width="183" height="82" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="957" y="148" dominant-baseline="central" font-size="7.5" font-weight="600" fill="#243342">Conserve son statut fidélité</text>
+    <text x="957" y="164" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">Poursuit ses achats de quartier.</text>
+    <text x="957" y="177" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">Chaque nouvel achat maintient son</text>
+    <text x="957" y="190" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">ticket. Procuration prévue en cas d'aide.</text>
+
+    <!-- ==================================================================== -->
+    <!-- LIGNE 2 : POINTS DE CONTACT (TOUCHPOINTS)                            -->
+    <!-- ==================================================================== -->
+    <rect x="10" y="222" width="155" height="62" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="20" y="248" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#243342">POINTS DE</text>
+    <text x="20" y="262" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#243342">CONTACT</text>
+
+    <rect x="175" y="222" width="183" height="62" rx="8" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <rect x="185" y="234" width="163" height="20" rx="10" fill="#FBEEEA" />
+    <text x="266" y="244" text-anchor="middle" dominant-baseline="central" font-size="7.5" font-weight="700" fill="#8E3D2A">Comptoir Boulangerie</text>
+    <text x="185" y="267" dominant-baseline="central" font-size="7" font-weight="500" fill="#5A6578">Affiche vitrine &amp; Pass papier</text>
+
+    <rect x="368" y="222" width="183" height="62" rx="8" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <rect x="378" y="234" width="163" height="20" rx="10" fill="#FBEEEA" />
+    <text x="459" y="244" text-anchor="middle" dominant-baseline="central" font-size="7.5" font-weight="700" fill="#8E3D2A">Commerces du Centre</text>
+    <text x="378" y="267" dominant-baseline="central" font-size="7" font-weight="500" fill="#5A6578">Boutiques physiques &amp; Rue</text>
+
+    <rect x="561" y="222" width="183" height="62" rx="8" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <rect x="571" y="234" width="163" height="20" rx="10" fill="#EBF3ED" />
+    <text x="652" y="244" text-anchor="middle" dominant-baseline="central" font-size="7.5" font-weight="700" fill="#2E583D">Tablette Caisse Artisan</text>
+    <text x="571" y="267" dominant-baseline="central" font-size="7" font-weight="500" fill="#5A6578">Scanner optique &amp; Écran POS</text>
+
+    <rect x="754" y="222" width="183" height="62" rx="8" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <rect x="764" y="234" width="163" height="20" rx="10" fill="#FEF7EB" />
+    <text x="845" y="244" text-anchor="middle" dominant-baseline="central" font-size="7.5" font-weight="700" fill="#845A11">Bus &amp; Carte Pass</text>
+    <text x="764" y="267" dominant-baseline="central" font-size="7" font-weight="500" fill="#5A6578">Ticket gratuit chargé / QR bus</text>
+
+    <rect x="947" y="222" width="183" height="62" rx="8" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <rect x="957" y="234" width="163" height="20" rx="10" fill="#FBEEEA" />
+    <text x="1038" y="244" text-anchor="middle" dominant-baseline="central" font-size="7.5" font-weight="700" fill="#8E3D2A">Réseau Local &amp; Proches</text>
+    <text x="957" y="267" dominant-baseline="central" font-size="7" font-weight="500" fill="#5A6578">Commerçants &amp; Proche aidant</text>
+
+    <!-- ==================================================================== -->
+    <!-- LIGNE 3 : PENSÉES & ATTENTES DE L'UTILISATEUR                        -->
+    <!-- ==================================================================== -->
+    <rect x="10" y="292" width="155" height="62" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="20" y="318" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#243342">PENSÉES &amp;</text>
+    <text x="20" y="332" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#243342">QUESTIONS</text>
+
+    <rect x="175" y="292" width="183" height="62" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="185" y="312" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">« J'espère qu'on ne va pas</text>
+    <text x="185" y="325" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">me forcer à télécharger une</text>
+    <text x="185" y="338" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">application sur smartphone... »</text>
+
+    <rect x="368" y="292" width="183" height="62" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="378" y="312" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">« Je veux juste faire mes</text>
+    <text x="378" y="325" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">courses tranquillement sans</text>
+    <text x="378" y="338" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">changer mes habitudes. »</text>
+
+    <rect x="561" y="292" width="183" height="62" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="571" y="312" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">« Est-ce que le scan de ma carte</text>
+    <text x="571" y="325" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">va faire perdre du temps aux</text>
+    <text x="571" y="338" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">gens qui attendent derrière ? »</text>
+
+    <rect x="754" y="292" width="183" height="62" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="764" y="312" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">« C'est formidable ! Le bus</text>
+    <text x="764" y="325" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">m'évite de porter mes sacs</text>
+    <text x="764" y="338" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">lourds jusqu'à chez moi. »</text>
+
+    <rect x="947" y="292" width="183" height="62" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="957" y="312" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">« Si j'ai un coup de fatigue,</text>
+    <text x="957" y="325" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">mon voisin pourra-t-il retirer</text>
+    <text x="957" y="338" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">mon pain avec ma carte ? »</text>
+
+    <!-- ==================================================================== -->
+    <!-- LIGNE 4 : POINTS DE FRICTION & CRAINTES (PAIN POINTS)                -->
+    <!-- ==================================================================== -->
+    <rect x="10" y="362" width="155" height="62" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="20" y="388" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#B44C43">POINTS DE</text>
+    <text x="20" y="402" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#B44C43">FRICTION</text>
+
+    <rect x="175" y="362" width="183" height="62" rx="8" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+    <text x="185" y="382" dominant-baseline="central" font-size="7" font-weight="500" fill="#B44C43">• Peur de la complexité technique.</text>
+    <text x="185" y="396" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">• Pas de smartphone récent.</text>
+    <text x="185" y="409" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">• Méfiance envers les comptes web.</text>
+
+    <rect x="368" y="362" width="183" height="62" rx="8" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+    <text x="378" y="382" dominant-baseline="central" font-size="7" font-weight="500" fill="#B44C43">• Fatigue physique de la marche.</text>
+    <text x="378" y="396" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">• Fermeture de son primeur habituel.</text>
+    <text x="378" y="409" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">• Rupture d'approvisionnement fruits.</text>
+
+    <rect x="561" y="362" width="183" height="62" rx="8" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+    <text x="571" y="382" dominant-baseline="central" font-size="7" font-weight="500" fill="#B44C43">• Peur de ralentir la caisse.</text>
+    <text x="571" y="396" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">• Crainte que la carte ne marche pas.</text>
+    <text x="571" y="409" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">• Timidité à demander des explications.</text>
+
+    <rect x="754" y="362" width="183" height="62" rx="8" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+    <text x="764" y="382" dominant-baseline="central" font-size="7" font-weight="500" fill="#B44C43">• Crainte d'oublier de valider le bus.</text>
+    <text x="764" y="396" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">• Peur de perdre ses avantages</text>
+    <text x="764" y="409" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">  si un commerce est fermé.</text>
+
+    <rect x="947" y="362" width="183" height="62" rx="8" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+    <text x="957" y="382" dominant-baseline="central" font-size="7" font-weight="500" fill="#B44C43">• Isolement en cas d'alitement.</text>
+    <text x="957" y="396" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">• Peur de perdre son statut s'il ne</text>
+    <text x="957" y="409" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">  peut pas sortir pendant quelques jours.</text>
+
+    <!-- ==================================================================== -->
+    <!-- LIGNE 5 : COURBE ÉMOTIONNELLE / EXPÉRIENCE USAGER                    -->
+    <!-- ==================================================================== -->
+    <rect x="10" y="432" width="155" height="150" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="20" y="452" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#243342">COURBE</text>
+    <text x="20" y="466" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#243342">ÉMOTIONNELLE</text>
+    
+    <rect x="20" y="485" width="116" height="18" rx="9" fill="#EBF3ED" stroke="#7EA88D" stroke-width="0.8" />
+    <text x="78" y="494" text-anchor="middle" dominant-baseline="central" font-size="7" font-weight="700" fill="#2E583D">Satisfait / Confiant</text>
+
+    <rect x="20" y="515" width="116" height="18" rx="9" fill="#F4F2ED" stroke="#E2DDD5" stroke-width="0.8" />
+    <text x="78" y="524" text-anchor="middle" dominant-baseline="central" font-size="7" font-weight="600" fill="#5A6578">Neutre / Rassuré</text>
+
+    <rect x="20" y="545" width="116" height="18" rx="9" fill="#FBEEEA" stroke="#D88B77" stroke-width="0.8" />
+    <text x="78" y="554" text-anchor="middle" dominant-baseline="central" font-size="7" font-weight="700" fill="#B44C43">Inquiet / Hésitant</text>
+
+    <!-- Zone graphique de la courbe émotionnelle -->
+    <g>
+      <!-- Fond du graphique -->
+      <rect x="175" y="432" width="955" height="150" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+      
+      <!-- Lignes de repère d'émotions -->
+      <line x1="175" y1="472" x2="1130" y2="472" stroke="#F0EDE8" stroke-width="1" stroke-dasharray="4,4" />
+      <line x1="175" y1="517" x2="1130" y2="517" stroke="#F0EDE8" stroke-width="1" stroke-dasharray="4,4" />
+      <line x1="175" y1="562" x2="1130" y2="562" stroke="#F0EDE8" stroke-width="1" stroke-dasharray="4,4" />
+
+      <!-- Remplissage sous la courbe -->
+      <path d="M 266 550 C 360 550, 390 515, 459 505 C 530 495, 590 475, 652 465 C 720 455, 780 455, 845 455 C 920 455, 980 455, 1038 455 L 1038 582 L 266 582 Z" fill="url(#curve-gradient)" />
+
+      <!-- TRACÉ VECTORIEL CONTINU DE LA COURBE ÉMOTIONNELLE (TERRACOTTA PASTEL) -->
+      <path d="M 266 550 C 360 550, 390 515, 459 505 C 530 495, 590 475, 652 465 C 720 455, 780 455, 845 455 C 920 455, 980 455, 1038 455" fill="none" stroke="#C26750" stroke-width="3" stroke-linecap="round" />
+
+      <!-- Point 1 : Découverte (Inquiétude initiale -> Rassuré) -->
+      <circle cx="266" cy="550" r="6" fill="#FFFFFF" stroke="#C26750" stroke-width="2.5" />
+      <rect x="200" y="520" width="132" height="18" rx="9" fill="#FBEEEA" stroke="#D88B77" stroke-width="0.8" />
+      <text x="266" y="529" text-anchor="middle" dominant-baseline="central" font-size="7" font-weight="700" fill="#8E3D2A">Crainte de la technologie</text>
+
+      <!-- Point 2 : Préparation (Rassuré par sa routine) -->
+      <circle cx="459" cy="505" r="6" fill="#FFFFFF" stroke="#C26750" stroke-width="2.5" />
+      <rect x="390" y="475" width="138" height="18" rx="9" fill="#FBEEEA" stroke="#D88B77" stroke-width="0.8" />
+      <text x="459" y="484" text-anchor="middle" dominant-baseline="central" font-size="7" font-weight="700" fill="#8E3D2A">Rassuré par la carte papier</text>
+
+      <!-- Point 3 : Caisse (Surpris par la rapidité) -->
+      <circle cx="652" cy="465" r="6" fill="#FFFFFF" stroke="#4A7A5B" stroke-width="2.5" />
+      <rect x="585" y="435" width="134" height="18" rx="9" fill="#EBF3ED" stroke="#7EA88D" stroke-width="0.8" />
+      <text x="652" y="444" text-anchor="middle" dominant-baseline="central" font-size="7" font-weight="700" fill="#2E583D">Scan en &lt; 3s, zéro attente</text>
+
+      <!-- Point 4 : Gain Bus (Enchanté du cadeau) -->
+      <circle cx="845" cy="455" r="6" fill="#FFFFFF" stroke="#4A7A5B" stroke-width="2.5" />
+      <rect x="778" y="425" width="134" height="18" rx="9" fill="#EBF3ED" stroke="#7EA88D" stroke-width="0.8" />
+      <text x="845" y="434" text-anchor="middle" dominant-baseline="central" font-size="7" font-weight="700" fill="#2E583D">Ravi du ticket de bus offert</text>
+
+      <!-- Point 5 : Routine (Fidélisé et autonome) -->
+      <circle cx="1038" cy="455" r="6" fill="#FFFFFF" stroke="#4A7A5B" stroke-width="2.5" />
+      <rect x="971" y="425" width="134" height="18" rx="9" fill="#EBF3ED" stroke="#7EA88D" stroke-width="0.8" />
+      <text x="1038" y="434" text-anchor="middle" dominant-baseline="central" font-size="7" font-weight="700" fill="#2E583D">Habitude ancrée &amp; autonome</text>
+    </g>
+
+    <!-- ==================================================================== -->
+    <!-- LIGNE 6 : SOLUTIONS & RÉPONSES SHOPLOC                               -->
+    <!-- ==================================================================== -->
+    <rect x="10" y="590" width="155" height="155" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="20" y="650" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#166534">SOLUTIONS &amp;</text>
+    <text x="20" y="664" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#166534">RÉPONSES SHOPLOC</text>
+    <text x="20" y="685" dominant-baseline="central" font-size="7" font-weight="500" fill="#5A6578">La réponse concrète</text>
+
+    <!-- Solution Col 1 -->
+    <rect x="175" y="590" width="183" height="155" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1" />
+    <text x="185" y="608" dominant-baseline="central" font-size="7.5" font-weight="700" fill="#166534">Carte Pass Papier Gratuite</text>
+    <text x="185" y="626" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Carte papier remise en main propre</text>
+    <text x="185" y="639" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">  par le boulanger ou en mairie.</text>
+    <text x="185" y="652" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Zéro compte web obligatoire.</text>
+    <text x="185" y="665" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Zéro mot de passe à retenir.</text>
+    <text x="185" y="678" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Grand QR code facilement lisible.</text>
+    <line x1="185" y1="693" x2="348" y2="693" stroke="#DCFCE7" stroke-width="1" />
+    <text x="185" y="707" dominant-baseline="central" font-size="6.5" font-weight="700" fill="#166534">VALEUR :</text>
+    <text x="225" y="707" dominant-baseline="central" font-size="6.5" font-weight="500" fill="#2E583D">Inclusion totale sans barrière</text>
+
+    <!-- Solution Col 2 -->
+    <rect x="368" y="590" width="183" height="155" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1" />
+    <text x="378" y="608" dominant-baseline="central" font-size="7.5" font-weight="700" fill="#166534">Aucune Obligation Numérique</text>
+    <text x="378" y="626" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Pierre conserve sa routine pédestre.</text>
+    <text x="378" y="639" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Aucune commande web requise.</text>
+    <text x="378" y="652" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Liberté totale de passage dans ses</text>
+    <text x="378" y="665" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">  boutiques préférées du quartier.</text>
+    <line x1="378" y1="693" x2="541" y2="693" stroke="#DCFCE7" stroke-width="1" />
+    <text x="378" y="707" dominant-baseline="central" font-size="6.5" font-weight="700" fill="#166534">VALEUR :</text>
+    <text x="418" y="707" dominant-baseline="central" font-size="6.5" font-weight="500" fill="#2E583D">Respect des habitudes de vie</text>
+
+    <!-- Solution Col 3 -->
+    <rect x="561" y="590" width="183" height="155" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1" />
+    <text x="571" y="608" dominant-baseline="central" font-size="7.5" font-weight="700" fill="#166534">Scan Express Caisse &lt; 3s</text>
+    <text x="571" y="626" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Présentation du pass papier en caisse.</text>
+    <text x="571" y="639" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Enregistrement immédiat du passage.</text>
+    <text x="571" y="652" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Aucun ralentissement de la file.</text>
+    <text x="571" y="665" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Échange chaleureux avec le commerçant.</text>
+    <line x1="571" y1="693" x2="734" y2="693" stroke="#DCFCE7" stroke-width="1" />
+    <text x="571" y="707" dominant-baseline="central" font-size="6.5" font-weight="700" fill="#166534">VALEUR :</text>
+    <text x="611" y="707" dominant-baseline="central" font-size="6.5" font-weight="500" fill="#2E583D">Rapidité &amp; Lien humain</text>
+
+    <!-- Solution Col 4 -->
+    <rect x="754" y="590" width="183" height="155" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1" />
+    <text x="764" y="608" dominant-baseline="central" font-size="7.5" font-weight="700" fill="#166534">Ticket de Bus Offert par Jour</text>
+    <text x="764" y="626" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Règle simple : 10 achats en 15 jours.</text>
+    <text x="764" y="639" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Déblocage automatique du ticket gratuit.</text>
+    <text x="764" y="652" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Financement par la mairie et Ilévia.</text>
+    <text x="764" y="665" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Trajet retour confortable et sécurisé.</text>
+    <line x1="764" y1="693" x2="927" y2="693" stroke="#DCFCE7" stroke-width="1" />
+    <text x="764" y="707" dominant-baseline="central" font-size="6.5" font-weight="700" fill="#166534">VALEUR :</text>
+    <text x="804" y="707" dominant-baseline="central" font-size="6.5" font-weight="500" fill="#2E583D">Mobilité offerte &amp; Pouvoir d'achat</text>
+
+    <!-- Solution Col 5 -->
+    <rect x="947" y="590" width="183" height="155" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1" />
+    <text x="957" y="608" dominant-baseline="central" font-size="7.5" font-weight="700" fill="#166534">Fidélité Pérenne &amp; Procuration</text>
+    <text x="957" y="626" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Statut conservé à chaque nouvel achat.</text>
+    <text x="957" y="639" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Procuration simple : un voisin ou proche</text>
+    <text x="957" y="652" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">  peut scanner la carte et récupérer les achats.</text>
+    <text x="957" y="665" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Pierre reste autonome et bien entouré.</text>
+    <line x1="957" y1="693" x2="1120" y2="693" stroke="#DCFCE7" stroke-width="1" />
+    <text x="957" y="707" dominant-baseline="central" font-size="6.5" font-weight="700" fill="#166534">VALEUR :</text>
+    <text x="997" y="707" dominant-baseline="central" font-size="6.5" font-weight="500" fill="#2E583D">Sérénité durable &amp; Entraide</text>
+
+  </svg>
+
+</div>
+
+
+    <!-- CADRE PÉDAGOGIQUE D'ANALYSE -->
+    <div class="pedago-box">
+      <h4>Analyse UX du Parcours de Pierre (Format Justinmind)</h4>
+      <p>
+        Conformément aux standards UX Design Justinmind, la modélisation intègre les 6 niveaux d'analyse chronologique :
+      </p>
+      <ul>
+        <li><strong>Bandeau Persona &amp; Scénario :</strong> Identification du profil, contexte de vie et objectif premier (préserver le lien humain sans barrière technique).</li>
+        <li><strong>Chronologie (5 Phases) :</strong> 1. Découverte &amp; Carte papier &rarr; 2. Tournée matinale &rarr; 3. Achat &amp; Scan caisse rapide &rarr; 4. Déblocage du ticket de bus &rarr; 5. Routine &amp; Fidélité pérenne.</li>
+        <li><strong>Actions &amp; Points de contact :</strong> Gestes simples et physiques (comptoir boulangerie, commerces de rue, tablette commerçant, bus).</li>
+        <li><strong>Pensées &amp; Points de friction :</strong> Hésitations initiales face à la technologie, peur de ralentir la file, fatigue physique de la marche.</li>
+        <li><strong>Courbe Émotionnelle Vectorielle :</strong> Progression visible d'un niveau d'appréhension initial vers un état de soulagement et de satisfaction durable.</li>
+        <li><strong>Solutions ShopLoc :</strong> Carte physique gratuite, zéro compte web requis, scan en moins de 3s, transport offert et système d'entraide/procuration.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 3. FIGURE 2.3 : USER JOURNEY MAP — JULIE & ARTHUR (31/34 ANS)             -->
+  <!-- ========================================================================= -->
+  <section id="fig-2-3" class="review-section">
+    <div class="section-title-bar">
+      <div>
+        <div class="section-num">Modèle Visuel 03 / 03 • Parcours Actifs &amp; Mobilité</div>
+        <h2 class="section-heading">Figure 2.3 — User Journey Map : Julie &amp; Arthur (31/34 ans)</h2>
+      </div>
+      <span class="badge-norme">Format Justinmind • Gabarit 1 Page</span>
+    </div>
+
+    <!-- INSERTION DU COMPOSANT AUTONOME -->
+    <!-- FIGURE 2.3 : USER JOURNEY MAP — PARCOURS ACTIFS URBAINS & FAMILLE (JULIE & ARTHUR, 31/34 ANS) -->
+<!-- Conforme aux standards Justinmind / UX Design : Persona, Scénario, 5 Phases, Actions, Touchpoints, Pensées, Frustrations, Courbe Émotionnelle, Solutions -->
+<!-- Zéro Languette, Zéro Emoji, Zéro Jargon Technique (clair et accessible à tous) -->
+<div class="figure-card" style="background:#FFFFFF; border:1px solid #E8E6DF; border-radius:16px; padding:28px 24px; box-shadow:0 4px 16px rgba(36,51,66,0.05); font-family:'Poppins', sans-serif;">
+  
+  <!-- EN-TETE DE FIGURE SOBRE -->
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:18px; border-bottom:1px solid #E8E6DF; padding-bottom:14px;">
+    <div>
+      <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:4px;">
+        <span style="width:8px; height:8px; border-radius:50%; background:#243342;"></span>
+        <span style="font-size:11px; font-weight:700; color:#243342; text-transform:uppercase; letter-spacing:0.08em;">Parcours Utilisateur Cible (User Journey Map)</span>
+      </div>
+      <h3 style="font-size:17px; font-weight:700; color:#243342; margin:0;">Figure 2.3 — User Journey Map : Parcours Actifs Urbains, Commandes &amp; Stationnement (Julie &amp; Arthur)</h3>
+    </div>
+    <div style="display:flex; gap:8px;">
+      <span style="font-size:10.5px; background:#FAF9F6; border:1px solid #E8E6DF; padding:4px 12px; border-radius:9999px; color:#5A6578; font-weight:600;">Gabarit 1 Page A4</span>
+      <span style="font-size:10.5px; background:#EBF0F5; border:1px solid #8B9EAF; padding:4px 12px; border-radius:9999px; color:#1C2D3D; font-weight:700;">Format Justinmind</span>
+    </div>
+  </div>
+
+  <!-- SVG VECTORIEL PUR HAUTE DÉFINITION — RATIO 3:2 (1140 x 760) -->
+  <svg viewBox="0 0 1140 760" width="100%" height="auto" style="display:block; overflow:visible; font-family:'Poppins', -apple-system, sans-serif;">
+    
+    <defs>
+      <filter id="ujm-shadow-act" x="-3%" y="-3%" width="106%" height="106%">
+        <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#243342" flood-opacity="0.04"/>
+      </filter>
+      <!-- Dégradé doux pour la zone émotionnelle -->
+      <linearGradient id="curve-gradient-act" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#4A7A5B" stop-opacity="0.18" />
+        <stop offset="100%" stop-color="#4A7A5B" stop-opacity="0.0" />
+      </linearGradient>
+    </defs>
+
+    <!-- ==================================================================== -->
+    <!-- BANDEAU HAUT : FICHE PERSONA & SCÉNARIO D'USAGE                      -->
+    <!-- ==================================================================== -->
+    <g filter="url(#ujm-shadow-act)">
+      <rect x="10" y="10" width="1120" height="72" rx="10" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+      <rect x="11" y="11" width="1118" height="70" rx="9" fill="#EBF0F5" />
+      
+      <!-- Avatar Julie & Arthur -->
+      <circle cx="48" cy="46" r="24" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1.5" />
+      <circle cx="43" cy="42" r="4.5" fill="#1C2D3D" />
+      <path d="M 36 53 C 36 47, 49 47, 49 53" fill="#1C2D3D" />
+      <circle cx="53" cy="43" r="4.5" fill="#5A6578" />
+      <path d="M 48 54 C 48 48, 59 48, 59 54" fill="#5A6578" />
+
+      <!-- Identité & Rôle -->
+      <text x="86" y="38" dominant-baseline="central" font-size="14" font-weight="700" fill="#243342">Personas : Julie (31 ans) &amp; Arthur (34 ans)</text>
+      <text x="86" y="56" dominant-baseline="central" font-size="9.5" font-weight="500" fill="#1C2D3D">Actifs urbains pressés • Parents du jeune Théo (7 ans, école Jules Ferry)</text>
+
+      <!-- Scénario & Objectif (Format Justinmind) -->
+      <line x1="390" y1="20" x2="390" y2="72" stroke="#DCD6CD" stroke-width="1" />
+      <text x="405" y="36" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#243342">SCÉNARIO :</text>
+      <text x="465" y="36" dominant-baseline="central" font-size="8.5" font-weight="400" fill="#5A6578">Commander ses produits locaux en ligne sans perte de temps et récupérer son fils à l'école sans stress de stationnement.</text>
+      
+      <text x="405" y="56" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#243342">OBJECTIF :</text>
+      <text x="465" y="56" dominant-baseline="central" font-size="8.5" font-weight="500" fill="#2E583D">Consommer local malgré des journées denses et obtenir 20 minutes de parking gratuit à la sortie des classes.</text>
+
+      <!-- Badge canal -->
+      <rect x="940" y="33" width="175" height="26" rx="13" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1" />
+      <text x="1027" y="46" text-anchor="middle" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#1C2D3D">APPLICATION MOBILE &amp; AUTO</text>
+    </g>
+
+    <!-- ==================================================================== -->
+    <!-- COLONNES : LES 5 PHASES DU PARCOURS (TIMELINE HORIZONTALE)           -->
+    <!-- ==================================================================== -->
+    <rect x="175" y="92" width="183" height="32" rx="6" fill="#F4F2ED" stroke="#E2DDD5" stroke-width="1" />
+    <text x="266" y="108" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="700" fill="#243342">1. INSCRIPTION &amp; PLAQUE</text>
+
+    <rect x="368" y="92" width="183" height="32" rx="6" fill="#F4F2ED" stroke="#E2DDD5" stroke-width="1" />
+    <text x="459" y="108" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="700" fill="#243342">2. COMMANDE GROUPÉE</text>
+
+    <rect x="561" y="92" width="183" height="32" rx="6" fill="#F4F2ED" stroke="#E2DDD5" stroke-width="1" />
+    <text x="652" y="108" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="700" fill="#243342">3. RETRAIT &amp; GOÛTER ÉCOLE</text>
+
+    <rect x="754" y="92" width="183" height="32" rx="6" fill="#F4F2ED" stroke="#E2DDD5" stroke-width="1" />
+    <text x="845" y="108" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="700" fill="#243342">4. PARKING 20 MIN GRATUIT</text>
+
+    <rect x="947" y="92" width="183" height="32" rx="6" fill="#F4F2ED" stroke="#E2DDD5" stroke-width="1" />
+    <text x="1038" y="108" text-anchor="middle" dominant-baseline="central" font-size="9" font-weight="700" fill="#243342">5. FIDÉLITÉ &amp; VACANCES</text>
+
+    <!-- ==================================================================== -->
+    <!-- LIGNE 1 : ACTIONS DE L'UTILISATEUR (USER ACTIONS)                    -->
+    <!-- ==================================================================== -->
+    <rect x="10" y="132" width="155" height="82" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="20" y="162" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#243342">ACTIONS DE</text>
+    <text x="20" y="176" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#243342">L'UTILISATEUR</text>
+    <text x="20" y="194" dominant-baseline="central" font-size="7" font-weight="500" fill="#5A6578">Ce qu'ils font pas à pas</text>
+
+    <!-- Actions Col 1 -->
+    <rect x="175" y="132" width="183" height="82" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="185" y="148" dominant-baseline="central" font-size="7.5" font-weight="600" fill="#243342">Crée son compte en 1 min</text>
+    <text x="185" y="164" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">Julie ouvre le site mobile. Arthur</text>
+    <text x="185" y="177" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">ajoute son numéro de plaque</text>
+    <text x="185" y="190" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">d'immatriculation pour le parking.</text>
+
+    <!-- Actions Col 2 -->
+    <rect x="368" y="132" width="183" height="82" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="378" y="148" dominant-baseline="central" font-size="7.5" font-weight="600" fill="#243342">Sélectionne ses artisans</text>
+    <text x="378" y="164" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">Julie remplit un panier unique :</text>
+    <text x="378" y="177" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">pain au Fournil et viande boucherie.</text>
+    <text x="378" y="190" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">Vérifie les horaires de fermeture.</text>
+
+    <!-- Actions Col 3 -->
+    <rect x="561" y="132" width="183" height="82" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="571" y="148" dominant-baseline="central" font-size="7.5" font-weight="600" fill="#243342">Retire à pied &amp; prend le goûter</text>
+    <text x="571" y="164" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">Julie récupère ses sacs en 1 clic.</text>
+    <text x="571" y="177" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">Arthur achète le pain au chocolat</text>
+    <text x="571" y="190" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">de Théo en sortant de l'école.</text>
+
+    <!-- Actions Col 4 -->
+    <rect x="754" y="132" width="183" height="82" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="764" y="148" dominant-baseline="central" font-size="7.5" font-weight="600" fill="#243342">Lance le compteur 20 min</text>
+    <text x="764" y="164" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">Grâce à ses achats réguliers,</text>
+    <text x="764" y="177" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">Arthur active ses 20 minutes de</text>
+    <text x="764" y="190" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">stationnement gratuit sur son mobile.</text>
+
+    <!-- Actions Col 5 -->
+    <rect x="947" y="132" width="183" height="82" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="957" y="148" dominant-baseline="central" font-size="7.5" font-weight="600" fill="#243342">Reçoit des rappels utiles</text>
+    <text x="957" y="164" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">Julie utilise ses points fidélité.</text>
+    <text x="957" y="177" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">Arthur reçoit une alerte amicale à</text>
+    <text x="957" y="190" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">la rentrée pour réactiver son avantage.</text>
+
+    <!-- ==================================================================== -->
+    <!-- LIGNE 2 : POINTS DE CONTACT (TOUCHPOINTS)                            -->
+    <!-- ==================================================================== -->
+    <rect x="10" y="222" width="155" height="62" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="20" y="248" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#243342">POINTS DE</text>
+    <text x="20" y="262" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#243342">CONTACT</text>
+
+    <rect x="175" y="222" width="183" height="62" rx="8" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <rect x="185" y="234" width="163" height="20" rx="10" fill="#EBF0F5" />
+    <text x="266" y="244" text-anchor="middle" dominant-baseline="central" font-size="7.5" font-weight="700" fill="#1C2D3D">Site Mobile ShopLoc</text>
+    <text x="185" y="267" dominant-baseline="central" font-size="7" font-weight="500" fill="#5A6578">Formulaire simple &amp; plaque auto</text>
+
+    <rect x="368" y="222" width="183" height="62" rx="8" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <rect x="378" y="234" width="163" height="20" rx="10" fill="#EBF0F5" />
+    <text x="459" y="244" text-anchor="middle" dominant-baseline="central" font-size="7.5" font-weight="700" fill="#1C2D3D">Catalogue Multi-Boutiques</text>
+    <text x="378" y="267" dominant-baseline="central" font-size="7" font-weight="500" fill="#5A6578">Panier partagé &amp; carte du quartier</text>
+
+    <rect x="561" y="222" width="183" height="62" rx="8" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <rect x="569" y="234" width="167" height="20" rx="10" fill="#EBF3ED" />
+    <text x="652" y="244" text-anchor="middle" dominant-baseline="central" font-size="7.5" font-weight="700" fill="#2E583D">Comptoirs des Artisans</text>
+    <text x="571" y="267" dominant-baseline="central" font-size="7" font-weight="500" fill="#5A6578">Étagère retrait &amp; caisse boulangerie</text>
+
+    <rect x="754" y="222" width="183" height="62" rx="8" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <rect x="764" y="234" width="163" height="20" rx="10" fill="#FEF7EB" />
+    <text x="845" y="244" text-anchor="middle" dominant-baseline="central" font-size="7.5" font-weight="700" fill="#845A11">Écran Mobile &amp; Voirie</text>
+    <text x="764" y="267" dominant-baseline="central" font-size="7" font-weight="500" fill="#5A6578">Compteur 20 min &amp; contrôle mairie</text>
+
+    <rect x="947" y="222" width="183" height="62" rx="8" fill="#FAF9F6" stroke="#E8E6DF" stroke-width="1" />
+    <rect x="957" y="234" width="163" height="20" rx="10" fill="#EBF0F5" />
+    <text x="1038" y="244" text-anchor="middle" dominant-baseline="central" font-size="7.5" font-weight="700" fill="#1C2D3D">Notifications &amp; Historique</text>
+    <text x="957" y="267" dominant-baseline="central" font-size="7" font-weight="500" fill="#5A6578">Alerte horaire &amp; rappel rentrée</text>
+
+    <!-- ==================================================================== -->
+    <!-- LIGNE 3 : PENSÉES & ATTENTES DE L'UTILISATEUR                        -->
+    <!-- ==================================================================== -->
+    <rect x="10" y="292" width="155" height="62" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="20" y="318" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#243342">PENSÉES &amp;</text>
+    <text x="20" y="332" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#243342">QUESTIONS</text>
+
+    <rect x="175" y="292" width="183" height="62" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="185" y="312" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">« Si je dois renseigner 20 champs</text>
+    <text x="185" y="325" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">sur mon smartphone, je n'aurai</text>
+    <text x="185" y="338" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">jamais le temps de finir... »</text>
+
+    <rect x="368" y="292" width="183" height="62" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="378" y="312" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">« La boucherie ferme à 19h ou</text>
+    <text x="378" y="325" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">19h30 ? Quel est le trajet à pied</text>
+    <text x="378" y="338" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">le plus rapide après mon covoiturage ? »</text>
+
+    <rect x="561" y="292" width="183" height="62" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="571" y="312" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">« Mes paquets sont prêts ? Parfait,</text>
+    <text x="571" y="325" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">je n'ai pas attendu une seule minute</text>
+    <text x="571" y="338" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">et j'ai soutenu mes commerçants. »</text>
+
+    <rect x="754" y="292" width="183" height="62" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="764" y="312" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">« Quel soulagement ! 20 min offertes</text>
+    <text x="764" y="325" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">pile à l'heure où je récupère Théo</text>
+    <text x="764" y="338" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">sans devoir chercher de monnaie. »</text>
+
+    <rect x="947" y="292" width="183" height="62" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="957" y="312" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">« Avec les vacances d'été, j'ai</text>
+    <text x="957" y="325" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">perdu le rythme. Heureusement que</text>
+    <text x="957" y="338" dominant-baseline="central" font-size="7" font-style="italic" fill="#5A6578">l'application me prévient gentiment. »</text>
+
+    <!-- ==================================================================== -->
+    <!-- LIGNE 4 : POINTS DE FRICTION & CRAINTES (PAIN POINTS)                -->
+    <!-- ==================================================================== -->
+    <rect x="10" y="362" width="155" height="62" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="20" y="388" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#B44C43">POINTS DE</text>
+    <text x="20" y="402" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#B44C43">FRICTION</text>
+
+    <rect x="175" y="362" width="183" height="62" rx="8" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+    <text x="185" y="382" dominant-baseline="central" font-size="7" font-weight="500" fill="#B44C43">• Peur de formulaires trop longs.</text>
+    <text x="185" y="396" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">• Manque de temps au quotidien.</text>
+    <text x="185" y="409" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">• Oubli de noter la plaque auto.</text>
+
+    <rect x="368" y="362" width="183" height="62" rx="8" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+    <text x="378" y="382" dominant-baseline="central" font-size="7" font-weight="500" fill="#B44C43">• Horaires d'ouverture méconnus.</text>
+    <text x="378" y="396" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">• Risque de trouver porte close.</text>
+    <text x="378" y="409" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">• Refus d'aller en grande surface.</text>
+
+    <rect x="561" y="362" width="183" height="62" rx="8" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+    <text x="571" y="382" dominant-baseline="central" font-size="7" font-weight="500" fill="#B44C43">• Peur de devoir faire la queue.</text>
+    <text x="571" y="396" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">• Inquiétude sur la fraîcheur.</text>
+    <text x="571" y="409" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">• Timing serré à la sortie école.</text>
+
+    <rect x="754" y="362" width="183" height="62" rx="8" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+    <text x="764" y="382" dominant-baseline="central" font-size="7" font-weight="500" fill="#B44C43">• Stationnement saturé et cher.</text>
+    <text x="764" y="396" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">• Crainte de l'amende de voirie.</text>
+    <text x="764" y="409" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">• Perte de temps à l'horodateur.</text>
+
+    <rect x="947" y="362" width="183" height="62" rx="8" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="1" />
+    <text x="957" y="382" dominant-baseline="central" font-size="7" font-weight="500" fill="#B44C43">• Baisse d'achats pendant l'été.</text>
+    <text x="957" y="396" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">• Perte du statut parking gratuit</text>
+    <text x="957" y="409" dominant-baseline="central" font-size="7" font-weight="400" fill="#5A6578">  lorsque l'école est fermée.</text>
+
+    <!-- ==================================================================== -->
+    <!-- LIGNE 5 : COURBE ÉMOTIONNELLE / EXPÉRIENCE USAGER                    -->
+    <!-- ==================================================================== -->
+    <rect x="10" y="432" width="155" height="150" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="20" y="452" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#243342">COURBE</text>
+    <text x="20" y="466" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#243342">ÉMOTIONNELLE</text>
+    
+    <rect x="20" y="485" width="116" height="18" rx="9" fill="#EBF3ED" stroke="#7EA88D" stroke-width="0.8" />
+    <text x="78" y="494" text-anchor="middle" dominant-baseline="central" font-size="7" font-weight="700" fill="#2E583D">Satisfait / Confiant</text>
+
+    <rect x="20" y="515" width="116" height="18" rx="9" fill="#F4F2ED" stroke="#E2DDD5" stroke-width="0.8" />
+    <text x="78" y="524" text-anchor="middle" dominant-baseline="central" font-size="7" font-weight="600" fill="#5A6578">Neutre / Rassuré</text>
+
+    <rect x="20" y="545" width="116" height="18" rx="9" fill="#FBEEEA" stroke="#D88B77" stroke-width="0.8" />
+    <text x="78" y="554" text-anchor="middle" dominant-baseline="central" font-size="7" font-weight="700" fill="#B44C43">Stress / Pressé</text>
+
+    <!-- Zone graphique de la courbe émotionnelle -->
+    <g>
+      <rect x="175" y="432" width="955" height="150" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+      
+      <!-- Lignes de repère d'émotions -->
+      <line x1="175" y1="472" x2="1130" y2="472" stroke="#F0EDE8" stroke-width="1" stroke-dasharray="4,4" />
+      <line x1="175" y1="517" x2="1130" y2="517" stroke="#F0EDE8" stroke-width="1" stroke-dasharray="4,4" />
+      <line x1="175" y1="562" x2="1130" y2="562" stroke="#F0EDE8" stroke-width="1" stroke-dasharray="4,4" />
+
+      <!-- Remplissage sous la courbe -->
+      <path d="M 266 525 C 360 515, 390 485, 459 475 C 530 465, 590 460, 652 455 C 720 450, 780 445, 845 445 C 920 445, 980 480, 1038 480 L 1038 582 L 266 582 Z" fill="url(#curve-gradient-act)" />
+
+      <!-- TRACÉ VECTORIEL CONTINU DE LA COURBE ÉMOTIONNELLE (VERT SAUGE PASTEL) -->
+      <path d="M 266 525 C 360 515, 390 485, 459 475 C 530 465, 590 460, 652 455 C 720 450, 780 445, 845 445 C 920 445, 980 480, 1038 480" fill="none" stroke="#4A7A5B" stroke-width="3" stroke-linecap="round" />
+
+      <!-- Point 1 : Inscription (Simple et rassurant) -->
+      <circle cx="266" cy="525" r="6" fill="#FFFFFF" stroke="#4A7A5B" stroke-width="2.5" />
+      <rect x="200" y="492" width="132" height="18" rx="9" fill="#EBF3ED" stroke="#7EA88D" stroke-width="0.8" />
+      <text x="266" y="501" text-anchor="middle" dominant-baseline="central" font-size="7" font-weight="700" fill="#2E583D">Inscription express en 1 min</text>
+
+      <!-- Point 2 : Commande (Soulagement du panier unique) -->
+      <circle cx="459" cy="475" r="6" fill="#FFFFFF" stroke="#4A7A5B" stroke-width="2.5" />
+      <rect x="390" y="442" width="138" height="18" rx="9" fill="#EBF3ED" stroke="#7EA88D" stroke-width="0.8" />
+      <text x="459" y="451" text-anchor="middle" dominant-baseline="central" font-size="7" font-weight="700" fill="#2E583D">Panier unique très pratique</text>
+
+      <!-- Point 3 : Retrait (Gain de temps précieux) -->
+      <circle cx="652" cy="455" r="6" fill="#FFFFFF" stroke="#4A7A5B" stroke-width="2.5" />
+      <rect x="585" y="420" width="134" height="18" rx="9" fill="#EBF3ED" stroke="#7EA88D" stroke-width="0.8" />
+      <text x="652" y="429" text-anchor="middle" dominant-baseline="central" font-size="7" font-weight="700" fill="#2E583D">Retrait en 1 clic sans attente</text>
+
+      <!-- Point 4 : Parking (Soulagement total école) -->
+      <circle cx="845" cy="445" r="6" fill="#FFFFFF" stroke="#4A7A5B" stroke-width="2.5" />
+      <rect x="778" y="412" width="134" height="18" rx="9" fill="#EBF3ED" stroke="#7EA88D" stroke-width="0.8" />
+      <text x="845" y="421" text-anchor="middle" dominant-baseline="central" font-size="7" font-weight="700" fill="#2E583D">20 min gratuites : zéro stress</text>
+
+      <!-- Point 5 : Vacances (Alerte utile et bienveillante) -->
+      <circle cx="1038" cy="480" r="6" fill="#FFFFFF" stroke="#C48B28" stroke-width="2.5" />
+      <rect x="971" y="448" width="134" height="18" rx="9" fill="#FEF7EB" stroke="#DCB162" stroke-width="0.8" />
+      <text x="1038" y="457" text-anchor="middle" dominant-baseline="central" font-size="7" font-weight="700" fill="#845A11">Rappel bienveillant rentrée</text>
+    </g>
+
+    <!-- ==================================================================== -->
+    <!-- LIGNE 6 : SOLUTIONS & RÉPONSES SHOPLOC                               -->
+    <!-- ==================================================================== -->
+    <rect x="10" y="590" width="155" height="155" rx="8" fill="#FFFFFF" stroke="#E8E6DF" stroke-width="1" />
+    <text x="20" y="650" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#166534">SOLUTIONS &amp;</text>
+    <text x="20" y="664" dominant-baseline="central" font-size="8.5" font-weight="700" fill="#166534">RÉPONSES SHOPLOC</text>
+    <text x="20" y="685" dominant-baseline="central" font-size="7" font-weight="500" fill="#5A6578">La réponse concrète</text>
+
+    <!-- Solution Col 1 -->
+    <rect x="175" y="590" width="183" height="155" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1" />
+    <text x="185" y="608" dominant-baseline="central" font-size="7.5" font-weight="700" fill="#166534">Compte Épuré Mobile</text>
+    <text x="185" y="626" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Inscription ultra-courte (e-mail).</text>
+    <text x="185" y="639" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Saisie de la plaque d'immatriculation</text>
+    <text x="185" y="652" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">  pour lier automatiquement le véhicule.</text>
+    <text x="185" y="665" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Interface rapide sans superflu.</text>
+    <line x1="185" y1="693" x2="348" y2="693" stroke="#DCFCE7" stroke-width="1" />
+    <text x="185" y="707" dominant-baseline="central" font-size="6.5" font-weight="700" fill="#166534">VALEUR :</text>
+    <text x="225" y="707" dominant-baseline="central" font-size="6.5" font-weight="500" fill="#2E583D">Prise en main immédiate</text>
+
+    <!-- Solution Col 2 -->
+    <rect x="368" y="590" width="183" height="155" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1" />
+    <text x="378" y="608" dominant-baseline="central" font-size="7.5" font-weight="700" fill="#166534">Panier Unique &amp; Horaires</text>
+    <text x="378" y="626" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Commande groupée multi-boutiques.</text>
+    <text x="378" y="639" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Calcul du trajet à pied le plus rapide.</text>
+    <text x="378" y="652" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Horaires d'ouverture garantis à jour.</text>
+    <text x="378" y="665" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Notification si un commerce modifie l'heure.</text>
+    <line x1="378" y1="693" x2="541" y2="693" stroke="#DCFCE7" stroke-width="1" />
+    <text x="378" y="707" dominant-baseline="central" font-size="6.5" font-weight="700" fill="#166534">VALEUR :</text>
+    <text x="418" y="707" dominant-baseline="central" font-size="6.5" font-weight="500" fill="#2E583D">Gain de temps &amp; Sérénité</text>
+
+    <!-- Solution Col 3 -->
+    <rect x="561" y="590" width="183" height="155" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1" />
+    <text x="571" y="608" dominant-baseline="central" font-size="7.5" font-weight="700" fill="#166534">Retrait Rapide en Magasin</text>
+    <text x="571" y="626" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Sacs préparés à l'avance chez l'artisan.</text>
+    <text x="571" y="639" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Retrait express en 1 clic au comptoir.</text>
+    <text x="571" y="652" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Arthur achète le goûter au Fournil</text>
+    <text x="571" y="665" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">  en même temps (double effet d'achat).</text>
+    <line x1="571" y1="693" x2="734" y2="693" stroke="#DCFCE7" stroke-width="1" />
+    <text x="571" y="707" dominant-baseline="central" font-size="6.5" font-weight="700" fill="#166534">VALEUR :</text>
+    <text x="611" y="707" dominant-baseline="central" font-size="6.5" font-weight="500" fill="#2E583D">Efficacité &amp; Fraîcheur</text>
+
+    <!-- Solution Col 4 -->
+    <rect x="754" y="590" width="183" height="155" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1" />
+    <text x="764" y="608" dominant-baseline="central" font-size="7.5" font-weight="700" fill="#166534">20 min de Parking Gratuit</text>
+    <text x="764" y="626" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Déclenchement sur mobile à 16h30.</text>
+    <text x="764" y="639" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Plaque enregistrée dans le système voirie.</text>
+    <text x="764" y="652" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Zéro besoin d'aller à la borne horodateur.</text>
+    <text x="764" y="665" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Économie directe de budget de stationnement.</text>
+    <line x1="764" y1="693" x2="927" y2="693" stroke="#DCFCE7" stroke-width="1" />
+    <text x="764" y="707" dominant-baseline="central" font-size="6.5" font-weight="700" fill="#166534">VALEUR :</text>
+    <text x="804" y="707" dominant-baseline="central" font-size="6.5" font-weight="500" fill="#2E583D">Stationnement offert école</text>
+
+    <!-- Solution Col 5 -->
+    <rect x="947" y="590" width="183" height="155" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1" />
+    <text x="957" y="608" dominant-baseline="central" font-size="7.5" font-weight="700" fill="#166534">Gestion de la Saisonnalité</text>
+    <text x="957" y="626" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Pas de pénalité brutale pendant les vacances.</text>
+    <text x="957" y="639" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Message bienveillant pour la reprise scolaire.</text>
+    <text x="957" y="652" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">• Points marchands de Julie utilisables toute</text>
+    <text x="957" y="665" dominant-baseline="central" font-size="7" font-weight="500" fill="#2E583D">  l'année pour des cadeaux en boutique.</text>
+    <line x1="957" y1="693" x2="1120" y2="693" stroke="#DCFCE7" stroke-width="1" />
+    <text x="957" y="707" dominant-baseline="central" font-size="6.5" font-weight="700" fill="#166534">VALEUR :</text>
+    <text x="997" y="707" dominant-baseline="central" font-size="6.5" font-weight="500" fill="#2E583D">Fidélité souple &amp; durable</text>
+
+  </svg>
+
+</div>
+
+
+    <!-- CADRE PÉDAGOGIQUE D'ANALYSE -->
+    <div class="pedago-box">
+      <h4>Analyse UX du Parcours de Julie &amp; Arthur (Format Justinmind)</h4>
+      <p>
+        Ce parcours illustre la complémentarité entre la commande numérique et l'expérience de mobilité urbaine familiale :
+      </p>
+      <ul>
+        <li><strong>Bandeau Persona &amp; Scénario :</strong> Parents d'un jeune enfant (Théo, 7 ans), emploi du temps serré, recherche d'efficacité et de stationnement garanti.</li>
+        <li><strong>Chronologie (5 Phases) :</strong> 1. Inscription express &amp; Plaque auto &rarr; 2. Commande groupée multi-artisans &rarr; 3. Retrait en boutique &amp; Goûter école &rarr; 4. Activation des 20 min de parking gratuit &rarr; 5. Fidélité et gestion bienveillante des vacances.</li>
+        <li><strong>Actions &amp; Points de contact :</strong> Interface mobile fluide, étagères de retrait chez les artisans, voirie municipale sans passage à l'horodateur.</li>
+        <li><strong>Pensées &amp; Points de friction :</strong> Stress des formulaires interminables, peur des commerces fermés, coût prohibitif du stationnement scolaire.</li>
+        <li><strong>Courbe Émotionnelle Vectorielle :</strong> Évolution positive depuis la charge mentale de la journée vers le soulagement d'un retrait instantané et d'un stationnement offert à 16h30.</li>
+        <li><strong>Solutions ShopLoc :</strong> Panier partagé, trajet optimisé à pied, liaison de la plaque d'immatriculation avec la voirie, absence de pénalité en période de vacances.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 4. CHECKLIST DE VALIDATION & POINT D'ARRÊT                                -->
+  <!-- ========================================================================= -->
+  <div id="validation" class="validation-card">
+    <div class="validation-text">
+      <h3>Point de Validation de l'Étape 02 (Stop &amp; Wait)</h3>
+      <p>
+        Les 3 modèles visuels sont prêts pour inspection. Veuillez valider leur conformité graphique (Justinmind, absence de RGAA/jargon, harmonie pastel) avant le lancement de la rédaction finale de la Section 02.
+      </p>
+    </div>
+    <div style="font-size: 11px; color: #166534; font-weight: 600; background: #F0FDF4; border: 1px solid #86EFAC; padding: 8px 16px; border-radius: 8px;">
+      Statut : En attente de validation manuelle dans le chat
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
