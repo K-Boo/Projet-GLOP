@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Showcase — Nouveaux Visuels & Schémas ShopLoc (Pastel Craft)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/latin-modern-web@1.0.0/style.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ==========================================================================
+   THEME MAITRE SHOPLOC — IDENTITE VISUELLE NORMALISEE
+   Master 2 MIAGE — Universite de Lille — UE GLOP (2026-2027)
+   Inspiration Ollca Pastel & Craft — Charte Ergonomique et Zero Emoji
+   ========================================================================== */
+
+:root {
+  /* 1. PALETTE DE COULEURS PASTEL NATURELLE (INSPIRATION OLLCA & COMMERCE LOCAL) */
+  --color-brand-primary: #243342;       /* Bleu ardoise brumeux (Structure & Titres) */
+  --color-brand-secondary: #C26750;     /* Terracotta poudree (Chaleur & Artisanat) */
+  --color-brand-accent: #4A7A5B;        /* Sauge maraichere (Fraicheur & Terroir) */
+  --color-brand-honey: #C48B28;         /* Ocre miel doux (Fidelite & Dynamisme) */
+  --color-brand-plum: #6E3946;          /* Bordeaux veloute (Commerces de bouche) */
+
+  /* SURFACES DOUCES & FONDS */
+  --color-surface-canvas: #FAF9F6;      /* Lin doux / ecru naturel (Canvas unifie) */
+  --color-surface-card: #FFFFFF;        /* Blanc pur pour cartes produits */
+  --color-surface-warm: #F5F2EB;        /* Fond chaud secondaire */
+  --color-surface-page: #FAF9F6;        /* Fond de page lecture */
+  --color-surface-print: #FFFFFF;       /* Fond d impression papier A4 */
+
+  /* TONS PASTEL TRES CLAIRS */
+  --color-surface-primary-soft: #EBF0F5;
+  --color-surface-terracotta-soft: #FBEEEA;
+  --color-surface-sage-soft: #EBF3ED;
+  --color-surface-honey-soft: #FEF7EB;
+  --color-surface-plum-soft: #F6ECEF;
+
+  /* COULEURS FONCTIONNELLES DOUCES */
+  --color-success: #4A7A5B;             /* Sauge */
+  --color-success-bg: #EBF3ED;
+  --color-warning: #C48B28;             /* Ocre miel */
+  --color-warning-bg: #FEF7EB;
+  --color-error: #B44C43;               /* Terre de Sienne */
+  --color-error-bg: #FDF2F0;
+  --color-info: #2B5270;                /* Ardoise douce */
+  --color-info-bg: #EBF2F7;
+
+  /* TEXTES & LIGNES */
+  --color-text-primary: #1E252D;        /* Encre ardoise (> 14:1 sur lin) */
+  --color-text-secondary: #5A6578;      /* Ardoise feutree */
+  --color-text-muted: #8C96A5;          /* Ardoise legere */
+  --color-border-dark: #243342;         /* Lignes maitresses */
+  --color-border-light: #DCD6CD;        /* Lignes de separation */
+  --color-border-subtle: #EDE8E1;       /* Lignes decoratives fines */
+
+  /* PALETTE PASTEL SUR-MESURE POUR DIAGRAMMES EDITORIAUX (ANTI-AI SLOP) */
+  --diagram-canvas: #FAF9F6;
+  --diagram-connector: #8A9BAE;
+  
+  --diagram-citizen-bg: #FBEEEA;
+  --diagram-citizen-border: #D88B77;
+  --diagram-citizen-text: #8E3D2A;
+
+  --diagram-merchant-bg: #EBF3ED;
+  --diagram-merchant-border: #7EA88D;
+  --diagram-merchant-text: #2E583D;
+
+  --diagram-city-bg: #FEF7EB;
+  --diagram-city-border: #DCB162;
+  --diagram-city-text: #845A11;
+
+  --diagram-system-bg: #EBF0F5;
+  --diagram-system-border: #8B9EAF;
+  --diagram-system-text: #1C2D3D;
+
+  --diagram-alert-bg: #FDF2F0;
+  --diagram-alert-border: #D98880;
+  --diagram-alert-text: #8C2E25;
+
+  --diagram-lane-bg: #F5F2EB;
+  --diagram-lane-border: #DCD6CD;
+
+  /* 2. TYPOGRAPHIES */
+  --font-serif: "Latin Modern Roman", "LM Roman 10", "Computer Modern", "TeX Gyre Termes", "Times New Roman", Times, serif;
+  --font-sans: "Poppins", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Fira Code", "Latin Modern Mono", "Consolas", "Courier New", monospace;
+
+  /* 3. ECHELLE DE TAILLES (DOCUMENT A4) */
+  --font-size-title-main: 15pt;
+  --font-size-wave: 12.5pt;
+  --font-size-h2: 11.5pt;
+  --font-size-h3: 10pt;
+  --font-size-body: 9.5pt;
+  --font-size-table: 9pt;
+  --font-size-meta: 8.5pt;
+  --font-size-micro: 7.5pt;
+
+  /* 4. ESPACEMENTS, BORDURES & OMBRES CRAFT */
+  --line-height-normal: 1.42;
+  --border-radius-sm: 6px;
+  --border-radius-md: 10px;
+  --border-radius-lg: 14px;
+  --border-radius-pill: 9999px;
+  --shadow-soft: 0 2px 8px rgba(36, 51, 66, 0.04);
+  --shadow-card: 0 4px 16px rgba(36, 51, 66, 0.06);
+}
+
+/* CONFIGURATION DU RENDU IMPRESSION ET PAGE A4 */
+@page {
+  size: A4 portrait;
+  margin: 24mm 20mm 24mm 20mm;
+
+  @top-left {
+    content: "Projet ShopLoc — Master 2 MIAGE GLOP";
+    font-family: var(--font-serif);
+    font-size: var(--font-size-meta);
+    font-style: italic;
+    color: var(--color-text-secondary);
+    border-bottom: 0.5pt solid var(--color-border-light);
+    padding-bottom: 4pt;
+    margin-bottom: 8pt;
+  }
+
+  @top-right {
+    content: "Universite de Lille — FST Informatique";
+    font-family: var(--font-serif);
+    font-size: var(--font-size-meta);
+    font-style: italic;
+    color: var(--color-text-secondary);
+    border-bottom: 0.5pt solid var(--color-border-light);
+    padding-bottom: 4pt;
+    margin-bottom: 8pt;
+  }
+
+  @bottom-center {
+    content: counter(page);
+    font-family: var(--font-serif);
+    font-size: var(--font-size-meta);
+    color: var(--color-text-primary);
+  }
+}
+
+@page :first {
+  @top-left { content: ""; border-bottom: none; }
+  @top-right { content: ""; border-bottom: none; }
+  @bottom-center { content: "1"; }
+}
+
+/* REGLES GENERALES */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background: var(--color-surface-print);
+  margin: 0;
+  padding: 0;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+/* EN-TETE INSTITUTIONNEL AVEC LOGOS OFFICIELS */
+.institution-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12pt;
+  padding-bottom: 8pt;
+  border-bottom: 0.75pt solid var(--color-brand-primary);
+}
+
+.institution-logo {
+  height: 42px;
+  max-width: 210px;
+  object-fit: contain;
+}
+
+/* TITRAGE MAITRE */
+.title-block {
+  text-align: center;
+  margin-top: 14pt;
+  margin-bottom: 18pt;
+}
+
+.latex-main-title {
+  font-size: var(--font-size-title-main);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-brand-primary);
+  margin: 0 0 6pt 0;
+  line-height: 1.25;
+}
+
+.latex-sub-title {
+  font-size: 11pt;
+  font-style: italic;
+  color: var(--color-brand-secondary);
+  margin: 0 0 10pt 0;
+}
+
+/* BANNIERES DE GRANDES SECTIONS & H2 */
+.wave-banner {
+  font-size: var(--font-size-wave);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-brand-primary);
+  margin-top: 22pt;
+  margin-bottom: 10pt;
+  padding-bottom: 4pt;
+  border-bottom: 1.5pt solid var(--color-brand-primary);
+  page-break-after: avoid;
+}
+
+h2.section-heading {
+  font-size: var(--font-size-h2);
+  font-weight: bold;
+  color: var(--color-brand-primary);
+  margin-top: 16pt;
+  margin-bottom: 6pt;
+  padding-bottom: 2pt;
+  border-bottom: 0.5pt solid var(--color-brand-secondary);
+  page-break-after: avoid;
+  text-align: left;
+}
+
+h3.subsection-heading {
+  font-size: var(--font-size-h3);
+  font-weight: bold;
+  color: var(--color-text-primary);
+  margin: 10pt 0 4pt 0;
+  page-break-after: avoid;
+  text-align: left;
+}
+
+/* TABLEAUX ACADEMIQUES FORMAT BOOKTABS */
+.table-wrapper {
+  margin: 8pt 0 14pt 0;
+  width: 100%;
+}
+
+table.booktabs {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-table);
+  line-height: 1.35;
+  border-top: 1.5pt solid var(--color-border-dark);
+  border-bottom: 1.5pt solid var(--color-border-dark);
+  margin-bottom: 6pt;
+}
+
+table.booktabs th {
+  font-weight: bold;
+  text-align: left;
+  padding: 5pt 7pt;
+  border-bottom: 0.75pt solid var(--color-border-dark);
+  background: transparent;
+  color: var(--color-brand-primary);
+}
+
+table.booktabs td {
+  padding: 4.5pt 7pt;
+  vertical-align: top;
+  border-bottom: 0.3pt solid var(--color-border-light);
+  background: transparent;
+}
+
+table.booktabs tr:last-child td {
+  border-bottom: none;
+}
+
+table.booktabs code {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-meta);
+  color: var(--color-brand-primary);
+}
+
+/* CARTOUCHE D'IDENTIFICATION OFFICIEL GLOP */
+.cartouche-container {
+  margin: 10pt 0 14pt 0;
+}
+
+.cartouche-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-table);
+  border-top: 1.5pt solid var(--color-brand-primary);
+  border-bottom: 1.5pt solid var(--color-brand-primary);
+}
+
+.cartouche-table th {
+  width: 32%;
+  padding: 4pt 6pt;
+  text-align: left;
+  font-weight: bold;
+  color: var(--color-brand-primary);
+  border-bottom: 0.5pt solid var(--color-border-light);
+}
+
+.cartouche-table td {
+  width: 68%;
+  padding: 4pt 6pt;
+  border-bottom: 0.3pt solid var(--color-border-light);
+}
+
+.cartouche-table tr:last-child th,
+.cartouche-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ENCARTS ET DECISIONS VALIDATION / ATTENTE (ZERO BARRE LATERALE) */
+.callout-box {
+  margin: 6pt 0 6pt 0;
+  padding: 6pt 10pt;
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-body);
+  line-height: 1.45;
+  page-break-inside: avoid;
+}
+
+.callout-success {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+}
+.callout-success strong {
+  color: var(--color-success);
+}
+
+.callout-warning {
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning);
+}
+.callout-warning strong {
+  color: var(--color-warning);
+}
+
+.callout-error {
+  background-color: var(--color-error-bg);
+  color: var(--color-error);
+}
+.callout-error strong {
+  color: var(--color-error);
+}
+
+.callout-info {
+  background-color: var(--color-info-bg);
+  color: var(--color-info);
+}
+.callout-info strong {
+  color: var(--color-info);
+}
+
+/* PREAMBULE ACADEMIQUE */
+.abstract-box {
+  margin: 12pt 20pt 16pt 20pt;
+  padding: 6pt 12pt;
+  border-top: 0.5pt solid var(--color-border-light);
+  border-bottom: 0.5pt solid var(--color-border-light);
+}
+
+.abstract-title {
+  font-size: var(--font-size-h3);
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 4pt;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-brand-primary);
+}
+
+.abstract-text {
+  font-size: var(--font-size-table);
+  font-style: italic;
+  line-height: 1.35;
+  margin: 0;
+  text-align: justify;
+}
+
+/* BADGES ET METADONNEES EN LIGNE */
+.badge {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 1.5pt 5pt;
+  border-radius: var(--border-radius-sm);
+  vertical-align: middle;
+}
+
+.badge-success { background: #DCFCE7; color: var(--color-success); }
+.badge-warning { background: #FEF3C7; color: var(--color-warning); }
+.badge-brand   { background: #DBEAFE; color: var(--color-brand-primary); }
+.badge-neutral { background: #F1F5F9; color: var(--color-text-secondary); }
+
+/* CONTENEURS POUR SCHEMAS ET DIAGRAMMES */
+.diagram-container {
+  margin: 12pt 0;
+  padding: 8pt;
+  background: #FFFFFF;
+  border: 0.5pt solid var(--color-border-light);
+  border-radius: var(--border-radius-md);
+  text-align: center;
+  page-break-inside: avoid;
+}
+
+.diagram-caption {
+  font-size: var(--font-size-meta);
+  font-style: italic;
+  color: var(--color-text-secondary);
+  margin-top: 4pt;
+  text-align: center;
+}
+
+/* ELEMENTS D'EXPRESSION DE CODE ET REFERENCES */
+code.latex-code {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-meta);
+  color: var(--color-brand-primary);
+  background: transparent;
+}
+
+    body {
+      max-width: 1140px;
+      margin: 30px auto;
+      padding: 0 24px;
+      background: #FAF9F6;
+      font-family: 'Poppins', sans-serif;
+    }
+    .nav-bar {
+      position: sticky;
+      top: 10px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border: 1px solid #DCD6CD;
+      border-radius: 12px;
+      padding: 10px 16px;
+      margin-bottom: 30px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      box-shadow: 0 4px 16px rgba(36, 51, 66, 0.05);
+      z-index: 100;
+    }
+    .nav-link {
+      font-size: 8pt;
+      font-weight: 700;
+      color: #243342;
+      text-decoration: none;
+      padding: 5px 12px;
+      border-radius: 6px;
+      background: #F5F2EB;
+      transition: all 0.2s;
+    }
+    .nav-link:hover {
+      background: #C26750;
+      color: #FFFFFF;
+    }
+  </style>
+</head>
+<body>
+  <div style="text-align: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1.5pt solid #243342;">
+    <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+      <span style="width: 8px; height: 8px; border-radius: 50%; background: #C26750; display: inline-block;"></span>
+      <span style="font-size: 9pt; font-weight: 700; color: #C26750; text-transform: uppercase; letter-spacing: 0.1em;">Direction Artistique Pastel Craft — Inspiration Ollca</span>
+    </div>
+    <h1 style="font-size: 22pt; font-weight: 700; color: #243342; margin: 0 0 6pt 0;">Showcase des Nouveaux Schémas & Diagrammes ShopLoc</h1>
+    <div style="font-size: 10.5pt; color: #5A6578;">Rendu vectoriel pur sans perte (100% interactif) &bull; Lin doux, Ardoise brumeux, Terracotta, Sauge, Ocre miel &bull; Zéro Emoji</div>
+  </div>
+
+  <div style="background: linear-gradient(135deg, #243342 0%, #1A2530 100%); color: #FFFFFF; border-radius: 14px; padding: 18px 24px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 18px rgba(36,51,66,0.15);">
+    <div>
+      <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+        <span style="background: #C26750; color: #FFFFFF; font-size: 8pt; font-weight: 700; padding: 2px 8px; border-radius: 9999px; text-transform: uppercase;">NOUVEAU — APPLICATION PLEINE PAGE</span>
+        <strong style="font-size: 13pt; letter-spacing: -0.01em;">Prototype Web App ShopLoc (Réplique Ollca Authentique)</strong>
+      </div>
+      <div style="font-size: 9pt; opacity: 0.85;">Expérience e-commerce 1320px sans marges étriquées, police Poppins, grille 12 colonnes, switch client/senior/caisse interactif.</div>
+    </div>
+    <a href="SHOPLOC_WEB_APP.html" target="_blank" style="background: #C26750; color: #FFFFFF; text-decoration: none; padding: 10px 22px; border-radius: 9999px; font-weight: 700; font-size: 9.5pt; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(194,103,80,0.35); flex-shrink: 0;">
+      <span>Ouvrir l'App Web</span>
+      &rarr;
+    </a>
+  </div>
+
+  <nav class="nav-bar">
+    <span style="font-size: 8pt; font-weight: 700; color: #8E3D2A; display: flex; align-items: center;">Navigation directe :</span>
+    <a class="nav-link" href="#apte_pieuvre">1. Méthode APTE</a><a class="nav-link" href="#bpmn_swimlane_template">2. Processus Métier BPMN 2.0</a><a class="nav-link" href="#lean_canvas">3. Modèle Stratégique</a><a class="nav-link" href="#matrice_positionnement">4. Positionnement Concurrentiel</a><a class="nav-link" href="#merise_mcd_template">5. Modèle Conceptuel de Données Merise & Dictionnaire Booktabs (Figure 4.1)</a><a class="nav-link" href="#ui_wireframe_card">6. Maquettes d Interfaces</a>
+  </nav>
+
+  
+    <section id="apte_pieuvre" style="margin-bottom: 45px;">
+      <div style="border-bottom: 2px solid #243342; padding-bottom: 8px; margin-bottom: 16px;">
+        <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13pt; color: #243342; margin: 0; text-transform: uppercase; letter-spacing: 0.04em;">1. Méthode APTE — Bête à Cornes & Diagramme Pieuvre (Figure 1.1 & 1.2)</h2>
+      </div>
+      <!-- DIAGRAMMES METHODE APTE : BETE A CORNES & DIAGRAMME PIEUVRE (NORMES AFNOR NF X 50-151) -->
+<!-- Design Editorial Craft & Pastel — Inspiration Ollca & Sobriete GLOP (Zero Emoji) -->
+
+<div class="diagram-container" style="margin: 24pt 0; text-align: center; background: #FAF9F6; border: 1px solid #DCD6CD; border-radius: 18px; padding: 22pt 18pt; box-shadow: 0 6px 24px rgba(36, 51, 66, 0.05);">
+
+  <!-- ========================================================================= -->
+  <!-- 1. ENONCIATION DU BESOIN CANONIQUE (BETE A CORNES)                       -->
+  <!-- ========================================================================= -->
+  <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16pt;">
+    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #C26750;"></span>
+    <h3 style="font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; font-size: 11pt; font-weight: 700; color: #243342; margin: 0; text-transform: uppercase; letter-spacing: 0.08em;">
+      Figure 1.1 — Enonciation du Besoin Canonique (Methode APTE — Bete a Cornes)
+    </h3>
+  </div>
+  
+  <svg viewBox="0 0 760 270" width="100%" height="270" style="font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; overflow: visible;">
+    <defs>
+      <filter id="craft-card-shadow" x="-5%" y="-10%" width="110%" height="125%">
+        <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#243342" flood-opacity="0.06" />
+      </filter>
+      <marker id="arrow-craft-subtle" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#4A7A5B" />
+      </marker>
+    </defs>
+
+    <!-- Courbes de liaison douces (Beziers cubiques elegantes avec noeuds) -->
+    <path d="M 180 100 C 180 135, 290 148, 290 148" fill="none" stroke="#8A9BAE" stroke-width="2" stroke-dasharray="5,5" />
+    <path d="M 580 100 C 580 135, 470 148, 470 148" fill="none" stroke="#8A9BAE" stroke-width="2" stroke-dasharray="5,5" />
+    
+    <!-- Noeuds de contact circulaires -->
+    <circle cx="180" cy="100" r="3.5" fill="#C26750" />
+    <circle cx="580" cy="100" r="3.5" fill="#4A7A5B" />
+
+    <!-- Fleche vers le but final -->
+    <path d="M 380 180 L 380 205" fill="none" stroke="#4A7A5B" stroke-width="2" marker-end="url(#arrow-craft-subtle)" />
+
+    <!-- CARTE 1 : A qui rend-il service ? (Terracotta Pastel Scripte) -->
+    <g filter="url(#craft-card-shadow)">
+      <rect x="50" y="15" width="260" height="85" rx="16" fill="#FBEEEA" stroke="#D88B77" stroke-width="1.2" />
+      <!-- Pastille Pilule de Classification -->
+      <rect x="68" y="27" width="105" height="18" rx="9" fill="#F4DDD6" />
+      <text x="120" y="39.5" text-anchor="middle" font-size="7.5" font-weight="700" fill="#8E3D2A" letter-spacing="0.08em">BENEFICIAIRES</text>
+      
+      <text x="68" y="64" font-size="11" font-weight="700" fill="#243342">A qui rend-il service ?</text>
+      <text x="68" y="82" font-size="9" font-weight="500" fill="#5A6578">Citoyens, Commercants & Collectivite</text>
+    </g>
+
+    <!-- CARTE 2 : Sur quoi agit-il ? (Sauge Pastel Maraichere) -->
+    <g filter="url(#craft-card-shadow)">
+      <rect x="450" y="15" width="260" height="85" rx="16" fill="#EBF3ED" stroke="#7EA88D" stroke-width="1.2" />
+      <!-- Pastille Pilule de Classification -->
+      <rect x="468" y="27" width="118" height="18" rx="9" fill="#D9E9DD" />
+      <text x="527" y="39.5" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2E583D" letter-spacing="0.08em">CHAMP D ACTION</text>
+      
+      <text x="468" y="64" font-size="11" font-weight="700" fill="#243342">Sur quoi agit-il ?</text>
+      <text x="468" y="82" font-size="9" font-weight="500" fill="#5A6578">Flux d achats physiques & Mobilite douce</text>
+    </g>
+
+    <!-- CARTE CENTRALE : Systeme ShopLoc (Ardoise Brumeux & Sceau Noble) -->
+    <g filter="url(#craft-card-shadow)">
+      <rect x="260" y="115" width="240" height="66" rx="16" fill="#243342" stroke="#243342" stroke-width="1.2" />
+      <!-- Pilule centrale de statut -->
+      <rect x="330" y="125" width="100" height="16" rx="8" fill="rgba(255,255,255,0.12)" />
+      <text x="380" y="136.5" text-anchor="middle" font-size="7.5" font-weight="600" fill="#DCD6CD" letter-spacing="0.08em">SYSTEME CIBLE</text>
+      
+      <text x="380" y="158" text-anchor="middle" font-size="12" font-weight="700" fill="#FAF9F6">Plateforme ShopLoc</text>
+      <text x="380" y="171" text-anchor="middle" font-size="8" fill="#8B9EAF">Ecosysteme Territorial Multi-Acteurs</text>
+    </g>
+
+    <!-- CARTE 3 : Dans quel but ? (Ocre Miel Doux) -->
+    <g filter="url(#craft-card-shadow)">
+      <rect x="190" y="205" width="380" height="52" rx="14" fill="#FEF7EB" stroke="#DCB162" stroke-width="1.2" />
+      <text x="380" y="226" text-anchor="middle" font-size="10.5" font-weight="700" fill="#845A11">Dans quel but ? (Finalite)</text>
+      <text x="380" y="244" text-anchor="middle" font-size="8.5" fill="#5A6578">Revitaliser l economie de proximite et federer la fidelite citoyenne en centre-ville</text>
+    </g>
+  </svg>
+
+
+  <!-- ========================================================================= -->
+  <!-- 2. DIAGRAMME DES INTERACTEURS (DIAGRAMME PIEUVRE)                         -->
+  <!-- ========================================================================= -->
+  <div style="border-top: 1px solid #EDE8E1; margin: 24pt 0 16pt 0; padding-top: 20pt;">
+    <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16pt;">
+      <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #4A7A5B;"></span>
+      <h3 style="font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; font-size: 11pt; font-weight: 700; color: #243342; margin: 0; text-transform: uppercase; letter-spacing: 0.08em;">
+        Figure 1.2 — Diagramme des Interacteurs (Methode APTE — Pieuvre)
+      </h3>
+    </div>
+  </div>
+
+  <svg viewBox="0 0 860 420" width="100%" height="420" style="font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; overflow: visible;">
+    
+    <!-- LIAISONS FP (FONCTIONS PRINCIPALES) — COURBES TRAVERSANTES DOUCES -->
+    <!-- FP1 : Relie Citoyen et Commercant a travers ShopLoc -->
+    <path d="M 170 80 C 300 30, 560 30, 690 80" fill="none" stroke="#C26750" stroke-width="2.5" />
+    <rect x="375" y="20" width="110" height="24" rx="12" fill="#FBEEEA" stroke="#D88B77" stroke-width="1.2" />
+    <text x="430" y="36" text-anchor="middle" font-size="8.5" font-weight="700" fill="#8E3D2A">FP1 : Retrait & Achat</text>
+
+    <!-- FP2 : Relie Citoyen et Mairie a travers ShopLoc -->
+    <path d="M 170 80 C 170 230, 260 340, 260 340" fill="none" stroke="#4A7A5B" stroke-width="2.5" />
+    <rect x="140" y="215" width="110" height="24" rx="12" fill="#EBF3ED" stroke="#7EA88D" stroke-width="1.2" />
+    <text x="195" y="231" text-anchor="middle" font-size="8" font-weight="700" fill="#2E583D">FP2 : Fidelite & Mobilite</text>
+
+    <!-- LIAISONS FC (FONCTIONS CONTRAINTES) — RADIALES VERS SHOPLOC -->
+    <!-- FC1 : Commercant vers ShopLoc -->
+    <path d="M 690 80 L 490 200" fill="none" stroke="#8A9BAE" stroke-width="1.75" stroke-dasharray="4,4" />
+    <rect x="585" y="130" width="105" height="22" rx="11" fill="#FFFFFF" stroke="#8A9BAE" stroke-width="1" />
+    <text x="637" y="145" text-anchor="middle" font-size="7.5" font-weight="600" fill="#243342">FC1 : Caisse & Stocks</text>
+
+    <!-- FC2 : Mairie vers ShopLoc -->
+    <path d="M 260 340 L 370 240" fill="none" stroke="#8A9BAE" stroke-width="1.75" stroke-dasharray="4,4" />
+    <rect x="250" y="275" width="110" height="22" rx="11" fill="#FFFFFF" stroke="#8A9BAE" stroke-width="1" />
+    <text x="305" y="290" text-anchor="middle" font-size="7.5" font-weight="600" fill="#243342">FC2 : Souverainete RGPD</text>
+
+    <!-- FC3 : Banques / Paiement vers ShopLoc -->
+    <path d="M 600 340 L 470 240" fill="none" stroke="#8A9BAE" stroke-width="1.75" stroke-dasharray="4,4" />
+    <rect x="520" y="275" width="105" height="22" rx="11" fill="#FFFFFF" stroke="#8A9BAE" stroke-width="1" />
+    <text x="572" y="290" text-anchor="middle" font-size="7.5" font-weight="600" fill="#243342">FC3 : Flux Securises</text>
+
+    <!-- NOEUDS ENVIRONNEMENT EXTERIEUR (CARTES SCULPTEES) -->
+
+    <!-- Noeud 1 : Citoyens & Consommateurs (Haut Gauche) -->
+    <g transform="translate(80, 45)" filter="url(#craft-card-shadow)">
+      <rect x="0" y="0" width="180" height="70" rx="16" fill="#FFFFFF" stroke="#D88B77" stroke-width="1.2" />
+      <rect x="12" y="12" width="75" height="15" rx="7.5" fill="#FBEEEA" />
+      <text x="49" y="22.5" text-anchor="middle" font-size="6.5" font-weight="700" fill="#C26750">CITOYENS</text>
+      <text x="12" y="44" font-size="9.5" font-weight="700" fill="#243342">Consommateurs</text>
+      <text x="12" y="58" font-size="7.5" fill="#5A6578">Parcours piéton & seniors</text>
+    </g>
+
+    <!-- Noeud 2 : Commercants & Artisans (Haut Droite) -->
+    <g transform="translate(600, 45)" filter="url(#craft-card-shadow)">
+      <rect x="0" y="0" width="180" height="70" rx="16" fill="#FFFFFF" stroke="#D88B77" stroke-width="1.2" />
+      <rect x="12" y="12" width="85" height="15" rx="7.5" fill="#FBEEEA" />
+      <text x="54" y="22.5" text-anchor="middle" font-size="6.5" font-weight="700" fill="#C26750">COMMERCANTS</text>
+      <text x="12" y="44" font-size="9.5" font-weight="700" fill="#243342">Artisans & Boutiques</text>
+      <text x="12" y="58" font-size="7.5" fill="#5A6578">Fournils, primeurs, bouche</text>
+    </g>
+
+    <!-- Noeud 3 : Mairie & Services Urbains (Bas Gauche) -->
+    <g transform="translate(170, 310)" filter="url(#craft-card-shadow)">
+      <rect x="0" y="0" width="180" height="70" rx="16" fill="#FFFFFF" stroke="#7EA88D" stroke-width="1.2" />
+      <rect x="12" y="12" width="70" height="15" rx="7.5" fill="#EBF3ED" />
+      <text x="47" y="22.5" text-anchor="middle" font-size="6.5" font-weight="700" fill="#2E583D">COLLECTIVITE</text>
+      <text x="12" y="44" font-size="9.5" font-weight="700" fill="#243342">Mairie de Lille</text>
+      <text x="12" y="58" font-size="7.5" fill="#5A6578">Parkings & transports doux</text>
+    </g>
+
+    <!-- Noeud 4 : Banques & Interoperabilite POS (Bas Droite) -->
+    <g transform="translate(510, 310)" filter="url(#craft-card-shadow)">
+      <rect x="0" y="0" width="180" height="70" rx="16" fill="#FFFFFF" stroke="#DCB162" stroke-width="1.2" />
+      <rect x="12" y="12" width="75" height="15" rx="7.5" fill="#FEF7EB" />
+      <text x="49" y="22.5" text-anchor="middle" font-size="6.5" font-weight="700" fill="#845A11">SYSTEMES TIERS</text>
+      <text x="12" y="44" font-size="9.5" font-weight="700" fill="#243342">Banques & Caisses</text>
+      <text x="12" y="58" font-size="7.5" fill="#5A6578">Paiements & logiciels POS</text>
+    </g>
+
+    <!-- NOEUD CENTRAL : SHOPLOC COEUR SYSTEME -->
+    <g transform="translate(340, 165)" filter="url(#craft-card-shadow)">
+      <rect x="0" y="0" width="180" height="90" rx="20" fill="#243342" stroke="#243342" stroke-width="1.5" />
+      <rect x="40" y="14" width="100" height="16" rx="8" fill="rgba(255,255,255,0.14)" />
+      <text x="90" y="25.5" text-anchor="middle" font-size="7.5" font-weight="700" fill="#DCD6CD" letter-spacing="0.08em">SYSTEME CIBLE</text>
+      
+      <text x="90" y="52" text-anchor="middle" font-size="13" font-weight="800" fill="#FAF9F6">ShopLoc</text>
+      <text x="90" y="68" text-anchor="middle" font-size="8" fill="#8B9EAF">Plateforme Mutualisee</text>
+    </g>
+
+  </svg>
+
+</div>
+
+    </section>
+            
+    <section id="bpmn_swimlane_template" style="margin-bottom: 45px;">
+      <div style="border-bottom: 2px solid #243342; padding-bottom: 8px; margin-bottom: 16px;">
+        <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13pt; color: #243342; margin: 0; text-transform: uppercase; letter-spacing: 0.04em;">2. Processus Métier BPMN 2.0 — Click & Collect et Retrait (Figure 3.1)</h2>
+      </div>
+      <!-- GABARIT DE REFERENCE BPMN 2.0 A COULOIRS (SWIMLANES) EN SVG VECTORIEL PUR -->
+<!-- Design Editorial Craft & Pastel — Inspiration Ollca & Sobriete GLOP (Zero Emoji) -->
+
+<div class="diagram-container" style="margin: 24pt 0; text-align: center; background: #FAF9F6; border: 1px solid #DCD6CD; border-radius: 18px; padding: 22pt 18pt; box-shadow: 0 6px 24px rgba(36, 51, 66, 0.05);">
+  <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16pt;">
+    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #243342;"></span>
+    <h3 style="font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; font-size: 11pt; font-weight: 700; color: #243342; margin: 0; text-transform: uppercase; letter-spacing: 0.08em;">
+      Figure 3.1 — Processus BPMN 2.0 : Commande Click & Collect et Retrait Magasin (Processus P2)
+    </h3>
+  </div>
+
+  <svg viewBox="0 0 960 500" width="100%" height="500" style="font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; overflow: visible;">
+    <defs>
+      <filter id="bpmn-node-shadow" x="-5%" y="-10%" width="110%" height="125%">
+        <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#243342" flood-opacity="0.06" />
+      </filter>
+      <marker id="bpmn-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#5A6578" />
+      </marker>
+      <marker id="bpmn-arrow-ok" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#4A7A5B" />
+      </marker>
+    </defs>
+
+    <!-- CADRE GENERAL DU POOL SHOPLOC -->
+    <rect x="20" y="20" width="920" height="460" rx="16" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1.2" />
+    
+    <!-- EN-TETE MAITRE DU POOL (Ardoise noble) -->
+    <path d="M 20 36 Q 20 20 36 20 L 62 20 L 62 480 L 36 480 Q 20 480 20 464 Z" fill="#243342" />
+    <text x="42" y="250" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FAF9F6" letter-spacing="0.14em" transform="rotate(-90 42 250)">
+      PROCESSUS CLICK & COLLECT & RETRAIT MULTI-ARTISANS
+    </text>
+
+    <!-- ========================================================================= -->
+    <!-- COULOIR 1 : CITOYEN / CLIENT (Terracotta doux)                            -->
+    <!-- ========================================================================= -->
+    <rect x="62" y="20" width="878" height="110" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="0.8" />
+    <rect x="62" y="20" width="145" height="110" fill="#FBEEEA" />
+    <text x="80" y="68" font-size="10" font-weight="700" fill="#8E3D2A">1. Citoyen (Client)</text>
+    <text x="80" y="84" font-size="8" fill="#5A6578">Parcours mobile / senior</text>
+
+    <!-- Evenement Debut : Besoin d'achat -->
+    <circle cx="235" cy="75" r="16" fill="#EBF3ED" stroke="#4A7A5B" stroke-width="2" />
+    <text x="235" y="79" text-anchor="middle" font-size="8" font-weight="700" fill="#2E583D">Start</text>
+
+    <!-- Flux vers Tache 1 -->
+    <line x1="251" y1="75" x2="285" y2="75" stroke="#5A6578" stroke-width="1.5" marker-end="url(#bpmn-arrow)" />
+
+    <!-- Tache 1 : Selection Panier Multi-Boutiques -->
+    <g transform="translate(285, 45)" filter="url(#bpmn-node-shadow)">
+      <rect x="0" y="0" width="160" height="60" rx="12" fill="#FFFFFF" stroke="#D88B77" stroke-width="1.2" />
+      <rect x="8" y="8" width="70" height="12" rx="6" fill="#FBEEEA" />
+      <text x="43" y="17" text-anchor="middle" font-size="6.5" font-weight="700" fill="#C26750">USER TASK</text>
+      <text x="12" y="36" font-size="8.5" font-weight="700" fill="#243342">Selection Produits</text>
+      <text x="12" y="49" font-size="7.5" fill="#5A6578">Panier multi-commerces</text>
+    </g>
+
+    <!-- Flux descendant vers Coeur ShopLoc -->
+    <path d="M 445 75 L 485 75 L 485 170" fill="none" stroke="#5A6578" stroke-width="1.5" marker-end="url(#bpmn-arrow)" />
+
+    <!-- ========================================================================= -->
+    <!-- COULOIR 2 : COEUR SHOPLOC (Ardoise Brumeux Doux)                          -->
+    <!-- ========================================================================= -->
+    <rect x="62" y="130" width="878" height="120" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8" />
+    <rect x="62" y="130" width="145" height="120" fill="#EBF0F5" />
+    <text x="80" y="185" font-size="10" font-weight="700" fill="#1C2D3D">2. Coeur ShopLoc</text>
+    <text x="80" y="201" font-size="8" fill="#5A6578">Logique, Stocks & Fidelite</text>
+
+    <!-- Tache 2 : Reservation & Generation QR Code Pass -->
+    <g transform="translate(420, 170)" filter="url(#bpmn-node-shadow)">
+      <rect x="0" y="0" width="170" height="62" rx="12" fill="#FFFFFF" stroke="#243342" stroke-width="1.2" />
+      <rect x="8" y="8" width="80" height="12" rx="6" fill="#EBF0F5" />
+      <text x="48" y="17" text-anchor="middle" font-size="6.5" font-weight="700" fill="#1C2D3D">SERVICE TASK</text>
+      <text x="12" y="37" font-size="8.5" font-weight="700" fill="#243342">Reservation Stocks</text>
+      <text x="12" y="50" font-size="7.5" fill="#5A6578">Emission Pass Retrait QR</text>
+    </g>
+
+    <!-- Flux vers Commercant -->
+    <path d="M 590 201 L 635 201 L 635 285" fill="none" stroke="#5A6578" stroke-width="1.5" marker-end="url(#bpmn-arrow)" />
+
+    <!-- ========================================================================= -->
+    <!-- COULOIR 3 : COMMERCANT / SUZANNE (Sauge Douce)                            -->
+    <!-- ========================================================================= -->
+    <rect x="62" y="250" width="878" height="115" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="0.8" />
+    <rect x="62" y="250" width="145" height="115" fill="#EBF3ED" />
+    <text x="80" y="305" font-size="10" font-weight="700" fill="#2E583D">3. Commercant</text>
+    <text x="80" y="321" font-size="8" fill="#5A6578">Preparation & Retrait</text>
+
+    <!-- Tache 3 : Preparation & Scannage Caisse POS -->
+    <g transform="translate(565, 285)" filter="url(#bpmn-node-shadow)">
+      <rect x="0" y="0" width="165" height="62" rx="12" fill="#FFFFFF" stroke="#7EA88D" stroke-width="1.2" />
+      <rect x="8" y="8" width="75" height="12" rx="6" fill="#EBF3ED" />
+      <text x="45.5" y="17" text-anchor="middle" font-size="6.5" font-weight="700" fill="#2E583D">MANUAL / POS</text>
+      <text x="12" y="37" font-size="8.5" font-weight="700" fill="#243342">Preparation Commande</text>
+      <text x="12" y="50" font-size="7.5" fill="#5A6578">Scannage Pass Client en caisse</text>
+    </g>
+
+    <!-- Flux vers Passerelle de Decision -->
+    <line x1="730" y1="316" x2="765" y2="316" stroke="#5A6578" stroke-width="1.5" marker-end="url(#bpmn-arrow)" />
+
+    <!-- Passerelle Exclusive (Losange) : Retrait Conforme ? -->
+    <g transform="translate(765, 296)">
+      <polygon points="20,0 40,20 20,40 0,20" fill="#FEF7EB" stroke="#DCB162" stroke-width="1.5" />
+      <text x="20" y="24" text-anchor="middle" font-size="10" font-weight="700" fill="#845A11">X</text>
+    </g>
+
+    <!-- Branche OK : vers Mairie & Fidelite -->
+    <path d="M 785 336 L 785 395" fill="none" stroke="#4A7A5B" stroke-width="1.5" marker-end="url(#bpmn-arrow-ok)" />
+    <rect x="792" y="350" width="28" height="16" rx="8" fill="#EBF3ED" />
+    <text x="806" y="361.5" text-anchor="middle" font-size="7" font-weight="700" fill="#2E583D">OUI</text>
+
+    <!-- ========================================================================= -->
+    <!-- COULOIR 4 : SERVICES MOBILITES & MAIRIE (Ocre Miel Doux)                  -->
+    <!-- ========================================================================= -->
+    <rect x="62" y="365" width="878" height="115" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8" />
+    <rect x="62" y="365" width="145" height="115" fill="#FEF7EB" />
+    <text x="80" y="420" font-size="10" font-weight="700" fill="#845A11">4. Mairie & Mobilite</text>
+    <text x="80" y="436" font-size="8" fill="#5A6578">Clearing VFP & Parking</text>
+
+    <!-- Tache 4 : Credit Fidelite & Ticket Parking Offert -->
+    <g transform="translate(710, 395)" filter="url(#bpmn-node-shadow)">
+      <rect x="0" y="0" width="170" height="62" rx="12" fill="#FFFFFF" stroke="#DCB162" stroke-width="1.2" />
+      <rect x="8" y="8" width="85" height="12" rx="6" fill="#FEF7EB" />
+      <text x="50.5" y="17" text-anchor="middle" font-size="6.5" font-weight="700" fill="#845A11">CLEARING AUTO</text>
+      <text x="12" y="37" font-size="8.5" font-weight="700" fill="#243342">Credit Points & VFP</text>
+      <text x="12" y="50" font-size="7.5" fill="#5A6578">Clearing 24h & stationnement</text>
+    </g>
+
+    <!-- Evenement Fin : Processus Valide -->
+    <line x1="880" y1="426" x2="905" y2="426" stroke="#4A7A5B" stroke-width="1.5" marker-end="url(#bpmn-arrow-ok)" />
+    <circle cx="920" cy="426" r="14" fill="#FFFFFF" stroke="#4A7A5B" stroke-width="3" />
+    <circle cx="920" cy="426" r="8" fill="#4A7A5B" />
+
+  </svg>
+</div>
+
+    </section>
+            
+    <section id="lean_canvas" style="margin-bottom: 45px;">
+      <div style="border-bottom: 2px solid #243342; padding-bottom: 8px; margin-bottom: 16px;">
+        <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13pt; color: #243342; margin: 0; text-transform: uppercase; letter-spacing: 0.04em;">3. Modèle Stratégique — Lean Canvas 9 Cases</h2>
+      </div>
+      <!-- LEAN CANVAS SHOPLOC (FORMAT 9 CASES SYNTHETIQUE A4 PAYSAGE) -->
+<!-- Design Editorial Craft & Pastel — Inspiration Ollca & Sobriete GLOP (Zero Emoji) -->
+
+<div class="lean-canvas-wrapper" style="font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; margin: 24pt 0; border: 1px solid #DCD6CD; border-radius: 18px; overflow: hidden; background: #FAF9F6; box-shadow: 0 6px 24px rgba(36, 51, 66, 0.05);">
+  
+  <!-- En-tete sombre noble -->
+  <div style="background: #243342; color: #FAF9F6; padding: 12pt 18pt; display: flex; justify-content: space-between; align-items: center;">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #C26750;"></span>
+      <span style="font-weight: 700; font-size: 11.5pt; text-transform: uppercase; letter-spacing: 0.08em;">Lean Canvas — Plateforme Territoriale ShopLoc</span>
+    </div>
+    <span style="font-size: 8.5pt; color: #DCD6CD; font-weight: 500;">Modele Economique & Operationnel a Fort Impact Local &bull; Zéro Commission sur Ventes</span>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: 270px 145px; gap: 10pt; padding: 12pt; background: #FAF9F6;">
+    
+    <!-- 1. PROBLEME -->
+    <div style="background: #FFFFFF; border: 1px solid #EDE8E1; border-radius: 14px; padding: 12pt; display: flex; flex-direction: column; box-shadow: 0 2px 8px rgba(36, 51, 66, 0.03);">
+      <div style="display: inline-block; background: #EBF0F5; color: #1C2D3D; font-size: 7pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 9999px; margin-bottom: 8pt; width: fit-content;">1. Probleme</div>
+      <ul style="font-size: 8pt; margin: 0; padding-left: 12pt; line-height: 1.45; color: #1E252D;">
+        <li>Desertification commerciale des centres-villes au profit des zones peripheriques.</li>
+        <li>Concurrence des marketplaces mondiales a forte commission (15-30%).</li>
+        <li>Fracture numerique et sentiment d exclusion pour les seniors (Pierre 74 ans).</li>
+      </ul>
+      <div style="margin-top: auto; font-size: 7.5pt; color: #5A6578; border-top: 1px solid #EDE8E1; padding-top: 6pt;">
+        <strong style="color: #243342;">Alternatives :</strong> Plateformes avec commissions lourdes, cartes fidelite papier isolees.
+      </div>
+    </div>
+
+    <!-- 2. SOLUTION & METRIQUES -->
+    <div style="display: grid; grid-template-rows: 1fr 1fr; gap: 10pt;">
+      <div style="background: #FFFFFF; border: 1px solid #EDE8E1; border-radius: 14px; padding: 10pt; box-shadow: 0 2px 8px rgba(36, 51, 66, 0.03);">
+        <div style="display: inline-block; background: #FBEEEA; color: #8E3D2A; font-size: 7pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 9999px; margin-bottom: 6pt; width: fit-content;">4. Solution</div>
+        <ul style="font-size: 7.5pt; margin: 0; padding-left: 10pt; line-height: 1.4; color: #1E252D;">
+          <li>Click & Collect mutualise sans logistique lointaine.</li>
+          <li>Double fidelite : points commercants + statut VFP.</li>
+          <li>Carte physique NFC & QR scannable haute visibilite.</li>
+        </ul>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #EDE8E1; border-radius: 14px; padding: 10pt; box-shadow: 0 2px 8px rgba(36, 51, 66, 0.03);">
+        <div style="display: inline-block; background: #EBF3ED; color: #2E583D; font-size: 7pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 9999px; margin-bottom: 6pt; width: fit-content;">8. Indicateurs Cles</div>
+        <ul style="font-size: 7.5pt; margin: 0; padding-left: 10pt; line-height: 1.4; color: #1E252D;">
+          <li>Taux d adhesion commerces (> 40% en 12 mois).</li>
+          <li>Frequence de passage VFP (> 10 passages / 15j).</li>
+          <li>Panier moyen physique genere en centre-ville.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 3. PROPOSITION DE VALEUR UNIQUE (CARTE ACCENT TERRACOTTA) -->
+    <div style="background: #FFFFFF; border: 1.5px solid #D88B77; border-radius: 14px; padding: 12pt; display: flex; flex-direction: column; box-shadow: 0 4px 14px rgba(194, 103, 80, 0.08);">
+      <div style="display: inline-block; background: #FBEEEA; color: #C26750; font-size: 7pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 9999px; margin-bottom: 8pt; width: fit-content;">3. Proposition de Valeur</div>
+      <div style="font-size: 8.5pt; font-weight: 700; color: #243342; line-height: 1.4; margin-bottom: 8pt;">
+        « Redynamiser l economie de proximite en transformant la fidelite marchande en mobilite urbaine souveraine et gratuite. »
+      </div>
+      <div style="font-size: 7.5pt; line-height: 1.35; color: #5A6578;">
+        Ancrage physique au centre-ville, protection stricte des donnees et valorisation citoyenne sans prelever de commission sur les ventes artisanales.
+      </div>
+      <div style="margin-top: auto; font-size: 7.5pt; color: #C26750; border-top: 1px solid #EDE8E1; padding-top: 6pt;">
+        <strong style="color: #243342;">Concept cle :</strong> Le tiers de confiance des commerces de quartier.
+      </div>
+    </div>
+
+    <!-- 4. AVANTAGE DECISIF & CANAUX -->
+    <div style="display: grid; grid-template-rows: 1fr 1fr; gap: 10pt;">
+      <div style="background: #FFFFFF; border: 1px solid #EDE8E1; border-radius: 14px; padding: 10pt; box-shadow: 0 2px 8px rgba(36, 51, 66, 0.03);">
+        <div style="display: inline-block; background: #FEF7EB; color: #845A11; font-size: 7pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 9999px; margin-bottom: 6pt; width: fit-content;">9. Avantage Decisif</div>
+        <ul style="font-size: 7.5pt; margin: 0; padding-left: 10pt; line-height: 1.4; color: #1E252D;">
+          <li>Soutien institutionnel des mairies & intercommunalites.</li>
+          <li>Recompense croisee immediate avec le stationnement communal.</li>
+        </ul>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #EDE8E1; border-radius: 14px; padding: 10pt; box-shadow: 0 2px 8px rgba(36, 51, 66, 0.03);">
+        <div style="display: inline-block; background: #EBF0F5; color: #1C2D3D; font-size: 7pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 9999px; margin-bottom: 6pt; width: fit-content;">5. Canaux</div>
+        <ul style="font-size: 7.5pt; margin: 0; padding-left: 10pt; line-height: 1.4; color: #1E252D;">
+          <li>Application web citoyenne responsive (mobile/desktop).</li>
+          <li>Carte physique NFC remise par la mairie et commercants.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 5. SEGMENTS DE CLIENTELE -->
+    <div style="background: #FFFFFF; border: 1px solid #EDE8E1; border-radius: 14px; padding: 12pt; display: flex; flex-direction: column; box-shadow: 0 2px 8px rgba(36, 51, 66, 0.03);">
+      <div style="display: inline-block; background: #EBF3ED; color: #2E583D; font-size: 7pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 9999px; margin-bottom: 8pt; width: fit-content;">2. Segments Clients</div>
+      <ul style="font-size: 8pt; margin: 0; padding-left: 12pt; line-height: 1.45; color: #1E252D;">
+        <li><strong>Consommateurs locaux :</strong> Actifs presses (C&C) et seniors 65+ (Pierre, parcours simple).</li>
+        <li><strong>Commercants & Artisans :</strong> Boulangers, primeurs, bouchers independants (Suzanne).</li>
+        <li><strong>Collectivites :</strong> Elus et mairies soucieux de revitaliser leur coeur de ville (Marius).</li>
+      </ul>
+      <div style="margin-top: auto; font-size: 7.5pt; color: #2E583D; border-top: 1px solid #EDE8E1; padding-top: 6pt;">
+        <strong style="color: #243342;">Cible prioritaire :</strong> Centres-villes denses et bourgs commercants.
+      </div>
+    </div>
+
+    <!-- 6. STRUCTURE DE COUTS -->
+    <div style="grid-column: span 2; background: #FFFFFF; border: 1px solid #EDE8E1; border-radius: 14px; padding: 12pt; box-shadow: 0 2px 8px rgba(36, 51, 66, 0.03);">
+      <div style="display: inline-block; background: #EBF0F5; color: #1C2D3D; font-size: 7pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 9999px; margin-bottom: 6pt;">7. Structure de Couts</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8pt; font-size: 7.5pt; color: #1E252D;">
+        <div>
+          <strong style="color: #243342;">Developpement & Hebergement :</strong>
+          <ul style="margin: 2pt 0 0 0; padding-left: 10pt; line-height: 1.35;">
+            <li>Infrastructure cloud souveraine (serveurs securises).</li>
+            <li>Maintenance applicative & conformite RGPD.</li>
+          </ul>
+        </div>
+        <div>
+          <strong style="color: #243342;">Deploiement & Materiel :</strong>
+          <ul style="margin: 2pt 0 0 0; padding-left: 10pt; line-height: 1.35;">
+            <li>Impression et distribution des cartes NFC seniors.</li>
+            <li>Kits de communication commercants en vitrine.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. FLUX DE REVENUS -->
+    <div style="grid-column: span 3; background: #FFFFFF; border: 1px solid #EDE8E1; border-radius: 14px; padding: 12pt; box-shadow: 0 2px 8px rgba(36, 51, 66, 0.03);">
+      <div style="display: inline-block; background: #FBEEEA; color: #8E3D2A; font-size: 7pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 9999px; margin-bottom: 6pt;">6. Flux de Revenus</div>
+      <div style="display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 8pt; font-size: 7.5pt; color: #1E252D;">
+        <div>
+          <strong style="color: #8E3D2A;">Abonnement Municipal (B2G) :</strong>
+          <div style="line-height: 1.35; margin-top: 2pt; color: #5A6578;">Licence annuelle territoriale financee par la ville (forfait selon nombre d habitants).</div>
+        </div>
+        <div>
+          <strong style="color: #2E583D;">Adhesion Marchande Forfaitaire :</strong>
+          <div style="line-height: 1.35; margin-top: 2pt; color: #5A6578;">Cotisation mensuelle fixe moderee (ex: 29 €/mois), zero commission variable sur les ventes.</div>
+        </div>
+        <div>
+          <strong style="color: #845A11;">Services a Valeur Ajoutee :</strong>
+          <div style="line-height: 1.35; margin-top: 2pt; color: #5A6578;">Campagnes promotionnelles municipales et modules analytiques de flux anonymises.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+    </section>
+            
+    <section id="matrice_positionnement" style="margin-bottom: 45px;">
+      <div style="border-bottom: 2px solid #243342; padding-bottom: 8px; margin-bottom: 16px;">
+        <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13pt; color: #243342; margin: 0; text-transform: uppercase; letter-spacing: 0.04em;">4. Positionnement Concurrentiel — Matrice 2 Axes (Figure 1.3)</h2>
+      </div>
+      <!-- MATRICE DE POSITIONNEMENT CONCURRENTIEL (2 AXES STRATEGIQUES) -->
+<!-- Design Editorial Craft & Pastel — Inspiration Ollca & Sobriete GLOP (Zero Emoji) -->
+
+<div class="diagram-container" style="margin: 24pt 0; text-align: center; background: #FAF9F6; border: 1px solid #DCD6CD; border-radius: 18px; padding: 22pt 18pt; box-shadow: 0 6px 24px rgba(36, 51, 66, 0.05);">
+  <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16pt;">
+    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #C26750;"></span>
+    <h3 style="font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; font-size: 11pt; font-weight: 700; color: #243342; margin: 0; text-transform: uppercase; letter-spacing: 0.08em;">
+      Figure 1.3 — Matrice de Positionnement Strategique & Concurrentiel
+    </h3>
+  </div>
+
+  <svg viewBox="0 0 740 430" width="100%" height="430" style="font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; overflow: visible;">
+    <defs>
+      <filter id="matrix-card-shadow" x="-5%" y="-10%" width="110%" height="125%">
+        <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#243342" flood-opacity="0.06" />
+      </filter>
+    </defs>
+
+    <!-- 4 QUADRANTS AUX TEINTES PASTEL DOUCES -->
+    <rect x="50" y="30" width="310" height="170" rx="16" fill="#EBF0F5" opacity="0.6" />
+    
+    <!-- Quadrant cible ShopLoc (Sauge maraichere douce) -->
+    <rect x="380" y="30" width="310" height="170" rx="16" fill="#EBF3ED" stroke="#7EA88D" stroke-width="1.2" stroke-dasharray="4,4" />
+    <rect x="520" y="40" width="160" height="20" rx="10" fill="#D9E9DD" />
+    <text x="600" y="53.5" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2E583D" letter-spacing="0.06em">ZONE CIBLE SHOPLOC</text>
+
+    <rect x="50" y="220" width="310" height="170" rx="16" fill="#FBEEEA" opacity="0.4" />
+    <rect x="380" y="220" width="310" height="170" rx="16" fill="#FEF7EB" opacity="0.5" />
+
+    <!-- AXE HORIZONTAL (X) : Ancrage territorial physique -->
+    <line x1="40" y1="210" x2="695" y2="210" stroke="#243342" stroke-width="1.75" />
+    <polygon points="702,210 692,205 692,215" fill="#243342" />
+    <text x="50" y="200" font-size="8.5" fill="#5A6578">Delocalise / Livraison routiere lointaine (-)</text>
+    <text x="690" y="200" text-anchor="end" font-size="8.5" font-weight="700" fill="#243342">Ancrage physique & Retrait pieton centre-ville (+)</text>
+
+    <!-- AXE VERTICAL (Y) : Modele economique & Souverainete -->
+    <line x1="370" y1="395" x2="370" y2="25" stroke="#243342" stroke-width="1.75" />
+    <polygon points="370,18 365,28 375,28" fill="#243342" />
+    <text x="380" y="28" font-size="8.5" font-weight="700" fill="#243342">Gratuite citoyenne & Souverainete communale (+)</text>
+    <text x="380" y="390" font-size="8.5" fill="#5A6578">Commissions predatrices sur CA marchand (-)</text>
+
+    <!-- ========================================================================= -->
+    <!-- POSITIONNEMENT DES ACTEURS (CARTES SCULPTEES BESPOKE)                     -->
+    <!-- ========================================================================= -->
+
+    <!-- Acteur 1 : ShopLoc (Cible Ideale : Haut Droite) -->
+    <g filter="url(#matrix-card-shadow)">
+      <rect x="460" y="75" width="210" height="75" rx="16" fill="#243342" stroke="#243342" stroke-width="1.2" />
+      <rect x="475" y="86" width="105" height="15" rx="7.5" fill="rgba(255,255,255,0.15)" />
+      <text x="527.5" y="96.5" text-anchor="middle" font-size="7" font-weight="700" fill="#DCD6CD">MODELE SHOPLOC</text>
+      <text x="475" y="122" font-size="12" font-weight="800" fill="#FAF9F6">Plateforme ShopLoc</text>
+      <text x="475" y="138" font-size="8" fill="#8B9EAF">Click & Collect pieton &bull; 0% commission</text>
+    </g>
+
+    <!-- Acteur 2 : Ollca / Epicery (Ancrage Artisanal mais Commission) -->
+    <g filter="url(#matrix-card-shadow)">
+      <rect x="440" y="245" width="190" height="65" rx="14" fill="#FFFFFF" stroke="#D88B77" stroke-width="1.2" />
+      <rect x="455" y="255" width="90" height="14" rx="7" fill="#FBEEEA" />
+      <text x="500" y="264.5" text-anchor="middle" font-size="6.5" font-weight="700" fill="#C26750">CLICK & COLLECT</text>
+      <text x="455" y="287" font-size="10" font-weight="700" fill="#243342">Ollca / Epicery</text>
+      <text x="455" y="301" font-size="7.5" fill="#5A6578">Artisans &bull; Commission sur panier</text>
+    </g>
+
+    <!-- Acteur 3 : Proxity (Fidelite Mairie Territoriale) -->
+    <g filter="url(#matrix-card-shadow)">
+      <rect x="100" y="75" width="195" height="65" rx="14" fill="#FFFFFF" stroke="#DCB162" stroke-width="1.2" />
+      <rect x="115" y="85" width="95" height="14" rx="7" fill="#FEF7EB" />
+      <text x="162.5" y="94.5" text-anchor="middle" font-size="6.5" font-weight="700" fill="#845A11">FIDELITE VILLE</text>
+      <text x="115" y="117" font-size="10" font-weight="700" fill="#243342">Proxity / Pass Ville</text>
+      <text x="115" y="131" font-size="7.5" fill="#5A6578">Carte fidelite sans Click & Collect</text>
+    </g>
+
+    <!-- Acteur 4 : Marketplaces Globales (Amazon, etc. - Bas Gauche) -->
+    <g filter="url(#matrix-card-shadow)">
+      <rect x="75" y="250" width="195" height="65" rx="14" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1.2" />
+      <rect x="90" y="260" width="90" height="14" rx="7" fill="#F5F2EB" />
+      <text x="135" y="269.5" text-anchor="middle" font-size="6.5" font-weight="700" fill="#5A6578">E-COMMERCE</text>
+      <text x="90" y="292" font-size="10" font-weight="700" fill="#243342">Marketplaces Globales</text>
+      <text x="90" y="306" font-size="7.5" fill="#8C96A5">Entrepots lointains & fuite de valeur</text>
+    </g>
+
+  </svg>
+</div>
+
+    </section>
+            
+    <section id="merise_mcd_template" style="margin-bottom: 45px;">
+      <div style="border-bottom: 2px solid #243342; padding-bottom: 8px; margin-bottom: 16px;">
+        <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13pt; color: #243342; margin: 0; text-transform: uppercase; letter-spacing: 0.04em;">5. Modèle Conceptuel de Données Merise & Dictionnaire Booktabs (Figure 4.1)</h2>
+      </div>
+      <!-- GABARIT DE REFERENCE MCD MERISE ACADEMIQUE EN SVG VECTORIEL PUR -->
+<!-- Design Editorial Craft & Pastel — Inspiration Ollca & Sobriete GLOP (Zero Emoji) -->
+
+<div class="diagram-container" style="margin: 24pt 0; text-align: center; background: #FAF9F6; border: 1px solid #DCD6CD; border-radius: 18px; padding: 22pt 18pt; box-shadow: 0 6px 24px rgba(36, 51, 66, 0.05);">
+  <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 4pt;">
+    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #243342;"></span>
+    <h3 style="font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; font-size: 11pt; font-weight: 700; color: #243342; margin: 0; text-transform: uppercase; letter-spacing: 0.08em;">
+      Figure 4.1 — Modele Conceptuel de Donnees (MCD) : Coeur Metier & Fidelite Territoriale
+    </h3>
+  </div>
+  <div style="font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; font-size: 8.5pt; color: #5A6578; margin-bottom: 16pt; font-style: italic;">
+    Formalisme Merise normalise AFNOR (Entites bicolores, Associations verbales et cardinalites en pilules d'etat)
+  </div>
+
+  <svg viewBox="0 0 960 460" width="100%" height="460" style="font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; overflow: visible;">
+    <defs>
+      <filter id="mcd-card-shadow" x="-5%" y="-10%" width="110%" height="125%">
+        <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#243342" flood-opacity="0.06" />
+      </filter>
+    </defs>
+    
+    <!-- ========================================================================= -->
+    <!-- 1. ENTITE : CITOYEN (Terracotta doux)                                     -->
+    <!-- ========================================================================= -->
+    <g transform="translate(30, 40)" filter="url(#mcd-card-shadow)">
+      <rect x="0" y="0" width="190" height="160" rx="14" fill="#FFFFFF" stroke="#D88B77" stroke-width="1.2" />
+      <path d="M 0 14 Q 0 0 14 0 L 176 0 Q 190 0 190 14 L 190 32 L 0 32 Z" fill="#FBEEEA" />
+      <text x="95" y="21" text-anchor="middle" font-size="10" font-weight="700" fill="#8E3D2A" letter-spacing="0.06em">CITOYEN</text>
+      <line x1="0" y1="32" x2="190" y2="32" stroke="#D88B77" stroke-width="1.2" />
+      
+      <text x="14" y="52" font-size="8" font-weight="700" fill="#243342" text-decoration="underline"># id_citoyen (UUID) [PK]</text>
+      <text x="14" y="70" font-size="8" fill="#5A6578">nom (VARCHAR)</text>
+      <text x="14" y="86" font-size="8" fill="#5A6578">prenom (VARCHAR)</text>
+      <text x="14" y="102" font-size="8" fill="#5A6578">email_hash (VARCHAR)</text>
+      <text x="14" y="118" font-size="8" fill="#5A6578">code_carte_qr (VARCHAR)</text>
+      <text x="14" y="134" font-size="8" fill="#5A6578">solde_vfp_15j (INT)</text>
+      <text x="14" y="150" font-size="8" fill="#5A6578">date_adhesion (DATE)</text>
+    </g>
+
+    <!-- ASSOCIATION : PASSER (Entre Citoyen et Commande) -->
+    <g transform="translate(265, 95)" filter="url(#mcd-card-shadow)">
+      <rect x="0" y="0" width="95" height="48" rx="24" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1.2" />
+      <text x="47.5" y="25" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1C2D3D">Passer</text>
+      <text x="47.5" y="38" text-anchor="middle" font-size="7" fill="#8C96A5">date_creation</text>
+    </g>
+
+    <!-- Lignes & Cardinalites Citoyen - Passer - Commande -->
+    <line x1="220" y1="119" x2="265" y2="119" stroke="#8A9BAE" stroke-width="1.5" />
+    <rect x="228" y="102" width="26" height="16" rx="8" fill="#FBEEEA" />
+    <text x="241" y="113.5" text-anchor="middle" font-size="7" font-weight="700" fill="#C26750">0,n</text>
+
+    <line x1="360" y1="119" x2="405" y2="119" stroke="#8A9BAE" stroke-width="1.5" />
+    <rect x="370" y="102" width="26" height="16" rx="8" fill="#EBF0F5" />
+    <text x="383" y="113.5" text-anchor="middle" font-size="7" font-weight="700" fill="#243342">1,1</text>
+
+    <!-- ========================================================================= -->
+    <!-- 2. ENTITE : COMMANDE (Ardoise Brumeux)                                    -->
+    <!-- ========================================================================= -->
+    <g transform="translate(405, 40)" filter="url(#mcd-card-shadow)">
+      <rect x="0" y="0" width="185" height="160" rx="14" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1.2" />
+      <path d="M 0 14 Q 0 0 14 0 L 171 0 Q 185 0 185 14 L 185 32 L 0 32 Z" fill="#EBF0F5" />
+      <text x="92.5" y="21" text-anchor="middle" font-size="10" font-weight="700" fill="#1C2D3D" letter-spacing="0.06em">COMMANDE</text>
+      <line x1="0" y1="32" x2="185" y2="32" stroke="#8B9EAF" stroke-width="1.2" />
+      
+      <text x="14" y="52" font-size="8" font-weight="700" fill="#243342" text-decoration="underline"># id_commande (UUID) [PK]</text>
+      <text x="14" y="70" font-size="8" fill="#5A6578">reference (VARCHAR)</text>
+      <text x="14" y="86" font-size="8" fill="#5A6578">statut_retrait (ENUM)</text>
+      <text x="14" y="102" font-size="8" fill="#5A6578">montant_total (DECIMAL)</text>
+      <text x="14" y="118" font-size="8" fill="#5A6578">code_retrait_otp (VARCHAR)</text>
+      <text x="14" y="134" font-size="8" fill="#5A6578">remise_fidelite (DECIMAL)</text>
+      <text x="14" y="150" font-size="8" fill="#5A6578">date_retrait_prevu (DATE)</text>
+    </g>
+
+    <!-- ASSOCIATION : CONCERNER (Entre Commande et Commerce) -->
+    <g transform="translate(635, 95)" filter="url(#mcd-card-shadow)">
+      <rect x="0" y="0" width="95" height="48" rx="24" fill="#FFFFFF" stroke="#7EA88D" stroke-width="1.2" />
+      <text x="47.5" y="25" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2E583D">Concerner</text>
+      <text x="47.5" y="38" text-anchor="middle" font-size="7" fill="#8C96A5">creneau_h</text>
+    </g>
+
+    <!-- Lignes & Cardinalites Commande - Concerner - Commerce -->
+    <line x1="590" y1="119" x2="635" y2="119" stroke="#8A9BAE" stroke-width="1.5" />
+    <rect x="598" y="102" width="26" height="16" rx="8" fill="#EBF0F5" />
+    <text x="611" y="113.5" text-anchor="middle" font-size="7" font-weight="700" fill="#243342">1,n</text>
+
+    <line x1="730" y1="119" x2="775" y2="119" stroke="#8A9BAE" stroke-width="1.5" />
+    <rect x="740" y="102" width="26" height="16" rx="8" fill="#EBF3ED" />
+    <text x="753" y="113.5" text-anchor="middle" font-size="7" font-weight="700" fill="#2E583D">0,n</text>
+
+    <!-- ========================================================================= -->
+    <!-- 3. ENTITE : COMMERCE (Sauge Douce Maraichere)                             -->
+    <!-- ========================================================================= -->
+    <g transform="translate(775, 40)" filter="url(#mcd-card-shadow)">
+      <rect x="0" y="0" width="165" height="160" rx="14" fill="#FFFFFF" stroke="#7EA88D" stroke-width="1.2" />
+      <path d="M 0 14 Q 0 0 14 0 L 151 0 Q 165 0 165 14 L 165 32 L 0 32 Z" fill="#EBF3ED" />
+      <text x="82.5" y="21" text-anchor="middle" font-size="10" font-weight="700" fill="#2E583D" letter-spacing="0.06em">COMMERCE</text>
+      <line x1="0" y1="32" x2="165" y2="32" stroke="#7EA88D" stroke-width="1.2" />
+      
+      <text x="14" y="52" font-size="8" font-weight="700" fill="#243342" text-decoration="underline"># id_commerce (UUID) [PK]</text>
+      <text x="14" y="70" font-size="8" fill="#5A6578">nom_enseigne (VARCHAR)</text>
+      <text x="14" y="86" font-size="8" fill="#5A6578">siren (CHAR)</text>
+      <text x="14" y="102" font-size="8" fill="#5A6578">adresse (VARCHAR)</text>
+      <text x="14" y="118" font-size="8" fill="#5A6578">statut_vfp (BOOLEAN)</text>
+      <text x="14" y="134" font-size="8" fill="#5A6578">taux_remise (DECIMAL)</text>
+      <text x="14" y="150" font-size="8" fill="#5A6578">creneaux_retrait (JSON)</text>
+    </g>
+
+    <!-- ========================================================================= -->
+    <!-- LIAISONS VERTICALES : LIGNE_COMMANDE & PRODUIT                            -->
+    <!-- ========================================================================= -->
+
+    <!-- Association CONTENIR (sous Commande) -->
+    <line x1="497" y1="200" x2="497" y2="250" stroke="#8A9BAE" stroke-width="1.5" />
+    <rect x="502" y="215" width="26" height="16" rx="8" fill="#EBF0F5" />
+    <text x="515" y="226.5" text-anchor="middle" font-size="7" font-weight="700" fill="#243342">1,n</text>
+
+    <g transform="translate(450, 250)" filter="url(#mcd-card-shadow)">
+      <rect x="0" y="0" width="95" height="48" rx="24" fill="#FFFFFF" stroke="#DCB162" stroke-width="1.2" />
+      <text x="47.5" y="25" text-anchor="middle" font-size="8.5" font-weight="700" fill="#845A11">Contenir</text>
+      <text x="47.5" y="38" text-anchor="middle" font-size="7" fill="#8C96A5">quantite</text>
+    </g>
+
+    <line x1="497" y1="298" x2="497" y2="340" stroke="#8A9BAE" stroke-width="1.5" />
+    <rect x="502" y="310" width="26" height="16" rx="8" fill="#FEF7EB" />
+    <text x="515" y="321.5" text-anchor="middle" font-size="7" font-weight="700" fill="#845A11">0,n</text>
+
+    <!-- 4. ENTITE : PRODUIT (Ocre Miel Doux) -->
+    <g transform="translate(405, 340)" filter="url(#mcd-card-shadow)">
+      <rect x="0" y="0" width="185" height="105" rx="14" fill="#FFFFFF" stroke="#DCB162" stroke-width="1.2" />
+      <path d="M 0 14 Q 0 0 14 0 L 171 0 Q 185 0 185 14 L 185 30 L 0 30 Z" fill="#FEF7EB" />
+      <text x="92.5" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#845A11" letter-spacing="0.06em">PRODUIT</text>
+      <line x1="0" y1="30" x2="185" y2="30" stroke="#DCB162" stroke-width="1.2" />
+      
+      <text x="14" y="48" font-size="8" font-weight="700" fill="#243342" text-decoration="underline"># id_produit (UUID) [PK]</text>
+      <text x="14" y="64" font-size="8" fill="#5A6578">designation (VARCHAR)</text>
+      <text x="14" y="80" font-size="8" fill="#5A6578">prix_unitaire_ttc (DECIMAL)</text>
+      <text x="14" y="96" font-size="8" fill="#5A6578">stock_disponible (INT)</text>
+    </g>
+
+  </svg>
+
+  <!-- DICTIONNAIRE RELATIONNEL BOOKTABS ACADEMIQUE NORMALISE -->
+  <div style="margin-top: 20pt; border-top: 1px solid #EDE8E1; padding-top: 16pt; text-align: left;">
+    <div style="font-size: 9.5pt; font-weight: 700; color: #243342; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8pt;">
+      Dictionnaire Relationnel (MLD PostgreSQL 3NF)
+    </div>
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 8pt; font-family: 'Plus Jakarta Sans', sans-serif;">
+        <thead>
+          <tr style="border-top: 1.5pt solid #243342; border-bottom: 1pt solid #243342; background: #F5F2EB;">
+            <th style="padding: 6pt 10pt; text-align: left; color: #243342;">Table Relationnelle</th>
+            <th style="padding: 6pt 10pt; text-align: left; color: #243342;">Cle Primaire [PK]</th>
+            <th style="padding: 6pt 10pt; text-align: left; color: #243342;">Cles Etrangeres [FK]</th>
+            <th style="padding: 6pt 10pt; text-align: left; color: #243342;">Attributs Metier Majeurs</th>
+            <th style="padding: 6pt 10pt; text-align: left; color: #243342;">Contraintes d'Integrite</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 0.5pt solid #EDE8E1;">
+            <td style="padding: 6pt 10pt; font-weight: 700; color: #8E3D2A;">citoyen</td>
+            <td style="padding: 6pt 10pt; font-family: 'Fira Code', monospace; color: #243342;">id_citoyen</td>
+            <td style="padding: 6pt 10pt; color: #8A9BAE;">—</td>
+            <td style="padding: 6pt 10pt; color: #5A6578;">nom, prenom, email_hash, code_carte_qr, solde_vfp_15j</td>
+            <td style="padding: 6pt 10pt; color: #2E583D; font-weight: 600;">UNIQUE(email_hash, code_carte_qr)</td>
+          </tr>
+          <tr style="border-bottom: 0.5pt solid #EDE8E1; background: #FAF9F6;">
+            <td style="padding: 6pt 10pt; font-weight: 700; color: #2E583D;">commerce</td>
+            <td style="padding: 6pt 10pt; font-family: 'Fira Code', monospace; color: #243342;">id_commerce</td>
+            <td style="padding: 6pt 10pt; color: #8A9BAE;">—</td>
+            <td style="padding: 6pt 10pt; color: #5A6578;">nom_enseigne, siren, adresse, statut_vfp, taux_remise</td>
+            <td style="padding: 6pt 10pt; color: #2E583D; font-weight: 600;">CHECK(taux_remise &gt;= 0)</td>
+          </tr>
+          <tr style="border-bottom: 0.5pt solid #EDE8E1;">
+            <td style="padding: 6pt 10pt; font-weight: 700; color: #1C2D3D;">commande</td>
+            <td style="padding: 6pt 10pt; font-family: 'Fira Code', monospace; color: #243342;">id_commande</td>
+            <td style="padding: 6pt 10pt; font-family: 'Fira Code', monospace; color: #8E3D2A;">id_citoyen (citoyen)</td>
+            <td style="padding: 6pt 10pt; color: #5A6578;">reference, statut_retrait, montant_total, code_retrait_otp</td>
+            <td style="padding: 6pt 10pt; color: #2E583D; font-weight: 600;">ON DELETE RESTRICT</td>
+          </tr>
+          <tr style="border-bottom: 1.5pt solid #243342; background: #FAF9F6;">
+            <td style="padding: 6pt 10pt; font-weight: 700; color: #845A11;">ligne_commande</td>
+            <td style="padding: 6pt 10pt; font-family: 'Fira Code', monospace; color: #243342;">(id_commande, id_produit)</td>
+            <td style="padding: 6pt 10pt; font-family: 'Fira Code', monospace; color: #1C2D3D;">id_commande, id_produit</td>
+            <td style="padding: 6pt 10pt; color: #5A6578;">quantite, prix_unitaire_facture</td>
+            <td style="padding: 6pt 10pt; color: #2E583D; font-weight: 600;">CHECK(quantite &gt; 0)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+    </section>
+            
+    <section id="ui_wireframe_card" style="margin-bottom: 45px;">
+      <div style="border-bottom: 2px solid #243342; padding-bottom: 8px; margin-bottom: 16px;">
+        <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13pt; color: #243342; margin: 0; text-transform: uppercase; letter-spacing: 0.04em;">6. Maquettes d Interfaces — Inspiration Ollca, Senior Pierre & Caisse Suzanne</h2>
+      </div>
+      <!-- COMPOSANTS DE MAQUETTES D'ECRANS CLES (INSPIRATION PURE OLLCA, SENIOR PIERRE & CAISSE SUZANNE) -->
+<!-- Zero Emoji & Palette Pastel Craft : Lin doux #FAF9F6, Ardoise #243342, Terracotta #C26750, Sauge #4A7A5B, Ocre miel #C48B28 -->
+
+<div class="wireframe-collection" style="font-family: 'Poppins', sans-serif; margin: 24pt 0;">
+
+  <!-- ========================================================================= -->
+  <!-- 1. VITRINE ARTISANALE & CLICK & COLLECT (INSPIRATION DIRECTE OLLCA.COM)   -->
+  <!-- ========================================================================= -->
+  <div class="diagram-container" style="text-align: left; padding: 20pt; border: 1px solid #DCD6CD; border-radius: 18px; background: #FAF9F6; margin-bottom: 26pt; box-shadow: 0 6px 24px rgba(36, 51, 66, 0.05);">
+    
+    <!-- En-tete de figure sobre -->
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #EDE8E1; padding-bottom: 10pt; margin-bottom: 16pt;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #C26750;"></span>
+          <span style="font-weight: 700; font-size: 11.5pt; color: #243342; text-transform: uppercase; letter-spacing: 0.06em;">Maquette 1 — Vitrine Artisanale & Commande Click & Collect (Anatomie Ollca)</span>
+        </div>
+        <div style="font-size: 8.5pt; color: #5A6578; margin-top: 3pt;">Architecture de composants reels : avatar chevauchant, puces pilules d'etat, cartes produits a bouton circulaire et panier stepper</div>
+      </div>
+      <span style="background: #FBEEEA; color: #C26750; font-size: 7.5pt; font-weight: 700; padding: 4px 12px; border-radius: 9999px; border: 1px solid #D88B77;">Artisanat d'Echoppe</span>
+    </div>
+
+    <!-- BANNIERE HERO ARTISAN (STYLE OLLCA AVEC AVATAR CHEVAUCHANT) -->
+    <div style="border: 1px solid #EDE8E1; border-radius: 18px; overflow: hidden; background: #FFFFFF; margin-bottom: 18pt; box-shadow: 0 4px 16px rgba(36, 51, 66, 0.04);">
+      
+      <!-- Fond Visuel d'Atelier (Degrade noble & artwork vectoriel) -->
+      <div style="background: linear-gradient(135deg, #243342 0%, #1A2530 100%); position: relative; padding: 22px 24px; min-height: 120px; color: #FAF9F6; display: flex; justify-content: space-between; align-items: flex-start;">
+        <!-- Motif d'arriere plan discret -->
+        <svg style="position: absolute; right: 0; top: 0; bottom: 0; width: 340px; height: 100%; opacity: 0.12; pointer-events: none;" viewBox="0 0 340 140">
+          <circle cx="280" cy="70" r="100" fill="none" stroke="#FAF9F6" stroke-width="2" />
+          <circle cx="280" cy="70" r="60" fill="none" stroke="#FAF9F6" stroke-width="1.5" stroke-dasharray="4,4" />
+          <path d="M 120 140 L 220 20 L 320 140 Z" fill="none" stroke="#FAF9F6" stroke-width="1.5" />
+        </svg>
+
+        <!-- Puces flottantes superieures -->
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; z-index: 2;">
+          <span style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.25); color: #FAF9F6; font-size: 7.5pt; font-weight: 600; padding: 4px 12px; border-radius: 9999px; display: inline-flex; align-items: center; gap: 6px;">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: #4A7A5B; display: inline-block;"></span>
+            Ouvert jusqu'a 19h30
+          </span>
+          <span style="background: #EBF3ED; color: #2E583D; font-size: 7.5pt; font-weight: 700; padding: 4px 12px; border-radius: 9999px; border: 1px solid #7EA88D;">
+            Label Fait Maison & Meunier Bio
+          </span>
+        </div>
+
+        <span style="background: #FEF7EB; color: #845A11; font-size: 7.5pt; font-weight: 700; padding: 4px 12px; border-radius: 9999px; border: 1px solid #DCB162; z-index: 2;">
+          Partenaire VFP & Mobilite Lille
+        </span>
+      </div>
+
+      <!-- Corps de la vitrine avec Avatar Chevauchant -->
+      <div style="padding: 0 24px 18px 24px; position: relative;">
+        
+        <!-- Medaillon avatar circulaire chevauchant (Signature Ollca) -->
+        <div style="width: 72px; height: 72px; border-radius: 50%; border: 3.5px solid #FFFFFF; background: #FBEEEA; box-shadow: 0 6px 16px rgba(36, 51, 66, 0.12); position: absolute; top: -36px; left: 24px; display: flex; align-items: center; justify-content: center; z-index: 10;">
+          <!-- Monogramme / Sceau artisanal grave -->
+          <svg width="38" height="38" viewBox="0 0 40 40" fill="none">
+            <path d="M 12 28 C 12 18, 28 18, 28 28 Z" fill="#C26750" />
+            <circle cx="20" cy="14" r="7" fill="#C26750" />
+            <path d="M 10 32 L 30 32" stroke="#C26750" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </div>
+
+        <!-- Informations artisanales decalees pour faire place a l'avatar -->
+        <div style="padding-top: 42px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4pt;">
+              <h3 style="margin: 0; font-size: 14pt; font-weight: 700; color: #243342;">Boulangerie Saint-Sauveur</h3>
+              <span style="font-size: 8pt; color: #7EA88D; font-weight: 600;">Maitre Artisan depuis 2011</span>
+            </div>
+            <div style="font-size: 8.5pt; color: #5A6578; display: flex; align-items: center; gap: 6px;">
+              <!-- Pin localisation SVG -->
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C26750" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M 21 10 c 0 7 -9 13 -9 13 s -9 -6 -9 -13 a 9 9 0 0 1 18 0 z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              14 Place Saint-Sauveur, 59000 Lille &bull; A 280 m a pied &bull; Note verifiee : 4.9/5 (184 avis)
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 8px;">
+            <button style="background: #F5F2EB; border: 1px solid #DCD6CD; color: #243342; font-size: 8pt; font-weight: 600; padding: 6px 14px; border-radius: 9999px; cursor: pointer;">
+              Horaires & Contact &gt;
+            </button>
+          </div>
+        </div>
+
+        <!-- Pied logistique Ollca (Separateur & 2 modes clairs) -->
+        <div style="border-top: 1px solid #EDE8E1; margin-top: 14pt; padding-top: 10pt; display: flex; gap: 24px; font-size: 8pt; color: #243342; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 7px;">
+            <!-- Echoppe SVG -->
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4A7A5B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 3 9 l 9 -7 l 9 7 v 11 a 2 2 0 0 1 -2 2 H 5 a 2 2 0 0 1 -2 -2 z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+            <strong>Retrait boutique express :</strong> <span style="color: #4A7A5B; font-weight: 700;">Des aujourd'hui 17h00</span> (Sous 45 min)
+          </div>
+          <div style="display: flex; align-items: center; gap: 7px;">
+            <!-- Velo cargo SVG -->
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C26750" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18.5" cy="17.5" r="3.5" />
+              <circle cx="5.5" cy="17.5" r="3.5" />
+              <circle cx="15" cy="5" r="1" />
+              <path d="M 12 17.5 V 14 l -3 -3 4 -3 2 3 h 2" />
+            </svg>
+            <strong>Livraison groupee velo :</strong> <span style="color: #5A6578;">Disponible Lille Centre & Wazemmes</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BARRE DE FILTRES EN PILULES (OLLCA CHIPS) -->
+    <div style="display: flex; gap: 8px; margin-bottom: 16pt; overflow-x: auto; padding-bottom: 4px;">
+      <button style="background: #243342; color: #FAF9F6; border: none; padding: 7px 18px; border-radius: 9999px; font-size: 8pt; font-weight: 700; cursor: pointer; white-space: nowrap; box-shadow: 0 2px 6px rgba(36,51,66,0.15);">
+        Toutes les creations (18)
+      </button>
+      <button style="background: #FFFFFF; color: #243342; border: 1px solid #DCD6CD; padding: 7px 18px; border-radius: 9999px; font-size: 8pt; font-weight: 600; cursor: pointer; white-space: nowrap;">
+        Pains au levain naturel (6)
+      </button>
+      <button style="background: #FFFFFF; color: #243342; border: 1px solid #DCD6CD; padding: 7px 18px; border-radius: 9999px; font-size: 8pt; font-weight: 600; cursor: pointer; white-space: nowrap;">
+        Viennoiseries pur beurre (5)
+      </button>
+      <button style="background: #FFFFFF; color: #243342; border: 1px solid #DCD6CD; padding: 7px 18px; border-radius: 9999px; font-size: 8pt; font-weight: 600; cursor: pointer; white-space: nowrap;">
+        Brioches & Specialites du Nord (4)
+      </button>
+      <button style="background: #FFFFFF; color: #243342; border: 1px solid #DCD6CD; padding: 7px 18px; border-radius: 9999px; font-size: 8pt; font-weight: 600; cursor: pointer; white-space: nowrap;">
+        Farines bio du Moulin (3)
+      </button>
+    </div>
+
+    <!-- GRILLE PRODUITS & PANIER MULTI-BOUTIQUES -->
+    <div style="display: grid; grid-template-columns: 1.85fr 1.15fr; gap: 16pt; align-items: start;">
+      
+      <!-- LISTE DES PRODUITS (CARTES FORMAT OLLCA) -->
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12pt;">
+        
+        <!-- CARTE PRODUIT 1 : PAIN DE CAMPAGNE (BOUTON FLOTTANT CIRCULAIRE +) -->
+        <div style="background: #FFFFFF; border: 1px solid #E5E0D8; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 14px rgba(36, 51, 66, 0.04); transition: transform 0.2s;">
+          
+          <!-- Encadre Image Artisanale Stylisee -->
+          <div style="background: #F5F2EB; height: 110px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <!-- Illustration vectorielle noble de miche au levain -->
+            <svg width="100%" height="110" viewBox="0 0 160 110" fill="none">
+              <ellipse cx="80" cy="65" rx="55" ry="32" fill="#D8B98A" />
+              <ellipse cx="80" cy="60" rx="50" ry="26" fill="#C49A6C" />
+              <!-- Grignes du boulanger (incisions traditionnelles) -->
+              <path d="M 50 55 Q 80 42 110 55" stroke="#FAF9F6" stroke-width="3" stroke-linecap="round" opacity="0.8" />
+              <path d="M 60 68 Q 80 58 100 68" stroke="#FAF9F6" stroke-width="2.5" stroke-linecap="round" opacity="0.8" />
+              <!-- Voile de farine saupoudree -->
+              <circle cx="75" cy="52" r="1.5" fill="#FFF" opacity="0.7" />
+              <circle cx="85" cy="54" r="2" fill="#FFF" opacity="0.7" />
+              <circle cx="70" cy="62" r="1.2" fill="#FFF" opacity="0.7" />
+            </svg>
+            <span style="position: absolute; top: 8px; left: 8px; background: rgba(255,255,255,0.9); backdrop-filter: blur(4px); font-size: 6.5pt; font-weight: 700; color: #2E583D; padding: 2px 8px; border-radius: 9999px; border: 1px solid #7EA88D;">
+              Farine Bio T80
+            </span>
+          </div>
+
+          <!-- Contenu descriptif du produit -->
+          <div style="padding: 12pt; display: flex; flex-direction: column; flex: 1;">
+            <div style="font-size: 9.5pt; font-weight: 700; color: #243342; line-height: 1.3; margin-bottom: 3pt;">
+              Pain de Campagne au Levain Naturel
+            </div>
+            <div style="font-size: 7.5pt; color: #5A6578; margin-bottom: 12pt; line-height: 1.35;">
+              Moulins de Waast &bull; Fermentation lente 24h &bull; Croute epaisse et alveoles genereuses
+            </div>
+
+            <!-- Ligne de prix et bouton rond Ollca -->
+            <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end;">
+              <div>
+                <div style="font-size: 11.5pt; font-weight: 700; color: #243342;">2,80 €</div>
+                <div style="font-size: 7pt; color: #8C96A5;">500 g (5,60 € / kg)</div>
+              </div>
+
+              <!-- BOUTON D'ACTION CIRCULAIRE FLOTTANT (SIGNATURE OLLCA FILLED-ICON-BUTTON) -->
+              <button style="width: 40px; height: 40px; border-radius: 50%; background: #4A7A5B; border: none; color: #FAF9F6; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 10px rgba(74, 122, 91, 0.3);">
+                <!-- Caddie avec signe + SVG -->
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="9" cy="21" r="1" />
+                  <circle cx="20" cy="21" r="1" />
+                  <path d="M 1 1 h 4 l 2.68 13.39 a 2 2 0 0 0 2 1.61 h 9.72 a 2 2 0 0 0 2 -1.61 L 23 6 H 6" />
+                  <line x1="12" y1="9" x2="16" y2="9" />
+                  <line x1="14" y1="7" x2="14" y2="11" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CARTE PRODUIT 2 : BRIOCHE TRESSEE (STEPPEUR DE QUANTITE PILULE - 2 +) -->
+        <div style="background: #FFFFFF; border: 1px solid #E5E0D8; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 14px rgba(36, 51, 66, 0.04);">
+          
+          <!-- Encadre Image Artisanale Stylisee -->
+          <div style="background: #FBEEEA; height: 110px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <!-- Illustration vectorielle noble de brioche tressee -->
+            <svg width="100%" height="110" viewBox="0 0 160 110" fill="none">
+              <ellipse cx="80" cy="68" rx="58" ry="24" fill="#C26750" opacity="0.3" />
+              <!-- Tresses dorees -->
+              <ellipse cx="50" cy="60" rx="20" ry="18" fill="#D98A52" />
+              <ellipse cx="80" cy="58" rx="22" ry="20" fill="#E59E65" />
+              <ellipse cx="110" cy="60" rx="20" ry="18" fill="#D98A52" />
+              <!-- Grains de sucre perle blanc -->
+              <rect x="74" y="48" width="4" height="4" rx="1" fill="#FFF" />
+              <rect x="86" y="52" width="3.5" height="3.5" rx="1" fill="#FFF" />
+              <rect x="46" y="54" width="3.5" height="3.5" rx="1" fill="#FFF" />
+              <rect x="105" y="55" width="4" height="4" rx="1" fill="#FFF" />
+            </svg>
+            <span style="position: absolute; top: 8px; left: 8px; background: rgba(255,255,255,0.9); backdrop-filter: blur(4px); font-size: 6.5pt; font-weight: 700; color: #8E3D2A; padding: 2px 8px; border-radius: 9999px; border: 1px solid #D88B77;">
+              Pur Beurre d'Isigny
+            </span>
+          </div>
+
+          <!-- Contenu descriptif du produit -->
+          <div style="padding: 12pt; display: flex; flex-direction: column; flex: 1;">
+            <div style="font-size: 9.5pt; font-weight: 700; color: #243342; line-height: 1.3; margin-bottom: 3pt;">
+              Brioche Tressee Pur Beurre Doree
+            </div>
+            <div style="font-size: 7.5pt; color: #5A6578; margin-bottom: 12pt; line-height: 1.35;">
+              Recette flamande &bull; Oeufs frais fermiers de plein air &bull; Sucre perle craquant
+            </div>
+
+            <!-- Ligne de prix et steppeur pilule Ollca -->
+            <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end;">
+              <div>
+                <div style="font-size: 11.5pt; font-weight: 700; color: #243342;">4,90 €</div>
+                <div style="font-size: 7pt; color: #8C96A5;">450 g (10,88 € / kg)</div>
+              </div>
+
+              <!-- STEPPEUR DE QUANTITE EN PILULE (OLLCA ACTIVE STEPPER) -->
+              <div style="display: inline-flex; align-items: center; gap: 8px; border-radius: 9999px; background: #EBF3ED; border: 1px solid #7EA88D; padding: 3px 6px;">
+                <button style="width: 24px; height: 24px; border-radius: 50%; background: #FFFFFF; border: 1px solid #7EA88D; color: #2E583D; font-weight: 700; font-size: 10pt; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0;">-</button>
+                <span style="font-size: 9pt; font-weight: 700; color: #2E583D; min-width: 14px; text-align: center;">2</span>
+                <button style="width: 24px; height: 24px; border-radius: 50%; background: #4A7A5B; border: none; color: #FAF9F6; font-weight: 700; font-size: 10pt; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0;">+</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- RECAPITULATIF PANIER MULTI-ARTISANS (PARCOURS VISUEL STEPPER OLLCA) -->
+      <div style="background: #FFFFFF; border: 1px solid #DCD6CD; border-radius: 18px; padding: 14pt; box-shadow: 0 4px 16px rgba(36, 51, 66, 0.04); display: flex; flex-direction: column;">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10pt;">
+          <span style="font-size: 9pt; font-weight: 700; color: #243342; text-transform: uppercase; letter-spacing: 0.06em;">Votre Panier Multi-Artisans</span>
+          <span style="background: #EBF3ED; color: #2E583D; font-size: 7pt; font-weight: 700; padding: 2px 8px; border-radius: 9999px;">2 Boutiques</span>
+        </div>
+
+        <!-- TRACK STEPPER VERTICAL RELIANT LES ARRETS -->
+        <div style="position: relative; padding-left: 24px; margin-bottom: 12pt;">
+          <!-- Ligne pointillee de progression pietonne -->
+          <div style="position: absolute; left: 8px; top: 12px; bottom: 30px; width: 2px; border-left: 2px dashed #8A9BAE;"></div>
+
+          <!-- Etape 1 : Boulangerie -->
+          <div style="position: relative; margin-bottom: 12pt;">
+            <!-- Noeud d'arret etape 1 -->
+            <div style="position: absolute; left: -24px; top: 2px; width: 18px; height: 18px; border-radius: 50%; background: #FBEEEA; border: 2px solid #C26750; display: flex; align-items: center; justify-content: center; font-size: 6.5pt; font-weight: 700; color: #C26750;">1</div>
+            
+            <div style="background: #FAF9F6; border: 1px solid #EDE8E1; border-radius: 10px; padding: 8pt 10pt;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4pt;">
+                <strong style="font-size: 8pt; color: #8E3D2A;">Boulangerie Saint-Sauveur</strong>
+                <span style="background: #FBEEEA; color: #C26750; font-size: 6.5pt; font-weight: 700; padding: 2px 6px; border-radius: 4px;">17h30</span>
+              </div>
+              <div style="font-size: 7.5pt; color: #1E252D; display: flex; justify-content: space-between;">
+                <span>2x Brioche Tressee</span>
+                <strong>9,80 €</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Etape 2 : Primeur -->
+          <div style="position: relative;">
+            <!-- Noeud d'arret etape 2 -->
+            <div style="position: absolute; left: -24px; top: 2px; width: 18px; height: 18px; border-radius: 50%; background: #EBF3ED; border: 2px solid #4A7A5B; display: flex; align-items: center; justify-content: center; font-size: 6.5pt; font-weight: 700; color: #4A7A5B;">2</div>
+            
+            <div style="background: #FAF9F6; border: 1px solid #EDE8E1; border-radius: 10px; padding: 8pt 10pt;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4pt;">
+                <strong style="font-size: 8pt; color: #2E583D;">Primeur des Halles de Wazemmes</strong>
+                <span style="background: #EBF3ED; color: #2E583D; font-size: 6.5pt; font-weight: 700; padding: 2px 6px; border-radius: 4px;">17h45</span>
+              </div>
+              <div style="font-size: 7.5pt; color: #1E252D; display: flex; justify-content: space-between;">
+                <span>1kg Pommes Jonagored Bio</span>
+                <strong>3,20 €</strong>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Encadre Fidelite VFP debloquee -->
+        <div style="background: #FEF7EB; border: 1px solid #DCB162; border-radius: 10px; padding: 8pt 10pt; margin-bottom: 12pt; display: flex; align-items: center; gap: 8px;">
+          <div style="width: 22px; height: 22px; border-radius: 50%; background: #DCB162; color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 8pt; font-weight: 700;">★</div>
+          <div style="font-size: 7.5pt; color: #845A11;">
+            <strong>+13 points ShopLoc</strong> credites &bull; Plus que 2 passages pour 1h de stationnement offert !
+          </div>
+        </div>
+
+        <!-- Recapitulatif Total & Bouton Pilule de Confirmation -->
+        <div style="margin-top: auto; border-top: 1px solid #EDE8E1; padding-top: 10pt;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10pt;">
+            <span style="font-size: 8.5pt; color: #5A6578;">Total de vos retraits :</span>
+            <span style="font-size: 14pt; font-weight: 700; color: #243342;">13,00 €</span>
+          </div>
+          <button style="width: 100%; background: #C26750; color: #FFFFFF; border: none; padding: 10pt 16pt; border-radius: 9999px; font-size: 8.5pt; font-weight: 700; cursor: pointer; box-shadow: 0 4px 14px rgba(194, 103, 80, 0.3); display: flex; align-items: center; justify-content: center; gap: 8px;">
+            Confirmer les 2 Retraits &gt;
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================================================= -->
+  <!-- 2. CARTE PASS PHYSIQUE & ECRAN SENIOR (PERSONA PIERRE 74 ANS)              -->
+  <!-- ========================================================================= -->
+  <div class="diagram-container" style="text-align: left; padding: 20pt; border: 1px solid #DCD6CD; border-radius: 18px; background: #FAF9F6; margin-bottom: 26pt; box-shadow: 0 6px 24px rgba(36, 51, 66, 0.05);">
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #EDE8E1; padding-bottom: 10pt; margin-bottom: 16pt;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #4A7A5B;"></span>
+          <span style="font-weight: 700; font-size: 11.5pt; color: #243342; text-transform: uppercase; letter-spacing: 0.06em;">Maquette 2 — Espace Senior Pierre & Carte Pass Physique NFC</span>
+        </div>
+        <div style="font-size: 8.5pt; color: #5A6578; margin-top: 3pt;">Design materiel tactile : veritable format carte bancaire avec puce doree, mires optiques [ ] et ecran mobile grand confort</div>
+      </div>
+      <span style="background: #EBF3ED; color: #2E583D; font-size: 7.5pt; font-weight: 700; padding: 4px 12px; border-radius: 9999px; border: 1px solid #7EA88D;">Confort Visuel Garanti</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 320px 1fr; gap: 20pt; align-items: center;">
+      
+      <!-- VERITABLE CARTE PASS PHYSIQUE (FACTEUR DE FORME CARTE BANCAIRE ISO ID-1) -->
+      <div style="width: 320px; height: 200px; border-radius: 16px; background: linear-gradient(135deg, #243342 0%, #17222C 100%); border: 1.5px solid rgba(255,255,255,0.18); box-shadow: 0 10px 24px rgba(36, 51, 66, 0.22); color: #FAF9F6; padding: 14pt 16pt; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden;">
+        
+        <!-- Texture subtile en arriere-plan -->
+        <div style="position: absolute; right: -20px; top: -20px; width: 140px; height: 140px; border-radius: 50%; border: 20px solid rgba(255,255,255,0.03); pointer-events: none;"></div>
+
+        <!-- Ligne superieure carte : Mairie & Reseau -->
+        <div style="display: flex; justify-content: space-between; align-items: center; z-index: 2;">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <!-- Sceau de Lille vectoriel -->
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FAF9F6">
+              <path d="M 12 2 L 4 5 v 6 c 0 5.5 3.8 10.7 8 12 c 4.2 -1.3 8 -6.5 8 -12 V 5 Z" />
+            </svg>
+            <span style="font-size: 7pt; font-weight: 700; letter-spacing: 0.1em; color: #DCD6CD;">VILLE DE LILLE &bull; SHOPLOC</span>
+          </div>
+          <span style="background: #FEF7EB; color: #845A11; font-size: 6.5pt; font-weight: 700; padding: 2px 6px; border-radius: 4px; border: 1px solid #DCB162;">PASS SENIOR VFP</span>
+        </div>
+
+        <!-- Milieu de carte : Puce doree NFC + QR Code avec mires optiques -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin: 4pt 0; z-index: 2;">
+          
+          <!-- Puce electronique NFC doree -->
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="width: 40px; height: 30px; border-radius: 5px; background: linear-gradient(135deg, #EAD096 0%, #C48B28 50%, #EAD096 100%); border: 1px solid #9E6C18; position: relative; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.4);">
+              <div style="position: absolute; left: 18px; top: 0; bottom: 0; width: 1px; background: #9E6C18;"></div>
+              <div style="position: absolute; left: 0; right: 0; top: 14px; height: 1px; background: #9E6C18;"></div>
+            </div>
+            <!-- Symbole Sans Contact -->
+            <div style="font-size: 6.5pt; color: #DCD6CD; display: flex; align-items: center; gap: 3px;">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M 4 12 a 8 8 0 0 1 8 -8" />
+                <path d="M 2 12 a 12 12 0 0 1 12 -12" />
+              </svg>
+              Sans contact
+            </div>
+          </div>
+
+          <!-- Bloc QR Code scannable avec MIRES OPTIQUES [ ] AUX 4 COINS -->
+          <div style="background: #FFFFFF; padding: 4px; border-radius: 6px; width: 62px; height: 62px; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+            <!-- Mires optiques d'alignement [ ] -->
+            <div style="position: absolute; top: -3px; left: -3px; width: 8px; height: 8px; border-top: 2px solid #C26750; border-left: 2px solid #C26750;"></div>
+            <div style="position: absolute; top: -3px; right: -3px; width: 8px; height: 8px; border-top: 2px solid #C26750; border-right: 2px solid #C26750;"></div>
+            <div style="position: absolute; bottom: -3px; left: -3px; width: 8px; height: 8px; border-bottom: 2px solid #C26750; border-left: 2px solid #C26750;"></div>
+            <div style="position: absolute; bottom: -3px; right: -3px; width: 8px; height: 8px; border-bottom: 2px solid #C26750; border-right: 2px solid #C26750;"></div>
+            
+            <!-- Dessin precis du QR code -->
+            <svg viewBox="0 0 100 100" width="100%" height="100%">
+              <rect x="0" y="0" width="30" height="30" fill="#243342" />
+              <rect x="70" y="0" width="30" height="30" fill="#243342" />
+              <rect x="0" y="70" width="30" height="30" fill="#243342" />
+              <rect x="6" y="6" width="18" height="18" fill="#FFF" />
+              <rect x="76" y="6" width="18" height="18" fill="#FFF" />
+              <rect x="6" y="76" width="18" height="18" fill="#FFF" />
+              <rect x="11" y="11" width="8" height="8" fill="#243342" />
+              <rect x="81" y="11" width="8" height="8" fill="#243342" />
+              <rect x="11" y="81" width="8" height="8" fill="#243342" />
+              <!-- Grille de donnees centrale -->
+              <rect x="42" y="42" width="16" height="16" fill="#243342" />
+              <rect x="45" y="12" width="10" height="10" fill="#243342" />
+              <rect x="72" y="52" width="8" height="8" fill="#243342" />
+              <rect x="42" y="75" width="12" height="12" fill="#243342" />
+              <rect x="75" y="75" width="12" height="12" fill="#243342" />
+            </svg>
+          </div>
+
+        </div>
+
+        <!-- Bas de carte : Identite titulaire & Solde -->
+        <div style="z-index: 2;">
+          <div style="font-size: 11pt; font-weight: 700; letter-spacing: 0.12em; color: #FAF9F6; text-transform: uppercase;">
+            PIERRE DUPONT
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; font-size: 7.5pt; color: #8A9BAE; margin-top: 2pt;">
+            <span>ID : <code>SL-5900-8421-9023</code></span>
+            <span style="color: #DCB162; font-weight: 700;">Solde : 340 pts (17,00 € offerts)</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- INTERFACE MOBILE ADAPTEE GRAND FORMAT POUR PIERRE -->
+      <div style="background: #FFFFFF; border: 1px solid #EDE8E1; border-radius: 16px; padding: 16pt; box-shadow: 0 4px 16px rgba(36, 51, 66, 0.03);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12pt;">
+          <div style="font-size: 13pt; font-weight: 700; color: #243342;">
+            Bonjour Pierre,
+          </div>
+          <span style="background: #EBF3ED; color: #2E583D; font-size: 8pt; font-weight: 700; padding: 4px 10px; border-radius: 9999px;">
+            Statut VFP Actif
+          </span>
+        </div>
+
+        <!-- Jauge Grand Format Parking Offert -->
+        <div style="background: #FEF7EB; border: 1.5px solid #DCB162; border-radius: 12px; padding: 12pt; margin-bottom: 12pt;">
+          <div style="display: flex; justify-content: space-between; font-size: 9pt; font-weight: 700; color: #845A11; margin-bottom: 6pt;">
+            <span>Avantage Mairie de Lille :</span>
+            <span>8 / 10 achats</span>
+          </div>
+          
+          <!-- Barre de progression visuelle galbee -->
+          <div style="height: 12px; border-radius: 9999px; background: #EED8AF; overflow: hidden; margin-bottom: 6pt;">
+            <div style="width: 80%; height: 100%; border-radius: 9999px; background: #C48B28;"></div>
+          </div>
+          <div style="font-size: 8pt; color: #5A6578;">
+            Plus que <strong>2 passages chez vos commercants</strong> d'ici samedi pour debloquer votre <strong>ticket de stationnement 2h gratuit</strong> !
+          </div>
+        </div>
+
+        <!-- Prochain Retrait & Bouton d'Itineraire Large -->
+        <div style="background: #FAF9F6; border: 1px solid #EDE8E1; border-radius: 12px; padding: 10pt 12pt; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-size: 9pt; font-weight: 700; color: #243342;">Boulangerie Saint-Sauveur</div>
+            <div style="font-size: 8pt; color: #5A6578;">1x Brioche &bull; Retrait des 17h30 chez Suzanne</div>
+          </div>
+          <button style="background: #243342; color: #FAF9F6; border: none; padding: 8pt 14pt; border-radius: 9999px; font-size: 8pt; font-weight: 700; cursor: pointer;">
+            Itineraire Pieton (280m) &gt;
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================================================= -->
+  <!-- 3. TERMINAL CAISSE TACTILE COMMERCANTE (PERSONA SUZANNE 22 ANS)            -->
+  <!-- ========================================================================= -->
+  <div class="diagram-container" style="text-align: left; padding: 20pt; border: 1px solid #DCD6CD; border-radius: 18px; background: #FAF9F6; box-shadow: 0 6px 24px rgba(36, 51, 66, 0.05);">
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #EDE8E1; padding-bottom: 10pt; margin-bottom: 16pt;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #C48B28;"></span>
+          <span style="font-weight: 700; font-size: 11.5pt; color: #243342; text-transform: uppercase; letter-spacing: 0.06em;">Maquette 3 — Terminal Caisse Tactile Commercante (Persona Suzanne)</span>
+        </div>
+        <div style="font-size: 8.5pt; color: #5A6578; margin-top: 3pt;">Ergonomie tablette POS : touches tactiles larges, detection automatique du client Pierre et validation express en 1 clic</div>
+      </div>
+      <span style="background: #FEF7EB; color: #845A11; font-size: 7.5pt; font-weight: 700; padding: 4px 12px; border-radius: 9999px; border: 1px solid #DCB162;">Format Tablette POS</span>
+    </div>
+
+    <!-- CHASSIS DE TABLETTE TACTILE (INSPIRATION SQUARE / TACTILL POS) -->
+    <div style="border: 2px solid #DCD6CD; border-radius: 18px; background: #FFFFFF; overflow: hidden; box-shadow: 0 8px 24px rgba(36,51,66,0.06);">
+      
+      <!-- Barre d'etat systeme superieure -->
+      <div style="background: #243342; color: #FAF9F6; padding: 6pt 16pt; display: flex; justify-content: space-between; align-items: center; font-size: 8pt;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <strong style="letter-spacing: 0.04em;">Fournil Saint-Sauveur</strong>
+          <span style="color: #8A9BAE;">&bull; Caisse #01 — Suzanne</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <span style="color: #7EA88D; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: #4A7A5B;"></span>
+            Synchronise & Connecte
+          </span>
+          <span style="color: #DCD6CD;">17:42</span>
+        </div>
+      </div>
+
+      <!-- Corps du POS : Grille de touches a gauche / Ticket digital a droite -->
+      <div style="display: grid; grid-template-columns: 1.6fr 1fr; min-height: 280px;">
+        
+        <!-- PANE GAUCHE : SELECTION RAPIDE & TOUCHES TACTILES -->
+        <div style="padding: 14pt; border-right: 1px solid #EDE8E1; background: #FAF9F6;">
+          
+          <!-- Onglets categories en pilules -->
+          <div style="display: flex; gap: 6px; margin-bottom: 12pt;">
+            <button style="background: #243342; color: #FFF; border: none; padding: 5px 12px; border-radius: 9999px; font-size: 7.5pt; font-weight: 700;">Tous</button>
+            <button style="background: #FFF; color: #243342; border: 1px solid #DCD6CD; padding: 5px 12px; border-radius: 9999px; font-size: 7.5pt; font-weight: 600;">Pains</button>
+            <button style="background: #FFF; color: #243342; border: 1px solid #DCD6CD; padding: 5px 12px; border-radius: 9999px; font-size: 7.5pt; font-weight: 600;">Viennoiseries</button>
+            <button style="background: #FBEEEA; color: #C26750; border: 1px solid #D88B77; padding: 5px 12px; border-radius: 9999px; font-size: 7.5pt; font-weight: 700;">Retraits C&C (3)</button>
+          </div>
+
+          <!-- Grille de grosses touches tactiles -->
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8pt;">
+            
+            <div style="background: #FFFFFF; border: 1px solid #EDE8E1; border-radius: 12px; padding: 10pt; text-align: center; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+              <div style="font-size: 8.5pt; font-weight: 700; color: #243342; margin-bottom: 2pt;">Baguette Tradition</div>
+              <div style="font-size: 8pt; font-weight: 700; color: #C26750;">1,30 €</div>
+            </div>
+
+            <div style="background: #FFFFFF; border: 1.5px solid #7EA88D; border-radius: 12px; padding: 10pt; text-align: center; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+              <div style="font-size: 8.5pt; font-weight: 700; color: #243342; margin-bottom: 2pt;">Pain de Campagne</div>
+              <div style="font-size: 8pt; font-weight: 700; color: #4A7A5B;">2,80 €</div>
+            </div>
+
+            <div style="background: #FFFFFF; border: 1px solid #EDE8E1; border-radius: 12px; padding: 10pt; text-align: center; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+              <div style="font-size: 8.5pt; font-weight: 700; color: #243342; margin-bottom: 2pt;">Brioche Pur Beurre</div>
+              <div style="font-size: 8pt; font-weight: 700; color: #C26750;">4,90 €</div>
+            </div>
+
+            <div style="background: #FFFFFF; border: 1px solid #EDE8E1; border-radius: 12px; padding: 10pt; text-align: center; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+              <div style="font-size: 8.5pt; font-weight: 700; color: #243342; margin-bottom: 2pt;">Croissant Pur Beurre</div>
+              <div style="font-size: 8pt; font-weight: 700; color: #C26750;">1,40 €</div>
+            </div>
+
+            <div style="background: #FFFFFF; border: 1px solid #EDE8E1; border-radius: 12px; padding: 10pt; text-align: center; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+              <div style="font-size: 8.5pt; font-weight: 700; color: #243342; margin-bottom: 2pt;">Pain au Chocolat</div>
+              <div style="font-size: 8pt; font-weight: 700; color: #C26750;">1,50 €</div>
+            </div>
+
+            <div style="background: #FBEEEA; border: 1.5px solid #D88B77; border-radius: 12px; padding: 10pt; text-align: center; cursor: pointer;">
+              <div style="font-size: 8pt; font-weight: 700; color: #8E3D2A; margin-bottom: 2pt;">Commande #CC-1049</div>
+              <div style="font-size: 7.5pt; font-weight: 700; color: #C26750;">Pierre D. (Pret)</div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- PANE DROITE : TICKET DE CAISSE DIGITAL DYNAMIQUE -->
+        <div style="padding: 14pt; display: flex; flex-direction: column; background: #FFFFFF;">
+          
+          <!-- Detection automatique client Pierre Dupont -->
+          <div style="background: #EBF3ED; border: 1px solid #7EA88D; border-radius: 10px; padding: 6pt 10pt; margin-bottom: 10pt; display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div style="font-size: 7.5pt; font-weight: 700; color: #2E583D;">Client Detecte : Pierre DUPONT</div>
+              <div style="font-size: 6.5pt; color: #5A6578;">Pass Senior VFP &bull; Remise Mairie appliquee</div>
+            </div>
+            <span style="font-size: 8pt; font-weight: 700; color: #2E583D;">-1,50 €</span>
+          </div>
+
+          <!-- Lignes du ticket -->
+          <div style="flex: 1; font-size: 8pt; color: #1E252D;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6pt; border-bottom: 1px dashed #EDE8E1; padding-bottom: 4pt;">
+              <span>1x Pain de Campagne Bio</span>
+              <strong>2,80 €</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6pt; border-bottom: 1px dashed #EDE8E1; padding-bottom: 4pt;">
+              <span>2x Brioche Pur Beurre (C&C)</span>
+              <strong>9,80 €</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; color: #2E583D; font-weight: 700;">
+              <span>Remise Fidelite Ville (-15%)</span>
+              <span>- 1,89 €</span>
+            </div>
+          </div>
+
+          <!-- Total & Boutons d'Action Caisse -->
+          <div style="border-top: 2px solid #243342; padding-top: 8pt; margin-top: 8pt;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8pt;">
+              <span style="font-size: 9pt; font-weight: 700; color: #5A6578;">Total a Regler :</span>
+              <span style="font-size: 14pt; font-weight: 800; color: #243342;">10,71 €</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr; gap: 6pt;">
+              <button style="background: #4A7A5B; color: #FAF9F6; border: none; padding: 10pt; border-radius: 10px; font-size: 8.5pt; font-weight: 700; cursor: pointer; box-shadow: 0 3px 8px rgba(74, 122, 91, 0.25);">
+                Valider Retrait Click & Collect (#CC-1049)
+              </button>
+              <button style="background: #243342; color: #FAF9F6; border: none; padding: 8pt; border-radius: 10px; font-size: 8pt; font-weight: 700; cursor: pointer;">
+                Encaisser 10,71 € (Sans Contact / Especes)
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+    </section>
+            
+</body>
+</html>

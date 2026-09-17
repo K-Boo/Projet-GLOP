@@ -14,12 +14,12 @@
       "step_id": "STEP-01",
       "section_code": "SEC-01",
       "titre": "Cadrage Strategique, Expression du Besoin & Methode APTE",
-      "statut": "NOT_STARTED",
-      "assigne_a": null,
-      "date_debut": null,
+      "statut": "IN_PROGRESS",
+      "assigne_a": "Equipe ShopLoc & Product Owner (Co-Design)",
+      "date_debut": "2026-09-17T09:05:00+02:00",
       "date_achevement": null,
       "prerequisites": [],
-      "fichier_source": "agent_projet/docs/cdc_sections/01_cadrage_strategique_besoins.md",
+      "fichier_source": "agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/sections/01_cadrage_strategique_besoins.md",
       "modeles_visuels_requis": [
         "Bete a Cornes APTE (SVG)",
         "Diagramme Pieuvre APTE (SVG)",
@@ -41,7 +41,7 @@
       "date_debut": null,
       "date_achevement": null,
       "prerequisites": ["STEP-01"],
-      "fichier_source": "agent_projet/docs/cdc_sections/02_personas_et_parcours_utilisateurs.md",
+      "fichier_source": "agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/sections/02_personas_et_parcours_utilisateurs.md",
       "modeles_visuels_requis": [
         "Tableaux de bord des 4 personas (Pierre, Suzanne, Marius, Julie & Arthur)",
         "User Journey Maps sans carte d'empathie"
@@ -61,7 +61,7 @@
       "date_debut": null,
       "date_achevement": null,
       "prerequisites": ["STEP-02"],
-      "fichier_source": "agent_projet/docs/cdc_sections/03_processus_metier_bpmn.md",
+      "fichier_source": "agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/sections/03_processus_metier_bpmn.md",
       "modeles_visuels_requis": [
         "P1 : Conventionnement et adhesion",
         "P2 : Commande Click & Collect et retrait 2PC",
@@ -84,7 +84,7 @@
       "date_debut": null,
       "date_achevement": null,
       "prerequisites": ["STEP-03"],
-      "fichier_source": "agent_projet/docs/cdc_sections/04_modele_conceptuel_donnees_mcd.md",
+      "fichier_source": "agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/sections/04_modele_conceptuel_donnees_mcd.md",
       "modeles_visuels_requis": [
         "Schema Conceptuel Merise Pastel (Entites, Associations, Cardinalites)",
         "Dictionnaire Formel des Donnees Booktabs"
@@ -105,7 +105,7 @@
       "date_debut": null,
       "date_achevement": null,
       "prerequisites": ["STEP-02", "STEP-03"],
-      "fichier_source": "agent_projet/docs/cdc_sections/05_ergonomie_accessibilite_rgaa.md",
+      "fichier_source": "agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/sections/05_ergonomie_accessibilite_rgaa.md",
       "modeles_visuels_requis": [
         "Zonings d'ecrans Pierre (carte papier QR / mobile senior)",
         "Zoning caisse express Suzanne",
@@ -126,7 +126,7 @@
       "date_debut": null,
       "date_achevement": null,
       "prerequisites": ["STEP-03", "STEP-05"],
-      "fichier_source": "agent_projet/docs/cdc_sections/06_backlog_user_story_mapping.md",
+      "fichier_source": "agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/sections/06_backlog_user_story_mapping.md",
       "modeles_visuels_requis": [
         "Grille Story Mapping V1 MVP vs V2/V3",
         "Tableau du Backlog MoSCoW Booktabs",
@@ -147,7 +147,7 @@
       "date_debut": null,
       "date_achevement": null,
       "prerequisites": ["STEP-04", "STEP-06"],
-      "fichier_source": "agent_projet/docs/cdc_sections/07_cadrage_technique_architecture.md",
+      "fichier_source": "agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/sections/07_cadrage_technique_architecture.md",
       "modeles_visuels_requis": [
         "Diagramme C4 Contexte",
         "Diagramme C4 Conteneurs (Monolithe Modulaire Docker)",
@@ -170,7 +170,7 @@
       "date_debut": null,
       "date_achevement": null,
       "prerequisites": ["STEP-06", "STEP-07"],
-      "fichier_source": "agent_projet/docs/cdc_sections/08_gouvernance_agile_gantt.md",
+      "fichier_source": "agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/sections/08_gouvernance_agile_gantt.md",
       "modeles_visuels_requis": [
         "Matrice RACI",
         "WBS visuel par lots",
@@ -191,7 +191,7 @@
       "date_debut": null,
       "date_achevement": null,
       "prerequisites": ["STEP-07", "STEP-08"],
-      "fichier_source": "agent_projet/docs/cdc_sections/09_analyse_financiere_couts_complets.md",
+      "fichier_source": "agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/sections/09_analyse_financiere_couts_complets.md",
       "modeles_visuels_requis": [
         "Tableau de repartition des centres d'analyse et Unites d'Oeuvre",
         "Compte de resultat previsionnel 3 ans",
@@ -249,8 +249,8 @@
         "STEP-09",
         "STEP-10"
       ],
-      "fichier_source": "agent_projet/docs/CAHIER_DES_CHARGES_R1.md",
-      "fichier_sortie_pdf": "agent_projet/docs/ShopLoc_Cahier_des_Charges_Livrable_R1.pdf",
+      "fichier_source": "agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/CAHIER_DES_CHARGES_R1.md",
+      "fichier_sortie_pdf": "agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/ShopLoc_Cahier_des_Charges_Livrable_R1.pdf",
       "modeles_visuels_requis": [
         "Document unifie complet avec pagination dynamique et cartouche officiel"
       ],

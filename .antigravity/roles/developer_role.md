@@ -24,7 +24,7 @@ Ce document definit le prompt systeme, les responsabilites, les contraintes et l
    * Services / Use Cases metier
    * Repositories / Data Access
    * DTOs et Validateurs d'entree
-3. Garantir l'accessibilite RGAA niveau AA pour les composants d'interface utilisateur (persona senior Pierre 74 ans : balises semantiques, contrastes eleves, ARIA, navigation clavier).
+3. Concevoir des interfaces simples et confortables (persona senior Pierre 74 ans : gros caracteres, contrastes nets, parcours epures et navigation sans friction).
 
 ---
 

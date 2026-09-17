@@ -24,7 +24,7 @@ GLOP/
     ├── .gitignore                 # Standard de developpement (exclut tout artefact local/IA)
     ├── README.md                  # Documentation technique pour les professeurs evaluateurs
     ├── backend/                   # Code source backend pur (apres validation de la stack)
-    ├── frontend/                  # Code source frontend accessible RGAA
+    ├── frontend/                  # Code source frontend ergonomique et responsive
     ├── docker/                    # Dockerfile, docker-compose.yml
     └── tests/                     # Suites de tests unitaires et d'integration TDD
 ```
@@ -42,7 +42,7 @@ Des reception d'une instruction utilisateur, l'agent identifie le domaine concer
 - **Emplacement des fichiers** : Operer exclusivement dans `agent_projet/`.
 
 ### Cas B : Demande liee au Code, a l'Architecture ou aux Tests
-- **Exemples** : Choix de la stack, ecriture de code applicatif, creation d'APIs REST, modelisation SQL, cycle TDD, composants React RGAA, conteneurs Docker, tests de charge, pipeline CI/CD.
+- **Exemples** : Choix de la stack, ecriture de code applicatif, creation d'APIs REST, modelisation SQL, cycle TDD, composants React ergonomiques et adaptables, conteneurs Docker, tests de charge, pipeline CI/CD.
 - **Regle a appliquer** : Se conformer imperativement a [`.antigravity/agent_code.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/.antigravity/agent_code.md).
 - **Emplacement des fichiers** : Operer exclusivement dans le depot de code GitLab `projet-glop-app/` (chemin local indique dans `config.local.json`).
 - **Condition prealable** : Aucune generation de code prematuree tant que le cadrage (R1) et le choix de la stack technologique ne sont pas formellement valides.
@@ -58,6 +58,19 @@ Des reception d'une instruction utilisateur, l'agent identifie le domaine concer
      1. **Modification ou suppression** de code source ou de données existantes du projet.
      2. **Génération ou modification d'un livrable officiel** (cahier des charges R1, étude financière R3, dossiers techniques R4/R5, diaporama de soutenance).
      3. **Arbitrage structurant** (choix technologique majeur, validation d'hypothèse métier auprès de la MOA, arbitrage d'architecture).
+3. **Interdiction Formelle d'Auto-Validation d'Artefacts (Accord Humain Explicite Requis)** :
+   - Même si le système IDE émet un événement d'auto-approbation technique d'un artefact, **l'agent a l'interdiction absolue d'exécuter la suite sans validation manuelle et textuelle de l'utilisateur dans le chat**.
+   - Tout plan d'action, tout document ou livrable officiel requiert une réponse écrite explicite de l'utilisateur avant toute concrétisation.
+4. **Méthode de Co-Design Itérative du Cahier des Charges (Figure par Figure)** :
+   - **Atelier préalable /grill-me** : Avant chaque livrable et chaque section, une série de questions ciblées est soumise à l'utilisateur pour vérifier la compréhension, challenger les choix et aligner les arbitrages.
+   - **Démarche Visuelle Granulaire (Figure par Figure)** :
+     - *Étape A* : Échange pédagogique sur la figure (intérêt du document, rôle stratégique, ce à quoi il sert) et questions de validation.
+     - *Étape B* : Génération du modèle visuel en HTML/SVG interactif autonome et soumission pour validation visuelle.
+     - *Étape C* : Après validation humaine explicite, génération d'une capture d'écran / image PNG haute définition du composant HTML et intégration dans le Markdown sous forme d'image (`![Figure ...](assets/...)`).
+     - *Étape D* : Une fois l'ensemble des figures de la section validées et converties en images, rédaction finale de la prose/texte de la section.
+5. **Stratégie Frugale d'Export PDF (Zéro Gaspillage de Tokens)** :
+   - Aucun PDF intermédiaire n'est généré à chaque sous-partie ou section. Les sections sont maintenues en Markdown propre avec leurs images.
+   - La génération d'un unique PDF complet et unifié est réservée à la toute fin du projet (Étape 11), lors de l'assemblage maître du Cahier des Charges.
 
 ---
 
@@ -67,9 +80,9 @@ Des reception d'une instruction utilisateur, l'agent identifie le domaine concer
    - Clôturer le chat dès qu'une tâche est achevée et ouvrir une nouvelle session pour la suivante.
    - La mémoire pérenne du projet réside dans les fichiers Markdown de `agent_projet/docs/` et `agent_code/`.
 2. **Rituel d'Historisation Inter-Sessions (Journal de Bord)** :
-   - À chaque début de chat : l'agent consulte [`agent_projet/docs/JOURNAL_DE_BORD.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_projet/docs/JOURNAL_DE_BORD.md) pour reprendre le fil immédiatement sans réexplication.
+   - À chaque début de chat : l'agent consulte [`agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md) pour reprendre le fil immédiatement sans réexplication.
    - À chaque fin de tâche / fin de chat : l'agent consigne une entrée synthétique dans ce journal (date, réalisations, décisions prises, prochaine étape).
-   - Les arbitrages structurants sont consignés dans [`agent_projet/docs/DECISIONS.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_projet/docs/DECISIONS.md).
+   - Les arbitrages structurants sont consignés dans [`agent_projet/docs/00_Gouvernance_Projet/DECISIONS.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_projet/docs/00_Gouvernance_Projet/DECISIONS.md).
 3. **Méthode Avant Code (Planning Mode)** :
    - Toujours formaliser le plan (schémas, signatures d'API, entités) avant d'écrire du code de grande envergure.
 
@@ -99,7 +112,17 @@ python agent_projet/scripts/setup_env.py
 
 ---
 
-## 7. Charte Rédactionnelle & Interdiction Absolue des Emojis (Règle Permanente)
+## 7. Rendu Visuel & Navigateur Dédié (Google Chrome)
+
+- **Navigateur officiel du projet** : Google Chrome (`C:\Program Files\Google\Chrome\Application\chrome.exe`), configuré dans `config.local.json`.
+- **Règle d'affichage pour l'utilisateur** : Ne jamais afficher les livrables sous forme de code texte brut. Dès que l'utilisateur demande d'afficher, prévisualiser ou ouvrir un composant HTML, un schéma ou un diaporama, l'agent exécute impérativement :
+  ```bash
+  python agent_projet/scripts/open_in_browser.py <chemin_fichier.html>
+  ```
+
+---
+
+## 8. Charte Rédactionnelle & Interdiction Absolue des Emojis (Règle Permanente)
 
 1. **Interdiction stricte des emojis** : Aucun emoji ne doit être utilisé dans la rédaction des fichiers du projet : `README.md`, documentation dans `agent_projet/docs/`, spécifications d'architecture dans `agent_code/`, livrables PDF/PPTX/HTML, commentaires de code et messages de commit.
 2. **Exigence de sobriété et de propreté** : Le rendu visuel doit être épuré, structuré, rigoureux et digne d'un rapport professionnel d'élèves-ingénieurs en Master 2 MIAGE.
@@ -118,7 +141,7 @@ python agent_projet/scripts/setup_env.py
    - Sous-Agent QA & Conformité (`.antigravity/roles/qa_role.md`) : Validation DoD, non-régression, vérification cartouche et zéro emoji. Modèle obligatoire : `flash_lite`.
    - Sous-Agent FinOps (`.antigravity/roles/finops_role.md`) : Contrôle a priori du dimensionnement et respect de la frugalité des jetons LLM. Modèle obligatoire : `flash_lite`.
    - Sous-Agent CFO & Stratégie Financière (`.antigravity/roles/cfo_strategic_finance_role.md`) : Assistant et mentor pédagogique Human-in-the-Loop (4 modes : Tuteur, Copilote, Auditeur/Jury, Exécutant). Guide pratique pour l'équipe : [`agent_projet/docs/GUIDE_ASSISTANCE_FINANCIERE.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_projet/docs/GUIDE_ASSISTANCE_FINANCIERE.md). Machine à états : [`.antigravity/workflows/workflow_finance_strategique.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/.antigravity/workflows/workflow_finance_strategique.md). Modèle : `pro` (arbitrages & simulation jury), `flash` (tuteur pédagogique & copilote), `flash_lite` (moteur arithmétique déterministe `financial_engine.py`).
-   - Sous-Agent UI/UX Designer (`.antigravity/roles/ui_designer_role.md`) : Gouvernance des Design Tokens (`design_tokens.json`), thèmes CSS (`theme.css`), accessibilité RGAA AA et gabarits modulaires HTML/SVG (Lean Canvas, APTE, wireframes). Modèle : `flash` (ou `claude-3-5-sonnet` via LiteLLM).
+   - Sous-Agent UI/UX Designer (`.antigravity/roles/ui_designer_role.md`) : Gouvernance des Design Tokens (`design_tokens.json`), thèmes CSS (`theme.css`), rétro-ingénierie visuelle, ergonomie multi-utilisateurs et gabarits modulaires HTML/SVG (Lean Canvas, APTE, wireframes). Modèle : `pro` (Gemini 3.8 Pro pour l'arbitrage esthétique et la vision multimodale) ou `flash` (Gemini 3.8 Flash pour les gabarits standards).
    - Sous-Agent Security Sentinel (`.antigravity/roles/security_sentinel_role.md`) : Pare-feu d'ingestion Zero-Trust, assainissement vectoriel des documents et neutralisation des pièges/canaris IA. Modèle obligatoire : `flash_lite`.
 3. **Optimisation des Quotas Gemini Pro** :
    - Plus de 70% des opérations doivent être déléguées à `flash` ou `flash_lite` pour réserver le quota `pro` aux seuls arbitrages complexes d'architecture et de logique financière.

@@ -188,6 +188,30 @@ def parse_markdown_to_html(md_text, meta, b64_univ, b64_fst, css_content, genera
             i += 1
             continue
 
+        # Balises et blocs HTML bruts (SVG, div, conteneurs)
+        if stripped.startswith('<') and not (stripped.startswith('<code') or stripped.startswith('<span') or stripped.startswith('<strong>') or stripped.startswith('<em>')):
+            if in_list:
+                body_html.append('</ul>')
+                in_list = False
+            body_html.append(stripped)
+            i += 1
+            continue
+
+        # Blocs de code preformate (```)
+        if stripped.startswith('```'):
+            if in_list:
+                body_html.append('</ul>')
+                in_list = False
+            code_lines = []
+            i += 1
+            while i < len(lines) and not lines[i].strip().startswith('```'):
+                code_lines.append(lines[i])
+                i += 1
+            i += 1 # sauter la fermeture ```
+            code_content = '\n'.join(code_lines)
+            body_html.append(f'<pre style="background: #F8FAFC; border: 1pt solid #E2E8F0; padding: 8pt; border-radius: 4pt; font-family: monospace; font-size: 8.5pt; overflow-x: auto;"><code>{code_content}</code></pre>')
+            continue
+
         # Paragraphes normaux
         if in_list:
             body_html.append('</ul>')
@@ -267,17 +291,19 @@ def parse_markdown_to_html(md_text, meta, b64_univ, b64_fst, css_content, genera
 
 # Compilation HTML vers PDF A4 via le navigateur headless
 def compile_html_to_pdf(html_content, output_pdf_path, edge_bin):
+    output_pdf_path = os.path.abspath(output_pdf_path)
     temp_html_path = output_pdf_path.replace(".pdf", "_temp.html")
     with open(temp_html_path, "w", encoding="utf-8") as f:
         f.write(html_content)
 
+    file_uri = f"file:///{temp_html_path.replace(os.sep, '/')}"
     args = [
         edge_bin,
-        "--headless=new",
+        "--headless",
         "--disable-gpu",
         "--no-pdf-header-footer",
         f"--print-to-pdf={output_pdf_path}",
-        temp_html_path
+        file_uri
     ]
     subprocess.run(args, check=True)
     
@@ -364,8 +390,11 @@ def main():
         registry = verify_deliverables.load_canary_registry()
         violations = verify_deliverables.check_file(output_pdf, registry)
         if violations:
-            print(f"[ALERTE CRITIQUE] Le PDF genere contient des canaris ou emojis ! Suppression.")
-            os.remove(output_pdf)
+            print(f"[ALERTE CRITIQUE] Le PDF genere contient des violations de securite :")
+            for v in violations:
+                print(f"  [{v['type']}] {v.get('location', '')} : {v.get('detail', '')}")
+            if os.path.exists(output_pdf):
+                os.remove(output_pdf)
             sys.exit(1)
     except Exception as e:
         print(f"[Avertissement Securite PDF] : {e}")

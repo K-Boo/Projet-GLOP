@@ -34,11 +34,10 @@ Le depot de code est distinct de ce depot de projet :
 - Toute regle de gestion critique (calcul de remise, attribution de points de fidelite, verification d'eligibilite VFP, validation d'un panier multi-boutiques) doit etre precedee d'un test unitaire (cycle Red-Green-Refactor).
 - Code propre (Clean Code) : nommage clair en anglais, fonctions courtes, gestion explicite des cas d'erreur.
 
-### B. Accessibilite Inclusive (Persona Pierre - 74 ans)
-- Respect du standard **RGAA niveau AA** / WCAG 2.1.
-- Contraste colorimetrique suffisant (ratio minimal 4.5:1).
-- Navigation integrale au clavier et compatibilite avec les lecteurs d'ecran (ARIA labels).
-- Prise en charge d'un format imprimable / QR code papier pour les commercants et seniors sans smartphone.
+### B. Ergonomie Inclusive & Simplicite (Adaptation a tous les profils)
+- Textes nets et contrastes confortables pour eviter toute fatigue visuelle.
+- Parcours epure et navigation intuitive sans surcharge cognitive.
+- Prise en charge d'un format imprimable / QR code papier pour les commercants et seniors (Pierre 74 ans) sans smartphone.
 
 ### C. Securite & RGPD (Persona Marius - Administrateur Mairie)
 - Cloisonnement inter-commerces strict : un commercant ne peut en aucun cas acceder aux volumes de vente ou aux paniers d'un autre commercant.
@@ -54,7 +53,7 @@ Le depot de code est distinct de ce depot de projet :
 ## 4. Organisation Future des Sources (dans projet-glop-app)
 Apres validation de la stack :
 - `backend/` : Code source backend (selon stack validee).
-- `frontend/` : Application Web/Mobile front-office accessible RGAA.
+- `frontend/` : Application Web front-office ergonomique et responsive.
 - `docker/` : `Dockerfile`, `docker-compose.yml`, scripts d'initialisation BDD.
 - `tests/` : Suites de tests unitaires, d'integration et mocks d'APIs externes.
 - `.gitlab-ci.yml` : Pipeline d'integration continue GitLab.

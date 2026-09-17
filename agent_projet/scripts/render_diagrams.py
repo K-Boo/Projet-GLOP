@@ -88,12 +88,15 @@ def main():
         "merise_mcd_template"
     ]
 
+    preview_dir = os.path.join(paths["docs"], "previews_composants")
+    os.makedirs(preview_dir, exist_ok=True)
+
     if args.component:
-        out_file = os.path.join(paths["docs"], f"preview_{args.component}.html")
+        out_file = os.path.join(preview_dir, f"preview_{args.component}.html")
         render_standalone_component(args.component, out_file)
     elif args.export_all:
         for c in components:
-            out_file = os.path.join(paths["docs"], f"preview_{c}.html")
+            out_file = os.path.join(preview_dir, f"preview_{c}.html")
             render_standalone_component(c, out_file)
     else:
         parser.print_help()

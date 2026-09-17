@@ -7,6 +7,11 @@
         "LINEAR_API_KEY": "${LINEAR_API_KEY}"
       },
       "description": "Serveur MCP officiel Linear pour la gestion du backlog, des user stories et des sprints par l'Agent PO."
+    },
+    "puppeteer": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
+      "description": "Serveur MCP officiel Puppeteer pour la navigation web, l'inspection de styles et les captures autonomes par les agents."
     }
   }
 }

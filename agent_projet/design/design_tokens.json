@@ -1,214 +1,201 @@
 {
   "$schema": "https://design-tokens.github.io/community-group/format/",
-  "name": "ShopLoc Visual Identity Tokens",
-  "version": "1.0.0",
-  "description": "Tokens de design normalises pour les livrables, diagrammes, diaporamas et interfaces du projet ShopLoc (Master 2 MIAGE GLOP)",
+  "name": "ShopLoc Visual Identity Tokens — Inspiration Ollca Pastel & Craft",
+  "version": "2.0.0",
+  "description": "Tokens de design normalises pour les livrables, diagrammes vectoriels, diaporamas et interfaces du projet ShopLoc. Palette pastel naturelle et esthetique editoriale soignee.",
   "color": {
     "brand": {
       "primary": {
-        "value": "#0F2A4A",
+        "value": "#243342",
         "type": "color",
-        "description": "Bleu institutionnel Universite de Lille - En-tetes principaux et bordures maîtresses"
+        "description": "Bleu ardoise brumeux — Structure, en-tetes majeurs, typographie d autorite"
       },
       "secondary": {
-        "value": "#6A1B29",
+        "value": "#C26750",
         "type": "color",
-        "description": "Bordeaux academique - Accents structurants et sous-titres"
+        "description": "Terracotta poudree — Chaleur humaine, artisanat boulanger, boutons d action phares"
       },
       "accent": {
-        "value": "#1E3A8A",
+        "value": "#4A7A5B",
         "type": "color",
-        "description": "Bleu saphir - Elements interactifs et liens"
+        "description": "Sauge maraichere — Fraicheur terroir, commerce de bouche, statuts de succes et validation"
+      },
+      "honey": {
+        "value": "#C48B28",
+        "type": "color",
+        "description": "Ocre miel doux — Programme de fidelite citoyenne, statut VFP, stationnement offert"
+      },
+      "plum": {
+        "value": "#6E3946",
+        "type": "color",
+        "description": "Bordeaux veloute — Boucheries, traiteurs, distinctions et labels de qualite"
+      }
+    },
+    "surface": {
+      "canvas": {
+        "value": "#FAF9F6",
+        "type": "color",
+        "description": "Lin doux / ecru naturel — Fond general chaleureux, rupture avec le blanc chirurgical"
+      },
+      "card": {
+        "value": "#FFFFFF",
+        "type": "color",
+        "description": "Blanc pur pour les cartes produit et blocs de contenu se detachant sur fond lin"
+      },
+      "warm": {
+        "value": "#F5F2EB",
+        "type": "color",
+        "description": "Surface chaude secondaire pour encarts et barres d outils"
+      },
+      "primary_soft": {
+        "value": "#EBF0F5",
+        "type": "color",
+        "description": "Fond pastel ardoise tres doux pour conteneurs systeme et badges"
+      },
+      "terracotta_soft": {
+        "value": "#FBEEEA",
+        "type": "color",
+        "description": "Fond pastel terracotta tres doux pour mise en avant commercante"
+      },
+      "sage_soft": {
+        "value": "#EBF3ED",
+        "type": "color",
+        "description": "Fond pastel sauge tres doux pour encarts valides et produits frais"
+      },
+      "honey_soft": {
+        "value": "#FEF7EB",
+        "type": "color",
+        "description": "Fond pastel miel pour points de fidelite et recompenses"
+      },
+      "plum_soft": {
+        "value": "#F6ECEF",
+        "type": "color",
+        "description": "Fond pastel prune pour commerces specialises et badges premium"
       }
     },
     "functional": {
       "success": {
-        "value": "#166534",
+        "value": "#4A7A5B",
         "type": "color",
-        "description": "Vert emeraude - Decisions MOA validees, badges de succes, flux econome"
+        "description": "Sauge maraichere pour les validations"
       },
       "success_bg": {
-        "value": "#F0FDF4",
-        "type": "color",
-        "description": "Fond clair vert pour encarts de validation"
+        "value": "#EBF3ED",
+        "type": "color"
       },
       "warning": {
-        "value": "#B45309",
+        "value": "#C48B28",
         "type": "color",
-        "description": "Ambre / Ochre - Points d attention, statuts en attente, commerce de proximite"
+        "description": "Ocre miel pour les points d attention et statuts en attente"
       },
       "warning_bg": {
-        "value": "#FFFBEB",
-        "type": "color",
-        "description": "Fond clair ambre pour encarts d attente"
+        "value": "#FEF7EB",
+        "type": "color"
       },
       "error": {
-        "value": "#991B1B",
+        "value": "#B44C43",
         "type": "color",
-        "description": "Rouge sombre - Risques majeurs et ruptures de stock"
+        "description": "Terre de Sienne brulee pour alertes et ruptures de stock"
       },
       "error_bg": {
-        "value": "#FEF2F2",
-        "type": "color",
-        "description": "Fond clair rouge pour alertes critiques"
+        "value": "#FDF2F0",
+        "type": "color"
       },
       "info": {
-        "value": "#1E40AF",
+        "value": "#2B5270",
         "type": "color",
-        "description": "Bleu marine informatif pour les notes de cadrage"
+        "description": "Bleu doux informatif"
       },
       "info_bg": {
-        "value": "#EFF6FF",
-        "type": "color",
-        "description": "Fond clair bleu informatif"
+        "value": "#EBF2F7",
+        "type": "color"
       }
     },
-    "diagram_pastel": {
-      "system_bg": { "value": "#E0F2FE", "type": "color", "description": "Bleu ciel pastel - Coeur ShopLoc" },
-      "system_border": { "value": "#0284C7", "type": "color" },
-      "system_text": { "value": "#0369A1", "type": "color" },
-      "citizen_bg": { "value": "#DCFCE7", "type": "color", "description": "Vert amande pastel - Citoyen / Depart de flux" },
-      "citizen_border": { "value": "#22C55E", "type": "color" },
-      "citizen_text": { "value": "#15803D", "type": "color" },
-      "merchant_bg": { "value": "#FFEDD5", "type": "color", "description": "Peche pastel - Commercant / Stocks" },
-      "merchant_border": { "value": "#F97316", "type": "color" },
-      "merchant_text": { "value": "#C2410C", "type": "color" },
-      "partner_bg": { "value": "#EDE9FE", "type": "color", "description": "Lavande pastel - Mobilites / Mairie" },
-      "partner_border": { "value": "#8B5CF6", "type": "color" },
-      "partner_text": { "value": "#6D28D9", "type": "color" },
-      "alert_bg": { "value": "#FEE2E2", "type": "color", "description": "Rose pale pastel - Rejets / Fin" },
-      "alert_border": { "value": "#EF4444", "type": "color" },
-      "alert_text": { "value": "#B91C1C", "type": "color" },
-      "lane_bg": { "value": "#F8FAFC", "type": "color", "description": "Fond des couloirs swimlanes" },
-      "lane_border": { "value": "#CBD5E1", "type": "color" }
+    "diagram_craft": {
+      "citizen_bg": { "value": "#FBEEEA", "type": "color", "description": "Terracotta doux — Citoyen" },
+      "citizen_border": { "value": "#D88B77", "type": "color" },
+      "citizen_text": { "value": "#8E3D2A", "type": "color" },
+      "merchant_bg": { "value": "#EBF3ED", "type": "color", "description": "Sauge doux — Commercant" },
+      "merchant_border": { "value": "#7EA88D", "type": "color" },
+      "merchant_text": { "value": "#2E583D", "type": "color" },
+      "city_bg": { "value": "#FEF7EB", "type": "color", "description": "Ocre miel doux — Mairie & Collectivite" },
+      "city_border": { "value": "#DCB162", "type": "color" },
+      "city_text": { "value": "#845A11", "type": "color" },
+      "system_bg": { "value": "#EBF0F5", "type": "color", "description": "Ardoise brumeux doux — Coeur ShopLoc" },
+      "system_border": { "value": "#8B9EAF", "type": "color" },
+      "system_text": { "value": "#1C2D3D", "type": "color" },
+      "connector": { "value": "#8A9BAE", "type": "color", "description": "Lignes de liaisons et flux" },
+      "canvas_diagram": { "value": "#FAF9F6", "type": "color", "description": "Fond unifie de diagramme" }
     },
     "neutral": {
       "text_primary": {
-        "value": "#0F172A",
+        "value": "#1E252D",
         "type": "color",
-        "description": "Gris ardoise tres fonce - Texte courant et titres (contraste > 12:1 sur fond blanc)"
+        "description": "Encre ardoise profonde — Haute lisibilite naturelle"
       },
       "text_secondary": {
-        "value": "#475569",
+        "value": "#5A6578",
         "type": "color",
-        "description": "Gris ardoise moyen - Metadonnees, legendes et dates"
+        "description": "Ardoise feutree pour sous-titres et metadonnees"
       },
-      "border_dark": {
-        "value": "#0F172A",
+      "text_muted": {
+        "value": "#8C96A5",
         "type": "color",
-        "description": "Bordure noire/ardoise pour lignes maîtresses Booktabs (1.5pt)"
+        "description": "Ardoise legere pour notes et cartouches"
       },
-      "border_light": {
-        "value": "#CBD5E1",
+      "border_master": {
+        "value": "#DCD6CD",
         "type": "color",
-        "description": "Bordure claire pour separations de cellules de tableaux (0.5pt)"
+        "description": "Ligne de separation principale douce"
       },
       "border_subtle": {
-        "value": "#E2E8F0",
+        "value": "#EDE8E1",
         "type": "color",
-        "description": "Separateurs secondaires"
-      },
-      "surface_card": {
-        "value": "#FFFFFF",
-        "type": "color",
-        "description": "Blanc pur pour les cartes et cellules de contenu"
-      },
-      "surface_page": {
-        "value": "#F8FAFC",
-        "type": "color",
-        "description": "Fond page albâtre / blanc casse pour lecture sur ecran"
-      },
-      "surface_print": {
-        "value": "#FFFFFF",
-        "type": "color",
-        "description": "Fond d impression papier A4 obligatoire"
+        "description": "Ligne fine feutree"
       }
     }
   },
   "typography": {
     "font_family": {
-      "serif": {
-        "value": "\"Latin Modern Roman\", \"LM Roman 10\", \"Computer Modern\", \"TeX Gyre Termes\", \"Times New Roman\", Times, serif",
-        "type": "fontFamily",
-        "description": "Police noble pour rapports academiques, livrables A4 et publications PDF"
-      },
       "sans": {
-        "value": "\"Inter\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+        "value": "\"Plus Jakarta Sans\", \"Inter\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif",
         "type": "fontFamily",
-        "description": "Police sans-serif haute lisibilite pour interfaces, diaporamas et tableaux de bord"
+        "description": "Typographie principale haute lisibilite pour interfaces et diagrammes"
+      },
+      "serif": {
+        "value": "\"Latin Modern Roman\", \"TeX Gyre Termes\", \"Times New Roman\", serif",
+        "type": "fontFamily",
+        "description": "Typographie noble pour rapports academiques A4 et livrables formels"
       },
       "mono": {
-        "value": "\"Latin Modern Mono\", \"Fira Code\", \"Consolas\", \"Courier New\", monospace",
+        "value": "\"Fira Code\", \"Consolas\", monospace",
         "type": "fontFamily",
-        "description": "Police a chasse fixe pour references documentaires, tags GLOP et code"
+        "description": "Police a chasse fixe pour code et references techniques"
       }
     },
     "font_size": {
-      "title_main": {
-        "value": "15pt",
-        "type": "dimension",
-        "description": "Titre principal du livrable sur la page de garde"
-      },
-      "title_wave": {
-        "value": "12.5pt",
-        "type": "dimension",
-        "description": "Banniere de vague / grand jalon"
-      },
-      "section_h2": {
-        "value": "11.5pt",
-        "type": "dimension",
-        "description": "Titre de section H2 numerotee"
-      },
-      "subsection_h3": {
-        "value": "10pt",
-        "type": "dimension",
-        "description": "Sous-section H3 et en-tetes de questions"
-      },
-      "body": {
-        "value": "9.5pt",
-        "type": "dimension",
-        "description": "Corps de texte standard justifie"
-      },
-      "table": {
-        "value": "9pt",
-        "type": "dimension",
-        "description": "Texte a l interieur des tableaux de donnees"
-      },
-      "meta": {
-        "value": "8.5pt",
-        "type": "dimension",
-        "description": "En-tetes de page @page, bas de page et cartouche"
-      }
-    },
-    "line_height": {
-      "tight": { "value": "1.2", "type": "dimension" },
-      "normal": { "value": "1.38", "type": "dimension" },
-      "relaxed": { "value": "1.5", "type": "dimension" }
+      "title_main": { "value": "16pt", "type": "dimension" },
+      "title_section": { "value": "12pt", "type": "dimension" },
+      "title_card": { "value": "10.5pt", "type": "dimension" },
+      "body": { "value": "9.5pt", "type": "dimension" },
+      "meta": { "value": "8.5pt", "type": "dimension" }
     }
   },
-  "spacing": {
-    "xs": { "value": "2pt", "type": "dimension" },
-    "sm": { "value": "4pt", "type": "dimension" },
-    "md": { "value": "8pt", "type": "dimension" },
-    "lg": { "value": "14pt", "type": "dimension" },
-    "xl": { "value": "20pt", "type": "dimension" },
-    "page_margin_top": { "value": "24mm", "type": "dimension" },
-    "page_margin_bottom": { "value": "24mm", "type": "dimension" },
-    "page_margin_left": { "value": "20mm", "type": "dimension" },
-    "page_margin_right": { "value": "20mm", "type": "dimension" }
+  "border": {
+    "radius": {
+      "sm": { "value": "6px", "type": "dimension" },
+      "md": { "value": "10px", "type": "dimension" },
+      "lg": { "value": "14px", "type": "dimension" },
+      "pill": { "value": "9999px", "type": "dimension" }
+    }
   },
-  "borders": {
-    "booktabs_thick": { "value": "1.5pt solid #0F172A", "type": "border" },
-    "booktabs_medium": { "value": "0.75pt solid #0F172A", "type": "border" },
-    "booktabs_thin": { "value": "0.3pt solid #E2E8F0", "type": "border" },
-    "callout_left": { "value": "3pt solid #166534", "type": "border" },
-    "callout_subtle": { "value": "1pt solid #E2E8F0", "type": "border" }
+  "shadow": {
+    "soft": { "value": "0 2px 8px rgba(36, 51, 66, 0.04)", "type": "shadow" },
+    "card": { "value": "0 4px 16px rgba(36, 51, 66, 0.06)", "type": "shadow" }
   },
-  "accessibility": {
-    "wcag_target": "AA",
-    "min_contrast_normal_text": "4.5:1",
-    "min_contrast_large_text": "3.0:1",
-    "pierre_senior_guideline": "Police minimale 16px sur ecran, contrastes renforces, cibles tactiles >= 44x44px",
+  "guidelines": {
+    "usability_target": "Lisibilite universelle et adaptation sans effort a tous les profils",
+    "pierre_senior_guideline": "Corps de texte confortable >= 16px sur ecran, boutons d action nets et contrastes naturels",
     "zero_emoji_rule": true
   }
 }

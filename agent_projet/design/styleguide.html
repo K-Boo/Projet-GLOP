@@ -4,54 +4,59 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Guide de Style & Identite Visuelle — Projet ShopLoc</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/latin-modern-web@1.0.0/style.css">
   <link rel="stylesheet" href="theme.css">
   <style>
     body {
-      max-width: 900px;
+      max-width: 960px;
       margin: 40px auto;
       padding: 0 20px;
-      background: #F8FAFC;
+      background: var(--color-surface-canvas);
+      font-family: var(--font-sans);
     }
     .styleguide-sheet {
       background: #FFFFFF;
       padding: 40px 50px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-      border-radius: 4px;
-      border: 1px solid #E2E8F0;
+      box-shadow: var(--shadow-card);
+      border-radius: 14px;
+      border: 1px solid var(--color-border-light);
     }
     .swatch-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 12px;
-      margin: 12px 0 20px 0;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 14px;
+      margin: 14px 0 24px 0;
     }
     .swatch-card {
-      border: 1px solid #CBD5E1;
-      border-radius: 4px;
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 10px;
       overflow: hidden;
       font-size: 8.5pt;
-      font-family: var(--font-sans);
+      background: #FFFFFF;
+      box-shadow: var(--shadow-soft);
     }
     .swatch-color {
-      height: 48px;
+      height: 52px;
     }
     .swatch-info {
-      padding: 6px 8px;
+      padding: 8px 10px;
       background: #FFFFFF;
     }
     .swatch-name {
-      font-weight: bold;
-      color: #0F172A;
+      font-weight: 700;
+      color: var(--color-brand-primary);
     }
     .swatch-hex {
       font-family: var(--font-mono);
-      color: #475569;
+      color: var(--color-text-secondary);
+      font-size: 8pt;
     }
     .swatch-ratio {
       font-size: 7.5pt;
-      color: #166534;
+      color: var(--color-success);
       font-weight: 600;
+      margin-top: 2px;
     }
   </style>
 </head>
@@ -59,122 +64,135 @@
 
 <div class="styleguide-sheet">
 
-  <div class="institution-header">
-    <img class="institution-logo" src="../docs/assets/logo_univ_lille.png" alt="Universite de Lille">
-    <img class="institution-logo" src="../docs/assets/logo_fst_informatique.png" alt="Faculte des Sciences et Technologies">
-  </div>
-
   <div class="title-block">
-    <h1 class="latex-main-title">Charte Graphique & Design Tokens</h1>
-    <div class="latex-sub-title">Systeme Visuel Unifie pour l Ensemble des Livrables — Master 2 MIAGE GLOP</div>
+    <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 8pt;">
+      <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--color-brand-secondary);"></span>
+      <span style="font-size: 8.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-brand-secondary);">Direction Artistique & Design Tokens</span>
+    </div>
+    <h1 class="latex-main-title" style="font-family: var(--font-sans); text-transform: none; letter-spacing: -0.02em; font-size: 20pt;">
+      Charte Graphique ShopLoc — Inspiration Ollca & Pastel Craft
+    </h1>
+    <div class="latex-sub-title" style="font-family: var(--font-sans); font-style: normal; font-size: 10.5pt; color: var(--color-text-secondary);">
+      Systeme Visuel Unifie pour les Livrables, Diagrammes et l Application Frontend — Master 2 MIAGE GLOP
+    </div>
   </div>
 
-  <div class="abstract-box">
-    <div class="abstract-title">Principes Fondamentaux de Conception</div>
-    <p class="abstract-text">
-      Ce referentiel fixe l identite visuelle du projet ShopLoc. Il repose sur trois exigences cardinales :
-      une elegance academique sobre inspiree des publications LaTeX, une conformite stricte aux standards d accessibilite
-      numerique RGAA AA / WCAG 2.1 (notamment pour le persona senior Pierre), et l application rigoureuse de la regle
-      permanente zero emoji sur l integralite des supports ecrits et visuels.
+  <div class="abstract-box" style="background: var(--color-surface-warm); border-left: 3px solid var(--color-brand-secondary); border-radius: 6px; padding: 12pt 16pt; margin-bottom: 24pt;">
+    <div class="abstract-title" style="font-weight: 700; color: var(--color-brand-primary); margin-bottom: 4pt; font-size: 9.5pt;">Principes Fondamentaux de Conception</div>
+    <p class="abstract-text" style="font-size: 8.5pt; color: var(--color-text-primary); margin: 0; line-height: 1.45;">
+      Cette charte rompt definitivement avec le style generique "AI-slop". Elle repose sur trois piliers :
+      l authenticite chaleureuse du commerce de proximite inspiree d Ollca (terracotta, lin, sauge, ocre miel),
+      une ergonomie intuitive adaptee a tous les profils (senior Pierre, commercante Suzanne, mairie Marius),
+      et un graphisme editorial haut de gamme sur les schemas vectoriels SVG. Regle absolue : zero emoji.
     </p>
   </div>
 
-  <h2 class="section-heading">1. Palette Chromatique Harmonisee</h2>
+  <!-- 1. PALETTE DE COULEURS DE MARQUE -->
+  <h3 class="section-h2" style="font-family: var(--font-sans); font-size: 11pt; color: var(--color-brand-primary); margin-bottom: 8pt; text-transform: uppercase; letter-spacing: 0.04em;">
+    1. Palette de Couleurs Naturelles & Teintes d Artisanat
+  </h3>
+
   <div class="swatch-grid">
     <div class="swatch-card">
-      <div class="swatch-color" style="background: #0F2A4A;"></div>
+      <div class="swatch-color" style="background: #243342;"></div>
       <div class="swatch-info">
-        <div class="swatch-name">Bleu Institutionnel</div>
-        <div class="swatch-hex">#0F2A4A</div>
-        <div class="swatch-ratio">Contraste : 14.8:1 (AAA)</div>
+        <div class="swatch-name">Ardoise Brumeux</div>
+        <div class="swatch-hex">#243342</div>
+        <div class="swatch-ratio">Contraste 14.5:1 (Tres lisible)</div>
       </div>
     </div>
+
     <div class="swatch-card">
-      <div class="swatch-color" style="background: #6A1B29;"></div>
+      <div class="swatch-color" style="background: #C26750;"></div>
       <div class="swatch-info">
-        <div class="swatch-name">Bordeaux Academique</div>
-        <div class="swatch-hex">#6A1B29</div>
-        <div class="swatch-ratio">Contraste : 10.4:1 (AAA)</div>
+        <div class="swatch-name">Terracotta Poudree</div>
+        <div class="swatch-hex">#C26750</div>
+        <div class="swatch-ratio">Boutons & Actions phares</div>
       </div>
     </div>
+
     <div class="swatch-card">
-      <div class="swatch-color" style="background: #166534;"></div>
+      <div class="swatch-color" style="background: #4A7A5B;"></div>
       <div class="swatch-info">
-        <div class="swatch-name">Vert Validation MOA</div>
-        <div class="swatch-hex">#166534</div>
-        <div class="swatch-ratio">Contraste : 7.2:1 (AAA)</div>
+        <div class="swatch-name">Sauge Maraichere</div>
+        <div class="swatch-hex">#4A7A5B</div>
+        <div class="swatch-ratio">Fraicheur & Succes</div>
       </div>
     </div>
+
     <div class="swatch-card">
-      <div class="swatch-color" style="background: #B45309;"></div>
+      <div class="swatch-color" style="background: #C48B28;"></div>
       <div class="swatch-info">
-        <div class="swatch-name">Ambre Commerce Local</div>
-        <div class="swatch-hex">#B45309</div>
-        <div class="swatch-ratio">Contraste : 4.8:1 (AA)</div>
+        <div class="swatch-name">Ocre Miel Doux</div>
+        <div class="swatch-hex">#C48B28</div>
+        <div class="swatch-ratio">Fidelite VFP & Mairie</div>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-color" style="background: #FAF9F6; border-bottom: 1px solid #EDE8E1;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Lin Doux / Ecru</div>
+        <div class="swatch-hex">#FAF9F6</div>
+        <div class="swatch-ratio">Fond unifie chaleureux</div>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-color" style="background: #6E3946;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Bordeaux Veloute</div>
+        <div class="swatch-hex">#6E3946</div>
+        <div class="swatch-ratio">Boucherie & Metiers</div>
       </div>
     </div>
   </div>
 
-  <h2 class="section-heading">2. Cartouche Normalise GLOP</h2>
-  <div class="cartouche-container">
-    <table class="cartouche-table">
-      <tr><th>Champ</th><th>Information Normalisee</th></tr>
-      <tr><td><strong>Intitule du Projet</strong></td><td>Plateforme ShopLoc — Marketplace & Fidelisation Territoriale</td></tr>
-      <tr><td><strong>Identifiant Officiel</strong></td><td><code class="latex-code">MiageShopLoc</code></td></tr>
-      <tr><td><strong>Reference Documentaire</strong></td><td><code class="latex-code">GLOP-2026-R1-SPEC-v1.0</code></td></tr>
-      <tr><td><strong>Contexte Academique</strong></td><td>Master 2 MIAGE — UE Genie Logiciel par la Pratique (2026-2027)</td></tr>
-      <tr><td><strong>Destinataires (MOA / MOD)</strong></td><td>Laurence Duchien, Anne Etien, Francois Secchi, Jeremy Woirhaye</td></tr>
-      <tr><td><strong>Statut du Document</strong></td><td>Version 1.0 — <span class="badge badge-success">Valide</span></td></tr>
-      <tr><td><strong>Tag de Communication</strong></td><td><code class="latex-code">[GLOP]</code> (obligatoire dans l objet de courriel)</td></tr>
-    </table>
+  <!-- 2. TYPOGRAPHIES COMBINEES -->
+  <h3 class="section-h2" style="font-family: var(--font-sans); font-size: 11pt; color: var(--color-brand-primary); margin: 20pt 0 8pt 0; text-transform: uppercase; letter-spacing: 0.04em;">
+    2. Binôme Typographique & Lisibilite
+  </h3>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14pt; margin-bottom: 20pt;">
+    <div style="background: #FAF9F6; border: 1px solid #DCD6CD; border-radius: 10px; padding: 12pt;">
+      <div style="font-size: 8pt; font-weight: 700; color: #C26750; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4pt;">Typographie d Interface & Diagrammes</div>
+      <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14pt; font-weight: 700; color: #243342; margin-bottom: 4pt;">Plus Jakarta Sans / Inter</div>
+      <div style="font-size: 8pt; color: #5A6578; line-height: 1.4;">
+        Utilisee pour l application web, les maquettes, les schemas vectoriels et les diaporamas. Lisibilite ideale a toutes les echelles.
+      </div>
+    </div>
+
+    <div style="background: #FAF9F6; border: 1px solid #DCD6CD; border-radius: 10px; padding: 12pt;">
+      <div style="font-size: 8pt; font-weight: 700; color: #243342; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4pt;">Typographie de Labeur Academique</div>
+      <div style="font-family: 'Latin Modern Roman', serif; font-size: 14pt; font-weight: bold; color: #243342; margin-bottom: 4pt;">Latin Modern Roman</div>
+      <div style="font-size: 8pt; color: #5A6578; line-height: 1.4;">
+        Reservee a la composition des livrables PDF A4 officiels du Master 2 (R1, R3, R4/R5) pour une sobrieté digne d un memoire d ingenieur.
+      </div>
+    </div>
   </div>
 
-  <h2 class="section-heading">3. Tableau de Donnees au Format Booktabs</h2>
-  <div class="table-wrapper">
-    <table class="booktabs">
-      <thead>
-        <tr>
-          <th>Persona Cible</th>
-          <th>Profil Metier</th>
-          <th>Exigence d Accessibilite</th>
-          <th>Priorite</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Pierre (74 ans)</strong></td>
-          <td>Client senior en centre-ville</td>
-          <td>Typographie agrandie, carte physique avec QR code</td>
-          <td><span class="badge badge-brand">Critique RGAA</span></td>
-        </tr>
-        <tr>
-          <td><strong>Suzanne (22 ans)</strong></td>
-          <td>Commerçante independante</td>
-          <td>Saisie rapide des stocks, scan retrait express</td>
-          <td><span class="badge badge-success">Haute</span></td>
-        </tr>
-        <tr>
-          <td><strong>Marius (27 ans)</strong></td>
-          <td>Administrateur communal</td>
-          <td>Donnees anonymisees, conformite stricte RGPD</td>
-          <td><span class="badge badge-warning">Reglementaire</span></td>
-        </tr>
-      </tbody>
-    </table>
+  <!-- 3. COMPOSANTS DE BADGES & BOUTONS -->
+  <h3 class="section-h2" style="font-family: var(--font-sans); font-size: 11pt; color: var(--color-brand-primary); margin: 20pt 0 8pt 0; text-transform: uppercase; letter-spacing: 0.04em;">
+    3. Badges, Boutons & Composants Sémantiques (Zero Emoji)
+  </h3>
+
+  <div style="display: flex; gap: 10pt; flex-wrap: wrap; align-items: center; margin-bottom: 14pt;">
+    <span style="background: #EBF3ED; color: #2E583D; font-size: 8pt; font-weight: 700; padding: 4px 12px; border-radius: 9999px; border: 1px solid #7EA88D;">Boutique Ouverte</span>
+    <span style="background: #FEF7EB; color: #845A11; font-size: 8pt; font-weight: 700; padding: 4px 12px; border-radius: 9999px; border: 1px solid #DCB162;">Fidelite VFP Active</span>
+    <span style="background: #FBEEEA; color: #8E3D2A; font-size: 8pt; font-weight: 700; padding: 4px 12px; border-radius: 9999px; border: 1px solid #D88B77;">Artisan Boulanger</span>
+    <span style="background: #EBF0F5; color: #1C2D3D; font-size: 8pt; font-weight: 700; padding: 4px 12px; border-radius: 9999px; border: 1px solid #8B9EAF;">Multi-Boutiques</span>
   </div>
 
-  <h2 class="section-heading">4. Typologie des Encarts Decisionnels</h2>
-  
-  <div class="callout-box callout-success">
-    <strong>Decision Validee MOA :</strong> Le programme de fidelite est strictement segmente en deux moteurs independants. Les points marchands restent cantonnes a chaque boutique partenaire, tandis que le statut VFP communal repose sur une regularite d au moins 10 passages sur une fenetre glissante de 15 jours.
-  </div>
-
-  <div class="callout-box callout-warning">
-    <strong>Point d Attention / Arbitrage en Cours :</strong> Le bareme precis de valorisation des tickets de transport en commun et du forfait stationnement sera arrete lors de l atelier tripartite Ville-Association.
-  </div>
-
-  <div class="callout-box callout-info">
-    <strong>Note d Architecture :</strong> Le choix d un Monolithe Modulaire Multi-Tenant garantit l etancheite complete des bases de donnees de chaque collectivite adherente tout en maintenant les couts d infrastructure Run a un niveau frugal.
+  <div style="display: flex; gap: 10pt; align-items: center;">
+    <button style="background: #C26750; color: #FFFFFF; border: none; padding: 8pt 16pt; border-radius: 8px; font-size: 9pt; font-weight: 700; cursor: pointer;">
+      Bouton d Action Primaire (Terracotta)
+    </button>
+    <button style="background: #243342; color: #FAF9F6; border: none; padding: 8pt 16pt; border-radius: 8px; font-size: 9pt; font-weight: 700; cursor: pointer;">
+      Bouton d Action Sombre (Ardoise)
+    </button>
+    <button style="background: #FFFFFF; color: #243342; border: 1px solid #DCD6CD; padding: 8pt 16pt; border-radius: 8px; font-size: 9pt; font-weight: 600; cursor: pointer;">
+      Bouton Secondaire
+    </button>
   </div>
 
 </div>

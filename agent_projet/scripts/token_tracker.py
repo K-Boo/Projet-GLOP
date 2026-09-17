@@ -1,4 +1,4 @@
-﻿import os
+import os
 import sys
 import glob
 import json
@@ -48,8 +48,20 @@ def get_brain_dir():
 
 def find_all_transcripts():
     base = get_brain_dir()
-    pattern = os.path.join(base, "*", ".system_generated", "logs", "transcript.jsonl")
-    return sorted(glob.glob(pattern), key=os.path.getmtime, reverse=True)
+    pattern_full = os.path.join(base, "*", ".system_generated", "logs", "transcript_full.jsonl")
+    pattern_short = os.path.join(base, "*", ".system_generated", "logs", "transcript.jsonl")
+    
+    full_files = {os.path.basename(os.path.dirname(os.path.dirname(os.path.dirname(p)))): p for p in glob.glob(pattern_full)}
+    short_files = {os.path.basename(os.path.dirname(os.path.dirname(os.path.dirname(p)))): p for p in glob.glob(pattern_short)}
+    
+    result = []
+    all_convs = set(full_files.keys()).union(set(short_files.keys()))
+    for conv in all_convs:
+        target = full_files.get(conv) or short_files.get(conv)
+        if target and os.path.isfile(target):
+            result.append(target)
+            
+    return sorted(result, key=os.path.getmtime, reverse=True)
 
 def find_latest_transcript():
     ts = find_all_transcripts()
@@ -74,11 +86,22 @@ def compute_quotas_all_sessions(daily_quota=DEFAULT_DAILY_QUOTA, weekly_quota=DE
     today_out = 0
     week_in = 0
     week_out = 0
+    lifetime_in = 0
+    lifetime_out = 0
+
+    all_sessions = []
 
     for tf in transcripts:
         file_mtime = datetime.fromtimestamp(os.path.getmtime(tf))
-        if file_mtime < week_ago:
-            continue
+        conv_id = os.path.basename(os.path.dirname(os.path.dirname(os.path.dirname(tf))))
+        
+        sess_in = 0
+        sess_out = 0
+        turns_count = 0
+        first_prompt = None
+        start_time_str = None
+        last_time_str = None
+
         try:
             with open(tf, "r", encoding="utf-8", errors="ignore") as f:
                 for line in f:
@@ -91,16 +114,32 @@ def compute_quotas_all_sessions(daily_quota=DEFAULT_DAILY_QUOTA, weekly_quota=DE
                         continue
 
                     dt = parse_iso_datetime(data.get("created_at"), file_mtime)
+                    if not start_time_str:
+                        start_time_str = dt.strftime("%Y-%m-%d %H:%M")
+                    last_time_str = dt.strftime("%Y-%m-%d %H:%M")
+
                     stype = data.get("type", "")
                     tok_in = 0
                     tok_out = 0
 
                     if stype == "USER_INPUT":
-                        tok_in = len(data.get("content") or "") // 4
+                        cnt = data.get("content") or ""
+                        tok_in = len(cnt) // 4
+                        turns_count += 1
+                        if not first_prompt:
+                            p = cnt
+                            if "<USER_REQUEST>" in p and "</USER_REQUEST>" in p:
+                                p = p.split("<USER_REQUEST>")[1].split("</USER_REQUEST>")[0]
+                            first_prompt = clean_ascii(p.replace("\n", " ").strip())
+                            if len(first_prompt) > 45:
+                                first_prompt = first_prompt[:42] + "..."
                     elif stype == "PLANNER_RESPONSE":
                         tok_out = (len(data.get("content") or "") + len(data.get("thinking") or "")) // 4
                     elif stype == "GENERIC":
                         tok_in = len(data.get("content") or "") // 4
+
+                    sess_in += tok_in
+                    sess_out += tok_out
 
                     if dt >= today_midnight:
                         today_in += tok_in
@@ -108,16 +147,42 @@ def compute_quotas_all_sessions(daily_quota=DEFAULT_DAILY_QUOTA, weekly_quota=DE
                     if dt >= week_ago:
                         week_in += tok_in
                         week_out += tok_out
+
+                    lifetime_in += tok_in
+                    lifetime_out += tok_out
         except Exception:
             pass
 
+        sess_total = sess_in + sess_out
+        sess_wh = (sess_total / 1000.0) * ECO_FACTORS["default"]["wh"]
+        sess_ml = (sess_total / 1000.0) * ECO_FACTORS["default"]["ml"]
+
+        all_sessions.append({
+            "conv_id": conv_id,
+            "short_id": conv_id[:8],
+            "file_path": tf,
+            "mtime": file_mtime,
+            "date": start_time_str or file_mtime.strftime("%Y-%m-%d %H:%M"),
+            "last_active": last_time_str or file_mtime.strftime("%Y-%m-%d %H:%M"),
+            "turns": turns_count,
+            "in_tokens": sess_in,
+            "out_tokens": sess_out,
+            "total_tokens": sess_total,
+            "wh": sess_wh,
+            "ml": sess_ml,
+            "first_prompt": first_prompt or "Session d'analyse/initialisation"
+        })
+
     today_total = today_in + today_out
     week_total = week_in + week_out
+    lifetime_total = lifetime_in + lifetime_out
 
     today_wh = (today_total / 1000.0) * ECO_FACTORS["default"]["wh"]
     today_ml = (today_total / 1000.0) * ECO_FACTORS["default"]["ml"]
     week_wh = (week_total / 1000.0) * ECO_FACTORS["default"]["wh"]
     week_ml = (week_total / 1000.0) * ECO_FACTORS["default"]["ml"]
+    lifetime_wh = (lifetime_total / 1000.0) * ECO_FACTORS["default"]["wh"]
+    lifetime_ml = (lifetime_total / 1000.0) * ECO_FACTORS["default"]["ml"]
 
     return {
         "today_in": today_in,
@@ -133,7 +198,14 @@ def compute_quotas_all_sessions(daily_quota=DEFAULT_DAILY_QUOTA, weekly_quota=DE
         "week_quota": weekly_quota,
         "week_ratio": min(week_total / max(weekly_quota, 1), 1.0),
         "week_wh": week_wh,
-        "week_ml": week_ml
+        "week_ml": week_ml,
+        "lifetime_in": lifetime_in,
+        "lifetime_out": lifetime_out,
+        "lifetime_total": lifetime_total,
+        "lifetime_wh": lifetime_wh,
+        "lifetime_ml": lifetime_ml,
+        "sessions_count": len(all_sessions),
+        "all_sessions": all_sessions
     }
 
 def extract_turns_from_transcript(file_path):
@@ -249,7 +321,52 @@ def render_ascii_bar(ratio, width=10):
     pct = ratio * 100.0
     return f"[{'#' * filled}{'-' * unfilled}] {pct:4.1f}%"
 
-def display_dashboard(turns, quotas, conv_id=""):
+def display_sessions_table_only(quotas):
+    sessions = quotas.get("all_sessions", [])
+    if RICH_AVAILABLE:
+        title_text = Text()
+        title_text.append("SHOPLOC ", style="bold white")
+        title_text.append("| ", style="dim")
+        title_text.append("HISTORIQUE COMPLET DES SESSIONS DE PROJET", style="bold cyan")
+        sub = f"Total Sessions : {len(sessions)} | Tokens Cumules : {quotas['lifetime_total']:,}"
+        console.print(Panel(title_text, subtitle=sub, style="cyan", box=box.ROUNDED))
+
+        table = Table(box=box.ROUNDED, expand=True, title="[bold cyan]Historique Synthetique par Session[/bold cyan]")
+        table.add_column("Session ID", style="bold cyan", width=12)
+        table.add_column("Date / Heure", style="dim", width=16)
+        table.add_column("Tours", justify="right", style="white", width=7)
+        table.add_column("Tokens Total", justify="right", style="bold white", width=14)
+        table.add_column("Energie", justify="right", style="yellow", width=10)
+        table.add_column("Eau", justify="right", style="blue", width=9)
+        table.add_column("Sujet / Prompt Initial", style="white", ratio=1)
+
+        for s in sessions:
+            table.add_row(
+                s["short_id"],
+                s["date"],
+                str(s["turns"]),
+                f"{s['total_tokens']:,}",
+                f"{s['wh']:.2f} Wh",
+                f"{s['ml']:.1f} mL",
+                s["first_prompt"]
+            )
+        console.print(table)
+    else:
+        print("=" * 72)
+        print("  HISTORIQUE COMPLET DES SESSIONS SHOPLOC")
+        print("=" * 72)
+        print(f"  Sessions Totales : {len(sessions)}")
+        print(f"  Cumul Tokens     : {quotas['lifetime_total']:,}")
+        print("-" * 72)
+        for s in sessions:
+            print(f"  [{s['short_id']}] {s['date']} | Turns: {s['turns']} | Tokens: {s['total_tokens']:,} | {s['wh']:.1f}Wh | \"{s['first_prompt']}\"")
+        print("=" * 72)
+
+def display_dashboard(turns, quotas, conv_id="", show_all_sessions=False):
+    if show_all_sessions:
+        display_sessions_table_only(quotas)
+        return
+
     if not turns:
         print("Aucune requete enregistree dans la session active.")
         return
@@ -263,13 +380,13 @@ def display_dashboard(turns, quotas, conv_id=""):
         title_text.append("| ", style="dim")
         title_text.append("SUIVI DES TOKENS, ROUTAGE LLM & GREEN FINOPS", style="bold cyan")
         
-        sub_info = f"Session : {conv_id[:16]}... | {time.strftime('%H:%M:%S')}"
+        sub_info = f"Session Active : {conv_id[:16]}... | {time.strftime('%H:%M:%S')}"
         console.print(Panel(title_text, subtitle=sub_info, style="cyan", box=box.ROUNDED))
 
-        # 1. Quotas & Bilan Ecologique (Jour & Semaine)
-        quota_table = Table(box=box.ROUNDED, expand=True, title="[bold cyan]1. Quotas & Bilan Ecologique Global[/bold cyan]")
+        # 1. Bilan Global Cumule & Quotas
+        quota_table = Table(box=box.ROUNDED, expand=True, title="[bold cyan]1. Quotas & Bilan Ecologique Global du Projet[/bold cyan]")
         quota_table.add_column("Periode", style="bold white")
-        quota_table.add_column("Jauge d'Utilisation")
+        quota_table.add_column("Jauge / Volume", style="white")
         quota_table.add_column("Tokens Consommes", justify="right", style="bold white")
         quota_table.add_column("Energie", justify="right", style="yellow")
         quota_table.add_column("Eau", justify="right", style="blue")
@@ -290,6 +407,13 @@ def display_dashboard(turns, quotas, conv_id=""):
             f"{quotas['week_total']:,} / {quotas['week_quota']:,}",
             f"{quotas['week_wh']:.1f} Wh",
             f"{quotas['week_ml']:.1f} mL"
+        )
+        quota_table.add_row(
+            "CUMUL PROJET (Création)",
+            f"[bold green]{quotas['sessions_count']} sessions enregistrées[/bold green]",
+            f"[bold cyan]{quotas['lifetime_total']:,} tokens[/bold cyan]",
+            f"[bold yellow]{quotas['lifetime_wh']:.1f} Wh[/bold yellow]",
+            f"[bold blue]{quotas['lifetime_ml']:.1f} mL[/bold blue]"
         )
         console.print(quota_table)
 
@@ -324,38 +448,29 @@ def display_dashboard(turns, quotas, conv_id=""):
             style="white"
         ))
 
-        # 3. Historique Recent des Requetes
-        if len(turns) > 1:
-            hist_table = Table(box=box.ROUNDED, expand=True, title="[bold cyan]3. Historique Recent des Requetes[/bold cyan]")
-            hist_table.add_column("Heure", style="dim", justify="center", width=8)
-            hist_table.add_column("LLM", style="green", width=12)
-            hist_table.add_column("Tokens", justify="right", style="cyan", width=10)
-            hist_table.add_column("Energie", justify="right", style="yellow", width=9)
-            hist_table.add_column("Eau", justify="right", style="blue", width=8)
-            hist_table.add_column("Requete Utilisateur", style="white", ratio=1)
+        # 3. Historique des Sessions Recentes du Projet
+        sessions = quotas.get("all_sessions", [])
+        if sessions:
+            sess_table = Table(box=box.ROUNDED, expand=True, title="[bold cyan]3. Historique des Sessions Recentes du Projet (Historisation)[/bold cyan]")
+            sess_table.add_column("Session ID", style="bold cyan", width=12)
+            sess_table.add_column("Date / Heure", style="dim", width=16)
+            sess_table.add_column("Tours", justify="right", style="white", width=7)
+            sess_table.add_column("Tokens Total", justify="right", style="bold white", width=14)
+            sess_table.add_column("Energie", justify="right", style="yellow", width=9)
+            sess_table.add_column("Eau", justify="right", style="blue", width=8)
+            sess_table.add_column("Sujet / Prompt Initial", style="white", ratio=1)
 
-            for t in turns[-5:-1]:
-                llm_short = t["model"]
-                if "Flash" in llm_short:
-                    llm_short = "Gemini Flash"
-                elif "Pro" in llm_short:
-                    llm_short = "Gemini Pro"
-                elif "Lite" in llm_short:
-                    llm_short = "Flash Lite"
-
-                prompt_s = t["prompt"]
-                if len(prompt_s) > 35:
-                    prompt_s = prompt_s[:32] + "..."
-
-                hist_table.add_row(
-                    t["time"],
-                    llm_short,
-                    f"{t['total_tokens']:,}",
-                    f"{t['wh']:.2f} Wh",
-                    f"{t['ml']:.1f} mL",
-                    prompt_s
+            for s in sessions[:5]:
+                sess_table.add_row(
+                    s["short_id"],
+                    s["date"],
+                    str(s["turns"]),
+                    f"{s['total_tokens']:,}",
+                    f"{s['wh']:.2f} Wh",
+                    f"{s['ml']:.1f} mL",
+                    s["first_prompt"]
                 )
-            console.print(hist_table)
+            console.print(sess_table)
 
     else:
         print("=" * 72)
@@ -363,40 +478,53 @@ def display_dashboard(turns, quotas, conv_id=""):
         print("=" * 72)
         print(f"  Quota Jour    : {render_ascii_bar(quotas['today_ratio'])} ({quotas['today_total']:,} / {quotas['today_quota']:,} tok)")
         print(f"  Quota Semaine : {render_ascii_bar(quotas['week_ratio'])} ({quotas['week_total']:,} / {quotas['week_quota']:,} tok)")
-        print(f"  Conso Jour    : {quotas['today_wh']:.2f} Wh | {quotas['today_ml']:.1f} mL d'eau")
+        print(f"  Cumul Projet  : {quotas['lifetime_total']:,} tokens ({quotas['sessions_count']} sessions depuis creation)")
+        print(f"  Impact Total  : {quotas['lifetime_wh']:.2f} Wh | {quotas['lifetime_ml']:.1f} mL d'eau")
         print("-" * 72)
         print("DERNIERE REQUETE :")
         print(f"  Heure   : {last['time']}")
         print(f"  LLM     : {last['model']}")
         print(f"  Prompt  : \"{last['prompt']}\"")
         print(f"  Tokens  : In: {last['in_tokens']:,} | Out: {last['out_tokens']:,} | Total: {last['total_tokens']:,}")
-        print(f"  Energie : {last['wh']:.2f} Wh (equiv. {(last['wh']/10.0)*3600:.0f}s ampoule LED 10W)")
-        print(f"  Eau     : {last['ml']:.1f} mL (equiv. {last['ml']/25.0:.1f} gorgees)")
         print("=" * 72)
 
-def run_live_watch(file_path):
+def run_live_watch(initial_file_path=None):
     print("Demarrage du moniteur en direct ShopLoc (Ctrl+C pour quitter)...")
     last_turn_count = -1
     last_file_size = -1
+    last_active_tf = None
 
     try:
         while True:
             time.sleep(1.5)
-            if not os.path.isfile(file_path):
-                continue
-            cur_size = os.path.getsize(file_path)
-            if cur_size != last_file_size:
-                last_file_size = cur_size
-                turns = extract_turns_from_transcript(file_path)
-                if len(turns) != last_turn_count:
-                    last_turn_count = len(turns)
-                    quotas = compute_quotas_all_sessions()
-                    conv_id = os.path.basename(os.path.dirname(os.path.dirname(os.path.dirname(file_path))))
-                    if RICH_AVAILABLE:
-                        console.clear()
-                    else:
-                        os.system("cls" if os.name == "nt" else "clear")
-                    display_dashboard(turns, quotas, conv_id)
+            try:
+                current_tf = find_latest_transcript()
+                if not current_tf:
+                    continue
+
+                if current_tf != last_active_tf:
+                    last_active_tf = current_tf
+                    last_file_size = -1
+                    last_turn_count = -1
+
+                if not os.path.isfile(current_tf):
+                    continue
+
+                cur_size = os.path.getsize(current_tf)
+                if cur_size != last_file_size:
+                    last_file_size = cur_size
+                    turns = extract_turns_from_transcript(current_tf)
+                    if len(turns) != last_turn_count:
+                        last_turn_count = len(turns)
+                        quotas = compute_quotas_all_sessions()
+                        conv_id = os.path.basename(os.path.dirname(os.path.dirname(os.path.dirname(current_tf))))
+                        if RICH_AVAILABLE:
+                            console.clear()
+                        else:
+                            os.system("cls" if os.name == "nt" else "clear")
+                        display_dashboard(turns, quotas, conv_id)
+            except Exception:
+                pass
     except KeyboardInterrupt:
         print("\nArret du moniteur.")
 
@@ -431,21 +559,23 @@ def main():
     conv_id = os.path.basename(os.path.dirname(os.path.dirname(os.path.dirname(tf))))
     args = sys.argv[1:]
 
+    show_sessions_flag = "--sessions" in args or "-s" in args
+
     if "--stream" in args:
         run_stream_log(tf)
-    elif "--watch" in args:
+    elif "--watch" in args or "-w" in args:
         turns = extract_turns_from_transcript(tf)
         quotas = compute_quotas_all_sessions()
         if RICH_AVAILABLE:
             console.clear()
         else:
             os.system("cls" if os.name == "nt" else "clear")
-        display_dashboard(turns, quotas, conv_id)
+        display_dashboard(turns, quotas, conv_id, show_all_sessions=show_sessions_flag)
         run_live_watch(tf)
     else:
         turns = extract_turns_from_transcript(tf)
         quotas = compute_quotas_all_sessions()
-        display_dashboard(turns, quotas, conv_id)
+        display_dashboard(turns, quotas, conv_id, show_all_sessions=show_sessions_flag)
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,1967 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopLoc — Plateforme de Commerce Artisanal & Click & Collect de Proximite</title>
+  
+  <!-- Police officielle Poppins (Graisses 300, 400, 500, 600, 700) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Palette Pastel Naturelle ShopLoc (100% approuvee) */
+      --sl-canvas: #FAF9F6;
+      --sl-surface-card: #FFFFFF;
+      --sl-surface-warm: #F5F2EB;
+      
+      --sl-slate: #243342;
+      --sl-slate-soft: #EBF0F5;
+      --sl-slate-border: #8B9EAF;
+      
+      --sl-terracotta: #C26750;
+      --sl-terracotta-soft: #FBEEEA;
+      --sl-terracotta-dark: #A54F3B;
+      
+      --sl-sage: #4A7A5B;
+      --sl-sage-soft: #EBF3ED;
+      --sl-sage-dark: #386146;
+      
+      --sl-honey: #C48B28;
+      --sl-honey-soft: #FEF7EB;
+      --sl-honey-dark: #9E6C18;
+      
+      --sl-plum: #6E3946;
+      --sl-plum-soft: #F6ECEF;
+      
+      --sl-text-primary: #1E252D;
+      --sl-text-secondary: #5A6578;
+      --sl-text-muted: #8492A6;
+      
+      --sl-border-subtle: #E8E6DF;
+      --sl-border-focus: #C26750;
+      
+      /* Ombres & Geometries fideles a Ollca */
+      --sl-radius-card: 16px;
+      --sl-radius-pill: 9999px;
+      --sl-radius-sm: 8px;
+      --sl-radius-btn: 50%;
+      
+      --sl-shadow-soft: 0 2px 8px rgba(36, 51, 66, 0.05);
+      --sl-shadow-card: 0 4px 16px rgba(36, 51, 66, 0.08);
+      --sl-shadow-hover: 0 8px 24px rgba(36, 51, 66, 0.12);
+      --sl-shadow-modal: 0 16px 40px rgba(36, 51, 66, 0.18);
+      
+      /* Typographie Poppins */
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--sl-canvas);
+      color: var(--sl-text-primary);
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* BARRE D ACCUEIL & PERSONA SWITCHER */
+    .persona-bar {
+      background: var(--sl-slate);
+      color: #FFFFFF;
+      padding: 8px 24px;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .persona-bar-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    .persona-bar-title span.badge-tag {
+      background: var(--sl-terracotta);
+      color: #FFFFFF;
+      padding: 2px 8px;
+      border-radius: var(--sl-radius-pill);
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .persona-switcher {
+      display: flex;
+      gap: 6px;
+    }
+    .persona-btn {
+      background: rgba(255,255,255,0.12);
+      color: #FFFFFF;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: var(--sl-radius-pill);
+      padding: 4px 14px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .persona-btn:hover {
+      background: rgba(255,255,255,0.22);
+    }
+    .persona-btn.active {
+      background: var(--sl-terracotta);
+      border-color: var(--sl-terracotta);
+      font-weight: 600;
+    }
+
+    /* TOP NAVBAR STICKY — 100% REPLIQUE OLLCA */
+    .top-navbar {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--sl-border-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--sl-shadow-soft);
+    }
+    .navbar-container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--sl-slate);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+    .brand-logo svg {
+      width: 32px;
+      height: 32px;
+      fill: var(--sl-terracotta);
+    }
+    .brand-logo span.dot {
+      color: var(--sl-terracotta);
+    }
+
+    /* SELECTEUR VILLE & QUARTIER */
+    .location-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--sl-surface-warm);
+      border: 1px solid var(--sl-border-subtle);
+      border-radius: var(--sl-radius-pill);
+      padding: 8px 16px;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--sl-slate);
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+    }
+    .location-pill:hover {
+      border-color: var(--sl-slate-border);
+    }
+    .location-pill svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--sl-terracotta);
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* BARRE DE RECHERCHE CENTRALE */
+    .search-wrapper {
+      flex: 1;
+      max-width: 520px;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      height: 44px;
+      background: #FFFFFF;
+      border: 1.5px solid var(--sl-border-subtle);
+      border-radius: var(--sl-radius-pill);
+      padding: 0 46px 0 18px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13.5px;
+      color: var(--sl-text-primary);
+      outline: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+    }
+    .search-input:focus {
+      border-color: var(--sl-terracotta);
+      box-shadow: 0 0 0 3px var(--sl-terracotta-soft);
+    }
+    .search-input::placeholder {
+      color: var(--sl-text-muted);
+      font-weight: 400;
+    }
+    .search-btn {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--sl-terracotta);
+      border: none;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .search-btn:hover {
+      background: var(--sl-terracotta-dark);
+    }
+    .search-btn svg {
+      width: 16px;
+      height: 16px;
+      stroke: #FFFFFF;
+      stroke-width: 2.2;
+      fill: none;
+    }
+
+    /* ACTIONS UTILISATEUR & PANIER */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-btn-text {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--sl-slate);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: var(--sl-radius-pill);
+      transition: background 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-btn-text:hover {
+      background: var(--sl-slate-soft);
+    }
+    .cart-pill-btn {
+      background: var(--sl-terracotta);
+      color: #FFFFFF;
+      border: none;
+      border-radius: var(--sl-radius-pill);
+      padding: 10px 18px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 2px 8px rgba(194, 103, 80, 0.25);
+      transition: all 0.2s ease;
+    }
+    .cart-pill-btn:hover {
+      background: var(--sl-terracotta-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(194, 103, 80, 0.35);
+    }
+    .cart-pill-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: #FFFFFF;
+      stroke-width: 2;
+      fill: none;
+    }
+    .cart-counter {
+      background: #FFFFFF;
+      color: var(--sl-terracotta);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: var(--sl-radius-pill);
+    }
+
+    /* BARRE CATEGORIES HORIZONTALE (TABS OLLCA) */
+    .category-nav {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--sl-border-subtle);
+    }
+    .category-container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+    }
+    .category-container::-webkit-scrollbar {
+      display: none;
+    }
+    .cat-pill {
+      padding: 12px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--sl-text-secondary);
+      border-bottom: 2px solid transparent;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .cat-pill:hover {
+      color: var(--sl-slate);
+    }
+    .cat-pill.active {
+      color: var(--sl-terracotta);
+      font-weight: 600;
+      border-bottom-color: var(--sl-terracotta);
+    }
+    .cat-pill .count {
+      font-size: 11px;
+      background: var(--sl-surface-warm);
+      color: var(--sl-slate);
+      padding: 2px 6px;
+      border-radius: var(--sl-radius-pill);
+    }
+
+    /* CONTENEUR PRINCIPAL APPLICATIF (1320px DE LARGE — AERE, RESPIRANT) */
+    .main-app-container {
+      max-width: 1320px;
+      margin: 32px auto;
+      padding: 0 24px;
+    }
+
+    /* GRILLE 12 COLONNES OLLCA (.ollca-grid) */
+    .ollca-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+    }
+
+    /* SECTION HERO BOUTIQUE */
+    .boutique-hero-col {
+      grid-column: span 8;
+      position: relative;
+    }
+    .boutique-details-col {
+      grid-column: span 4;
+    }
+
+    /* BANNIERE PHOTO HERO OLLCA */
+    .shop-hero-card {
+      background: #FFFFFF;
+      border-radius: var(--sl-radius-card);
+      overflow: hidden;
+      border: 1px solid var(--sl-border-subtle);
+      box-shadow: var(--sl-shadow-card);
+    }
+    .shop-hero-banner {
+      height: 270px;
+      position: relative;
+      background: linear-gradient(135deg, #3A2E26 0%, #201914 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+      background-size: cover;
+      background-position: center;
+    }
+    .shop-hero-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% 30%, rgba(194, 103, 80, 0.4), transparent 60%),
+                  radial-gradient(circle at 20% 70%, rgba(74, 122, 91, 0.35), transparent 60%);
+      opacity: 0.85;
+    }
+    .shop-hero-badges {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      display: flex;
+      gap: 8px;
+      z-index: 2;
+    }
+    .status-pill {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(8px);
+      padding: 5px 12px;
+      border-radius: var(--sl-radius-pill);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--sl-sage-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    }
+    .status-pill .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--sl-sage);
+    }
+    .vfp-pill {
+      background: var(--sl-honey);
+      color: #FFFFFF;
+      padding: 5px 12px;
+      border-radius: var(--sl-radius-pill);
+      font-size: 11.5px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    }
+
+    /* AVATAR CHEVAUCHANT SIGNATURE OLLCA */
+    .shop-hero-content {
+      padding: 0 28px 24px 28px;
+      position: relative;
+    }
+    .avatar-wrapper {
+      position: relative;
+      margin-top: -46px;
+      margin-bottom: 14px;
+      display: inline-block;
+    }
+    .artisan-avatar {
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      border: 4px solid #FFFFFF;
+      box-shadow: var(--sl-shadow-card);
+      background: var(--sl-terracotta-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .artisan-avatar svg {
+      width: 50px;
+      height: 50px;
+      fill: var(--sl-terracotta);
+    }
+    .shop-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 6px;
+    }
+    .shop-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--sl-slate);
+      letter-spacing: -0.02em;
+    }
+    .shop-category {
+      font-size: 13.5px;
+      color: var(--sl-text-secondary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .shop-rating {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--sl-honey-dark);
+      background: var(--sl-honey-soft);
+      padding: 3px 8px;
+      border-radius: var(--sl-radius-pill);
+    }
+    .shop-rating svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--sl-honey);
+    }
+    .shop-description {
+      font-size: 13px;
+      color: var(--sl-text-secondary);
+      line-height: 1.55;
+    }
+
+    /* CARTE DETAILS & LOGISTIQUE DROITE (mat-list Ollca) */
+    .shop-details-card {
+      background: #FFFFFF;
+      border-radius: var(--sl-radius-card);
+      border: 1px solid var(--sl-border-subtle);
+      box-shadow: var(--sl-shadow-card);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+    .shop-details-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--sl-slate);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--sl-border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .shop-details-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .shop-detail-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .detail-icon-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--sl-slate-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .detail-icon-badge svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--sl-slate);
+      stroke-width: 2;
+      fill: none;
+    }
+    .detail-icon-badge.terracotta {
+      background: var(--sl-terracotta-soft);
+    }
+    .detail-icon-badge.terracotta svg {
+      stroke: var(--sl-terracotta);
+    }
+    .detail-icon-badge.sage {
+      background: var(--sl-sage-soft);
+    }
+    .detail-icon-badge.sage svg {
+      stroke: var(--sl-sage);
+    }
+    .detail-content .label {
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--sl-text-muted);
+      font-weight: 600;
+    }
+    .detail-content .value {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--sl-text-primary);
+      margin-top: 1px;
+    }
+    .detail-content .sub {
+      font-size: 11.5px;
+      color: var(--sl-text-secondary);
+    }
+
+    .shop-action-box {
+      margin-top: 20px;
+      padding: 14px;
+      background: var(--sl-surface-warm);
+      border-radius: 12px;
+      border: 1px dashed var(--sl-border-subtle);
+      text-align: center;
+    }
+    .shop-action-box .vfp-reward {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--sl-honey-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    /* SECTION TITRE PRODUITS */
+    .section-header {
+      margin: 44px 0 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--sl-slate);
+      letter-spacing: -0.02em;
+    }
+    .section-filter-pills {
+      display: flex;
+      gap: 8px;
+    }
+    .sub-filter-pill {
+      padding: 6px 14px;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--sl-text-secondary);
+      background: #FFFFFF;
+      border: 1px solid var(--sl-border-subtle);
+      border-radius: var(--sl-radius-pill);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .sub-filter-pill:hover {
+      border-color: var(--sl-slate-border);
+      color: var(--sl-slate);
+    }
+    .sub-filter-pill.active {
+      background: var(--sl-slate);
+      color: #FFFFFF;
+      border-color: var(--sl-slate);
+    }
+
+    /* GRILLE DE PRODUITS (4 COLONNES — REPLIQUE EXACTE D APP-PRODUCT-CARD D OLLCA) */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    @media (max-width: 1100px) {
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .boutique-hero-col {
+        grid-column: span 12;
+      }
+      .boutique-details-col {
+        grid-column: span 12;
+      }
+    }
+
+    /* CARTE PRODUIT OLLCA (app-product-card) */
+    .product-card {
+      background: #FFFFFF;
+      border-radius: var(--sl-radius-card);
+      border: 1px solid var(--sl-border-subtle);
+      box-shadow: var(--sl-shadow-soft);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--sl-shadow-hover);
+      border-color: #D4D1C7;
+    }
+
+    /* ZONE VISUELLE PRODUIT (4:3) */
+    .product-img-wrap {
+      width: 100%;
+      height: 180px;
+      position: relative;
+      background: var(--sl-surface-warm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .product-img-wrap svg {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.3s ease;
+    }
+    .product-card:hover .product-img-wrap svg {
+      transform: scale(1.04);
+    }
+    .product-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(4px);
+      padding: 3px 8px;
+      border-radius: var(--sl-radius-pill);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--sl-sage-dark);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    /* CONTENU CARTE PRODUIT */
+    .product-content {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+    .product-label {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--sl-slate);
+      line-height: 1.35;
+      margin-bottom: 4px;
+    }
+    .product-origin {
+      font-size: 12px;
+      color: var(--sl-text-muted);
+      margin-bottom: 12px;
+    }
+    .product-price-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px solid var(--sl-surface-warm);
+    }
+    .price-with-unity {
+      display: flex;
+      flex-direction: column;
+    }
+    .price-main {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--sl-slate);
+      letter-spacing: -0.02em;
+    }
+    .price-unity {
+      font-size: 11.5px;
+      color: var(--sl-text-muted);
+      font-weight: 400;
+    }
+
+    /* BOUTON D ACTION CIRCULAIRE OLLCA (40px x 40px — 50% BORDER RADIUS) */
+    .btn-add-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--sl-terracotta);
+      color: #FFFFFF;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(194, 103, 80, 0.25);
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+    .btn-add-circle:hover {
+      background: var(--sl-terracotta-dark);
+      transform: scale(1.08);
+      box-shadow: 0 4px 12px rgba(194, 103, 80, 0.35);
+    }
+    .btn-add-circle svg {
+      width: 20px;
+      height: 20px;
+      stroke: #FFFFFF;
+      stroke-width: 2.2;
+      fill: none;
+    }
+
+    /* STEPPER QUANTITE ACTIF (Pill `- 2 +`) */
+    .stepper-pill {
+      display: flex;
+      align-items: center;
+      background: var(--sl-terracotta-soft);
+      border: 1px solid var(--sl-terracotta);
+      border-radius: var(--sl-radius-pill);
+      padding: 3px 8px;
+      gap: 8px;
+    }
+    .stepper-btn {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 1px solid var(--sl-terracotta);
+      color: var(--sl-terracotta);
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .stepper-btn:hover {
+      background: var(--sl-terracotta);
+      color: #FFFFFF;
+    }
+    .stepper-value {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--sl-terracotta-dark);
+      min-width: 14px;
+      text-align: center;
+    }
+
+    /* SECTION PANIER MULTI-BOUTIQUES ITINERANT (INNOVATION SHOPLOC) */
+    .cart-journey-section {
+      background: #FFFFFF;
+      border-radius: var(--sl-radius-card);
+      border: 1px solid var(--sl-border-subtle);
+      box-shadow: var(--sl-shadow-card);
+      padding: 32px;
+      margin-bottom: 48px;
+    }
+    .cart-journey-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--sl-border-subtle);
+    }
+    .cart-journey-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--sl-slate);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .cart-journey-title svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--sl-terracotta);
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .journey-stepper-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 32px;
+    }
+    @media (max-width: 900px) {
+      .journey-stepper-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* TIMELINE DES ARRETS ARTISANS */
+    .timeline-stops {
+      position: relative;
+      padding-left: 36px;
+    }
+    .timeline-stops::before {
+      content: '';
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      bottom: 24px;
+      width: 2px;
+      background: repeating-linear-gradient(to bottom, var(--sl-terracotta) 0, var(--sl-terracotta) 6px, transparent 6px, transparent 12px);
+    }
+    .stop-card {
+      background: var(--sl-canvas);
+      border: 1px solid var(--sl-border-subtle);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .stop-node {
+      position: absolute;
+      left: -36px;
+      top: 14px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--sl-terracotta);
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid #FFFFFF;
+      box-shadow: var(--sl-shadow-soft);
+    }
+    .stop-node.secondary {
+      background: var(--sl-sage);
+    }
+    .stop-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .stop-artisan-name {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--sl-slate);
+    }
+    .stop-pickup-time {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--sl-terracotta-dark);
+      background: var(--sl-terracotta-soft);
+      padding: 3px 10px;
+      border-radius: var(--sl-radius-pill);
+    }
+    .stop-pickup-time.sage {
+      color: var(--sl-sage-dark);
+      background: var(--sl-sage-soft);
+    }
+    .stop-items-list {
+      font-size: 13px;
+      color: var(--sl-text-secondary);
+      line-height: 1.6;
+    }
+
+    /* RECAPITULATIF FINANCIER & VFP REWARD */
+    .cart-summary-box {
+      background: var(--sl-surface-warm);
+      border: 1px solid var(--sl-border-subtle);
+      border-radius: 14px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13.5px;
+      color: var(--sl-text-secondary);
+      margin-bottom: 10px;
+    }
+    .summary-row.total {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--sl-slate);
+      padding-top: 12px;
+      border-top: 1px solid var(--sl-border-subtle);
+      margin-top: 6px;
+    }
+    .summary-vfp-badge {
+      background: #FFFFFF;
+      border: 1px solid var(--sl-honey);
+      border-radius: 10px;
+      padding: 12px;
+      margin: 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .summary-vfp-badge svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--sl-honey);
+      flex-shrink: 0;
+    }
+    .summary-vfp-badge .txt-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--sl-honey-dark);
+    }
+    .summary-vfp-badge .txt-desc {
+      font-size: 11px;
+      color: var(--sl-text-secondary);
+    }
+    .btn-checkout-cta {
+      width: 100%;
+      background: var(--sl-terracotta);
+      color: #FFFFFF;
+      border: none;
+      border-radius: var(--sl-radius-pill);
+      padding: 14px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(194, 103, 80, 0.3);
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+    .btn-checkout-cta:hover {
+      background: var(--sl-terracotta-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(194, 103, 80, 0.4);
+    }
+
+    /* VUES ALTERNATIVES DES PERSONAS (SENIOR PIERRE & SUZANNE CAISSE) */
+    .view-container {
+      display: none;
+    }
+    .view-container.active {
+      display: block;
+    }
+
+    /* VUE PIERRE SENIOR (PASSERELLE PHYSIQUE NFC & CONFORT) */
+    .senior-container {
+      max-width: 1040px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      border-radius: var(--sl-radius-card);
+      border: 1px solid var(--sl-border-subtle);
+      box-shadow: var(--sl-shadow-card);
+      padding: 36px;
+    }
+    .senior-header-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--sl-slate);
+      margin-bottom: 8px;
+    }
+    .senior-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      margin-top: 24px;
+      align-items: center;
+    }
+    /* VRAIE CARTE BANCAIRE NFC ISO ID-1 (Proportions 85.6mm x 53.98mm) */
+    .nfc-card-realistic {
+      width: 100%;
+      aspect-ratio: 1.586;
+      background: linear-gradient(135deg, #1C2D3D 0%, #243342 60%, #304457 100%);
+      border-radius: 18px;
+      box-shadow: 0 12px 32px rgba(36, 51, 66, 0.25);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 24px 28px;
+      color: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .nfc-card-realistic::before {
+      content: '';
+      position: absolute;
+      right: -30px;
+      bottom: -30px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196, 139, 40, 0.25), transparent 70%);
+      pointer-events: none;
+    }
+    .nfc-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nfc-card-chip-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .nfc-gold-chip {
+      width: 44px;
+      height: 34px;
+      background: linear-gradient(135deg, #E5C07B 0%, #C49B45 50%, #F5D78E 100%);
+      border-radius: 6px;
+      border: 1px solid #9E7728;
+      position: relative;
+    }
+    .nfc-wave-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: #FFFFFF;
+      stroke-width: 2;
+      fill: none;
+      opacity: 0.9;
+    }
+    .nfc-card-holder {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: 'Poppins', sans-serif;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    }
+    .nfc-card-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .nfc-qr-frame {
+      background: #FFFFFF;
+      padding: 6px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* INTERFACE COMPAGNON MOBILE SENIOR PIERRE */
+    .senior-mobile-chassis {
+      background: var(--sl-canvas);
+      border: 2px solid var(--sl-slate-border);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--sl-shadow-card);
+    }
+    .senior-mobile-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--sl-slate);
+      margin-bottom: 12px;
+    }
+    .senior-big-progress {
+      background: #FFFFFF;
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid var(--sl-border-subtle);
+      margin-bottom: 16px;
+    }
+    .senior-progress-bar {
+      height: 14px;
+      background: var(--sl-slate-soft);
+      border-radius: var(--sl-radius-pill);
+      overflow: hidden;
+      margin: 8px 0;
+    }
+    .senior-progress-fill {
+      height: 100%;
+      background: var(--sl-honey);
+      border-radius: var(--sl-radius-pill);
+      width: 80%;
+    }
+    .senior-cta-btn {
+      width: 100%;
+      background: var(--sl-sage);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    /* VUE SUZANNE CAISSE TACTILE */
+    .pos-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      background: var(--sl-slate);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--sl-shadow-modal);
+      color: #FFFFFF;
+    }
+    .pos-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      margin-bottom: 18px;
+    }
+    .pos-grid {
+      display: grid;
+      grid-template-columns: 2fr 1.1fr;
+      gap: 20px;
+    }
+    .pos-keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .pos-key {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 18px 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .pos-key:hover {
+      background: rgba(255,255,255,0.16);
+      transform: translateY(-2px);
+    }
+    .pos-key .key-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .pos-key .key-price {
+      font-size: 13px;
+      color: var(--sl-terracotta-soft);
+      margin-top: 4px;
+    }
+    .pos-receipt-panel {
+      background: #FFFFFF;
+      color: var(--sl-slate);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .pos-detected-client {
+      background: var(--sl-sage-soft);
+      border: 1px solid var(--sl-sage);
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pos-detected-client svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--sl-sage);
+      stroke-width: 2;
+      fill: none;
+    }
+    .pos-total-row {
+      font-size: 20px;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-top: 2px solid var(--sl-border-subtle);
+    }
+    .pos-action-btn {
+      width: 100%;
+      background: var(--sl-sage);
+      color: #FFFFFF;
+      border: none;
+      border-radius: var(--sl-radius-pill);
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. PERSONA SWITCHER & BANDEAU HAUTEUR -->
+  <div class="persona-bar">
+    <div class="persona-bar-title">
+      <span>Projet ShopLoc — Master 2 MIAGE GLOP</span>
+      <span class="badge-tag">Inspiration Ollca Pure</span>
+      <span style="opacity: 0.7;">Typographie Poppins · Grille 12 Colonnes · Zero AI-Slop</span>
+    </div>
+    <div class="persona-switcher">
+      <button class="persona-btn active" onclick="switchView('client')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        Vue Client E-commerce (Ollca)
+      </button>
+      <button class="persona-btn" onclick="switchView('senior')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+        Pass Senior Pierre (NFC & Mobile)
+      </button>
+      <button class="persona-btn" onclick="switchView('pos')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        Caisse Tactile Suzanne (POS)
+      </button>
+    </div>
+  </div>
+
+  <!-- 2. NAVBAR SUPERIEURE STICKY (100% REPLIQUE EXACTE D OLLCA) -->
+  <header class="top-navbar">
+    <div class="navbar-container">
+      
+      <!-- LOGO MARQUE -->
+      <a href="#" class="brand-logo">
+        <svg viewBox="0 0 32 32">
+          <path d="M16 2L3 12v18h10v-8h6v8h10V12L16 2z"/>
+        </svg>
+        <span>ShopLoc<span class="dot">.</span></span>
+      </a>
+
+      <!-- SELECTEUR VILLE / QUARTIER -->
+      <div class="location-pill">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Lille — Wazemmes & Centre</span>
+        <svg style="width:12px;height:12px;stroke-width:2.5;" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+
+      <!-- BARRE DE RECHERCHE CENTRALE -->
+      <div class="search-wrapper">
+        <input type="text" class="search-input" placeholder="Rechercher un artisan, un pain au levain, une boucherie...">
+        <button class="search-btn" aria-label="Rechercher">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </div>
+
+      <!-- ACTIONS & PANIER -->
+      <div class="nav-actions">
+        <button class="nav-btn-text">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Pierre D. (Senior)
+        </button>
+
+        <button class="cart-pill-btn" onclick="toggleCartDrawer()">
+          <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span>Panier</span>
+          <span class="cart-counter">2</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- CATEGORY NAVIGATION TABS -->
+    <nav class="category-nav">
+      <div class="category-container">
+        <a class="cat-pill active">Toutes les boutiques <span class="count">38</span></a>
+        <a class="cat-pill">Boulangeries & Patisseries <span class="count">7</span></a>
+        <a class="cat-pill">Boucheries & Traiteurs <span class="count">8</span></a>
+        <a class="cat-pill">Primeurs & Maraichers <span class="count">6</span></a>
+        <a class="cat-pill">Fromageries & Cremeries <span class="count">5</span></a>
+        <a class="cat-pill">Poissonneries du Nord <span class="count">4</span></a>
+        <a class="cat-pill">Epiceries Fines & Vrac <span class="count">8</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============================================================= -->
+  <!-- VUE 1 : CLIENT E-COMMERCE (100% ANATOMIE ET ESPACEMENT OLLCA) -->
+  <!-- ============================================================= -->
+  <div id="view-client" class="view-container active">
+    <main class="main-app-container">
+
+      <!-- SECTION HERO 12 COLONNES (.ollca-grid) -->
+      <section class="ollca-grid" style="margin-bottom: 32px;">
+        
+        <!-- BANNIERE VITRINE ARTISANALE (8 colonnes) -->
+        <div class="boutique-hero-col">
+          <div class="shop-hero-card">
+            <div class="shop-hero-banner">
+              <div class="shop-hero-badges">
+                <span class="status-pill"><span class="dot"></span> Ouvert jusqu'a 19h30</span>
+                <span class="vfp-pill">Adherent VFP ShopLoc</span>
+              </div>
+            </div>
+            
+            <div class="shop-hero-content">
+              <div class="avatar-wrapper">
+                <div class="artisan-avatar">
+                  <!-- Silhouette artisan boulanger vectorielle -->
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 2C8 2 6 5 6 8c0 3 2 5 6 5s6-2 6-5c0-3-2-6-6-6zm0 13c-4.4 0-10 2.2-10 6.5V23h20v-1.5c0-4.3-5.6-6.5-10-6.5z"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="shop-title-row">
+                <div>
+                  <h1 class="shop-name">Boulangerie-Patisserie Saint-Sauveur</h1>
+                  <div class="shop-category">
+                    <span>Artisan Boulanger d'Exception</span>
+                    <span>·</span>
+                    <span>Fournil au feu de bois</span>
+                    <span>·</span>
+                    <span>Quartier Saint-Sauveur, Lille</span>
+                  </div>
+                </div>
+                <div class="shop-rating">
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  <span>4.9 (142 avis)</span>
+                </div>
+              </div>
+
+              <p class="shop-description">
+                Pains vivants pétris sur place à partir de farines biologiques des Hauts-de-France (T80 de meule).
+                Fermentation lente au levain naturel 24 heures et viennoiseries pur beurre AOP Charentes-Poitou.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARTE DETAILS & LOGISTIQUE OLLCA (4 colonnes) -->
+        <div class="boutique-details-col">
+          <div class="shop-details-card">
+            <div>
+              <div class="shop-details-title">
+                <span>Horaires & Retrait</span>
+                <span style="font-size: 11px; color: var(--sl-sage-dark); background: var(--sl-sage-soft); padding: 2px 8px; border-radius: var(--sl-radius-pill);">Actif</span>
+              </div>
+              
+              <div class="shop-details-list">
+                <div class="shop-detail-item">
+                  <div class="detail-icon-badge terracotta">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  </div>
+                  <div class="detail-content">
+                    <div class="label">Click & Collect</div>
+                    <div class="value">Retrait dès 17h00 aujourd'hui</div>
+                    <div class="sub">Préparé avec soin sans file d'attente</div>
+                  </div>
+                </div>
+
+                <div class="shop-detail-item">
+                  <div class="detail-icon-badge">
+                    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </div>
+                  <div class="detail-content">
+                    <div class="label">Boutique Physique</div>
+                    <div class="value">14 rue Saint-Sauveur, Lille</div>
+                    <div class="sub">À 280 m (4 min à pied de votre position)</div>
+                  </div>
+                </div>
+
+                <div class="shop-detail-item">
+                  <div class="detail-icon-badge sage">
+                    <svg viewBox="0 0 24 24"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5L9 9h3l3 5"/><path d="M12 9l3-3h3"/></svg>
+                  </div>
+                  <div class="detail-content">
+                    <div class="label">Livraison Propre</div>
+                    <div class="value">Vélo cargo métropolitain</div>
+                    <div class="sub">Créneau groupé 18h30 - 19h30 (0 emission)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="shop-action-box">
+              <div class="vfp-reward">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--sl-honey)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <span>+12 points citoyen VFP sur cette boutique</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+      <!-- EN-TETE DE SECTION PRODUITS -->
+      <div class="section-header">
+        <h2 class="section-title">Créations Artisanales du Jour (18)</h2>
+        <div class="section-filter-pills">
+          <button class="sub-filter-pill active">Tous les produits</button>
+          <button class="sub-filter-pill">Pains au levain</button>
+          <button class="sub-filter-pill">Viennoiseries</button>
+          <button class="sub-filter-pill">Pâtisseries</button>
+        </div>
+      </div>
+
+      <!-- GRILLE DE 4 PRODUITS OLLCA (264px de large, hauteur 374px) -->
+      <div class="products-grid">
+
+        <!-- PRODUIT 1 : Pain au Levain Naturel -->
+        <article class="product-card">
+          <div class="product-img-wrap">
+            <span class="product-tag">Bio T80 Meule</span>
+            <!-- Illustration vectorielle fidele du pain artisanal entaille -->
+            <svg viewBox="0 0 260 180">
+              <defs>
+                <linearGradient id="breadGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#D4A373"/>
+                  <stop offset="50%" stop-color="#BC6C25"/>
+                  <stop offset="100%" stop-color="#8A4B1A"/>
+                </linearGradient>
+              </defs>
+              <rect width="100%" height="100%" fill="#FBF8F3"/>
+              <path d="M40 120 Q50 60 130 55 Q210 60 220 120 Q190 145 130 145 Q70 145 40 120 Z" fill="url(#breadGrad)" filter="drop-shadow(0 4px 10px rgba(70,40,10,0.15))"/>
+              <!-- Grignes de fournil au couteau -->
+              <path d="M80 85 Q95 72 105 90" stroke="#FAF0CA" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+              <path d="M120 78 Q135 65 145 85" stroke="#FAF0CA" stroke-width="5" stroke-linecap="round" fill="none"/>
+              <path d="M160 85 Q172 75 180 92" stroke="#FAF0CA" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+              <!-- Saupoudrage farine meule -->
+              <circle cx="110" cy="70" r="1.5" fill="#FFFFFF" opacity="0.8"/>
+              <circle cx="140" cy="68" r="2" fill="#FFFFFF" opacity="0.7"/>
+              <circle cx="155" cy="74" r="1.5" fill="#FFFFFF" opacity="0.8"/>
+            </svg>
+          </div>
+          <div class="product-content">
+            <div>
+              <h3 class="product-label">Pain de Campagne au Levain Vivant</h3>
+              <div class="product-origin">Farine Bio Hauts-de-France · 500 g</div>
+            </div>
+            <div class="product-price-row">
+              <div class="price-with-unity">
+                <span class="price-main">2,80 €</span>
+                <span class="price-unity">1 pièce (5,60 € / kg)</span>
+              </div>
+              <button class="btn-add-circle" aria-label="Ajouter au panier" title="Ajouter au panier">
+                <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- PRODUIT 2 : Brioche Feuilletée (Etat Selectionne : Stepper Pill) -->
+        <article class="product-card" style="border-color: var(--sl-terracotta);">
+          <div class="product-img-wrap">
+            <span class="product-tag" style="color: var(--sl-terracotta-dark);">Pur Beurre AOP</span>
+            <!-- Illustration vectorielle brioche doree tressee -->
+            <svg viewBox="0 0 260 180">
+              <defs>
+                <linearGradient id="briocheGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFE5A3"/>
+                  <stop offset="40%" stop-color="#EAA842"/>
+                  <stop offset="100%" stop-color="#C8781B"/>
+                </linearGradient>
+              </defs>
+              <rect width="100%" height="100%" fill="#FDFBF6"/>
+              <!-- Boules tressees dorees -->
+              <ellipse cx="85" cy="105" rx="35" ry="30" fill="url(#briocheGrad)"/>
+              <ellipse cx="130" cy="95" rx="40" ry="34" fill="url(#briocheGrad)"/>
+              <ellipse cx="175" cy="105" rx="35" ry="30" fill="url(#briocheGrad)"/>
+              <!-- Grains de sucre candi -->
+              <rect x="120" y="78" width="6" height="6" rx="1.5" fill="#FFFFFF" transform="rotate(15 120 78)"/>
+              <rect x="142" y="84" width="5" height="5" rx="1.5" fill="#FFFFFF" transform="rotate(-10 142 84)"/>
+              <rect x="82" y="92" width="5" height="5" rx="1.5" fill="#FFFFFF" transform="rotate(30 82 92)"/>
+              <rect x="170" y="94" width="6" height="6" rx="1.5" fill="#FFFFFF" transform="rotate(5 170 94)"/>
+            </svg>
+          </div>
+          <div class="product-content">
+            <div>
+              <h3 class="product-label">Brioche Feuilletée au Sucre Perlé</h3>
+              <div class="product-origin">Beurre AOP Charentes · 400 g</div>
+            </div>
+            <div class="product-price-row">
+              <div class="price-with-unity">
+                <span class="price-main">4,50 €</span>
+                <span class="price-unity">1 pièce (11,25 € / kg)</span>
+              </div>
+              <div class="stepper-pill">
+                <button class="stepper-btn">-</button>
+                <span class="stepper-value">2</span>
+                <button class="stepper-btn">+</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- PRODUIT 3 : Tartelette Pommes Caramélisées -->
+        <article class="product-card">
+          <div class="product-img-wrap">
+            <span class="product-tag">Fait Maison</span>
+            <!-- Illustration vectorielle tartelette fine -->
+            <svg viewBox="0 0 260 180">
+              <defs>
+                <linearGradient id="appleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#E07A5F"/>
+                  <stop offset="50%" stop-color="#DDA15E"/>
+                  <stop offset="100%" stop-color="#BC6C25"/>
+                </linearGradient>
+              </defs>
+              <rect width="100%" height="100%" fill="#FCFBF7"/>
+              <circle cx="130" cy="105" r="52" fill="#E5B26E" stroke="#C2873E" stroke-width="4"/>
+              <!-- Lamelles de pommes en rosace -->
+              <circle cx="130" cy="105" r="42" fill="url(#appleGrad)"/>
+              <path d="M130 70 A35 35 0 0 1 165 105 A35 35 0 0 1 130 140 A35 35 0 0 1 95 105 A35 35 0 0 1 130 70" fill="none" stroke="#873E23" stroke-width="1.5" opacity="0.5"/>
+              <circle cx="130" cy="105" r="12" fill="#C26750"/>
+            </svg>
+          </div>
+          <div class="product-content">
+            <div>
+              <h3 class="product-label">Tartelette Fine Pommes et Cannelle</h3>
+              <div class="product-origin">Pommes Boskoop régionales · 1 pers.</div>
+            </div>
+            <div class="product-price-row">
+              <div class="price-with-unity">
+                <span class="price-main">3,60 €</span>
+                <span class="price-unity">1 pièce individuelle</span>
+              </div>
+              <button class="btn-add-circle" aria-label="Ajouter au panier" title="Ajouter au panier">
+                <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- PRODUIT 4 : Baguette Traditionnelle -->
+        <article class="product-card">
+          <div class="product-img-wrap">
+            <span class="product-tag">Tradition Française</span>
+            <!-- Illustration vectorielle baguette croustillante -->
+            <svg viewBox="0 0 260 180">
+              <defs>
+                <linearGradient id="baguetteGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#E3B778"/>
+                  <stop offset="50%" stop-color="#C88735"/>
+                  <stop offset="100%" stop-color="#96561B"/>
+                </linearGradient>
+              </defs>
+              <rect width="100%" height="100%" fill="#FBF9F4"/>
+              <path d="M30 115 Q130 75 230 115 Q235 125 225 130 Q130 95 35 130 Z" fill="url(#baguetteGrad)" filter="drop-shadow(0 3px 6px rgba(0,0,0,0.12))"/>
+              <!-- Coups de lame obliques -->
+              <path d="M65 110 L85 105" stroke="#FFF4D1" stroke-width="4" stroke-linecap="round"/>
+              <path d="M110 102 L130 98" stroke="#FFF4D1" stroke-width="4" stroke-linecap="round"/>
+              <path d="M155 102 L175 98" stroke="#FFF4D1" stroke-width="4" stroke-linecap="round"/>
+              <path d="M195 110 L210 107" stroke="#FFF4D1" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="product-content">
+            <div>
+              <h3 class="product-label">Baguette de Tradition Française</h3>
+              <div class="product-origin">Sans additif · Fermentation 24h · 250 g</div>
+            </div>
+            <div class="product-price-row">
+              <div class="price-with-unity">
+                <span class="price-main">1,30 €</span>
+                <span class="price-unity">1 pièce (5,20 € / kg)</span>
+              </div>
+              <button class="btn-add-circle" aria-label="Ajouter au panier" title="Ajouter au panier">
+                <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- SECTION INNOVATION SHOPLOC : PANIER ITINERANT MULTI-BOUTIQUES -->
+      <section class="cart-journey-section">
+        <div class="cart-journey-header">
+          <div class="cart-journey-title">
+            <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <span>Votre Commande Multi-Commerces de Quartier</span>
+          </div>
+          <span style="font-size: 13px; color: var(--sl-text-secondary); font-weight: 500;">
+            2 commerçants partenaires · Trajet piéton optimisé : <strong>6 minutes</strong>
+          </span>
+        </div>
+
+        <div class="journey-stepper-grid">
+          
+          <!-- TIMELINE DES ARRETS CLIENT -->
+          <div class="timeline-stops">
+            
+            <!-- ARRET 1 : BOULANGERIE -->
+            <div class="stop-card">
+              <div class="stop-node">1</div>
+              <div class="stop-header">
+                <span class="stop-artisan-name">Boulangerie Saint-Sauveur</span>
+                <span class="stop-pickup-time">Retrait 17h00</span>
+              </div>
+              <div class="stop-items-list">
+                <div>• 1 × Pain de Campagne au Levain Vivant (2,80 €)</div>
+                <div>• 2 × Brioche Feuilletée au Sucre Perlé (9,00 €)</div>
+              </div>
+            </div>
+
+            <!-- ARRET 2 : PRIMEUR -->
+            <div class="stop-card">
+              <div class="stop-node secondary">2</div>
+              <div class="stop-header">
+                <span class="stop-artisan-name">Primeur & Maraîcher des Halles</span>
+                <span class="stop-pickup-time sage">Retrait 17h25</span>
+              </div>
+              <div class="stop-items-list">
+                <div>• 1 × Panier Légumes Racines Bio de Saison (5,10 €)</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RECAPITULATIF COMMANDE & RECOMPENSE VFP -->
+          <div class="cart-summary-box">
+            <div>
+              <div class="summary-row">
+                <span>Total Boulangerie</span>
+                <span>11,80 €</span>
+              </div>
+              <div class="summary-row">
+                <span>Total Primeur des Halles</span>
+                <span>5,10 €</span>
+              </div>
+              <div class="summary-row">
+                <span>Frais de service ShopLoc</span>
+                <span style="color: var(--sl-sage-dark); font-weight: 600;">Offerts (Mairie de Lille)</span>
+              </div>
+
+              <div class="summary-vfp-badge">
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <div>
+                  <div class="txt-title">+24 Points Citoyen VFP Débloqués !</div>
+                  <div class="txt-desc">Palier 10 achats atteint : 1h de stationnement offerte dans les parkings municipaux.</div>
+                </div>
+              </div>
+
+              <div class="summary-row total">
+                <span>Total à régler</span>
+                <span>16,90 €</span>
+              </div>
+            </div>
+
+            <button class="btn-checkout-cta">
+              Valider le parcours Click & Collect (16,90 €)
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- VUE 2 : ESPACE SENIOR PIERRE (CARTE PHYSIQUE NFC & CONFORT)   -->
+  <!-- ============================================================= -->
+  <div id="view-senior" class="view-container">
+    <main class="main-app-container">
+      <div class="senior-container">
+        <h2 class="senior-header-title">Pass Citoyen Physique Senior — Pierre Dupont (74 ans)</h2>
+        <p style="color: var(--sl-text-secondary); font-size: 14px; margin-bottom: 24px;">
+          Conception matérielle inclusive garantissant l'accès des aînés sans dépendance obligatoire au smartphone.
+          Facteur de forme carte bancaire ISO/IEC 7810 ID-1 avec puce NFC et QR code de visée optique haute précision.
+        </p>
+
+        <div class="senior-grid">
+          
+          <!-- VRAIE CARTE NFC ISO ID-1 REALISTE -->
+          <div class="nfc-card-realistic">
+            <div class="nfc-card-top">
+              <div class="nfc-card-chip-row">
+                <div class="nfc-gold-chip"></div>
+                <div class="nfc-wave-icon">
+                  <!-- Symbole sans contact NFC normalise -->
+                  <svg viewBox="0 0 24 24"><path d="M8.5 16.5a5 5 0 0 1 0-9"/><path d="M12 19a8.5 8.5 0 0 0 0-14"/><path d="M15.5 21.5a12 12 0 0 0 0-19"/></svg>
+                </div>
+              </div>
+              <div style="font-size: 11px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.08em; color: var(--sl-honey);">
+                Ville de Lille · ShopLoc
+              </div>
+            </div>
+
+            <div class="nfc-card-holder">
+              PIERRE DUPONT
+            </div>
+
+            <div class="nfc-card-bottom">
+              <div>
+                <div style="font-size: 9.5px; opacity: 0.75; text-transform: uppercase; letter-spacing: 0.05em;">Identifiant Pass VFP</div>
+                <div style="font-size: 13.5px; font-weight: 600; font-family: monospace; letter-spacing: 0.05em;">SL-59000-8421</div>
+              </div>
+
+              <!-- QR CODE VECTORIEL CADRE DE CROCHETS OPTIQUES [ ] -->
+              <div class="nfc-qr-frame">
+                <svg width="64" height="64" viewBox="0 0 64 64">
+                  <!-- Crochets optiques de coin -->
+                  <path d="M2 12 V2 H12" stroke="#C26750" stroke-width="2.5" fill="none"/>
+                  <path d="M52 2 H62 V12" stroke="#C26750" stroke-width="2.5" fill="none"/>
+                  <path d="M2 52 V62 H12" stroke="#C26750" stroke-width="2.5" fill="none"/>
+                  <path d="M52 62 H62 V52" stroke="#C26750" stroke-width="2.5" fill="none"/>
+                  <!-- Motifs QR Code -->
+                  <rect x="8" y="8" width="16" height="16" fill="#243342"/>
+                  <rect x="11" y="11" width="10" height="10" fill="#FFFFFF"/>
+                  <rect x="13" y="13" width="6" height="6" fill="#243342"/>
+
+                  <rect x="40" y="8" width="16" height="16" fill="#243342"/>
+                  <rect x="43" y="11" width="10" height="10" fill="#FFFFFF"/>
+                  <rect x="45" y="13" width="6" height="6" fill="#243342"/>
+
+                  <rect x="8" y="40" width="16" height="16" fill="#243342"/>
+                  <rect x="11" y="43" width="10" height="10" fill="#FFFFFF"/>
+                  <rect x="13" y="45" width="6" height="6" fill="#243342"/>
+
+                  <!-- Pixels internes -->
+                  <rect x="28" y="12" width="8" height="4" fill="#243342"/>
+                  <rect x="28" y="20" width="4" height="8" fill="#243342"/>
+                  <rect x="36" y="28" width="8" height="8" fill="#243342"/>
+                  <rect x="28" y="44" width="12" height="4" fill="#243342"/>
+                  <rect x="48" y="40" width="8" height="8" fill="#243342"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- INTERFACE MOBILE COMPAGNON SENIOR PIERRE -->
+          <div class="senior-mobile-chassis">
+            <div class="senior-mobile-title">Bonjour Pierre,</div>
+            <p style="font-size: 14px; color: var(--sl-text-secondary); margin-bottom: 16px;">
+              Votre commande est prête chez Suzanne (Boulangerie Saint-Sauveur).
+            </p>
+
+            <div class="senior-big-progress">
+              <div style="display: flex; justify-content: space-between; font-size: 13.5px; font-weight: 600;">
+                <span>Fidélité Stationnement Municipal</span>
+                <span style="color: var(--sl-honey-dark);">8 / 10 achats</span>
+              </div>
+              <div class="senior-progress-bar">
+                <div class="senior-progress-fill"></div>
+              </div>
+              <div style="font-size: 12px; color: var(--sl-text-muted);">
+                Plus que 2 achats de proximité pour débloquer 1 heure gratuite de parking.
+              </div>
+            </div>
+
+            <button class="senior-cta-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+              Itinéraire Piéton (280 m — 4 min)
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- VUE 3 : TERMINAL CAISSE TACTILE COMMERCANTE (SUZANNE 22 ANS)  -->
+  <!-- ============================================================= -->
+  <div id="view-pos" class="view-container">
+    <main class="main-app-container">
+      <div class="pos-container">
+        
+        <div class="pos-top-bar">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="font-size: 18px; font-weight: 700;">ShopLoc POS — Boulangerie Saint-Sauveur</span>
+            <span style="background: rgba(74, 122, 91, 0.3); color: #9FD6AF; font-size: 11px; padding: 3px 10px; border-radius: var(--sl-radius-pill); font-weight: 600;">
+              ● Lecteur NFC & Caisse Connectés
+            </span>
+          </div>
+          <div style="font-size: 13px; opacity: 0.85;">
+            Session active : Suzanne (Responsable Boutique)
+          </div>
+        </div>
+
+        <div class="pos-grid">
+          
+          <!-- PAVÉ DE TOUCHES TACTILES RAPIDES -->
+          <div>
+            <div style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; opacity: 0.7;">
+              Touches Vente Express (Rayon Boulangerie)
+            </div>
+            
+            <div class="pos-keypad">
+              <div class="pos-key">
+                <div class="key-title">Baguette Tradition</div>
+                <div class="key-price">1,30 €</div>
+              </div>
+              <div class="pos-key">
+                <div class="key-title">Pain Levain T80</div>
+                <div class="key-price">2,80 €</div>
+              </div>
+              <div class="pos-key">
+                <div class="key-title">Pain Seigle Noir</div>
+                <div class="key-price">3,20 €</div>
+              </div>
+
+              <div class="pos-key">
+                <div class="key-title">Croissant Beurre</div>
+                <div class="key-price">1,40 €</div>
+              </div>
+              <div class="pos-key">
+                <div class="key-title">Pain Chocolat</div>
+                <div class="key-price">1,50 €</div>
+              </div>
+              <div class="pos-key">
+                <div class="key-title">Brioche Sucre</div>
+                <div class="key-price">4,50 €</div>
+              </div>
+
+              <div class="pos-key">
+                <div class="key-title">Tartelette Pomme</div>
+                <div class="key-price">3,60 €</div>
+              </div>
+              <div class="pos-key">
+                <div class="key-title">Flan Pâtissier</div>
+                <div class="key-price">2,90 €</div>
+              </div>
+              <div class="pos-key">
+                <div class="key-title">Sandwich Jambon</div>
+                <div class="key-price">5,20 €</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANNEAU TICKET & DETECTION CLIENT NFC -->
+          <div class="pos-receipt-panel">
+            <div>
+              <div class="pos-detected-client">
+                <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <div>
+                  <div style="font-weight: 700; font-size: 13px; color: var(--sl-sage-dark);">Carte Pass Détectée : Pierre Dupont</div>
+                  <div style="font-size: 11.5px; color: var(--sl-text-secondary);">Compte VFP Citoyen valide · Avantage fidélité appliqué</div>
+                </div>
+              </div>
+
+              <div style="font-size: 14px; font-weight: 600; margin-bottom: 10px; color: var(--sl-slate);">
+                Articles Encaissés (Ticket #4082)
+              </div>
+
+              <div style="font-size: 13px; color: var(--sl-text-secondary); display: flex; flex-direction: column; gap: 8px;">
+                <div style="display: flex; justify-content: space-between;">
+                  <span>1 × Pain de Campagne au Levain</span>
+                  <strong>2,80 €</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span>2 × Brioche Feuilletée Sucre</span>
+                  <strong>9,00 €</strong>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="pos-total-row">
+                <span>Total Caisse</span>
+                <span style="color: var(--sl-terracotta);">11,80 €</span>
+              </div>
+              <button class="pos-action-btn">
+                Valider Encaissement & Créditer Points VFP
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function switchView(viewName) {
+      document.querySelectorAll('.view-container').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.persona-btn').forEach(el => el.classList.remove('active'));
+      
+      const targetView = document.getElementById('view-' + viewName);
+      if (targetView) targetView.classList.add('active');
+      
+      const btn = Array.from(document.querySelectorAll('.persona-btn')).find(b => b.getAttribute('onclick').includes(viewName));
+      if (btn) btn.classList.add('active');
+      
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleCartDrawer() {
+      const cartSec = document.querySelector('.cart-journey-section');
+      if (cartSec) {
+        cartSec.scrollIntoView({ behavior: 'smooth' });
+        cartSec.style.outline = '2px solid var(--sl-terracotta)';
+        setTimeout(() => cartSec.style.outline = 'none', 1500);
+      }
+    }
+  </script>
+
+</body>
+</html>

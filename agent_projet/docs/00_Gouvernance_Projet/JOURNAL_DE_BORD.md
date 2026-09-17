@@ -7,7 +7,7 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 ## 1. Etat Courant du Projet
 
 - **Phase active** : Cadrage Metier & Redaction du Livrable R1
-- **Derniere mise a jour** : 2026-09-12
+- **Derniere mise a jour** : 2026-09-17
 - **Responsable / Scrum Master** : Equipe ShopLoc (M2 MIAGE GLOP)
 - **Depot Projet (Cockpit / Gouvernance)** : GitHub `Projet-GLOP` (`ShopLoc`)
 - **Depot Applicatif (Code etudiant evalue)** : GitLab `projet-glop-app`
@@ -340,6 +340,25 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Ordonnancement séquentiel inviolable consigné dans `cdc_progress.json` : aucun agent ne peut court-circuiter l'arborescence inversée ou travailler sur une tâche déjà réservée / en cours.
 - **Reste à faire / Objectifs pour la Session 18** :
   - Lancement de la rédaction de la **Section 01 du Cahier des Charges R1 (Cadrage Stratégique & Expression du Besoin / Méthode APTE)** par le Product Owner en réservant l'étape `STEP-01` (`IN_PROGRESS`) dans `cdc_progress.json` et en mobilisant le protocole `/grill-me`.
+
+---
+
+### [2026-09-17] Session 18 — Rédaction & Validation de la Section 01 du Cahier des Charges R1 (APTE & Cadrage)
+- **Objectif** : Rédiger la première section modulaire du Cahier des Charges R1 (`SEC-01` / `STEP-01`), intégrer les 3 modèles visuels SVG vectoriels (Bête à cornes, Diagramme pieuvre, Matrice de positionnement concurrentiel), valider la caractérisation formelle des fonctions selon la norme AFNOR NF X 50-151, compiler en PDF et synchroniser avec Google Drive.
+- **Actions réalisées** :
+  - Réservation officielle de l'étape `STEP-01` (`IN_PROGRESS`) dans `agent_projet/config/cdc_progress.json` et mise à jour de `AVANCEMENT_CAHIER_DES_CHARGES.md`.
+  - Rédaction complète du livrable modulaire : `agent_projet/docs/cdc_sections/01_cadrage_strategique_besoins.md` couvrant l'ensemble des 10 sous-sections du plan directeur (positionnement, matrice 2 axes, méthode APTE avec caractérisation des fonctions FP1/FP2/FC1-FC4, pyramide des besoins, frontières et périmètre strict sans livraison à domicile, scalabilité multi-tenant étanche, justification du Monolithe Modulaire vs Microservices selon l'ADR-012, matrice des KPIs à double échelle, gratuité citoyenne et inclusion).
+  - Intégration des 3 modèles visuels SVG vectoriels purs (Figures 1.1, 1.2, 1.3) respectant la charte des Design Tokens institutionnels.
+  - Optimisation du compilateur universel `agent_projet/scripts/render_report.py` (prise en charge des blocs HTML bruts et préservation des SVG, correction de l'appel headless Edge).
+  - Contrôle d'intégrité automatisé via `verify_deliverables.py` (32 fichiers audités, 0 violation, 0 canari, 0 emoji).
+  - Compilation réussie en document PDF vectoriel A4 (516 Ko) : `agent_projet/docs/cdc_sections/01_cadrage_strategique_besoins.pdf`.
+  - Synchronisation automatique vers Google Drive (`01_Cadrage_Metier_R1/01_cadrage_strategique_besoins.pdf`).
+  - Validation et passage de l'étape `STEP-01` à l'état `COMPLETED` dans `cdc_progress.json` et `AVANCEMENT_CAHIER_DES_CHARGES.md`.
+- **Décisions actées** :
+  - Validation formelle de la Section 01 comme socle d'exigences pour les sections suivantes du CdC.
+  - Étape 01 formellement déclarée `COMPLETED` (100% des prérequis satisfaits pour l'Étape 02).
+- **Reste à faire / Objectifs pour la Session 19** :
+  - Démarrage de l'**Étape 02 (`STEP-02` / `SEC-02`)** : Rédaction de la section *Personas Approfondis & Parcours Utilisateurs Cibles (User Journeys)* par le Business Analyst (Pierre senior 74 ans, Suzanne commerçante 22 ans, Marius collectivité 27 ans, Julie 31 ans & Arthur 34 ans), avec User Journey Maps nominales et dispositif d'inclusion.
 
 ---
 

@@ -1,222 +1,237 @@
-<!-- GABARIT DE REFERENCE MCD MERISE ACADEMIQUE EN SVG VECTORIEL PUR -->
-<!-- Palette pastel adoucie conformement aux arbitrages : Entites, Associations et Cardinalites explicites -->
-
-<div class="diagram-container" style="margin: 16pt 0; text-align: center;">
-  <h3 style="font-size: 10.5pt; color: var(--color-brand-primary); margin-bottom: 6pt; text-transform: uppercase;">
-    Figure 4.1 — Modèle Conceptuel de Données (MCD) : Cœur Métier & Fidélité Territoriale
-  </h3>
-  <div style="font-size: 8.5pt; color: var(--color-text-secondary); margin-bottom: 10pt; font-style: italic;">
-    Formalisme Merise académique conforme aux standards Master MIAGE (Entités, Associations verbales et cardinalités)
+<!-- FIGURE 4.1 : MODELE CONCEPTUEL DE DONNEES (MCD MERISE) & TABLE MLD -->
+<div class="figure-card" style="background:#FFFFFF; border:1px solid #E8E6DF; border-radius:16px; padding:28px; margin-bottom:36px; box-shadow:0 4px 16px rgba(36,51,66,0.06);">
+  
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px; border-bottom:1px solid #E8E6DF; padding-bottom:14px;">
+    <div>
+      <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:4px;">
+        <span style="width:8px; height:8px; border-radius:50%; background:#243342;"></span>
+        <span style="font-size:11px; font-weight:700; color:#243342; text-transform:uppercase; letter-spacing:0.08em;">Modélisation Relationnelle Merise</span>
+      </div>
+      <h3 style="font-size:18px; font-weight:700; color:#243342; margin:0;">Figure 4.1 — Modèle Conceptuel de Données (MCD) &amp; Dictionnaire Normalisé</h3>
+    </div>
+    <span style="font-size:11px; background:#FAF9F6; border:1px solid #E8E6DF; padding:4px 12px; border-radius:9999px; color:#5A6578; font-weight:600;">3e Forme Normale (3FN)</span>
   </div>
 
-  <svg viewBox="0 0 920 440" width="100%" height="440" style="font-family: 'Inter', sans-serif;">
+  <svg viewBox="0 0 1020 560" width="100%" height="auto" style="overflow:visible; font-family:'Poppins', sans-serif;">
     
-    <!-- 1. ENTITE : CITOYEN (Vert amande pastel) -->
-    <g transform="translate(40, 50)">
-      <rect x="0" y="0" width="170" height="150" rx="6" fill="#F8FAFC" stroke="#22C55E" stroke-width="1.5" />
-      <rect x="0" y="0" width="170" height="28" rx="6" fill="#DCFCE7" />
-      <rect x="0" y="22" width="170" height="6" fill="#DCFCE7" />
-      <text x="85" y="19" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#15803D">CITOYEN</text>
-      <line x1="0" y1="28" x2="170" y2="28" stroke="#22C55E" stroke-width="1.5" />
+  <defs>
+    <!-- Filtre ombre portee douce -->
+    <filter id="shadow-soft" x="-8%" y="-8%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#243342" flood-opacity="0.06"/>
+    </filter>
+    <filter id="shadow-elevated" x="-8%" y="-8%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#243342" flood-opacity="0.10"/>
+    </filter>
+
+    <!-- Marqueurs de fleches sémantiques parfaitement orientes -->
+    <marker id="arrow-slate" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#243342" />
+    </marker>
+    <marker id="arrow-terracotta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#C26750" />
+    </marker>
+    <marker id="arrow-sage" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#4A7A5B" />
+    </marker>
+    <marker id="arrow-honey" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#C48B28" />
+    </marker>
+    <marker id="arrow-plum" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#6E3946" />
+    </marker>
+    <marker id="arrow-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#8C96A5" />
+    </marker>
+  </defs>
+
+
+    <!-- ENTITE 1 : CITOYEN (TERRACOTTA) -->
+    <g filter="url(#shadow-soft)">
+      <rect x="40" y="50" width="190" height="150" rx="10" fill="#FFFFFF" stroke="#D88B77" stroke-width="1.5" />
+      <path d="M 40 60 A 10 10 0 0 1 50 50 L 220 50 A 10 10 0 0 1 230 60 L 230 80 L 40 80 Z" fill="#C26750" />
+      <text x="135" y="71" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">CITOYEN</text>
       
-      <text x="12" y="48" font-size="8.5" font-weight="bold" fill="#0F172A" text-decoration="underline"># id_citoyen (UUID)</text>
-      <text x="12" y="66" font-size="8.5" fill="#334155">nom (VARCHAR)</text>
-      <text x="12" y="82" font-size="8.5" fill="#334155">prenom (VARCHAR)</text>
-      <text x="12" y="98" font-size="8.5" fill="#334155">email_hash (VARCHAR)</text>
-      <text x="12" y="114" font-size="8.5" fill="#334155">code_carte_qr (VARCHAR)</text>
-      <text x="12" y="130" font-size="8.5" fill="#334155">solde_vfp_15j (INT)</text>
-      <text x="12" y="144" font-size="8.5" fill="#334155">date_adhesion (DATE)</text>
+      <!-- Attributs -->
+      <text x="55" y="104" font-size="10.5" font-weight="700" text-decoration="underline" fill="#243342">id_citoyen</text>
+      <text x="135" y="104" font-size="9.5" font-weight="500" fill="#8C96A5">UUID [PK]</text>
+      <text x="55" y="124" font-size="10" font-weight="500" fill="#243342">nom_complet</text>
+      <text x="55" y="142" font-size="10" font-weight="500" fill="#243342">email_unique</text>
+      <text x="55" y="160" font-size="10" font-weight="500" fill="#243342">hash_pass_nfc</text>
+      <text x="55" y="178" font-size="10" font-weight="500" fill="#243342">date_adhesion</text>
     </g>
 
-    <!-- 2. ASSOCIATION : PASSER (Entre Citoyen et Commande) -->
-    <g transform="translate(255, 95)">
-      <rect x="0" y="0" width="90" height="50" rx="25" fill="#EFF6FF" stroke="#0284C7" stroke-width="1.5" />
-      <text x="45" y="29" text-anchor="middle" font-size="9" font-weight="bold" fill="#0369A1">Passer</text>
-      <text x="45" y="41" text-anchor="middle" font-size="7" fill="#64748B">date_heure</text>
-    </g>
-
-    <!-- Lignes & Cardinalités Citoyen - Passer - Commande -->
-    <line x1="210" y1="120" x2="255" y2="120" stroke="#334155" stroke-width="1.2" />
-    <text x="220" y="112" font-size="8.5" font-weight="bold" fill="#0F172A">0,n</text>
-
-    <line x1="345" y1="120" x2="390" y2="120" stroke="#334155" stroke-width="1.2" />
-    <text x="360" y="112" font-size="8.5" font-weight="bold" fill="#0F172A">1,1</text>
-
-    <!-- 3. ENTITE : COMMANDE (Bleu ciel pastel) -->
-    <g transform="translate(390, 50)">
-      <rect x="0" y="0" width="165" height="145" rx="6" fill="#F8FAFC" stroke="#0284C7" stroke-width="1.5" />
-      <rect x="0" y="0" width="165" height="28" rx="6" fill="#E0F2FE" />
-      <rect x="0" y="22" width="165" height="6" fill="#E0F2FE" />
-      <text x="82" y="19" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#0369A1">COMMANDE</text>
-      <line x1="0" y1="28" x2="165" y2="28" stroke="#0284C7" stroke-width="1.5" />
+    <!-- ENTITE 2 : COMMANDE (ARDOISE) -->
+    <g filter="url(#shadow-soft)">
+      <rect x="410" y="50" width="200" height="150" rx="10" fill="#FFFFFF" stroke="#243342" stroke-width="1.5" />
+      <path d="M 410 60 A 10 10 0 0 1 420 50 L 600 50 A 10 10 0 0 1 610 60 L 610 80 L 410 80 Z" fill="#243342" />
+      <text x="510" y="71" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">COMMANDE</text>
       
-      <text x="12" y="48" font-size="8.5" font-weight="bold" fill="#0F172A" text-decoration="underline"># id_commande (UUID)</text>
-      <text x="12" y="66" font-size="8.5" fill="#334155">reference (VARCHAR)</text>
-      <text x="12" y="82" font-size="8.5" fill="#334155">montant_total (DECIMAL)</text>
-      <text x="12" y="98" font-size="8.5" fill="#334155">statut_commande (ENUM)</text>
-      <text x="12" y="114" font-size="8.5" fill="#334155">creneau_retrait (TIMESTAMP)</text>
-      <text x="12" y="130" font-size="8.5" fill="#334155">verrou_2pc (BOOLEAN)</text>
+      <!-- Attributs -->
+      <text x="425" y="104" font-size="10.5" font-weight="700" text-decoration="underline" fill="#243342">id_commande</text>
+      <text x="525" y="104" font-size="9.5" font-weight="500" fill="#8C96A5">UUID [PK]</text>
+      <text x="425" y="124" font-size="10" font-weight="500" fill="#243342">ref_facturation</text>
+      <text x="425" y="142" font-size="10" font-weight="500" fill="#243342">date_creation</text>
+      <text x="425" y="160" font-size="10" font-weight="500" fill="#243342">creneau_retrait</text>
+      <text x="425" y="178" font-size="10" font-weight="500" fill="#243342">statut_commande</text>
     </g>
 
-    <!-- 4. ASSOCIATION : COMPOSER (Entre Commande et Article) -->
-    <g transform="translate(595, 95)">
-      <rect x="0" y="0" width="90" height="50" rx="25" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5" />
-      <text x="45" y="27" text-anchor="middle" font-size="9" font-weight="bold" fill="#B45309">Composer</text>
-      <text x="45" y="40" text-anchor="middle" font-size="7.5" fill="#64748B">quantite, prix</text>
-    </g>
-
-    <line x1="555" y1="120" x2="595" y2="120" stroke="#334155" stroke-width="1.2" />
-    <text x="565" y="112" font-size="8.5" font-weight="bold" fill="#0F172A">1,n</text>
-
-    <line x1="685" y1="120" x2="725" y2="120" stroke="#334155" stroke-width="1.2" />
-    <text x="695" y="112" font-size="8.5" font-weight="bold" fill="#0F172A">0,n</text>
-
-    <!-- 5. ENTITE : ARTICLE (Pêche pastel) -->
-    <g transform="translate(725, 50)">
-      <rect x="0" y="0" width="160" height="135" rx="6" fill="#F8FAFC" stroke="#F97316" stroke-width="1.5" />
-      <rect x="0" y="0" width="160" height="28" rx="6" fill="#FFEDD5" />
-      <rect x="0" y="22" width="160" height="6" fill="#FFEDD5" />
-      <text x="80" y="19" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#C2410C">ARTICLE</text>
-      <line x1="0" y1="28" x2="160" y2="28" stroke="#F97316" stroke-width="1.5" />
+    <!-- ENTITE 3 : COMMERCANT (SAUGE) -->
+    <g filter="url(#shadow-soft)">
+      <rect x="790" y="50" width="190" height="150" rx="10" fill="#FFFFFF" stroke="#7EA88D" stroke-width="1.5" />
+      <path d="M 790 60 A 10 10 0 0 1 800 50 L 970 50 A 10 10 0 0 1 980 60 L 980 80 L 790 80 Z" fill="#4A7A5B" />
+      <text x="885" y="71" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">COMMERÇANT</text>
       
-      <text x="12" y="48" font-size="8.5" font-weight="bold" fill="#0F172A" text-decoration="underline"># id_article (UUID)</text>
-      <text x="12" y="66" font-size="8.5" fill="#334155">libelle (VARCHAR)</text>
-      <text x="12" y="82" font-size="8.5" fill="#334155">prix_unitaire (DECIMAL)</text>
-      <text x="12" y="98" font-size="8.5" fill="#334155">stock_physique (INT)</text>
-      <text x="12" y="114" font-size="8.5" fill="#334155">seuil_alerte (INT)</text>
+      <!-- Attributs -->
+      <text x="805" y="104" font-size="10.5" font-weight="700" text-decoration="underline" fill="#243342">id_commercant</text>
+      <text x="915" y="104" font-size="9.5" font-weight="500" fill="#8C96A5">UUID [PK]</text>
+      <text x="805" y="124" font-size="10" font-weight="500" fill="#243342">nom_enseigne</text>
+      <text x="805" y="142" font-size="10" font-weight="500" fill="#243342">siret_numero</text>
+      <text x="805" y="160" font-size="10" font-weight="500" fill="#243342">adresse_geo</text>
+      <text x="805" y="178" font-size="10" font-weight="500" fill="#243342">iban_virement</text>
     </g>
 
-    <!-- 6. ENTITE : COMMERCE (Ambre / Pêche pastel) -->
-    <g transform="translate(725, 255)">
-      <rect x="0" y="0" width="160" height="145" rx="6" fill="#F8FAFC" stroke="#F97316" stroke-width="1.5" />
-      <rect x="0" y="0" width="160" height="28" rx="6" fill="#FFEDD5" />
-      <rect x="0" y="22" width="160" height="6" fill="#FFEDD5" />
-      <text x="80" y="19" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#C2410C">COMMERCE</text>
-      <line x1="0" y1="28" x2="160" y2="28" stroke="#F97316" stroke-width="1.5" />
+    <!-- ENTITE 4 : AVANTAGE VFP (OCRE MIEL) -->
+    <g filter="url(#shadow-soft)">
+      <rect x="40" y="340" width="190" height="150" rx="10" fill="#FFFFFF" stroke="#DCB162" stroke-width="1.5" />
+      <path d="M 40 350 A 10 10 0 0 1 50 340 L 220 340 A 10 10 0 0 1 230 350 L 230 370 L 40 370 Z" fill="#C48B28" />
+      <text x="135" y="361" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">AVANTAGE_VFP</text>
       
-      <text x="12" y="48" font-size="8.5" font-weight="bold" fill="#0F172A" text-decoration="underline"># id_commerce (UUID)</text>
-      <text x="12" y="66" font-size="8.5" fill="#334155">nom_enseigne (VARCHAR)</text>
-      <text x="12" y="82" font-size="8.5" fill="#334155">siret (VARCHAR)</text>
-      <text x="12" y="98" font-size="8.5" fill="#334155">convention_signee (BOOL)</text>
-      <text x="12" y="114" font-size="8.5" fill="#334155">taux_points_fidelite (DEC)</text>
-      <text x="12" y="130" font-size="8.5" fill="#334155">code_commune (VARCHAR)</text>
+      <!-- Attributs -->
+      <text x="55" y="394" font-size="10.5" font-weight="700" text-decoration="underline" fill="#243342">id_avantage</text>
+      <text x="145" y="394" font-size="9.5" font-weight="500" fill="#8C96A5">UUID [PK]</text>
+      <text x="55" y="414" font-size="10" font-weight="500" fill="#243342">points_acquis</text>
+      <text x="55" y="432" font-size="10" font-weight="500" fill="#243342">date_attribution</text>
+      <text x="55" y="450" font-size="10" font-weight="500" fill="#243342">date_peremption</text>
+      <text x="55" y="468" font-size="10" font-weight="500" fill="#243342">heure_parking</text>
     </g>
 
-    <!-- Association : APPARTENIR (Entre Article et Commerce) -->
-    <line x1="805" y1="185" x2="805" y2="255" stroke="#334155" stroke-width="1.2" />
-    <text x="812" y="200" font-size="8.5" font-weight="bold" fill="#0F172A">1,1</text>
-    <text x="812" y="245" font-size="8.5" font-weight="bold" fill="#0F172A">0,n</text>
-
-    <!-- 7. ENTITE : PASSAGE_VFP (Lavande pastel) -->
-    <g transform="translate(40, 260)">
-      <rect x="0" y="0" width="170" height="135" rx="6" fill="#F8FAFC" stroke="#8B5CF6" stroke-width="1.5" />
-      <rect x="0" y="0" width="170" height="28" rx="6" fill="#EDE9FE" />
-      <rect x="0" y="22" width="170" height="6" fill="#EDE9FE" />
-      <text x="85" y="19" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#6D28D9">PASSAGE_VFP</text>
-      <line x1="0" y1="28" x2="170" y2="28" stroke="#8B5CF6" stroke-width="1.5" />
+    <!-- ENTITE 5 : LIGNE COMMANDE (ARDOISE DOUCE) -->
+    <g filter="url(#shadow-soft)">
+      <rect x="410" y="340" width="200" height="150" rx="10" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1.5" />
+      <path d="M 410 350 A 10 10 0 0 1 420 340 L 600 340 A 10 10 0 0 1 610 350 L 610 370 L 410 370 Z" fill="#243342" />
+      <text x="510" y="361" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">LIGNE_COMMANDE</text>
       
-      <text x="12" y="48" font-size="8.5" font-weight="bold" fill="#0F172A" text-decoration="underline"># id_passage (UUID)</text>
-      <text x="12" y="66" font-size="8.5" fill="#334155">date_passage (TIMESTAMP)</text>
-      <text x="12" y="82" font-size="8.5" fill="#334155">acte_achat_valide (BOOL)</text>
-      <text x="12" y="98" font-size="8.5" fill="#334155">points_marchands (INT)</text>
-      <text x="12" y="114" font-size="8.5" fill="#334155">fenetre_active (BOOLEAN)</text>
+      <!-- Attributs -->
+      <text x="425" y="394" font-size="10.5" font-weight="700" text-decoration="underline" fill="#243342">id_ligne</text>
+      <text x="525" y="394" font-size="9.5" font-weight="500" fill="#8C96A5">UUID [PK]</text>
+      <text x="425" y="414" font-size="10" font-weight="500" fill="#243342">quantite_commandee</text>
+      <text x="425" y="432" font-size="10" font-weight="500" fill="#243342">prix_unitaire_fact</text>
+      <text x="425" y="450" font-size="10" font-weight="500" fill="#243342">taux_tva_applique</text>
     </g>
 
-    <!-- Association : ENREGISTRER (Entre Citoyen et Passage VFP) -->
-    <line x1="125" y1="200" x2="125" y2="260" stroke="#334155" stroke-width="1.2" />
-    <text x="132" y="215" font-size="8.5" font-weight="bold" fill="#0F172A">0,n</text>
-    <text x="132" y="250" font-size="8.5" font-weight="bold" fill="#0F172A">1,1</text>
-
-    <!-- 8. ENTITE : AVANTAGE_MOBILITE (Violet / Lavande pastel) -->
-    <g transform="translate(390, 260)">
-      <rect x="0" y="0" width="165" height="135" rx="6" fill="#F8FAFC" stroke="#8B5CF6" stroke-width="1.5" />
-      <rect x="0" y="0" width="165" height="28" rx="6" fill="#EDE9FE" />
-      <rect x="0" y="22" width="165" height="6" fill="#EDE9FE" />
-      <text x="82" y="19" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#6D28D9">AVANTAGE_MOBILITE</text>
-      <line x1="0" y1="28" x2="165" y2="28" stroke="#8B5CF6" stroke-width="1.5" />
+    <!-- ENTITE 6 : ARTICLE (SAUGE) -->
+    <g filter="url(#shadow-soft)">
+      <rect x="790" y="340" width="190" height="150" rx="10" fill="#FFFFFF" stroke="#7EA88D" stroke-width="1.5" />
+      <path d="M 790 350 A 10 10 0 0 1 800 340 L 970 340 A 10 10 0 0 1 980 350 L 980 370 L 790 370 Z" fill="#4A7A5B" />
+      <text x="885" y="361" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">ARTICLE</text>
       
-      <text x="12" y="48" font-size="8.5" font-weight="bold" fill="#0F172A" text-decoration="underline"># id_avantage (UUID)</text>
-      <text x="12" y="66" font-size="8.5" fill="#334155">type_avantage (ENUM)</text>
-      <text x="12" y="82" font-size="8.5" fill="#334155">valeur_minutes (INT)</text>
-      <text x="12" y="98" font-size="8.5" fill="#334155">statut_consomme (BOOL)</text>
-      <text x="12" y="114" font-size="8.5" fill="#334155">date_emission (TIMESTAMP)</text>
+      <!-- Attributs -->
+      <text x="805" y="394" font-size="10.5" font-weight="700" text-decoration="underline" fill="#243342">id_article</text>
+      <text x="915" y="394" font-size="9.5" font-weight="500" fill="#8C96A5">UUID [PK]</text>
+      <text x="805" y="414" font-size="10" font-weight="500" fill="#243342">libelle_produit</text>
+      <text x="805" y="432" font-size="10" font-weight="500" fill="#243342">prix_ttc</text>
+      <text x="805" y="450" font-size="10" font-weight="500" fill="#243342">unite_mesure</text>
+      <text x="805" y="468" font-size="10" font-weight="500" fill="#243342">stock_disponible</text>
     </g>
 
-    <!-- Association : DECLENCHER (Entre Passage VFP et Avantage Mobilité) -->
-    <g transform="translate(255, 305)">
-      <rect x="0" y="0" width="90" height="45" rx="22" fill="#F3E8FF" stroke="#8B5CF6" stroke-width="1.5" />
-      <text x="45" y="28" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#6D28D9">Declencher</text>
-    </g>
+    <!-- ASSOCIATIONS VERBALES MERISE (OVALES / SQUIRCLES NETS) -->
+    
+    <!-- ASSOC 1 : PASSER (CITOYEN <-> COMMANDE) -->
+    <rect x="285" y="110" width="70" height="30" rx="15" fill="#FAF9F6" stroke="#243342" stroke-width="1.5" />
+    <text x="320" y="129" text-anchor="middle" font-size="10" font-weight="700" fill="#243342">PASSER</text>
+    <line x1="230" y1="125" x2="285" y2="125" stroke="#243342" stroke-width="1.5" />
+    <text x="245" y="118" font-size="9.5" font-weight="700" fill="#C26750">0,n</text>
+    <line x1="355" y1="125" x2="410" y2="125" stroke="#243342" stroke-width="1.5" />
+    <text x="385" y="118" font-size="9.5" font-weight="700" fill="#243342">1,1</text>
 
-    <line x1="210" y1="327" x2="255" y2="327" stroke="#334155" stroke-width="1.2" />
-    <text x="220" y="320" font-size="8.5" font-weight="bold" fill="#0F172A">0,1</text>
+    <!-- ASSOC 2 : DESTINER (COMMANDE <-> COMMERCANT) -->
+    <rect x="665" y="110" width="70" height="30" rx="15" fill="#FAF9F6" stroke="#243342" stroke-width="1.5" />
+    <text x="700" y="129" text-anchor="middle" font-size="9.5" font-weight="700" fill="#243342">DESTINER</text>
+    <line x1="610" y1="125" x2="665" y2="125" stroke="#243342" stroke-width="1.5" />
+    <text x="630" y="118" font-size="9.5" font-weight="700" fill="#243342">1,1</text>
+    <line x1="735" y1="125" x2="790" y2="125" stroke="#243342" stroke-width="1.5" />
+    <text x="760" y="118" font-size="9.5" font-weight="700" fill="#4A7A5B">0,n</text>
 
-    <line x1="345" y1="327" x2="390" y2="327" stroke="#334155" stroke-width="1.2" />
-    <text x="360" y="320" font-size="8.5" font-weight="bold" fill="#0F172A">1,1</text>
+    <!-- ASSOC 3 : GENERER (COMMANDE <-> AVANTAGE VFP) -->
+    <rect x="230" y="240" width="70" height="30" rx="15" fill="#FAF9F6" stroke="#DCB162" stroke-width="1.5" />
+    <text x="265" y="259" text-anchor="middle" font-size="9.5" font-weight="700" fill="#845A11">GENERER</text>
+    <path d="M 450 200 L 450 255 L 300 255" fill="none" stroke="#243342" stroke-width="1.5" />
+    <text x="425" y="225" font-size="9.5" font-weight="700" fill="#243342">0,1</text>
+    <path d="M 230 255 L 135 255 L 135 340" fill="none" stroke="#DCB162" stroke-width="1.5" />
+    <text x="145" y="325" font-size="9.5" font-weight="700" fill="#C48B28">1,1</text>
+
+    <!-- ASSOC 4 : CONTENIR (COMMANDE <-> LIGNE) -->
+    <rect x="475" y="245" width="70" height="30" rx="15" fill="#FAF9F6" stroke="#243342" stroke-width="1.5" />
+    <text x="510" y="264" text-anchor="middle" font-size="9.5" font-weight="700" fill="#243342">CONTENIR</text>
+    <line x1="510" y1="200" x2="510" y2="245" stroke="#243342" stroke-width="1.5" />
+    <text x="520" y="225" font-size="9.5" font-weight="700" fill="#243342">1,n</text>
+    <line x1="510" y1="275" x2="510" y2="340" stroke="#243342" stroke-width="1.5" />
+    <text x="520" y="315" font-size="9.5" font-weight="700" fill="#243342">1,1</text>
+
+    <!-- ASSOC 5 : CONCERNER (LIGNE <-> ARTICLE) -->
+    <rect x="665" y="400" width="70" height="30" rx="15" fill="#FAF9F6" stroke="#4A7A5B" stroke-width="1.5" />
+    <text x="700" y="419" text-anchor="middle" font-size="9" font-weight="700" fill="#2E583D">CONCERNER</text>
+    <line x1="610" y1="415" x2="665" y2="415" stroke="#243342" stroke-width="1.5" />
+    <text x="630" y="408" font-size="9.5" font-weight="700" fill="#243342">1,1</text>
+    <line x1="735" y1="415" x2="790" y2="415" stroke="#4A7A5B" stroke-width="1.5" />
+    <text x="760" y="408" font-size="9.5" font-weight="700" fill="#4A7A5B">0,n</text>
+
   </svg>
 
-  <hr style="border: none; border-top: 0.5pt solid var(--color-border-subtle); margin: 16pt 0;">
-
-  <!-- COMPAGNON DU MCD : EXTRAIT DU DICTIONNAIRE DES DONNEES (FORMAT BOOKTABS) -->
-  <h4 style="font-size: 10pt; color: var(--color-brand-primary); margin-bottom: 6pt; text-align: left;">
-    Tableau 4.1 — Extrait Normalisé du Dictionnaire des Données
-  </h4>
-
-  <div class="table-wrapper">
-    <table class="booktabs">
+  <!-- TABLEAU MLD RELATIONNEL BOOKTABS (NORMALISE 3FN) -->
+  <div style="margin-top:24px; font-family:'Poppins', sans-serif;">
+    <div style="font-size:12px; font-weight:700; color:#243342; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:8px;">
+      Dictionnaire du Modèle Logique de Données (PostgreSQL Relationnel)
+    </div>
+    
+    <table style="width:100%; border-collapse:collapse; font-size:11.5px; text-align:left;">
       <thead>
-        <tr>
-          <th>Entité</th>
-          <th>Attribut</th>
-          <th>Type Logique</th>
-          <th>Obligatoire</th>
-          <th>Règle de Gestion / Intégrité</th>
+        <tr style="border-top:2px solid #243342; border-bottom:1.5px solid #243342; background:#FAF9F6;">
+          <th style="padding:8px 12px; color:#243342; font-weight:700;">Relation (Table)</th>
+          <th style="padding:8px 12px; color:#243342; font-weight:700;">Clé Primaire [PK]</th>
+          <th style="padding:8px 12px; color:#243342; font-weight:700;">Clés Étrangères [FK]</th>
+          <th style="padding:8px 12px; color:#243342; font-weight:700;">Attributs Métier Majeurs</th>
+          <th style="padding:8px 12px; color:#243342; font-weight:700;">Contrainte d'Intégrité</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><code>CITOYEN</code></td>
-          <td><code>id_citoyen</code></td>
-          <td>UUID</td>
-          <td>Oui (PK)</td>
-          <td>Identifiant unique non séquentiel conforme RGPD.</td>
+        <tr style="border-bottom:1px solid #EDE8E1;">
+          <td style="padding:8px 12px; font-weight:600; color:#C26750;">CITOYEN</td>
+          <td style="padding:8px 12px; font-family:monospace; font-weight:700;">id_citoyen (UUID)</td>
+          <td style="padding:8px 12px; color:#8C96A5;">—</td>
+          <td style="padding:8px 12px;">nom, email, hash_pass_nfc</td>
+          <td style="padding:8px 12px; font-size:10.5px; color:#5A6578;">Email unique · Index B-Tree NFC</td>
         </tr>
-        <tr>
-          <td><code>CITOYEN</code></td>
-          <td><code>solde_vfp_15j</code></td>
-          <td>INTEGER</td>
-          <td>Oui</td>
-          <td>Compteur de passages sur fenêtre glissante de 15 jours consécutifs.</td>
+        <tr style="border-bottom:1px solid #EDE8E1; background:#FAF9F6;">
+          <td style="padding:8px 12px; font-weight:600; color:#4A7A5B;">COMMERCANT</td>
+          <td style="padding:8px 12px; font-family:monospace; font-weight:700;">id_commercant (UUID)</td>
+          <td style="padding:8px 12px; color:#8C96A5;">—</td>
+          <td style="padding:8px 12px;">nom_enseigne, siret, iban, adresse</td>
+          <td style="padding:8px 12px; font-size:10.5px; color:#5A6578;">SIRET 14 chiffres · Multi-tenant</td>
         </tr>
-        <tr>
-          <td><code>COMMERCE</code></td>
-          <td><code>convention_signee</code></td>
-          <td>BOOLEAN</td>
-          <td>Oui</td>
-          <td>Prérequis absolu pour figurer au catalogue et distribuer des points.</td>
+        <tr style="border-bottom:1px solid #EDE8E1;">
+          <td style="padding:8px 12px; font-weight:600; color:#243342;">COMMANDE</td>
+          <td style="padding:8px 12px; font-family:monospace; font-weight:700;">id_commande (UUID)</td>
+          <td style="padding:8px 12px; font-family:monospace;">id_citoyen, id_commercant</td>
+          <td style="padding:8px 12px;">creneau_retrait, montant_total, statut</td>
+          <td style="padding:8px 12px; font-size:10.5px; color:#5A6578;">FK ON DELETE RESTRICT</td>
         </tr>
-        <tr>
-          <td><code>COMMANDE</code></td>
-          <td><code>verrou_2pc</code></td>
-          <td>BOOLEAN</td>
-          <td>Oui</td>
-          <td>Verrouillage pessimiste de stock pour le Click & Collect multi-boutiques.</td>
+        <tr style="border-bottom:1px solid #EDE8E1; background:#FAF9F6;">
+          <td style="padding:8px 12px; font-weight:600; color:#243342;">LIGNE_COMMANDE</td>
+          <td style="padding:8px 12px; font-family:monospace; font-weight:700;">id_ligne (UUID)</td>
+          <td style="padding:8px 12px; font-family:monospace;">id_commande, id_article</td>
+          <td style="padding:8px 12px;">quantite, prix_unitaire, tva</td>
+          <td style="padding:8px 12px; font-size:10.5px; color:#5A6578;">Quantité &gt; 0 · Prix snapshoté</td>
         </tr>
-        <tr>
-          <td><code>PASSAGE_VFP</code></td>
-          <td><code>acte_achat_valide</code></td>
-          <td>BOOLEAN</td>
-          <td>Oui</td>
-          <td>Condition impérative en caisse pour incrémenter la régularité VFP.</td>
-        </tr>
-        <tr>
-          <td><code>AVANTAGE_MOBILITE</code></td>
-          <td><code>type_avantage</code></td>
-          <td>ENUM</td>
-          <td>Oui</td>
-          <td>Valeurs autorisées : <code>TICKET_BUS</code> ou <code>STATIONNEMENT_20MIN</code>.</td>
+        <tr style="border-bottom:2px solid #243342;">
+          <td style="padding:8px 12px; font-weight:600; color:#C48B28;">AVANTAGE_VFP</td>
+          <td style="padding:8px 12px; font-family:monospace; font-weight:700;">id_avantage (UUID)</td>
+          <td style="padding:8px 12px; font-family:monospace;">id_citoyen, id_commande</td>
+          <td style="padding:8px 12px;">points_acquis, date_expiration</td>
+          <td style="padding:8px 12px; font-size:10.5px; color:#5A6578;">Périsodique 15 jours glissants</td>
         </tr>
       </tbody>
     </table>
   </div>
+
 </div>

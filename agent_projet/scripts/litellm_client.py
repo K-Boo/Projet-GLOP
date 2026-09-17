@@ -89,7 +89,9 @@ def chat_completion(
     temperature: float = 0.2,
     max_tokens: Optional[int] = None,
     base_url: Optional[str] = None,
-    api_key: Optional[str] = None
+    api_key: Optional[str] = None,
+    user: Optional[str] = "agent_shoploc",
+    metadata: Optional[Dict[str, Any]] = None
 ) -> Dict[str, Any]:
     """Envoie une requete de completion a la passerelle LiteLLM locale."""
     cfg = load_project_env()
@@ -109,6 +111,8 @@ def chat_completion(
     }
     if max_tokens:
         payload["max_tokens"] = max_tokens
+    if user:
+        payload["user"] = user
 
     data_bytes = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(endpoint, data=data_bytes, headers=headers)
@@ -123,9 +127,9 @@ def chat_completion(
     except Exception as exc:
         raise RuntimeError(f"Erreur de communication avec LiteLLM Proxy ({url}): {exc}") from exc
 
-def quick_prompt(prompt: str, model: str = "fast") -> str:
+def quick_prompt(prompt: str, model: str = "fast", user: str = "agent_shoploc") -> str:
     """Helper simple pour envoyer un prompt texte et recuperer la reponse brute."""
-    resp = chat_completion(messages=[{"role": "user", "content": prompt}], model=model)
+    resp = chat_completion(messages=[{"role": "user", "content": prompt}], model=model, user=user)
     return resp["choices"][0]["message"]["content"]
 
 if __name__ == "__main__":

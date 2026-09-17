@@ -21,7 +21,7 @@ Il est synchronisé avec le fichier machine [`agent_projet/config/cdc_progress.j
 
 | Étape | Section | Intitulé de la Section | Statut Courant | Prérequis Bloquants | Assigné à | Fichier Source |
 |---|---|---|---|---|---|---|
-| **01** | `SEC-01` | Cadrage Stratégique & Méthode APTE | **NOT_STARTED** | *(Aucun - Prêt à démarrer)* | Product Owner (`flash`) | `01_cadrage_strategique_besoins.md` |
+| **01** | `SEC-01` | Cadrage Stratégique & Méthode APTE | **IN_PROGRESS** | *(Aucun - Co-Design des figures en cours)* | Équipe & PO (`flash`) | `01_cadrage_strategique_besoins.md` |
 | **02** | `SEC-02` | Personas & Parcours Cibles | **NOT_STARTED** | Étape 01 | Business Analyst (`flash`) | `02_personas_et_parcours_utilisateurs.md` |
 | **03** | `SEC-03` | Processus Métiers (BPMN 2.0) | **NOT_STARTED** | Étape 02 | Architecte Fonctionnel (`pro`) | `03_processus_metier_bpmn.md` |
 | **04** | `SEC-04` | Données (MCD Merise & Dictionnaire) | **NOT_STARTED** | Étape 03 | Architecte Données (`pro`) | `04_modele_conceptuel_donnees_mcd.md` |

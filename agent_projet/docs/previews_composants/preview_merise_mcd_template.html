@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Apercu Composant — merise_mcd_template</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/latin-modern-web@1.0.0/style.css">
+  <style>
+    /* ==========================================================================
+   THEME MAITRE SHOPLOC — IDENTITE VISUELLE NORMALISEE
+   Master 2 MIAGE — Universite de Lille — UE GLOP (2026-2027)
+   Inspiration Ollca Pastel & Craft — Charte Ergonomique et Zero Emoji
+   ========================================================================== */
+
+:root {
+  /* 1. PALETTE DE COULEURS PASTEL NATURELLE (INSPIRATION OLLCA & COMMERCE LOCAL) */
+  --color-brand-primary: #243342;       /* Bleu ardoise brumeux (Structure & Titres) */
+  --color-brand-secondary: #C26750;     /* Terracotta poudree (Chaleur & Artisanat) */
+  --color-brand-accent: #4A7A5B;        /* Sauge maraichere (Fraicheur & Terroir) */
+  --color-brand-honey: #C48B28;         /* Ocre miel doux (Fidelite & Dynamisme) */
+  --color-brand-plum: #6E3946;          /* Bordeaux veloute (Commerces de bouche) */
+
+  /* SURFACES DOUCES & FONDS */
+  --color-surface-canvas: #FAF9F6;      /* Lin doux / ecru naturel (Canvas unifie) */
+  --color-surface-card: #FFFFFF;        /* Blanc pur pour cartes produits */
+  --color-surface-warm: #F5F2EB;        /* Fond chaud secondaire */
+  --color-surface-page: #FAF9F6;        /* Fond de page lecture */
+  --color-surface-print: #FFFFFF;       /* Fond d impression papier A4 */
+
+  /* TONS PASTEL TRES CLAIRS */
+  --color-surface-primary-soft: #EBF0F5;
+  --color-surface-terracotta-soft: #FBEEEA;
+  --color-surface-sage-soft: #EBF3ED;
+  --color-surface-honey-soft: #FEF7EB;
+  --color-surface-plum-soft: #F6ECEF;
+
+  /* COULEURS FONCTIONNELLES DOUCES */
+  --color-success: #4A7A5B;             /* Sauge */
+  --color-success-bg: #EBF3ED;
+  --color-warning: #C48B28;             /* Ocre miel */
+  --color-warning-bg: #FEF7EB;
+  --color-error: #B44C43;               /* Terre de Sienne */
+  --color-error-bg: #FDF2F0;
+  --color-info: #2B5270;                /* Ardoise douce */
+  --color-info-bg: #EBF2F7;
+
+  /* TEXTES & LIGNES */
+  --color-text-primary: #1E252D;        /* Encre ardoise (> 14:1 sur lin) */
+  --color-text-secondary: #5A6578;      /* Ardoise feutree */
+  --color-text-muted: #8C96A5;          /* Ardoise legere */
+  --color-border-dark: #243342;         /* Lignes maitresses */
+  --color-border-light: #DCD6CD;        /* Lignes de separation */
+  --color-border-subtle: #EDE8E1;       /* Lignes decoratives fines */
+
+  /* PALETTE PASTEL SUR-MESURE POUR DIAGRAMMES EDITORIAUX (ANTI-AI SLOP) */
+  --diagram-canvas: #FAF9F6;
+  --diagram-connector: #8A9BAE;
+  
+  --diagram-citizen-bg: #FBEEEA;
+  --diagram-citizen-border: #D88B77;
+  --diagram-citizen-text: #8E3D2A;
+
+  --diagram-merchant-bg: #EBF3ED;
+  --diagram-merchant-border: #7EA88D;
+  --diagram-merchant-text: #2E583D;
+
+  --diagram-city-bg: #FEF7EB;
+  --diagram-city-border: #DCB162;
+  --diagram-city-text: #845A11;
+
+  --diagram-system-bg: #EBF0F5;
+  --diagram-system-border: #8B9EAF;
+  --diagram-system-text: #1C2D3D;
+
+  --diagram-alert-bg: #FDF2F0;
+  --diagram-alert-border: #D98880;
+  --diagram-alert-text: #8C2E25;
+
+  --diagram-lane-bg: #F5F2EB;
+  --diagram-lane-border: #DCD6CD;
+
+  /* 2. TYPOGRAPHIES */
+  --font-serif: "Latin Modern Roman", "LM Roman 10", "Computer Modern", "TeX Gyre Termes", "Times New Roman", Times, serif;
+  --font-sans: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Fira Code", "Latin Modern Mono", "Consolas", "Courier New", monospace;
+
+  /* 3. ECHELLE DE TAILLES (DOCUMENT A4) */
+  --font-size-title-main: 15pt;
+  --font-size-wave: 12.5pt;
+  --font-size-h2: 11.5pt;
+  --font-size-h3: 10pt;
+  --font-size-body: 9.5pt;
+  --font-size-table: 9pt;
+  --font-size-meta: 8.5pt;
+  --font-size-micro: 7.5pt;
+
+  /* 4. ESPACEMENTS, BORDURES & OMBRES CRAFT */
+  --line-height-normal: 1.42;
+  --border-radius-sm: 6px;
+  --border-radius-md: 10px;
+  --border-radius-lg: 14px;
+  --border-radius-pill: 9999px;
+  --shadow-soft: 0 2px 8px rgba(36, 51, 66, 0.04);
+  --shadow-card: 0 4px 16px rgba(36, 51, 66, 0.06);
+}
+
+/* CONFIGURATION DU RENDU IMPRESSION ET PAGE A4 */
+@page {
+  size: A4 portrait;
+  margin: 24mm 20mm 24mm 20mm;
+
+  @top-left {
+    content: "Projet ShopLoc — Master 2 MIAGE GLOP";
+    font-family: var(--font-serif);
+    font-size: var(--font-size-meta);
+    font-style: italic;
+    color: var(--color-text-secondary);
+    border-bottom: 0.5pt solid var(--color-border-light);
+    padding-bottom: 4pt;
+    margin-bottom: 8pt;
+  }
+
+  @top-right {
+    content: "Universite de Lille — FST Informatique";
+    font-family: var(--font-serif);
+    font-size: var(--font-size-meta);
+    font-style: italic;
+    color: var(--color-text-secondary);
+    border-bottom: 0.5pt solid var(--color-border-light);
+    padding-bottom: 4pt;
+    margin-bottom: 8pt;
+  }
+
+  @bottom-center {
+    content: counter(page);
+    font-family: var(--font-serif);
+    font-size: var(--font-size-meta);
+    color: var(--color-text-primary);
+  }
+}
+
+@page :first {
+  @top-left { content: ""; border-bottom: none; }
+  @top-right { content: ""; border-bottom: none; }
+  @bottom-center { content: "1"; }
+}
+
+/* REGLES GENERALES */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background: var(--color-surface-print);
+  margin: 0;
+  padding: 0;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+/* EN-TETE INSTITUTIONNEL AVEC LOGOS OFFICIELS */
+.institution-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12pt;
+  padding-bottom: 8pt;
+  border-bottom: 0.75pt solid var(--color-brand-primary);
+}
+
+.institution-logo {
+  height: 42px;
+  max-width: 210px;
+  object-fit: contain;
+}
+
+/* TITRAGE MAITRE */
+.title-block {
+  text-align: center;
+  margin-top: 14pt;
+  margin-bottom: 18pt;
+}
+
+.latex-main-title {
+  font-size: var(--font-size-title-main);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-brand-primary);
+  margin: 0 0 6pt 0;
+  line-height: 1.25;
+}
+
+.latex-sub-title {
+  font-size: 11pt;
+  font-style: italic;
+  color: var(--color-brand-secondary);
+  margin: 0 0 10pt 0;
+}
+
+/* BANNIERES DE GRANDES SECTIONS & H2 */
+.wave-banner {
+  font-size: var(--font-size-wave);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-brand-primary);
+  margin-top: 22pt;
+  margin-bottom: 10pt;
+  padding-bottom: 4pt;
+  border-bottom: 1.5pt solid var(--color-brand-primary);
+  page-break-after: avoid;
+}
+
+h2.section-heading {
+  font-size: var(--font-size-h2);
+  font-weight: bold;
+  color: var(--color-brand-primary);
+  margin-top: 16pt;
+  margin-bottom: 6pt;
+  padding-bottom: 2pt;
+  border-bottom: 0.5pt solid var(--color-brand-secondary);
+  page-break-after: avoid;
+  text-align: left;
+}
+
+h3.subsection-heading {
+  font-size: var(--font-size-h3);
+  font-weight: bold;
+  color: var(--color-text-primary);
+  margin: 10pt 0 4pt 0;
+  page-break-after: avoid;
+  text-align: left;
+}
+
+/* TABLEAUX ACADEMIQUES FORMAT BOOKTABS */
+.table-wrapper {
+  margin: 8pt 0 14pt 0;
+  width: 100%;
+}
+
+table.booktabs {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-table);
+  line-height: 1.35;
+  border-top: 1.5pt solid var(--color-border-dark);
+  border-bottom: 1.5pt solid var(--color-border-dark);
+  margin-bottom: 6pt;
+}
+
+table.booktabs th {
+  font-weight: bold;
+  text-align: left;
+  padding: 5pt 7pt;
+  border-bottom: 0.75pt solid var(--color-border-dark);
+  background: transparent;
+  color: var(--color-brand-primary);
+}
+
+table.booktabs td {
+  padding: 4.5pt 7pt;
+  vertical-align: top;
+  border-bottom: 0.3pt solid var(--color-border-light);
+  background: transparent;
+}
+
+table.booktabs tr:last-child td {
+  border-bottom: none;
+}
+
+table.booktabs code {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-meta);
+  color: var(--color-brand-primary);
+}
+
+/* CARTOUCHE D'IDENTIFICATION OFFICIEL GLOP */
+.cartouche-container {
+  margin: 10pt 0 14pt 0;
+}
+
+.cartouche-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-table);
+  border-top: 1.5pt solid var(--color-brand-primary);
+  border-bottom: 1.5pt solid var(--color-brand-primary);
+}
+
+.cartouche-table th {
+  width: 32%;
+  padding: 4pt 6pt;
+  text-align: left;
+  font-weight: bold;
+  color: var(--color-brand-primary);
+  border-bottom: 0.5pt solid var(--color-border-light);
+}
+
+.cartouche-table td {
+  width: 68%;
+  padding: 4pt 6pt;
+  border-bottom: 0.3pt solid var(--color-border-light);
+}
+
+.cartouche-table tr:last-child th,
+.cartouche-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ENCARTS ET DECISIONS VALIDATION / ATTENTE (ZERO BARRE LATERALE) */
+.callout-box {
+  margin: 6pt 0 6pt 0;
+  padding: 6pt 10pt;
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-body);
+  line-height: 1.45;
+  page-break-inside: avoid;
+}
+
+.callout-success {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+}
+.callout-success strong {
+  color: var(--color-success);
+}
+
+.callout-warning {
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning);
+}
+.callout-warning strong {
+  color: var(--color-warning);
+}
+
+.callout-error {
+  background-color: var(--color-error-bg);
+  color: var(--color-error);
+}
+.callout-error strong {
+  color: var(--color-error);
+}
+
+.callout-info {
+  background-color: var(--color-info-bg);
+  color: var(--color-info);
+}
+.callout-info strong {
+  color: var(--color-info);
+}
+
+/* PREAMBULE ACADEMIQUE */
+.abstract-box {
+  margin: 12pt 20pt 16pt 20pt;
+  padding: 6pt 12pt;
+  border-top: 0.5pt solid var(--color-border-light);
+  border-bottom: 0.5pt solid var(--color-border-light);
+}
+
+.abstract-title {
+  font-size: var(--font-size-h3);
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 4pt;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-brand-primary);
+}
+
+.abstract-text {
+  font-size: var(--font-size-table);
+  font-style: italic;
+  line-height: 1.35;
+  margin: 0;
+  text-align: justify;
+}
+
+/* BADGES ET METADONNEES EN LIGNE */
+.badge {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 1.5pt 5pt;
+  border-radius: var(--border-radius-sm);
+  vertical-align: middle;
+}
+
+.badge-success { background: #DCFCE7; color: var(--color-success); }
+.badge-warning { background: #FEF3C7; color: var(--color-warning); }
+.badge-brand   { background: #DBEAFE; color: var(--color-brand-primary); }
+.badge-neutral { background: #F1F5F9; color: var(--color-text-secondary); }
+
+/* CONTENEURS POUR SCHEMAS ET DIAGRAMMES */
+.diagram-container {
+  margin: 12pt 0;
+  padding: 8pt;
+  background: #FFFFFF;
+  border: 0.5pt solid var(--color-border-light);
+  border-radius: var(--border-radius-md);
+  text-align: center;
+  page-break-inside: avoid;
+}
+
+.diagram-caption {
+  font-size: var(--font-size-meta);
+  font-style: italic;
+  color: var(--color-text-secondary);
+  margin-top: 4pt;
+  text-align: center;
+}
+
+/* ELEMENTS D'EXPRESSION DE CODE ET REFERENCES */
+code.latex-code {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-meta);
+  color: var(--color-brand-primary);
+  background: transparent;
+}
+
+    body {
+      max-width: 960px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #F8FAFC;
+    }
+  </style>
+</head>
+<body>
+  <!-- GABARIT DE REFERENCE MCD MERISE ACADEMIQUE EN SVG VECTORIEL PUR -->
+<!-- Design Editorial Craft & Pastel — Inspiration Ollca & Sobriete GLOP (Zero Emoji) -->
+
+<div class="diagram-container" style="margin: 24pt 0; text-align: center; background: #FAF9F6; border: 1px solid #DCD6CD; border-radius: 18px; padding: 22pt 18pt; box-shadow: 0 6px 24px rgba(36, 51, 66, 0.05);">
+  <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 4pt;">
+    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #243342;"></span>
+    <h3 style="font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; font-size: 11pt; font-weight: 700; color: #243342; margin: 0; text-transform: uppercase; letter-spacing: 0.08em;">
+      Figure 4.1 — Modele Conceptuel de Donnees (MCD) : Coeur Metier & Fidelite Territoriale
+    </h3>
+  </div>
+  <div style="font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; font-size: 8.5pt; color: #5A6578; margin-bottom: 16pt; font-style: italic;">
+    Formalisme Merise normalise AFNOR (Entites bicolores, Associations verbales et cardinalites en pilules d'etat)
+  </div>
+
+  <svg viewBox="0 0 960 460" width="100%" height="460" style="font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; overflow: visible;">
+    <defs>
+      <filter id="mcd-card-shadow" x="-5%" y="-10%" width="110%" height="125%">
+        <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#243342" flood-opacity="0.06" />
+      </filter>
+    </defs>
+    
+    <!-- ========================================================================= -->
+    <!-- 1. ENTITE : CITOYEN (Terracotta doux)                                     -->
+    <!-- ========================================================================= -->
+    <g transform="translate(30, 40)" filter="url(#mcd-card-shadow)">
+      <rect x="0" y="0" width="190" height="160" rx="14" fill="#FFFFFF" stroke="#D88B77" stroke-width="1.2" />
+      <path d="M 0 14 Q 0 0 14 0 L 176 0 Q 190 0 190 14 L 190 32 L 0 32 Z" fill="#FBEEEA" />
+      <text x="95" y="21" text-anchor="middle" font-size="10" font-weight="700" fill="#8E3D2A" letter-spacing="0.06em">CITOYEN</text>
+      <line x1="0" y1="32" x2="190" y2="32" stroke="#D88B77" stroke-width="1.2" />
+      
+      <text x="14" y="52" font-size="8" font-weight="700" fill="#243342" text-decoration="underline"># id_citoyen (UUID) [PK]</text>
+      <text x="14" y="70" font-size="8" fill="#5A6578">nom (VARCHAR)</text>
+      <text x="14" y="86" font-size="8" fill="#5A6578">prenom (VARCHAR)</text>
+      <text x="14" y="102" font-size="8" fill="#5A6578">email_hash (VARCHAR)</text>
+      <text x="14" y="118" font-size="8" fill="#5A6578">code_carte_qr (VARCHAR)</text>
+      <text x="14" y="134" font-size="8" fill="#5A6578">solde_vfp_15j (INT)</text>
+      <text x="14" y="150" font-size="8" fill="#5A6578">date_adhesion (DATE)</text>
+    </g>
+
+    <!-- ASSOCIATION : PASSER (Entre Citoyen et Commande) -->
+    <g transform="translate(265, 95)" filter="url(#mcd-card-shadow)">
+      <rect x="0" y="0" width="95" height="48" rx="24" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1.2" />
+      <text x="47.5" y="25" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1C2D3D">Passer</text>
+      <text x="47.5" y="38" text-anchor="middle" font-size="7" fill="#8C96A5">date_creation</text>
+    </g>
+
+    <!-- Lignes & Cardinalites Citoyen - Passer - Commande -->
+    <line x1="220" y1="119" x2="265" y2="119" stroke="#8A9BAE" stroke-width="1.5" />
+    <rect x="228" y="102" width="26" height="16" rx="8" fill="#FBEEEA" />
+    <text x="241" y="113.5" text-anchor="middle" font-size="7" font-weight="700" fill="#C26750">0,n</text>
+
+    <line x1="360" y1="119" x2="405" y2="119" stroke="#8A9BAE" stroke-width="1.5" />
+    <rect x="370" y="102" width="26" height="16" rx="8" fill="#EBF0F5" />
+    <text x="383" y="113.5" text-anchor="middle" font-size="7" font-weight="700" fill="#243342">1,1</text>
+
+    <!-- ========================================================================= -->
+    <!-- 2. ENTITE : COMMANDE (Ardoise Brumeux)                                    -->
+    <!-- ========================================================================= -->
+    <g transform="translate(405, 40)" filter="url(#mcd-card-shadow)">
+      <rect x="0" y="0" width="185" height="160" rx="14" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1.2" />
+      <path d="M 0 14 Q 0 0 14 0 L 171 0 Q 185 0 185 14 L 185 32 L 0 32 Z" fill="#EBF0F5" />
+      <text x="92.5" y="21" text-anchor="middle" font-size="10" font-weight="700" fill="#1C2D3D" letter-spacing="0.06em">COMMANDE</text>
+      <line x1="0" y1="32" x2="185" y2="32" stroke="#8B9EAF" stroke-width="1.2" />
+      
+      <text x="14" y="52" font-size="8" font-weight="700" fill="#243342" text-decoration="underline"># id_commande (UUID) [PK]</text>
+      <text x="14" y="70" font-size="8" fill="#5A6578">reference (VARCHAR)</text>
+      <text x="14" y="86" font-size="8" fill="#5A6578">statut_retrait (ENUM)</text>
+      <text x="14" y="102" font-size="8" fill="#5A6578">montant_total (DECIMAL)</text>
+      <text x="14" y="118" font-size="8" fill="#5A6578">code_retrait_otp (VARCHAR)</text>
+      <text x="14" y="134" font-size="8" fill="#5A6578">remise_fidelite (DECIMAL)</text>
+      <text x="14" y="150" font-size="8" fill="#5A6578">date_retrait_prevu (DATE)</text>
+    </g>
+
+    <!-- ASSOCIATION : CONCERNER (Entre Commande et Commerce) -->
+    <g transform="translate(635, 95)" filter="url(#mcd-card-shadow)">
+      <rect x="0" y="0" width="95" height="48" rx="24" fill="#FFFFFF" stroke="#7EA88D" stroke-width="1.2" />
+      <text x="47.5" y="25" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2E583D">Concerner</text>
+      <text x="47.5" y="38" text-anchor="middle" font-size="7" fill="#8C96A5">creneau_h</text>
+    </g>
+
+    <!-- Lignes & Cardinalites Commande - Concerner - Commerce -->
+    <line x1="590" y1="119" x2="635" y2="119" stroke="#8A9BAE" stroke-width="1.5" />
+    <rect x="598" y="102" width="26" height="16" rx="8" fill="#EBF0F5" />
+    <text x="611" y="113.5" text-anchor="middle" font-size="7" font-weight="700" fill="#243342">1,n</text>
+
+    <line x1="730" y1="119" x2="775" y2="119" stroke="#8A9BAE" stroke-width="1.5" />
+    <rect x="740" y="102" width="26" height="16" rx="8" fill="#EBF3ED" />
+    <text x="753" y="113.5" text-anchor="middle" font-size="7" font-weight="700" fill="#2E583D">0,n</text>
+
+    <!-- ========================================================================= -->
+    <!-- 3. ENTITE : COMMERCE (Sauge Douce Maraichere)                             -->
+    <!-- ========================================================================= -->
+    <g transform="translate(775, 40)" filter="url(#mcd-card-shadow)">
+      <rect x="0" y="0" width="165" height="160" rx="14" fill="#FFFFFF" stroke="#7EA88D" stroke-width="1.2" />
+      <path d="M 0 14 Q 0 0 14 0 L 151 0 Q 165 0 165 14 L 165 32 L 0 32 Z" fill="#EBF3ED" />
+      <text x="82.5" y="21" text-anchor="middle" font-size="10" font-weight="700" fill="#2E583D" letter-spacing="0.06em">COMMERCE</text>
+      <line x1="0" y1="32" x2="165" y2="32" stroke="#7EA88D" stroke-width="1.2" />
+      
+      <text x="14" y="52" font-size="8" font-weight="700" fill="#243342" text-decoration="underline"># id_commerce (UUID) [PK]</text>
+      <text x="14" y="70" font-size="8" fill="#5A6578">nom_enseigne (VARCHAR)</text>
+      <text x="14" y="86" font-size="8" fill="#5A6578">siren (CHAR)</text>
+      <text x="14" y="102" font-size="8" fill="#5A6578">adresse (VARCHAR)</text>
+      <text x="14" y="118" font-size="8" fill="#5A6578">statut_vfp (BOOLEAN)</text>
+      <text x="14" y="134" font-size="8" fill="#5A6578">taux_remise (DECIMAL)</text>
+      <text x="14" y="150" font-size="8" fill="#5A6578">creneaux_retrait (JSON)</text>
+    </g>
+
+    <!-- ========================================================================= -->
+    <!-- LIAISONS VERTICALES : LIGNE_COMMANDE & PRODUIT                            -->
+    <!-- ========================================================================= -->
+
+    <!-- Association CONTENIR (sous Commande) -->
+    <line x1="497" y1="200" x2="497" y2="250" stroke="#8A9BAE" stroke-width="1.5" />
+    <rect x="502" y="215" width="26" height="16" rx="8" fill="#EBF0F5" />
+    <text x="515" y="226.5" text-anchor="middle" font-size="7" font-weight="700" fill="#243342">1,n</text>
+
+    <g transform="translate(450, 250)" filter="url(#mcd-card-shadow)">
+      <rect x="0" y="0" width="95" height="48" rx="24" fill="#FFFFFF" stroke="#DCB162" stroke-width="1.2" />
+      <text x="47.5" y="25" text-anchor="middle" font-size="8.5" font-weight="700" fill="#845A11">Contenir</text>
+      <text x="47.5" y="38" text-anchor="middle" font-size="7" fill="#8C96A5">quantite</text>
+    </g>
+
+    <line x1="497" y1="298" x2="497" y2="340" stroke="#8A9BAE" stroke-width="1.5" />
+    <rect x="502" y="310" width="26" height="16" rx="8" fill="#FEF7EB" />
+    <text x="515" y="321.5" text-anchor="middle" font-size="7" font-weight="700" fill="#845A11">0,n</text>
+
+    <!-- 4. ENTITE : PRODUIT (Ocre Miel Doux) -->
+    <g transform="translate(405, 340)" filter="url(#mcd-card-shadow)">
+      <rect x="0" y="0" width="185" height="105" rx="14" fill="#FFFFFF" stroke="#DCB162" stroke-width="1.2" />
+      <path d="M 0 14 Q 0 0 14 0 L 171 0 Q 185 0 185 14 L 185 30 L 0 30 Z" fill="#FEF7EB" />
+      <text x="92.5" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#845A11" letter-spacing="0.06em">PRODUIT</text>
+      <line x1="0" y1="30" x2="185" y2="30" stroke="#DCB162" stroke-width="1.2" />
+      
+      <text x="14" y="48" font-size="8" font-weight="700" fill="#243342" text-decoration="underline"># id_produit (UUID) [PK]</text>
+      <text x="14" y="64" font-size="8" fill="#5A6578">designation (VARCHAR)</text>
+      <text x="14" y="80" font-size="8" fill="#5A6578">prix_unitaire_ttc (DECIMAL)</text>
+      <text x="14" y="96" font-size="8" fill="#5A6578">stock_disponible (INT)</text>
+    </g>
+
+  </svg>
+
+  <!-- DICTIONNAIRE RELATIONNEL BOOKTABS ACADEMIQUE NORMALISE -->
+  <div style="margin-top: 20pt; border-top: 1px solid #EDE8E1; padding-top: 16pt; text-align: left;">
+    <div style="font-size: 9.5pt; font-weight: 700; color: #243342; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8pt;">
+      Dictionnaire Relationnel (MLD PostgreSQL 3NF)
+    </div>
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 8pt; font-family: 'Plus Jakarta Sans', sans-serif;">
+        <thead>
+          <tr style="border-top: 1.5pt solid #243342; border-bottom: 1pt solid #243342; background: #F5F2EB;">
+            <th style="padding: 6pt 10pt; text-align: left; color: #243342;">Table Relationnelle</th>
+            <th style="padding: 6pt 10pt; text-align: left; color: #243342;">Cle Primaire [PK]</th>
+            <th style="padding: 6pt 10pt; text-align: left; color: #243342;">Cles Etrangeres [FK]</th>
+            <th style="padding: 6pt 10pt; text-align: left; color: #243342;">Attributs Metier Majeurs</th>
+            <th style="padding: 6pt 10pt; text-align: left; color: #243342;">Contraintes d'Integrite</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 0.5pt solid #EDE8E1;">
+            <td style="padding: 6pt 10pt; font-weight: 700; color: #8E3D2A;">citoyen</td>
+            <td style="padding: 6pt 10pt; font-family: 'Fira Code', monospace; color: #243342;">id_citoyen</td>
+            <td style="padding: 6pt 10pt; color: #8A9BAE;">—</td>
+            <td style="padding: 6pt 10pt; color: #5A6578;">nom, prenom, email_hash, code_carte_qr, solde_vfp_15j</td>
+            <td style="padding: 6pt 10pt; color: #2E583D; font-weight: 600;">UNIQUE(email_hash, code_carte_qr)</td>
+          </tr>
+          <tr style="border-bottom: 0.5pt solid #EDE8E1; background: #FAF9F6;">
+            <td style="padding: 6pt 10pt; font-weight: 700; color: #2E583D;">commerce</td>
+            <td style="padding: 6pt 10pt; font-family: 'Fira Code', monospace; color: #243342;">id_commerce</td>
+            <td style="padding: 6pt 10pt; color: #8A9BAE;">—</td>
+            <td style="padding: 6pt 10pt; color: #5A6578;">nom_enseigne, siren, adresse, statut_vfp, taux_remise</td>
+            <td style="padding: 6pt 10pt; color: #2E583D; font-weight: 600;">CHECK(taux_remise &gt;= 0)</td>
+          </tr>
+          <tr style="border-bottom: 0.5pt solid #EDE8E1;">
+            <td style="padding: 6pt 10pt; font-weight: 700; color: #1C2D3D;">commande</td>
+            <td style="padding: 6pt 10pt; font-family: 'Fira Code', monospace; color: #243342;">id_commande</td>
+            <td style="padding: 6pt 10pt; font-family: 'Fira Code', monospace; color: #8E3D2A;">id_citoyen (citoyen)</td>
+            <td style="padding: 6pt 10pt; color: #5A6578;">reference, statut_retrait, montant_total, code_retrait_otp</td>
+            <td style="padding: 6pt 10pt; color: #2E583D; font-weight: 600;">ON DELETE RESTRICT</td>
+          </tr>
+          <tr style="border-bottom: 1.5pt solid #243342; background: #FAF9F6;">
+            <td style="padding: 6pt 10pt; font-weight: 700; color: #845A11;">ligne_commande</td>
+            <td style="padding: 6pt 10pt; font-family: 'Fira Code', monospace; color: #243342;">(id_commande, id_produit)</td>
+            <td style="padding: 6pt 10pt; font-family: 'Fira Code', monospace; color: #1C2D3D;">id_commande, id_produit</td>
+            <td style="padding: 6pt 10pt; color: #5A6578;">quantite, prix_unitaire_facture</td>
+            <td style="padding: 6pt 10pt; color: #2E583D; font-weight: 600;">CHECK(quantite &gt; 0)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

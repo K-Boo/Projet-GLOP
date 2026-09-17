@@ -1,22 +1,33 @@
 {
   "global": {
     "colors": {
-      "brand-primary": { "value": "#0F2A4A", "type": "color" },
-      "brand-secondary": { "value": "#6A1B29", "type": "color" },
-      "brand-accent": { "value": "#1E3A8A", "type": "color" },
-      "functional-success": { "value": "#166534", "type": "color" },
-      "functional-warning": { "value": "#B45309", "type": "color" },
-      "functional-error": { "value": "#991B1B", "type": "color" },
-      "text-primary": { "value": "#0F172A", "type": "color" },
-      "text-secondary": { "value": "#475569", "type": "color" },
-      "border-dark": { "value": "#0F172A", "type": "color" },
-      "border-light": { "value": "#CBD5E1", "type": "color" },
+      "brand-primary": { "value": "#243342", "type": "color" },
+      "brand-secondary": { "value": "#C26750", "type": "color" },
+      "brand-accent": { "value": "#4A7A5B", "type": "color" },
+      "brand-honey": { "value": "#C48B28", "type": "color" },
+      "brand-plum": { "value": "#6E3946", "type": "color" },
+      "surface-canvas": { "value": "#FAF9F6", "type": "color" },
       "surface-card": { "value": "#FFFFFF", "type": "color" },
-      "surface-page": { "value": "#F8FAFC", "type": "color" }
+      "surface-warm": { "value": "#F5F2EB", "type": "color" },
+      "functional-success": { "value": "#4A7A5B", "type": "color" },
+      "functional-warning": { "value": "#C48B28", "type": "color" },
+      "functional-error": { "value": "#C26750", "type": "color" },
+      "text-primary": { "value": "#1E252D", "type": "color" },
+      "text-secondary": { "value": "#5A6578", "type": "color" },
+      "border-dark": { "value": "#243342", "type": "color" },
+      "border-light": { "value": "#E2DFD7", "type": "color" }
+    },
+    "borderRadius": {
+      "hero": { "value": "20", "type": "borderRadius" },
+      "card": { "value": "16", "type": "borderRadius" },
+      "pass": { "value": "14", "type": "borderRadius" },
+      "touch": { "value": "12", "type": "borderRadius" },
+      "badge": { "value": "9999", "type": "borderRadius" },
+      "avatar": { "value": "50%", "type": "borderRadius" }
     },
     "fontFamilies": {
       "serif": { "value": "Latin Modern Roman", "type": "fontFamilies" },
-      "sans": { "value": "Inter", "type": "fontFamilies" },
+      "sans": { "value": "Plus Jakarta Sans", "type": "fontFamilies" },
       "mono": { "value": "Fira Code", "type": "fontFamilies" }
     },
     "fontSizes": {

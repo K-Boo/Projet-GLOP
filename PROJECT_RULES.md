@@ -17,7 +17,7 @@
      * *Responsable Déploiement / DevOps* : Pipelines CI/CD, conteneurisation Docker, gestion des releases et notices d'installation.
      * *Spécialiste Outils & Ingénieur Logiciel* : Veille outillage, intégration IDE/linters/Sonar, support technique à l'équipe.
      * *Responsable Architecture Back-Office* : Modélisation SQL, sécurité API, logique métier, scalabilité multi-villes.
-     * *Responsable Architecture Front-Office* : Ergonomie multi-personas, accessibilité inclusive (RGAA), interfaces web/mobiles.
+     * *Responsable Architecture Front-Office* : Ergonomie multi-personas, interface simple et inclusive, applications web/mobiles.
 
 2. **Standards Documentaires Obligatoires (Consignes Évaluées)** :
    - Tout document officiel doit comporter le **cartouche normalisé** :
@@ -37,7 +37,7 @@
    - **Backend** : Java (Spring Boot) OU TypeScript (Node.js / NestJS). Architecture en couches (Controller / Service / Repository / DTO) avec validation stricte des entrées (Bean Validation / Zod).
    - **Persistance** : Base de données SQL relationnelle (PostgreSQL recommandé). Modèle normalisé 3NF, contraintes d'intégrité référentielle fortes, transactions ACID pour les opérations Click & Collect et fidélité.
    - **Frontend** : Application Web responsive moderne (React / Angular / Vue) pensée pour deux cibles opposées :
-     * *Pierre (74 ans)* : Typographies lisibles, contrastes élevés, parcours dépouillé, respect des normes RGAA (niveau AA).
+     * *Pierre (74 ans)* : Typographies lisibles, contrastes nets, parcours épuré et simple d'utilisation.
      * *Suzanne (22 ans - Commerçante)* : Tableau de bord ergonomique pour la gestion rapide des stocks et la validation des retraits.
    - **Services tiers & Interopérabilité** : Tous les systèmes externes (API stationnement mairie, logiciels de caisse commerçants POS) doivent être modélisés sous forme d'**APIs simulées (mocks REST / OpenAPI)**.
 

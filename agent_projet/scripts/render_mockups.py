@@ -18,17 +18,17 @@ import pymupdf
 
 def find_edge_binary():
     candidates = [
-        r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
-        r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
         r"C:\Program Files\Google\Chrome\Application\chrome.exe",
         r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
+        r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
+        r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
         "/usr/bin/google-chrome",
         "/usr/bin/chromium"
     ]
     for c in candidates:
         if os.path.exists(c):
             return c
-    return "msedge"
+    return "chrome"
 
 def main():
     parser = argparse.ArgumentParser(description="Moteur de capture PNG des maquettes d'interfaces ShopLoc")

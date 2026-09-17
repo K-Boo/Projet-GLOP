@@ -1,132 +1,600 @@
-<!-- COMPOSANTS DE MAQUETTES D'ECRANS CLES (ERGONOMIE & ACCESSIBILITE RGAA AA) -->
-<div class="wireframe-collection" style="font-family: var(--font-sans); margin: 16pt 0;">
+<!-- COMPOSANTS DE MAQUETTES D'ECRANS CLES (INSPIRATION PURE OLLCA, SENIOR PIERRE & CAISSE SUZANNE) -->
+<!-- Zero Emoji & Palette Pastel Craft : Lin doux #FAF9F6, Ardoise #243342, Terracotta #C26750, Sauge #4A7A5B, Ocre miel #C48B28 -->
 
-  <!-- 1. VUE PIERRE (SENIOR 74 ANS) — CARTE PHYSIQUE / APPLICATION SIMPLIFIEE -->
-  <div class="diagram-container" style="text-align: left; padding: 12pt; border: 1.5pt solid var(--color-brand-primary); margin-bottom: 16pt;">
-    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1pt solid var(--color-border-light); padding-bottom: 6pt; margin-bottom: 8pt;">
+<div class="wireframe-collection" style="font-family: 'Poppins', sans-serif; margin: 24pt 0;">
+
+  <!-- ========================================================================= -->
+  <!-- 1. VITRINE ARTISANALE & CLICK & COLLECT (INSPIRATION DIRECTE OLLCA.COM)   -->
+  <!-- ========================================================================= -->
+  <div class="diagram-container" style="text-align: left; padding: 20pt; border: 1px solid #DCD6CD; border-radius: 18px; background: #FAF9F6; margin-bottom: 26pt; box-shadow: 0 6px 24px rgba(36, 51, 66, 0.05);">
+    
+    <!-- En-tete de figure sobre -->
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #EDE8E1; padding-bottom: 10pt; margin-bottom: 16pt;">
       <div>
-        <span style="font-weight: bold; font-size: 11pt; color: var(--color-brand-primary);">Maquette 1 — Interface Citoyen Senior & Carte de Fidelite (Persona Pierre)</span>
-        <div style="font-size: 8pt; color: var(--color-text-secondary);">Accessibilite RGAA AA : Contraste renforce, police agrandie (> 16px), parcours epure</div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #C26750;"></span>
+          <span style="font-weight: 700; font-size: 11.5pt; color: #243342; text-transform: uppercase; letter-spacing: 0.06em;">Maquette 1 — Vitrine Artisanale & Commande Click & Collect (Anatomie Ollca)</span>
+        </div>
+        <div style="font-size: 8.5pt; color: #5A6578; margin-top: 3pt;">Architecture de composants reels : avatar chevauchant, puces pilules d'etat, cartes produits a bouton circulaire et panier stepper</div>
       </div>
-      <span class="badge badge-brand">RGAA AA Conforme</span>
+      <span style="background: #FBEEEA; color: #C26750; font-size: 7.5pt; font-weight: 700; padding: 4px 12px; border-radius: 9999px; border: 1px solid #D88B77;">Artisanat d'Echoppe</span>
     </div>
 
-    <div style="display: grid; grid-template-columns: 260px 1fr; gap: 14pt; align-items: start;">
-      <!-- Representation de la carte physique papier QR -->
-      <div style="background: #0F2A4A; color: #FFFFFF; border-radius: 8pt; padding: 12pt; box-shadow: 0 2px 4px rgba(0,0,0,0.15);">
-        <div style="display: flex; justify-content: space-between; font-size: 8pt; margin-bottom: 8pt;">
-          <span style="font-weight: bold; letter-spacing: 0.05em;">CARTE SHOPLOC</span>
-          <span>VILLE PARTENAIRE</span>
+    <!-- BANNIERE HERO ARTISAN (STYLE OLLCA AVEC AVATAR CHEVAUCHANT) -->
+    <div style="border: 1px solid #EDE8E1; border-radius: 18px; overflow: hidden; background: #FFFFFF; margin-bottom: 18pt; box-shadow: 0 4px 16px rgba(36, 51, 66, 0.04);">
+      
+      <!-- Fond Visuel d'Atelier (Degrade noble & artwork vectoriel) -->
+      <div style="background: linear-gradient(135deg, #243342 0%, #1A2530 100%); position: relative; padding: 22px 24px; min-height: 120px; color: #FAF9F6; display: flex; justify-content: space-between; align-items: flex-start;">
+        <!-- Motif d'arriere plan discret -->
+        <svg style="position: absolute; right: 0; top: 0; bottom: 0; width: 340px; height: 100%; opacity: 0.12; pointer-events: none;" viewBox="0 0 340 140">
+          <circle cx="280" cy="70" r="100" fill="none" stroke="#FAF9F6" stroke-width="2" />
+          <circle cx="280" cy="70" r="60" fill="none" stroke="#FAF9F6" stroke-width="1.5" stroke-dasharray="4,4" />
+          <path d="M 120 140 L 220 20 L 320 140 Z" fill="none" stroke="#FAF9F6" stroke-width="1.5" />
+        </svg>
+
+        <!-- Puces flottantes superieures -->
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; z-index: 2;">
+          <span style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.25); color: #FAF9F6; font-size: 7.5pt; font-weight: 600; padding: 4px 12px; border-radius: 9999px; display: inline-flex; align-items: center; gap: 6px;">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: #4A7A5B; display: inline-block;"></span>
+            Ouvert jusqu'a 19h30
+          </span>
+          <span style="background: #EBF3ED; color: #2E583D; font-size: 7.5pt; font-weight: 700; padding: 4px 12px; border-radius: 9999px; border: 1px solid #7EA88D;">
+            Label Fait Maison & Meunier Bio
+          </span>
         </div>
-        <div style="font-size: 11pt; font-weight: bold; margin-bottom: 4pt;">Pierre DUPONT</div>
-        <div style="font-size: 8pt; opacity: 0.8; margin-bottom: 10pt;">ID : <code>SL-SENIOR-74-8842</code></div>
+
+        <span style="background: #FEF7EB; color: #845A11; font-size: 7.5pt; font-weight: 700; padding: 4px 12px; border-radius: 9999px; border: 1px solid #DCB162; z-index: 2;">
+          Partenaire VFP & Mobilite Lille
+        </span>
+      </div>
+
+      <!-- Corps de la vitrine avec Avatar Chevauchant -->
+      <div style="padding: 0 24px 18px 24px; position: relative;">
         
-        <!-- Simulation QR Code SVG -->
-        <div style="background: #FFFFFF; padding: 6pt; border-radius: 4pt; width: 80px; height: 80px; margin: 0 auto 8pt auto;">
-          <svg viewBox="0 0 100 100" width="100%" height="100%">
-            <rect x="5" y="5" width="30" height="30" fill="#000" />
-            <rect x="65" y="5" width="30" height="30" fill="#000" />
-            <rect x="5" y="65" width="30" height="30" fill="#000" />
-            <rect x="12" y="12" width="16" height="16" fill="#FFF" />
-            <rect x="72" y="12" width="16" height="16" fill="#FFF" />
-            <rect x="12" y="72" width="16" height="16" fill="#FFF" />
-            <rect x="42" y="42" width="16" height="16" fill="#000" />
-            <rect x="65" y="65" width="14" height="14" fill="#000" />
+        <!-- Medaillon avatar circulaire chevauchant (Signature Ollca) -->
+        <div style="width: 72px; height: 72px; border-radius: 50%; border: 3.5px solid #FFFFFF; background: #FBEEEA; box-shadow: 0 6px 16px rgba(36, 51, 66, 0.12); position: absolute; top: -36px; left: 24px; display: flex; align-items: center; justify-content: center; z-index: 10;">
+          <!-- Monogramme / Sceau artisanal grave -->
+          <svg width="38" height="38" viewBox="0 0 40 40" fill="none">
+            <path d="M 12 28 C 12 18, 28 18, 28 28 Z" fill="#C26750" />
+            <circle cx="20" cy="14" r="7" fill="#C26750" />
+            <path d="M 10 32 L 30 32" stroke="#C26750" stroke-width="2" stroke-linecap="round" />
           </svg>
         </div>
-        <div style="font-size: 7pt; text-align: center; opacity: 0.8;">Presentez cette carte en caisse</div>
-      </div>
 
-      <!-- Ecran mobile associe -->
-      <div style="background: #FFFFFF; border: 1pt solid var(--color-border-light); border-radius: 6pt; padding: 10pt;">
-        <div style="font-size: 12pt; font-weight: bold; color: var(--color-brand-primary); margin-bottom: 6pt;">
-          Bonjour Pierre,
-        </div>
-        <div style="background: #F0FDF4; border: 1pt solid #166534; border-radius: 4pt; padding: 8pt; margin-bottom: 8pt;">
-          <div style="font-size: 9.5pt; font-weight: bold; color: #166534;">Statut de Fidelite VFP en cours :</div>
-          <div style="font-size: 13pt; font-weight: bold; color: #0F172A; margin: 2pt 0;">8 / 10 passages effectues</div>
-          <div style="font-size: 8.5pt; color: #334155;">Il vous reste <strong>2 passages</strong> d ici le 22/09 pour obtenir 1 ticket de bus offert.</div>
-        </div>
-
-        <div style="font-size: 9pt; font-weight: bold; margin-bottom: 4pt;">Vos commandes Click & Collect a retirer :</div>
-        <div style="border: 0.5pt solid var(--color-border-light); border-radius: 4pt; padding: 6pt; font-size: 8.5pt; display: flex; justify-content: space-between; align-items: center;">
+        <!-- Informations artisanales decalees pour faire place a l'avatar -->
+        <div style="padding-top: 42px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px;">
           <div>
-            <strong>Boulangerie du Centre</strong> — 1 Pain de campagne<br>
-            <span style="font-size: 7.5pt; color: var(--color-text-secondary);">Retrait aujourd hui avant 18h30</span>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4pt;">
+              <h3 style="margin: 0; font-size: 14pt; font-weight: 700; color: #243342;">Boulangerie Saint-Sauveur</h3>
+              <span style="font-size: 8pt; color: #7EA88D; font-weight: 600;">Maitre Artisan depuis 2011</span>
+            </div>
+            <div style="font-size: 8.5pt; color: #5A6578; display: flex; align-items: center; gap: 6px;">
+              <!-- Pin localisation SVG -->
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C26750" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M 21 10 c 0 7 -9 13 -9 13 s -9 -6 -9 -13 a 9 9 0 0 1 18 0 z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              14 Place Saint-Sauveur, 59000 Lille &bull; A 280 m a pied &bull; Note verifiee : 4.9/5 (184 avis)
+            </div>
           </div>
-          <span class="badge badge-success">Pret a retirer</span>
+
+          <div style="display: flex; gap: 8px;">
+            <button style="background: #F5F2EB; border: 1px solid #DCD6CD; color: #243342; font-size: 8pt; font-weight: 600; padding: 6px 14px; border-radius: 9999px; cursor: pointer;">
+              Horaires & Contact &gt;
+            </button>
+          </div>
         </div>
+
+        <!-- Pied logistique Ollca (Separateur & 2 modes clairs) -->
+        <div style="border-top: 1px solid #EDE8E1; margin-top: 14pt; padding-top: 10pt; display: flex; gap: 24px; font-size: 8pt; color: #243342; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 7px;">
+            <!-- Echoppe SVG -->
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4A7A5B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 3 9 l 9 -7 l 9 7 v 11 a 2 2 0 0 1 -2 2 H 5 a 2 2 0 0 1 -2 -2 z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+            <strong>Retrait boutique express :</strong> <span style="color: #4A7A5B; font-weight: 700;">Des aujourd'hui 17h00</span> (Sous 45 min)
+          </div>
+          <div style="display: flex; align-items: center; gap: 7px;">
+            <!-- Velo cargo SVG -->
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C26750" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18.5" cy="17.5" r="3.5" />
+              <circle cx="5.5" cy="17.5" r="3.5" />
+              <circle cx="15" cy="5" r="1" />
+              <path d="M 12 17.5 V 14 l -3 -3 4 -3 2 3 h 2" />
+            </svg>
+            <strong>Livraison groupee velo :</strong> <span style="color: #5A6578;">Disponible Lille Centre & Wazemmes</span>
+          </div>
+        </div>
+
       </div>
     </div>
+
+    <!-- BARRE DE FILTRES EN PILULES (OLLCA CHIPS) -->
+    <div style="display: flex; gap: 8px; margin-bottom: 16pt; overflow-x: auto; padding-bottom: 4px;">
+      <button style="background: #243342; color: #FAF9F6; border: none; padding: 7px 18px; border-radius: 9999px; font-size: 8pt; font-weight: 700; cursor: pointer; white-space: nowrap; box-shadow: 0 2px 6px rgba(36,51,66,0.15);">
+        Toutes les creations (18)
+      </button>
+      <button style="background: #FFFFFF; color: #243342; border: 1px solid #DCD6CD; padding: 7px 18px; border-radius: 9999px; font-size: 8pt; font-weight: 600; cursor: pointer; white-space: nowrap;">
+        Pains au levain naturel (6)
+      </button>
+      <button style="background: #FFFFFF; color: #243342; border: 1px solid #DCD6CD; padding: 7px 18px; border-radius: 9999px; font-size: 8pt; font-weight: 600; cursor: pointer; white-space: nowrap;">
+        Viennoiseries pur beurre (5)
+      </button>
+      <button style="background: #FFFFFF; color: #243342; border: 1px solid #DCD6CD; padding: 7px 18px; border-radius: 9999px; font-size: 8pt; font-weight: 600; cursor: pointer; white-space: nowrap;">
+        Brioches & Specialites du Nord (4)
+      </button>
+      <button style="background: #FFFFFF; color: #243342; border: 1px solid #DCD6CD; padding: 7px 18px; border-radius: 9999px; font-size: 8pt; font-weight: 600; cursor: pointer; white-space: nowrap;">
+        Farines bio du Moulin (3)
+      </button>
+    </div>
+
+    <!-- GRILLE PRODUITS & PANIER MULTI-BOUTIQUES -->
+    <div style="display: grid; grid-template-columns: 1.85fr 1.15fr; gap: 16pt; align-items: start;">
+      
+      <!-- LISTE DES PRODUITS (CARTES FORMAT OLLCA) -->
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12pt;">
+        
+        <!-- CARTE PRODUIT 1 : PAIN DE CAMPAGNE (BOUTON FLOTTANT CIRCULAIRE +) -->
+        <div style="background: #FFFFFF; border: 1px solid #E5E0D8; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 14px rgba(36, 51, 66, 0.04); transition: transform 0.2s;">
+          
+          <!-- Encadre Image Artisanale Stylisee -->
+          <div style="background: #F5F2EB; height: 110px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <!-- Illustration vectorielle noble de miche au levain -->
+            <svg width="100%" height="110" viewBox="0 0 160 110" fill="none">
+              <ellipse cx="80" cy="65" rx="55" ry="32" fill="#D8B98A" />
+              <ellipse cx="80" cy="60" rx="50" ry="26" fill="#C49A6C" />
+              <!-- Grignes du boulanger (incisions traditionnelles) -->
+              <path d="M 50 55 Q 80 42 110 55" stroke="#FAF9F6" stroke-width="3" stroke-linecap="round" opacity="0.8" />
+              <path d="M 60 68 Q 80 58 100 68" stroke="#FAF9F6" stroke-width="2.5" stroke-linecap="round" opacity="0.8" />
+              <!-- Voile de farine saupoudree -->
+              <circle cx="75" cy="52" r="1.5" fill="#FFF" opacity="0.7" />
+              <circle cx="85" cy="54" r="2" fill="#FFF" opacity="0.7" />
+              <circle cx="70" cy="62" r="1.2" fill="#FFF" opacity="0.7" />
+            </svg>
+            <span style="position: absolute; top: 8px; left: 8px; background: rgba(255,255,255,0.9); backdrop-filter: blur(4px); font-size: 6.5pt; font-weight: 700; color: #2E583D; padding: 2px 8px; border-radius: 9999px; border: 1px solid #7EA88D;">
+              Farine Bio T80
+            </span>
+          </div>
+
+          <!-- Contenu descriptif du produit -->
+          <div style="padding: 12pt; display: flex; flex-direction: column; flex: 1;">
+            <div style="font-size: 9.5pt; font-weight: 700; color: #243342; line-height: 1.3; margin-bottom: 3pt;">
+              Pain de Campagne au Levain Naturel
+            </div>
+            <div style="font-size: 7.5pt; color: #5A6578; margin-bottom: 12pt; line-height: 1.35;">
+              Moulins de Waast &bull; Fermentation lente 24h &bull; Croute epaisse et alveoles genereuses
+            </div>
+
+            <!-- Ligne de prix et bouton rond Ollca -->
+            <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end;">
+              <div>
+                <div style="font-size: 11.5pt; font-weight: 700; color: #243342;">2,80 €</div>
+                <div style="font-size: 7pt; color: #8C96A5;">500 g (5,60 € / kg)</div>
+              </div>
+
+              <!-- BOUTON D'ACTION CIRCULAIRE FLOTTANT (SIGNATURE OLLCA FILLED-ICON-BUTTON) -->
+              <button style="width: 40px; height: 40px; border-radius: 50%; background: #4A7A5B; border: none; color: #FAF9F6; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 10px rgba(74, 122, 91, 0.3);">
+                <!-- Caddie avec signe + SVG -->
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="9" cy="21" r="1" />
+                  <circle cx="20" cy="21" r="1" />
+                  <path d="M 1 1 h 4 l 2.68 13.39 a 2 2 0 0 0 2 1.61 h 9.72 a 2 2 0 0 0 2 -1.61 L 23 6 H 6" />
+                  <line x1="12" y1="9" x2="16" y2="9" />
+                  <line x1="14" y1="7" x2="14" y2="11" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CARTE PRODUIT 2 : BRIOCHE TRESSEE (STEPPEUR DE QUANTITE PILULE - 2 +) -->
+        <div style="background: #FFFFFF; border: 1px solid #E5E0D8; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 14px rgba(36, 51, 66, 0.04);">
+          
+          <!-- Encadre Image Artisanale Stylisee -->
+          <div style="background: #FBEEEA; height: 110px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <!-- Illustration vectorielle noble de brioche tressee -->
+            <svg width="100%" height="110" viewBox="0 0 160 110" fill="none">
+              <ellipse cx="80" cy="68" rx="58" ry="24" fill="#C26750" opacity="0.3" />
+              <!-- Tresses dorees -->
+              <ellipse cx="50" cy="60" rx="20" ry="18" fill="#D98A52" />
+              <ellipse cx="80" cy="58" rx="22" ry="20" fill="#E59E65" />
+              <ellipse cx="110" cy="60" rx="20" ry="18" fill="#D98A52" />
+              <!-- Grains de sucre perle blanc -->
+              <rect x="74" y="48" width="4" height="4" rx="1" fill="#FFF" />
+              <rect x="86" y="52" width="3.5" height="3.5" rx="1" fill="#FFF" />
+              <rect x="46" y="54" width="3.5" height="3.5" rx="1" fill="#FFF" />
+              <rect x="105" y="55" width="4" height="4" rx="1" fill="#FFF" />
+            </svg>
+            <span style="position: absolute; top: 8px; left: 8px; background: rgba(255,255,255,0.9); backdrop-filter: blur(4px); font-size: 6.5pt; font-weight: 700; color: #8E3D2A; padding: 2px 8px; border-radius: 9999px; border: 1px solid #D88B77;">
+              Pur Beurre d'Isigny
+            </span>
+          </div>
+
+          <!-- Contenu descriptif du produit -->
+          <div style="padding: 12pt; display: flex; flex-direction: column; flex: 1;">
+            <div style="font-size: 9.5pt; font-weight: 700; color: #243342; line-height: 1.3; margin-bottom: 3pt;">
+              Brioche Tressee Pur Beurre Doree
+            </div>
+            <div style="font-size: 7.5pt; color: #5A6578; margin-bottom: 12pt; line-height: 1.35;">
+              Recette flamande &bull; Oeufs frais fermiers de plein air &bull; Sucre perle craquant
+            </div>
+
+            <!-- Ligne de prix et steppeur pilule Ollca -->
+            <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end;">
+              <div>
+                <div style="font-size: 11.5pt; font-weight: 700; color: #243342;">4,90 €</div>
+                <div style="font-size: 7pt; color: #8C96A5;">450 g (10,88 € / kg)</div>
+              </div>
+
+              <!-- STEPPEUR DE QUANTITE EN PILULE (OLLCA ACTIVE STEPPER) -->
+              <div style="display: inline-flex; align-items: center; gap: 8px; border-radius: 9999px; background: #EBF3ED; border: 1px solid #7EA88D; padding: 3px 6px;">
+                <button style="width: 24px; height: 24px; border-radius: 50%; background: #FFFFFF; border: 1px solid #7EA88D; color: #2E583D; font-weight: 700; font-size: 10pt; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0;">-</button>
+                <span style="font-size: 9pt; font-weight: 700; color: #2E583D; min-width: 14px; text-align: center;">2</span>
+                <button style="width: 24px; height: 24px; border-radius: 50%; background: #4A7A5B; border: none; color: #FAF9F6; font-weight: 700; font-size: 10pt; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0;">+</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- RECAPITULATIF PANIER MULTI-ARTISANS (PARCOURS VISUEL STEPPER OLLCA) -->
+      <div style="background: #FFFFFF; border: 1px solid #DCD6CD; border-radius: 18px; padding: 14pt; box-shadow: 0 4px 16px rgba(36, 51, 66, 0.04); display: flex; flex-direction: column;">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10pt;">
+          <span style="font-size: 9pt; font-weight: 700; color: #243342; text-transform: uppercase; letter-spacing: 0.06em;">Votre Panier Multi-Artisans</span>
+          <span style="background: #EBF3ED; color: #2E583D; font-size: 7pt; font-weight: 700; padding: 2px 8px; border-radius: 9999px;">2 Boutiques</span>
+        </div>
+
+        <!-- TRACK STEPPER VERTICAL RELIANT LES ARRETS -->
+        <div style="position: relative; padding-left: 24px; margin-bottom: 12pt;">
+          <!-- Ligne pointillee de progression pietonne -->
+          <div style="position: absolute; left: 8px; top: 12px; bottom: 30px; width: 2px; border-left: 2px dashed #8A9BAE;"></div>
+
+          <!-- Etape 1 : Boulangerie -->
+          <div style="position: relative; margin-bottom: 12pt;">
+            <!-- Noeud d'arret etape 1 -->
+            <div style="position: absolute; left: -24px; top: 2px; width: 18px; height: 18px; border-radius: 50%; background: #FBEEEA; border: 2px solid #C26750; display: flex; align-items: center; justify-content: center; font-size: 6.5pt; font-weight: 700; color: #C26750;">1</div>
+            
+            <div style="background: #FAF9F6; border: 1px solid #EDE8E1; border-radius: 10px; padding: 8pt 10pt;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4pt;">
+                <strong style="font-size: 8pt; color: #8E3D2A;">Boulangerie Saint-Sauveur</strong>
+                <span style="background: #FBEEEA; color: #C26750; font-size: 6.5pt; font-weight: 700; padding: 2px 6px; border-radius: 4px;">17h30</span>
+              </div>
+              <div style="font-size: 7.5pt; color: #1E252D; display: flex; justify-content: space-between;">
+                <span>2x Brioche Tressee</span>
+                <strong>9,80 €</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Etape 2 : Primeur -->
+          <div style="position: relative;">
+            <!-- Noeud d'arret etape 2 -->
+            <div style="position: absolute; left: -24px; top: 2px; width: 18px; height: 18px; border-radius: 50%; background: #EBF3ED; border: 2px solid #4A7A5B; display: flex; align-items: center; justify-content: center; font-size: 6.5pt; font-weight: 700; color: #4A7A5B;">2</div>
+            
+            <div style="background: #FAF9F6; border: 1px solid #EDE8E1; border-radius: 10px; padding: 8pt 10pt;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4pt;">
+                <strong style="font-size: 8pt; color: #2E583D;">Primeur des Halles de Wazemmes</strong>
+                <span style="background: #EBF3ED; color: #2E583D; font-size: 6.5pt; font-weight: 700; padding: 2px 6px; border-radius: 4px;">17h45</span>
+              </div>
+              <div style="font-size: 7.5pt; color: #1E252D; display: flex; justify-content: space-between;">
+                <span>1kg Pommes Jonagored Bio</span>
+                <strong>3,20 €</strong>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Encadre Fidelite VFP debloquee -->
+        <div style="background: #FEF7EB; border: 1px solid #DCB162; border-radius: 10px; padding: 8pt 10pt; margin-bottom: 12pt; display: flex; align-items: center; gap: 8px;">
+          <div style="width: 22px; height: 22px; border-radius: 50%; background: #DCB162; color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 8pt; font-weight: 700;">★</div>
+          <div style="font-size: 7.5pt; color: #845A11;">
+            <strong>+13 points ShopLoc</strong> credites &bull; Plus que 2 passages pour 1h de stationnement offert !
+          </div>
+        </div>
+
+        <!-- Recapitulatif Total & Bouton Pilule de Confirmation -->
+        <div style="margin-top: auto; border-top: 1px solid #EDE8E1; padding-top: 10pt;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10pt;">
+            <span style="font-size: 8.5pt; color: #5A6578;">Total de vos retraits :</span>
+            <span style="font-size: 14pt; font-weight: 700; color: #243342;">13,00 €</span>
+          </div>
+          <button style="width: 100%; background: #C26750; color: #FFFFFF; border: none; padding: 10pt 16pt; border-radius: 9999px; font-size: 8.5pt; font-weight: 700; cursor: pointer; box-shadow: 0 4px 14px rgba(194, 103, 80, 0.3); display: flex; align-items: center; justify-content: center; gap: 8px;">
+            Confirmer les 2 Retraits &gt;
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
 
-  <!-- 2. VUE SUZANNE (COMMERCANTE 22 ANS) — ENREGISTREMENT CAISSE & RETRAIT -->
-  <div class="diagram-container" style="text-align: left; padding: 12pt; border: 1.5pt solid var(--color-brand-primary); margin-bottom: 16pt;">
-    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1pt solid var(--color-border-light); padding-bottom: 6pt; margin-bottom: 8pt;">
+
+  <!-- ========================================================================= -->
+  <!-- 2. CARTE PASS PHYSIQUE & ECRAN SENIOR (PERSONA PIERRE 74 ANS)              -->
+  <!-- ========================================================================= -->
+  <div class="diagram-container" style="text-align: left; padding: 20pt; border: 1px solid #DCD6CD; border-radius: 18px; background: #FAF9F6; margin-bottom: 26pt; box-shadow: 0 6px 24px rgba(36, 51, 66, 0.05);">
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #EDE8E1; padding-bottom: 10pt; margin-bottom: 16pt;">
       <div>
-        <span style="font-weight: bold; font-size: 11pt; color: var(--color-brand-primary);">Maquette 2 — Terminal de Caisse Commerçant (Persona Suzanne)</span>
-        <div style="font-size: 8pt; color: var(--color-text-secondary);">Ergonomie operative : Enregistrement de passage en moins de 3 secondes, scan QR</div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #4A7A5B;"></span>
+          <span style="font-weight: 700; font-size: 11.5pt; color: #243342; text-transform: uppercase; letter-spacing: 0.06em;">Maquette 2 — Espace Senior Pierre & Carte Pass Physique NFC</span>
+        </div>
+        <div style="font-size: 8.5pt; color: #5A6578; margin-top: 3pt;">Design materiel tactile : veritable format carte bancaire avec puce doree, mires optiques [ ] et ecran mobile grand confort</div>
       </div>
-      <span class="badge badge-success">Operationnel V1</span>
+      <span style="background: #EBF3ED; color: #2E583D; font-size: 7.5pt; font-weight: 700; padding: 4px 12px; border-radius: 9999px; border: 1px solid #7EA88D;">Confort Visuel Garanti</span>
     </div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12pt;">
-      <div style="background: #F8FAFC; border: 1pt solid var(--color-border-light); border-radius: 6pt; padding: 8pt;">
-        <div style="font-size: 9pt; font-weight: bold; color: var(--color-brand-primary); margin-bottom: 6pt;">1. Validation Passage & Fidelite</div>
-        <div style="font-size: 8pt; color: var(--color-text-secondary); margin-bottom: 6pt;">Scanner la carte client ou saisir l identifiant :</div>
-        <div style="display: flex; gap: 6pt; margin-bottom: 8pt;">
-          <input type="text" value="SL-SENIOR-74-8842" style="font-family: var(--font-mono); font-size: 8.5pt; padding: 4pt; border: 1pt solid #CBD5E1; border-radius: 3pt; width: 65%;" readonly>
-          <button style="background: var(--color-brand-primary); color: #FFF; border: none; padding: 4pt 8pt; border-radius: 3pt; font-size: 8pt; font-weight: bold;">Valider Passage</button>
+    <div style="display: grid; grid-template-columns: 320px 1fr; gap: 20pt; align-items: center;">
+      
+      <!-- VERITABLE CARTE PASS PHYSIQUE (FACTEUR DE FORME CARTE BANCAIRE ISO ID-1) -->
+      <div style="width: 320px; height: 200px; border-radius: 16px; background: linear-gradient(135deg, #243342 0%, #17222C 100%); border: 1.5px solid rgba(255,255,255,0.18); box-shadow: 0 10px 24px rgba(36, 51, 66, 0.22); color: #FAF9F6; padding: 14pt 16pt; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden;">
+        
+        <!-- Texture subtile en arriere-plan -->
+        <div style="position: absolute; right: -20px; top: -20px; width: 140px; height: 140px; border-radius: 50%; border: 20px solid rgba(255,255,255,0.03); pointer-events: none;"></div>
+
+        <!-- Ligne superieure carte : Mairie & Reseau -->
+        <div style="display: flex; justify-content: space-between; align-items: center; z-index: 2;">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <!-- Sceau de Lille vectoriel -->
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#FAF9F6">
+              <path d="M 12 2 L 4 5 v 6 c 0 5.5 3.8 10.7 8 12 c 4.2 -1.3 8 -6.5 8 -12 V 5 Z" />
+            </svg>
+            <span style="font-size: 7pt; font-weight: 700; letter-spacing: 0.1em; color: #DCD6CD;">VILLE DE LILLE &bull; SHOPLOC</span>
+          </div>
+          <span style="background: #FEF7EB; color: #845A11; font-size: 6.5pt; font-weight: 700; padding: 2px 6px; border-radius: 4px; border: 1px solid #DCB162;">PASS SENIOR VFP</span>
         </div>
-        <div style="font-size: 7.5pt; color: #166534; background: #DCFCE7; padding: 4pt; border-radius: 3pt;">
-          Validation automatique : Passage VFP incremente & 1 point marchand ajoute.
+
+        <!-- Milieu de carte : Puce doree NFC + QR Code avec mires optiques -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin: 4pt 0; z-index: 2;">
+          
+          <!-- Puce electronique NFC doree -->
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="width: 40px; height: 30px; border-radius: 5px; background: linear-gradient(135deg, #EAD096 0%, #C48B28 50%, #EAD096 100%); border: 1px solid #9E6C18; position: relative; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.4);">
+              <div style="position: absolute; left: 18px; top: 0; bottom: 0; width: 1px; background: #9E6C18;"></div>
+              <div style="position: absolute; left: 0; right: 0; top: 14px; height: 1px; background: #9E6C18;"></div>
+            </div>
+            <!-- Symbole Sans Contact -->
+            <div style="font-size: 6.5pt; color: #DCD6CD; display: flex; align-items: center; gap: 3px;">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M 4 12 a 8 8 0 0 1 8 -8" />
+                <path d="M 2 12 a 12 12 0 0 1 12 -12" />
+              </svg>
+              Sans contact
+            </div>
+          </div>
+
+          <!-- Bloc QR Code scannable avec MIRES OPTIQUES [ ] AUX 4 COINS -->
+          <div style="background: #FFFFFF; padding: 4px; border-radius: 6px; width: 62px; height: 62px; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+            <!-- Mires optiques d'alignement [ ] -->
+            <div style="position: absolute; top: -3px; left: -3px; width: 8px; height: 8px; border-top: 2px solid #C26750; border-left: 2px solid #C26750;"></div>
+            <div style="position: absolute; top: -3px; right: -3px; width: 8px; height: 8px; border-top: 2px solid #C26750; border-right: 2px solid #C26750;"></div>
+            <div style="position: absolute; bottom: -3px; left: -3px; width: 8px; height: 8px; border-bottom: 2px solid #C26750; border-left: 2px solid #C26750;"></div>
+            <div style="position: absolute; bottom: -3px; right: -3px; width: 8px; height: 8px; border-bottom: 2px solid #C26750; border-right: 2px solid #C26750;"></div>
+            
+            <!-- Dessin precis du QR code -->
+            <svg viewBox="0 0 100 100" width="100%" height="100%">
+              <rect x="0" y="0" width="30" height="30" fill="#243342" />
+              <rect x="70" y="0" width="30" height="30" fill="#243342" />
+              <rect x="0" y="70" width="30" height="30" fill="#243342" />
+              <rect x="6" y="6" width="18" height="18" fill="#FFF" />
+              <rect x="76" y="6" width="18" height="18" fill="#FFF" />
+              <rect x="6" y="76" width="18" height="18" fill="#FFF" />
+              <rect x="11" y="11" width="8" height="8" fill="#243342" />
+              <rect x="81" y="11" width="8" height="8" fill="#243342" />
+              <rect x="11" y="81" width="8" height="8" fill="#243342" />
+              <!-- Grille de donnees centrale -->
+              <rect x="42" y="42" width="16" height="16" fill="#243342" />
+              <rect x="45" y="12" width="10" height="10" fill="#243342" />
+              <rect x="72" y="52" width="8" height="8" fill="#243342" />
+              <rect x="42" y="75" width="12" height="12" fill="#243342" />
+              <rect x="75" y="75" width="12" height="12" fill="#243342" />
+            </svg>
+          </div>
+
         </div>
+
+        <!-- Bas de carte : Identite titulaire & Solde -->
+        <div style="z-index: 2;">
+          <div style="font-size: 11pt; font-weight: 700; letter-spacing: 0.12em; color: #FAF9F6; text-transform: uppercase;">
+            PIERRE DUPONT
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; font-size: 7.5pt; color: #8A9BAE; margin-top: 2pt;">
+            <span>ID : <code>SL-5900-8421-9023</code></span>
+            <span style="color: #DCB162; font-weight: 700;">Solde : 340 pts (17,00 € offerts)</span>
+          </div>
+        </div>
+
       </div>
 
-      <div style="background: #F8FAFC; border: 1pt solid var(--color-border-light); border-radius: 6pt; padding: 8pt;">
-        <div style="font-size: 9pt; font-weight: bold; color: var(--color-brand-primary); margin-bottom: 6pt;">2. Retrait Commande Click & Collect</div>
-        <div style="font-size: 8pt; color: var(--color-text-secondary); margin-bottom: 4pt;">Commande #CC-2026-1049 (Pierre D.)</div>
-        <div style="font-size: 8pt; margin-bottom: 6pt;">Articles : 1x Pain campagne (2.10 €) — Paye en ligne</div>
-        <button style="background: #166534; color: #FFF; border: none; padding: 6pt 10pt; border-radius: 3pt; font-size: 8.5pt; font-weight: bold; width: 100%;">
-          Confirmer la Remise au Client (Clôture)
-        </button>
+      <!-- INTERFACE MOBILE ADAPTEE GRAND FORMAT POUR PIERRE -->
+      <div style="background: #FFFFFF; border: 1px solid #EDE8E1; border-radius: 16px; padding: 16pt; box-shadow: 0 4px 16px rgba(36, 51, 66, 0.03);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12pt;">
+          <div style="font-size: 13pt; font-weight: 700; color: #243342;">
+            Bonjour Pierre,
+          </div>
+          <span style="background: #EBF3ED; color: #2E583D; font-size: 8pt; font-weight: 700; padding: 4px 10px; border-radius: 9999px;">
+            Statut VFP Actif
+          </span>
+        </div>
+
+        <!-- Jauge Grand Format Parking Offert -->
+        <div style="background: #FEF7EB; border: 1.5px solid #DCB162; border-radius: 12px; padding: 12pt; margin-bottom: 12pt;">
+          <div style="display: flex; justify-content: space-between; font-size: 9pt; font-weight: 700; color: #845A11; margin-bottom: 6pt;">
+            <span>Avantage Mairie de Lille :</span>
+            <span>8 / 10 achats</span>
+          </div>
+          
+          <!-- Barre de progression visuelle galbee -->
+          <div style="height: 12px; border-radius: 9999px; background: #EED8AF; overflow: hidden; margin-bottom: 6pt;">
+            <div style="width: 80%; height: 100%; border-radius: 9999px; background: #C48B28;"></div>
+          </div>
+          <div style="font-size: 8pt; color: #5A6578;">
+            Plus que <strong>2 passages chez vos commercants</strong> d'ici samedi pour debloquer votre <strong>ticket de stationnement 2h gratuit</strong> !
+          </div>
+        </div>
+
+        <!-- Prochain Retrait & Bouton d'Itineraire Large -->
+        <div style="background: #FAF9F6; border: 1px solid #EDE8E1; border-radius: 12px; padding: 10pt 12pt; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-size: 9pt; font-weight: 700; color: #243342;">Boulangerie Saint-Sauveur</div>
+            <div style="font-size: 8pt; color: #5A6578;">1x Brioche &bull; Retrait des 17h30 chez Suzanne</div>
+          </div>
+          <button style="background: #243342; color: #FAF9F6; border: none; padding: 8pt 14pt; border-radius: 9999px; font-size: 8pt; font-weight: 700; cursor: pointer;">
+            Itineraire Pieton (280m) &gt;
+          </button>
+        </div>
+
       </div>
+
     </div>
+
   </div>
 
-  <!-- 3. VUE MARIUS (ADMINISTRATEUR COMMUNAL 27 ANS) — TABLEAU DE BORD RGPD -->
-  <div class="diagram-container" style="text-align: left; padding: 12pt; border: 1.5pt solid var(--color-brand-primary);">
-    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1pt solid var(--color-border-light); padding-bottom: 6pt; margin-bottom: 8pt;">
+
+  <!-- ========================================================================= -->
+  <!-- 3. TERMINAL CAISSE TACTILE COMMERCANTE (PERSONA SUZANNE 22 ANS)            -->
+  <!-- ========================================================================= -->
+  <div class="diagram-container" style="text-align: left; padding: 20pt; border: 1px solid #DCD6CD; border-radius: 18px; background: #FAF9F6; box-shadow: 0 6px 24px rgba(36, 51, 66, 0.05);">
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #EDE8E1; padding-bottom: 10pt; margin-bottom: 16pt;">
       <div>
-        <span style="font-weight: bold; font-size: 11pt; color: var(--color-brand-primary);">Maquette 3 — Tableau de Bord de Pilotage Territorial (Persona Marius)</span>
-        <div style="font-size: 8pt; color: var(--color-text-secondary);">Supervision municipale : Indicateurs macroscopiques agreges, anonymisation totale RGPD</div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #C48B28;"></span>
+          <span style="font-weight: 700; font-size: 11.5pt; color: #243342; text-transform: uppercase; letter-spacing: 0.06em;">Maquette 3 — Terminal Caisse Tactile Commercante (Persona Suzanne)</span>
+        </div>
+        <div style="font-size: 8.5pt; color: #5A6578; margin-top: 3pt;">Ergonomie tablette POS : touches tactiles larges, detection automatique du client Pierre et validation express en 1 clic</div>
       </div>
-      <span class="badge badge-warning">RGPD Zero Nominatif</span>
+      <span style="background: #FEF7EB; color: #845A11; font-size: 7.5pt; font-weight: 700; padding: 4px 12px; border-radius: 9999px; border: 1px solid #DCB162;">Format Tablette POS</span>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8pt; margin-bottom: 10pt;">
-      <div style="background: #EFF6FF; border: 1pt solid #BFDBFE; border-radius: 4pt; padding: 8pt; text-align: center;">
-        <div style="font-size: 8pt; color: #1E40AF; text-transform: uppercase;">Commerces Adherents</div>
-        <div style="font-size: 16pt; font-weight: bold; color: #0F2A4A; margin-top: 2pt;">42 boutiques</div>
-        <div style="font-size: 7pt; color: #166534;">+12% ce trimestre</div>
+    <!-- CHASSIS DE TABLETTE TACTILE (INSPIRATION SQUARE / TACTILL POS) -->
+    <div style="border: 2px solid #DCD6CD; border-radius: 18px; background: #FFFFFF; overflow: hidden; box-shadow: 0 8px 24px rgba(36,51,66,0.06);">
+      
+      <!-- Barre d'etat systeme superieure -->
+      <div style="background: #243342; color: #FAF9F6; padding: 6pt 16pt; display: flex; justify-content: space-between; align-items: center; font-size: 8pt;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <strong style="letter-spacing: 0.04em;">Fournil Saint-Sauveur</strong>
+          <span style="color: #8A9BAE;">&bull; Caisse #01 — Suzanne</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <span style="color: #7EA88D; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: #4A7A5B;"></span>
+            Synchronise & Connecte
+          </span>
+          <span style="color: #DCD6CD;">17:42</span>
+        </div>
       </div>
 
-      <div style="background: #F0FDF4; border: 1pt solid #BBF7D0; border-radius: 4pt; padding: 8pt; text-align: center;">
-        <div style="font-size: 8pt; color: #166534; text-transform: uppercase;">Passages en Centre-Ville</div>
-        <div style="font-size: 16pt; font-weight: bold; color: #0F2A4A; margin-top: 2pt;">14 820 flux</div>
-        <div style="font-size: 7pt; color: #166534;">Fenetre 15 jours active</div>
+      <!-- Corps du POS : Grille de touches a gauche / Ticket digital a droite -->
+      <div style="display: grid; grid-template-columns: 1.6fr 1fr; min-height: 280px;">
+        
+        <!-- PANE GAUCHE : SELECTION RAPIDE & TOUCHES TACTILES -->
+        <div style="padding: 14pt; border-right: 1px solid #EDE8E1; background: #FAF9F6;">
+          
+          <!-- Onglets categories en pilules -->
+          <div style="display: flex; gap: 6px; margin-bottom: 12pt;">
+            <button style="background: #243342; color: #FFF; border: none; padding: 5px 12px; border-radius: 9999px; font-size: 7.5pt; font-weight: 700;">Tous</button>
+            <button style="background: #FFF; color: #243342; border: 1px solid #DCD6CD; padding: 5px 12px; border-radius: 9999px; font-size: 7.5pt; font-weight: 600;">Pains</button>
+            <button style="background: #FFF; color: #243342; border: 1px solid #DCD6CD; padding: 5px 12px; border-radius: 9999px; font-size: 7.5pt; font-weight: 600;">Viennoiseries</button>
+            <button style="background: #FBEEEA; color: #C26750; border: 1px solid #D88B77; padding: 5px 12px; border-radius: 9999px; font-size: 7.5pt; font-weight: 700;">Retraits C&C (3)</button>
+          </div>
+
+          <!-- Grille de grosses touches tactiles -->
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8pt;">
+            
+            <div style="background: #FFFFFF; border: 1px solid #EDE8E1; border-radius: 12px; padding: 10pt; text-align: center; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+              <div style="font-size: 8.5pt; font-weight: 700; color: #243342; margin-bottom: 2pt;">Baguette Tradition</div>
+              <div style="font-size: 8pt; font-weight: 700; color: #C26750;">1,30 €</div>
+            </div>
+
+            <div style="background: #FFFFFF; border: 1.5px solid #7EA88D; border-radius: 12px; padding: 10pt; text-align: center; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+              <div style="font-size: 8.5pt; font-weight: 700; color: #243342; margin-bottom: 2pt;">Pain de Campagne</div>
+              <div style="font-size: 8pt; font-weight: 700; color: #4A7A5B;">2,80 €</div>
+            </div>
+
+            <div style="background: #FFFFFF; border: 1px solid #EDE8E1; border-radius: 12px; padding: 10pt; text-align: center; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+              <div style="font-size: 8.5pt; font-weight: 700; color: #243342; margin-bottom: 2pt;">Brioche Pur Beurre</div>
+              <div style="font-size: 8pt; font-weight: 700; color: #C26750;">4,90 €</div>
+            </div>
+
+            <div style="background: #FFFFFF; border: 1px solid #EDE8E1; border-radius: 12px; padding: 10pt; text-align: center; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+              <div style="font-size: 8.5pt; font-weight: 700; color: #243342; margin-bottom: 2pt;">Croissant Pur Beurre</div>
+              <div style="font-size: 8pt; font-weight: 700; color: #C26750;">1,40 €</div>
+            </div>
+
+            <div style="background: #FFFFFF; border: 1px solid #EDE8E1; border-radius: 12px; padding: 10pt; text-align: center; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+              <div style="font-size: 8.5pt; font-weight: 700; color: #243342; margin-bottom: 2pt;">Pain au Chocolat</div>
+              <div style="font-size: 8pt; font-weight: 700; color: #C26750;">1,50 €</div>
+            </div>
+
+            <div style="background: #FBEEEA; border: 1.5px solid #D88B77; border-radius: 12px; padding: 10pt; text-align: center; cursor: pointer;">
+              <div style="font-size: 8pt; font-weight: 700; color: #8E3D2A; margin-bottom: 2pt;">Commande #CC-1049</div>
+              <div style="font-size: 7.5pt; font-weight: 700; color: #C26750;">Pierre D. (Pret)</div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- PANE DROITE : TICKET DE CAISSE DIGITAL DYNAMIQUE -->
+        <div style="padding: 14pt; display: flex; flex-direction: column; background: #FFFFFF;">
+          
+          <!-- Detection automatique client Pierre Dupont -->
+          <div style="background: #EBF3ED; border: 1px solid #7EA88D; border-radius: 10px; padding: 6pt 10pt; margin-bottom: 10pt; display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div style="font-size: 7.5pt; font-weight: 700; color: #2E583D;">Client Detecte : Pierre DUPONT</div>
+              <div style="font-size: 6.5pt; color: #5A6578;">Pass Senior VFP &bull; Remise Mairie appliquee</div>
+            </div>
+            <span style="font-size: 8pt; font-weight: 700; color: #2E583D;">-1,50 €</span>
+          </div>
+
+          <!-- Lignes du ticket -->
+          <div style="flex: 1; font-size: 8pt; color: #1E252D;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6pt; border-bottom: 1px dashed #EDE8E1; padding-bottom: 4pt;">
+              <span>1x Pain de Campagne Bio</span>
+              <strong>2,80 €</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6pt; border-bottom: 1px dashed #EDE8E1; padding-bottom: 4pt;">
+              <span>2x Brioche Pur Beurre (C&C)</span>
+              <strong>9,80 €</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; color: #2E583D; font-weight: 700;">
+              <span>Remise Fidelite Ville (-15%)</span>
+              <span>- 1,89 €</span>
+            </div>
+          </div>
+
+          <!-- Total & Boutons d'Action Caisse -->
+          <div style="border-top: 2px solid #243342; padding-top: 8pt; margin-top: 8pt;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8pt;">
+              <span style="font-size: 9pt; font-weight: 700; color: #5A6578;">Total a Regler :</span>
+              <span style="font-size: 14pt; font-weight: 800; color: #243342;">10,71 €</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr; gap: 6pt;">
+              <button style="background: #4A7A5B; color: #FAF9F6; border: none; padding: 10pt; border-radius: 10px; font-size: 8.5pt; font-weight: 700; cursor: pointer; box-shadow: 0 3px 8px rgba(74, 122, 91, 0.25);">
+                Valider Retrait Click & Collect (#CC-1049)
+              </button>
+              <button style="background: #243342; color: #FAF9F6; border: none; padding: 8pt; border-radius: 10px; font-size: 8pt; font-weight: 700; cursor: pointer;">
+                Encaisser 10,71 € (Sans Contact / Especes)
+              </button>
+            </div>
+          </div>
+
+        </div>
+
       </div>
 
-      <div style="background: #FFFBEB; border: 1pt solid #FDE68A; border-radius: 4pt; padding: 8pt; text-align: center;">
-        <div style="font-size: 8pt; color: #B45309; text-transform: uppercase;">Avantages Mobilite Delivres</div>
-        <div style="font-size: 16pt; font-weight: bold; color: #0F2A4A; margin-top: 2pt;">610 tickets</div>
-        <div style="font-size: 7pt; color: #475569;">Bus & 20 min parking</div>
-      </div>
     </div>
 
-    <div style="font-size: 7.5pt; color: var(--color-text-secondary); background: #F1F5F9; padding: 4pt 8pt; border-radius: 3pt;">
-      <strong>Garantie de souverainete :</strong> Aucune donnee nominative ni panier detaille d achat n est accessible a la collectivite territoriale.
-    </div>
   </div>
 
 </div>
