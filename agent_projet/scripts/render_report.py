@@ -320,16 +320,27 @@ def compile_html_to_pdf(html_content, output_pdf_path, edge_bin):
     with open(temp_html_path, "w", encoding="utf-8") as f:
         f.write(html_content)
 
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    repo_root = os.path.dirname(os.path.dirname(script_dir))
+    chrome_tmp = os.path.join(repo_root, ".chrome_tmp")
+    os.makedirs(chrome_tmp, exist_ok=True)
+
     file_uri = f"file:///{temp_html_path.replace(os.sep, '/')}"
     args = [
         edge_bin,
-        "--headless",
+        "--headless=new",
         "--disable-gpu",
+        "--no-sandbox",
+        f"--user-data-dir={chrome_tmp}",
         "--no-pdf-header-footer",
         f"--print-to-pdf={output_pdf_path}",
         file_uri
     ]
-    subprocess.run(args, check=True)
+    try:
+        subprocess.run(args, check=True, stderr=subprocess.DEVNULL)
+    except subprocess.CalledProcessError:
+        if not os.path.exists(output_pdf_path) or os.path.getsize(output_pdf_path) == 0:
+            raise
     
     if os.path.exists(temp_html_path):
         os.remove(temp_html_path)

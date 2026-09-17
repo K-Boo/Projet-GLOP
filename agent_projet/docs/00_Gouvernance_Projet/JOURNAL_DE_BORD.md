@@ -6,8 +6,8 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 
 ## 1. Etat Courant du Projet
 
-- **Phase active** : Cadrage Métier & Rédaction du Livrable R1 (Étapes 01, 02, 03, 04, 06 et 07 COMPLETED — Étape 05 supprimée par ADR-019 — Prochaine Étape : 08 Gouvernance Agile, WBS & Gantt)
-- **Dernière mise à jour** : 2026-09-17
+- **Phase active** : Cadrage Métier & Rédaction du Livrable R1 (Étapes 01, 02, 03, 04, 06, 07 et 08 COMPLETED — Étape 05 supprimée par ADR-019 — Prochaine Étape : 09 Cadrage Financier par Coûts Complets)
+- **Dernière mise à jour** : 2026-09-17 (Session 28)
 - **Responsable / Scrum Master** : Équipe ShopLoc (M2 MIAGE GLOP)
 - **Dépôt Projet (Cockpit / Gouvernance)** : GitHub `Projet-GLOP`
 - **Dépôt Applicatif (Code étudiant évalué)** : GitLab `projet-glop-app`
@@ -628,6 +628,45 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Levée du verrou sur le pipeline : la prochaine étape prête pour démarrage est l'**Étape 08 (`STEP-08` / `SEC-08`)** : *Gouvernance Agile, Organigramme WBS & Planning Gantt*.
 - **Reste à faire / Objectifs pour la Session 28** :
   - Démarrage de l'**Étape 08 (`STEP-08` / `SEC-08`)** : *Gouvernance Agile, Organigramme WBS & Planning Gantt* (Matrice RACI, WBS par lots, Diagramme de Gantt des jalons contractuels R1 à R5).
+
+---
+
+### [2026-09-17] Session 28 — Réalisation & Finalisation de l'Étape 08 (SEC-08 : Gouvernance Agile, Organigramme WBS & Planning Gantt)
+- **Objectif** : Structurer la gouvernance agile du projet ShopLoc conformément aux consignes GLOP (Scrum Master tournant, aucun chef de projet unique, répartition des 6 pôles de responsabilités sur les 5 membres), concevoir les 3 schémas vectoriels SVG autonomes (WBS visuel par lots WP1 à WP6, matrice des responsabilités RACI, diagramme de Gantt annuel avec jalons contractuels R1 à R5 et chemin critique), exporter les figures haute résolution (2360px HD), formaliser les définitions de maturité DoR et DoD, consigner le tableau des jalons officiels et le registre des 5 risques majeurs avec plans de mitigation et PCA, calibrer la Section 08 et compiler le livrable officiel.
+- **Actions réalisées** :
+  - Réservation et actualisation des statuts (`STEP-08` passé à `IN_PROGRESS` puis `COMPLETED`) dans `agent_projet/config/cdc_progress.json` et `AVANCEMENT_CAHIER_DES_CHARGES.md`.
+  - Élaboration du script générateur vectoriel `agent_projet/scripts/generate_gouvernance_diagrams_svg.py` et du composant HTML `agent_projet/templates/components/gouvernance_views.html` :
+    * Figure 8.1 : Organigramme des Tâches (WBS par lots) décomposant les 6 lots de travaux hiérarchiques (WP1 Cadrage R1, WP2 Outillage R2, WP3 Économie R3, WP4 Architecture C4 R4, WP5 Déploiement R5, WP6 Clôture RSE).
+    * Figure 8.2 : Matrice des Responsabilités RACI croisant les lots de travaux majeurs avec les 6 pôles d'équipe et la MOA (Laurence Duchien, Anne Etien, François Secchi, Jérémy Woirhaye).
+    * Figure 8.3 : Diagramme de Gantt Annuel & Jalons Contractuels R1 à R5 (Septembre 2026 à Mars 2027) identifiant le chemin critique (WP1 -> WP2 -> WP4 -> WP5), les soutenances orales (Amphi Turing), les semaines banalisées (semaine IA, vacances Toussaint/Noël/Hiver) et les marges de sécurité (buffers de 72h).
+    * Exportation des PNGs haute résolution (2360px HD via PyMuPDF) dans `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_8_1_wbs_lots_travaux.png`, `fig_8_2_matrice_raci.png` et `fig_8_3_gantt_jalons_r1_r5.png`.
+  - Rédaction intégrale du livrable modulaire `08_gouvernance_agile_gantt.md` rigoureusement calibré sur 5 pages A4 :
+    * Page 1 (8.1) : Cadre Méthodologique Agile Scrum, Rôles d'Équipe & Scrum Master Tournant (absence de chef de projet unique, répartition des 6 pôles sur 5 membres, 4 rituels Scrum adaptés).
+    * Page 2 (8.2) : Organigramme des Tâches (WBS) & Découpage Hiérarchique par Lots (Figure 8.1 intégrée + caractérisation des 6 WP).
+    * Page 3 (8.3) : Matrice des Responsabilités RACI & Définitions de Maturité (Figure 8.2 intégrée + spécifications formelles DoR et DoD).
+    * Page 4 (8.4) : Planification Opérationnelle, Diagramme de Gantt & Jalons Contractuels (Figure 8.3 intégrée + Tableau des 5 jalons contractuels + analyse du chemin critique).
+    * Page 5 (8.5) : Registre des Risques Projet, Matrice de Criticité & Plans de Mitigation (Tableau des 5 risques majeurs R01 à R05 + Plan de Continuité d'Activité et protocole d'escalade sous 24h).
+  - Compilation vectorielle du PDF officiel : `08_gouvernance_agile_gantt.pdf`.
+  - Contrôle d'intégrité de sécurité validé avec succès (`verify_deliverables.py` : 58 fichiers audités, 0 violation, 0 canari, 0 emoji).
+- **Fichiers créés, modifiés ou supprimés** :
+  - *Créés* :
+    * `agent_projet/scripts/generate_gouvernance_diagrams_svg.py`
+    * `agent_projet/templates/components/gouvernance_views.html`
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_8_1_wbs_lots_travaux.png` (.svg)
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_8_2_matrice_raci.png` (.svg)
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_8_3_gantt_jalons_r1_r5.png` (.svg)
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/sections/08_gouvernance_agile_gantt.md`
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/sections/08_gouvernance_agile_gantt.pdf`
+  - *Modifiés* :
+    * `agent_projet/config/cdc_progress.json` (statut STEP-08 COMPLETED)
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/AVANCEMENT_CAHIER_DES_CHARGES.md`
+    * `agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md`
+    * `agent_projet/scripts/render_report.py`
+- **Décisions actées** :
+  - Validation officielle de la Section 08 du Cahier des Charges R1.
+  - Clôture officielle de l'Étape 08 (`COMPLETED`).
+- **Reste à faire / Objectifs pour la Session 29** :
+  - Réalisation de l'**Étape 09 (`STEP-09` / `SEC-09`)** : *Cadrage Économique & Analyse par Coûts Complets*.
 
 ---
 

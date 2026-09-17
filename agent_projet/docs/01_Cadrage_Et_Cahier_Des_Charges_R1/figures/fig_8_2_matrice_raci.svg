@@ -1,0 +1,220 @@
+<svg viewBox="0 0 1180 640" width="1180" height="640" style="overflow:visible; font-family:'Poppins', sans-serif;">
+
+  <defs>
+    <filter id="shadow-card" x="-5%" y="-5%" width="110%" height="114%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#243342" flood-opacity="0.06"/>
+    </filter>
+    <filter id="shadow-box" x="-3%" y="-4%" width="106%" height="110%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#243342" flood-opacity="0.05"/>
+    </filter>
+    <marker id="arrow-slate" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#334155" />
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#0284C7" />
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#DC2626" />
+    </marker>
+  </defs>
+
+
+  <!-- CADRE GLOBAL -->
+  <rect x="10" y="10" width="1160" height="620" rx="14" fill="#FAFAFA" stroke="#E2E8F0" stroke-width="1.2" />
+
+  <!-- EN-TETE BANDEAU -->
+  <rect x="25" y="22" width="1130" height="42" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+  <rect x="35" y="32" width="22" height="22" rx="4" fill="#7C3AED" />
+  <text x="46" y="47" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF">RACI</text>
+  <text x="68" y="46" font-size="13" font-weight="700" fill="#1E293B">Matrice des Responsabilités RACI &amp; Répartition des 6 Pôles d'Équipe</text>
+  <text x="1140" y="46" text-anchor="end" font-size="11" font-weight="500" fill="#64748B">Gouvernance Agile sans Chef de Projet · 5 Étudiants-Ingénieurs · R1 à R5</text>
+
+  <!-- LEGENDE RACI HORIZONTALE -->
+  <g transform="translate(25, 76)">
+    <rect x="0" y="0" width="1130" height="34" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" />
+    <text x="18" y="22" font-size="10.5" font-weight="700" fill="#334155">Légende RACI :</text>
+    
+    <!-- R -->
+    <rect x="135" y="7" width="20" height="20" rx="4" fill="#059669" />
+    <text x="145" y="21" text-anchor="middle" font-size="10.5" font-weight="700" fill="#FFFFFF">R</text>
+    <text x="162" y="21" font-size="10" font-weight="600" fill="#065F46">Réalisateur (Responsible)</text>
+
+    <!-- A -->
+    <rect x="345" y="7" width="20" height="20" rx="4" fill="#0284C7" />
+    <text x="355" y="21" text-anchor="middle" font-size="10.5" font-weight="700" fill="#FFFFFF">A</text>
+    <text x="372" y="21" font-size="10" font-weight="600" fill="#075985">Approbateur / Décideur (Accountable)</text>
+
+    <!-- C -->
+    <rect x="635" y="7" width="20" height="20" rx="4" fill="#D97706" />
+    <text x="645" y="21" text-anchor="middle" font-size="10.5" font-weight="700" fill="#FFFFFF">C</text>
+    <text x="662" y="21" font-size="10" font-weight="600" fill="#92400E">Consulté (Consulted)</text>
+
+    <!-- I -->
+    <rect x="835" y="7" width="20" height="20" rx="4" fill="#64748B" />
+    <text x="845" y="21" text-anchor="middle" font-size="10.5" font-weight="700" fill="#FFFFFF">I</text>
+    <text x="862" y="21" font-size="10" font-weight="600" fill="#334155">Informé (Informed)</text>
+  </g>
+
+  <!-- TABLEAU MATRICE RACI -->
+  <g transform="translate(25, 122)" filter="url(#shadow-box)">
+    <!-- FOND TABLEAU -->
+    <rect x="0" y="0" width="1130" height="490" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2" />
+
+    <!-- EN-TETE COLONNES -->
+    <rect x="0" y="0" width="1130" height="46" rx="8" fill="#243342" />
+    <rect x="0" y="20" width="1130" height="26" fill="#243342" />
+
+    <text x="20" y="28" font-size="10.5" font-weight="700" fill="#FFFFFF">ACTIVITÉS MAJEURES &amp; LIVRABLES</text>
+    <text x="445" y="21" text-anchor="middle" font-size="9.5" font-weight="700" fill="#93C5FD">MOA</text>
+    <text x="445" y="34" text-anchor="middle" font-size="8" fill="#BFDBFE">Enseignants</text>
+
+    <text x="545" y="21" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF">SM</text>
+    <text x="545" y="34" text-anchor="middle" font-size="8" fill="#CBD5E1">Scrum Tournant</text>
+
+    <text x="645" y="21" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF">QA</text>
+    <text x="645" y="34" text-anchor="middle" font-size="8" fill="#CBD5E1">Qualité &amp; DoD</text>
+
+    <text x="745" y="21" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF">COM</text>
+    <text x="745" y="34" text-anchor="middle" font-size="8" fill="#CBD5E1">Communication</text>
+
+    <text x="845" y="21" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF">DEVOPS</text>
+    <text x="845" y="34" text-anchor="middle" font-size="8" fill="#CBD5E1">CI/CD &amp; Docker</text>
+
+    <text x="955" y="21" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF">ARC-BACK</text>
+    <text x="955" y="34" text-anchor="middle" font-size="8" fill="#CBD5E1">Archi &amp; SQL</text>
+
+    <text x="1065" y="21" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF">ARC-FRONT</text>
+    <text x="1065" y="34" text-anchor="middle" font-size="8" fill="#CBD5E1">UX &amp; Accessib.</text>
+
+    <!-- LIGNES DE LA MATRICE (10 LIGNES) -->
+    <!-- Ligne 1 : WP1 Cadrage & CDC R1 -->
+    <rect x="0" y="46" width="1130" height="44" fill="#F8FAFC" />
+    <line x1="0" y1="90" x2="1130" y2="90" stroke="#E2E8F0" stroke-width="1" />
+    <text x="20" y="66" font-size="10" font-weight="700" fill="#1E293B">WP1 · Cadrage Stratégique &amp; Cahier des Charges (R1)</text>
+    <text x="20" y="79" font-size="8.5" fill="#64748B">Expression des besoins, APTE, personas, BPMN, MCD Merise, C4, MoSCoW</text>
+    <circle cx="445" cy="68" r="11" fill="#0284C7" /><text x="445" y="72" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">A</text>
+    <circle cx="545" cy="68" r="11" fill="#059669" /><text x="545" y="72" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">R</text>
+    <circle cx="645" cy="68" r="11" fill="#D97706" /><text x="645" y="72" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">C</text>
+    <circle cx="745" cy="68" r="11" fill="#D97706" /><text x="745" y="72" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">C</text>
+    <circle cx="845" cy="68" r="11" fill="#64748B" /><text x="845" y="72" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">I</text>
+    <circle cx="955" cy="68" r="11" fill="#059669" /><text x="955" y="72" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">R</text>
+    <circle cx="1065" cy="68" r="11" fill="#059669" /><text x="1065" y="72" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">R</text>
+
+    <!-- Ligne 2 : WP2 Outils & Socle CI/CD R2 -->
+    <rect x="0" y="90" width="1130" height="44" fill="#FFFFFF" />
+    <line x1="0" y1="134" x2="1130" y2="134" stroke="#E2E8F0" stroke-width="1" />
+    <text x="20" y="110" font-size="10" font-weight="700" fill="#1E293B">WP2 · Choix, Setup Outils &amp; Déploiement CI/CD (R2)</text>
+    <text x="20" y="123" font-size="8.5" fill="#64748B">GitLab, branches protégées, GitLab CI, SonarQube, Docker multi-stage</text>
+    <circle cx="445" cy="112" r="11" fill="#64748B" /><text x="445" y="116" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">I</text>
+    <circle cx="545" cy="112" r="11" fill="#D97706" /><text x="545" y="116" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">C</text>
+    <circle cx="645" cy="112" r="11" fill="#0284C7" /><text x="645" y="116" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">A</text>
+    <circle cx="745" cy="112" r="11" fill="#64748B" /><text x="745" y="116" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">I</text>
+    <circle cx="845" cy="112" r="11" fill="#059669" /><text x="845" y="116" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">R</text>
+    <circle cx="955" cy="112" r="11" fill="#D97706" /><text x="955" y="116" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">C</text>
+    <circle cx="1065" cy="112" r="11" fill="#64748B" /><text x="1065" y="116" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">I</text>
+
+    <!-- Ligne 3 : WP3 Étude Économique R3 -->
+    <rect x="0" y="134" width="1130" height="44" fill="#F8FAFC" />
+    <line x1="0" y1="178" x2="1130" y2="178" stroke="#E2E8F0" stroke-width="1" />
+    <text x="20" y="154" font-size="10" font-weight="700" fill="#1E293B">WP3 · Analyse Économique par Coûts Complets &amp; Rentabilité (R3)</text>
+    <text x="20" y="167" font-size="8.5" fill="#64748B">Centres d'analyse Build/Run, Unités d'Œuvre, P&amp;L 3 ans, calcul ROI &amp; VAN</text>
+    <circle cx="445" cy="156" r="11" fill="#0284C7" /><text x="445" y="160" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">A</text>
+    <circle cx="545" cy="156" r="11" fill="#059669" /><text x="545" y="160" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">R</text>
+    <circle cx="645" cy="156" r="11" fill="#D97706" /><text x="645" y="160" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">C</text>
+    <circle cx="745" cy="156" r="11" fill="#D97706" /><text x="745" y="160" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">C</text>
+    <circle cx="845" cy="156" r="11" fill="#64748B" /><text x="845" y="160" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">I</text>
+    <circle cx="955" cy="156" r="11" fill="#D97706" /><text x="955" y="160" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">C</text>
+    <circle cx="1065" cy="156" r="11" fill="#64748B" /><text x="1065" y="160" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">I</text>
+
+    <!-- Ligne 4 : Conception Vues 4+1 R4 -->
+    <rect x="0" y="178" width="1130" height="44" fill="#FFFFFF" />
+    <line x1="0" y1="222" x2="1130" y2="222" stroke="#E2E8F0" stroke-width="1" />
+    <text x="20" y="198" font-size="10" font-weight="700" fill="#1E293B">WP4.1 · Conception Détaillée des Vues 4+1 C4 (R4)</text>
+    <text x="20" y="211" font-size="8.5" fill="#64748B">Diagrammes composants, classes métiers, modèle relationnel 3NF, déploiement</text>
+    <circle cx="445" cy="200" r="11" fill="#D97706" /><text x="445" y="204" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">C</text>
+    <circle cx="545" cy="200" r="11" fill="#64748B" /><text x="545" y="204" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">I</text>
+    <circle cx="645" cy="200" r="11" fill="#D97706" /><text x="645" y="204" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">C</text>
+    <circle cx="745" cy="200" r="11" fill="#64748B" /><text x="745" y="204" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">I</text>
+    <circle cx="845" cy="200" r="11" fill="#D97706" /><text x="845" y="204" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">C</text>
+    <circle cx="955" cy="200" r="11" fill="#0284C7" /><text x="955" y="204" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">A</text>
+    <circle cx="1065" cy="200" r="11" fill="#059669" /><text x="1065" y="204" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">R</text>
+
+    <!-- Ligne 5 : 1er Composant Logiciel R4 -->
+    <rect x="0" y="222" width="1130" height="44" fill="#F8FAFC" />
+    <line x1="0" y1="266" x2="1130" y2="266" stroke="#E2E8F0" stroke-width="1" />
+    <text x="20" y="242" font-size="10" font-weight="700" fill="#1E293B">WP4.2 · Développement &amp; Test du 1er Composant Déployé (R4)</text>
+    <text x="20" y="255" font-size="8.5" fill="#64748B">Panier mutualisé 2PC, persistance PostgreSQL, tests TDD, démo Docker</text>
+    <circle cx="445" cy="244" r="11" fill="#0284C7" /><text x="445" y="248" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">A</text>
+    <circle cx="545" cy="244" r="11" fill="#D97706" /><text x="545" y="248" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">C</text>
+    <circle cx="645" cy="244" r="11" fill="#0284C7" /><text x="645" y="248" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">A</text>
+    <circle cx="745" cy="244" r="11" fill="#64748B" /><text x="745" y="248" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">I</text>
+    <circle cx="845" cy="244" r="11" fill="#059669" /><text x="845" y="248" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">R</text>
+    <circle cx="955" cy="244" r="11" fill="#059669" /><text x="955" y="248" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">R</text>
+    <circle cx="1065" cy="244" r="11" fill="#059669" /><text x="1065" y="248" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">R</text>
+
+    <!-- Ligne 6 : Dév MVP V1 R5 -->
+    <rect x="0" y="266" width="1130" height="44" fill="#FFFFFF" />
+    <line x1="0" y1="310" x2="1130" y2="310" stroke="#E2E8F0" stroke-width="1" />
+    <text x="20" y="286" font-size="10" font-weight="700" fill="#1E293B">WP5.1 · Implémentation du Backlog MVP V1 (10 US Must Have)</text>
+    <text x="20" y="299" font-size="8.5" fill="#64748B">Vitrines, stocks V1, caisse express &lt; 3s, moteur VFP 15j, vouchers mobilité</text>
+    <circle cx="445" cy="288" r="11" fill="#64748B" /><text x="445" y="292" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">I</text>
+    <circle cx="545" cy="288" r="11" fill="#0284C7" /><text x="545" y="292" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">A</text>
+    <circle cx="645" cy="288" r="11" fill="#D97706" /><text x="645" y="292" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">C</text>
+    <circle cx="745" cy="288" r="11" fill="#64748B" /><text x="745" y="292" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">I</text>
+    <circle cx="845" cy="288" r="11" fill="#D97706" /><text x="845" y="292" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">C</text>
+    <circle cx="955" cy="288" r="11" fill="#059669" /><text x="955" y="292" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">R</text>
+    <circle cx="1065" cy="288" r="11" fill="#059669" /><text x="1065" y="292" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">R</text>
+
+    <!-- Ligne 7 : Intégration Mocks & APIs Partenaires -->
+    <rect x="0" y="310" width="1130" height="44" fill="#F8FAFC" />
+    <line x1="0" y1="354" x2="1130" y2="354" stroke="#E2E8F0" stroke-width="1" />
+    <text x="20" y="330" font-size="10" font-weight="700" fill="#1E293B">WP5.2 · Intégration des Services Partenaires &amp; Mocks REST</text>
+    <text x="20" y="343" font-size="8.5" fill="#64748B">Passerelle bancaire CB, API Ilévia Pass Pass, simulation voirie parking</text>
+    <circle cx="445" cy="332" r="11" fill="#64748B" /><text x="445" y="336" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">I</text>
+    <circle cx="545" cy="332" r="11" fill="#64748B" /><text x="545" y="336" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">I</text>
+    <circle cx="645" cy="332" r="11" fill="#D97706" /><text x="645" y="336" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">C</text>
+    <circle cx="745" cy="332" r="11" fill="#64748B" /><text x="745" y="336" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">I</text>
+    <circle cx="845" cy="332" r="11" fill="#059669" /><text x="845" y="336" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">R</text>
+    <circle cx="955" cy="332" r="11" fill="#059669" /><text x="955" y="336" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">R</text>
+    <circle cx="1065" cy="332" r="11" fill="#D97706" /><text x="1065" y="336" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">C</text>
+
+    <!-- Ligne 8 : Validation Qualité & DoD -->
+    <rect x="0" y="354" width="1130" height="44" fill="#FFFFFF" />
+    <line x1="0" y1="398" x2="1130" y2="398" stroke="#E2E8F0" stroke-width="1" />
+    <text x="20" y="374" font-size="10" font-weight="700" fill="#1E293B">WP5.3 · Validation DoD, Qualité &amp; Non-Régression</text>
+    <text x="20" y="387" font-size="8.5" fill="#64748B">Tests unitaires (couverture &gt;= 80%), SonarQube, verify_deliverables.py, zéro emoji</text>
+    <circle cx="445" cy="376" r="11" fill="#64748B" /><text x="445" y="380" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">I</text>
+    <circle cx="545" cy="376" r="11" fill="#D97706" /><text x="545" y="380" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">C</text>
+    <circle cx="645" cy="376" r="11" fill="#0284C7" /><text x="645" y="380" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">A</text>
+    <circle cx="745" cy="376" r="11" fill="#64748B" /><text x="745" y="380" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">I</text>
+    <circle cx="845" cy="376" r="11" fill="#059669" /><text x="845" y="380" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">R</text>
+    <circle cx="955" cy="376" r="11" fill="#059669" /><text x="955" y="380" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">R</text>
+    <circle cx="1065" cy="376" r="11" fill="#059669" /><text x="1065" y="380" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">R</text>
+
+    <!-- Ligne 9 : Déploiement & Solution Finale R5 -->
+    <rect x="0" y="398" width="1130" height="44" fill="#F8FAFC" />
+    <line x1="0" y1="442" x2="1130" y2="442" stroke="#E2E8F0" stroke-width="1" />
+    <text x="20" y="418" font-size="10" font-weight="700" fill="#1E293B">WP5.4 · Packaging Démonstrateur Docker &amp; Solution Finale (R5)</text>
+    <text x="20" y="431" font-size="8.5" fill="#64748B">Orchestration docker compose up -d, jeu d'essai Lille, notice d'installation</text>
+    <circle cx="445" cy="420" r="11" fill="#0284C7" /><text x="445" y="424" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">A</text>
+    <circle cx="545" cy="420" r="11" fill="#D97706" /><text x="545" y="424" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">C</text>
+    <circle cx="645" cy="420" r="11" fill="#0284C7" /><text x="645" y="424" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">A</text>
+    <circle cx="745" cy="420" r="11" fill="#D97706" /><text x="745" y="424" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">C</text>
+    <circle cx="845" cy="420" r="11" fill="#059669" /><text x="845" y="424" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">R</text>
+    <circle cx="955" cy="420" r="11" fill="#059669" /><text x="955" y="424" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">R</text>
+    <circle cx="1065" cy="420" r="11" fill="#059669" /><text x="1065" y="424" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">R</text>
+
+    <!-- Ligne 10 : Soutenances Orales & Clôture -->
+    <rect x="0" y="442" width="1130" height="48" fill="#FFFFFF" />
+    <text x="20" y="462" font-size="10" font-weight="700" fill="#1E293B">WP6 · Soutenances Orales, Support Client &amp; Bilan RSE</text>
+    <text x="20" y="475" font-size="8.5" fill="#64748B">Présentations amphi Turing (R1, R4, R5), documentation projet, site web</text>
+    <circle cx="445" cy="466" r="11" fill="#0284C7" /><text x="445" y="470" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">A</text>
+    <circle cx="545" cy="466" r="11" fill="#059669" /><text x="545" y="470" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">R</text>
+    <circle cx="645" cy="466" r="11" fill="#D97706" /><text x="645" y="470" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">C</text>
+    <circle cx="745" cy="466" r="11" fill="#059669" /><text x="745" y="470" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">R</text>
+    <circle cx="845" cy="466" r="11" fill="#D97706" /><text x="845" y="470" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">C</text>
+    <circle cx="955" cy="466" r="11" fill="#D97706" /><text x="955" y="470" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">C</text>
+    <circle cx="1065" cy="466" r="11" fill="#D97706" /><text x="1065" y="470" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">C</text>
+  </g>
+
+</svg>
