@@ -1,38 +1,19 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Prévisualisation — Lean Canvas ShopLoc (Figure 1.4)</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/latin-modern-web@1.0.0/style.css">
-  <style>
-    body {
-      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #F1F5F9;
-      margin: 0;
-      padding: 30px 20px;
-    }
-    .preview-container {
-      max-width: 1220px;
-      margin: 0 auto;
-    }
-  </style>
-</head>
-<body>
-  <div class="preview-container">
-    <!-- FIGURE 1.4 : LEAN CANVAS 9 BLOCS ASH MAURYA (CONSOLIDATION ÉTAPES 01 À 09) -->
-<div class="figure-card" style="background:#FFFFFF; border:1px solid #E8E6DF; border-radius:16px; padding:24px; margin-bottom:28px; box-shadow:0 4px 16px rgba(36,51,66,0.06);">
-  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; border-bottom:1px solid #E8E6DF; padding-bottom:12px;">
-    <div>
-      <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:4px;">
-        <span style="width:8px; height:8px; border-radius:50%; background:#C26750;"></span>
-        <span style="font-size:11px; font-weight:700; color:#C26750; text-transform:uppercase; letter-spacing:0.08em;">Synthèse Stratégique &amp; Modèle Économique</span>
-      </div>
-      <h3 style="font-size:17px; font-weight:700; color:#243342; margin:0;">Figure 1.4 — Lean Canvas Synthétique ShopLoc (9 Blocs d'Ash Maurya)</h3>
-    </div>
-    <span style="font-size:11px; background:#FAF9F6; border:1px solid #E8E6DF; padding:4px 12px; border-radius:9999px; color:#5A6578; font-weight:600;">Méthodologie Ash Maurya · Consolidation Globale R1</span>
-  </div>
-<svg viewBox="0 0 1180 700" width="1180" height="700" style="overflow:visible; font-family:'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+GÉNÉRATEUR DU LEAN CANVAS SHOPLOC (FIGURE 1.4)
+Master 2 MIAGE — Université de Lille — UE GLOP (2026-2027)
 
+Génère le schéma vectoriel SVG autonome et l'export PNG HD (2360 x 1400)
+pour la synthèse panoramique du modèle économique et opérationnel (Ash Maurya).
+Conformité stricte à la charte graphique pastel ShopLoc (ADR-014, ADR-015),
+sans emoji, sans languette asymétrique.
+"""
+
+import os
+import sys
+
+COMMON_DEFS = """
   <defs>
     <filter id="shadow-card" x="-4%" y="-3%" width="108%" height="108%">
       <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#243342" flood-opacity="0.05"/>
@@ -41,7 +22,11 @@
       <feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#243342" flood-opacity="0.04"/>
     </filter>
   </defs>
+"""
 
+def generate_lean_canvas_svg():
+    return f"""<svg viewBox="0 0 1180 700" width="1180" height="700" style="overflow:visible; font-family:'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+{COMMON_DEFS}
 
   <!-- CADRE GLOBAL EXTERIEUR -->
   <rect x="10" y="10" width="1160" height="680" rx="14" fill="#FAFAFA" stroke="#E2E8F0" stroke-width="1.2" />
@@ -324,9 +309,96 @@
   </g>
 
 </svg>
+"""
 
+def export_png(svg_content, width, height, output_png):
+    """Exporte le contenu SVG en image PNG haute résolution (2.0x) via PyMuPDF."""
+    print(f"Exportation vectorielle HD vers : {output_png}...")
+    try:
+        import pymupdf
+        doc = pymupdf.open(stream=svg_content.encode("utf-8"), filetype="svg")
+        page = doc[0]
+        mat = pymupdf.Matrix(2.0, 2.0)
+        pix = page.get_pixmap(matrix=mat, alpha=False)
+        pix.save(output_png)
+        print(f"Exporté avec succès (PyMuPDF HD) : {output_png} ({pix.width}x{pix.height})")
+    except Exception as e:
+        print(f"Erreur PyMuPDF : {e}")
+        raise
+
+def main():
+    repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    figures_dir = os.path.join(repo_root, "agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures")
+    components_dir = os.path.join(repo_root, "agent_projet/templates/components")
+    previews_dir = os.path.join(repo_root, "agent_projet/docs/previews_composants")
+    os.makedirs(figures_dir, exist_ok=True)
+    os.makedirs(components_dir, exist_ok=True)
+    os.makedirs(previews_dir, exist_ok=True)
+
+    # 1. Génération SVG
+    svg_canvas = generate_lean_canvas_svg()
+    svg_path = os.path.join(figures_dir, "fig_1_4_lean_canvas_ash_maurya.svg")
+    with open(svg_path, "w", encoding="utf-8") as f:
+        f.write(svg_canvas)
+    print(f"SVG généré : {svg_path}")
+
+    # 2. Export PNG HD (2360 x 1400)
+    png_path = os.path.join(figures_dir, "fig_1_4_lean_canvas_ash_maurya.png")
+    export_png(svg_canvas, 1180, 700, png_path)
+
+    # 3. Sauvegarde composant HTML
+    comp_html_path = os.path.join(components_dir, "lean_canvas.html")
+    comp_content = f"""<!-- FIGURE 1.4 : LEAN CANVAS 9 BLOCS ASH MAURYA (CONSOLIDATION ÉTAPES 01 À 09) -->
+<div class="figure-card" style="background:#FFFFFF; border:1px solid #E8E6DF; border-radius:16px; padding:24px; margin-bottom:28px; box-shadow:0 4px 16px rgba(36,51,66,0.06);">
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; border-bottom:1px solid #E8E6DF; padding-bottom:12px;">
+    <div>
+      <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:4px;">
+        <span style="width:8px; height:8px; border-radius:50%; background:#C26750;"></span>
+        <span style="font-size:11px; font-weight:700; color:#C26750; text-transform:uppercase; letter-spacing:0.08em;">Synthèse Stratégique &amp; Modèle Économique</span>
+      </div>
+      <h3 style="font-size:17px; font-weight:700; color:#243342; margin:0;">Figure 1.4 — Lean Canvas Synthétique ShopLoc (9 Blocs d'Ash Maurya)</h3>
+    </div>
+    <span style="font-size:11px; background:#FAF9F6; border:1px solid #E8E6DF; padding:4px 12px; border-radius:9999px; color:#5A6578; font-weight:600;">Méthodologie Ash Maurya · Consolidation Globale R1</span>
+  </div>
+{svg_canvas}
 </div>
+"""
+    with open(comp_html_path, "w", encoding="utf-8") as f:
+        f.write(comp_content)
+    print(f"Composant HTML écrit : {comp_html_path}")
 
+    # 4. Génération de la page de prévisualisation autonome
+    preview_html_path = os.path.join(previews_dir, "preview_lean_canvas.html")
+    preview_content = f"""<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Prévisualisation — Lean Canvas ShopLoc (Figure 1.4)</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/latin-modern-web@1.0.0/style.css">
+  <style>
+    body {{
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #F1F5F9;
+      margin: 0;
+      padding: 30px 20px;
+    }}
+    .preview-container {{
+      max-width: 1220px;
+      margin: 0 auto;
+    }}
+  </style>
+</head>
+<body>
+  <div class="preview-container">
+    {comp_content}
   </div>
 </body>
 </html>
+"""
+    with open(preview_html_path, "w", encoding="utf-8") as f:
+        f.write(preview_content)
+    print(f"Page de prévisualisation autonome générée : {preview_html_path}")
+    print("Génération du Lean Canvas terminée avec succès !")
+
+if __name__ == "__main__":
+    main()

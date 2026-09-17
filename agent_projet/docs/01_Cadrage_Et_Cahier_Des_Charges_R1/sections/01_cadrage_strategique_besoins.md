@@ -37,7 +37,21 @@ Afin d'asseoir le positionnement de ShopLoc, un benchmark comparatif des disposi
 
 <div style="page-break-before: always;"></div>
 
-## 1.4. Objectifs du Projet
+## 1.4. Synthèse Panoramique du Modèle : Le Lean Canvas ShopLoc
+
+Conformément à la démarche d'ingénierie par arborescence inversée établie dans le plan directeur, le **Lean Canvas** constitue la clé de voûte stratégique du projet ShopLoc. Développé selon la méthodologie canonique d'Ash Maurya, il consolide en 9 blocs interconnectés l'intégralité des dimensions opérationnelles, techniques et financières modélisées dans le présent cahier des charges.
+
+<div class="diagram-container" style="margin: 6pt 0;"><img src="../figures/fig_1_4_lean_canvas_ash_maurya.png" alt="Figure 1.4 — Lean Canvas Synthétique ShopLoc (9 Blocs Stratégiques &amp; Modèle Économique)" style="width: 100%; max-width: 680px; height: auto; display: block; margin: 0 auto;" /><div class="diagram-caption">Figure 1.4 — Lean Canvas Synthétique ShopLoc (9 Blocs Stratégiques &amp; Modèle Économique)</div></div>
+
+**Articulation Systémique des 9 Blocs Stratégiques**
+
+1. **Couplage Problème / Solution** : Le diagnostic initial de désertification commerciale et de prédation des plateformes privées (15% à 30% de commission) trouve sa résolution directe dans une marketplace Click &amp; Collect mutualisée à 0% de prélèvement marchand, complétée par un double moteur de fidélité découplé (cagnotte commerçante locale vs mobilité urbaine VFP 10 passages sur 15 jours).
+2. **Couplage Personas / Proposition de Valeur Unique** : Les quatre personas cibles (Pierre le senior, Suzanne l'artisane commerçante, Julie &amp; Arthur les actifs pressés, Marius la collectivité territoriale) bénéficient d'une proposition de valeur différenciée mais unifiée : réancrer les achats en boutique par le passage physique en centre-ville.
+3. **Piliers de Viabilité Économique &amp; Coûts Complets** : La convention tripartite municipale (ADR-004) et la structure des coûts complets garantissent un seuil de rentabilité communal maîtrisé (75 365,24 € au 312ᵉ jour) et un modèle autofinancé pérenne sans dépendance aux financements spéculatifs.
+
+<div style="page-break-before: always;"></div>
+
+## 1.5. Objectifs du Projet
 
 Les objectifs du projet se structurent en orientations stratégiques de politique publique et en objectifs opérationnels déclinés selon les finalités propres à chaque profil d'acteur.
 
@@ -81,7 +95,7 @@ Les objectifs du projet se structurent en orientations stratégiques de politiqu
 
 <div style="page-break-before: always;"></div>
 
-## 1.5. Périmètre du Système : Ce qui est Inclus et Exclu
+## 1.6. Périmètre du Système : Ce qui est Inclus et Exclu
 
 Afin de garantir la faisabilité opérationnelle et de respecter les engagements d'éco-conception, les frontières du système sont délimitées :
 
@@ -96,7 +110,7 @@ Afin de garantir la faisabilité opérationnelle et de respecter les engagements
 
 ---
 
-## 1.6. Gratuité Citoyenne & Dispositif d'Inclusion Universelle
+## 1.7. Gratuité Citoyenne & Dispositif d'Inclusion Universelle
 
 Trois principes fondateurs structurent l'accessibilité sociale et l'éthique de la plateforme :
 * **Principe de gratuité citoyenne intégrale** : L'inscription, l'application mobile et l'usage de la carte physique sont strictement gratuits pour tous les usagers, supprimant toute barrière financière à l'adoption populaire.
@@ -105,7 +119,7 @@ Trois principes fondateurs structurent l'accessibilité sociale et l'éthique de
 
 <div style="page-break-before: always;"></div>
 
-## 1.7. Indicateurs Clés de Performance (KPIs) à Double Échelle
+## 1.8. Indicateurs Clés de Performance (KPIs) à Double Échelle
 
 Le pilotage de la performance de ShopLoc est structuré selon deux échelles complémentaires : la performance locale à l'échelle de la ville pilote et la performance globale de la plateforme à l'échelle SaaS nationale.
 

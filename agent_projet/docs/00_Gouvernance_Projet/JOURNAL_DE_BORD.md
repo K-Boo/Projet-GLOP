@@ -6,8 +6,8 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 
 ## 1. Etat Courant du Projet
 
-- **Phase active** : Cadrage Métier & Rédaction du Livrable R1 (Étapes 01, 02, 03, 04, 06, 07, 08 et 09 COMPLETED — Étape 05 supprimée par ADR-019 — Prochaine Étape : 10 Le Lean Canvas ShopLoc)
-- **Dernière mise à jour** : 2026-09-17 (Session 29)
+- **Phase active** : Cadrage Métier & Rédaction du Livrable R1 (Étapes 01 à 04, 06 à 10 COMPLETED — Étape 05 supprimée par ADR-019 — Prochaine Étape : 11 Assemblage & Compilation du Cahier des Charges Maître)
+- **Dernière mise à jour** : 2026-09-17 (Session 30)
 - **Responsable / Scrum Master** : Équipe ShopLoc (M2 MIAGE GLOP)
 - **Dépôt Projet (Cockpit / Gouvernance)** : GitHub `Projet-GLOP`
 - **Dépôt Applicatif (Code étudiant évalué)** : GitLab `projet-glop-app`
@@ -700,6 +700,46 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Clôture officielle de l'Étape 09 (`COMPLETED`).
 - **Reste à faire / Objectifs pour la Session 30** :
   - Réalisation de l'**Étape 10 (`STEP-10` / `SEC-01-CANVAS`)** : *Le Lean Canvas ShopLoc* (9 cases consolidant la totalité du CdC, intégrée en tête de Section 01).
+
+### [2026-09-17] Session 30 — Réalisation & Finalisation de l'Étape 10 (SEC-01-CANVAS : Le Lean Canvas ShopLoc)
+- **Objectif** : Concevoir et formaliser l'artefact de synthèse panoramique du modèle économique et opérationnel ShopLoc sous la forme d'un Lean Canvas 9 blocs (Ash Maurya) consolidant 100% des données stabilisées (APTE, Personas, BPMN, MCD, Backlog MoSCoW, Architecture C4, Gouvernance et Analyse Financière par Coûts Complets), développer le générateur vectoriel SVG et export HD PNG (2360px), mettre à jour le composant HTML et la prévisualisation autonome, intégrer la Figure 1.4 dans la Section 01 du Cahier des Charges et recompiler le livrable officiel en PDF.
+- **Actions réalisées** :
+  - Réservation et actualisation des statuts (`STEP-10` passé à `IN_PROGRESS` puis `COMPLETED`) dans `agent_projet/config/cdc_progress.json` et `AVANCEMENT_CAHIER_DES_CHARGES.md`.
+  - Élaboration du script générateur vectoriel `agent_projet/scripts/generate_lean_canvas_svg.py` respectant les jetons de design pastel (ADR-014, ADR-015), sans emoji et sans languette asymétrique :
+    * Bloc 1 (Problème) : Désertification commerciale, prédation des plateformes privées (15-30% commission), fracture numérique seniors (Pierre, 74 ans) et alternatives (Amazon, UberEats, Ollca, cartes papier).
+    * Bloc 2 (Clients) : 4 personas (Julie & Arthur actifs pressés, Pierre senior non-connecté, Suzanne artisane commerçante, Marius collectivité) et early adopters (quartier pilote Wazemmes / Saint-Sauveur).
+    * Bloc 3 (Valeur Unique) : "La vitalité de vos commerces de quartier dans un panier unique, soutenu par votre ville sans commission marchande", déclinée par profil, avec concept de haut niveau (infrastructure souveraine et gratuite au citoyen).
+    * Bloc 4 (Solution) : Panier mutualisé Click & Collect (2PC, retrait < 2h), double moteur de fidélité découplé (cagnotte locale vs VFP 10p/15j) et Pass Citoyen universel (carte QR physique + PWA).
+    * Bloc 5 (Canaux) : Application web responsive PWA éco-conçue sans store, guichet mairie/CCAS pour pass physique, vitrophanies et chevalets commerçants, médias municipaux.
+    * Bloc 6 (Flux de Revenus) : Convention tripartite municipale annuelle (ADR-004 : Petite Ville 10 500 € Y1, Moyenne 23 000 €, Grande 46 000 €), cotisation commerçante symbolique 50 €/an (0% commission marchande), prise en charge mobilité mairie, trajectoire P&L Y1 à Y3 (CA 88k€ à 491k€, R. Net +159 410 € en Y3, 5 CDI, VAN = 170 482 €, TRI = 101,5%, Payback 17,3 mois).
+    * Bloc 7 (Structure des Coûts) : Analyse des Coûts Complets Y1 (Charges directes 16 620 €, charges indirectes 60 000 € réparties sur 5 centres d'analyse, UO Vente 10,23 €/100€ CA, UO Réalisation 2,78 €/h dev, UO Maintenance 1 716,67 €/ville, seuil de rentabilité communal 75 365,24 € au 312ᵉ jour, marge de sécurité 12 635 €).
+    * Bloc 8 (Métriques Clés) : Taux de commerces actifs > 75%, Taux d'usagers réguliers VFP, Qualité C&C (< 2h, no-show < 2%), Conformité RGAA AA 100% et RGPD.
+    * Bloc 9 (Avantage Déterminant) : Convention publique tripartite exclusive, couplage direct voirie/transports, 0% commission inviolable, inclusion physique seniors.
+  - Exportation vectorielle haute définition : `fig_1_4_lean_canvas_ash_maurya.svg` et `fig_1_4_lean_canvas_ash_maurya.png` (2360 x 1400 via PyMuPDF).
+  - Mise à jour du composant unifié `agent_projet/templates/components/lean_canvas.html` et génération de la page de prévisualisation autonome `agent_projet/docs/previews_composants/preview_lean_canvas.html`.
+  - Intégration de la Figure 1.4 et de la synthèse d'articulation systémique en Section 1.4 de `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/sections/01_cadrage_strategique_besoins.md`, avec renumérotation ordonnée des sous-sections (1.5 Objectifs, 1.6 Périmètre, 1.7 Gratuité & Inclusion, 1.8 KPIs).
+  - Optimisation de `render_report.py` pour compatibilité multi-OS (suppression des verrous de user-data-dir bloquants sur Mac/Linux).
+  - Recompilation vectorielle du PDF officiel : `01_cadrage_strategique_besoins.pdf` (6 pages strictes, équilibrées, Lean Canvas intégré en pleine page 3 sans débordement).
+  - Contrôle d'intégrité de sécurité validé avec succès (`verify_deliverables.py` : 60 fichiers audités, 0 violation, 0 canari, 0 emoji).
+- **Fichiers créés, modifiés ou supprimés** :
+  - *Créés* :
+    * `agent_projet/scripts/generate_lean_canvas_svg.py`
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_1_4_lean_canvas_ash_maurya.svg`
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_1_4_lean_canvas_ash_maurya.png`
+    * `agent_projet/docs/previews_composants/preview_lean_canvas.html`
+  - *Modifiés* :
+    * `agent_projet/templates/components/lean_canvas.html`
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/sections/01_cadrage_strategique_besoins.md`
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/sections/01_cadrage_strategique_besoins.pdf`
+    * `agent_projet/scripts/render_report.py`
+    * `agent_projet/config/cdc_progress.json` (statut STEP-10 COMPLETED)
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/AVANCEMENT_CAHIER_DES_CHARGES.md`
+    * `agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md`
+- **Décisions actées** :
+  - Validation officielle de l'artefact Lean Canvas ShopLoc (Figure 1.4).
+  - Clôture officielle de l'Étape 10 (`COMPLETED`).
+- **Reste à faire / Objectifs pour la Session 31** :
+  - Réalisation de l'**Étape 11 (`STEP-11` / `LIVRABLE-FINAL`)** : *Assemblage du Cahier des Charges Maître & Compilation PDF A4 Unifié* (`ShopLoc_Cahier_des_Charges_Livrable_R1.pdf`).
 
 ---
 
