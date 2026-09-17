@@ -6,12 +6,12 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 
 ## 1. Etat Courant du Projet
 
-- **Phase active** : Cadrage Metier & Redaction du Livrable R1 (Etapes 01, 02, 03 et 04 COMPLETED — Prochaine Etape : 05 Ergonomie & Accessibilite RGAA AA)
-- **Derniere mise a jour** : 2026-09-17
-- **Responsable / Scrum Master** : Equipe ShopLoc (M2 MIAGE GLOP)
-- **Depot Projet (Cockpit / Gouvernance)** : GitHub `Projet-GLOP`
-- **Depot Applicatif (Code etudiant evalue)** : GitLab `projet-glop-app`
-- **Synchronisation Drive** : Configuree vers `Projet-GLOP/01_Cadrage_Metier_R1`
+- **Phase active** : Cadrage Métier & Rédaction du Livrable R1 (Étapes 01, 02, 03, 04 et 06 COMPLETED — Prochaine Étape : 05 Ergonomie RGAA ou 07 Architecture C4)
+- **Dernière mise à jour** : 2026-09-17
+- **Responsable / Scrum Master** : Équipe ShopLoc (M2 MIAGE GLOP)
+- **Dépôt Projet (Cockpit / Gouvernance)** : GitHub `Projet-GLOP`
+- **Dépôt Applicatif (Code étudiant évalué)** : GitLab `projet-glop-app`
+- **Synchronisation Drive** : Configurée vers `Projet-GLOP/01_Cadrage_Metier_R1`
 
 ---
 
@@ -500,7 +500,34 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Validation officielle de la Section 04 du Cahier des Charges R1.
   - Clôture officielle de l'Étape 04 (`COMPLETED`), ouvrant la voie à l'**Étape 05 (`STEP-05` : Architecture de l'Information, Ergonomie & Accessibilité RGAA AA)**.
 - **Reste à faire / Objectifs pour la Session 25** :
-  - Lancement de l'**Étape 05 (`STEP-05` / `SEC-05`)** : *Architecture de l'Information, Ergonomie & Accessibilité RGAA AA* (Zonings d'écrans Pierre senior / carte papier QR, caisse Suzanne, tableau de bord anonymisé Marius).
+  - Lancement de l'**Étape 05 (`STEP-05` / `SEC-05`)** ou **Étape 06 (`STEP-06` / `SEC-06`)**.
+
+---
+
+### [2026-09-17] Session 25 — Réalisation & Finalisation de l'Étape 06 (SEC-06 : User Story Mapping & Backlog MoSCoW)
+- **Objectif** : Structurer l'ingénierie agile des exigences de ShopLoc selon la méthode de User Story Mapping (Jeff Patton), concevoir la grille vectorielle SVG découpée en 3 releases (V1 MVP R4/R5, V2 Optimisations, V3 Écosystème), exporter la Figure 6.1 en haute définition (200 DPI), dresser le backlog exhaustif priorisé selon MoSCoW au format Booktabs, spécifier formellement les US majeures au format INVEST avec critères d'acceptation Gherkin, établir la matrice de traçabilité de bout en bout et compiler la Section 06 sur exactement 5 pages A4 strictes (ADR-015).
+- **Actions réalisées** :
+  - Présentation et validation de l'arbitrage méthodologique (Option A : exécution directe de l'Étape 06 demandée, déduite des flux BPMN et du MCD Merise validés à 100%).
+  - Réservation et actualisation des statuts (`STEP-06` passé à `IN_PROGRESS` puis `COMPLETED`) dans `agent_projet/config/cdc_progress.json` et `AVANCEMENT_CAHIER_DES_CHARGES.md`.
+  - Conception et génération du schéma vectoriel SVG de la Grille de User Story Mapping (Figure 6.1) :
+    * Backbone horizontal à 5 activités majeures (Conventionnement, Catalogue & Stocks, Commande & C&C 2PC, Caisse & Double Fidélité, Mobilité & Reporting municipal).
+    * Découpage vertical en 3 tranches étanches : Release V1 MVP contractuel (10 US Must Have, engagement 100% pour les jalons R4/R5), Release V2 (5 US Should Have : tournée piétonne TSP, tiers de confiance pour Pierre, porte-monnaie Izli, alertes stock), Release V3 (4 US Could Have : sync POS caisse, consignes réfrigérées 24/7, TPE, temps réel voirie).
+    * Création du script générateur `agent_projet/scripts/generate_story_mapping_svg.py` et du composant `agent_projet/templates/components/story_mapping_grid.html`.
+    * Exportation du PNG haute définition (200 DPI) : `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_6_1_user_story_mapping.png`.
+  - Rédaction intégrale de `06_backlog_user_story_mapping.md` calibrée sur exactement 5 pages A4 :
+    * Page 1 : Démarche Agile & Grille de Story Mapping (6.1) + Figure 6.1 + principes directeurs de slicing vertical.
+    * Page 2 : Backlog Priorisé MoSCoW Domaines Onboarding & Catalogue Marchand (6.2) + règles de gestion de priorisation (RG-BCK-01 à 03).
+    * Page 3 : Backlog Priorisé MoSCoW Domaines Commandes C&C, Caisse & Mobilité (6.3) + synthèse des exclusions fermes (*Won't Have* : livraison motorisée, espèces web, marketplace généraliste).
+    * Page 4 : Spécifications formelles INVEST & critères d'acceptation Gherkin (6.4) : US-M05 (Panier mutualisé 2PC Julie) et US-M07 (Scan caisse express & points Pierre/Suzanne) avec scénarios nominaux et d'exception.
+    * Page 5 : Spécifications formelles (6.5) : US-M08 (Calcul nocturne VFP 15j) et US-M10 (Tableau de bord communal Marius) + Matrice de traçabilité fonctionnelle exhaustive (APTE FP/FC <-> BPMN <-> MCD <-> US).
+  - Compilation vectorielle du PDF officiel : `06_backlog_user_story_mapping.pdf` (vérifié sous PyMuPDF : exactement 5 pages A4 strictes, zéro ligne orpheline).
+  - Contrôle d'intégrité de sécurité validé (`verify_deliverables.py` : 50 fichiers audités, 0 violation, 0 canari, 0 emoji).
+  - Synchronisation automatique vers Google Drive (`01_Cadrage_Metier_R1/06_backlog_user_story_mapping.pdf`).
+- **Décisions actées** :
+  - Validation officielle de la Section 06 du Cahier des Charges R1.
+  - Clôture officielle de l'Étape 06 (`COMPLETED`).
+- **Reste à faire / Objectifs pour la Session 26** :
+  - Réalisation de l'**Étape 05 (`STEP-05` / `SEC-05`)** : *Architecture de l'Information, Ergonomie & Accessibilité RGAA AA* (Zonings d'écrans Pierre senior / carte papier QR, caisse Suzanne, tableau de bord anonymisé Marius) OU passage à l'**Étape 07 (`STEP-07` / `SEC-07`)** : *Cadrage Technique Préliminaire & Architecture C4*.
 
 ---
 

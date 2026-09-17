@@ -201,3 +201,23 @@ Chaque décision doit être formalisée ainsi :
   - **Document de référence complet** : `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/CHARTE_ET_RETROSPECTIVE_SECTION_01.md`.
 - **Conséquences** : Harmonisation visuelle et rédactionnelle parfaite de l'ensemble du Cahier des Charges (Sections 01 à 11), suppression de toute dérive typographique, conformité garantie aux attentes de la soutenance académique MIAGE.
 
+### ADR-016 : Cadre d'Ingénierie Agile des Exigences — Story Mapping (Jeff Patton) & Backlog MoSCoW
+- **Date** : 2026-09-17
+- **Statut** : Validé (Étape 06 Cahier des Charges)
+- **Contexte** : Nécessité de structurer le découpage incrémental des exigences fonctionnelles issues des processus BPMN (Section 03) et du modèle conceptuel Merise (Section 04), et de formaliser un engagement contractuel clair pour les démonstrations logicielles R4 et R5.
+- **Décision** :
+  - **Grille de Story Mapping à 5 activités majeures (Backbone Patton)** :
+    - Activité 1 : Conventionnement municipal & adhésion commerçante (BPMN P1).
+    - Activité 2 : Administration du catalogue & stocks manuels V1.
+    - Activité 3 : Commande groupée Click & Collect sous protocole Two-Phase Commit (2PC) & retrait boutique (BPMN P2).
+    - Activité 4 : Enregistrement de passage express en caisse (< 3s) & double cumul de fidélité découplé (BPMN P3 / ADR-005).
+    - Activité 5 : Émission des vouchers mobilité urbaine & reporting municipal anonymisé (BPMN P4 / RGPD).
+  - **Découpage Stratifié en 3 Tranches de Release** :
+    - *Release V1 (MVP Contractuel R4/R5)* : 10 User Stories indispensables (Must Have), garantissant un flux fonctionnel complet de bout en bout dès la première livraison.
+    - *Release V2 (Optimisations & Inclusion)* : 5 User Stories (Should Have) apportant une haute valeur ajoutée (tournée piétonne TSP, mandat tiers de confiance pour Pierre, porte-monnaie Izli, alertes réapprovisionnement).
+    - *Release V3 (Interopérabilité Écosystémique)* : 4 User Stories (Could Have) étendant le système vers les équipements tiers (connecteurs POS, consignes réfrigérées 24/7, TPE caisse, open data voirie temps réel).
+  - **Spécifications Formelles INVEST & Critères d'Acceptation Gherkin** :
+    - Chaque récit majeur de la Release V1 fait l'objet d'une fiche d'ingénierie INVEST avec scénarios nominaux et d'exception formulés en syntaxe Gherkin (`Étant donné que` / `Quand` / `Alors`).
+  - **Exclusions Fermes (Won't Have — R1 à R5)** :
+    - Exclusion formelle de la livraison motorisée à domicile, des espèces sur le web et des commerces hors centre-ville.
+- **Conséquences** : Clarté contractuelle absolue pour les jalons R4/R5, traçabilité descendante et ascendante garantie, maîtrise de l'effort de développement selon la suite de Fibonacci.
