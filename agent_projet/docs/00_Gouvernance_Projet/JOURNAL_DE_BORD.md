@@ -565,8 +565,43 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 - **Décisions actées** :
   - Validation officielle de la Section 06 du Cahier des Charges R1.
   - Clôture officielle de l'Étape 06 (`COMPLETED`).
-- **Reste à faire / Objectifs pour la Session 26** :
-  - Réalisation de l'**Étape 05 (`STEP-05` / `SEC-05`)** : *Architecture de l'Information, Ergonomie & Accessibilité RGAA AA* (Zonings d'écrans Pierre senior / carte papier QR, caisse Suzanne, tableau de bord anonymisé Marius) OU passage à l'**Étape 07 (`STEP-07` / `SEC-07`)** : *Cadrage Technique Préliminaire & Architecture C4*.
+
+---
+
+### [2026-09-17] Session 26 — Réalisation & Finalisation de l'Étape 07 (SEC-07 : Cadrage Technique Préliminaire & Architecture C4)
+- **Objectif** : Formaliser le cadrage technique et l'architecture logicielle de ShopLoc selon le modèle C4 (Context & Container), concevoir les deux schémas vectoriels SVG autonomes (Contexte Système et Monolithe Modulaire Docker découpé en 6 Bounded Contexts DDD), exporter les figures haute résolution (200 DPI), dresser le tableau Booktabs des 8 contrats REST OpenAPI 3.1 clés pour le MVP V1 avec spécification des mocks des partenaires, caractériser les exigences non-fonctionnelles (NFR), la matrice RBAC et le Privacy by Design (hachage salé SHA-256 et secret des affaires), formaliser la trajectoire DevOps Docker multi-stage et compiler la Section 07 sur exactement 5 pages A4 strictes (ADR-015).
+- **Actions réalisées** :
+  - Réservation et actualisation des statuts (`STEP-07` passé à `IN_PROGRESS` puis `COMPLETED`) dans `agent_projet/config/cdc_progress.json` et `AVANCEMENT_CAHIER_DES_CHARGES.md`.
+  - Élaboration du script générateur vectoriel `agent_projet/scripts/generate_c4_diagrams_svg.py` et du composant HTML `agent_projet/templates/components/c4_architecture_views.html` :
+    * Figure 7.1 : Diagramme C4 Niveau 1 — Contexte Système (frontières ShopLoc Core SaaS Multi-Tenant, 4 personas, et 3 services tiers partenaires : passerelle bancaire 2PC, SI mobilité Ilévia/PassPass, terminaux POS caisse).
+    * Figure 7.2 : Diagramme C4 Niveau 2 — Conteneurs & Monolithe Modulaire Docker (SPA responsive multi-vues, reverse proxy Nginx, backend modulaire à 6 Bounded Contexts DDD étanches, persistance PostgreSQL 16 3NF avec partitionnement `tenant_id`, cache Redis et conteneurs de mocks REST).
+    * Exportation des PNGs haute résolution (200 DPI) dans `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_7_1_c4_contexte.png` et `fig_7_2_c4_conteneurs.png`.
+  - Rédaction intégrale du livrable modulaire `07_cadrage_technique_architecture.md` rigoureusement calibré sur exactement 5 pages A4 :
+    * Page 1 (7.1) : Vision d'Architecture Globale & Diagramme C4 Niveau 1 (Contexte Système) + Figure 7.1 + Principes directeurs SaaS multi-tenant et frontière pédestre stricte.
+    * Page 2 (7.2) : Architecture des Conteneurs & Diagramme C4 Niveau 2 (Monolithe Modulaire Docker) + Figure 7.2 + Justification d'ingénierie formelle Monolithe Modulaire vs Microservices Purs (ADR-012).
+    * Page 3 (7.3) : Contrats d'Interface REST & Spécifications OpenAPI 3.1 + Tableau Booktabs des 8 routes d'API REST indispensables pour le MVP V1 + Stratégie de simulation par Mocks REST des systèmes partenaires (Q8.2).
+    * Page 4 (7.4) : Exigences Non-Fonctionnelles (NFR), Sécurité RBAC & Traçabilité RGPD + Matrice NFR + Matrice des rôles RBAC + Dispositif Privacy by Design (pass optique SHA-256 salé et secret des affaires inter-commerces).
+    * Page 5 (7.5) : Stratégie de Déploiement Conteneurisé, Profils & Trajectoire DevOps + Architecture `docker-compose.yml` + Profils dev/test/demo-eval + Matrice de traçabilité Architecture <-> Backlog V1.
+  - Compilation vectorielle du PDF officiel : `07_cadrage_technique_architecture.pdf` (vérifié sous PyMuPDF : exactement 5 pages A4 strictes, zéro ligne orpheline).
+  - Contrôle d'intégrité de sécurité validé (`verify_deliverables.py` : 52 fichiers audités, 0 violation, 0 canari, 0 emoji).
+  - Synchronisation automatique vers Google Drive (`03_Architecture_Technique_R4_R5/07_cadrage_technique_architecture.pdf`).
+- **Fichiers créés, modifiés ou supprimés** :
+  - *Créés* :
+    * `agent_projet/scripts/generate_c4_diagrams_svg.py`
+    * `agent_projet/templates/components/c4_architecture_views.html`
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_7_1_c4_contexte.png`
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_7_2_c4_conteneurs.png`
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/sections/07_cadrage_technique_architecture.md`
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/sections/07_cadrage_technique_architecture.pdf`
+  - *Modifiés* :
+    * `agent_projet/config/cdc_progress.json` (statut STEP-07 COMPLETED)
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/AVANCEMENT_CAHIER_DES_CHARGES.md`
+    * `agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md`
+- **Décisions actées** :
+  - Validation officielle de la Section 07 du Cahier des Charges R1.
+  - Clôture officielle de l'Étape 07 (`COMPLETED`).
+- **Reste à faire / Objectifs pour la Session 27** :
+  - Réalisation de l'**Étape 05 (`STEP-05` / `SEC-05`)** : *Architecture de l'Information, Ergonomie & Accessibilité RGAA AA* (Zonings d'écrans Pierre senior / carte papier QR, caisse Suzanne, tableau de bord anonymisé Marius) OU passage à l'**Étape 08 (`STEP-08` / `SEC-08`)** : *Gouvernance Agile, Organigramme WBS & Planning Gantt*.
 
 ---
 
@@ -578,5 +613,6 @@ A la fin de chaque session de chat, l'agent ou l'utilisateur execute la mise a j
 3. Fichiers crees, modifies ou supprimes.
 4. Decisions ou arbitrages valides.
 5. Prochaine etape explicite pour la session suivante.
+
 
 

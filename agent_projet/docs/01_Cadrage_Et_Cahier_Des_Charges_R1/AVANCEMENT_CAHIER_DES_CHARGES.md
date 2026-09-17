@@ -27,7 +27,7 @@ Il est synchronisé avec le fichier machine [`agent_projet/config/cdc_progress.j
 | **04** | `SEC-04` | Données (MCD Merise & Dictionnaire) | **COMPLETED** | Étape 03 | Architecte Données & Équipe (`pro`) | `04_modele_conceptuel_donnees_mcd.md` |
 | **05** | `SEC-05` | Ergonomie & Accessibilité RGAA AA | **NOT_STARTED** | Étapes 02, 03 | Expert UX (`flash`) | `05_ergonomie_accessibilite_rgaa.md` |
 | **06** | `SEC-06` | Story Mapping & Backlog MoSCoW | **COMPLETED** | Étapes 03, 04 | Product Owner & Équipe (`flash`) | `06_backlog_user_story_mapping.md` |
-| **07** | `SEC-07` | Architecture Technique (C4 & OpenAPI) | **NOT_STARTED** | Étapes 04, 06 | Architecte Logiciel (`pro`) | `07_cadrage_technique_architecture.md` |
+| **07** | `SEC-07` | Architecture Technique (C4 & OpenAPI) | **COMPLETED** | Étapes 04, 06 | Architecte Logiciel & Équipe (`pro`) | `07_cadrage_technique_architecture.md` |
 | **08** | `SEC-08` | Gouvernance Agile, WBS & Gantt | **NOT_STARTED** | Étapes 06, 07 | Scrum Master (`flash`) | `08_gouvernance_agile_gantt.md` |
 | **09** | `SEC-09` | Cadrage Financier (Coûts Complets) | **NOT_STARTED** | Étapes 07, 08 | CFO Stratégie Financière (`pro`) | `09_analyse_financiere_couts_complets.md` |
 | **10** | `CANVAS`| Synthèse : Le Lean Canvas | **NOT_STARTED** | Étapes 01, 02, 03, 04, 07, 09 | Lead PO & CFO (`pro`) | `templates/components/lean_canvas.html` |
