@@ -1,0 +1,159 @@
+<!-- FIGURE 3.1 : PROCESSUS P1 : CONVENTIONNEMENT MUNICIPAL, ADHÉSION COMMERÇANTE ET DÉBLOCAGE SAAS -->
+<div class="figure-card" style="background:#FFFFFF; border:1px solid #E8E6DF; border-radius:16px; padding:24px; margin-bottom:28px; box-shadow:0 4px 16px rgba(36,51,66,0.06);">
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; border-bottom:1px solid #E8E6DF; padding-bottom:12px;">
+    <div>
+      <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:4px;">
+        <span style="width:8px; height:8px; border-radius:50%; background:#243342;"></span>
+        <span style="font-size:11px; font-weight:700; color:#243342; text-transform:uppercase; letter-spacing:0.08em;">Norme BPMN 2.0 (ISO/IEC 19510)</span>
+      </div>
+      <h3 style="font-size:17px; font-weight:700; color:#243342; margin:0;">Figure 3.1 — Processus P1 : Conventionnement Municipal, Adhésion Commerçante et Déblocage SaaS</h3>
+    </div>
+    <span style="font-size:11px; background:#FAF9F6; border:1px solid #E8E6DF; padding:4px 12px; border-radius:9999px; color:#5A6578; font-weight:600;">Processus Administratif Tripartite</span>
+  </div>
+<svg viewBox="0 0 1020 540" width="100%" height="auto" style="overflow:visible; font-family:'Poppins', sans-serif;">
+
+    <defs>
+      <filter id="shadow-soft" x="-8%" y="-8%" width="120%" height="120%">
+        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#243342" flood-opacity="0.06"/>
+      </filter>
+      <marker id="arrow-slate" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#243342" />
+      </marker>
+      <marker id="arrow-terracotta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#C26750" />
+      </marker>
+      <marker id="arrow-sage" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#4A7A5B" />
+      </marker>
+      <marker id="arrow-honey" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#C48B28" />
+      </marker>
+      <marker id="arrow-plum" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#6E3946" />
+      </marker>
+      <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#B91C1C" />
+      </marker>
+    </defs>
+
+  <!-- COULOIR 1 : COMMERCANT CANDIDAT -->
+  <rect x="30" y="20" width="960" height="115" fill="#FFF7ED" fill-opacity="0.6" stroke="#FDBA74" stroke-width="1.2" rx="6" />
+  <rect x="30" y="20" width="150" height="115" fill="#EA580C" rx="6" />
+  <text x="105" y="75" text-anchor="middle" font-size="11.5" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">COMMERCANT</text>
+  <text x="105" y="93" text-anchor="middle" font-size="9.5" font-weight="400" fill="#FFFFFF" opacity="0.95">(Artisan / Boutique)</text>
+
+  <!-- COULOIR 2 : ASSOCIATION DES COMMERCANTS -->
+  <rect x="30" y="145" width="960" height="120" fill="#F0FDF4" fill-opacity="0.6" stroke="#86EFAC" stroke-width="1.2" rx="6" />
+  <rect x="30" y="145" width="150" height="120" fill="#16A34A" rx="6" />
+  <text x="105" y="200" text-anchor="middle" font-size="11.5" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">ASSOCIATION</text>
+  <text x="105" y="218" text-anchor="middle" font-size="9.5" font-weight="400" fill="#FFFFFF" opacity="0.95">(Loi 1901 locale)</text>
+
+  <!-- COULOIR 3 : SHOPLOC ENGINE -->
+  <rect x="30" y="275" width="960" height="120" fill="#F0F9FF" fill-opacity="0.6" stroke="#BAE6FD" stroke-width="1.2" rx="6" />
+  <rect x="30" y="275" width="150" height="120" fill="#0284C7" rx="6" />
+  <text x="105" y="330" text-anchor="middle" font-size="11.5" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">SHOPLOC CORE</text>
+  <text x="105" y="348" text-anchor="middle" font-size="9.5" font-weight="400" fill="#FFFFFF" opacity="0.95">(SaaS Multi-tenant)</text>
+
+  <!-- COULOIR 4 : MAIRIE DE LILLE -->
+  <rect x="30" y="405" width="960" height="115" fill="#FEFCE8" fill-opacity="0.6" stroke="#FDE047" stroke-width="1.2" rx="6" />
+  <rect x="30" y="405" width="150" height="115" fill="#CA8A04" rx="6" />
+  <text x="105" y="460" text-anchor="middle" font-size="11.5" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">VILLE DE LILLE</text>
+  <text x="105" y="478" text-anchor="middle" font-size="9.5" font-weight="400" fill="#FFFFFF" opacity="0.95">(DSI &amp; Commerce)</text>
+
+  <!-- DEBUT -->
+  <circle cx="210" cy="77" r="14" fill="#FFFFFF" stroke="#16A34A" stroke-width="2.5" filter="url(#shadow-soft)" />
+  <polygon points="207,71 217,77 207,83" fill="#16A34A" />
+
+  <!-- T1 : Commercant depose dossier -->
+  <g filter="url(#shadow-soft)">
+    <rect x="245" y="48" width="125" height="58" rx="7" fill="#FFFFFF" stroke="#EA580C" stroke-width="1.4" />
+    <text x="307" y="66" text-anchor="middle" font-size="8" font-weight="700" fill="#EA580C" text-transform="uppercase">FORMULAIRE</text>
+    <text x="307" y="82" text-anchor="middle" font-size="10" font-weight="600" fill="#243342">Deposer dossier</text>
+    <text x="307" y="96" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5A6578">Kbis, RIB &amp; catalogue</text>
+  </g>
+  <line x1="224" y1="77" x2="245" y2="77" stroke="#243342" stroke-width="1.8" marker-end="url(#arrow-slate)" />
+
+  <!-- Message T1 -> Association T2 -->
+  <path d="M 307 106 L 307 175" fill="none" stroke="#243342" stroke-width="1.6" stroke-dasharray="4,3" marker-end="url(#arrow-slate)" />
+
+  <!-- T2 : Association instruit -->
+  <g filter="url(#shadow-soft)">
+    <rect x="245" y="175" width="125" height="58" rx="7" fill="#FFFFFF" stroke="#16A34A" stroke-width="1.4" />
+    <text x="307" y="193" text-anchor="middle" font-size="8" font-weight="700" fill="#16A34A" text-transform="uppercase">INSTRUCTION</text>
+    <text x="307" y="209" text-anchor="middle" font-size="10" font-weight="600" fill="#243342">Verifier eligibilite</text>
+    <text x="307" y="223" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5A6578">Commerce local</text>
+  </g>
+
+  <!-- Passerelle XOR Association -->
+  <polygon points="415,204 430,189 445,204 430,219" fill="#FFFFFF" stroke="#243342" stroke-width="1.8" filter="url(#shadow-soft)" />
+  <text x="430" y="208" text-anchor="middle" font-size="12" font-weight="700" fill="#243342">x</text>
+  <line x1="370" y1="204" x2="415" y2="204" stroke="#243342" stroke-width="1.8" marker-end="url(#arrow-slate)" />
+
+  <!-- Branche Refus (vers le haut) -->
+  <path d="M 430 189 L 430 77 L 465 77" fill="none" stroke="#B91C1C" stroke-width="1.6" marker-end="url(#arrow-red)" />
+  <text x="440" y="145" font-size="8.5" font-weight="700" fill="#B91C1C">[Rejete]</text>
+
+  <!-- T3 : Notification Refus -->
+  <g filter="url(#shadow-soft)">
+    <rect x="465" y="48" width="120" height="58" rx="7" fill="#FFFFFF" stroke="#B91C1C" stroke-width="1.4" />
+    <text x="525" y="66" text-anchor="middle" font-size="8" font-weight="700" fill="#B91C1C" text-transform="uppercase">ANOMALIE</text>
+    <text x="525" y="82" text-anchor="middle" font-size="10" font-weight="600" fill="#243342">Notifier refus</text>
+    <text x="525" y="96" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5A6578">Motif ineligibilite</text>
+  </g>
+  <!-- Fin anomalie -->
+  <circle cx="615" cy="77" r="12" fill="#FFFFFF" stroke="#B91C1C" stroke-width="2.5" />
+  <circle cx="615" cy="77" r="7" fill="#B91C1C" />
+  <line x1="585" y1="77" x2="603" y2="77" stroke="#B91C1C" stroke-width="1.6" marker-end="url(#arrow-red)" />
+
+  <!-- Branche Accord (vers la droite) -->
+  <line x1="445" y1="204" x2="480" y2="204" stroke="#16A34A" stroke-width="1.8" marker-end="url(#arrow-sage)" />
+  <text x="447" y="198" font-size="8.5" font-weight="700" fill="#16A34A">[Valide]</text>
+
+  <!-- T4 : Signature Convention Tripartite -->
+  <g filter="url(#shadow-soft)">
+    <rect x="480" y="175" width="130" height="58" rx="7" fill="#FFFFFF" stroke="#16A34A" stroke-width="1.4" />
+    <text x="545" y="193" text-anchor="middle" font-size="8" font-weight="700" fill="#16A34A" text-transform="uppercase">CONVENTION</text>
+    <text x="545" y="209" text-anchor="middle" font-size="10" font-weight="600" fill="#243342">Signer convention</text>
+    <text x="545" y="223" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5A6578">Adhesion tripartite</text>
+  </g>
+
+  <!-- Message vers Mairie T5 -->
+  <path d="M 545 233 L 545 435" fill="none" stroke="#243342" stroke-width="1.6" stroke-dasharray="4,3" marker-end="url(#arrow-slate)" />
+
+  <!-- T5 : Mairie valide subvention -->
+  <g filter="url(#shadow-soft)">
+    <rect x="480" y="435" width="130" height="58" rx="7" fill="#FFFFFF" stroke="#CA8A04" stroke-width="1.4" />
+    <text x="545" y="453" text-anchor="middle" font-size="8" font-weight="700" fill="#CA8A04" text-transform="uppercase">COLLECTIVITE</text>
+    <text x="545" y="469" text-anchor="middle" font-size="10" font-weight="600" fill="#243342">Valider perimetre</text>
+    <text x="545" y="483" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5A6578">Subvention R3</text>
+  </g>
+
+  <!-- Message Mairie -> ShopLoc T6 -->
+  <path d="M 610 464 L 665 464 L 665 334 L 685 334" fill="none" stroke="#0284C7" stroke-width="1.6" stroke-dasharray="4,3" marker-end="url(#arrow-slate)" />
+
+  <!-- T6 : ShopLoc provisionne tenant -->
+  <g filter="url(#shadow-soft)">
+    <rect x="685" y="305" width="135" height="58" rx="7" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.4" />
+    <text x="752" y="323" text-anchor="middle" font-size="8" font-weight="700" fill="#0284C7" text-transform="uppercase">PROVISIONING</text>
+    <text x="752" y="339" text-anchor="middle" font-size="10" font-weight="600" fill="#243342">Creer tenant &amp; POS</text>
+    <text x="752" y="353" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5A6578">Cles API &amp; catalogue</text>
+  </g>
+
+  <!-- Message ShopLoc -> Commercant T7 -->
+  <path d="M 752 305 L 752 106" fill="none" stroke="#EA580C" stroke-width="1.6" stroke-dasharray="4,3" marker-end="url(#arrow-terracotta)" />
+
+  <!-- T7 : Commercant active caisse -->
+  <g filter="url(#shadow-soft)">
+    <rect x="690" y="48" width="130" height="58" rx="7" fill="#FFFFFF" stroke="#EA580C" stroke-width="1.4" />
+    <text x="755" y="66" text-anchor="middle" font-size="8" font-weight="700" fill="#EA580C" text-transform="uppercase">ACTIVATION</text>
+    <text x="755" y="82" text-anchor="middle" font-size="10" font-weight="600" fill="#243342">Activer caisse tactile</text>
+    <text x="755" y="96" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5A6578">Boutique live (0%)</text>
+  </g>
+
+  <!-- Fin nominale -->
+  <circle cx="875" cy="77" r="14" fill="#FFFFFF" stroke="#16A34A" stroke-width="2.5" filter="url(#shadow-soft)" />
+  <circle cx="875" cy="77" r="9" fill="#16A34A" />
+  <line x1="820" y1="77" x2="861" y2="77" stroke="#16A34A" stroke-width="1.8" marker-end="url(#arrow-sage)" />
+  <text x="875" y="105" text-anchor="middle" font-size="9" font-weight="600" fill="#16A34A">Adherent actif</text>
+</svg>
+</div>

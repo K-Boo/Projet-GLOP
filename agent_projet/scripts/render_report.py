@@ -275,6 +275,7 @@ def parse_markdown_to_html(md_text, meta, b64_univ, b64_fst, css_content, genera
         """
         page_break_after_header = '<div style="page-break-after: always;"></div>'
 
+    body_joined = "\n".join(body_html)
     full_html = f"""<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -305,7 +306,7 @@ def parse_markdown_to_html(md_text, meta, b64_univ, b64_fst, css_content, genera
 
 {toc_html}
 
-{'\n'.join(body_html)}
+{body_joined}
 
 </body>
 </html>

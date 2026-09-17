@@ -6,12 +6,12 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 
 ## 1. Etat Courant du Projet
 
-- **Phase active** : Cadrage Metier & Redaction du Livrable R1
+- **Phase active** : Cadrage Metier & Redaction du Livrable R1 (Etapes 01, 02 et 03 COMPLETED — Prochaine Etape : 04 MCD Merise)
 - **Derniere mise a jour** : 2026-09-17
 - **Responsable / Scrum Master** : Equipe ShopLoc (M2 MIAGE GLOP)
-- **Depot Projet (Cockpit / Gouvernance)** : GitHub `Projet-GLOP` (`ShopLoc`)
+- **Depot Projet (Cockpit / Gouvernance)** : GitHub `Projet-GLOP`
 - **Depot Applicatif (Code etudiant evalue)** : GitLab `projet-glop-app`
-- **Synchronisation Drive** : Configuree vers `G:\Mon Drive\Projet-GLOP`
+- **Synchronisation Drive** : Configuree vers `Projet-GLOP/01_Cadrage_Metier_R1`
 
 ---
 
@@ -446,6 +446,35 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Étape 02 formellement clôturée (`COMPLETED`), ouvrant la voie à l'Étape 03 (`STEP-03` : Modélisation des Processus Métiers BPMN 2.0).
 - **Reste à faire / Objectifs pour la Session 23** :
   - Lancement de l'**Étape 03 (`STEP-03` / `SEC-03`)** : *Modélisation des Processus Métiers (BPMN 2.0)* (Conventionnement municipal, Commande C&C, Enregistrement caisse/VFP, Conversion mobilité).
+
+---
+
+### [2026-09-17] Session 23 — Réalisation & Finalisation de l'Étape 03 (SEC-03 : Processus Métiers BPMN 2.0)
+- **Objectif** : Modéliser l'intégralité des 5 processus métiers cibles (P1 à P5) selon la norme internationale BPMN 2.0 (ISO/IEC 19510), générer les 5 composants HTML vectoriels SVG sous les tokens pastel ShopLoc, exporter les PNGs haute résolution (200 DPI), et rédiger la Section 03 du Cahier des Charges R1 calibrée sur exactement 5 pages strictes selon l'ADR-015.
+- **Actions réalisées** :
+  - Réservation et passage de `STEP-03` à l'état `IN_PROGRESS` puis `COMPLETED` dans `agent_projet/config/cdc_progress.json` et `AVANCEMENT_CAHIER_DES_CHARGES.md`.
+  - Conception et génération des 5 diagrammes BPMN 2.0 vectoriels avec 4 couloirs sémantiques étanches (Citoyen, Commerçant, ShopLoc Core, Services Partenaires Ville & Mobilité) :
+    * `bpmn_p1_conventionnement.html` (Figure 3.1) : Conventionnement municipal, validation d'éligibilité locale par l'association et déblocage SaaS sans commission (ADR-004).
+    * `bpmn_p2_click_and_collect.html` (Figure 3.2) : Panier Click & Collect mutualisé multi-boutiques régi par le protocole Two-Phase Commit (2PC) et délivrance au comptoir (< 3s).
+    * `bpmn_p3_caisse_vfp.html` (Figure 3.3) : Passage en caisse physique et double moteur de fidélité découplé (ADR-005) avec calcul SQL sur fenêtre glissante de 15 jours (seuil 10 passages).
+    * `bpmn_p4_conversion_mobilite.html` (Figure 3.4) : Conversion quotidienne du droit VFP en mobilités douces métropolitaines (20 min stationnement ou 1 ticket bus Ilevia) et compensation financière Mairie.
+    * `bpmn_p5_anomalies_noshow.html` (Figure 3.5) : Traitement des ruptures de stock, annulations client et politique de no-show sous 24h avec médiation amiable par l'Association.
+  - Exportation automatisée des 5 figures PNG haute résolution (200 DPI) dans `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/`.
+  - Résolution d'un défaut de compatibilité Python 3.9 dans `render_report.py` (extraction des jointures hors f-strings).
+  - Rédaction intégrale de `03_processus_metier_bpmn.md` avec page budgeting strict :
+    * Page 1 : Cadre méthodologique BPMN 2.0 (3.1) + Processus P1 Conventionnement (3.2) + Figure 3.1.
+    * Page 2 : Processus P2 Click & Collect 2PC (3.3) + Figure 3.2 + cinématique transactionnelle.
+    * Page 3 : Processus P3 Caisse physique & double moteur (3.4) + Figure 3.3 + algorithme glissant 15j.
+    * Page 4 : Processus P4 Conversion mobilité (3.5) + Figure 3.4 + interfaçage APIs mocks RESTful.
+    * Page 5 : Processus P5 Anomalies & No-Show (3.6) + Figure 3.5 + Matrice de Résilience Booktabs (3.7).
+  - Compilation vectorielle du PDF officiel : `03_processus_metier_bpmn.pdf` (exactement 5 pages A4 vérifiées au pixel près, zéro débordement).
+  - Contrôle d'intégrité de sécurité validé (`verify_deliverables.py` : 46 fichiers audités, 0 violation, 0 canari, 0 emoji).
+  - Synchronisation automatique vers Google Drive (`01_Cadrage_Metier_R1/03_processus_metier_bpmn.pdf`).
+- **Décisions actées** :
+  - Validation formelle de la Section 03 du Cahier des Charges R1.
+  - Clôture officielle de l'Étape 03 (`COMPLETED`), satisfaisant l'intégralité des prérequis pour l'**Étape 04 (`STEP-04` : Modélisation Conceptuelle des Données MCD Merise & Dictionnaire)**.
+- **Reste à faire / Objectifs pour la Session 24** :
+  - Démarrage de l'**Étape 04 (`STEP-04` / `SEC-04`)** : *Modélisation Conceptuelle des Données (MCD Merise & Dictionnaire formel)* déduit des entités manipulées dans les flux BPMN P1 à P5.
 
 ---
 

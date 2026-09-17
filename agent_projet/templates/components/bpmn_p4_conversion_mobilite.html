@@ -1,0 +1,154 @@
+<!-- FIGURE 3.4 : PROCESSUS P4 : CONVERSION DES DROITS DE FIDÉLITÉ VFP EN MOBILITÉ URBAINE SUBVENTIONNÉE -->
+<div class="figure-card" style="background:#FFFFFF; border:1px solid #E8E6DF; border-radius:16px; padding:24px; margin-bottom:28px; box-shadow:0 4px 16px rgba(36,51,66,0.06);">
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; border-bottom:1px solid #E8E6DF; padding-bottom:12px;">
+    <div>
+      <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:4px;">
+        <span style="width:8px; height:8px; border-radius:50%; background:#243342;"></span>
+        <span style="font-size:11px; font-weight:700; color:#243342; text-transform:uppercase; letter-spacing:0.08em;">Norme BPMN 2.0 (ISO/IEC 19510)</span>
+      </div>
+      <h3 style="font-size:17px; font-weight:700; color:#243342; margin:0;">Figure 3.4 — Processus P4 : Conversion des Droits de Fidélité VFP en Mobilité Urbaine Subventionnée</h3>
+    </div>
+    <span style="font-size:11px; background:#FAF9F6; border:1px solid #E8E6DF; padding:4px 12px; border-radius:9999px; color:#5A6578; font-weight:600;">Interconnexion APIs Mocks Voirie &amp; Bus</span>
+  </div>
+<svg viewBox="0 0 1020 540" width="100%" height="auto" style="overflow:visible; font-family:'Poppins', sans-serif;">
+
+    <defs>
+      <filter id="shadow-soft" x="-8%" y="-8%" width="120%" height="120%">
+        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#243342" flood-opacity="0.06"/>
+      </filter>
+      <marker id="arrow-slate" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#243342" />
+      </marker>
+      <marker id="arrow-terracotta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#C26750" />
+      </marker>
+      <marker id="arrow-sage" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#4A7A5B" />
+      </marker>
+      <marker id="arrow-honey" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#C48B28" />
+      </marker>
+      <marker id="arrow-plum" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#6E3946" />
+      </marker>
+      <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#B91C1C" />
+      </marker>
+    </defs>
+
+  <!-- COULOIR 1 : CITOYEN BENEFICIAIRE -->
+  <rect x="30" y="20" width="960" height="115" fill="#FFF1F2" fill-opacity="0.6" stroke="#FECDD3" stroke-width="1.2" rx="6" />
+  <rect x="30" y="20" width="150" height="115" fill="#E11D48" rx="6" />
+  <text x="105" y="75" text-anchor="middle" font-size="11.5" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">CITOYEN VFP</text>
+  <text x="105" y="93" text-anchor="middle" font-size="9.5" font-weight="400" fill="#FFFFFF" opacity="0.95">(Arthur / Pierre)</text>
+
+  <!-- COULOIR 2 : SHOPLOC MODULE MOBILITE -->
+  <rect x="30" y="145" width="960" height="120" fill="#F0F9FF" fill-opacity="0.6" stroke="#BAE6FD" stroke-width="1.2" rx="6" />
+  <rect x="30" y="145" width="150" height="120" fill="#0284C7" rx="6" />
+  <text x="105" y="200" text-anchor="middle" font-size="11.5" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">SHOPLOC CORE</text>
+  <text x="105" y="218" text-anchor="middle" font-size="9.5" font-weight="400" fill="#FFFFFF" opacity="0.95">(Controle des Quotas)</text>
+
+  <!-- COULOIR 3 : APIS EXTERNES MOBILITE (MOCKS) -->
+  <rect x="30" y="275" width="960" height="125" fill="#FAF5FF" fill-opacity="0.6" stroke="#E9D5FF" stroke-width="1.2" rx="6" />
+  <rect x="30" y="275" width="150" height="125" fill="#9333EA" rx="6" />
+  <text x="105" y="330" text-anchor="middle" font-size="11.5" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">SERVICES MOBILITE</text>
+  <text x="105" y="348" text-anchor="middle" font-size="9.5" font-weight="400" fill="#FFFFFF" opacity="0.95">(Ilevia Bus &amp; Voirie Mock)</text>
+
+  <!-- COULOIR 4 : MAIRIE DE LILLE -->
+  <rect x="30" y="410" width="960" height="110" fill="#FEFCE8" fill-opacity="0.6" stroke="#FDE047" stroke-width="1.2" rx="6" />
+  <rect x="30" y="410" width="150" height="110" fill="#CA8A04" rx="6" />
+  <text x="105" y="460" text-anchor="middle" font-size="11.5" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">VILLE DE LILLE</text>
+  <text x="105" y="478" text-anchor="middle" font-size="9.5" font-weight="400" fill="#FFFFFF" opacity="0.95">(Clearing Subvention)</text>
+
+  <!-- DEBUT -->
+  <circle cx="205" cy="77" r="14" fill="#FFFFFF" stroke="#16A34A" stroke-width="2.5" filter="url(#shadow-soft)" />
+  <polygon points="202,71 212,77 202,83" fill="#16A34A" />
+
+  <!-- T1 : Citoyen choisit avantage -->
+  <g filter="url(#shadow-soft)">
+    <rect x="235" y="48" width="125" height="58" rx="7" fill="#FFFFFF" stroke="#E11D48" stroke-width="1.4" />
+    <text x="297" y="66" text-anchor="middle" font-size="8" font-weight="700" fill="#E11D48" text-transform="uppercase">CHOIX DU JOUR</text>
+    <text x="297" y="82" text-anchor="middle" font-size="10" font-weight="600" fill="#243342">Choisir avantage</text>
+    <text x="297" y="96" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5A6578">Parking ou Bus</text>
+  </g>
+  <line x1="219" y1="77" x2="235" y2="77" stroke="#243342" stroke-width="1.8" marker-end="url(#arrow-slate)" />
+
+  <!-- Passerelle XOR de selection -->
+  <polygon points="385,77 400,62 415,77 400,92" fill="#FFFFFF" stroke="#243342" stroke-width="1.8" filter="url(#shadow-soft)" />
+  <text x="400" y="81" text-anchor="middle" font-size="12" font-weight="700" fill="#243342">x</text>
+  <line x1="360" y1="77" x2="385" y2="77" stroke="#243342" stroke-width="1.8" marker-end="url(#arrow-slate)" />
+
+  <!-- Branche Parking (Haut) -->
+  <path d="M 400 62 L 400 45 L 435 45" fill="none" stroke="#243342" stroke-width="1.6" marker-end="url(#arrow-slate)" />
+  <text x="405" y="38" font-size="8" font-weight="700" fill="#243342">[Parking]</text>
+
+  <!-- T2a : Saisir plaque (Arthur) -->
+  <g filter="url(#shadow-soft)">
+    <rect x="435" y="27" width="135" height="42" rx="6" fill="#FFFFFF" stroke="#E11D48" stroke-width="1.2" />
+    <text x="502" y="44" text-anchor="middle" font-size="9.5" font-weight="600" fill="#243342">Plaque auto (Arthur)</text>
+    <text x="502" y="58" text-anchor="middle" font-size="8" font-weight="400" fill="#5A6578">20 min de voirie</text>
+  </g>
+
+  <!-- Branche Bus (Bas) -->
+  <path d="M 400 92 L 400 108 L 435 108" fill="none" stroke="#243342" stroke-width="1.6" marker-end="url(#arrow-slate)" />
+  <text x="405" y="104" font-size="8" font-weight="700" fill="#243342">[Bus]</text>
+
+  <!-- T2b : Selection ticket bus (Pierre) -->
+  <g filter="url(#shadow-soft)">
+    <rect x="435" y="85" width="135" height="42" rx="6" fill="#FFFFFF" stroke="#E11D48" stroke-width="1.2" />
+    <text x="502" y="102" text-anchor="middle" font-size="9.5" font-weight="600" fill="#243342">Ticket bus (Pierre)</text>
+    <text x="502" y="116" text-anchor="middle" font-size="8" font-weight="400" fill="#5A6578">1 trajet unitaire</text>
+  </g>
+
+  <!-- Convergence vers ShopLoc -->
+  <path d="M 570 48 L 600 48 L 600 175 L 625 175" fill="none" stroke="#0284C7" stroke-width="1.6" marker-end="url(#arrow-slate)" />
+  <path d="M 570 106 L 600 106 L 600 175" fill="none" stroke="#0284C7" stroke-width="1.6" />
+
+  <!-- T3 : ShopLoc verifie quota 1/jour -->
+  <g filter="url(#shadow-soft)">
+    <rect x="625" y="175" width="135" height="60" rx="7" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.4" />
+    <text x="692" y="193" text-anchor="middle" font-size="8" font-weight="700" fill="#0284C7" text-transform="uppercase">REGLE METIER</text>
+    <text x="692" y="209" text-anchor="middle" font-size="10" font-weight="600" fill="#243342">Valider quota 1/jour</text>
+    <text x="692" y="223" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5A6578">Consommer droit VFP</text>
+  </g>
+
+  <!-- Message vers APIs Mobilites T4 -->
+  <path d="M 692 235 L 692 305" fill="none" stroke="#9333EA" stroke-width="1.6" stroke-dasharray="4,3" marker-end="url(#arrow-slate)" />
+
+  <!-- T4 : API Mock Voirie ou Ilevia -->
+  <g filter="url(#shadow-soft)">
+    <rect x="625" y="305" width="135" height="60" rx="7" fill="#FFFFFF" stroke="#9333EA" stroke-width="1.4" />
+    <text x="692" y="323" text-anchor="middle" font-size="8" font-weight="700" fill="#9333EA" text-transform="uppercase">APPEL REST MOCK</text>
+    <text x="692" y="339" text-anchor="middle" font-size="10" font-weight="600" fill="#243342">Crediter le droit</text>
+    <text x="692" y="353" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5A6578">Horodateur / QR Ilevia</text>
+  </g>
+
+  <!-- Message vers Mairie T5 -->
+  <path d="M 692 365 L 692 435 L 750 435" fill="none" stroke="#CA8A04" stroke-width="1.6" stroke-dasharray="4,3" marker-end="url(#arrow-slate)" />
+
+  <!-- T5 : Mairie impute subvention R3 -->
+  <g filter="url(#shadow-soft)">
+    <rect x="750" y="435" width="130" height="58" rx="7" fill="#FFFFFF" stroke="#CA8A04" stroke-width="1.4" />
+    <text x="815" y="453" text-anchor="middle" font-size="8" font-weight="700" fill="#CA8A04" text-transform="uppercase">COMPENSATION</text>
+    <text x="815" y="469" text-anchor="middle" font-size="10" font-weight="600" fill="#243342">Imputer subvention</text>
+    <text x="815" y="483" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5A6578">Bordereau mensuel</text>
+  </g>
+
+  <!-- Message vers Citoyen confirmation T6 -->
+  <path d="M 760 335 L 815 335 L 815 106" fill="none" stroke="#E11D48" stroke-width="1.6" stroke-dasharray="4,3" marker-end="url(#arrow-terracotta)" />
+
+  <!-- T6 : Citoyen utilise avantage -->
+  <g filter="url(#shadow-soft)">
+    <rect x="750" y="48" width="130" height="58" rx="7" fill="#FFFFFF" stroke="#E11D48" stroke-width="1.4" />
+    <text x="815" y="66" text-anchor="middle" font-size="8" font-weight="700" fill="#E11D48" text-transform="uppercase">USAGE GRATUIT</text>
+    <text x="815" y="82" text-anchor="middle" font-size="10" font-weight="600" fill="#243342">Profiter mobilite</text>
+    <text x="815" y="96" text-anchor="middle" font-size="8.5" font-weight="400" fill="#5A6578">20 min parking ou bus</text>
+  </g>
+
+  <!-- Fin nominale -->
+  <circle cx="945" cy="77" r="14" fill="#FFFFFF" stroke="#16A34A" stroke-width="2.5" filter="url(#shadow-soft)" />
+  <circle cx="945" cy="77" r="9" fill="#16A34A" />
+  <line x1="880" y1="77" x2="931" y2="77" stroke="#16A34A" stroke-width="1.8" marker-end="url(#arrow-sage)" />
+  <text x="945" y="105" text-anchor="middle" font-size="8.5" font-weight="600" fill="#16A34A">Avantage honore</text>
+</svg>
+</div>

@@ -23,7 +23,7 @@ Il est synchronisé avec le fichier machine [`agent_projet/config/cdc_progress.j
 |---|---|---|---|---|---|---|
 | **01** | `SEC-01` | Cadrage Stratégique & Méthode APTE | **COMPLETED** | *(Aucun - Rédigé et figures intégrées)* | Équipe & PO (`flash`) | `01_cadrage_strategique_besoins.md` |
 | **02** | `SEC-02` | Personas & Parcours Cibles | **COMPLETED** | Étape 01 | Équipe & BA (`flash`) | `02_personas_et_parcours_utilisateurs.md` |
-| **03** | `SEC-03` | Processus Métiers (BPMN 2.0) | **NOT_STARTED** | Étape 02 | Architecte Fonctionnel (`pro`) | `03_processus_metier_bpmn.md` |
+| **03** | `SEC-03` | Processus Métiers (BPMN 2.0) | **COMPLETED** | Étape 02 | Architecte Fonctionnel & Équipe (`pro`) | `03_processus_metier_bpmn.md` |
 | **04** | `SEC-04` | Données (MCD Merise & Dictionnaire) | **NOT_STARTED** | Étape 03 | Architecte Données (`pro`) | `04_modele_conceptuel_donnees_mcd.md` |
 | **05** | `SEC-05` | Ergonomie & Accessibilité RGAA AA | **NOT_STARTED** | Étapes 02, 03 | Expert UX (`flash`) | `05_ergonomie_accessibilite_rgaa.md` |
 | **06** | `SEC-06` | Story Mapping & Backlog MoSCoW | **NOT_STARTED** | Étapes 03, 05 | Product Owner (`flash`) | `06_backlog_user_story_mapping.md` |
