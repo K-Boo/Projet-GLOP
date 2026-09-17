@@ -6,7 +6,7 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 
 ## 1. Etat Courant du Projet
 
-- **Phase active** : Cadrage Métier & Rédaction du Livrable R1 (Étapes 01, 02, 03, 04 et 06 COMPLETED — Prochaine Étape : 05 Ergonomie RGAA ou 07 Architecture C4)
+- **Phase active** : Cadrage Métier & Rédaction du Livrable R1 (Étapes 01, 02, 03, 04, 06 et 07 COMPLETED — Étape 05 supprimée par ADR-019 — Prochaine Étape : 08 Gouvernance Agile, WBS & Gantt)
 - **Dernière mise à jour** : 2026-09-17
 - **Responsable / Scrum Master** : Équipe ShopLoc (M2 MIAGE GLOP)
 - **Dépôt Projet (Cockpit / Gouvernance)** : GitHub `Projet-GLOP`
@@ -601,7 +601,33 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Validation officielle de la Section 07 du Cahier des Charges R1.
   - Clôture officielle de l'Étape 07 (`COMPLETED`).
 - **Reste à faire / Objectifs pour la Session 27** :
-  - Réalisation de l'**Étape 05 (`STEP-05` / `SEC-05`)** : *Architecture de l'Information, Ergonomie & Accessibilité RGAA AA* (Zonings d'écrans Pierre senior / carte papier QR, caisse Suzanne, tableau de bord anonymisé Marius) OU passage à l'**Étape 08 (`STEP-08` / `SEC-08`)** : *Gouvernance Agile, Organigramme WBS & Planning Gantt*.
+  - Traitement de l'arbitrage utilisateur concernant l'Étape 05.
+
+---
+
+### [2026-09-17] Session 27 — Synchronisation Globale & Suppression du Périmètre de l'Étape 05 (ADR-019)
+- **Objectif** : Synchroniser le référentiel local avec le dépôt distant (`git pull origin main`), sécuriser et préserver l'intégrité de la Section 02 (Personas & Parcours Utilisateurs Cibles au format Justinmind avec photographies), supprimer l'Étape 05 (Architecture de l'Information, Ergonomie & Accessibilité RGAA) du périmètre du Cahier des Charges R1 suite à l'arbitrage formel de l'utilisateur, et aligner l'ensemble des registres de gouvernance.
+- **Actions réalisées** :
+  - Synchronisation Git avec `origin/main` (intégration des apports distants dont les sections 03, 04, 06 et 07).
+  - Contrôle de préservation absolue de la Section 02 : vérification que les 4 personas Justinmind et leurs visuels photoréalistes sont strictement conservés sans altération.
+  - Formalisation de l'**ADR-019** dans `agent_projet/docs/00_Gouvernance_Projet/DECISIONS.md` motivant la suppression de l'Étape 05 en R1 (couverture préalable des besoins d'accessibilité seniors et commerçants dans la Section 02 et dans les critères Gherkin de la Section 06, renvoi des maquettes d'écrans détaillées au Livrable R4).
+  - Nettoyage du pipeline chronologique de fabrication dans `agent_projet/config/cdc_progress.json` : suppression de l'objet `STEP-05` et retrait du prérequis `STEP-05` pour l'étape finale d'assemblage `STEP-11`.
+  - Mise à jour du tableau de bord de coordination dans `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/AVANCEMENT_CAHIER_DES_CHARGES.md`.
+  - Mise à jour de la feuille de route dans `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/PLAN_DIRECTEUR_CAHIER_DES_CHARGES_R1.md`.
+  - Actualisation de la matrice des compétences et étapes dans `agent_projet/docs/00_Gouvernance_Projet/GUIDE_BRIEFING_COLLABORATEURS.md`.
+  - Audit de conformité de sortie via `agent_projet/scripts/verify_deliverables.py`.
+- **Fichiers modifiés** :
+  - `agent_projet/config/cdc_progress.json`
+  - `agent_projet/docs/00_Gouvernance_Projet/DECISIONS.md` (ADR-019)
+  - `agent_projet/docs/00_Gouvernance_Projet/GUIDE_BRIEFING_COLLABORATEURS.md`
+  - `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/AVANCEMENT_CAHIER_DES_CHARGES.md`
+  - `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/PLAN_DIRECTEUR_CAHIER_DES_CHARGES_R1.md`
+  - `agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md`
+- **Décisions actées** :
+  - Suppression de l'Étape 05 (`STEP-05` / `SEC-05`) validée (ADR-019).
+  - Levée du verrou sur le pipeline : la prochaine étape prête pour démarrage est l'**Étape 08 (`STEP-08` / `SEC-08`)** : *Gouvernance Agile, Organigramme WBS & Planning Gantt*.
+- **Reste à faire / Objectifs pour la Session 28** :
+  - Démarrage de l'**Étape 08 (`STEP-08` / `SEC-08`)** : *Gouvernance Agile, Organigramme WBS & Planning Gantt* (Matrice RACI, WBS par lots, Diagramme de Gantt des jalons contractuels R1 à R5).
 
 ---
 

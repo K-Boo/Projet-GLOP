@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "document_cible": "Livrable R1 — Cahier des Charges ShopLoc (GLOP-2026-R1-CDC-v1.0)",
-  "derniere_mise_a_jour": "2026-09-17T19:26:00+02:00",
+  "derniere_mise_a_jour": "2026-09-17T22:20:00+02:00",
   "statut_global": "INITIALISE_PRET_POUR_REDACTION",
   "directives_de_collaboration_multi_agents": {
     "regle_01_unicite": "Aucun agent ou collaborateur ne doit entreprendre la redaction d'une section deja marquee 'IN_PROGRESS' ou 'COMPLETED'. Avant tout travail, verifier l'etat dans ce fichier.",
@@ -94,27 +94,6 @@
         "postgresql"
       ],
       "agent_responsable": "Architecte Donnees (pro)"
-    },
-    {
-      "step_id": "STEP-05",
-      "section_code": "SEC-05",
-      "titre": "Architecture de l'Information, Ergonomie & Accessibilite RGAA AA",
-      "statut": "NOT_STARTED",
-      "assigne_a": null,
-      "date_debut": null,
-      "date_achevement": null,
-      "prerequisites": ["STEP-02", "STEP-03"],
-      "fichier_source": "agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/sections/05_ergonomie_accessibilite_rgaa.md",
-      "modeles_visuels_requis": [
-        "Zonings d'ecrans Pierre (carte papier QR / mobile senior)",
-        "Zoning caisse express Suzanne",
-        "Tableau de bord communal Marius anonymise RGPD"
-      ],
-      "skills_recommandes": [
-        "ui-ux-pro-max",
-        "accessibility-compliance-accessibility-audit"
-      ],
-      "agent_responsable": "Expert UX & Accessibilite (flash)"
     },
     {
       "step_id": "STEP-06",
@@ -241,7 +220,6 @@
         "STEP-02",
         "STEP-03",
         "STEP-04",
-        "STEP-05",
         "STEP-06",
         "STEP-07",
         "STEP-08",

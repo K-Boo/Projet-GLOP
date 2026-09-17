@@ -67,11 +67,9 @@ PIPELINE CHRONOLOGIQUE DE FABRICATION (ORDRE RÉEL DE PRODUCTION) :
 [Étape 04] Modèle Conceptuel de Données (MCD / ERD)
      │   -> Déduit directement des entités et données manipulées dans les flux BPMN (Étape 03).
      ▼
-[Étape 05] Architecture de l'Information, Ergonomie & Accessibilité RGAA AA
-     │   -> Traduit les étapes des flux BPMN et les contraintes seniors en écrans et zonings clairs.
-     ▼
 [Étape 06] User Story Mapping & Backlog MoSCoW (Critères Gherkin)
-     │   -> Découpe les fonctions des BPMN et des zonings en briques de dev INVEST (V1 MVP vs V2/V3).
+     │   -> Découpe les fonctions des BPMN et du modèle en briques de dev INVEST (V1 MVP vs V2/V3).
+     │   *(Nota : L'ancienne Étape 05 zonings/ergonomie a été supprimée par ADR-019 et renvoyée au Livrable R4).*
      ▼
 [Étape 07] Cadrage Technique Préliminaire & Trajectoire d'Architecture (C4)
      │   -> Dimensionne le socle (Monolithe Modulaire, PostgreSQL) pour faire tourner le backlog.
@@ -127,10 +125,7 @@ CAHIER DES CHARGES SHOPLOC (LIVRABLE OFFICIEL R1)
 │    ├── Dictionnaire formel des données (Entités, attributs, types logiques, contraintes)
 │    └── Règles d'intégrité et de découplage (Points marchands vs Statut VFP territorial)
 │
-├── 5. Architecture de l'Information, Ergonomie & Accessibilité
-│    ├── Arborescence des vues selon le profil connecté
-│    ├── Spécifications de conformité RGAA niveau AA / WCAG 2.1
-│    └── Zonings et principes d'écrans clés (Caisse commerçant, tableau de bord, vue client, carte papier)
+├── [Section 05 : Supprimée (ADR-019) — Reportée au Livrable R4 Prototypes IHM]
 │
 ├── 6. Spécifications Fonctionnelles Détaillées & Backlog
 │    ├── User Story Mapping (Découpage en tranches de release : V1 MVP, V2, V3)
@@ -166,7 +161,7 @@ CAHIER DES CHARGES SHOPLOC (LIVRABLE OFFICIEL R1)
 | **02** | Personas & Parcours Utilisateurs Cibles       | Business Analyst (`flash`)            | `agent_projet/docs/cdc_sections/02_personas_et_parcours_utilisateurs.md` |
 | **03** | Modélisation des Processus Métiers (BPMN)   | Architecte Fonctionnel (`pro`)        | `agent_projet/docs/cdc_sections/03_processus_metier_bpmn.md`             |
 | **04** | Modélisation Conceptuelle des Données (MCD) | Architecte Données (`pro`)           | `agent_projet/docs/cdc_sections/04_modele_conceptuel_donnees_mcd.md`     |
-| **05** | Ergonomie & Accessibilité (RGAA AA)          | Expert UX & Qualité (`flash`)        | `agent_projet/docs/cdc_sections/05_ergonomie_accessibilite_rgaa.md`      |
+| **05** | Ergonomie & Accessibilité (RGAA AA)          | *Supprimée (ADR-019 — Reportée R4)*   | *(Non applicable)*                                                        |
 | **06** | User Story Mapping & Backlog MoSCoW           | Product Owner (`flash`)               | `agent_projet/docs/cdc_sections/06_backlog_user_story_mapping.md`        |
 | **07** | Cadrage Technique Préliminaire (C4)          | Architecte Logiciel (`pro`)           | `agent_projet/docs/cdc_sections/07_cadrage_technique_architecture.md`    |
 | **08** | Gouvernance Agile & Gantt                     | Scrum Master (`flash`)                | `agent_projet/docs/cdc_sections/08_gouvernance_agile_gantt.md`           |
@@ -186,13 +181,13 @@ Pour respecter le principe directeur de réduction drastique du texte au profit 
    - *Niveau d'intervention* : Synthèse panoramique de modèle économique et opérationnel (Section 01).
    - *Combinaison* : Il agit comme la colonne vertébrale visuelle du livrable en reliant :
      - Les *Segments Clients* aux **Personas** (Section 02).
-     - La *Solution* et les *Canaux* aux **Processus Métiers BPMN** (Section 03) et à l'**Ergonomie** (Section 05).
+     - La *Solution* et les *Canaux* aux **Processus Métiers BPMN** (Section 03) et au **Backlog** (Section 06).
      - La *Structure des Coûts* et les *Flux de Revenus* au **Cadrage Financier par Coûts Complets** (Section 09).
 3. **Le Diagramme Bête à Cornes & Diagramme Pieuvre (Méthode APTE)** :
    - *Niveau d'intervention* : Ingénierie des exigences et frontière fonctionnelle du système (Section 01).
    - *Combinaison* :
      - *Bête à cornes* : Formalise en une bulle visuelle à qui le système rend service (Citoyens, Commerçants, Mairie), sur quoi il agit (le commerce de proximité et la mobilité) et dans quel but.
-     - *Diagramme Pieuvre* : Les **Fonctions Principales (FP)** alimentent directement les grandes Épiques du **User Story Mapping** (Section 06), tandis que les **Fonctions Contraintes (FC)** dictent les exigences de sécurité RGPD, d'accessibilité RGAA AA et de frugalité technique (Sections 05 et 07).
+     - *Diagramme Pieuvre* : Les **Fonctions Principales (FP)** alimentent directement les grandes Épiques du **User Story Mapping** (Section 06), tandis que les **Fonctions Contraintes (FC)** dictent les exigences de sécurité RGPD, d'accessibilité et de frugalité technique (Sections 06 et 07).
 
 ---
 

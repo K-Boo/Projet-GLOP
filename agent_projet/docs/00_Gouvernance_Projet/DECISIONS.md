@@ -248,3 +248,16 @@ Chaque décision doit être formalisée ainsi :
   - **Humanisation Visuelle Réaliste** : Intégration de photographies haute définition (600x600 px compressées et encodées en base64 pour une autonomie totale des SVG) représentant authentiquement chaque profil dans son environnement opérationnel.
   - **Concision & Densité Maîtrisée** : Suppression du bavardage au profit d'énoncés percutants (1 ligne de titre gras + 1 ligne d'explication opérationnelle par item).
 - **Conséquences** : Fiches personas ultra-professionnelles, conformes aux standards internationaux de design UX, parfaitement adaptées aux soutenances de Master 2 MIAGE, et éliminant tout sentiment de prose générée par IA.
+
+---
+
+### ADR-019 : Suppression de la Section 05 (Architecture de l'Information & Ergonomie)
+- **Date** : 2026-09-17
+- **Statut** : Validé (Simplification du Périmètre CdC R1)
+- **Contexte** : La Section 05 initiale prévoyait des zonings d'écrans filaires et des règles d'ergonomie/accessibilité RGAA. L'équipe a constaté que ces aspects sont d'ores et déjà couverts de façon opérationnelle et pragmatique dans la Section 02 (dispositifs d'inclusion pour Pierre, scan caisse rapide pour Suzanne, mandat tiers de confiance) et dans la Section 06 (critères d'acceptation Gherkin des User Stories). Produire des zonings filaires isolés en R1 était redondant et sans valeur ajoutée pour les évaluateurs.
+- **Décision** :
+  - **Suppression intégrale de l'Étape 05 (`STEP-05` / `SEC-05`)** du pipeline de fabrication du Cahier des Charges.
+  - **Mise à jour du Graphe de Dépendances** : Retrait du prérequis `STEP-05` pour l'assemblage final (`STEP-11`).
+  - **Renvoi des Maquettes IHM au Livrable R4** : La conception d'interfaces graphiques interactives détaillées sera réalisée directement lors de la phase de prototypage frontend React (Livrable R4).
+- **Conséquences** : Allègement du document, suppression d'un travail superflu, cohérence renforcée du livrable R1 et focalisation immédiate sur la gouvernance (Section 08), l'analyse financière (Section 09) et le Lean Canvas (Section 10).
+

@@ -66,7 +66,7 @@ Confirme-moi la verification de cdc_progress.json et pose-moi la premiere questi
 | STEP-02 | Personas & Parcours Cibles | agent_projet/docs/cdc_sections/02_personas_et_parcours_utilisateurs.md | product-manager-toolkit, beautiful-prose |
 | STEP-03 | Processus Metiers BPMN 2.0 | agent_projet/docs/cdc_sections/03_processus_metier_bpmn.md | bpmn-process-modeling, mermaid-expert |
 | STEP-04 | Modele de Donnees (MCD Merise) | agent_projet/docs/cdc_sections/04_modele_conceptuel_donnees_mcd.md | merise-data-modeling, database-design |
-| STEP-05 | Ergonomie & Accessibilite AA | agent_projet/docs/cdc_sections/05_ergonomie_accessibilite_rgaa.md | ui-ux-pro-max, accessibility-compliance-accessibility-audit |
+| STEP-05 | *Supprimee (ADR-019)* | *(Reportee au Livrable R4 Prototypes IHM)* | - |
 | STEP-06 | Backlog MoSCoW & Story Mapping | agent_projet/docs/cdc_sections/06_backlog_user_story_mapping.md | product-manager-toolkit |
 | STEP-07 | Architecture C4 & Technique | agent_projet/docs/cdc_sections/07_cadrage_technique_architecture.md | domain-driven-design, c4-architecture-c4-architecture |
 | STEP-08 | Gouvernance Agile, WBS & Gantt | agent_projet/docs/cdc_sections/08_gouvernance_agile_gantt.md | plan-writing, kpi-dashboard-design |
