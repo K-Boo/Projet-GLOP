@@ -1042,89 +1042,127 @@ Pour prévenir les retards et assurer la régularité du travail, notre équipe 
 
 # 6. Étude financière et méthode des coûts complets
 
-Le modèle économique d'un système d'information territorial comme ShopLoc doit être calculé de façon rigoureuse et transparente. Conformément aux consignes de l'appel d'offres et aux principes de gestion financière (*La gestion stratégique des coûts*), notre chiffrage applique la **méthode des coûts complets** pour déterminer le coût de revient réel de la solution développée par Garik et justifier le tarif de l'abonnement annuel proposé à la collectivité.
+La viabilité économique de ShopLoc repose sur une analyse transparente et méthodique de ses coûts. Conformément aux attentes de l'appel d'offres et aux enseignements de gestion financière (*La gestion stratégique des coûts*), notre démarche applique la **méthode des coûts complets par centres d'analyse**. 
 
-## 6.1. Identification et sourçage des charges du projet
+Cette méthode permet de regrouper l'ensemble des dépenses nécessaires au cycle de vie du service (conception, développement initial, hébergement, déploiement et maintenance), d'y intégrer une marge commerciale cible de **20 %**, et d'en déduire le modèle économique le plus pertinent pour la collectivité et pour la pérennité de notre structure.
 
-L'évaluation financière repose sur des charges réelles et documentées, découpées entre les charges directes de personnel et les charges indirectes de fonctionnement :
+## 6.1. Identification des charges directes du projet ShopLoc
 
-### Charges directes de personnel (Réalisation logicielle)
-La phase de conception et de développement mobilise les 5 membres de Garik sur les 6 mois actifs du projet (septembre 2026 à février 2027 inclus). En phase de lancement, nous valorisons ce travail sur la base d'une indemnité mensuelle de **800,00 € par membre et par mois**, soit :
-$$\text{Charge directe mensuelle de l'équipe} = 5 \times 800{,}00\text{ €} = 4\,000{,}00\text{ € / mois}$$
-$$\text{Charge directe totale de réalisation (6 mois)} = 6 \times 4\,000{,}00\text{ €} = \mathbf{24\,000{,}00\text{ €}}$$
+Les charges directes sont les dépenses affectables directement et sans ambiguïté à la réalisation et à l'exploitation de la solution ShopLoc. Elles se composent de deux volets :
 
-### Charges indirectes et frais externes sourcés
-Les charges indirectes correspondent aux dépenses d'infrastructure technique, de communication et de fonctionnement nécessaires à l'exploitation du service :
-- **Hébergement Cloud VPS dédié (OVHcloud, offre Comfort) :** Serveur sécurisé sous Linux (4 cœurs vCPU, 8 Go de mémoire vive, stockage 100 Go NVMe, bande passante 1 Gbps et sauvegardes quotidiennes automatisées) permettant d'isoler les conteneurs Docker de la collectivité : **35,00 € HT / mois**, soit **420,00 € HT / an**.
-- **Nom de domaine territorial (OVHcloud) :** Réservation d'un nom de domaine institutionnel en `.fr` avec protection DNSSEC et gestion de la zone DNS : **10,00 € HT / an**.
-- **Certificats de sécurité SSL/TLS (Let's Encrypt) :** Génération et renouvellement automatisé des certificats HTTPS de chiffrement : **0,00 €** (solution open-source).
-- **Service d'envoi de courriels transactionnels (Brevo, ex-Sendinblue, plan Starter) :** Envoi des notifications de commande, alertes de rupture de stock aux commerçants et réinitialisation de mots de passe : **19,00 € HT / mois**, soit **228,00 € HT / an**.
-- **Assurance Responsabilité Civile Professionnelle (RC Pro entreprise numérique) :** Couverture des risques d'exploitation et de responsabilité numérique : **350,00 € HT / an**.
-- **Frais généraux d'outillage et amortissement matériel :** Amortissement partiel des postes de travail des cinq membres de l'équipe et licences : **500,00 € HT / an**.
+1. **Main d'Œuvre Directe (MOD) :** Le temps passé par l'équipe d'ingénierie sur le projet, incluant la conception technique, les développements frontend et backend, les tests, le déploiement et la maintenance de premier niveau sur l'année.
+2. **Achats et consommables informatiques directs :** Les ressources d'infrastructure Cloud dédiées à la plateforme (serveur Cloud VPS Linux OVHcloud, réservation des noms de domaine en `.fr`, service d'e-mails transactionnels pour les notifications commerçants, certificats SSL/TLS).
 
-Le montant global des charges indirectes s'élève donc à :
-$$\text{Total des charges indirectes annuelles} = 420 + 10 + 0 + 228 + 350 + 500 = \mathbf{1\,508{,}00\text{ € HT / an}}$$
+| Nature de la charge directe | Base de calcul | Montant annuel |
+|---|---|---|
+| Main d'Œuvre Directe (MOD - Réalisation, Exploitation & Maintenance) | 480 heures de développement à 25,00 € / heure | 12 000,00 € |
+| Achats informatiques directs (Hébergement Cloud VPS, domaines, services mail) | Dépenses d'infrastructure et outillage dédié | 2 400,00 € |
+| **Total des charges directes** | **12 000,00 € + 2 400,00 €** | **14 400,00 €** |
 
-La masse totale des charges à répartir s'établit ainsi à :
-$$\text{Masse totale des charges annuelles} = 24\,000{,}00 + 1\,508{,}00 = \mathbf{25\,508{,}00\text{ € HT}}$$
+En complément de ces charges de développement, un volume de **60 heures commerciales** (avant-vente, relations avec les élus et commerçants) est identifié pour servir de base d'imputation dans la suite du calcul.
 
-## 6.2. Découpage en centres d'analyse auxiliaires et principaux
+## 6.2. Identification et répartition des charges indirectes
 
-Conformément à la méthode des coûts complets, l'activité de l'entreprise Garik est structurée en cinq centres d'analyse distincts :
-1. **Centres auxiliaires (Centres de support interne) :**
-   - **Administration & Direction de projet :** Pilotage global, gestion administrative, conventions et réunions d'équipe (4 500,00 € de charges réparties).
-   - **Support Infrastructure & Outils :** Hébergement technique, administration des serveurs et maintenance de la forge logicielle (2 008,00 € comprenant les 1 508,00 € de frais externes et 500,00 € de travail technique interne).
-2. **Centres principaux (Centres opérationnels) :**
-   - **Vente & Relations Collectivités :** Prospection des municipalités, contractualisation tripartite et accompagnement institutionnel.
-   - **Réalisation & Développement Logiciel :** Conception technique, développement frontend/backend, intégration des bases de données et tests.
-   - **Maintenance & Support Utilisateurs :** Résolution d'anomalies, assistance technique auprès des commerçants et maintien en condition opérationnelle.
+Les charges indirectes représentent les coûts de fonctionnement généraux de notre structure, qui ne peuvent pas être affectés directement au code source de ShopLoc mais sont indispensables à l'activité de l'entreprise (assurances professionnelles, gestion administrative, amortissement du matériel, outillage DevOps transverse).
 
-## 6.3. Tableau de répartition primaire et secondaire des charges
+Pour l'exercice annuel, l'ensemble des charges indirectes de la structure s'élève à **36 000,00 €**. Conformément à la méthode des coûts complets, ces charges sont ventilées au sein de **quatre centres d'analyse** :
+- **Centres auxiliaires (Support interne) :**
+  - *Administration générale & Gouvernance :* Gestion administrative, comptabilité, conventions et pilotage de la structure (33,33 % des charges indirectes, soit 12 000,00 €).
+  - *Support Infra & Outillage DevOps :* Outils d'intégration continue, serveurs internes et assistance technique transverse (16,67 % des charges indirectes, soit 6 000,00 €).
+- **Centres principaux (Cœur de métier opérationnel) :**
+  - *Commercial & Déploiement :* Relations avec les collectivités, accompagnement à l'adhésion des commerçants et conventions (16,67 % des charges indirectes, soit 6 000,00 €).
+  - *Production (Réalisation, Exploitation & Maintenance) :* Activité opérationnelle d'ingénierie logicielle et suivi applicatif (33,33 % des charges indirectes, soit 12 000,00 €).
 
-La répartition primaire affecte l'ensemble des charges directes et indirectes dans les cinq centres. La répartition secondaire déverse ensuite les coûts des centres auxiliaires vers les centres principaux selon des clés de répartition proportionnelles à l'activité :
+### Répartition primaire des charges indirectes
 
-- **Clé de déversement du centre Administration :** 20% vers le centre Vente, 50% vers le centre Réalisation, et 30% vers le centre Maintenance.
-- **Clé de déversement du centre Support Infrastructure :** 10% vers le centre Vente, 60% vers le centre Réalisation, et 30% vers le centre Maintenance.
+| Centre d'analyse | Nature du centre | Clé de répartition primaire | Montant affecté |
+|---|---|---|---|
+| Administration générale & Gouvernance | Auxiliaire | 33,33 % | 12 000,00 € |
+| Support Infra & Outillage DevOps | Auxiliaire | 16,67 % | 6 000,00 € |
+| Commercial & Déploiement | Principal | 16,67 % | 6 000,00 € |
+| Production (Réalisation, Exploitation & Maintenance) | Principal | 33,33 % | 12 000,00 € |
+| **Total des charges indirectes** | — | **100,00 %** | **36 000,00 €** |
 
-Le tableau ci-dessous détaille les calculs de répartition :
+### Répartition secondaire (Déversement des centres auxiliaires)
 
-| Intitulé des centres d'analyse | Charges directes de personnel | Charges indirectes externes | Total Répartition Primaire | Déversement Administration | Déversement Infrastructure | Coût Total Après Répartition Secondaire |
-|---|---|---|---|---|---|---|
-| **Administration (Auxiliaire)** | 4 000,00 € | 500,00 € | 4 500,00 € | -4 500,00 € | — | **0,00 €** |
-| **Infrastructure (Auxiliaire)** | 1 000,00 € | 1 008,00 € | 2 008,00 € | — | -2 008,00 € | **0,00 €** |
-| **Vente & Collectivités (Principal)** | 3 000,00 € | — | 3 000,00 € | +900,00 € (20%) | +200,80 € (10%) | **4 100,80 €** |
-| **Réalisation & Dev (Principal)** | 14 000,00 € | — | 14 000,00 € | +2 250,00 € (50%) | +1 204,80 € (60%) | **17 454,80 €** |
-| **Maintenance & Support (Principal)** | 2 000,00 € | — | 2 000,00 € | +1 350,00 € (30%) | +602,40 € (30%) | **3 952,40 €** |
-| **Total Général** | **24 000,00 €** | **1 508,00 €** | **25 508,00 €** | **0,00 €** | **0,00 €** | **25 508,00 €** |
+Les centres auxiliaires cèdent la totalité de leurs charges aux autres centres selon les règles de déversement suivantes :
+- Le centre **Administration générale** cède ses 12 000,00 € à raison de : 10 % au Support Infra (1 200,00 €), 30 % au Commercial (3 600,00 €) et 60 % à la Production (7 200,00 €).
+- Le centre **Support Infra** (qui totalise désormais 6 000,00 € + 1 200,00 € = 7 200,00 €) cède l'intégralité de ses charges à raison de : 20 % au Commercial (1 440,00 €) et 80 % à la Production (5 760,00 €).
 
-## 6.4. Définition des unités d'œuvre et calcul des coûts unitaires
+À l'issue de cette répartition secondaire, les centres auxiliaires sont intégralement soldés (0,00 €), et l'intégralité des 36 000,00 € de charges indirectes est absorbée par les deux centres principaux :
 
-Pour chaque centre principal, nous définissons une Unité d'Œuvre (UO) représentative de son volume d'activité sur la première année d'exploitation de la plateforme :
-
-| Centre d'analyse principal | Nature de l'Unité d'Œuvre (UO) | Volume prévisionnel d'UO (Année 1) | Formule de calcul du coût unitaire | Coût complet unitaire de l'UO |
+| Centre d'analyse | Totaux primaires | Cession Administration | Cession Support Infra | Totaux secondaires définitifs |
 |---|---|---|---|---|
-| **Vente & Relations Collectivités** | Commune conventionnée déployée | 3 communes partenaires | 4 100,80 € / 3 communes | **1 366,93 € HT / commune** |
-| **Réalisation & Développement** | Heure d'ingénierie logicielle | 800 heures de développement | 17 454,80 € / 800 heures | **21,82 € HT / heure de dev** |
-| **Maintenance & Support** | Commerçant adhérent accompagné | 60 commerçants actifs | 3 952,40 € / 60 commerçants | **65,87 € HT / commerçant / an** |
+| Administration générale (Auxiliaire) | 12 000,00 € | - 12 000,00 € | — | **0,00 €** |
+| Support Infra & DevOps (Auxiliaire) | 6 000,00 € | + 1 200,00 € | - 7 200,00 € | **0,00 €** |
+| Commercial & Déploiement (Principal) | 6 000,00 € | + 3 600,00 € | + 1 440,00 € | **11 040,00 €** |
+| Production (Principal) | 12 000,00 € | + 7 200,00 € | + 5 760,00 € | **24 960,00 €** |
+| **Total général réparti** | **36 000,00 €** | **0,00 €** | **0,00 €** | **36 000,00 €** |
 
-Ces coûts unitaires reflètent le fonctionnement de notre structure : le coût d'une heure de développement (21,82 € HT) reste très accessible pour une commune tout en valorisant convenablement le travail accompli.
+## 6.3. Calcul des Unités d'Œuvre (UO) et Coût de revient complet
 
-## 6.5. Déduction et justification du modèle économique SaaS
+### Définition et coût des Unités d'Œuvre
 
-La méthode des coûts complets permet de calculer le coût de revient exact du déploiement de ShopLoc dans une commune moyenne (comptant environ 20 commerces partenaires la première année) :
-- **Quote-part du centre Vente & Collectivités :** 1 366,93 € HT (frais d'adhésion et mise en place de la convention).
-- **Amortissement de la réalisation logicielle :** La réalisation logicielle initiale (17 454,80 € HT) est conçue comme un investissement réutilisable amorti sur 3 ans et mutualisé entre 3 communes pilotes, soit une charge annuelle de :
-$$\text{Quote-part annuelle de développement} = \frac{17\,454{,}80\text{ €}}{3\text{ ans} \times 3\text{ communes}} \approx \mathbf{1\,939{,}42\text{ € HT / commune / an}}$$
-- **Quote-part de maintenance pour 20 commerçants :** $20 \times 65{,}87\text{ €} = \mathbf{1\,317{,}40\text{ € HT / an}}$.
-- **Hébergement Cloud VPS dédié et nom de domaine communal :** $420 + 10 = \mathbf{430{,}00\text{ € HT / an}}$.
+Pour imputer les charges des centres principaux au projet ShopLoc, nous définissons une Unité d'Œuvre (UO) représentative de l'activité de chaque centre :
+- **Centre Commercial & Déploiement :** L'Unité d'Œuvre est *l'heure commerciale*. Sur la base de 60 heures dédiées au projet :
+  Coût de l'UO Commerciale = 11 040,00 € / 60 h = **184,00 € / heure**
+- **Centre Production (Réalisation & Maintenance) :** L'Unité d'Œuvre est *l'heure de développeur*. Sur la base de 480 heures de développement :
+  Coût de l'UO Production = 24 960,00 € / 480 h = **52,00 € / heure**
 
-En additionnant ces composantes récurrentes à l'issue de la première phase de démarrage, le coût de revient annuel complet d'une collectivité s'établit à :
-$$\text{Coût de revient complet annuel pour une commune} \approx 1\,939{,}42 + 1\,317{,}40 + 430{,}00 = \mathbf{3\,686{,}82\text{ € HT / an}}$$
+| Centre principal | Nature de l'Unité d'Œuvre (UO) | Volume d'UO du projet | Coût unitaire de l'UO | Total imputé au projet |
+|---|---|---|---|---|
+| Commercial & Déploiement | Heure commerciale | 60 heures | 184,00 € / h | 11 040,00 € |
+| Production (Réalisation & Maintenance) | Heure de développeur | 480 heures | 52,00 € / h | 24 960,00 € |
+| **Total des charges indirectes imputées** | — | — | — | **36 000,00 €** |
 
-### Tarification proposée et équité territoriale
-Ce calcul objectif justifie pleinement la tarification forfaitaire que l'entreprise Garik soumet à la maîtrise d'ouvrage :
-- **Abonnement annuel forfaitaire pour la collectivité :** **3 900,00 € HT / an** (soit seulement **325,00 € HT par mois** pour l'ensemble de la commune).
-- Ce montant couvre l'intégralité des coûts d'exploitation et de maintenance, amortit le développement initial et dégage une marge de sécurité de gestion d'environ 5% (213,18 €/an) permettant de faire face aux imprévus techniques.
-- Pour la municipalité, cet investissement reste modeste au regard de son budget global de développement économique, tout en garantissant un dispositif **entièrement gratuit pour les usagers** et **sans aucune commission prélevée sur les artisans et commerçants**.
+### Synthèse du Coût de revient complet du Projet ShopLoc
 
+Le coût de revient complet s'obtient en additionnant l'ensemble des charges directes et des charges indirectes imputées via les unités d'œuvre :
 
+| Composante du coût | Détail du calcul | Montant imputé |
+|---|---|---|
+| **Charges directes : Main d'Œuvre Directe (MOD)** | 480 heures à 25,00 € / h | 12 000,00 € |
+| **Charges directes : Achats informatiques & Cloud** | Hébergement VPS, noms de domaine, outillage | 2 400,00 € |
+| **Charges indirectes : Centre Commercial & Déploiement** | 60 heures commerciales à 184,00 € / h | 11 040,00 € |
+| **Charges indirectes : Centre Production & Maintenance** | 480 heures de développement à 52,00 € / h | 24 960,00 € |
+| **COÛT DE REVIENT COMPLET DU PROJET** | **14 400,00 € (Direct) + 36 000,00 € (Indirect)** | **50 400,00 € HT** |
+
+## 6.4. Application de la marge bénéficiaire cible de 20 %
+
+Pour assurer la viabilité de notre entreprise, consolider nos fonds propres et faire face aux aléas d'exploitation, notre politique tarifaire prévoit une **marge commerciale cible de 20 %** appliquée sur le coût de revient complet :
+
+- **Coût de revient complet :** 50 400,00 € HT
+- **Taux de marge cible :** 20 %
+- **Marge bénéficiaire nette :** 50 400,00 € × 20 % = **10 080,00 € HT**
+- **Prix de vente cible global (Chiffre d'Affaires attendu) :** 50 400,00 € + 10 080,00 € = **60 480,00 € HT** (soit 50 400,00 € × 1,20)
+
+| Étape de valorisation | Méthode de calcul | Montant |
+|---|---|---|
+| Coût de revient complet de la solution | Somme des charges directes et indirectes | 50 400,00 € HT |
+| Marge commerciale cible (20 %) | 50 400,00 € × 0,20 | 10 080,00 € HT |
+| **Chiffre d'Affaires cible (Prix global à couvrir)** | **Coût de revient × 1,20** | **60 480,00 € HT** |
+
+Ce montant de 60 480,00 € HT représente l'objectif de chiffre d'affaires global à couvrir pour financer l'ensemble du projet tout en garantissant la marge de 20 % pour l'entreprise.
+
+## 6.5. Comparatif des modèles économiques et choix argumenté
+
+Pour transformer cet objectif financier en modalité de commercialisation concrète, nous avons comparé trois modèles économiques couramment rencontrés dans le secteur du numérique et des services aux collectivités :
+
+### Analyse comparative des trois modèles
+
+| Critère | Modèle 1 : Vente de Licence logicielle On-Premise + Maintenance | Modèle 2 : Commission transactionnelle sur les ventes commerçantes | Modèle 3 : Abonnement forfaitaire SaaS annuel facturé à la commune (Retenu) |
+|---|---|---|---|
+| **Fonctionnement** | Vente d'un droit d'usage initial du logiciel (Build) puis redevance annuelle de maintenance (Run). | Mise à disposition gratuite pour la mairie, mais prélèvement de 5 à 8 % sur chaque commande Click & Collect. | Forfait annuel « tout compris » payé par la collectivité (hébergement, maintenance, support). |
+| **Avantages** | Entrée de trésorerie immédiate la première année ; cadre contractuel d'investissement classique. | Aucun coût initial pour la commune ; rémunération proportionnelle au succès de la plateforme. | Revenus récurrents et prévisibles (ARR) ; 0 € pour les citoyens ; 0 % de commission pour les artisans. |
+| **Inconvénients** | Coût d'entrée élevé et dissuasif pour une commune moyenne ; mises à jour logicielles lourdes. | **Contraire au cahier des charges** ; rejet certain des commerçants ; revenus aléatoires pour l'entreprise. | Nécessite un engagement budgétaire récurrent de la collectivité. |
+| **Garantie de la marge de 20 %** | Aléatoire après la première année (dépend du renouvellement de la maintenance). | Très incertaine (forte dépendance au volume de ventes en centre-ville). | **Parfaitement garantie** grâce à la mensualisation ou l'annualisation forfaitaire prévisible. |
+| **Conformité aux valeurs ShopLoc** | Partielle (complexité technique pour les services municipaux). | **Non conforme** (pénalise les commerçants de proximité). | **Totalement conforme** (éthique, souverain, inclusif et solidaire). |
+
+### Justification du choix final : Le modèle SaaS annuel mutualisé
+
+À l'issue de cette comparaison, l'entreprise Garik retient formellement le **Modèle 3 : Abonnement forfaitaire SaaS annuel**.
+
+Ce choix se justifie par trois raisons majeures :
+1. **Respect absolu du cahier des charges et des valeurs du commerce local :** Ce modèle garantit une **gratuité intégrale pour les usagers** et **zéro commission sur le chiffre d'affaires des commerçants**, conditions indispensables pour obtenir l'adhésion immédiate des artisans de centre-ville.
+2. **Sécurisation de la marge de 20 % :** Contrairement à un modèle à la commission incertain, l'abonnement annuel garantit des revenus réguliers et prévisibles, permettant de couvrir fidèlement les 50 400,00 € de coût de revient tout en dégageant les 10 080,00 € de marge commerciale prévus.
+3. **Mutualisation et accessibilité budgétaire pour la collectivité :** Déployé auprès de communes partenaires, ce montant global est facilement mutualisé. Par exemple, sur une base de 3 communes partenaires sur 3 ans, l'abonnement s'établit à un coût très accessible d'environ **3 900,00 € HT / an par commune** (soit seulement **325,00 € HT / mois**), représentant une dépense minime pour le budget municipal tout en offrant un outil territorial complet, maintenu et hébergé clé en main.
