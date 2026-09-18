@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; line-height: 1.6; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        h1, h2, h3 { color: #333; }
+        img { max-width: 100%; }
+        .center { text-align: center; }
+    </style>
+</head>
+<body>
+<h1>Partie 6 : Analyse des Coûts Complets (Projet ShopLoc)</h1>
+<p><strong>Contexte</strong>
+L&#39;entreprise étudiante Garik déploie la plateforme SaaS ShopLoc pour redynamiser les centres-villes. La direction souhaite calculer le coût de revient détaillé et la rentabilité globale du projet ShopLoc sur sa première année. 
+Conformément aux exigences, <strong>ce coût détaillé du projet comprend sa réalisation initiale (Build), mais également son exploitation et sa maintenance (Run)</strong>. La méthode employée est celle des coûts complets par centres d&#39;analyse.</p>
+<hr>
+<h2>1. Charges directes du projet</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Élément</th>
+<th align="center">Projet Global ShopLoc</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Heures de développeurs (MOD - Réalisation, Exploitation &amp; Maintenance)</td>
+<td align="center">480 h</td>
+</tr>
+<tr>
+<td align="left">Taux horaire chargé de l&#39;équipe d&#39;ingénierie</td>
+<td align="center">25 €/h</td>
+</tr>
+<tr>
+<td align="left">Achats directs (Hébergement Cloud VPS, domaine, licences spécifiques)</td>
+<td align="center">2 400 €</td>
+</tr>
+<tr>
+<td align="left">Heures commerciales (Avant-vente et relations collectivités)</td>
+<td align="center">60 h</td>
+</tr>
+<tr>
+<td align="left"><strong>Prix de vente facturé (Chiffre d&#39;affaires global de l&#39;année)</strong></td>
+<td align="center"><strong>88 000 €</strong></td>
+</tr>
+</tbody></table>
+<p><em>Les heures de l&#39;équipe d&#39;ingénierie dédiées au projet et les achats d&#39;infrastructures (serveurs) constituent des charges directes affectables sans ambiguïté au coût du projet.</em></p>
+<hr>
+<h2>2. Charges indirectes de la période</h2>
+<p>Le tableau de répartition ci-dessous concerne l&#39;ensemble des charges indirectes de l&#39;entreprise (36 000 € au total : locaux, assurances, direction, outils transverses), ventilées en 4 centres d&#39;analyse personnalisés pour l&#39;activité de Garik.</p>
+<h3>2.1 Répartition primaire</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Centre</th>
+<th align="center">% de répartition primaire</th>
+<th align="center">Montant</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Administration générale &amp; Gouvernance (auxiliaire)</td>
+<td align="center">33,33 %</td>
+<td align="center">12 000 €</td>
+</tr>
+<tr>
+<td align="left">Support Infra &amp; Outillage DevOps (auxiliaire)</td>
+<td align="center">16,67 %</td>
+<td align="center">6 000 €</td>
+</tr>
+<tr>
+<td align="left">Commercial &amp; Déploiement (principal)</td>
+<td align="center">16,67 %</td>
+<td align="center">6 000 €</td>
+</tr>
+<tr>
+<td align="left">Production (Réalisation, Exploitation &amp; Maintenance) (principal)</td>
+<td align="center">33,33 %</td>
+<td align="center">12 000 €</td>
+</tr>
+<tr>
+<td align="left"><strong>Total</strong></td>
+<td align="center"><strong>100 %</strong></td>
+<td align="center"><strong>36 000 €</strong></td>
+</tr>
+</tbody></table>
+<h3>2.2 Répartition secondaire (cession des centres auxiliaires)</h3>
+<p>Les centres auxiliaires cèdent la totalité de leurs charges aux autres centres selon les clés suivantes :</p>
+<p><strong>Administration générale &amp; Gouvernance</strong> se répartit sur :</p>
+<ul>
+<li>Support Infra &amp; Outillage DevOps : 10 %</li>
+<li>Commercial &amp; Déploiement : 30 %</li>
+<li>Production (Réal., Exploit. &amp; Maint.) : 60 %</li>
+</ul>
+<p><strong>Support Infra &amp; Outillage DevOps</strong> (charges propres + charges reçues de l&#39;Administration) se répartit sur :</p>
+<ul>
+<li>Commercial &amp; Déploiement : 20 %</li>
+<li>Production (Réal., Exploit. &amp; Maint.) : 80 %</li>
+</ul>
+<p><strong>Tableau de calcul de la répartition secondaire :</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Centres</th>
+<th align="center">Administration</th>
+<th align="center">Support Infra</th>
+<th align="center">Commercial</th>
+<th align="center">Production</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>Totaux primaires</strong></td>
+<td align="center"><strong>12 000 €</strong></td>
+<td align="center"><strong>6 000 €</strong></td>
+<td align="center"><strong>6 000 €</strong></td>
+<td align="center"><strong>12 000 €</strong></td>
+</tr>
+<tr>
+<td align="left">Cession Administration</td>
+<td align="center">- 12 000 €</td>
+<td align="center">+ 1 200 €</td>
+<td align="center">+ 3 600 €</td>
+<td align="center">+ 7 200 €</td>
+</tr>
+<tr>
+<td align="left">Cession Support Infra</td>
+<td align="center"></td>
+<td align="center">- 7 200 €</td>
+<td align="center">+ 1 440 €</td>
+<td align="center">+ 5 760 €</td>
+</tr>
+<tr>
+<td align="left"><strong>Totaux secondaires</strong></td>
+<td align="center"><strong>0 €</strong></td>
+<td align="center"><strong>0 €</strong></td>
+<td align="center"><strong>11 040 €</strong></td>
+<td align="center"><strong>24 960 €</strong></td>
+</tr>
+</tbody></table>
+<p><em>(Le total des charges indirectes après répartition secondaire est bien de 11 040 € + 24 960 € = 36 000 €)</em></p>
+<h3>2.3 Unités d&#39;œuvre des centres principaux</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Centre principal</th>
+<th align="left">Unité d&#39;œuvre (UO)</th>
+<th align="left">Nombre total d&#39;UO du projet</th>
+<th align="left">Coût de l&#39;Unité d&#39;Œuvre</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Commercial &amp; Déploiement</td>
+<td align="left">l&#39;heure commerciale</td>
+<td align="left">60 h</td>
+<td align="left"><strong>184,00 €</strong> / h</td>
+</tr>
+<tr>
+<td align="left">Production (Réalisation, Exploitation &amp; Maintenance)</td>
+<td align="left">l&#39;heure de développeur facturable</td>
+<td align="left">480 h</td>
+<td align="left"><strong>52,00 €</strong> / h</td>
+</tr>
+</tbody></table>
+<div align="center">
+  <img src="https://latex.codecogs.com/png.latex?\bg_white&space;\text{Cout&space;UO&space;Commercial}=\frac{11040}{60}=184\text{\euro/h}" alt="Calcul UO Commercial" />
+  <br/><br/>
+  <img src="https://latex.codecogs.com/png.latex?\bg_white&space;\text{Cout&space;UO&space;Production}=\frac{24960}{480}=52\text{\euro/h}" alt="Calcul UO Production" />
+</div><hr>
+<h2>3. Coût de revient complet du Projet ShopLoc</h2>
+<p>Pour obtenir le coût de revient détaillé et complet du projet, nous additionnons ses charges directes (hébergement, développement) et ses charges indirectes imputées via les UO.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Élément</th>
+<th align="left">Détail du Calcul</th>
+<th align="center">Montant imputé</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>Charges directes</strong></td>
+<td align="left"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">Heures de développeurs (MOD - Réal, Exploit &amp; Maint)</td>
+<td align="left">480 h × 25 €</td>
+<td align="center">12 000 €</td>
+</tr>
+<tr>
+<td align="left">Achats directs (Cloud, Domaines)</td>
+<td align="left"></td>
+<td align="center">2 400 €</td>
+</tr>
+<tr>
+<td align="left"><strong>Charges indirectes</strong></td>
+<td align="left"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left">Centre Commercial &amp; Déploiement</td>
+<td align="left">60 h × 184 €</td>
+<td align="center">11 040 €</td>
+</tr>
+<tr>
+<td align="left">Centre Production (Réalisation, Exploitation &amp; Maintenance)</td>
+<td align="left">480 h × 52 €</td>
+<td align="center">24 960 €</td>
+</tr>
+<tr>
+<td align="left"><strong>COÛT DE REVIENT COMPLET</strong></td>
+<td align="left"></td>
+<td align="center"><strong>50 400 €</strong></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>4. Résultat analytique du Projet</h2>
+<h3>4.1 Calcul du résultat et commentaires</h3>
+<div align="center">
+  <img src="https://latex.codecogs.com/png.latex?\bg_white&space;\text{Resultat}=\text{Chiffre&space;d'Affaires}-\text{Cout&space;de&space;Revient}" alt="Formule Résultat" />
+</div>
+<br/><p><strong>Résultat ShopLoc</strong> = 88 000 € - 50 400 € = <strong>+ 37 600 €</strong></p>
+<p><strong>Commentaire :</strong> Le projet ShopLoc (couvrant tout le cycle de réalisation, d&#39;exploitation et de maintenance) dégage un résultat analytique très positif de 37 600 €. La marge bénéficiaire s&#39;élève à 42,7 % du chiffre d&#39;affaires, confirmant la pertinence économique du modèle SaaS retenu.</p>
+<h3>4.2 Contrôle de reconstitution des charges</h3>
+<div align="center">
+  <img src="https://latex.codecogs.com/png.latex?\bg_white&space;\text{Total&space;Cout&space;de&space;Revient}=14400&space;\text{(Dir.)}&space;+&space;36000&space;\text{(Indir.)}=50400&space;\text{\euro}" alt="Reconstitution des charges" />
+</div><p>Le coût de revient détaillé (50 400 €) correspond parfaitement à l&#39;absorption complète des charges directes de l&#39;entreprise sur ce projet (14 400 €) et de ses charges indirectes (36 000 €).</p>
+<h3>4.3 Simulation d&#39;un prix de vente (PV) pour une rentabilité cible de 15%</h3>
+<p>Si la direction avait souhaité fixer un prix de vente assurant un résultat de très exactement 15% du Chiffre d&#39;Affaires (PV) :</p>
+<ul>
+<li>Résultat attendu = 15% du PV</li>
+<li>Coût de revient complet = 85% du PV</li>
+</ul>
+<div align="center">
+  <img src="https://latex.codecogs.com/png.latex?\bg_white&space;\text{Prix&space;de&space;Vente&space;Cible}=\frac{\text{Cout&space;de&space;Revient}}{0,85}=\frac{50400}{0,85}=59294,12&space;\text{\euro}" alt="Calcul du Prix Cible" />
+</div>
+<br/><p><strong>Prix de vente ciblé : 59 294,12 €</strong>
+<em>(Le projet a donc été facturé à un montant nettement supérieur à ce seuil de rentabilité minimum).</em></p>
+
+</body>
+</html>
