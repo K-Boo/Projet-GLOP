@@ -34,7 +34,7 @@ def create_printable_html(source_html_path, temp_html_path):
   <style>
     @page {{
       size: A4 landscape;
-      margin: 8mm 12mm;
+      margin: 0;
     }}
     *, *::before, *::after {{
       box-sizing: border-box;
@@ -48,13 +48,15 @@ def create_printable_html(source_html_path, temp_html_path):
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 100%;
-      height: 100vh;
+      width: 297mm;
+      height: 210mm;
+      padding: 6mm 10mm;
+      box-sizing: border-box;
       overflow: hidden;
     }}
     .figure-card {{
       width: 100% !important;
-      max-width: 1020px !important;
+      max-width: 1050px !important;
       margin: 0 auto !important;
       border: none !important;
       box-shadow: none !important;
@@ -63,7 +65,7 @@ def create_printable_html(source_html_path, temp_html_path):
     svg {{
       width: 100% !important;
       height: auto !important;
-      max-height: 185mm !important;
+      max-height: 190mm !important;
     }}
   </style>
 </head>

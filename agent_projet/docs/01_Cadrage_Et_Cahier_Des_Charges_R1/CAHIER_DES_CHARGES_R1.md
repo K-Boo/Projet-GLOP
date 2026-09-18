@@ -1,3 +1,5 @@
+> **Mention de transparence documentaire :** La rédaction, la structuration technique et la mise en page de ce cahier des charges ont été réalisées avec l'assistance d'une intelligence artificielle (Antigravity), sous la supervision continue, la relecture critique et la validation formelle de l'ensemble des membres de l'équipe d'ingénierie Garik.
+
 # 1. Présentation de l'entreprise Garik
 
 ## 1.1. Identité, vision et positionnement partenarial
@@ -29,7 +31,7 @@ L'équipe Garik réunit cinq profils complémentaires dont les expériences pré
 | **Rayane Alli** | Spécialiste Outils & Ingénieur Logiciel | Master 2 MIAGE, Licence MIAGE | Conception d'applications de gestion d'inventaire, automatisation des tests et chaînes de compilation. Réalisation des simulateurs légers (bouchons) pour les services partenaires. |
 | **Ilyas Ait Ali** | Responsable Architecture Front-Office & Ergonomie | Master 2 MIAGE, Licence MIAGE, L1/L2 Recherche | Développement d'entreprise chez Sopra Steria, traitement d'incidents chez AG2R La Mondiale. Maîtrise des interfaces réactives et forte sensibilisation à l'accessibilité numérique. |
 
-*(Note : Les curricula vitæ complets et détaillés de chaque membre de l'équipe sont joints en annexe du dossier).*
+*(Note : Les curricula vitæ complets et détaillés de chaque membre de l'équipe sont consultables en [Annexe 2 : Curricula Vitæ de l'équipe Garik](#annexe-2--curricula-vitae-de-lequipe-garik) jointe en fin de document).*
 
 <div style="page-break-after: always;"></div>
 
@@ -104,7 +106,7 @@ L'étude des cas d'usage décrits dans le sujet d'appel d'offres permet d'identi
 - **Suzanne (22 ans) — La commerçante (Boulangerie Le Fournil) :** Met à jour son catalogue Click & Collect et ses stocks disponibles, paramètre les lots offerts dans le catalogue fidélité (tarte au maroilles, viennoiserie), scanne les cartes en caisse et consulte les statistiques de ventes associées au programme pour mesurer la rentabilité de sa participation.
 - **Marius (27 ans) — Le gestionnaire municipal à la DSI :** Supervise le tableau de bord comparant le coût des avantages mobilité (partenariat Ilévia et parkings) au volume de vente généré, relance les usagers lors de la perte du statut VFP et diffuse des offres promotionnelles ou des sondages de satisfaction (QCM).
 
-*(Note : Les fiches complètes et détaillées de ces personas, conçues lors de l'étude de cadrage ergonomique, sont jointes en annexe du dossier au format A4 paysage).*
+*(Note : Les fiches complètes et détaillées de ces personas, conçues selon le standard Justinmind UX au format A4 paysage, sont consultables en [Annexe 1 : Fiches détaillées des Personas](#annexe-1--fiches-detaillees-des-personas-format-a4-paysage) jointes à la suite du présent dossier).*
 
 ## 3.4. Cartographie des récits utilisateurs (User Story Mapping)
 
@@ -1166,3 +1168,34 @@ Ce choix se justifie par trois raisons majeures :
 1. **Respect absolu du cahier des charges et des valeurs du commerce local :** Ce modèle garantit une **gratuité intégrale pour les usagers** et **zéro commission sur le chiffre d'affaires des commerçants**, conditions indispensables pour obtenir l'adhésion immédiate des artisans de centre-ville.
 2. **Sécurisation de la marge de 20 % :** Contrairement à un modèle à la commission incertain, l'abonnement annuel garantit des revenus réguliers et prévisibles, permettant de couvrir fidèlement les 50 400,00 € de coût de revient tout en dégageant les 10 080,00 € de marge commerciale prévus.
 3. **Mutualisation et accessibilité budgétaire pour la collectivité :** Déployé auprès de communes partenaires, ce montant global est facilement mutualisé. Par exemple, sur une base de 3 communes partenaires sur 3 ans, l'abonnement s'établit à un coût très accessible d'environ **3 900,00 € HT / an par commune** (soit seulement **325,00 € HT / mois**), représentant une dépense minime pour le budget municipal tout en offrant un outil territorial complet, maintenu et hébergé clé en main.
+
+<div style="page-break-after: always;"></div>
+
+<div id="annexe-1--fiches-detaillees-des-personas-format-a4-paysage"></div>
+
+# Annexe 1 : Fiches détaillées des Personas (Format A4 Paysage)
+
+Afin d'ancrer la conception fonctionnelle et ergonomique de ShopLoc dans la réalité des usages territoriaux, quatre fiches personas approfondies ont été établies selon le standard **Justinmind UX** et la charte graphique pastel de ShopLoc. 
+
+Chaque fiche synthétise les données sociodémographiques, les motivations profondes, les freins rencontrés, le niveau d'aisance numérique et les cas d'usage nominatifs au sein de l'écosystème commercial :
+- **Annexe 1.1 — Pierre Dupont (74 ans, Retraité Citoyen) :** Habitué quotidien des commerces de centre-ville, adepte des achats de proximité et utilisateur privilégié de la gratuité des transports Ilévia liée au statut VFP (sans utilisation du web).
+- **Annexe 1.2 — Suzanne Lemaire (22 ans, Artisane Boulangère) :** Gérante de la boulangerie *Le Fournil*, responsable de la mise à jour des catalogues Click & Collect et de la distribution des avantages fidélité en caisse.
+- **Annexe 1.3 — Marius Vasseur (27 ans, Cadre Territorial / DSI Mairie) :** Responsable du pilotage de la plateforme pour la collectivité, supervision des flux de mobilité et des indicateurs de dynamisation du commerce local.
+- **Annexe 1.4 — Julie & Arthur (31 et 34 ans, Jeune Foyer Éco-Actif) :** Citadins actifs et périurbains combinant commandes Click & Collect, calcul d'itinéraire piéton optimisé et stationnement offert pour concilier vie familiale et achats locaux.
+
+*(Les 4 planches complètes de ces personas, modélisées en haute définition vectorielle au format A4 Paysage, sont insérées immédiatement à la suite dans le document PDF).*
+
+<div style="page-break-after: always;"></div>
+
+<div id="annexe-2--curricula-vitae-de-lequipe-garik"></div>
+
+# Annexe 2 : Curricula Vitæ de l'équipe Garik
+
+L'équipe d'ingénierie Garik réunit cinq profils complémentaires issus du Master 2 MIAGE de l'Université de Lille, alliant rigueur méthodologique et expertise technique :
+- **Khalil Bouchama** — Responsable Qualité & Déploiement : Double compétence en ingénierie de test (expérience ferroviaire chez Alstom) et développement full-stack conteneurisé.
+- **Abdelkader Heddi** — Responsable Communication & Relations MOA : Spécialiste en analyse des besoins et animation des rituels agiles (expérience en gestion de projet chez AG2R La Mondiale).
+- **Gautam Demeulemeester** — Responsable Architecture Back-Office & Données : Expertise en gestion de flux marketplace, modélisation de bases de données et intégrité des stocks (expériences Damart et Mondial Relay).
+- **Rayane Alli** — Spécialiste Outils & Ingénieur Logiciel : Concepteur d'applications de gestion d'inventaire, automatisation DevOps et création de simulateurs d'API partenaires.
+- **Ilyas Ait Ali** — Responsable Architecture Front-Office & Ergonomie : Concepteur d'interfaces utilisateur réactives, spécialiste de l'accessibilité numérique et de l'expérience citoyenne (expériences Sopra Steria et AG2R La Mondiale).
+
+*(Les curricula vitæ officiels des cinq collaborateurs sont insérés in extenso dans leur mise en page originale à la fin du document PDF).*
