@@ -826,7 +826,26 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Confirmation du modèle User Story Mapping sans SP sur page A4 paysage.
   - Confirmation de l'architecture préliminaire sans Nginx ni endpoints prématurés.
 - **Reste à faire / Prochaine étape** :
-  - Poursuite de la relecture et des ajustements par l'équipe pour la soutenance R1.
+  - Mise à disposition de la feuille de route des améliorations restantes pour l'équipe.
+
+### [2026-09-18] Session 34 — Formalisation de la Feuille de Route d'Améliorations (Equipe Garik)
+- **Objectif** : Formaliser et pousser un dossier/guide complet récapitulant les 5 chantiers d'amélioration restants sur le Cahier des Charges R1 pour transmission directe aux collègues de l'équipe :
+  1. *Architecture technique (Fig. 4.1)* : Allègement textuel, passage sur un modèle axé logos/icônes officielles, harmonisation stricte avec la charte UI ShopLoc (police *Plus Jakarta Sans*, contrastes pastel).
+  2. *Diagramme de Gantt annuel (Fig. 5.1)* : Recalibrage strict sur les jalons contractuels R1-R5, le calendrier universitaire réel et suppression de toute tâche non issue du sujet.
+  3. *Calcul des coûts complets (Section 6)* : Simplification didactique des calculs et correction des formatages mathématiques KaTeX.
+  4. *Annexes (CVs et Personas A4)* : Intégration des CVs réels complets, fiches personas complètes en A4 paysage et contrôle des liens internes.
+  5. *Renforcement Section 6.5 (Business Model)* : Justification économique à partir des coûts complets, hypothèses de déploiement et définition d'un taux de marge bénéficiaire pour assurer la pérennité et le profit de Garik.
+- **Actions réalisées** :
+  - Création du dossier et du document : `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/AMELIORATIONS_RESTANTES/GUIDE_AMELIORATIONS_EQUIPE.md`.
+  - Mise à jour de la gouvernance et historisation dans `JOURNAL_DE_BORD.md`.
+  - Push de l'ensemble des fichiers sur le dépôt Git distant.
+- **Fichiers créés ou modifiés** :
+  - `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/AMELIORATIONS_RESTANTES/GUIDE_AMELIORATIONS_EQUIPE.md`
+  - `agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md`
+- **Décisions actées** :
+  - Transmission du guide d'améliorations à l'équipe pour prise en main immédiate.
+- **Reste à faire / Prochaine étape** :
+  - Réalisation des 5 chantiers par les membres de l'équipe selon la matrice de responsabilités P1 à P5.
 
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
 
