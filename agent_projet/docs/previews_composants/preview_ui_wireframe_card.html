@@ -5,7 +5,9 @@
   <title>Apercu Composant — ui_wireframe_card</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/latin-modern-web@1.0.0/style.css">
   <style>
-    /* ==========================================================================
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ==========================================================================
    THEME MAITRE SHOPLOC — IDENTITE VISUELLE NORMALISEE
    Master 2 MIAGE — Universite de Lille — UE GLOP (2026-2027)
    Inspiration Ollca Pastel & Craft — Charte Ergonomique et Zero Emoji
@@ -80,7 +82,7 @@
 
   /* 2. TYPOGRAPHIES */
   --font-serif: "Latin Modern Roman", "LM Roman 10", "Computer Modern", "TeX Gyre Termes", "Times New Roman", Times, serif;
-  --font-sans: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Poppins", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: "Fira Code", "Latin Modern Mono", "Consolas", "Courier New", monospace;
 
   /* 3. ECHELLE DE TAILLES (DOCUMENT A4) */
@@ -144,6 +146,48 @@
   @bottom-center { content: "1"; }
 }
 
+/* CONFIGURATION SPECIFIQUE DES PAGES PAYSAGE (A4 LANDSCAPE) POUR GRAPHIQUES ET CARTOGRAPHIES */
+@page landscape-page {
+  size: A4 landscape;
+  margin: 10mm 15mm 10mm 15mm;
+
+  @top-left {
+    content: "Projet ShopLoc — Master 2 MIAGE GLOP";
+    font-family: var(--font-serif);
+    font-size: var(--font-size-meta);
+    font-style: italic;
+    color: var(--color-text-secondary);
+    border-bottom: 0.5pt solid var(--color-border-light);
+    padding-bottom: 4pt;
+    margin-bottom: 6pt;
+  }
+
+  @top-right {
+    content: "Universite de Lille — FST Informatique";
+    font-family: var(--font-serif);
+    font-size: var(--font-size-meta);
+    font-style: italic;
+    color: var(--color-text-secondary);
+    border-bottom: 0.5pt solid var(--color-border-light);
+    padding-bottom: 4pt;
+    margin-bottom: 6pt;
+  }
+
+  @bottom-center {
+    content: counter(page);
+    font-family: var(--font-serif);
+    font-size: var(--font-size-meta);
+    color: var(--color-text-primary);
+  }
+}
+
+.landscape-page {
+  page: landscape-page;
+  break-before: page;
+  break-after: page;
+  width: 100%;
+}
+
 /* REGLES GENERALES */
 *, *:before, *:after {
   box-sizing: border-box;
@@ -157,9 +201,11 @@ body {
   background: var(--color-surface-print);
   margin: 0;
   padding: 0;
-  text-align: justify;
-  text-justify: inter-word;
-  hyphens: auto;
+  text-align: left;
+}
+
+p, li {
+  text-align: left;
 }
 
 /* EN-TETE INSTITUTIONNEL AVEC LOGOS OFFICIELS */
@@ -233,6 +279,15 @@ h3.subsection-heading {
   font-weight: bold;
   color: var(--color-text-primary);
   margin: 10pt 0 4pt 0;
+  page-break-after: avoid;
+  text-align: left;
+}
+
+h4.category-heading {
+  font-size: 10pt;
+  font-weight: 700;
+  color: var(--color-brand-primary);
+  margin: 7pt 0 2pt 0;
   page-break-after: avoid;
   text-align: left;
 }
@@ -312,6 +367,20 @@ table.booktabs code {
   border-bottom: none;
 }
 
+.cartouche-compact {
+  text-align: center;
+  margin: 6pt 0 14pt 0;
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
+  border-bottom: 0.75pt solid var(--color-border-light);
+  padding-bottom: 6pt;
+}
+
+.cartouche-compact code {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-meta);
+}
+
 /* ENCARTS ET DECISIONS VALIDATION / ATTENTE (ZERO BARRE LATERALE) */
 .callout-box {
   margin: 6pt 0 6pt 0;
@@ -377,7 +446,7 @@ table.booktabs code {
   font-style: italic;
   line-height: 1.35;
   margin: 0;
-  text-align: justify;
+  text-align: left;
 }
 
 /* BADGES ET METADONNEES EN LIGNE */
@@ -437,7 +506,7 @@ code.latex-code {
   <!-- COMPOSANTS DE MAQUETTES D'ECRANS CLES (INSPIRATION PURE OLLCA, SENIOR PIERRE & CAISSE SUZANNE) -->
 <!-- Zero Emoji & Palette Pastel Craft : Lin doux #FAF9F6, Ardoise #243342, Terracotta #C26750, Sauge #4A7A5B, Ocre miel #C48B28 -->
 
-<div class="wireframe-collection" style="font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; margin: 24pt 0;">
+<div class="wireframe-collection" style="font-family: 'Poppins', sans-serif; margin: 24pt 0;">
 
   <!-- ========================================================================= -->
   <!-- 1. VITRINE ARTISANALE & CLICK & COLLECT (INSPIRATION DIRECTE OLLCA.COM)   -->

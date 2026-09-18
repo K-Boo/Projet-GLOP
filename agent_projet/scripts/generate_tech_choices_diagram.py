@@ -1,13 +1,26 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+GÉNÉRATEUR DU DIAGRAMME DES CHOIX TECHNIQUES ET ARCHITECTURE APPLICATIVE (FIGURE 4.1)
+Master 2 MIAGE — Université de Lille — UE GLOP (2026-2027)
+
+Version équilibrée (concise & précise) :
+- Tier 1 : Titres + Ligne Composants uniquement
+- Tier 2 : Titres + Ligne Techno uniquement
+- Tier 3 : Logo PostgreSQL + Titre + Ligne ACID centrés
+- Tier 4 : Titres + Ligne Rôle uniquement
+- Socle DevOps & Protocole OpenAPI 3.1
+"""
+
 import os
+import subprocess
 import pymupdf
 
 def generate_tech_diagram_svg():
-    return """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 820" width="1440" height="820" style="font-family: 'Plus Jakarta Sans', 'Poppins', sans-serif;">
+    return """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 780" width="1440" height="780" style="font-family: 'Poppins', sans-serif;">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap');
     </style>
     <filter id="shadow-soft" x="-2%" y="-2%" width="104%" height="106%">
       <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#243342" flood-opacity="0.06"/>
@@ -18,159 +31,248 @@ def generate_tech_diagram_svg():
   </defs>
 
   <!-- FOND GLOBAL -->
-  <rect x="5" y="5" width="1430" height="810" rx="14" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1.2" filter="url(#shadow-soft)"/>
+  <rect x="5" y="5" width="1430" height="770" rx="14" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1.2" filter="url(#shadow-soft)"/>
 
   <!-- EN-TÊTE -->
   <rect x="25" y="20" width="1390" height="52" rx="8" fill="#243342" />
   <rect x="38" y="32" width="28" height="28" rx="6" fill="#C26750" />
   <text x="52" y="51" text-anchor="middle" font-size="13" font-weight="800" fill="#FFFFFF">SL</text>
   <text x="78" y="44" font-size="14" font-weight="700" fill="#FFFFFF">Architecture Applicative Prévisionnelle (Jalon R1) — ShopLoc</text>
-  <text x="78" y="59" font-size="10" font-weight="400" fill="#EBF0F5">Modulaire, Conteneurisée, Épurée avec les Logos Officiels (Charte UI)</text>
+  <text x="78" y="59" font-size="10" font-weight="400" fill="#EBF0F5">Cartographie Technique 3-Tiers Découplée · Pile Technologique &amp; Protocoles d'Échange</text>
   <text x="1400" y="51" text-anchor="end" font-size="11" font-weight="600" fill="#DCD6CD">Master 2 MIAGE · Garik</text>
 
-  <!-- TIER 1 : CLIENTS WEB & MOBILES -->
-  <rect x="25" y="85" width="1390" height="155" rx="10" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1.2" filter="url(#shadow-card)"/>
-  <rect x="25" y="85" width="1390" height="32" rx="10" fill="#EBF0F5" />
-  <text x="45" y="106" font-size="11.5" font-weight="700" fill="#243342">TIER 1 — INTERFACES UTILISATEURS (Progressive Web App)</text>
+  <!-- ======================================================== -->
+  <!-- TIER 1 : CLIENTS WEB & MOBILES                           -->
+  <!-- ======================================================== -->
+  <rect x="25" y="84" width="1390" height="135" rx="10" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1.2" filter="url(#shadow-card)"/>
+  <rect x="25" y="84" width="1390" height="30" rx="10" fill="#EBF0F5" />
+  <text x="45" y="104" font-size="11.5" font-weight="700" fill="#243342">TIER 1 — INTERFACES UTILISATEURS &amp; CLIENTS (Progressive Web App)</text>
+
+  <!-- Badges technos Frontend -->
+  <g transform="translate(980, 87)">
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="115" height="24" rx="12" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1"/>
+      <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" x="8" y="4" width="16" height="16" />
+      <text x="30" y="16" font-size="10" font-weight="600" fill="#243342">React 18</text>
+    </g>
+
+    <g transform="translate(125, 0)">
+      <rect x="0" y="0" width="135" height="24" rx="12" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1"/>
+      <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" x="8" y="4" width="16" height="16" />
+      <text x="30" y="16" font-size="10" font-weight="600" fill="#243342">TypeScript 5</text>
+    </g>
+
+    <g transform="translate(270, 0)">
+      <rect x="0" y="0" width="145" height="24" rx="12" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1"/>
+      <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" x="8" y="4" width="16" height="16" />
+      <text x="30" y="16" font-size="10" font-weight="600" fill="#243342">Tailwind CSS 3</text>
+    </g>
+  </g>
+
+  <!-- Carte 1.1 : Espace Citoyen -->
+  <g transform="translate(45, 122)">
+    <rect x="0" y="0" width="425" height="84" rx="8" fill="#FBEEEA" stroke="#D88B77" stroke-width="1" />
+    <circle cx="30" cy="28" r="15" fill="#C26750" />
+    <text x="30" y="33" text-anchor="middle" font-size="13" fill="#FFFFFF">👤</text>
+    <text x="54" y="24" font-size="11" font-weight="700" fill="#8E3D2A">ESPACE CITOYEN (Consommateurs &amp; Seniors)</text>
+    <text x="54" y="38" font-size="9" font-weight="600" fill="#C26750">PWA Mobile-First · Accessibilité RGAA (forts contrastes)</text>
+    <line x1="14" y1="48" x2="411" y2="48" stroke="#E8B4A6" stroke-width="0.8" />
+    <text x="14" y="66" font-size="9" font-weight="500" fill="#243342">Composants : Vitrines commerçantes, Panier multi-boutiques, Pass QR</text>
+  </g>
+
+  <!-- Carte 1.2 : Espace Commerçant -->
+  <g transform="translate(508, 122)">
+    <rect x="0" y="0" width="425" height="84" rx="8" fill="#EBF3ED" stroke="#7EA88D" stroke-width="1" />
+    <circle cx="30" cy="28" r="15" fill="#4A7A5B" />
+    <text x="30" y="33" text-anchor="middle" font-size="13" fill="#FFFFFF">🏪</text>
+    <text x="54" y="24" font-size="11" font-weight="700" fill="#2E583D">ESPACE COMMERÇANT (Artisans de quartier)</text>
+    <text x="54" y="38" font-size="9" font-weight="600" fill="#4A7A5B">Web App POS Caisse · Scan express &lt; 3s</text>
+    <line x1="14" y1="48" x2="411" y2="48" stroke="#A9C7B2" stroke-width="0.8" />
+    <text x="14" y="66" font-size="9" font-weight="500" fill="#243342">Composants : Gestion catalogue &amp; stocks, Validation retraits C&amp;C</text>
+  </g>
+
+  <!-- Carte 1.3 : Portail DSI Mairie -->
+  <g transform="translate(970, 122)">
+    <rect x="0" y="0" width="425" height="84" rx="8" fill="#FEF7EB" stroke="#DCB162" stroke-width="1" />
+    <circle cx="30" cy="28" r="15" fill="#C48B28" />
+    <text x="30" y="33" text-anchor="middle" font-size="13" fill="#FFFFFF">🏛️</text>
+    <text x="54" y="24" font-size="11" font-weight="700" fill="#845A11">PORTAIL DSI MAIRIE &amp; COLLECTIVITÉ</text>
+    <text x="54" y="38" font-size="9" font-weight="600" fill="#C48B28">Dashboard Décisionnel · Traçabilité anonymisée RGPD</text>
+    <line x1="14" y1="48" x2="411" y2="48" stroke="#E6CB8F" stroke-width="0.8" />
+    <text x="14" y="66" font-size="9" font-weight="500" fill="#243342">Composants : Indicateurs d'activité, Fréquentation piétonne, Sondages</text>
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- LIAISON TIER 1 -> TIER 2 : CONTRAT FORMEL D'INTERFACE    -->
+  <!-- ======================================================== -->
+  <line x1="720" y1="219" x2="720" y2="267" stroke="#243342" stroke-width="2" stroke-dasharray="4 3"/>
+  <polygon points="720,271 715,261 725,261" fill="#243342"/>
   
-  <g transform="translate(1250, 89)">
-    <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" x="0" y="0" width="24" height="24" />
-    <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" x="35" y="0" width="24" height="24" />
-    <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" x="70" y="0" width="24" height="24" />
+  <g transform="translate(440, 226)">
+    <rect x="0" y="0" width="560" height="38" rx="8" fill="#FFFFFF" stroke="#243342" stroke-width="1.2" filter="url(#shadow-soft)"/>
+    <text x="280" y="16" text-anchor="middle" font-size="10.5" font-weight="700" fill="#243342">PROTOCOLE D'ÉCHANGE : HTTPS / RESTful · SPÉCIFICATION OPENAPI 3.1</text>
+    <text x="280" y="30" text-anchor="middle" font-size="9" font-weight="500" fill="#5A6578">Authentification Stateless JWT Bearer · Routage Multi-Tenant : /api/v1/tenants/{tenant_id}/...</text>
   </g>
 
-  <!-- Carte 1.1 -->
-  <g transform="translate(45, 126)">
-    <rect x="0" y="0" width="425" height="100" rx="8" fill="#FBEEEA" stroke="#D88B77" stroke-width="1" />
-    <circle cx="40" cy="35" r="20" fill="#C26750" />
-    <text x="40" y="41" text-anchor="middle" font-size="16" font-weight="800" fill="#FFFFFF">👤</text>
-    <text x="75" y="32" font-size="11" font-weight="700" fill="#8E3D2A">ESPACE CITOYEN</text>
-    <text x="75" y="47" font-size="9" font-weight="500" fill="#243342">Recherche, Click &amp; Collect, Fidélité, VFP</text>
+  <!-- ======================================================== -->
+  <!-- TIER 2 : SERVEUR BACKEND APPLICATIF (SPRING BOOT 3.3)    -->
+  <!-- ======================================================== -->
+  <rect x="25" y="275" width="910" height="206" rx="10" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1.4" filter="url(#shadow-card)"/>
+  <rect x="25" y="275" width="910" height="32" rx="10" fill="#243342" />
+  <text x="45" y="296" font-size="11.5" font-weight="700" fill="#FFFFFF">TIER 2 — MONOLITHE MODULAIRE BACKEND (Spring Boot 3.3 / Java 21)</text>
+
+  <!-- Badges technos Backend -->
+  <g transform="translate(490, 279)">
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="125" height="24" rx="12" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1"/>
+      <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" x="8" y="4" width="16" height="16" />
+      <text x="30" y="16" font-size="10" font-weight="600" fill="#243342">Java 21 LTS</text>
+    </g>
+
+    <g transform="translate(135, 0)">
+      <rect x="0" y="0" width="145" height="24" rx="12" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1"/>
+      <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" x="8" y="4" width="16" height="16" />
+      <text x="30" y="16" font-size="10" font-weight="600" fill="#243342">Spring Boot 3.3</text>
+    </g>
+
+    <g transform="translate(290, 0)">
+      <rect x="0" y="0" width="125" height="24" rx="12" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1"/>
+      <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/maven/maven-original.svg" x="8" y="4" width="16" height="16" />
+      <text x="30" y="16" font-size="10" font-weight="600" fill="#243342">Maven 3.9</text>
+    </g>
   </g>
 
-  <!-- Carte 1.2 -->
-  <g transform="translate(508, 126)">
-    <rect x="0" y="0" width="425" height="100" rx="8" fill="#EBF3ED" stroke="#7EA88D" stroke-width="1" />
-    <circle cx="40" cy="35" r="20" fill="#4A7A5B" />
-    <text x="40" y="41" text-anchor="middle" font-size="16" font-weight="800" fill="#FFFFFF">🏪</text>
-    <text x="75" y="32" font-size="11" font-weight="700" fill="#2E583D">ESPACE COMMERÇANT</text>
-    <text x="75" y="47" font-size="9" font-weight="500" fill="#243342">Catalogue, Commandes, Scan QR Caisse</text>
+  <!-- Carte 2.1 : Profils & Sécurité -->
+  <g transform="translate(45, 317)">
+    <rect x="0" y="0" width="415" height="72" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="14" y="24" font-size="11" font-weight="700" fill="#243342">🔐 Module Profils, Authentification &amp; RBAC</text>
+    <line x1="14" y1="34" x2="401" y2="34" stroke="#E2DDD5" stroke-width="0.8" />
+    <text x="14" y="54" font-size="9" font-weight="600" fill="#C26750">Techno : Spring Security 6 · JJWT (Java JWT) · Hachage SHA-256</text>
   </g>
 
-  <!-- Carte 1.3 -->
-  <g transform="translate(970, 126)">
-    <rect x="0" y="0" width="425" height="100" rx="8" fill="#FEF7EB" stroke="#DCB162" stroke-width="1" />
-    <circle cx="40" cy="35" r="20" fill="#C48B28" />
-    <text x="40" y="41" text-anchor="middle" font-size="16" font-weight="800" fill="#FFFFFF">🏛️</text>
-    <text x="75" y="32" font-size="11" font-weight="700" fill="#845A11">PORTAIL DSI MAIRIE</text>
-    <text x="75" y="47" font-size="9" font-weight="500" fill="#243342">Indicateurs, Statistiques, Sondages QCM</text>
+  <!-- Carte 2.2 : Catalogue & Click & Collect -->
+  <g transform="translate(495, 317)">
+    <rect x="0" y="0" width="415" height="72" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="14" y="24" font-size="11" font-weight="700" fill="#243342">🛒 Module Catalogue, Stocks &amp; Réservation 2PC</text>
+    <line x1="14" y1="34" x2="401" y2="34" stroke="#E2DDD5" stroke-width="0.8" />
+    <text x="14" y="54" font-size="9" font-weight="600" fill="#4A7A5B">Techno : Spring Data JPA · Hibernate 6 · Jakarta Validation</text>
   </g>
 
-  <!-- LIAISON FLUX TIER 1 -> TIER 2 -->
-  <line x1="720" y1="240" x2="720" y2="288" stroke="#243342" stroke-width="2" stroke-dasharray="4 3"/>
-  <polygon points="720,293 715,283 725,283" fill="#243342"/>
-  <rect x="625" y="256" width="190" height="22" rx="11" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
-  <text x="720" y="271" text-anchor="middle" font-size="9.5" font-weight="600" fill="#243342">API REST (JSON)</text>
+  <!-- Carte 2.3 : Double Fidélité & VFP -->
+  <g transform="translate(45, 399)">
+    <rect x="0" y="0" width="415" height="72" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="14" y="24" font-size="11" font-weight="700" fill="#243342">🎁 Module Double Fidélité &amp; Moteur VFP</text>
+    <line x1="14" y1="34" x2="401" y2="34" stroke="#E2DDD5" stroke-width="0.8" />
+    <text x="14" y="54" font-size="9" font-weight="600" fill="#C48B28">Techno : Spring @Scheduled · Batch SQL glissant nocturne (15j)</text>
+  </g>
 
-  <!-- TIER 2 : SERVEUR BACKEND APPLICATIF -->
-  <rect x="25" y="295" width="910" height="240" rx="10" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1.4" filter="url(#shadow-card)"/>
-  <rect x="25" y="295" width="910" height="34" rx="10" fill="#243342" />
-  <text x="45" y="316" font-size="11.5" font-weight="700" fill="#FFFFFF">TIER 2 — SERVICES MÉTIER BACKEND</text>
+  <!-- Carte 2.4 : Statistiques & RGPD -->
+  <g transform="translate(495, 399)">
+    <rect x="0" y="0" width="415" height="72" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="14" y="24" font-size="11" font-weight="700" fill="#243342">📊 Module Reporting Municipal &amp; Conformité RGPD</text>
+    <line x1="14" y1="34" x2="401" y2="34" stroke="#E2DDD5" stroke-width="0.8" />
+    <text x="14" y="54" font-size="9" font-weight="600" fill="#243342">Techno : Requêtes SQL natives d'agrégation · k-anonymat strict</text>
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- LIAISON TIER 2 <-> TIER 3                                -->
+  <!-- ======================================================== -->
+  <line x1="935" y1="378" x2="965" y2="378" stroke="#243342" stroke-width="2"/>
+  <polygon points="965,378 957,374 957,382" fill="#243342"/>
+  <polygon points="935,378 943,374 943,382" fill="#243342"/>
+  <text x="950" y="368" text-anchor="middle" font-size="8" font-weight="700" fill="#243342">JDBC</text>
+  <text x="950" y="391" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">HikariCP</text>
+
+  <!-- ======================================================== -->
+  <!-- TIER 3 : PERSISTANCE RELATIONNELLE (POSTGRESQL 16)       -->
+  <!-- ======================================================== -->
+  <rect x="965" y="275" width="450" height="206" rx="10" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1.4" filter="url(#shadow-card)"/>
+  <rect x="965" y="275" width="450" height="32" rx="10" fill="#243342" />
+  <text x="985" y="296" font-size="11.5" font-weight="700" fill="#FFFFFF">TIER 3 — PERSISTANCE RELATIONNELLE (ACID)</text>
+
+  <g transform="translate(985, 317)">
+    <rect x="0" y="0" width="410" height="154" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    
+    <g transform="translate(178, 20)">
+      <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" x="0" y="0" width="54" height="54" />
+    </g>
+    
+    <text x="205" y="100" text-anchor="middle" font-size="14" font-weight="700" fill="#243342">PostgreSQL 16 (SGBD-R)</text>
+    <text x="205" y="122" text-anchor="middle" font-size="10" font-weight="600" fill="#2B5270">Intégrité Transactionnelle Strictement Garantie (ACID)</text>
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- LIAISON TIER 2 -> TIER 4 : APPELS CLIENTS HTTP           -->
+  <!-- ======================================================== -->
+  <line x1="720" y1="481" x2="720" y2="505" stroke="#243342" stroke-width="1.8" stroke-dasharray="3 2"/>
+  <polygon points="720,509 716,500 724,500" fill="#243342"/>
   
-  <g transform="translate(770, 300)">
-    <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" x="0" y="0" width="24" height="24" />
-    <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" x="35" y="0" width="24" height="24" />
-    <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/maven/maven-original.svg" x="70" y="0" width="24" height="24" />
+  <g transform="translate(510, 485)">
+    <rect x="0" y="0" width="420" height="18" rx="9" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="210" y="12" text-anchor="middle" font-size="8.5" font-weight="600" fill="#5A6578">Appels HTTP Clients (Spring RestClient) · Émulation des protocoles tiers</text>
   </g>
+
+  <!-- ======================================================== -->
+  <!-- TIER 4 : SIMULATEURS PARTENAIRES (MOCKS REST DOCKERISÉS) -->
+  <!-- ======================================================== -->
+  <rect x="25" y="510" width="1390" height="110" rx="10" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1.2" stroke-dasharray="4 3" filter="url(#shadow-card)"/>
+  <rect x="25" y="510" width="1390" height="28" rx="10" fill="#F5F2EB" />
+  <text x="45" y="529" font-size="11" font-weight="700" fill="#243342">TIER 4 — SIMULATEURS PARTENAIRES &amp; SYSTÈMES EXTERNES (Mocks REST OpenAPI 3.1)</text>
+  <text x="1395" y="529" text-anchor="end" font-size="9.5" font-weight="500" fill="#5A6578">Bouchons Dockerisés Autonomes pour Environnement Étudiant (Isolement Réseau)</text>
+
+  <!-- Carte 4.1 : Mock Banque -->
+  <g transform="translate(45, 546)">
+    <rect x="0" y="0" width="425" height="64" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="14" y="22" font-size="11" font-weight="700" fill="#243342">💳 Mock Passerelle Bancaire (Izli / Carte Bancaire)</text>
+    <line x1="14" y1="31" x2="411" y2="31" stroke="#E2DDD5" stroke-width="0.8" />
+    <text x="14" y="49" font-size="8.5" font-weight="500" fill="#334155">Rôle : Émulation pré-autorisation, débit global panier mutualisé &amp; rollback 2PC</text>
+  </g>
+
+  <!-- Carte 4.2 : Mock Mobilité -->
+  <g transform="translate(508, 546)">
+    <rect x="0" y="0" width="425" height="64" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="14" y="22" font-size="11" font-weight="700" fill="#243342">🚌 Mock Réseau de Transports Urbains (Ilévia Pass Pass)</text>
+    <line x1="14" y1="31" x2="411" y2="31" stroke="#E2DDD5" stroke-width="0.8" />
+    <text x="14" y="49" font-size="8.5" font-weight="500" fill="#334155">Rôle : Émission de titres de bus dématérialisés &amp; QR Code billettique VFP</text>
+  </g>
+
+  <!-- Carte 4.3 : Mock Voirie -->
+  <g transform="translate(970, 546)">
+    <rect x="0" y="0" width="425" height="64" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="14" y="22" font-size="11" font-weight="700" fill="#243342">🅿️ Mock Stationnement Voirie (Horodateurs Municipaux)</text>
+    <line x1="14" y1="31" x2="411" y2="31" stroke="#E2DDD5" stroke-width="0.8" />
+    <text x="14" y="49" font-size="8.5" font-weight="500" fill="#334155">Rôle : Franchise de 20 minutes gratuites par lecture de plaque d'immatriculation</text>
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- SOCLE DEVOPS, CONTENEURISATION & QUALITÉ LOGICIELLE      -->
+  <!-- ======================================================== -->
+  <rect x="25" y="630" width="1390" height="130" rx="10" fill="#243342" filter="url(#shadow-card)"/>
   
-  <g transform="translate(45, 342)">
-    <rect x="0" y="0" width="415" height="82" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
-    <text x="207" y="35" text-anchor="middle" font-size="12" font-weight="700" fill="#243342">🔐 Profils &amp; Sécurité</text>
-    <text x="207" y="55" text-anchor="middle" font-size="9" font-weight="500" fill="#5A6578">Spring Security, JWT, Plaque auto</text>
-  </g>
+  <text x="45" y="652" font-size="11.5" font-weight="700" fill="#FFFFFF">SOCLE DEVOPS, CONTENEURISATION &amp; QUALITÉ LOGICIELLE (JALONS R1 · R2)</text>
 
-  <g transform="translate(495, 342)">
-    <rect x="0" y="0" width="415" height="82" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
-    <text x="207" y="35" text-anchor="middle" font-size="12" font-weight="700" fill="#243342">🛒 Catalogue &amp; Click &amp; Collect</text>
-    <text x="207" y="55" text-anchor="middle" font-size="9" font-weight="500" fill="#5A6578">Stocks, Trajets, Réservation stock</text>
-  </g>
+  <g transform="translate(45, 664)">
+    <!-- Box 1 : Docker -->
+    <rect x="0" y="0" width="425" height="82" rx="6" fill="#FAF9F6" />
+    <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" x="12" y="29" width="24" height="24" />
+    <text x="44" y="24" font-size="10.5" font-weight="700" fill="#243342">Docker &amp; Docker Compose v2</text>
+    <text x="44" y="44" font-size="8.5" font-weight="600" fill="#0284C7">Multi-conteneurs (Front, Back, DB, Mocks) · Réseau bridge</text>
+    <text x="44" y="62" font-size="8.5" font-weight="400" fill="#5A6578">Déploiement reproductible en une commande : docker compose up</text>
 
-  <g transform="translate(45, 436)">
-    <rect x="0" y="0" width="415" height="85" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
-    <text x="207" y="35" text-anchor="middle" font-size="12" font-weight="700" fill="#243342">🎁 Double Fidélité &amp; VFP</text>
-    <text x="207" y="55" text-anchor="middle" font-size="9" font-weight="500" fill="#5A6578">Cagnottage marchand, 10 passages/15j</text>
-  </g>
+    <!-- Box 2 : GitLab -->
+    <rect x="463" y="0" width="425" height="82" rx="6" fill="#FAF9F6" />
+    <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gitlab/gitlab-original.svg" x="475" y="29" width="24" height="24" />
+    <text x="507" y="24" font-size="10.5" font-weight="700" fill="#243342">GitLab Forge (Université de Lille)</text>
+    <text x="507" y="44" font-size="8.5" font-weight="600" fill="#E24329">Pipelines CI/CD (.gitlab-ci.yml) · Tests unitaires JUnit 5</text>
+    <text x="507" y="62" font-size="8.5" font-weight="400" fill="#5A6578">Versioning branches (main, develop), validation DoD &amp; Qualimétrie</text>
 
-  <g transform="translate(495, 436)">
-    <rect x="0" y="0" width="415" height="85" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
-    <text x="207" y="35" text-anchor="middle" font-size="12" font-weight="700" fill="#243342">📊 Statistiques Municipales</text>
-    <text x="207" y="55" text-anchor="middle" font-size="9" font-weight="500" fill="#5A6578">Tableaux de bord DSI, Sondages QCM</text>
-  </g>
-
-  <!-- TIER 3 : PERSISTANCE -->
-  <rect x="965" y="295" width="450" height="240" rx="10" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1.4" filter="url(#shadow-card)"/>
-  <rect x="965" y="295" width="450" height="34" rx="10" fill="#243342" />
-  <text x="985" y="316" font-size="11.5" font-weight="700" fill="#FFFFFF">TIER 3 — PERSISTANCE</text>
-
-  <g transform="translate(985, 342)">
-    <rect x="0" y="0" width="410" height="179" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
-    <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" x="175" y="25" width="60" height="60" />
-    <text x="205" y="115" text-anchor="middle" font-size="13" font-weight="700" fill="#243342">PostgreSQL 16</text>
-    <text x="205" y="135" text-anchor="middle" font-size="10" font-weight="600" fill="#2B5270">Intégrité transactionnelle (ACID)</text>
-    <text x="205" y="155" text-anchor="middle" font-size="9" font-weight="400" fill="#5A6578">Volume persistant Docker</text>
-  </g>
-
-  <!-- LIAISON TIER 2 <-> TIER 3 -->
-  <line x1="935" y1="415" x2="965" y2="415" stroke="#243342" stroke-width="2"/>
-  <polygon points="965,415 957,411 957,419" fill="#243342"/>
-  <polygon points="935,415 943,411 943,419" fill="#243342"/>
-
-  <!-- TIER 4 : SIMULATEURS -->
-  <rect x="25" y="550" width="1390" height="135" rx="10" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1.2" stroke-dasharray="4 3" filter="url(#shadow-card)"/>
-  <rect x="25" y="550" width="1390" height="30" rx="10" fill="#F5F2EB" />
-  <text x="45" y="570" font-size="11" font-weight="700" fill="#243342">TIER 4 — SIMULATEURS PARTENAIRES (Mocks REST)</text>
-  <text x="1395" y="570" text-anchor="end" font-size="9.5" font-weight="500" fill="#5A6578">Bouchons Dockerisés pour Environnement Étudiant</text>
-
-  <g transform="translate(45, 590)">
-    <rect x="0" y="0" width="425" height="82" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
-    <text x="212" y="35" text-anchor="middle" font-size="12" font-weight="700" fill="#243342">💳 Mock Banque (Izli)</text>
-    <text x="212" y="55" text-anchor="middle" font-size="9" font-weight="500" fill="#5A6578">Rechargement en ligne, Paiement CB</text>
-  </g>
-
-  <g transform="translate(508, 590)">
-    <rect x="0" y="0" width="425" height="82" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
-    <text x="212" y="35" text-anchor="middle" font-size="12" font-weight="700" fill="#243342">🚌 Mock Transports (Ilévia)</text>
-    <text x="212" y="55" text-anchor="middle" font-size="9" font-weight="500" fill="#5A6578">Génération E-Ticket VFP / QR Code</text>
-  </g>
-
-  <g transform="translate(970, 590)">
-    <rect x="0" y="0" width="425" height="82" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
-    <text x="212" y="35" text-anchor="middle" font-size="12" font-weight="700" fill="#243342">🅿️ Mock Voirie (Horodateurs)</text>
-    <text x="212" y="55" text-anchor="middle" font-size="9" font-weight="500" fill="#5A6578">Validation des 20 min via plaque d'immatriculation</text>
-  </g>
-
-  <line x1="480" y1="535" x2="480" y2="550" stroke="#8A9BAE" stroke-width="1.5" stroke-dasharray="3 2"/>
-
-  <!-- DEVOPS -->
-  <rect x="25" y="700" width="1390" height="98" rx="10" fill="#243342" filter="url(#shadow-card)"/>
-  
-  <text x="45" y="733" font-size="12" font-weight="700" fill="#FFFFFF">SOCLE DEVOPS &amp; INTÉGRATION CONTINUE</text>
-
-  <g transform="translate(45, 755)">
-    <rect x="0" y="0" width="425" height="30" rx="5" fill="#FAF9F6" />
-    <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" x="10" y="3" width="24" height="24" />
-    <text x="45" y="19" font-size="10" font-weight="700" fill="#243342">Docker Compose</text>
-    <text x="400" y="19" text-anchor="end" font-size="9" font-weight="500" fill="#5A6578">Lancement local (docker compose up)</text>
-
-    <rect x="463" y="0" width="425" height="30" rx="5" fill="#FAF9F6" />
-    <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gitlab/gitlab-original.svg" x="473" y="3" width="24" height="24" />
-    <text x="508" y="19" font-size="10" font-weight="700" fill="#243342">GitLab (Univ. Lille)</text>
-    <text x="863" y="19" text-anchor="end" font-size="9" font-weight="500" fill="#5A6578">Versioning, Intégration Continue (CI/CD)</text>
-
-    <rect x="925" y="0" width="425" height="30" rx="5" fill="#FAF9F6" />
-    <text x="935" y="20" font-size="14" font-weight="700" fill="#243342">📑</text>
-    <text x="965" y="19" font-size="10" font-weight="700" fill="#243342">OpenAPI Swagger 3.1</text>
-    <text x="1325" y="19" text-anchor="end" font-size="9" font-weight="500" fill="#5A6578">Documentation formelle du contrat d'interface</text>
+    <!-- Box 3 : OpenAPI -->
+    <rect x="925" y="0" width="425" height="82" rx="6" fill="#FAF9F6" />
+    <rect x="935" y="29" width="24" height="24" rx="4" fill="#4A7A5B" />
+    <text x="947" y="45" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">OA</text>
+    <text x="967" y="24" font-size="10.5" font-weight="700" fill="#243342">Spécifications OpenAPI 3.1 &amp; Swagger-UI</text>
+    <text x="967" y="44" font-size="8.5" font-weight="600" fill="#4A7A5B">Contrat d'interface formel partagé Front-End &amp; Back-End</text>
+    <text x="967" y="62" font-size="8.5" font-weight="400" fill="#5A6578">Documentation interactive, DTOs normalisés et typage strict</text>
   </g>
 </svg>
 """
@@ -183,17 +285,17 @@ def main():
     
     svg_content = generate_tech_diagram_svg()
     
-    component_content = f"""<!-- FIGURE 4.1 : SCHÉMA D'ARCHITECTURE LOGICIELLE SHOPLOC (ICÔNES & ÉPURÉ) -->
+    component_content = f"""<!-- FIGURE 4.1 : SCHÉMA D'ARCHITECTURE LOGICIELLE SHOPLOC (ÉQUILIBRÉ & ÉPURÉ) -->
 <div class="figure-card" style="background:#FAF9F6; border:1px solid #DCD6CD; border-radius:14px; padding:20px; margin-bottom:24px; box-shadow:0 4px 16px rgba(36,51,66,0.06);">
   <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; border-bottom:1px solid #DCD6CD; padding-bottom:10px;">
     <div>
       <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:4px;">
         <span style="width:8px; height:8px; border-radius:50%; background:#243342;"></span>
-        <span style="font-size:11px; font-weight:700; color:#243342; text-transform:uppercase; letter-spacing:0.08em; font-family: 'Plus Jakarta Sans', sans-serif;">Ingénierie Logicielle &amp; DevOps</span>
+        <span style="font-size:11px; font-weight:700; color:#243342; text-transform:uppercase; letter-spacing:0.08em; font-family: 'Poppins', sans-serif;">Ingénierie Logicielle &amp; DevOps</span>
       </div>
-      <h3 style="font-size:16px; font-weight:700; color:#243342; margin:0; font-family: 'Plus Jakarta Sans', sans-serif;">Figure 4.1 — Architecture Applicative Prévisionnelle (Jalon R1)</h3>
+      <h3 style="font-size:16px; font-weight:700; color:#243342; margin:0; font-family: 'Poppins', sans-serif;">Figure 4.1 — Architecture Applicative Prévisionnelle (Jalon R1)</h3>
     </div>
-    <span style="font-size:11px; background:#FFFFFF; border:1px solid #DCD6CD; padding:4px 12px; border-radius:9999px; color:#5A6578; font-weight:600; font-family: 'Plus Jakarta Sans', sans-serif;">Modulaire Conteneurisée</span>
+    <span style="font-size:11px; background:#FFFFFF; border:1px solid #DCD6CD; padding:4px 12px; border-radius:9999px; color:#5A6578; font-weight:600; font-family: 'Poppins', sans-serif;">Architecture 3-Tiers Modulaire</span>
   </div>
 {svg_content}
 </div>
@@ -211,16 +313,64 @@ def main():
         f.write(svg_content)
     print(f"SVG écrit : {svg_path}")
 
-    # Note: MuPDF doesn't render web fonts or remote images nicely, so the PNG fallback will just be what MuPDF can do,
-    # but the SVG/HTML will be perfect in browser or Chrome-headless print-to-pdf.
+    # Exportation PNG haute fidélité aux dimensions exactes du SVG (sans letterboxing A4)
+    temp_html = os.path.join(output_dir, "temp_render_41.html")
+    temp_pdf = os.path.join(output_dir, "temp_render_41.pdf")
+    
+    html_page = f"""<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap">
+  <style>
+    @page {{ size: 1440px 780px; margin: 0; }}
+    html, body {{ margin: 0; padding: 0; width: 1440px; height: 780px; overflow: hidden; background: #FAF9F6; }}
+    svg {{ width: 1440px; height: 780px; display: block; }}
+  </style>
+</head>
+<body>
+{svg_content}
+</body>
+</html>"""
+    
+    with open(temp_html, "w", encoding="utf-8") as f:
+        f.write(html_page)
+
+    edge_bin = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+    if not os.path.exists(edge_bin):
+        edge_bin = r"C:\Program Files\Microsoft\Edge\Application\msedge.exe"
+    
+    file_uri = f"file:///{os.path.abspath(temp_html).replace(os.sep, '/')}"
+    cmd = [
+        edge_bin,
+        "--headless",
+        "--disable-gpu",
+        "--no-pdf-header-footer",
+        f"--print-to-pdf={temp_pdf}",
+        file_uri
+    ]
     try:
-        doc = pymupdf.open(svg_path)
+        subprocess.run(cmd, check=True)
+        doc = pymupdf.open(temp_pdf)
         page = doc[0]
-        pix = page.get_pixmap(dpi=300)
+        pix = page.get_pixmap(dpi=200)
         pix.save(png_path)
-        print(f"Exporté PNG via PyMuPDF : {png_path} ({pix.width}x{pix.height})")
+        doc.close()
+        print(f"Exporté PNG exact sans marges : {png_path} ({pix.width}x{pix.height})")
     except Exception as e:
-        print(f"Avertissement MuPDF : {e}")
+        print(f"Erreur export headless : {e}")
+        try:
+            doc = pymupdf.open(svg_path)
+            page = doc[0]
+            pix = page.get_pixmap(dpi=300)
+            pix.save(png_path)
+            print(f"Fallback PyMuPDF : {png_path}")
+        except Exception as e2:
+            print(f"Erreur PyMuPDF : {e2}")
+    finally:
+        for p in [temp_html, temp_pdf]:
+            if os.path.exists(p):
+                os.remove(p)
 
 if __name__ == "__main__":
     main()

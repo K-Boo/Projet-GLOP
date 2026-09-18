@@ -5,7 +5,9 @@
   <title>Apercu Composant — merise_mcd_template</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/latin-modern-web@1.0.0/style.css">
   <style>
-    /* ==========================================================================
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ==========================================================================
    THEME MAITRE SHOPLOC — IDENTITE VISUELLE NORMALISEE
    Master 2 MIAGE — Universite de Lille — UE GLOP (2026-2027)
    Inspiration Ollca Pastel & Craft — Charte Ergonomique et Zero Emoji
@@ -80,7 +82,7 @@
 
   /* 2. TYPOGRAPHIES */
   --font-serif: "Latin Modern Roman", "LM Roman 10", "Computer Modern", "TeX Gyre Termes", "Times New Roman", Times, serif;
-  --font-sans: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Poppins", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: "Fira Code", "Latin Modern Mono", "Consolas", "Courier New", monospace;
 
   /* 3. ECHELLE DE TAILLES (DOCUMENT A4) */
@@ -144,6 +146,48 @@
   @bottom-center { content: "1"; }
 }
 
+/* CONFIGURATION SPECIFIQUE DES PAGES PAYSAGE (A4 LANDSCAPE) POUR GRAPHIQUES ET CARTOGRAPHIES */
+@page landscape-page {
+  size: A4 landscape;
+  margin: 10mm 15mm 10mm 15mm;
+
+  @top-left {
+    content: "Projet ShopLoc — Master 2 MIAGE GLOP";
+    font-family: var(--font-serif);
+    font-size: var(--font-size-meta);
+    font-style: italic;
+    color: var(--color-text-secondary);
+    border-bottom: 0.5pt solid var(--color-border-light);
+    padding-bottom: 4pt;
+    margin-bottom: 6pt;
+  }
+
+  @top-right {
+    content: "Universite de Lille — FST Informatique";
+    font-family: var(--font-serif);
+    font-size: var(--font-size-meta);
+    font-style: italic;
+    color: var(--color-text-secondary);
+    border-bottom: 0.5pt solid var(--color-border-light);
+    padding-bottom: 4pt;
+    margin-bottom: 6pt;
+  }
+
+  @bottom-center {
+    content: counter(page);
+    font-family: var(--font-serif);
+    font-size: var(--font-size-meta);
+    color: var(--color-text-primary);
+  }
+}
+
+.landscape-page {
+  page: landscape-page;
+  break-before: page;
+  break-after: page;
+  width: 100%;
+}
+
 /* REGLES GENERALES */
 *, *:before, *:after {
   box-sizing: border-box;
@@ -157,9 +201,11 @@ body {
   background: var(--color-surface-print);
   margin: 0;
   padding: 0;
-  text-align: justify;
-  text-justify: inter-word;
-  hyphens: auto;
+  text-align: left;
+}
+
+p, li {
+  text-align: left;
 }
 
 /* EN-TETE INSTITUTIONNEL AVEC LOGOS OFFICIELS */
@@ -233,6 +279,15 @@ h3.subsection-heading {
   font-weight: bold;
   color: var(--color-text-primary);
   margin: 10pt 0 4pt 0;
+  page-break-after: avoid;
+  text-align: left;
+}
+
+h4.category-heading {
+  font-size: 10pt;
+  font-weight: 700;
+  color: var(--color-brand-primary);
+  margin: 7pt 0 2pt 0;
   page-break-after: avoid;
   text-align: left;
 }
@@ -312,6 +367,20 @@ table.booktabs code {
   border-bottom: none;
 }
 
+.cartouche-compact {
+  text-align: center;
+  margin: 6pt 0 14pt 0;
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
+  border-bottom: 0.75pt solid var(--color-border-light);
+  padding-bottom: 6pt;
+}
+
+.cartouche-compact code {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-meta);
+}
+
 /* ENCARTS ET DECISIONS VALIDATION / ATTENTE (ZERO BARRE LATERALE) */
 .callout-box {
   margin: 6pt 0 6pt 0;
@@ -377,7 +446,7 @@ table.booktabs code {
   font-style: italic;
   line-height: 1.35;
   margin: 0;
-  text-align: justify;
+  text-align: left;
 }
 
 /* BADGES ET METADONNEES EN LIGNE */
@@ -434,198 +503,242 @@ code.latex-code {
   </style>
 </head>
 <body>
-  <!-- GABARIT DE REFERENCE MCD MERISE ACADEMIQUE EN SVG VECTORIEL PUR -->
-<!-- Design Editorial Craft & Pastel — Inspiration Ollca & Sobriete GLOP (Zero Emoji) -->
-
-<div class="diagram-container" style="margin: 24pt 0; text-align: center; background: #FAF9F6; border: 1px solid #DCD6CD; border-radius: 18px; padding: 22pt 18pt; box-shadow: 0 6px 24px rgba(36, 51, 66, 0.05);">
-  <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 4pt;">
-    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #243342;"></span>
-    <h3 style="font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; font-size: 11pt; font-weight: 700; color: #243342; margin: 0; text-transform: uppercase; letter-spacing: 0.08em;">
-      Figure 4.1 — Modele Conceptuel de Donnees (MCD) : Coeur Metier & Fidelite Territoriale
-    </h3>
+  <!-- FIGURE 4.1 : MODELE CONCEPTUEL DE DONNEES (MCD MERISE) & TABLE MLD -->
+<div class="figure-card" style="background:#FFFFFF; border:1px solid #E8E6DF; border-radius:16px; padding:28px; margin-bottom:36px; box-shadow:0 4px 16px rgba(36,51,66,0.06);">
+  
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px; border-bottom:1px solid #E8E6DF; padding-bottom:14px;">
+    <div>
+      <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:4px;">
+        <span style="width:8px; height:8px; border-radius:50%; background:#243342;"></span>
+        <span style="font-size:11px; font-weight:700; color:#243342; text-transform:uppercase; letter-spacing:0.08em;">Modélisation Relationnelle Merise</span>
+      </div>
+      <h3 style="font-size:18px; font-weight:700; color:#243342; margin:0;">Figure 4.1 — Modèle Conceptuel de Données (MCD) &amp; Dictionnaire Normalisé</h3>
+    </div>
+    <span style="font-size:11px; background:#FAF9F6; border:1px solid #E8E6DF; padding:4px 12px; border-radius:9999px; color:#5A6578; font-weight:600;">3e Forme Normale (3FN)</span>
   </div>
-  <div style="font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; font-size: 8.5pt; color: #5A6578; margin-bottom: 16pt; font-style: italic;">
-    Formalisme Merise normalise AFNOR (Entites bicolores, Associations verbales et cardinalites en pilules d'etat)
-  </div>
 
-  <svg viewBox="0 0 960 460" width="100%" height="460" style="font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; overflow: visible;">
-    <defs>
-      <filter id="mcd-card-shadow" x="-5%" y="-10%" width="110%" height="125%">
-        <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#243342" flood-opacity="0.06" />
-      </filter>
-    </defs>
+  <svg viewBox="0 0 1020 560" width="100%" height="auto" style="overflow:visible; font-family:'Poppins', sans-serif;">
     
-    <!-- ========================================================================= -->
-    <!-- 1. ENTITE : CITOYEN (Terracotta doux)                                     -->
-    <!-- ========================================================================= -->
-    <g transform="translate(30, 40)" filter="url(#mcd-card-shadow)">
-      <rect x="0" y="0" width="190" height="160" rx="14" fill="#FFFFFF" stroke="#D88B77" stroke-width="1.2" />
-      <path d="M 0 14 Q 0 0 14 0 L 176 0 Q 190 0 190 14 L 190 32 L 0 32 Z" fill="#FBEEEA" />
-      <text x="95" y="21" text-anchor="middle" font-size="10" font-weight="700" fill="#8E3D2A" letter-spacing="0.06em">CITOYEN</text>
-      <line x1="0" y1="32" x2="190" y2="32" stroke="#D88B77" stroke-width="1.2" />
+  <defs>
+    <!-- Filtre ombre portee douce -->
+    <filter id="shadow-soft" x="-8%" y="-8%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#243342" flood-opacity="0.06"/>
+    </filter>
+    <filter id="shadow-elevated" x="-8%" y="-8%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#243342" flood-opacity="0.10"/>
+    </filter>
+
+    <!-- Marqueurs de fleches sémantiques parfaitement orientes -->
+    <marker id="arrow-slate" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#243342" />
+    </marker>
+    <marker id="arrow-terracotta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#C26750" />
+    </marker>
+    <marker id="arrow-sage" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#4A7A5B" />
+    </marker>
+    <marker id="arrow-honey" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#C48B28" />
+    </marker>
+    <marker id="arrow-plum" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#6E3946" />
+    </marker>
+    <marker id="arrow-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#8C96A5" />
+    </marker>
+  </defs>
+
+
+    <!-- ENTITE 1 : CITOYEN (TERRACOTTA) -->
+    <g filter="url(#shadow-soft)">
+      <rect x="40" y="50" width="190" height="150" rx="10" fill="#FFFFFF" stroke="#D88B77" stroke-width="1.5" />
+      <path d="M 40 60 A 10 10 0 0 1 50 50 L 220 50 A 10 10 0 0 1 230 60 L 230 80 L 40 80 Z" fill="#C26750" />
+      <text x="135" y="71" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">CITOYEN</text>
       
-      <text x="14" y="52" font-size="8" font-weight="700" fill="#243342" text-decoration="underline"># id_citoyen (UUID) [PK]</text>
-      <text x="14" y="70" font-size="8" fill="#5A6578">nom (VARCHAR)</text>
-      <text x="14" y="86" font-size="8" fill="#5A6578">prenom (VARCHAR)</text>
-      <text x="14" y="102" font-size="8" fill="#5A6578">email_hash (VARCHAR)</text>
-      <text x="14" y="118" font-size="8" fill="#5A6578">code_carte_qr (VARCHAR)</text>
-      <text x="14" y="134" font-size="8" fill="#5A6578">solde_vfp_15j (INT)</text>
-      <text x="14" y="150" font-size="8" fill="#5A6578">date_adhesion (DATE)</text>
+      <!-- Attributs -->
+      <text x="55" y="104" font-size="10.5" font-weight="700" text-decoration="underline" fill="#243342">id_citoyen</text>
+      <text x="135" y="104" font-size="9.5" font-weight="500" fill="#8C96A5">UUID [PK]</text>
+      <text x="55" y="124" font-size="10" font-weight="500" fill="#243342">nom_complet</text>
+      <text x="55" y="142" font-size="10" font-weight="500" fill="#243342">email_unique</text>
+      <text x="55" y="160" font-size="10" font-weight="500" fill="#243342">hash_pass_nfc</text>
+      <text x="55" y="178" font-size="10" font-weight="500" fill="#243342">date_adhesion</text>
     </g>
 
-    <!-- ASSOCIATION : PASSER (Entre Citoyen et Commande) -->
-    <g transform="translate(265, 95)" filter="url(#mcd-card-shadow)">
-      <rect x="0" y="0" width="95" height="48" rx="24" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1.2" />
-      <text x="47.5" y="25" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1C2D3D">Passer</text>
-      <text x="47.5" y="38" text-anchor="middle" font-size="7" fill="#8C96A5">date_creation</text>
-    </g>
-
-    <!-- Lignes & Cardinalites Citoyen - Passer - Commande -->
-    <line x1="220" y1="119" x2="265" y2="119" stroke="#8A9BAE" stroke-width="1.5" />
-    <rect x="228" y="102" width="26" height="16" rx="8" fill="#FBEEEA" />
-    <text x="241" y="113.5" text-anchor="middle" font-size="7" font-weight="700" fill="#C26750">0,n</text>
-
-    <line x1="360" y1="119" x2="405" y2="119" stroke="#8A9BAE" stroke-width="1.5" />
-    <rect x="370" y="102" width="26" height="16" rx="8" fill="#EBF0F5" />
-    <text x="383" y="113.5" text-anchor="middle" font-size="7" font-weight="700" fill="#243342">1,1</text>
-
-    <!-- ========================================================================= -->
-    <!-- 2. ENTITE : COMMANDE (Ardoise Brumeux)                                    -->
-    <!-- ========================================================================= -->
-    <g transform="translate(405, 40)" filter="url(#mcd-card-shadow)">
-      <rect x="0" y="0" width="185" height="160" rx="14" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1.2" />
-      <path d="M 0 14 Q 0 0 14 0 L 171 0 Q 185 0 185 14 L 185 32 L 0 32 Z" fill="#EBF0F5" />
-      <text x="92.5" y="21" text-anchor="middle" font-size="10" font-weight="700" fill="#1C2D3D" letter-spacing="0.06em">COMMANDE</text>
-      <line x1="0" y1="32" x2="185" y2="32" stroke="#8B9EAF" stroke-width="1.2" />
+    <!-- ENTITE 2 : COMMANDE (ARDOISE) -->
+    <g filter="url(#shadow-soft)">
+      <rect x="410" y="50" width="200" height="150" rx="10" fill="#FFFFFF" stroke="#243342" stroke-width="1.5" />
+      <path d="M 410 60 A 10 10 0 0 1 420 50 L 600 50 A 10 10 0 0 1 610 60 L 610 80 L 410 80 Z" fill="#243342" />
+      <text x="510" y="71" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">COMMANDE</text>
       
-      <text x="14" y="52" font-size="8" font-weight="700" fill="#243342" text-decoration="underline"># id_commande (UUID) [PK]</text>
-      <text x="14" y="70" font-size="8" fill="#5A6578">reference (VARCHAR)</text>
-      <text x="14" y="86" font-size="8" fill="#5A6578">statut_retrait (ENUM)</text>
-      <text x="14" y="102" font-size="8" fill="#5A6578">montant_total (DECIMAL)</text>
-      <text x="14" y="118" font-size="8" fill="#5A6578">code_retrait_otp (VARCHAR)</text>
-      <text x="14" y="134" font-size="8" fill="#5A6578">remise_fidelite (DECIMAL)</text>
-      <text x="14" y="150" font-size="8" fill="#5A6578">date_retrait_prevu (DATE)</text>
+      <!-- Attributs -->
+      <text x="425" y="104" font-size="10.5" font-weight="700" text-decoration="underline" fill="#243342">id_commande</text>
+      <text x="525" y="104" font-size="9.5" font-weight="500" fill="#8C96A5">UUID [PK]</text>
+      <text x="425" y="124" font-size="10" font-weight="500" fill="#243342">ref_facturation</text>
+      <text x="425" y="142" font-size="10" font-weight="500" fill="#243342">date_creation</text>
+      <text x="425" y="160" font-size="10" font-weight="500" fill="#243342">creneau_retrait</text>
+      <text x="425" y="178" font-size="10" font-weight="500" fill="#243342">statut_commande</text>
     </g>
 
-    <!-- ASSOCIATION : CONCERNER (Entre Commande et Commerce) -->
-    <g transform="translate(635, 95)" filter="url(#mcd-card-shadow)">
-      <rect x="0" y="0" width="95" height="48" rx="24" fill="#FFFFFF" stroke="#7EA88D" stroke-width="1.2" />
-      <text x="47.5" y="25" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2E583D">Concerner</text>
-      <text x="47.5" y="38" text-anchor="middle" font-size="7" fill="#8C96A5">creneau_h</text>
-    </g>
-
-    <!-- Lignes & Cardinalites Commande - Concerner - Commerce -->
-    <line x1="590" y1="119" x2="635" y2="119" stroke="#8A9BAE" stroke-width="1.5" />
-    <rect x="598" y="102" width="26" height="16" rx="8" fill="#EBF0F5" />
-    <text x="611" y="113.5" text-anchor="middle" font-size="7" font-weight="700" fill="#243342">1,n</text>
-
-    <line x1="730" y1="119" x2="775" y2="119" stroke="#8A9BAE" stroke-width="1.5" />
-    <rect x="740" y="102" width="26" height="16" rx="8" fill="#EBF3ED" />
-    <text x="753" y="113.5" text-anchor="middle" font-size="7" font-weight="700" fill="#2E583D">0,n</text>
-
-    <!-- ========================================================================= -->
-    <!-- 3. ENTITE : COMMERCE (Sauge Douce Maraichere)                             -->
-    <!-- ========================================================================= -->
-    <g transform="translate(775, 40)" filter="url(#mcd-card-shadow)">
-      <rect x="0" y="0" width="165" height="160" rx="14" fill="#FFFFFF" stroke="#7EA88D" stroke-width="1.2" />
-      <path d="M 0 14 Q 0 0 14 0 L 151 0 Q 165 0 165 14 L 165 32 L 0 32 Z" fill="#EBF3ED" />
-      <text x="82.5" y="21" text-anchor="middle" font-size="10" font-weight="700" fill="#2E583D" letter-spacing="0.06em">COMMERCE</text>
-      <line x1="0" y1="32" x2="165" y2="32" stroke="#7EA88D" stroke-width="1.2" />
+    <!-- ENTITE 3 : COMMERCANT (SAUGE) -->
+    <g filter="url(#shadow-soft)">
+      <rect x="790" y="50" width="190" height="150" rx="10" fill="#FFFFFF" stroke="#7EA88D" stroke-width="1.5" />
+      <path d="M 790 60 A 10 10 0 0 1 800 50 L 970 50 A 10 10 0 0 1 980 60 L 980 80 L 790 80 Z" fill="#4A7A5B" />
+      <text x="885" y="71" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">COMMERÇANT</text>
       
-      <text x="14" y="52" font-size="8" font-weight="700" fill="#243342" text-decoration="underline"># id_commerce (UUID) [PK]</text>
-      <text x="14" y="70" font-size="8" fill="#5A6578">nom_enseigne (VARCHAR)</text>
-      <text x="14" y="86" font-size="8" fill="#5A6578">siren (CHAR)</text>
-      <text x="14" y="102" font-size="8" fill="#5A6578">adresse (VARCHAR)</text>
-      <text x="14" y="118" font-size="8" fill="#5A6578">statut_vfp (BOOLEAN)</text>
-      <text x="14" y="134" font-size="8" fill="#5A6578">taux_remise (DECIMAL)</text>
-      <text x="14" y="150" font-size="8" fill="#5A6578">creneaux_retrait (JSON)</text>
+      <!-- Attributs -->
+      <text x="805" y="104" font-size="10.5" font-weight="700" text-decoration="underline" fill="#243342">id_commercant</text>
+      <text x="915" y="104" font-size="9.5" font-weight="500" fill="#8C96A5">UUID [PK]</text>
+      <text x="805" y="124" font-size="10" font-weight="500" fill="#243342">nom_enseigne</text>
+      <text x="805" y="142" font-size="10" font-weight="500" fill="#243342">siret_numero</text>
+      <text x="805" y="160" font-size="10" font-weight="500" fill="#243342">adresse_geo</text>
+      <text x="805" y="178" font-size="10" font-weight="500" fill="#243342">iban_virement</text>
     </g>
 
-    <!-- ========================================================================= -->
-    <!-- LIAISONS VERTICALES : LIGNE_COMMANDE & PRODUIT                            -->
-    <!-- ========================================================================= -->
-
-    <!-- Association CONTENIR (sous Commande) -->
-    <line x1="497" y1="200" x2="497" y2="250" stroke="#8A9BAE" stroke-width="1.5" />
-    <rect x="502" y="215" width="26" height="16" rx="8" fill="#EBF0F5" />
-    <text x="515" y="226.5" text-anchor="middle" font-size="7" font-weight="700" fill="#243342">1,n</text>
-
-    <g transform="translate(450, 250)" filter="url(#mcd-card-shadow)">
-      <rect x="0" y="0" width="95" height="48" rx="24" fill="#FFFFFF" stroke="#DCB162" stroke-width="1.2" />
-      <text x="47.5" y="25" text-anchor="middle" font-size="8.5" font-weight="700" fill="#845A11">Contenir</text>
-      <text x="47.5" y="38" text-anchor="middle" font-size="7" fill="#8C96A5">quantite</text>
-    </g>
-
-    <line x1="497" y1="298" x2="497" y2="340" stroke="#8A9BAE" stroke-width="1.5" />
-    <rect x="502" y="310" width="26" height="16" rx="8" fill="#FEF7EB" />
-    <text x="515" y="321.5" text-anchor="middle" font-size="7" font-weight="700" fill="#845A11">0,n</text>
-
-    <!-- 4. ENTITE : PRODUIT (Ocre Miel Doux) -->
-    <g transform="translate(405, 340)" filter="url(#mcd-card-shadow)">
-      <rect x="0" y="0" width="185" height="105" rx="14" fill="#FFFFFF" stroke="#DCB162" stroke-width="1.2" />
-      <path d="M 0 14 Q 0 0 14 0 L 171 0 Q 185 0 185 14 L 185 30 L 0 30 Z" fill="#FEF7EB" />
-      <text x="92.5" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#845A11" letter-spacing="0.06em">PRODUIT</text>
-      <line x1="0" y1="30" x2="185" y2="30" stroke="#DCB162" stroke-width="1.2" />
+    <!-- ENTITE 4 : AVANTAGE VFP (OCRE MIEL) -->
+    <g filter="url(#shadow-soft)">
+      <rect x="40" y="340" width="190" height="150" rx="10" fill="#FFFFFF" stroke="#DCB162" stroke-width="1.5" />
+      <path d="M 40 350 A 10 10 0 0 1 50 340 L 220 340 A 10 10 0 0 1 230 350 L 230 370 L 40 370 Z" fill="#C48B28" />
+      <text x="135" y="361" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">AVANTAGE_VFP</text>
       
-      <text x="14" y="48" font-size="8" font-weight="700" fill="#243342" text-decoration="underline"># id_produit (UUID) [PK]</text>
-      <text x="14" y="64" font-size="8" fill="#5A6578">designation (VARCHAR)</text>
-      <text x="14" y="80" font-size="8" fill="#5A6578">prix_unitaire_ttc (DECIMAL)</text>
-      <text x="14" y="96" font-size="8" fill="#5A6578">stock_disponible (INT)</text>
+      <!-- Attributs -->
+      <text x="55" y="394" font-size="10.5" font-weight="700" text-decoration="underline" fill="#243342">id_avantage</text>
+      <text x="145" y="394" font-size="9.5" font-weight="500" fill="#8C96A5">UUID [PK]</text>
+      <text x="55" y="414" font-size="10" font-weight="500" fill="#243342">points_acquis</text>
+      <text x="55" y="432" font-size="10" font-weight="500" fill="#243342">date_attribution</text>
+      <text x="55" y="450" font-size="10" font-weight="500" fill="#243342">date_peremption</text>
+      <text x="55" y="468" font-size="10" font-weight="500" fill="#243342">heure_parking</text>
     </g>
+
+    <!-- ENTITE 5 : LIGNE COMMANDE (ARDOISE DOUCE) -->
+    <g filter="url(#shadow-soft)">
+      <rect x="410" y="340" width="200" height="150" rx="10" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1.5" />
+      <path d="M 410 350 A 10 10 0 0 1 420 340 L 600 340 A 10 10 0 0 1 610 350 L 610 370 L 410 370 Z" fill="#243342" />
+      <text x="510" y="361" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">LIGNE_COMMANDE</text>
+      
+      <!-- Attributs -->
+      <text x="425" y="394" font-size="10.5" font-weight="700" text-decoration="underline" fill="#243342">id_ligne</text>
+      <text x="525" y="394" font-size="9.5" font-weight="500" fill="#8C96A5">UUID [PK]</text>
+      <text x="425" y="414" font-size="10" font-weight="500" fill="#243342">quantite_commandee</text>
+      <text x="425" y="432" font-size="10" font-weight="500" fill="#243342">prix_unitaire_fact</text>
+      <text x="425" y="450" font-size="10" font-weight="500" fill="#243342">taux_tva_applique</text>
+    </g>
+
+    <!-- ENTITE 6 : ARTICLE (SAUGE) -->
+    <g filter="url(#shadow-soft)">
+      <rect x="790" y="340" width="190" height="150" rx="10" fill="#FFFFFF" stroke="#7EA88D" stroke-width="1.5" />
+      <path d="M 790 350 A 10 10 0 0 1 800 340 L 970 340 A 10 10 0 0 1 980 350 L 980 370 L 790 370 Z" fill="#4A7A5B" />
+      <text x="885" y="361" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">ARTICLE</text>
+      
+      <!-- Attributs -->
+      <text x="805" y="394" font-size="10.5" font-weight="700" text-decoration="underline" fill="#243342">id_article</text>
+      <text x="915" y="394" font-size="9.5" font-weight="500" fill="#8C96A5">UUID [PK]</text>
+      <text x="805" y="414" font-size="10" font-weight="500" fill="#243342">libelle_produit</text>
+      <text x="805" y="432" font-size="10" font-weight="500" fill="#243342">prix_ttc</text>
+      <text x="805" y="450" font-size="10" font-weight="500" fill="#243342">unite_mesure</text>
+      <text x="805" y="468" font-size="10" font-weight="500" fill="#243342">stock_disponible</text>
+    </g>
+
+    <!-- ASSOCIATIONS VERBALES MERISE (OVALES / SQUIRCLES NETS) -->
+    
+    <!-- ASSOC 1 : PASSER (CITOYEN <-> COMMANDE) -->
+    <rect x="285" y="110" width="70" height="30" rx="15" fill="#FAF9F6" stroke="#243342" stroke-width="1.5" />
+    <text x="320" y="129" text-anchor="middle" font-size="10" font-weight="700" fill="#243342">PASSER</text>
+    <line x1="230" y1="125" x2="285" y2="125" stroke="#243342" stroke-width="1.5" />
+    <text x="245" y="118" font-size="9.5" font-weight="700" fill="#C26750">0,n</text>
+    <line x1="355" y1="125" x2="410" y2="125" stroke="#243342" stroke-width="1.5" />
+    <text x="385" y="118" font-size="9.5" font-weight="700" fill="#243342">1,1</text>
+
+    <!-- ASSOC 2 : DESTINER (COMMANDE <-> COMMERCANT) -->
+    <rect x="665" y="110" width="70" height="30" rx="15" fill="#FAF9F6" stroke="#243342" stroke-width="1.5" />
+    <text x="700" y="129" text-anchor="middle" font-size="9.5" font-weight="700" fill="#243342">DESTINER</text>
+    <line x1="610" y1="125" x2="665" y2="125" stroke="#243342" stroke-width="1.5" />
+    <text x="630" y="118" font-size="9.5" font-weight="700" fill="#243342">1,1</text>
+    <line x1="735" y1="125" x2="790" y2="125" stroke="#243342" stroke-width="1.5" />
+    <text x="760" y="118" font-size="9.5" font-weight="700" fill="#4A7A5B">0,n</text>
+
+    <!-- ASSOC 3 : GENERER (COMMANDE <-> AVANTAGE VFP) -->
+    <rect x="230" y="240" width="70" height="30" rx="15" fill="#FAF9F6" stroke="#DCB162" stroke-width="1.5" />
+    <text x="265" y="259" text-anchor="middle" font-size="9.5" font-weight="700" fill="#845A11">GENERER</text>
+    <path d="M 450 200 L 450 255 L 300 255" fill="none" stroke="#243342" stroke-width="1.5" />
+    <text x="425" y="225" font-size="9.5" font-weight="700" fill="#243342">0,1</text>
+    <path d="M 230 255 L 135 255 L 135 340" fill="none" stroke="#DCB162" stroke-width="1.5" />
+    <text x="145" y="325" font-size="9.5" font-weight="700" fill="#C48B28">1,1</text>
+
+    <!-- ASSOC 4 : CONTENIR (COMMANDE <-> LIGNE) -->
+    <rect x="475" y="245" width="70" height="30" rx="15" fill="#FAF9F6" stroke="#243342" stroke-width="1.5" />
+    <text x="510" y="264" text-anchor="middle" font-size="9.5" font-weight="700" fill="#243342">CONTENIR</text>
+    <line x1="510" y1="200" x2="510" y2="245" stroke="#243342" stroke-width="1.5" />
+    <text x="520" y="225" font-size="9.5" font-weight="700" fill="#243342">1,n</text>
+    <line x1="510" y1="275" x2="510" y2="340" stroke="#243342" stroke-width="1.5" />
+    <text x="520" y="315" font-size="9.5" font-weight="700" fill="#243342">1,1</text>
+
+    <!-- ASSOC 5 : CONCERNER (LIGNE <-> ARTICLE) -->
+    <rect x="665" y="400" width="70" height="30" rx="15" fill="#FAF9F6" stroke="#4A7A5B" stroke-width="1.5" />
+    <text x="700" y="419" text-anchor="middle" font-size="9" font-weight="700" fill="#2E583D">CONCERNER</text>
+    <line x1="610" y1="415" x2="665" y2="415" stroke="#243342" stroke-width="1.5" />
+    <text x="630" y="408" font-size="9.5" font-weight="700" fill="#243342">1,1</text>
+    <line x1="735" y1="415" x2="790" y2="415" stroke="#4A7A5B" stroke-width="1.5" />
+    <text x="760" y="408" font-size="9.5" font-weight="700" fill="#4A7A5B">0,n</text>
 
   </svg>
 
-  <!-- DICTIONNAIRE RELATIONNEL BOOKTABS ACADEMIQUE NORMALISE -->
-  <div style="margin-top: 20pt; border-top: 1px solid #EDE8E1; padding-top: 16pt; text-align: left;">
-    <div style="font-size: 9.5pt; font-weight: 700; color: #243342; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8pt;">
-      Dictionnaire Relationnel (MLD PostgreSQL 3NF)
+  <!-- TABLEAU MLD RELATIONNEL BOOKTABS (NORMALISE 3FN) -->
+  <div style="margin-top:24px; font-family:'Poppins', sans-serif;">
+    <div style="font-size:12px; font-weight:700; color:#243342; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:8px;">
+      Dictionnaire du Modèle Logique de Données (PostgreSQL Relationnel)
     </div>
-    <div style="overflow-x: auto;">
-      <table style="width: 100%; border-collapse: collapse; font-size: 8pt; font-family: 'Plus Jakarta Sans', sans-serif;">
-        <thead>
-          <tr style="border-top: 1.5pt solid #243342; border-bottom: 1pt solid #243342; background: #F5F2EB;">
-            <th style="padding: 6pt 10pt; text-align: left; color: #243342;">Table Relationnelle</th>
-            <th style="padding: 6pt 10pt; text-align: left; color: #243342;">Cle Primaire [PK]</th>
-            <th style="padding: 6pt 10pt; text-align: left; color: #243342;">Cles Etrangeres [FK]</th>
-            <th style="padding: 6pt 10pt; text-align: left; color: #243342;">Attributs Metier Majeurs</th>
-            <th style="padding: 6pt 10pt; text-align: left; color: #243342;">Contraintes d'Integrite</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="border-bottom: 0.5pt solid #EDE8E1;">
-            <td style="padding: 6pt 10pt; font-weight: 700; color: #8E3D2A;">citoyen</td>
-            <td style="padding: 6pt 10pt; font-family: 'Fira Code', monospace; color: #243342;">id_citoyen</td>
-            <td style="padding: 6pt 10pt; color: #8A9BAE;">—</td>
-            <td style="padding: 6pt 10pt; color: #5A6578;">nom, prenom, email_hash, code_carte_qr, solde_vfp_15j</td>
-            <td style="padding: 6pt 10pt; color: #2E583D; font-weight: 600;">UNIQUE(email_hash, code_carte_qr)</td>
-          </tr>
-          <tr style="border-bottom: 0.5pt solid #EDE8E1; background: #FAF9F6;">
-            <td style="padding: 6pt 10pt; font-weight: 700; color: #2E583D;">commerce</td>
-            <td style="padding: 6pt 10pt; font-family: 'Fira Code', monospace; color: #243342;">id_commerce</td>
-            <td style="padding: 6pt 10pt; color: #8A9BAE;">—</td>
-            <td style="padding: 6pt 10pt; color: #5A6578;">nom_enseigne, siren, adresse, statut_vfp, taux_remise</td>
-            <td style="padding: 6pt 10pt; color: #2E583D; font-weight: 600;">CHECK(taux_remise &gt;= 0)</td>
-          </tr>
-          <tr style="border-bottom: 0.5pt solid #EDE8E1;">
-            <td style="padding: 6pt 10pt; font-weight: 700; color: #1C2D3D;">commande</td>
-            <td style="padding: 6pt 10pt; font-family: 'Fira Code', monospace; color: #243342;">id_commande</td>
-            <td style="padding: 6pt 10pt; font-family: 'Fira Code', monospace; color: #8E3D2A;">id_citoyen (citoyen)</td>
-            <td style="padding: 6pt 10pt; color: #5A6578;">reference, statut_retrait, montant_total, code_retrait_otp</td>
-            <td style="padding: 6pt 10pt; color: #2E583D; font-weight: 600;">ON DELETE RESTRICT</td>
-          </tr>
-          <tr style="border-bottom: 1.5pt solid #243342; background: #FAF9F6;">
-            <td style="padding: 6pt 10pt; font-weight: 700; color: #845A11;">ligne_commande</td>
-            <td style="padding: 6pt 10pt; font-family: 'Fira Code', monospace; color: #243342;">(id_commande, id_produit)</td>
-            <td style="padding: 6pt 10pt; font-family: 'Fira Code', monospace; color: #1C2D3D;">id_commande, id_produit</td>
-            <td style="padding: 6pt 10pt; color: #5A6578;">quantite, prix_unitaire_facture</td>
-            <td style="padding: 6pt 10pt; color: #2E583D; font-weight: 600;">CHECK(quantite &gt; 0)</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    
+    <table style="width:100%; border-collapse:collapse; font-size:11.5px; text-align:left;">
+      <thead>
+        <tr style="border-top:2px solid #243342; border-bottom:1.5px solid #243342; background:#FAF9F6;">
+          <th style="padding:8px 12px; color:#243342; font-weight:700;">Relation (Table)</th>
+          <th style="padding:8px 12px; color:#243342; font-weight:700;">Clé Primaire [PK]</th>
+          <th style="padding:8px 12px; color:#243342; font-weight:700;">Clés Étrangères [FK]</th>
+          <th style="padding:8px 12px; color:#243342; font-weight:700;">Attributs Métier Majeurs</th>
+          <th style="padding:8px 12px; color:#243342; font-weight:700;">Contrainte d'Intégrité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid #EDE8E1;">
+          <td style="padding:8px 12px; font-weight:600; color:#C26750;">CITOYEN</td>
+          <td style="padding:8px 12px; font-family:monospace; font-weight:700;">id_citoyen (UUID)</td>
+          <td style="padding:8px 12px; color:#8C96A5;">—</td>
+          <td style="padding:8px 12px;">nom, email, hash_pass_nfc</td>
+          <td style="padding:8px 12px; font-size:10.5px; color:#5A6578;">Email unique · Index B-Tree NFC</td>
+        </tr>
+        <tr style="border-bottom:1px solid #EDE8E1; background:#FAF9F6;">
+          <td style="padding:8px 12px; font-weight:600; color:#4A7A5B;">COMMERCANT</td>
+          <td style="padding:8px 12px; font-family:monospace; font-weight:700;">id_commercant (UUID)</td>
+          <td style="padding:8px 12px; color:#8C96A5;">—</td>
+          <td style="padding:8px 12px;">nom_enseigne, siret, iban, adresse</td>
+          <td style="padding:8px 12px; font-size:10.5px; color:#5A6578;">SIRET 14 chiffres · Multi-tenant</td>
+        </tr>
+        <tr style="border-bottom:1px solid #EDE8E1;">
+          <td style="padding:8px 12px; font-weight:600; color:#243342;">COMMANDE</td>
+          <td style="padding:8px 12px; font-family:monospace; font-weight:700;">id_commande (UUID)</td>
+          <td style="padding:8px 12px; font-family:monospace;">id_citoyen, id_commercant</td>
+          <td style="padding:8px 12px;">creneau_retrait, montant_total, statut</td>
+          <td style="padding:8px 12px; font-size:10.5px; color:#5A6578;">FK ON DELETE RESTRICT</td>
+        </tr>
+        <tr style="border-bottom:1px solid #EDE8E1; background:#FAF9F6;">
+          <td style="padding:8px 12px; font-weight:600; color:#243342;">LIGNE_COMMANDE</td>
+          <td style="padding:8px 12px; font-family:monospace; font-weight:700;">id_ligne (UUID)</td>
+          <td style="padding:8px 12px; font-family:monospace;">id_commande, id_article</td>
+          <td style="padding:8px 12px;">quantite, prix_unitaire, tva</td>
+          <td style="padding:8px 12px; font-size:10.5px; color:#5A6578;">Quantité &gt; 0 · Prix snapshoté</td>
+        </tr>
+        <tr style="border-bottom:2px solid #243342;">
+          <td style="padding:8px 12px; font-weight:600; color:#C48B28;">AVANTAGE_VFP</td>
+          <td style="padding:8px 12px; font-family:monospace; font-weight:700;">id_avantage (UUID)</td>
+          <td style="padding:8px 12px; font-family:monospace;">id_citoyen, id_commande</td>
+          <td style="padding:8px 12px;">points_acquis, date_expiration</td>
+          <td style="padding:8px 12px; font-size:10.5px; color:#5A6578;">Périsodique 15 jours glissants</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
 </div>
-
 </body>
 </html>

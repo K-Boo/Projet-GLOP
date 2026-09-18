@@ -115,9 +115,552 @@ Conformément à la méthode officielle de **User Story Mapping** ([guide de ré
    - **Release 1 (MVP) :** Cœur contractuel obligatoire pour les jalons R4/R5 (création de compte, connexion sécurisée, consultation et gestion de fiche boutique, catalogue d'articles et gestion des stocks, commande Click & Collect, calcul du plus court chemin pédestre, scan en caisse, cumul de points boutique, conversion en lots/cadeaux, attribution du statut VFP, génération de ticket de bus dématérialisé, activation de 20 minutes de parking offert, tableaux de bord des ventes commerçant et supervision municipale DSI).
    - **Release 2 (Évolutions & Confort) :** Fonctionnalités complémentaires prévues pour enrichir l'expérience (recharge de carte en ligne type Izli, alertes automatiques de modification d'horaires et de seuil de stock pour le commerçant, suspension temporaire du statut VFP pendant les vacances scolaires, comparatif de rentabilité pour les commerçants, sondages municipaux courts par QCM et relances automatisées de la DSI).
 
-<div class="landscape-page" style="text-align: center;">
-  <img src="figures/fig_3_3_user_story_mapping.png" alt="Figure 3.3 — Cartographie des récits utilisateurs et User Story Mapping" style="width: 100%; max-width: 1060px; height: auto; display: block; margin: 0 auto; border-radius: 6px;" />
-  <div class="diagram-caption" style="margin-top: 6pt; font-size: 9.5pt;">Figure 3.3 — Grille de User Story Mapping (Modèle aha.io : Activités &gt; Étapes &gt; Récits par Release)</div>
+<div class="landscape-page" style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 184mm; width: 100%; box-sizing: border-box; padding: 0; margin: 0;">
+<!-- FIGURE 3.3 : GRILLE DE USER STORY MAPPING (CHARTE OFFICIELLE SHOPLOC) -->
+<div class="figure-card" style="background:#FAF9F6; border:1px solid #DCD6CD; border-radius:14px; padding:14px 18px; margin: auto; width: 100%; box-sizing: border-box; box-shadow:0 4px 16px rgba(36,51,66,0.06);">
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; border-bottom:1px solid #DCD6CD; padding-bottom:10px;">
+    <div>
+      <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:4px;">
+        <span style="width:8px; height:8px; border-radius:50%; background:#C26750;"></span>
+        <span style="font-size:11px; font-weight:700; color:#C26750; text-transform:uppercase; letter-spacing:0.08em;">Ingénierie des Exigences</span>
+      </div>
+      <h3 style="font-size:16px; font-weight:700; color:#243342; margin:0;">Figure 3.3 — Cartographie des Récits Utilisateurs (User Story Mapping)</h3>
+    </div>
+    <span style="font-size:11px; background:#FFFFFF; border:1px solid #DCD6CD; padding:4px 12px; border-radius:9999px; color:#5A6578; font-weight:600;">Modèle aha.io · Release 1 (MVP) &amp; Release 2</span>
+  </div>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1520 860" width="100%" height="auto" style="display: block; width: 100%; height: auto; font-family: 'Poppins', sans-serif;">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');</style>
+    <filter id="shadow-soft" x="-2%" y="-2%" width="104%" height="106%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#243342" flood-opacity="0.06"/>
+    </filter>
+    <filter id="shadow-card" x="-4%" y="-6%" width="108%" height="116%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#243342" flood-opacity="0.04"/>
+    </filter>
+  </defs>
+
+  <!-- FOND GLOBAL DE LA CARTE (LIN DOUX) -->
+  <rect x="5" y="5" width="1510" height="850" rx="14" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1.2" filter="url(#shadow-soft)"/>
+
+  <!-- ======================================================== -->
+  <!-- EN-TÊTE PRINCIPAL DU DIAGRAMME                           -->
+  <!-- ======================================================== -->
+  <rect x="25" y="20" width="1470" height="50" rx="8" fill="#243342" />
+  <rect x="38" y="31" width="28" height="28" rx="6" fill="#C26750" />
+  <text x="52" y="50" text-anchor="middle" font-size="12" font-weight="800" fill="#FFFFFF">USM</text>
+  <text x="78" y="44" font-size="14" font-weight="700" fill="#FFFFFF">Cartographie des Récits Utilisateurs — User Story Mapping (Modèle aha.io / Jeff Patton)</text>
+  <text x="78" y="59" font-size="9.5" font-weight="400" fill="#EBF0F5">Activités Métier (Backbone) &gt; Étapes du Parcours (Steps) &gt; Récits Utilisateurs par Release</text>
+  <text x="1480" y="49" text-anchor="end" font-size="11" font-weight="600" fill="#DCD6CD">ShopLoc · Master 2 MIAGE · Garik</text>
+
+  <!-- ======================================================== -->
+  <!-- NIVEAU 1 : ACTIVITÉS UTILISATEURS (USER ACTIVITIES)       -->
+  <!-- ======================================================== -->
+  <!-- Col 0 : Axe -->
+  <rect x="25" y="80" width="115" height="42" rx="6" fill="#F5F2EB" stroke="#DCD6CD" stroke-width="1" />
+  <text x="82" y="98" text-anchor="middle" font-size="10" font-weight="700" fill="#243342">ACTIVITÉS</text>
+  <text x="82" y="112" text-anchor="middle" font-size="8.5" font-weight="600" fill="#5A6578">BACKBONE</text>
+
+  <!-- Act 1 : Compte & Profils -->
+  <rect x="150" y="80" width="260" height="42" rx="6" fill="#C26750" />
+  <text x="280" y="98" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">1. COMPTE &amp; IDENTITÉ</text>
+  <text x="280" y="112" text-anchor="middle" font-size="8.5" font-weight="500" fill="#FBEEEA">Inscription, connexion et profils</text>
+
+  <!-- Act 2 : Catalogue & Click & Collect -->
+  <rect x="420" y="80" width="260" height="42" rx="6" fill="#4A7A5B" />
+  <text x="550" y="98" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">2. CATALOGUE &amp; CLICK &amp; COLLECT</text>
+  <text x="550" y="112" text-anchor="middle" font-size="8.5" font-weight="500" fill="#EBF3ED">Articles, stocks, panier et trajet piéton</text>
+
+  <!-- Act 3 : Caisse & Fidélité Boutique -->
+  <rect x="690" y="80" width="260" height="42" rx="6" fill="#4A7A5B" />
+  <text x="820" y="98" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">3. CAISSE &amp; FIDÉLITÉ BOUTIQUE</text>
+  <text x="820" y="112" text-anchor="middle" font-size="8.5" font-weight="500" fill="#EBF3ED">Scan QR caisse, points et cadeaux</text>
+
+  <!-- Act 4 : Programme VFP & Mobilité -->
+  <rect x="960" y="80" width="260" height="42" rx="6" fill="#C48B28" />
+  <text x="1090" y="98" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">4. STATUT VFP &amp; MOBILITÉ</text>
+  <text x="1090" y="112" text-anchor="middle" font-size="8.5" font-weight="500" fill="#FEF7EB">Fréquence, bus offert et parking 20 min</text>
+
+  <!-- Act 5 : Pilotage & Mairie -->
+  <rect x="1230" y="80" width="265" height="42" rx="6" fill="#243342" />
+  <text x="1362" y="98" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">5. PILOTAGE &amp; SUPERVISION</text>
+  <text x="1362" y="112" text-anchor="middle" font-size="8.5" font-weight="500" fill="#EBF0F5">Rentabilité Suzanne et métriques Marius</text>
+
+  <!-- ======================================================== -->
+  <!-- NIVEAU 2 : ÉTAPES UTILISATEURS (USER STEPS)               -->
+  <!-- ======================================================== -->
+  <!-- Col 0 : Axe -->
+  <rect x="25" y="128" width="115" height="42" rx="6" fill="#F5F2EB" stroke="#DCD6CD" stroke-width="1" />
+  <text x="82" y="146" text-anchor="middle" font-size="10" font-weight="700" fill="#243342">ÉTAPES</text>
+  <text x="82" y="160" text-anchor="middle" font-size="8" font-weight="500" fill="#5A6578">PARCOURS</text>
+
+  <!-- Steps Act 1 -->
+  <rect x="150" y="128" width="125" height="42" rx="6" fill="#FBEEEA" stroke="#D88B77" stroke-width="1" />
+  <text x="212" y="145" text-anchor="middle" font-size="8.5" font-weight="700" fill="#8E3D2A">1.1 Inscription &amp;</text>
+  <text x="212" y="159" text-anchor="middle" font-size="8.5" font-weight="700" fill="#8E3D2A">Authentification</text>
+
+  <rect x="285" y="128" width="125" height="42" rx="6" fill="#FBEEEA" stroke="#D88B77" stroke-width="1" />
+  <text x="347" y="145" text-anchor="middle" font-size="8.5" font-weight="700" fill="#8E3D2A">1.2 Profil &amp;</text>
+  <text x="347" y="159" text-anchor="middle" font-size="8.5" font-weight="700" fill="#8E3D2A">Immatriculation</text>
+
+  <!-- Steps Act 2 -->
+  <rect x="420" y="128" width="125" height="42" rx="6" fill="#EBF3ED" stroke="#7EA88D" stroke-width="1" />
+  <text x="482" y="145" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2E583D">2.1 Fiche Boutique</text>
+  <text x="482" y="159" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2E583D">&amp; Articles</text>
+
+  <rect x="555" y="128" width="125" height="42" rx="6" fill="#EBF3ED" stroke="#7EA88D" stroke-width="1" />
+  <text x="617" y="145" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2E583D">2.2 Commande C&amp;C</text>
+  <text x="617" y="159" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2E583D">&amp; Trajet Piéton</text>
+
+  <!-- Steps Act 3 -->
+  <rect x="690" y="128" width="125" height="42" rx="6" fill="#EBF3ED" stroke="#7EA88D" stroke-width="1" />
+  <text x="752" y="145" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2E583D">3.1 Scan Caisse &amp;</text>
+  <text x="752" y="159" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2E583D">Crédit Points</text>
+
+  <rect x="825" y="128" width="125" height="42" rx="6" fill="#EBF3ED" stroke="#7EA88D" stroke-width="1" />
+  <text x="887" y="145" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2E583D">3.2 Déblocage</text>
+  <text x="887" y="159" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2E583D">Cadeaux Boutique</text>
+
+  <!-- Steps Act 4 -->
+  <rect x="960" y="128" width="125" height="42" rx="6" fill="#FEF7EB" stroke="#DCB162" stroke-width="1" />
+  <text x="1022" y="145" text-anchor="middle" font-size="8.5" font-weight="700" fill="#845A11">4.1 Fréquence &amp;</text>
+  <text x="1022" y="159" text-anchor="middle" font-size="8.5" font-weight="700" fill="#845A11">Obtention VFP</text>
+
+  <rect x="1095" y="128" width="125" height="42" rx="6" fill="#FEF7EB" stroke="#DCB162" stroke-width="1" />
+  <text x="1157" y="145" text-anchor="middle" font-size="8.5" font-weight="700" fill="#845A11">4.2 Usage Bus &amp;</text>
+  <text x="1157" y="159" text-anchor="middle" font-size="8.5" font-weight="700" fill="#845A11">Parking 20 min</text>
+
+  <!-- Steps Act 5 -->
+  <rect x="1230" y="128" width="128" height="42" rx="6" fill="#EBF0F5" stroke="#8B9EAF" stroke-width="1" />
+  <text x="1294" y="145" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1C2D3D">5.1 Statistiques</text>
+  <text x="1294" y="159" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1C2D3D">Commerçant</text>
+
+  <rect x="1367" y="128" width="128" height="42" rx="6" fill="#EBF0F5" stroke="#8B9EAF" stroke-width="1" />
+  <text x="1431" y="145" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1C2D3D">5.2 Supervision DSI</text>
+  <text x="1431" y="159" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1C2D3D">&amp; Sondages</text>
+
+  <!-- ======================================================== -->
+  <!-- SWIMLANE 1 : RELEASE 1 (MVP R4/R5 - MUST HAVE)           -->
+  <!-- ======================================================== -->
+  <rect x="25" y="180" width="1470" height="445" rx="10" fill="#FFFFFF" stroke="#243342" stroke-width="1.6" filter="url(#shadow-soft)"/>
+  
+  <!-- Bandeau Latéral Release 1 -->
+  <path d="M 25 190 A 10 10 0 0 1 35 180 L 140 180 L 140 625 L 35 625 A 10 10 0 0 1 25 615 Z" fill="#EBF0F5" />
+  <rect x="35" y="195" width="95" height="24" rx="5" fill="#243342" />
+  <text x="82" y="211" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">RELEASE 1</text>
+  <text x="82" y="235" text-anchor="middle" font-size="11" font-weight="800" fill="#243342">MVP</text>
+  <text x="82" y="252" text-anchor="middle" font-size="8.5" font-weight="600" fill="#4A7A5B">Cœur du sujet</text>
+  <circle cx="82" cy="295" r="18" fill="#FFFFFF" stroke="#243342" stroke-width="1.5"/>
+  <text x="82" y="301" text-anchor="middle" font-size="14" font-weight="800" fill="#243342">M</text>
+  <text x="82" y="328" text-anchor="middle" font-size="8.5" font-weight="700" fill="#243342">MUST HAVE</text>
+  <text x="82" y="344" text-anchor="middle" font-size="8" font-weight="500" fill="#5A6578">Évalué R4 / R5</text>
+  <text x="82" y="585" text-anchor="middle" font-size="8.5" font-weight="700" fill="#243342">Socle Majeur</text>
+  <text x="82" y="602" text-anchor="middle" font-size="10" font-weight="800" fill="#4A7A5B">Priorité 1</text>
+
+  <!-- LIGNES SÉPARATRICES ACTIVITÉS MVP -->
+  <line x1="415" y1="180" x2="415" y2="625" stroke="#EDE8E1" stroke-width="1" />
+  <line x1="685" y1="180" x2="685" y2="625" stroke="#EDE8E1" stroke-width="1" />
+  <line x1="955" y1="180" x2="955" y2="625" stroke="#EDE8E1" stroke-width="1" />
+  <line x1="1225" y1="180" x2="1225" y2="625" stroke="#EDE8E1" stroke-width="1" />
+
+  <!-- === CARTES RELEASE 1 (MVP) === -->
+  
+  <!-- Step 1.1 : Card US-01 (Inscription) -->
+  <g transform="translate(150, 190)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#C26750" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#FBEEEA" stroke="#D88B77" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#8E3D2A">US-01</text>
+    <rect x="76" y="8" width="43" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="97" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Citoyen</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Création Compte</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#C26750">Julie / Arthur</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que citoyen,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">je crée mon compte avec</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">mes identifiants et j'obtiens</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">ma carte de fidélité.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Accès service garanti</text>
+  </g>
+
+  <!-- Step 1.1 : Card US-02 (Connexion) -->
+  <g transform="translate(150, 405)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#C26750" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#FBEEEA" stroke="#D88B77" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#8E3D2A">US-02</text>
+    <rect x="72" y="8" width="47" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="95" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Tous rôles</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Se Connecter</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#C26750">Tous profils</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant qu'utilisateur</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">(citoyen, commerçant,</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">admin mairie), je me</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">connecte à mon espace.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Authentification sécure</text>
+  </g>
+
+  <!-- Step 1.2 : Card US-04 (Plaque) -->
+  <g transform="translate(285, 190)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#C26750" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#FBEEEA" stroke="#D88B77" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#8E3D2A">US-04</text>
+    <rect x="68" y="8" width="51" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="93" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Automobile</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Saisie Plaque Auto</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#C26750">Arthur (Automobiliste)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant qu'automobiliste,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">je renseigne mon numéro</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">de plaque dans mon profil</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">pour le parking offert.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Lien véhicule &lt;&gt; profil</text>
+  </g>
+
+  <!-- Step 2.1 : Card US-06 (Fiche boutique) -->
+  <g transform="translate(420, 190)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#4A7A5B" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF3ED" stroke="#7EA88D" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2E583D">US-06</text>
+    <rect x="62" y="8" width="57" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="90" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Commerçant</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Horaires &amp; Boutique</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#4A7A5B">Suzanne (Fournil)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que commerçante,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">je configure les horaires</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">d'ouverture et l'adresse</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">de ma boulangerie.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Fiche magasin publique</text>
+  </g>
+
+  <!-- Step 2.1 : Card US-07 (Gestion articles & stocks) -->
+  <g transform="translate(420, 405)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#4A7A5B" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF3ED" stroke="#7EA88D" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2E583D">US-07</text>
+    <rect x="62" y="8" width="57" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="90" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Commerçant</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Articles &amp; Stocks</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#4A7A5B">Suzanne (Fournil)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que commerçante,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">je saisis et modifie</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">facilement mes articles</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">et stocks Click &amp; Collect.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Stock en temps réel</text>
+  </g>
+
+  <!-- Step 2.2 : Card US-09 (Panier Julie) -->
+  <g transform="translate(555, 190)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#4A7A5B" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF3ED" stroke="#7EA88D" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2E583D">US-09</text>
+    <rect x="76" y="8" width="43" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="97" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Citoyen</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Commander en Ligne</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#4A7A5B">Julie (Citadine)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que cliente,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">je consulte les magasins,</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">sélectionne mes articles et</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">valide ma commande C&amp;C.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Réservation 2 phases</text>
+  </g>
+
+  <!-- Step 2.2 : Card US-11 (Plus court chemin) -->
+  <g transform="translate(555, 405)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#4A7A5B" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF3ED" stroke="#7EA88D" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2E583D">US-11</text>
+    <rect x="76" y="8" width="43" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="97" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Citoyen</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Trajet le Plus Court</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#4A7A5B">Julie (Citadine)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que cliente,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">je demande au système le</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">plus court chemin pour</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">collecter mes achats.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Calcul itinéraire piéton</text>
+  </g>
+
+  <!-- Step 3.1 : Card US-13 (Scan caisse & points) -->
+  <g transform="translate(690, 190)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#4A7A5B" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF3ED" stroke="#7EA88D" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2E583D">US-13</text>
+    <rect x="62" y="8" width="57" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="90" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Commerçant</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Scan Caisse &amp; Points</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#4A7A5B">Pierre / Suzanne</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que commerçante,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">je scanne la carte client</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">pour créditer les points</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">liés au montant dépensé.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Gain de points boutique</text>
+  </g>
+
+  <!-- Step 3.2 : Card US-15 (Catalogue cadeaux) -->
+  <g transform="translate(825, 190)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#4A7A5B" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF3ED" stroke="#7EA88D" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2E583D">US-15</text>
+    <rect x="62" y="8" width="57" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="90" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Commerçant</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Catalogue Cadeaux</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#4A7A5B">Suzanne (Fournil)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que commerçante,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">je paramètre les lots</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">offerts (tarte maroilles,</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">mini-viennoiserie).</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Offres partenaires</text>
+  </g>
+
+  <!-- Step 3.2 : Card US-16 (Déblocage cadeau) -->
+  <g transform="translate(825, 405)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#4A7A5B" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF3ED" stroke="#7EA88D" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2E583D">US-16</text>
+    <text x="97" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Citoyen</text>
+    <rect x="76" y="8" width="43" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Débloquer Cadeau</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#4A7A5B">Julie (Cliente)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que cliente,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">j'obtiens mon cadeau lors</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">d'un achat si j'ai au moins</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">un achat antérieur.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Règle anti-abus validée</text>
+  </g>
+
+  <!-- Step 4.1 : Card US-17 (Attribution VFP) -->
+  <g transform="translate(960, 190)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#C48B28" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#FEF7EB" stroke="#DCB162" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#845A11">US-17</text>
+    <rect x="76" y="8" width="43" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="97" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Citoyen</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Obtention Statut VFP</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#C48B28">Pierre / Arthur / Julie</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que client fidèle,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">j'obtiens le statut VFP</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">grâce à la fréquence de mes</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">achats hebdomadaires.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Calcul de fréquence auto</text>
+  </g>
+
+  <!-- Step 4.2 : Card US-19 (Bus Pierre) -->
+  <g transform="translate(1095, 190)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#C48B28" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#FEF7EB" stroke="#DCB162" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#845A11">US-19</text>
+    <rect x="76" y="8" width="43" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="97" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Mobilité</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Ticket Bus Offert</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#C48B28">Pierre (Senior)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que VFP,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">je génère mon ticket de bus</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">gratuit quotidien avec QR code</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">à présenter au chauffeur.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Ticket mobilité actif</text>
+  </g>
+
+  <!-- Step 4.2 : Card US-20 (Parking Arthur) -->
+  <g transform="translate(1095, 405)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#C48B28" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#FEF7EB" stroke="#DCB162" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#845A11">US-20</text>
+    <rect x="76" y="8" width="43" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="97" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Mobilité</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">20 min Parking Offert</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#C48B28">Arthur (Automobiliste)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que VFP,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">j'active mon forfait de 20 min</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">gratuites et je suis le</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">décompte en temps réel.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Stationnement synchronisé</text>
+  </g>
+
+  <!-- Step 5.1 : Card US-22 (Stats Suzanne) -->
+  <g transform="translate(1230, 190)">
+    <rect x="0" y="0" width="128" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="128" height="4" rx="2" fill="#243342" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF0F5" stroke="#8B9EAF" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#1C2D3D">US-22</text>
+    <rect x="65" y="8" width="57" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="93" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Commerçant</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Ventes Boutique</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#243342">Suzanne (Fournil)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que commerçante,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">je consulte le volume des</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">ventes et achats C&amp;C</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">généré par les clients.</text>
+    <rect x="6" y="180" width="116" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="64" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Mesure rentabilité</text>
+  </g>
+
+  <!-- Step 5.2 : Card US-24 (Tableau DSI Marius) -->
+  <g transform="translate(1367, 190)">
+    <rect x="0" y="0" width="128" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="128" height="4" rx="2" fill="#243342" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF0F5" stroke="#8B9EAF" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#1C2D3D">US-24</text>
+    <rect x="80" y="8" width="42" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="101" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Mairie DSI</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Tableau DSI Mairie</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#243342">Marius (DSI Ville)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant qu'admin DSI,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">je compare le coût des</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">avantages mobilité au</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">volume des ventes.</text>
+    <rect x="6" y="180" width="116" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="64" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Rapport conseil municipal</text>
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- SWIMLANE 2 : RELEASE 2 (ÉVOLUTIONS & CONFORT - SHOULD HAVE) -->
+  <!-- ======================================================== -->
+  <rect x="25" y="635" width="1470" height="205" rx="10" fill="#FFFFFF" stroke="#8C96A5" stroke-width="1.2" stroke-dasharray="4 3" filter="url(#shadow-soft)"/>
+  
+  <!-- Bandeau Latéral Release 2 -->
+  <path d="M 25 645 A 10 10 0 0 1 35 635 L 140 635 L 140 840 L 35 840 A 10 10 0 0 1 25 830 Z" fill="#F5F2EB" />
+  <rect x="35" y="645" width="95" height="22" rx="5" fill="#5A6578" />
+  <text x="82" y="660" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF">RELEASE 2</text>
+  <text x="82" y="680" text-anchor="middle" font-size="10" font-weight="700" fill="#243342">Évolutions</text>
+  <text x="82" y="695" text-anchor="middle" font-size="8" font-weight="600" fill="#C48B28">Confort usagers</text>
+  <circle cx="82" cy="728" r="15" fill="#FFFFFF" stroke="#8C96A5" stroke-width="1"/>
+  <text x="82" y="733" text-anchor="middle" font-size="11" font-weight="700" fill="#5A6578">S</text>
+  <text x="82" y="755" text-anchor="middle" font-size="8" font-weight="600" fill="#5A6578">SHOULD HAVE</text>
+  <text x="82" y="818" text-anchor="middle" font-size="8.5" font-weight="700" fill="#5A6578">Post-MVP</text>
+
+  <!-- LIGNES SÉPARATRICES ACTIVITÉS R2 -->
+  <line x1="415" y1="635" x2="415" y2="840" stroke="#EDE8E1" stroke-width="1" />
+  <line x1="685" y1="635" x2="685" y2="840" stroke="#EDE8E1" stroke-width="1" />
+  <line x1="955" y1="635" x2="955" y2="840" stroke="#EDE8E1" stroke-width="1" />
+  <line x1="1225" y1="635" x2="1225" y2="840" stroke="#EDE8E1" stroke-width="1" />
+
+  <!-- === CARTES RELEASE 2 (Évolutions) === -->
+  <!-- Step 1.2 : US-05 (Recharge Izli) -->
+  <g transform="translate(285, 645)">
+    <rect x="0" y="0" width="125" height="185" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF0F5"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#5A6578">US-05</text>
+    <rect x="76" y="8" width="43" height="14" rx="3" fill="#FFFFFF"/>
+    <text x="97" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Citoyen</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Recharge Carte Izli</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#5A6578">Julie (Citadine)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">Chargement en ligne</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">d'une somme d'argent par</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">carte bleue pour petits</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">achats partenaires.</text>
+    <rect x="6" y="160" width="113" height="18" rx="3" fill="#EBF0F5"/>
+    <text x="62" y="172" text-anchor="middle" font-size="7" font-weight="600" fill="#243342">Porte-monnaie Izli</text>
+  </g>
+
+  <!-- Step 2.1 : US-08 (Alerte rupture stock) -->
+  <g transform="translate(420, 645)">
+    <rect x="0" y="0" width="125" height="185" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF0F5"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#5A6578">US-08</text>
+    <rect x="62" y="8" width="57" height="14" rx="3" fill="#FFFFFF"/>
+    <text x="90" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Commerçant</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Alerte Rupture Stock</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#5A6578">Suzanne (Fournil)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">Notification automatique</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">à la commerçante dès</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">qu'un article est épuisé.</text>
+    <rect x="6" y="160" width="113" height="18" rx="3" fill="#EBF0F5"/>
+    <text x="62" y="172" text-anchor="middle" font-size="7" font-weight="600" fill="#243342">Alerte commerçant</text>
+  </g>
+
+  <!-- Step 2.2 : US-12 (Notification horaires Julie) -->
+  <g transform="translate(555, 645)">
+    <rect x="0" y="0" width="125" height="185" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF0F5"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#5A6578">US-12</text>
+    <rect x="76" y="8" width="43" height="14" rx="3" fill="#FFFFFF"/>
+    <text x="97" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Citoyen</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Alerte Horaires</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#5A6578">Julie (Citadine)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">Notification courriel aux</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">clients quand les horaires</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">des magasins favoris</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">sont modifiés.</text>
+    <rect x="6" y="160" width="113" height="18" rx="3" fill="#EBF0F5"/>
+    <text x="62" y="172" text-anchor="middle" font-size="7" font-weight="600" fill="#243342">Suivi des commerces</text>
+  </g>
+
+  <!-- Step 4.1 : US-18 (Perte VFP Vacances Arthur) -->
+  <g transform="translate(960, 645)">
+    <rect x="0" y="0" width="125" height="185" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF0F5"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#5A6578">US-18</text>
+    <rect x="76" y="8" width="43" height="14" rx="3" fill="#FFFFFF"/>
+    <text x="97" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Citoyen</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Gestion Perte VFP</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#5A6578">Arthur (Vacances)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">Suspension temporaire</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">du statut VFP si la</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">fréquence d'achats baisse</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">(vacances scolaires).</text>
+    <rect x="6" y="160" width="113" height="18" rx="3" fill="#EBF0F5"/>
+    <text x="62" y="172" text-anchor="middle" font-size="7" font-weight="600" fill="#243342">Règle d'inactivité</text>
+  </g>
+
+  <!-- Step 5.1 : US-23 (Comparatif Suzanne) -->
+  <g transform="translate(1230, 645)">
+    <rect x="0" y="0" width="128" height="185" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF0F5"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#5A6578">US-23</text>
+    <rect x="65" y="8" width="57" height="14" rx="3" fill="#FFFFFF"/>
+    <text x="93" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Commerçant</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Comparatif Ventes</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#5A6578">Suzanne (Fournil)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">Indicateurs comparatifs</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">auprès des autres magasins</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">pour vérifier le gain</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">de participation.</text>
+    <rect x="6" y="160" width="116" height="18" rx="3" fill="#EBF0F5"/>
+    <text x="64" y="172" text-anchor="middle" font-size="7" font-weight="600" fill="#243342">Benchmark interne</text>
+  </g>
+
+  <!-- Step 5.2 : US-25 (Marius Relance & Sondages) -->
+  <g transform="translate(1367, 645)">
+    <rect x="0" y="0" width="128" height="185" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF0F5"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#5A6578">US-25</text>
+    <rect x="80" y="8" width="42" height="14" rx="3" fill="#FFFFFF"/>
+    <text x="101" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Mairie DSI</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Sondages &amp; Relances</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#5A6578">Marius (DSI)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">Envoi de questionnaires</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">QCM de satisfaction et</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">relance des usagers lors</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">de la perte du statut VFP.</text>
+    <rect x="6" y="160" width="116" height="18" rx="3" fill="#EBF0F5"/>
+    <text x="64" y="172" text-anchor="middle" font-size="7" font-weight="600" fill="#243342">Animation &amp; Rétention</text>
+  </g>
+</svg>
+
+</div>
+
 </div>
 
 ## 3.5. Découpage modulaire du système
@@ -149,20 +692,290 @@ L'ensemble des exigences métier est structuré en quatre modules opérationnels
 
 ## 4.1. Architecture logicielle prévisionnelle et cadre méthodologique
 
-Pour répondre avec réalisme aux exigences du projet, nous avons retenu une architecture applicative 3-tiers modulaire reposant sur des composants clairement isolés. Il s'agit d'une **proposition préliminaire de cadrage pour le jalon R1**, qui sera éprouvée par notre équipe et formellement validée lors du jalon R2 :
-
-<div class="landscape-page" style="text-align: center;">
-  <img src="figures/fig_4_1_choix_techniques.png" alt="Figure 4.1 — Architecture logicielle prévisionnelle et pile technologique de ShopLoc" style="width: 100%; max-width: 1060px; height: auto; display: block; margin: 0 auto; border-radius: 6px;" />
-  <div class="diagram-caption" style="margin-top: 6pt; font-size: 9.5pt;">Figure 4.1 — Schéma d'architecture applicative préliminaire et choix techniques prévisionnels</div>
-</div>
+Pour répondre avec réalisme aux exigences du projet, nous avons retenu une architecture applicative 3-tiers modulaire reposant sur des composants clairement isolés. Il s'agit d'une **proposition préliminaire de cadrage pour le jalon R1**, qui sera éprouvée par notre équipe et formellement validée lors du jalon R2.
 
 Cette architecture s'articule autour de quatre niveaux opérationnels cohérents :
-1. **Tier Clients & Interfaces Web (React + TypeScript) :** Une application web responsive (PWA) offrant des interfaces dédiées pour les citoyens consommateurs, les commerçants artisans et les gestionnaires municipaux de la mairie.
-2. **Tier Backend & Services Métier (Java Spring Boot 3) :** Un serveur d'application modulaire articulé en services métier spécialisés (*Gestion des Profils*, *Catalogue & Réservation Click & Collect*, *Moteur de Fidélité & VFP*, *Tableau de bord municipal*), communiquant via des interfaces REST normalisées.
-3. **Tier Persistance & Données (PostgreSQL 16) :** Une base relationnelle assurant l'intégrité transactionnelle stricte (ACID) des commandes et des mouvements de points, persistée sur volume de données dédié.
-4. **Tier Simulateurs Partenaires (Mocks REST) :** Des bouchons applicatifs légers simulant les échanges avec les services tiers (rechargement bancaire type Izli, titres de transport Ilévia, contrôle de stationnement municipal) pour garantir l'autonomie totale des tests en environnement étudiant.
+1. **Tier Clients & Interfaces Web (React 18 + TypeScript 5 + Tailwind CSS 3) :** Une application web responsive (PWA) offrant des interfaces dédiées pour les citoyens consommateurs (panier groupé, pass bi-média QR), les commerçants artisans (interface POS caisse, scan express < 3s) et les gestionnaires municipaux de la mairie (dashboard d'activité et k-anonymat RGPD).
+2. **Tier Backend & Services Métier (Java 21 LTS + Spring Boot 3.3) :** Un serveur d'application modulaire articulé en contextes délimités (*Gestion des Profils & Sécurité JWT*, *Catalogue & Réservation Click & Collect 2PC*, *Double Moteur de Fidélité & Batch VFP nocturne*, *Tableau de bord municipal*), communiquant via des interfaces RESTful normalisées sous contrat **OpenAPI 3.1**.
+3. **Tier Persistance & Données (PostgreSQL 16) :** Une base relationnelle assurant l'intégrité transactionnelle stricte (ACID) des commandes et des mouvements de points, persistée sur volume de données dédié (`pgdata`) avec isolation `READ COMMITTED` et index B-Tree.
+4. **Tier Simulateurs Partenaires (Mocks REST OpenAPI 3.1) :** Des bouchons applicatifs légers conteneurisés simulant les échanges avec les services tiers (passerelle bancaire Izli avec scénarios 2PC, réseau de transport Ilévia Pass Pass, contrôle horodateur de stationnement municipal 20 min) pour garantir l'autonomie totale des tests en environnement étudiant.
 
 L'ensemble de ces briques est orchestré par **Docker Compose** et versionné sur la forge institutionnelle **GitLab de l'Université de Lille**, garantissant un déploiement reproductible en une commande unique (`docker compose up`).
+
+La **Figure 4.1** ci-après synthétise l'agencement global de ces composants au sein d'une cartographie technique normalisée :
+
+<div class="landscape-page" style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 184mm; width: 100%; box-sizing: border-box; padding: 0; margin: 0;">
+<!-- FIGURE 4.1 : SCHÉMA D'ARCHITECTURE LOGICIELLE SHOPLOC -->
+<div class="figure-card" style="background:#FAF9F6; border:1px solid #DCD6CD; border-radius:14px; padding:14px 18px; margin: auto; width: 100%; box-sizing: border-box; box-shadow:0 4px 16px rgba(36,51,66,0.06);">
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px; border-bottom:1px solid #DCD6CD; padding-bottom:8px;">
+    <div>
+      <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:4px;">
+        <span style="width:8px; height:8px; border-radius:50%; background:#243342;"></span>
+        <span style="font-size:11px; font-weight:700; color:#243342; text-transform:uppercase; letter-spacing:0.08em; font-family: 'Poppins', sans-serif;">Ingénierie Logicielle &amp; DevOps</span>
+      </div>
+      <h3 style="font-size:16px; font-weight:700; color:#243342; margin:0; font-family: 'Poppins', sans-serif;">Figure 4.1 — Architecture Applicative Prévisionnelle (Jalon R1)</h3>
+    </div>
+    <span style="font-size:11px; background:#FFFFFF; border:1px solid #DCD6CD; padding:4px 12px; border-radius:9999px; color:#5A6578; font-weight:600; font-family: 'Poppins', sans-serif;">Architecture 3-Tiers Modulaire</span>
+  </div>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 780" width="100%" height="auto" style="display: block; width: 100%; height: auto; font-family: 'Poppins', sans-serif;">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap');</style>
+    <filter id="shadow-soft" x="-2%" y="-2%" width="104%" height="106%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#243342" flood-opacity="0.06"/>
+    </filter>
+    <filter id="shadow-card" x="-4%" y="-6%" width="108%" height="116%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#243342" flood-opacity="0.05"/>
+    </filter>
+  </defs>
+
+  <!-- FOND GLOBAL -->
+  <rect x="5" y="5" width="1430" height="770" rx="14" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1.2" filter="url(#shadow-soft)"/>
+
+  <!-- EN-TÊTE -->
+  <rect x="25" y="20" width="1390" height="52" rx="8" fill="#243342" />
+  <rect x="38" y="32" width="28" height="28" rx="6" fill="#C26750" />
+  <text x="52" y="51" text-anchor="middle" font-size="13" font-weight="800" fill="#FFFFFF">SL</text>
+  <text x="78" y="44" font-size="14" font-weight="700" fill="#FFFFFF">Architecture Applicative Prévisionnelle (Jalon R1) — ShopLoc</text>
+  <text x="78" y="59" font-size="10" font-weight="400" fill="#EBF0F5">Cartographie Technique 3-Tiers Découplée · Pile Technologique &amp; Protocoles d'Échange</text>
+  <text x="1400" y="51" text-anchor="end" font-size="11" font-weight="600" fill="#DCD6CD">Master 2 MIAGE · Garik</text>
+
+  <!-- ======================================================== -->
+  <!-- TIER 1 : CLIENTS WEB & MOBILES                           -->
+  <!-- ======================================================== -->
+  <rect x="25" y="84" width="1390" height="135" rx="10" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1.2" filter="url(#shadow-card)"/>
+  <rect x="25" y="84" width="1390" height="30" rx="10" fill="#EBF0F5" />
+  <text x="45" y="104" font-size="11.5" font-weight="700" fill="#243342">TIER 1 — INTERFACES UTILISATEURS &amp; CLIENTS (Progressive Web App)</text>
+
+  <!-- Badges technos Frontend -->
+  <g transform="translate(980, 87)">
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="115" height="24" rx="12" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1"/>
+      <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" x="8" y="4" width="16" height="16" />
+      <text x="30" y="16" font-size="10" font-weight="600" fill="#243342">React 18</text>
+    </g>
+
+    <g transform="translate(125, 0)">
+      <rect x="0" y="0" width="135" height="24" rx="12" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1"/>
+      <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" x="8" y="4" width="16" height="16" />
+      <text x="30" y="16" font-size="10" font-weight="600" fill="#243342">TypeScript 5</text>
+    </g>
+
+    <g transform="translate(270, 0)">
+      <rect x="0" y="0" width="145" height="24" rx="12" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1"/>
+      <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" x="8" y="4" width="16" height="16" />
+      <text x="30" y="16" font-size="10" font-weight="600" fill="#243342">Tailwind CSS 3</text>
+    </g>
+  </g>
+
+  <!-- Carte 1.1 : Espace Citoyen -->
+  <g transform="translate(45, 122)">
+    <rect x="0" y="0" width="425" height="84" rx="8" fill="#FBEEEA" stroke="#D88B77" stroke-width="1" />
+    <circle cx="30" cy="28" r="15" fill="#C26750" />
+    <text x="30" y="33" text-anchor="middle" font-size="13" fill="#FFFFFF">CIT</text>
+    <text x="54" y="24" font-size="11" font-weight="700" fill="#8E3D2A">ESPACE CITOYEN (Consommateurs &amp; Seniors)</text>
+    <text x="54" y="38" font-size="9" font-weight="600" fill="#C26750">PWA Mobile-First · Accessibilité RGAA (forts contrastes)</text>
+    <line x1="14" y1="48" x2="411" y2="48" stroke="#E8B4A6" stroke-width="0.8" />
+    <text x="14" y="66" font-size="9" font-weight="500" fill="#243342">Composants : Vitrines commerçantes, Panier multi-boutiques, Pass QR</text>
+  </g>
+
+  <!-- Carte 1.2 : Espace Commerçant -->
+  <g transform="translate(508, 122)">
+    <rect x="0" y="0" width="425" height="84" rx="8" fill="#EBF3ED" stroke="#7EA88D" stroke-width="1" />
+    <circle cx="30" cy="28" r="15" fill="#4A7A5B" />
+    <text x="30" y="33" text-anchor="middle" font-size="13" fill="#FFFFFF">COM</text>
+    <text x="54" y="24" font-size="11" font-weight="700" fill="#2E583D">ESPACE COMMERÇANT (Artisans de quartier)</text>
+    <text x="54" y="38" font-size="9" font-weight="600" fill="#4A7A5B">Web App POS Caisse · Scan express &lt; 3s</text>
+    <line x1="14" y1="48" x2="411" y2="48" stroke="#A9C7B2" stroke-width="0.8" />
+    <text x="14" y="66" font-size="9" font-weight="500" fill="#243342">Composants : Gestion catalogue &amp; stocks, Validation retraits C&amp;C</text>
+  </g>
+
+  <!-- Carte 1.3 : Portail DSI Mairie -->
+  <g transform="translate(970, 122)">
+    <rect x="0" y="0" width="425" height="84" rx="8" fill="#FEF7EB" stroke="#DCB162" stroke-width="1" />
+    <circle cx="30" cy="28" r="15" fill="#C48B28" />
+    <text x="30" y="33" text-anchor="middle" font-size="13" fill="#FFFFFF">DSI</text>
+    <text x="54" y="24" font-size="11" font-weight="700" fill="#845A11">PORTAIL DSI MAIRIE &amp; COLLECTIVITÉ</text>
+    <text x="54" y="38" font-size="9" font-weight="600" fill="#C48B28">Dashboard Décisionnel · Traçabilité anonymisée RGPD</text>
+    <line x1="14" y1="48" x2="411" y2="48" stroke="#E6CB8F" stroke-width="0.8" />
+    <text x="14" y="66" font-size="9" font-weight="500" fill="#243342">Composants : Indicateurs d'activité, Fréquentation piétonne, Sondages</text>
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- LIAISON TIER 1 -> TIER 2 : CONTRAT FORMEL D'INTERFACE    -->
+  <!-- ======================================================== -->
+  <line x1="720" y1="219" x2="720" y2="267" stroke="#243342" stroke-width="2" stroke-dasharray="4 3"/>
+  <polygon points="720,271 715,261 725,261" fill="#243342"/>
+  
+  <g transform="translate(440, 226)">
+    <rect x="0" y="0" width="560" height="38" rx="8" fill="#FFFFFF" stroke="#243342" stroke-width="1.2" filter="url(#shadow-soft)"/>
+    <text x="280" y="16" text-anchor="middle" font-size="10.5" font-weight="700" fill="#243342">PROTOCOLE D'ÉCHANGE : HTTPS / RESTful · SPÉCIFICATION OPENAPI 3.1</text>
+    <text x="280" y="30" text-anchor="middle" font-size="9" font-weight="500" fill="#5A6578">Authentification Stateless JWT Bearer · Routage Multi-Tenant : /api/v1/tenants/{tenant_id}/...</text>
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- TIER 2 : SERVEUR BACKEND APPLICATIF (SPRING BOOT 3.3)    -->
+  <!-- ======================================================== -->
+  <rect x="25" y="275" width="910" height="206" rx="10" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1.4" filter="url(#shadow-card)"/>
+  <rect x="25" y="275" width="910" height="32" rx="10" fill="#243342" />
+  <text x="45" y="296" font-size="11.5" font-weight="700" fill="#FFFFFF">TIER 2 — MONOLITHE MODULAIRE BACKEND (Spring Boot 3.3 / Java 21)</text>
+
+  <!-- Badges technos Backend -->
+  <g transform="translate(490, 279)">
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="125" height="24" rx="12" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1"/>
+      <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" x="8" y="4" width="16" height="16" />
+      <text x="30" y="16" font-size="10" font-weight="600" fill="#243342">Java 21 LTS</text>
+    </g>
+
+    <g transform="translate(135, 0)">
+      <rect x="0" y="0" width="145" height="24" rx="12" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1"/>
+      <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" x="8" y="4" width="16" height="16" />
+      <text x="30" y="16" font-size="10" font-weight="600" fill="#243342">Spring Boot 3.3</text>
+    </g>
+
+    <g transform="translate(290, 0)">
+      <rect x="0" y="0" width="125" height="24" rx="12" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1"/>
+      <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/maven/maven-original.svg" x="8" y="4" width="16" height="16" />
+      <text x="30" y="16" font-size="10" font-weight="600" fill="#243342">Maven 3.9</text>
+    </g>
+  </g>
+
+  <!-- Carte 2.1 : Profils & Sécurité -->
+  <g transform="translate(45, 317)">
+    <rect x="0" y="0" width="415" height="72" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="14" y="24" font-size="11" font-weight="700" fill="#243342">Module Profils, Authentification &amp; RBAC</text>
+    <line x1="14" y1="34" x2="401" y2="34" stroke="#E2DDD5" stroke-width="0.8" />
+    <text x="14" y="54" font-size="9" font-weight="600" fill="#C26750">Techno : Spring Security 6 · JJWT (Java JWT) · Hachage SHA-256</text>
+  </g>
+
+  <!-- Carte 2.2 : Catalogue & Click & Collect -->
+  <g transform="translate(495, 317)">
+    <rect x="0" y="0" width="415" height="72" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="14" y="24" font-size="11" font-weight="700" fill="#243342">Module Catalogue, Stocks &amp; Réservation 2PC</text>
+    <line x1="14" y1="34" x2="401" y2="34" stroke="#E2DDD5" stroke-width="0.8" />
+    <text x="14" y="54" font-size="9" font-weight="600" fill="#4A7A5B">Techno : Spring Data JPA · Hibernate 6 · Jakarta Validation</text>
+  </g>
+
+  <!-- Carte 2.3 : Double Fidélité & VFP -->
+  <g transform="translate(45, 399)">
+    <rect x="0" y="0" width="415" height="72" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="14" y="24" font-size="11" font-weight="700" fill="#243342">Module Double Fidélité &amp; Moteur VFP</text>
+    <line x1="14" y1="34" x2="401" y2="34" stroke="#E2DDD5" stroke-width="0.8" />
+    <text x="14" y="54" font-size="9" font-weight="600" fill="#C48B28">Techno : Spring @Scheduled · Batch SQL glissant nocturne (15j)</text>
+  </g>
+
+  <!-- Carte 2.4 : Statistiques & RGPD -->
+  <g transform="translate(495, 399)">
+    <rect x="0" y="0" width="415" height="72" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="14" y="24" font-size="11" font-weight="700" fill="#243342">Module Reporting Municipal &amp; Conformité RGPD</text>
+    <line x1="14" y1="34" x2="401" y2="34" stroke="#E2DDD5" stroke-width="0.8" />
+    <text x="14" y="54" font-size="9" font-weight="600" fill="#243342">Techno : Requêtes SQL natives d'agrégation · k-anonymat strict</text>
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- LIAISON TIER 2 <-> TIER 3                                -->
+  <!-- ======================================================== -->
+  <line x1="935" y1="378" x2="965" y2="378" stroke="#243342" stroke-width="2"/>
+  <polygon points="965,378 957,374 957,382" fill="#243342"/>
+  <polygon points="935,378 943,374 943,382" fill="#243342"/>
+  <text x="950" y="368" text-anchor="middle" font-size="8" font-weight="700" fill="#243342">JDBC</text>
+  <text x="950" y="391" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">HikariCP</text>
+
+  <!-- ======================================================== -->
+  <!-- TIER 3 : PERSISTANCE RELATIONNELLE (POSTGRESQL 16)       -->
+  <!-- ======================================================== -->
+  <rect x="965" y="275" width="450" height="206" rx="10" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1.4" filter="url(#shadow-card)"/>
+  <rect x="965" y="275" width="450" height="32" rx="10" fill="#243342" />
+  <text x="985" y="296" font-size="11.5" font-weight="700" fill="#FFFFFF">TIER 3 — PERSISTANCE RELATIONNELLE (ACID)</text>
+
+  <g transform="translate(985, 317)">
+    <rect x="0" y="0" width="410" height="154" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    
+    <g transform="translate(178, 20)">
+      <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" x="0" y="0" width="54" height="54" />
+    </g>
+    
+    <text x="205" y="100" text-anchor="middle" font-size="14" font-weight="700" fill="#243342">PostgreSQL 16 (SGBD-R)</text>
+    <text x="205" y="122" text-anchor="middle" font-size="10" font-weight="600" fill="#2B5270">Intégrité Transactionnelle Strictement Garantie (ACID)</text>
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- LIAISON TIER 2 -> TIER 4 : APPELS CLIENTS HTTP           -->
+  <!-- ======================================================== -->
+  <line x1="720" y1="481" x2="720" y2="505" stroke="#243342" stroke-width="1.8" stroke-dasharray="3 2"/>
+  <polygon points="720,509 716,500 724,500" fill="#243342"/>
+  
+  <g transform="translate(510, 485)">
+    <rect x="0" y="0" width="420" height="18" rx="9" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="210" y="12" text-anchor="middle" font-size="8.5" font-weight="600" fill="#5A6578">Appels HTTP Clients (Spring RestClient) · Émulation des protocoles tiers</text>
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- TIER 4 : SIMULATEURS PARTENAIRES (MOCKS REST DOCKERISÉS) -->
+  <!-- ======================================================== -->
+  <rect x="25" y="510" width="1390" height="110" rx="10" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1.2" stroke-dasharray="4 3" filter="url(#shadow-card)"/>
+  <rect x="25" y="510" width="1390" height="28" rx="10" fill="#F5F2EB" />
+  <text x="45" y="529" font-size="11" font-weight="700" fill="#243342">TIER 4 — SIMULATEURS PARTENAIRES &amp; SYSTÈMES EXTERNES (Mocks REST OpenAPI 3.1)</text>
+  <text x="1395" y="529" text-anchor="end" font-size="9.5" font-weight="500" fill="#5A6578">Bouchons Dockerisés Autonomes pour Environnement Étudiant (Isolement Réseau)</text>
+
+  <!-- Carte 4.1 : Mock Banque -->
+  <g transform="translate(45, 546)">
+    <rect x="0" y="0" width="425" height="64" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="14" y="22" font-size="11" font-weight="700" fill="#243342">Mock Passerelle Bancaire (Izli / Carte Bancaire)</text>
+    <line x1="14" y1="31" x2="411" y2="31" stroke="#E2DDD5" stroke-width="0.8" />
+    <text x="14" y="49" font-size="8.5" font-weight="500" fill="#334155">Rôle : Émulation pré-autorisation, débit global panier mutualisé &amp; rollback 2PC</text>
+  </g>
+
+  <!-- Carte 4.2 : Mock Mobilité -->
+  <g transform="translate(508, 546)">
+    <rect x="0" y="0" width="425" height="64" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="14" y="22" font-size="11" font-weight="700" fill="#243342">Mock Réseau de Transports Urbains (Ilévia Pass Pass)</text>
+    <line x1="14" y1="31" x2="411" y2="31" stroke="#E2DDD5" stroke-width="0.8" />
+    <text x="14" y="49" font-size="8.5" font-weight="500" fill="#334155">Rôle : Émission de titres de bus dématérialisés &amp; QR Code billettique VFP</text>
+  </g>
+
+  <!-- Carte 4.3 : Mock Voirie -->
+  <g transform="translate(970, 546)">
+    <rect x="0" y="0" width="425" height="64" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="14" y="22" font-size="11" font-weight="700" fill="#243342">Mock Stationnement Voirie (Horodateurs Municipaux)</text>
+    <line x1="14" y1="31" x2="411" y2="31" stroke="#E2DDD5" stroke-width="0.8" />
+    <text x="14" y="49" font-size="8.5" font-weight="500" fill="#334155">Rôle : Franchise de 20 minutes gratuites par lecture de plaque d'immatriculation</text>
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- SOCLE DEVOPS, CONTENEURISATION & QUALITÉ LOGICIELLE      -->
+  <!-- ======================================================== -->
+  <rect x="25" y="630" width="1390" height="130" rx="10" fill="#243342" filter="url(#shadow-card)"/>
+  
+  <text x="45" y="652" font-size="11.5" font-weight="700" fill="#FFFFFF">SOCLE DEVOPS, CONTENEURISATION &amp; QUALITÉ LOGICIELLE (JALONS R1 · R2)</text>
+
+  <g transform="translate(45, 664)">
+    <!-- Box 1 : Docker -->
+    <rect x="0" y="0" width="425" height="82" rx="6" fill="#FAF9F6" />
+    <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" x="12" y="29" width="24" height="24" />
+    <text x="44" y="24" font-size="10.5" font-weight="700" fill="#243342">Docker &amp; Docker Compose v2</text>
+    <text x="44" y="44" font-size="8.5" font-weight="600" fill="#0284C7">Multi-conteneurs (Front, Back, DB, Mocks) · Réseau bridge</text>
+    <text x="44" y="62" font-size="8.5" font-weight="400" fill="#5A6578">Déploiement reproductible en une commande : docker compose up</text>
+
+    <!-- Box 2 : GitLab -->
+    <rect x="463" y="0" width="425" height="82" rx="6" fill="#FAF9F6" />
+    <image href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gitlab/gitlab-original.svg" x="475" y="29" width="24" height="24" />
+    <text x="507" y="24" font-size="10.5" font-weight="700" fill="#243342">GitLab Forge (Université de Lille)</text>
+    <text x="507" y="44" font-size="8.5" font-weight="600" fill="#E24329">Pipelines CI/CD (.gitlab-ci.yml) · Tests unitaires JUnit 5</text>
+    <text x="507" y="62" font-size="8.5" font-weight="400" fill="#5A6578">Versioning branches (main, develop), validation DoD &amp; Qualimétrie</text>
+
+    <!-- Box 3 : OpenAPI -->
+    <rect x="925" y="0" width="425" height="82" rx="6" fill="#FAF9F6" />
+    <rect x="935" y="29" width="24" height="24" rx="4" fill="#4A7A5B" />
+    <text x="947" y="45" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF">OA</text>
+    <text x="967" y="24" font-size="10.5" font-weight="700" fill="#243342">Spécifications OpenAPI 3.1 &amp; Swagger-UI</text>
+    <text x="967" y="44" font-size="8.5" font-weight="600" fill="#4A7A5B">Contrat d'interface formel partagé Front-End &amp; Back-End</text>
+    <text x="967" y="62" font-size="8.5" font-weight="400" fill="#5A6578">Documentation interactive, DTOs normalisés et typage strict</text>
+  </g>
+</svg>
+
+</div>
+</div>
 
 ## 4.2. Choix de la pile technologique (Backend, Frontend, Données)
 

@@ -5,7 +5,9 @@
   <title>Apercu Composant — bpmn_swimlane_template</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/latin-modern-web@1.0.0/style.css">
   <style>
-    /* ==========================================================================
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ==========================================================================
    THEME MAITRE SHOPLOC — IDENTITE VISUELLE NORMALISEE
    Master 2 MIAGE — Universite de Lille — UE GLOP (2026-2027)
    Inspiration Ollca Pastel & Craft — Charte Ergonomique et Zero Emoji
@@ -80,7 +82,7 @@
 
   /* 2. TYPOGRAPHIES */
   --font-serif: "Latin Modern Roman", "LM Roman 10", "Computer Modern", "TeX Gyre Termes", "Times New Roman", Times, serif;
-  --font-sans: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Poppins", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: "Fira Code", "Latin Modern Mono", "Consolas", "Courier New", monospace;
 
   /* 3. ECHELLE DE TAILLES (DOCUMENT A4) */
@@ -144,6 +146,48 @@
   @bottom-center { content: "1"; }
 }
 
+/* CONFIGURATION SPECIFIQUE DES PAGES PAYSAGE (A4 LANDSCAPE) POUR GRAPHIQUES ET CARTOGRAPHIES */
+@page landscape-page {
+  size: A4 landscape;
+  margin: 10mm 15mm 10mm 15mm;
+
+  @top-left {
+    content: "Projet ShopLoc — Master 2 MIAGE GLOP";
+    font-family: var(--font-serif);
+    font-size: var(--font-size-meta);
+    font-style: italic;
+    color: var(--color-text-secondary);
+    border-bottom: 0.5pt solid var(--color-border-light);
+    padding-bottom: 4pt;
+    margin-bottom: 6pt;
+  }
+
+  @top-right {
+    content: "Universite de Lille — FST Informatique";
+    font-family: var(--font-serif);
+    font-size: var(--font-size-meta);
+    font-style: italic;
+    color: var(--color-text-secondary);
+    border-bottom: 0.5pt solid var(--color-border-light);
+    padding-bottom: 4pt;
+    margin-bottom: 6pt;
+  }
+
+  @bottom-center {
+    content: counter(page);
+    font-family: var(--font-serif);
+    font-size: var(--font-size-meta);
+    color: var(--color-text-primary);
+  }
+}
+
+.landscape-page {
+  page: landscape-page;
+  break-before: page;
+  break-after: page;
+  width: 100%;
+}
+
 /* REGLES GENERALES */
 *, *:before, *:after {
   box-sizing: border-box;
@@ -157,9 +201,11 @@ body {
   background: var(--color-surface-print);
   margin: 0;
   padding: 0;
-  text-align: justify;
-  text-justify: inter-word;
-  hyphens: auto;
+  text-align: left;
+}
+
+p, li {
+  text-align: left;
 }
 
 /* EN-TETE INSTITUTIONNEL AVEC LOGOS OFFICIELS */
@@ -233,6 +279,15 @@ h3.subsection-heading {
   font-weight: bold;
   color: var(--color-text-primary);
   margin: 10pt 0 4pt 0;
+  page-break-after: avoid;
+  text-align: left;
+}
+
+h4.category-heading {
+  font-size: 10pt;
+  font-weight: 700;
+  color: var(--color-brand-primary);
+  margin: 7pt 0 2pt 0;
   page-break-after: avoid;
   text-align: left;
 }
@@ -312,6 +367,20 @@ table.booktabs code {
   border-bottom: none;
 }
 
+.cartouche-compact {
+  text-align: center;
+  margin: 6pt 0 14pt 0;
+  font-size: var(--font-size-meta);
+  color: var(--color-text-secondary);
+  border-bottom: 0.75pt solid var(--color-border-light);
+  padding-bottom: 6pt;
+}
+
+.cartouche-compact code {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-meta);
+}
+
 /* ENCARTS ET DECISIONS VALIDATION / ATTENTE (ZERO BARRE LATERALE) */
 .callout-box {
   margin: 6pt 0 6pt 0;
@@ -377,7 +446,7 @@ table.booktabs code {
   font-style: italic;
   line-height: 1.35;
   margin: 0;
-  text-align: justify;
+  text-align: left;
 }
 
 /* BADGES ET METADONNEES EN LIGNE */
@@ -434,141 +503,170 @@ code.latex-code {
   </style>
 </head>
 <body>
-  <!-- GABARIT DE REFERENCE BPMN 2.0 A COULOIRS (SWIMLANES) EN SVG VECTORIEL PUR -->
-<!-- Design Editorial Craft & Pastel — Inspiration Ollca & Sobriete GLOP (Zero Emoji) -->
-
-<div class="diagram-container" style="margin: 24pt 0; text-align: center; background: #FAF9F6; border: 1px solid #DCD6CD; border-radius: 18px; padding: 22pt 18pt; box-shadow: 0 6px 24px rgba(36, 51, 66, 0.05);">
-  <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16pt;">
-    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #243342;"></span>
-    <h3 style="font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; font-size: 11pt; font-weight: 700; color: #243342; margin: 0; text-transform: uppercase; letter-spacing: 0.08em;">
-      Figure 3.1 — Processus BPMN 2.0 : Commande Click & Collect et Retrait Magasin (Processus P2)
-    </h3>
+  <!-- FIGURE 3.1 : PROCESSUS METIER BPMN 2.0 EN COULOIRS SÉMANTIQUES -->
+<div class="figure-card" style="background:#FFFFFF; border:1px solid #E8E6DF; border-radius:16px; padding:28px; margin-bottom:36px; box-shadow:0 4px 16px rgba(36,51,66,0.06);">
+  
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px; border-bottom:1px solid #E8E6DF; padding-bottom:14px;">
+    <div>
+      <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:4px;">
+        <span style="width:8px; height:8px; border-radius:50%; background:#243342;"></span>
+        <span style="font-size:11px; font-weight:700; color:#243342; text-transform:uppercase; letter-spacing:0.08em;">Norme BPMN 2.0 (ISO/IEC 19510)</span>
+      </div>
+      <h3 style="font-size:18px; font-weight:700; color:#243342; margin:0;">Figure 3.1 — Processus P2 : Commande Click &amp; Collect, Retrait et Crédit VFP</h3>
+    </div>
+    <span style="font-size:11px; background:#FAF9F6; border:1px solid #E8E6DF; padding:4px 12px; border-radius:9999px; color:#5A6578; font-weight:600;">Orchestration Métier</span>
   </div>
 
-  <svg viewBox="0 0 960 500" width="100%" height="500" style="font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; overflow: visible;">
-    <defs>
-      <filter id="bpmn-node-shadow" x="-5%" y="-10%" width="110%" height="125%">
-        <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#243342" flood-opacity="0.06" />
-      </filter>
-      <marker id="bpmn-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#5A6578" />
-      </marker>
-      <marker id="bpmn-arrow-ok" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-        <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#4A7A5B" />
-      </marker>
-    </defs>
-
-    <!-- CADRE GENERAL DU POOL SHOPLOC -->
-    <rect x="20" y="20" width="920" height="460" rx="16" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1.2" />
+  <svg viewBox="0 0 1020 620" width="100%" height="auto" style="overflow:visible; font-family:'Poppins', sans-serif;">
     
-    <!-- EN-TETE MAITRE DU POOL (Ardoise noble) -->
-    <path d="M 20 36 Q 20 20 36 20 L 62 20 L 62 480 L 36 480 Q 20 480 20 464 Z" fill="#243342" />
-    <text x="42" y="250" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FAF9F6" letter-spacing="0.14em" transform="rotate(-90 42 250)">
-      PROCESSUS CLICK & COLLECT & RETRAIT MULTI-ARTISANS
-    </text>
+  <defs>
+    <!-- Filtre ombre portee douce -->
+    <filter id="shadow-soft" x="-8%" y="-8%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#243342" flood-opacity="0.06"/>
+    </filter>
+    <filter id="shadow-elevated" x="-8%" y="-8%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#243342" flood-opacity="0.10"/>
+    </filter>
 
-    <!-- ========================================================================= -->
-    <!-- COULOIR 1 : CITOYEN / CLIENT (Terracotta doux)                            -->
-    <!-- ========================================================================= -->
-    <rect x="62" y="20" width="878" height="110" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="0.8" />
-    <rect x="62" y="20" width="145" height="110" fill="#FBEEEA" />
-    <text x="80" y="68" font-size="10" font-weight="700" fill="#8E3D2A">1. Citoyen (Client)</text>
-    <text x="80" y="84" font-size="8" fill="#5A6578">Parcours mobile / senior</text>
+    <!-- Marqueurs de fleches sémantiques parfaitement orientes -->
+    <marker id="arrow-slate" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#243342" />
+    </marker>
+    <marker id="arrow-terracotta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#C26750" />
+    </marker>
+    <marker id="arrow-sage" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#4A7A5B" />
+    </marker>
+    <marker id="arrow-honey" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#C48B28" />
+    </marker>
+    <marker id="arrow-plum" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#6E3946" />
+    </marker>
+    <marker id="arrow-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#8C96A5" />
+    </marker>
+  </defs>
 
-    <!-- Evenement Debut : Besoin d'achat -->
-    <circle cx="235" cy="75" r="16" fill="#EBF3ED" stroke="#4A7A5B" stroke-width="2" />
-    <text x="235" y="79" text-anchor="middle" font-size="8" font-weight="700" fill="#2E583D">Start</text>
 
-    <!-- Flux vers Tache 1 -->
-    <line x1="251" y1="75" x2="285" y2="75" stroke="#5A6578" stroke-width="1.5" marker-end="url(#bpmn-arrow)" />
+    <!-- 4 COULOIRS (SWIMLANES) AUX COULEURS SEMANTIQUES -->
+    
+    <!-- COULOIR 1 : CITOYEN PIERRE (TERRACOTTA) -->
+    <rect x="50" y="30" width="940" height="130" fill="#FBEEEA" fill-opacity="0.5" stroke="#D88B77" stroke-width="1.2" rx="6" />
+    <rect x="50" y="30" width="160" height="130" fill="#C26750" rx="6" />
+    <text x="130" y="90" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">CITOYEN</text>
+    <text x="130" y="108" text-anchor="middle" font-size="10" font-weight="400" fill="#FFFFFF" opacity="0.9">(Pierre Dupont, 74 ans)</text>
 
-    <!-- Tache 1 : Selection Panier Multi-Boutiques -->
-    <g transform="translate(285, 45)" filter="url(#bpmn-node-shadow)">
-      <rect x="0" y="0" width="160" height="60" rx="12" fill="#FFFFFF" stroke="#D88B77" stroke-width="1.2" />
-      <rect x="8" y="8" width="70" height="12" rx="6" fill="#FBEEEA" />
-      <text x="43" y="17" text-anchor="middle" font-size="6.5" font-weight="700" fill="#C26750">USER TASK</text>
-      <text x="12" y="36" font-size="8.5" font-weight="700" fill="#243342">Selection Produits</text>
-      <text x="12" y="49" font-size="7.5" fill="#5A6578">Panier multi-commerces</text>
+    <!-- COULOIR 2 : COMMERÇANTE SUZANNE (SAUGE) -->
+    <rect x="50" y="170" width="940" height="130" fill="#EBF3ED" fill-opacity="0.5" stroke="#7EA88D" stroke-width="1.2" rx="6" />
+    <rect x="50" y="170" width="160" height="130" fill="#4A7A5B" rx="6" />
+    <text x="130" y="230" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">COMMERÇANTE</text>
+    <text x="130" y="248" text-anchor="middle" font-size="10" font-weight="400" fill="#FFFFFF" opacity="0.9">(Suzanne, Boulangerie)</text>
+
+    <!-- COULOIR 3 : PLATEFORME SHOPLOC (ARDOISE) -->
+    <rect x="50" y="310" width="940" height="150" fill="#EBF0F5" fill-opacity="0.5" stroke="#8B9EAF" stroke-width="1.2" rx="6" />
+    <rect x="50" y="310" width="160" height="150" fill="#243342" rx="6" />
+    <text x="130" y="375" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">SHOPLOC ENGINE</text>
+    <text x="130" y="393" text-anchor="middle" font-size="10" font-weight="400" fill="#FFFFFF" opacity="0.9">(Core Services &amp; DB)</text>
+
+    <!-- COULOIR 4 : SERVICES VILLE DE LILLE (OCRE MIEL) -->
+    <rect x="50" y="470" width="940" height="120" fill="#FEF7EB" fill-opacity="0.5" stroke="#DCB162" stroke-width="1.2" rx="6" />
+    <rect x="50" y="470" width="160" height="120" fill="#C48B28" rx="6" />
+    <text x="130" y="525" text-anchor="middle" font-size="12" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">VILLE DE LILLE</text>
+    <text x="130" y="543" text-anchor="middle" font-size="10" font-weight="400" fill="#FFFFFF" opacity="0.9">(Mobilité &amp; Horodateurs)</text>
+
+    <!-- EVENEMENT DEBUT : CERCLE VERT -->
+    <circle cx="240" cy="95" r="16" fill="#FFFFFF" stroke="#4A7A5B" stroke-width="2.5" filter="url(#shadow-soft)" />
+    <polygon points="236,88 248,95 236,102" fill="#4A7A5B" />
+
+    <!-- TACHE 1 : CITOYEN VALIDE PANIER -->
+    <g filter="url(#shadow-soft)">
+      <rect x="280" y="65" width="130" height="60" rx="8" fill="#FFFFFF" stroke="#C26750" stroke-width="1.5" />
+      <text x="345" y="82" text-anchor="middle" font-size="8.5" font-weight="700" fill="#C26750" text-transform="uppercase">USER TASK</text>
+      <text x="345" y="100" text-anchor="middle" font-size="10.5" font-weight="600" fill="#243342">Valider panier</text>
+      <text x="345" y="114" text-anchor="middle" font-size="9.5" font-weight="400" fill="#5A6578">multi-boutiques</text>
     </g>
 
-    <!-- Flux descendant vers Coeur ShopLoc -->
-    <path d="M 445 75 L 485 75 L 485 170" fill="none" stroke="#5A6578" stroke-width="1.5" marker-end="url(#bpmn-arrow)" />
+    <!-- FLECHE SEQUENCE 1 : DEBUT -> TACHE 1 -->
+    <line x1="256" y1="95" x2="280" y2="95" stroke="#243342" stroke-width="2" marker-end="url(#arrow-slate)" />
 
-    <!-- ========================================================================= -->
-    <!-- COULOIR 2 : COEUR SHOPLOC (Ardoise Brumeux Doux)                          -->
-    <!-- ========================================================================= -->
-    <rect x="62" y="130" width="878" height="120" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8" />
-    <rect x="62" y="130" width="145" height="120" fill="#EBF0F5" />
-    <text x="80" y="185" font-size="10" font-weight="700" fill="#1C2D3D">2. Coeur ShopLoc</text>
-    <text x="80" y="201" font-size="8" fill="#5A6578">Logique, Stocks & Fidelite</text>
+    <!-- MESSAGE FLOW : CITOYEN -> SHOPLOC -->
+    <path d="M 345 125 L 345 345" fill="none" stroke="#243342" stroke-width="1.8" stroke-dasharray="5,4" marker-end="url(#arrow-slate)" />
 
-    <!-- Tache 2 : Reservation & Generation QR Code Pass -->
-    <g transform="translate(420, 170)" filter="url(#bpmn-node-shadow)">
-      <rect x="0" y="0" width="170" height="62" rx="12" fill="#FFFFFF" stroke="#243342" stroke-width="1.2" />
-      <rect x="8" y="8" width="80" height="12" rx="6" fill="#EBF0F5" />
-      <text x="48" y="17" text-anchor="middle" font-size="6.5" font-weight="700" fill="#1C2D3D">SERVICE TASK</text>
-      <text x="12" y="37" font-size="8.5" font-weight="700" fill="#243342">Reservation Stocks</text>
-      <text x="12" y="50" font-size="7.5" fill="#5A6578">Emission Pass Retrait QR</text>
+    <!-- TACHE 2 : SHOPLOC ENREGISTRE & NOTIFIE -->
+    <g filter="url(#shadow-soft)">
+      <rect x="280" y="345" width="130" height="65" rx="8" fill="#FFFFFF" stroke="#243342" stroke-width="1.5" />
+      <text x="345" y="362" text-anchor="middle" font-size="8.5" font-weight="700" fill="#243342" text-transform="uppercase">SERVICE TASK</text>
+      <text x="345" y="380" text-anchor="middle" font-size="10.5" font-weight="600" fill="#243342">Bloquer stock</text>
+      <text x="345" y="396" text-anchor="middle" font-size="9.5" font-weight="400" fill="#5A6578">&amp; notifier Suzanne</text>
     </g>
 
-    <!-- Flux vers Commercant -->
-    <path d="M 590 201 L 635 201 L 635 285" fill="none" stroke="#5A6578" stroke-width="1.5" marker-end="url(#bpmn-arrow)" />
+    <!-- MESSAGE FLOW : SHOPLOC -> SUZANNE -->
+    <path d="M 410 375 L 450 375 L 450 265 L 470 265" fill="none" stroke="#243342" stroke-width="1.8" stroke-dasharray="5,4" marker-end="url(#arrow-slate)" />
 
-    <!-- ========================================================================= -->
-    <!-- COULOIR 3 : COMMERCANT / SUZANNE (Sauge Douce)                            -->
-    <!-- ========================================================================= -->
-    <rect x="62" y="250" width="878" height="115" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="0.8" />
-    <rect x="62" y="250" width="145" height="115" fill="#EBF3ED" />
-    <text x="80" y="305" font-size="10" font-weight="700" fill="#2E583D">3. Commercant</text>
-    <text x="80" y="321" font-size="8" fill="#5A6578">Preparation & Retrait</text>
-
-    <!-- Tache 3 : Preparation & Scannage Caisse POS -->
-    <g transform="translate(565, 285)" filter="url(#bpmn-node-shadow)">
-      <rect x="0" y="0" width="165" height="62" rx="12" fill="#FFFFFF" stroke="#7EA88D" stroke-width="1.2" />
-      <rect x="8" y="8" width="75" height="12" rx="6" fill="#EBF3ED" />
-      <text x="45.5" y="17" text-anchor="middle" font-size="6.5" font-weight="700" fill="#2E583D">MANUAL / POS</text>
-      <text x="12" y="37" font-size="8.5" font-weight="700" fill="#243342">Preparation Commande</text>
-      <text x="12" y="50" font-size="7.5" fill="#5A6578">Scannage Pass Client en caisse</text>
+    <!-- TACHE 3 : SUZANNE VERIFIE & PREPARE -->
+    <g filter="url(#shadow-soft)">
+      <rect x="470" y="205" width="130" height="65" rx="8" fill="#FFFFFF" stroke="#4A7A5B" stroke-width="1.5" />
+      <text x="535" y="222" text-anchor="middle" font-size="8.5" font-weight="700" fill="#4A7A5B" text-transform="uppercase">USER TASK</text>
+      <text x="535" y="240" text-anchor="middle" font-size="10.5" font-weight="600" fill="#243342">Préparer sachet</text>
+      <text x="535" y="256" text-anchor="middle" font-size="9.5" font-weight="400" fill="#5A6578">Click &amp; Collect</text>
     </g>
 
-    <!-- Flux vers Passerelle de Decision -->
-    <line x1="730" y1="316" x2="765" y2="316" stroke="#5A6578" stroke-width="1.5" marker-end="url(#bpmn-arrow)" />
+    <!-- PASSERELLE XOR : DISPONIBILITE -->
+    <polygon points="640,237 660,217 680,237 660,257" fill="#FFFFFF" stroke="#243342" stroke-width="2" filter="url(#shadow-soft)" />
+    <text x="660" y="242" text-anchor="middle" font-size="14" font-weight="700" fill="#243342">×</text>
 
-    <!-- Passerelle Exclusive (Losange) : Retrait Conforme ? -->
-    <g transform="translate(765, 296)">
-      <polygon points="20,0 40,20 20,40 0,20" fill="#FEF7EB" stroke="#DCB162" stroke-width="1.5" />
-      <text x="20" y="24" text-anchor="middle" font-size="10" font-weight="700" fill="#845A11">X</text>
+    <!-- LIAISON TACHE 3 -> XOR -->
+    <line x1="600" y1="237" x2="640" y2="237" stroke="#243342" stroke-width="2" marker-end="url(#arrow-slate)" />
+
+    <!-- BRANCHE VALIDATION -> TACHE 4 SUZANNE -->
+    <line x1="680" y1="237" x2="710" y2="237" stroke="#4A7A5B" stroke-width="2" marker-end="url(#arrow-sage)" />
+    <text x="695" y="230" font-size="8.5" font-weight="700" fill="#4A7A5B">[Prêt]</text>
+
+    <!-- TACHE 4 : REMISE COMMANDE & SCAN NFC -->
+    <g filter="url(#shadow-soft)">
+      <rect x="710" y="205" width="135" height="65" rx="8" fill="#FFFFFF" stroke="#4A7A5B" stroke-width="1.5" />
+      <text x="777" y="222" text-anchor="middle" font-size="8.5" font-weight="700" fill="#4A7A5B" text-transform="uppercase">POS TACTILE</text>
+      <text x="777" y="240" text-anchor="middle" font-size="10.5" font-weight="600" fill="#243342">Scanner pass NFC</text>
+      <text x="777" y="256" text-anchor="middle" font-size="9.5" font-weight="400" fill="#5A6578">&amp; délivrer sachet</text>
     </g>
 
-    <!-- Branche OK : vers Mairie & Fidelite -->
-    <path d="M 785 336 L 785 395" fill="none" stroke="#4A7A5B" stroke-width="1.5" marker-end="url(#bpmn-arrow-ok)" />
-    <rect x="792" y="350" width="28" height="16" rx="8" fill="#EBF3ED" />
-    <text x="806" y="361.5" text-anchor="middle" font-size="7" font-weight="700" fill="#2E583D">OUI</text>
+    <!-- INTERACTION CITOYEN EN BOUTIQUE -->
+    <path d="M 777 125 L 777 205" stroke="#C26750" stroke-width="2" marker-end="url(#arrow-terracotta)" />
+    <text x="785" y="165" font-size="9" font-weight="600" fill="#C26750">Présentation carte</text>
 
-    <!-- ========================================================================= -->
-    <!-- COULOIR 4 : SERVICES MOBILITES & MAIRIE (Ocre Miel Doux)                  -->
-    <!-- ========================================================================= -->
-    <rect x="62" y="365" width="878" height="115" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8" />
-    <rect x="62" y="365" width="145" height="115" fill="#FEF7EB" />
-    <text x="80" y="420" font-size="10" font-weight="700" fill="#845A11">4. Mairie & Mobilite</text>
-    <text x="80" y="436" font-size="8" fill="#5A6578">Clearing VFP & Parking</text>
-
-    <!-- Tache 4 : Credit Fidelite & Ticket Parking Offert -->
-    <g transform="translate(710, 395)" filter="url(#bpmn-node-shadow)">
-      <rect x="0" y="0" width="170" height="62" rx="12" fill="#FFFFFF" stroke="#DCB162" stroke-width="1.2" />
-      <rect x="8" y="8" width="85" height="12" rx="6" fill="#FEF7EB" />
-      <text x="50.5" y="17" text-anchor="middle" font-size="6.5" font-weight="700" fill="#845A11">CLEARING AUTO</text>
-      <text x="12" y="37" font-size="8.5" font-weight="700" fill="#243342">Credit Points & VFP</text>
-      <text x="12" y="50" font-size="7.5" fill="#5A6578">Clearing 24h & stationnement</text>
+    <!-- TACHE 5 : SHOPLOC CLEARS & CREDITS -->
+    <g filter="url(#shadow-soft)">
+      <rect x="710" y="350" width="135" height="65" rx="8" fill="#FFFFFF" stroke="#243342" stroke-width="1.5" />
+      <text x="777" y="367" text-anchor="middle" font-size="8.5" font-weight="700" fill="#243342" text-transform="uppercase">CLEARING AUTO</text>
+      <text x="777" y="385" text-anchor="middle" font-size="10.5" font-weight="600" fill="#243342">Calculer VFP 15j</text>
+      <text x="777" y="401" text-anchor="middle" font-size="9.5" font-weight="400" fill="#5A6578">&amp; virer fonds SEPA</text>
     </g>
 
-    <!-- Evenement Fin : Processus Valide -->
-    <line x1="880" y1="426" x2="905" y2="426" stroke="#4A7A5B" stroke-width="1.5" marker-end="url(#bpmn-arrow-ok)" />
-    <circle cx="920" cy="426" r="14" fill="#FFFFFF" stroke="#4A7A5B" stroke-width="3" />
-    <circle cx="920" cy="426" r="8" fill="#4A7A5B" />
+    <!-- VALIDATION CAISSE -> SHOPLOC -->
+    <line x1="777" y1="270" x2="777" y2="350" stroke="#243342" stroke-width="2" marker-end="url(#arrow-slate)" />
+
+    <!-- SHOPLOC -> SERVICES VILLE -->
+    <line x1="777" y1="415" x2="777" y2="500" stroke="#C48B28" stroke-width="2" marker-end="url(#arrow-honey)" />
+
+    <!-- TACHE 6 : VILLE DEBLOQUE STATIONNEMENT -->
+    <g filter="url(#shadow-soft)">
+      <rect x="710" y="500" width="135" height="65" rx="8" fill="#FFFFFF" stroke="#DCB162" stroke-width="1.5" />
+      <text x="777" y="517" text-anchor="middle" font-size="8.5" font-weight="700" fill="#845A11" text-transform="uppercase">SERVICE VILLE</text>
+      <text x="777" y="535" text-anchor="middle" font-size="10.5" font-weight="600" fill="#243342">Créditer 1h parking</text>
+      <text x="777" y="551" text-anchor="middle" font-size="9.5" font-weight="400" fill="#5A6578">sur l'horodateur</text>
+    </g>
+
+    <!-- EVENEMENT FIN : DOUBLE CERCLE -->
+    <g filter="url(#shadow-soft)">
+      <circle cx="910" cy="532" r="16" fill="#FFFFFF" stroke="#243342" stroke-width="3" />
+      <circle cx="910" cy="532" r="10" fill="#4A7A5B" />
+    </g>
+    <line x1="845" y1="532" x2="894" y2="532" stroke="#243342" stroke-width="2" marker-end="url(#arrow-slate)" />
+    <text x="910" y="565" text-anchor="middle" font-size="9.5" font-weight="600" fill="#5A6578">Commande honorée</text>
 
   </svg>
 </div>
-
 </body>
 </html>

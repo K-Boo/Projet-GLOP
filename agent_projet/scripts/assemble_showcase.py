@@ -36,7 +36,7 @@ def main():
             html_parts.append(f"""
     <section id="{sec_id}" style="margin-bottom: 45px;">
       <div style="border-bottom: 2px solid #243342; padding-bottom: 8px; margin-bottom: 16px;">
-        <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13pt; color: #243342; margin: 0; text-transform: uppercase; letter-spacing: 0.04em;">{title}</h2>
+        <h2 style="font-family: 'Poppins', sans-serif; font-size: 13pt; color: #243342; margin: 0; text-transform: uppercase; letter-spacing: 0.04em;">{title}</h2>
       </div>
       {content}
     </section>
