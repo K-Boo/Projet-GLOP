@@ -70,8 +70,8 @@ Pour garantir l'excellence technique exigée par le référentiel GLOP, deux ver
 
 Le **Diagramme de Gantt** planifie les vagues de fabrication en synchronisant les efforts d'ingénierie avec les cinq jalons contractuels de restitution fixés par la MOA (Septembre 2026 à Mars 2027).
 
-<div class="diagram-container" style="margin: 2pt 0;">
-  <img src="../figures/fig_8_3_gantt_jalons_r1_r5.png" alt="Figure 8.3 — Diagramme de Gantt Annuel &amp; Jalons Contractuels R1 à R5" style="width: 100%; max-width: 440px; height: auto; display: block; margin: 0 auto;" />
+<div class="diagram-container" style="margin: 2pt 0; padding: 0; border: none; background: transparent;">
+  <img src="../figures/fig_5_1_gantt_annuel_officiel.png" alt="Figure 8.3 — Diagramme de Gantt Annuel &amp; Jalons Contractuels R1 à R5" style="width: 100%; max-width: 100%; height: auto; display: block; margin: 0 auto;" />
   <div class="diagram-caption">Figure 8.3 — Diagramme de Gantt Annuel &amp; Jalons Contractuels R1 à R5 (2026-2027) · Chemin Critique</div>
 </div>
 

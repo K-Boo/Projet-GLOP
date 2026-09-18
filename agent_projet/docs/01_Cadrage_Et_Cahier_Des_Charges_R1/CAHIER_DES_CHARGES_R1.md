@@ -206,9 +206,9 @@ Le calendrier de développement de ShopLoc est structuré sur sept mois, de sept
 
 Le diagramme ci-après retrace le cheminement chronologique des activités, en tenant compte des périodes universitaires d'examens et de congés afin de sécuriser nos livraisons :
 
-<div class="diagram-container" style="margin: 10pt 0; text-align: center;">
-  <img src="figures/fig_5_1_gantt_annuel_officiel.png" alt="Figure 5.1 — Diagramme de Gantt annuel prévisionnel du projet ShopLoc" style="width: 100%; max-width: 700px; height: auto; display: block; margin: 0 auto; border-radius: 4px;" />
-  <div class="diagram-caption">Figure 5.1 — Diagramme de Gantt annuel prévisionnel du projet ShopLoc (Jalons officiels R1 à R5 — 2026-2027)</div>
+<div class="diagram-container" style="margin: 0; padding: 0; border: none; background: transparent;">
+  <img src="figures/fig_5_1_gantt_annuel_officiel.png" alt="Figure 5.1 — Diagramme de Gantt annuel prévisionnel du projet ShopLoc" style="width: 100%; max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 4px;" />
+  <div class="diagram-caption" style="margin-top: 6pt;">Figure 5.1 — Diagramme de Gantt annuel prévisionnel du projet ShopLoc (Jalons officiels R1 à R5 — 2026-2027)</div>
 </div>
 
 Le projet s'organise autour de cinq phases de travail coordonnées :

@@ -1,281 +1,162 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Générateur du diagramme de Gantt annuel officiel haute définition (Figure 5.1).
-Basé exclusivement sur les dates officielles du sujet de l'UE GLOP 2026-2027.
+Générateur du diagramme de Gantt annuel officiel (Figure 5.1).
+Style Planyway épuré, uniquement la partie graphique.
 """
 import os
 import pymupdf
 
 def generate_gantt():
-    svg_content = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 780" width="1300" height="780" style="font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;">
+    svg_parts = []
+    
+    # 1. Header and Defs
+    # Height reduced to 460 to only contain the Gantt timeline, no bottom table.
+    svg_parts.append("""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 460" width="1600" height="460" style="font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; background-color: #FAF9F6;">
   <defs>
-    <filter id="shadow-gantt" x="-2%" y="-2%" width="104%" height="106%">
-      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.08"/>
+    <filter id="shadow-bar" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#243342" flood-opacity="0.10"/>
     </filter>
-    <marker id="arrow-crit" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 2 L 8 5 L 0 8 z" fill="#DC2626" />
+    <marker id="arrow-crit" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 2 L 8 5 L 0 8 z" fill="#243342" />
     </marker>
   </defs>
 
-  <!-- FOND GLOBAL -->
-  <rect x="5" y="5" width="1290" height="770" rx="14" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2" filter="url(#shadow-gantt)"/>
+  <!-- BACKGROUND RECT -->
+  <rect x="20" y="20" width="1560" height="420" rx="12" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1.5" />
+  
+  <!-- HEADER -->
+  <rect x="20" y="20" width="1560" height="60" rx="12" fill="#243342" />
+  <rect x="20" y="60" width="1560" height="20" fill="#243342" />
+  
+  <text x="45" y="55" font-size="20" font-weight="800" fill="#FFFFFF">ShopLoc Gantt</text>
+  <text x="210" y="53" font-size="15" font-weight="500" fill="#DCD6CD">Planning Prévisionnel Annuel</text>
+  
+  <!-- SIDEBAR (TASK LIST) -->
+  <rect x="20" y="80" width="360" height="360" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1.5"/>
+  <rect x="20" y="80" width="360" height="40" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1.5"/>
+  <text x="40" y="105" font-size="13" font-weight="700" fill="#243342" text-transform="uppercase" letter-spacing="1">Livrables / Tâches</text>
+  <text x="300" y="105" font-size="13" font-weight="700" fill="#243342" text-transform="uppercase" letter-spacing="1">Durée</text>
+""")
 
-  <!-- EN-TÊTE PRINCIPAL -->
-  <rect x="25" y="20" width="1250" height="52" rx="8" fill="#1E293B" />
-  <rect x="38" y="32" width="28" height="28" rx="5" fill="#0284C7" />
-  <text x="52" y="51" text-anchor="middle" font-size="12" font-weight="800" fill="#FFFFFF">GANTT</text>
-  <text x="78" y="47" font-size="14.5" font-weight="700" fill="#FFFFFF">Planning Prévisionnel Annuel &amp; Jalons Officiels de l'UE GLOP (2026-2027)</text>
-  <text x="1260" y="47" text-anchor="end" font-size="11" font-weight="500" fill="#94A3B8">Calendrier officiel Master 2 MIAGE · Université de Lille · Entreprise Garik</text>
+    # 2. Timeline Grid (7 Months, each ~171.4px wide)
+    months = ["Sept. 2026", "Oct. 2026", "Nov. 2026", "Déc. 2026", "Janv. 2027", "Févr. 2027", "Mars 2027"]
+    month_width = 1200 / 7
+    
+    svg_parts.append('  <!-- TIMELINE GRID -->')
+    svg_parts.append('  <g transform="translate(380, 80)">')
+    
+    svg_parts.append('    <rect x="0" y="0" width="1200" height="40" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1.5"/>')
+    
+    for i, m in enumerate(months):
+        x = i * month_width
+        svg_parts.append(f'    <!-- {m} -->')
+        svg_parts.append(f'    <rect x="{x}" y="0" width="{month_width}" height="360" fill="none" stroke="#DCD6CD" stroke-width="1" stroke-dasharray="4 4" />')
+        
+        if i in [1, 3, 6]:
+            svg_parts.append(f'    <rect x="{x}" y="40" width="{month_width}" height="320" fill="#243342" fill-opacity="0.02" />')
+        
+        svg_parts.append(f'    <rect x="{x}" y="0" width="{month_width}" height="40" fill="none" stroke="#DCD6CD" stroke-width="1.5" />')
+        svg_parts.append(f'    <text x="{x + month_width/2}" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="#243342">{m}</text>')
+        
+    svg_parts.append('  </g>')
 
-  <!-- AXE DU TEMPS : 7 MOIS (Septembre 2026 à Mars 2027) -->
-  <g transform="translate(320, 85)">
-    <!-- Fond barre des mois -->
-    <rect x="0" y="0" width="955" height="42" rx="6" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+    # 3. Tasks Data
+    # Planyway minimal style: one main color, simple labels
+    tasks = [
+        {"y": 140, "title": "Jalon R1 · Cahier des Charges", "dur": "2 sem.", "c": "#243342", "start": 0.2, "len": 0.5, "milestone": "R1 (18/09)", "id": 1},
+        {"y": 190, "title": "Jalon R2 · Outillage & DevOps", "dur": "3 sem.", "c": "#243342", "start": 0.7, "len": 0.8, "milestone": "R2 (12/10)", "id": 2},
+        {"y": 240, "title": "Jalon R3 · Viabilité Financière", "dur": "7 sem.", "c": "#243342", "start": 1.5, "len": 1.2, "milestone": "R3 (30/11)", "id": 3},
+        {"y": 290, "title": "Jalon R4 · Architecture V1", "dur": "9 sem.", "c": "#243342", "start": 1.5, "len": 1.7, "milestone": "R4 (18/12)", "id": 4},
+        {"y": 340, "title": "Jalon R5 · Système Complet V2", "dur": "11 sem.", "c": "#243342", "start": 3.7, "len": 3.0, "milestone": "R5 (19/03)", "id": 5},
+        {"y": 390, "title": "Assurance Qualité Continue", "dur": "25 sem.", "c": "#88929c", "start": 0.2, "len": 6.5, "is_continuous": True, "id": 6},
+    ]
 
-    <!-- Septembre 2026 (x=0 à 135) -->
-    <rect x="0" y="0" width="135" height="42" rx="6" fill="#E2E8F0" />
-    <rect x="120" y="0" width="15" height="42" fill="#E2E8F0" />
-    <text x="67" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="#0F172A">SEPT. 2026</text>
-    <text x="67" y="35" text-anchor="middle" font-size="8.5" fill="#64748B">S01 - S04 (R1)</text>
+    svg_parts.append('  <!-- TASKS -->')
+    for t in tasks:
+        # Sidebar Task Item
+        svg_parts.append(f'  <!-- Task: {t["title"]} -->')
+        svg_parts.append(f'  <g transform="translate(20, {t["y"]})">')
+        svg_parts.append(f'    <rect x="15" y="0" width="330" height="35" rx="4" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1"/>')
+        title_esc = t["title"].replace("&", "&amp;")
+        svg_parts.append(f'    <text x="30" y="22" font-size="13" font-weight="600" fill="#243342">{title_esc}</text>')
+        svg_parts.append(f'    <text x="315" y="22" text-anchor="end" font-size="12" font-weight="500" fill="#606B76">{t["dur"]}</text>')
+        svg_parts.append(f'  </g>')
 
-    <!-- Octobre 2026 (x=135 à 275) -->
-    <text x="205" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="#0F172A">OCT. 2026</text>
-    <text x="205" y="35" text-anchor="middle" font-size="8.5" fill="#64748B">S05 - S08 (R2)</text>
+        # Timeline Bar
+        bar_x = 380 + (t["start"] * month_width)
+        bar_w = t["len"] * month_width
+        
+        svg_parts.append(f'  <g transform="translate({bar_x}, {t["y"] + 2})">')
+        if t.get("is_continuous"):
+            svg_parts.append(f'    <rect x="0" y="10" width="{bar_w}" height="10" rx="5" fill="none" stroke="{t["c"]}" stroke-width="2" stroke-dasharray="6 4"/>')
+        else:
+            svg_parts.append(f'    <rect x="0" y="0" width="{bar_w}" height="30" rx="4" fill="{t["c"]}" filter="url(#shadow-bar)"/>')
+            short_title = title_esc.split("·")[0].strip()
+            # Milestone diamond
+            m_x = bar_w
+            # the diamond shape at the end of the bar
+            svg_parts.append(f'    <path d="M {m_x + 15} 5 L {m_x + 25} 15 L {m_x + 15} 25 L {m_x + 5} 15 Z" fill="#C26750" filter="url(#shadow-bar)"/>')
+            svg_parts.append(f'    <text x="{m_x + 32}" y="19" font-size="11" font-weight="700" fill="#C26750">{t["milestone"]}</text>')
+        svg_parts.append(f'  </g>')
 
-    <!-- Novembre 2026 (x=275 à 410) -->
-    <rect x="275" y="0" width="135" height="42" fill="#E2E8F0" />
-    <text x="342" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="#0F172A">NOV. 2026</text>
-    <text x="342" y="35" text-anchor="middle" font-size="8.5" fill="#64748B">S09 - S13 (R3)</text>
+    # 4. Dependencies (Arrows)
+    svg_parts.append('  <!-- DEPENDENCIES (CRITICAL PATH) -->')
+    
+    def draw_dependency(t1, t2):
+        # We start from bottom-right of t1 bar
+        x1 = 380 + (t1["start"] + t1["len"]) * month_width - 15
+        y1 = t1["y"] + 32
+        
+        # We end at top-left of t2 bar
+        x2 = 380 + t2["start"] * month_width + 15
+        y2 = t2["y"] + 2
+        
+        mid_y = (y1 + y2) / 2
+        
+        # If t2 starts exactly where t1 ends or before, we need a different routing
+        if x1 > x2 - 20: 
+            # Route it carefully leftwards to avoid crossing the bars badly
+            mid_y = y1 + 10
+            path = f"M {x1} {y1} L {x1} {mid_y} L {x2} {mid_y} L {x2} {y2}"
+        else:
+            path = f"M {x1} {y1} L {x1} {mid_y} L {x2} {mid_y} L {x2} {y2}"
+        
+        svg_parts.append(f'  <path d="{path}" fill="none" stroke="#243342" stroke-width="1.5" marker-end="url(#arrow-crit)"/>')
 
-    <!-- Décembre 2026 (x=410 à 545) -->
-    <text x="477" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="#0F172A">DÉC. 2026</text>
-    <text x="477" y="35" text-anchor="middle" font-size="8.5" fill="#64748B">S14 - S16 (R4)</text>
+    # R1 -> R2
+    draw_dependency(tasks[0], tasks[1])
+    
+    # R2 -> R4
+    # Note: R3 is between R2 and R4. We must avoid crossing R3 text. 
+    # R2 ends at 1.5, R4 starts at 1.5. R3 starts at 1.5.
+    # We will manually route R2 -> R4 to bypass R3 on the left.
+    r2 = tasks[1]
+    r4 = tasks[3]
+    x1 = 380 + (r2["start"] + r2["len"]) * month_width - 15
+    y1 = r2["y"] + 32
+    x2 = 380 + r4["start"] * month_width + 15
+    y2 = r4["y"] + 2
+    
+    # R3 is at y=240, height 35. So from 240 to 275.
+    # We will route the arrow to x = 380 + 1.5*mw - 25, which is left of the bars.
+    bypass_x = 380 + r4["start"] * month_width - 20
+    path_r2_r4 = f"M {x1} {y1} L {x1} {y1 + 8} L {bypass_x} {y1 + 8} L {bypass_x} {y2 - 10} L {x2} {y2 - 10} L {x2} {y2}"
+    svg_parts.append(f'  <path d="{path_r2_r4}" fill="none" stroke="#243342" stroke-width="1.5" marker-end="url(#arrow-crit)"/>')
 
-    <!-- Janvier 2027 (x=545 à 680) -->
-    <rect x="545" y="0" width="135" height="42" fill="#E2E8F0" />
-    <text x="612" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="#0F172A">JANV. 2027</text>
-    <text x="612" y="35" text-anchor="middle" font-size="8.5" fill="#64748B">S17 - S20 (S4)</text>
+    # R4 -> R5
+    draw_dependency(tasks[3], tasks[4])
 
-    <!-- Février 2027 (x=680 à 815) -->
-    <text x="747" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="#0F172A">FÉVR. 2027</text>
-    <text x="747" y="35" text-anchor="middle" font-size="8.5" fill="#64748B">S21 - S24</text>
+    # 5. Today / Current Date Line
+    today_x = 380 + 0.5 * month_width
+    svg_parts.append('  <!-- TODAY MARKER -->')
+    svg_parts.append(f'  <line x1="{today_x}" y1="80" x2="{today_x}" y2="440" stroke="#C26750" stroke-width="1.5" stroke-dasharray="6 4"/>')
+    svg_parts.append(f'  <rect x="{today_x - 35}" y="68" width="70" height="20" rx="4" fill="#C26750" />')
+    svg_parts.append(f'  <text x="{today_x}" y="82" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">AUJOURD\'HUI</text>')
 
-    <!-- Mars 2027 (x=815 à 955) -->
-    <rect x="815" y="0" width="140" height="42" rx="6" fill="#E2E8F0" />
-    <rect x="815" y="0" width="15" height="42" fill="#E2E8F0" />
-    <text x="885" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="#0F172A">MARS 2027</text>
-    <text x="885" y="35" text-anchor="middle" font-size="8.5" fill="#64748B">S25 - S27 (R5)</text>
-
-    <!-- LIGNES VERTICALES DE MOIS -->
-    <line x1="0" y1="42" x2="0" y2="475" stroke="#CBD5E1" stroke-width="1.2" />
-    <line x1="135" y1="42" x2="135" y2="475" stroke="#E2E8F0" stroke-width="1" />
-    <line x1="275" y1="42" x2="275" y2="475" stroke="#CBD5E1" stroke-width="1" />
-    <line x1="410" y1="42" x2="410" y2="475" stroke="#E2E8F0" stroke-width="1" />
-    <line x1="545" y1="42" x2="545" y2="475" stroke="#CBD5E1" stroke-width="1" />
-    <line x1="680" y1="42" x2="680" y2="475" stroke="#E2E8F0" stroke-width="1" />
-    <line x1="815" y1="42" x2="815" y2="475" stroke="#CBD5E1" stroke-width="1" />
-    <line x1="955" y1="42" x2="955" y2="475" stroke="#CBD5E1" stroke-width="1.2" />
-
-    <!-- ZONES BANALISÉES ET VACANCES DU COURS -->
-    <!-- Semaine IA (19/10) -->
-    <rect x="215" y="42" width="30" height="433" fill="#FEF3C7" opacity="0.5" />
-    <!-- Toussaint (26/10) -->
-    <rect x="245" y="42" width="30" height="433" fill="#F1F5F9" opacity="0.8" />
-    <!-- Vacances Noël (21/12 - 03/01) -->
-    <rect x="500" y="42" width="55" height="433" fill="#F1F5F9" opacity="0.8" />
-    <!-- Interruption Mars (01/03 - 07/03) -->
-    <rect x="815" y="42" width="30" height="433" fill="#F1F5F9" opacity="0.8" />
-  </g>
-
-  <!-- LIGNES ET TÂCHES DU GANTT -->
-  <g transform="translate(25, 135)">
-
-    <!-- TÂCHE 1 : JALON R1 (Cadrage & Cahier des Charges) -->
-    <g transform="translate(0, 0)">
-      <rect x="0" y="0" width="290" height="52" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
-      <text x="12" y="22" font-size="11.5" font-weight="700" fill="#0369A1">1. Jalon R1 · Cahier des Charges</text>
-      <text x="12" y="38" font-size="9" fill="#64748B">Équipe, CVs, analyse métier, outils, Gantt, coûts</text>
-      <!-- Barre Gantt -->
-      <rect x="295" y="12" width="80" height="28" rx="5" fill="#0284C7" stroke="#0369A1" stroke-width="1.2"/>
-      <text x="335" y="30" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF">R1 (2 sem.)</text>
-      <!-- Losange Rendu -->
-      <path d="M 375 12 L 382 26 L 375 40 L 368 26 Z" fill="#DC2626" />
-      <text x="388" y="24" font-size="9" font-weight="700" fill="#DC2626">Rendu 18/09 (18h)</text>
-      <text x="388" y="36" font-size="8.5" font-weight="600" fill="#0F172A">Oral 21/09 (Amphi Turing)</text>
-    </g>
-
-    <!-- TÂCHE 2 : JALON R2 (Choix des Outils & Mise en Place) -->
-    <g transform="translate(0, 58)">
-      <rect x="0" y="0" width="290" height="52" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
-      <text x="12" y="22" font-size="11.5" font-weight="700" fill="#C2410C">2. Jalon R2 · Outillage &amp; DevOps</text>
-      <text x="12" y="38" font-size="9" fill="#64748B">GitLab CI, Docker Compose, SonarQube, Mocks</text>
-      <!-- Barre Gantt -->
-      <rect x="385" y="12" width="100" height="28" rx="5" fill="#EA580C" stroke="#C2410C" stroke-width="1.2"/>
-      <text x="435" y="30" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF">R2 (3 sem.)</text>
-      <!-- Losange Rendu -->
-      <path d="M 485 12 L 492 26 L 485 40 L 478 26 Z" fill="#C2410C" />
-      <text x="498" y="25" font-size="9" font-weight="700" fill="#C2410C">Rendu 12/10</text>
-      <text x="498" y="37" font-size="8" fill="#64748B">Évaluation sur dossier</text>
-    </g>
-
-    <!-- TÂCHE 3 : JALON R3 (Étude de Rentabilité Financière) -->
-    <g transform="translate(0, 116)">
-      <rect x="0" y="0" width="290" height="52" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
-      <text x="12" y="22" font-size="11.5" font-weight="700" fill="#A16207">3. Jalon R3 · Viabilité Financière</text>
-      <text x="12" y="38" font-size="9" fill="#64748B">Méthode coûts complets, Unités d'Œuvre, ROI &amp; VAN</text>
-      <!-- Barre Gantt -->
-      <rect x="490" y="12" width="215" height="28" rx="5" fill="#CA8A04" stroke="#A16207" stroke-width="1.2"/>
-      <text x="597" y="30" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF">R3 · Analyse Financière (7 sem.)</text>
-      <!-- Losange Rendu -->
-      <path d="M 705 12 L 712 26 L 705 40 L 698 26 Z" fill="#CA8A04" />
-      <text x="718" y="25" font-size="9" font-weight="700" fill="#A16207">Rendu 30/11</text>
-      <text x="718" y="37" font-size="8" fill="#64748B">Évaluation sur dossier</text>
-    </g>
-
-    <!-- TÂCHE 4 : JALON R4 (Architecture V1 & 1er Composant) -->
-    <g transform="translate(0, 174)">
-      <rect x="0" y="0" width="290" height="52" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
-      <text x="12" y="22" font-size="11.5" font-weight="700" fill="#6D28D9">4. Jalon R4 · Architecture V1 &amp; Proto</text>
-      <text x="12" y="38" font-size="9" fill="#64748B">Vues 4+1, SQL PostgreSQL, Panier Click&amp;Collect 2PC</text>
-      <!-- Barre Gantt -->
-      <rect x="490" y="12" width="290" height="28" rx="5" fill="#7C3AED" stroke="#6D28D9" stroke-width="1.2"/>
-      <text x="635" y="30" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF">R4 · Conception &amp; 1er Composant Déployé</text>
-      <!-- Losange Rendu -->
-      <path d="M 780 12 L 787 26 L 780 40 L 773 26 Z" fill="#DC2626" />
-      <text x="793" y="24" font-size="9" font-weight="700" fill="#DC2626">Rendu 18/12 (18h)</text>
-      <text x="793" y="36" font-size="8.5" font-weight="600" fill="#0F172A">Oral 04/01/2027</text>
-    </g>
-
-    <!-- TÂCHE 5 : JALON R5 (Développement V2 & Release Finale) -->
-    <g transform="translate(0, 232)">
-      <rect x="0" y="0" width="290" height="52" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
-      <text x="12" y="22" font-size="11.5" font-weight="700" fill="#047857">5. Jalon R5 · Système Complet V2</text>
-      <text x="12" y="38" font-size="9" fill="#64748B">Fidélité VFP, Caisse express, Mocks bus/parking, tests</text>
-      <!-- Barre Gantt -->
-      <rect x="850" y="12" width="370" height="28" rx="5" fill="#059669" stroke="#047857" stroke-width="1.2"/>
-      <text x="1035" y="30" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF">R5 · Finalisation &amp; Déploiement Complet (11 sem.)</text>
-      <!-- Losange Rendu -->
-      <path d="M 1220 12 L 1227 26 L 1220 40 L 1213 26 Z" fill="#DC2626" />
-      <text x="1140" y="55" font-size="9" font-weight="700" fill="#DC2626">Rendu 19/03/2027 (18h)</text>
-      <text x="1140" y="67" font-size="8.5" font-weight="600" fill="#0F172A">Oral 22/03/2027</text>
-    </g>
-
-    <!-- TÂCHE 6 : QUALITÉ & NON-RÉGRESSION TRANSVERSALE -->
-    <g transform="translate(0, 290)">
-      <rect x="0" y="0" width="290" height="46" rx="6" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
-      <text x="12" y="20" font-size="11" font-weight="700" fill="#334155">Qualité Continue &amp; Tests (DoD)</text>
-      <text x="12" y="34" font-size="8.5" fill="#64748B">Tests unitaires JUnit, SonarQube, revues de code</text>
-      <!-- Barre continue -->
-      <rect x="295" y="10" width="940" height="22" rx="4" fill="#F1F5F9" stroke="#94A3B8" stroke-dasharray="4,4"/>
-      <text x="765" y="25" text-anchor="middle" font-size="9" font-weight="600" fill="#475569">Assurance Qualité Transversale · Responsable : Khalil Bouchama</text>
-    </g>
-
-    <!-- TRACÉ DU CHEMIN CRITIQUE (Flèches rouges) -->
-    <path d="M 375 26 L 385 84" stroke="#DC2626" stroke-width="1.8" stroke-dasharray="4,3" fill="none" marker-end="url(#arrow-crit)"/>
-    <path d="M 485 84 L 490 200" stroke="#DC2626" stroke-width="1.8" stroke-dasharray="4,3" fill="none" marker-end="url(#arrow-crit)"/>
-    <path d="M 780 200 L 850 258" stroke="#DC2626" stroke-width="1.8" stroke-dasharray="4,3" fill="none" marker-end="url(#arrow-crit)"/>
-  </g>
-
-  <!-- TABLEAU DES DÉTAILS DES 5 JALONS OFFICIELS EN BAS DE PAGE -->
-  <g transform="translate(25, 490)">
-    <rect x="0" y="0" width="1250" height="260" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
-    <rect x="0" y="0" width="1250" height="32" rx="8" fill="#334155"/>
-    <rect x="0" y="18" width="1250" height="14" fill="#334155"/>
-    <text x="20" y="22" font-size="11" font-weight="700" fill="#FFFFFF">TABLEAU SYNTHÉTIQUE DES 5 JALONS CONTRACTUELS DE L'APPEL D'OFFRES (SLIDES OFFICIELLES GLOP)</text>
-
-    <!-- Colonnes pour les 5 jalons -->
-    <!-- R1 -->
-    <g transform="translate(15, 42)">
-      <rect x="0" y="0" width="232" height="205" rx="6" fill="#FFFFFF" stroke="#BAE6FD" stroke-width="1.2"/>
-      <rect x="0" y="0" width="232" height="26" rx="6" fill="#E0F2FE"/>
-      <text x="12" y="18" font-size="10.5" font-weight="700" fill="#0369A1">JALON R1 · CAHIER DES CHARGES</text>
-      <text x="12" y="42" font-size="9" font-weight="700" fill="#DC2626">Rendu : 18/09/2026 à 18h00</text>
-      <text x="12" y="56" font-size="9" font-weight="600" fill="#0369A1">Soutenance : 21/09 (Amphi Turing)</text>
-      <text x="12" y="70" font-size="8.5" fill="#475569">Durée : 15 min présentation + 5 min Q&amp;A</text>
-      <text x="12" y="90" font-size="8.5" font-weight="700" fill="#1E293B">Contenu attendu :</text>
-      <text x="12" y="105" font-size="8" fill="#475569">· Nom d'entreprise (Garik)</text>
-      <text x="12" y="118" font-size="8" fill="#475569">· CVs de l'équipe et 6 rôles GLOP</text>
-      <text x="12" y="131" font-size="8" fill="#475569">· Analyse métier &amp; fonctionnalités</text>
-      <text x="12" y="144" font-size="8" fill="#475569">· Choix justifiés d'outils logiciels</text>
-      <text x="12" y="157" font-size="8" fill="#475569">· Diagramme de Gantt annuel</text>
-      <text x="12" y="170" font-size="8" fill="#475569">· Coût détaillé (build, run, maintenance)</text>
-      <text x="12" y="192" font-size="8" font-weight="700" fill="#DC2626">Chemin critique : OUI</text>
-    </g>
-
-    <!-- R2 -->
-    <g transform="translate(260, 42)">
-      <rect x="0" y="0" width="232" height="205" rx="6" fill="#FFFFFF" stroke="#FED7AA" stroke-width="1.2"/>
-      <rect x="0" y="0" width="232" height="26" rx="6" fill="#FFEDD5"/>
-      <text x="12" y="18" font-size="10.5" font-weight="700" fill="#C2410C">JALON R2 · OUTILLAGE LOGICIEL</text>
-      <text x="12" y="42" font-size="9" font-weight="700" fill="#C2410C">Rendu : 12/10/2026</text>
-      <text x="12" y="56" font-size="9" font-weight="600" fill="#64748B">Évaluation : Sur dossier (pas d'oral)</text>
-      <text x="12" y="70" font-size="8.5" fill="#475569">Enseignant référent : Jérémy Woirhaye</text>
-      <text x="12" y="90" font-size="8.5" font-weight="700" fill="#1E293B">Contenu attendu :</text>
-      <text x="12" y="105" font-size="8" fill="#475569">· Dépôt Git (GitLab Univ-Lille)</text>
-      <text x="12" y="118" font-size="8" fill="#475569">· Plateforme CI/CD automatisée</text>
-      <text x="12" y="131" font-size="8" fill="#475569">· Gestionnaire de build Maven/Gradle</text>
-      <text x="12" y="144" font-size="8" fill="#475569">· Environnement J2E / Spring Boot</text>
-      <text x="12" y="157" font-size="8" fill="#475569">· Conteneurisation Docker Compose</text>
-      <text x="12" y="170" font-size="8" fill="#475569">· Outils de tests : JUnit / SonarQube</text>
-      <text x="12" y="192" font-size="8" font-weight="700" fill="#DC2626">Chemin critique : OUI</text>
-    </g>
-
-    <!-- R3 -->
-    <g transform="translate(505, 42)">
-      <rect x="0" y="0" width="232" height="205" rx="6" fill="#FFFFFF" stroke="#FEF08A" stroke-width="1.2"/>
-      <rect x="0" y="0" width="232" height="26" rx="6" fill="#FEF9C3"/>
-      <text x="12" y="18" font-size="10.5" font-weight="700" fill="#A16207">JALON R3 · VIABILITÉ FINANCIÈRE</text>
-      <text x="12" y="42" font-size="9" font-weight="700" fill="#A16207">Rendu : 30/11/2026</text>
-      <text x="12" y="56" font-size="9" font-weight="600" fill="#64748B">Évaluation : Sur dossier (pas d'oral)</text>
-      <text x="12" y="70" font-size="8.5" fill="#475569">Enseignant référent : François Secchi</text>
-      <text x="12" y="90" font-size="8.5" font-weight="700" fill="#1E293B">Contenu attendu :</text>
-      <text x="12" y="105" font-size="8" fill="#475569">· Méthode des coûts complets</text>
-      <text x="12" y="118" font-size="8" fill="#475569">· Centres auxiliaires &amp; principaux</text>
-      <text x="12" y="131" font-size="8" fill="#475569">· Clés de répartition &amp; Unités d'Œuvre</text>
-      <text x="12" y="144" font-size="8" fill="#475569">· Coût de revient par collectivité</text>
-      <text x="12" y="157" font-size="8" fill="#475569">· Calcul du ROI et de la VAN nette</text>
-      <text x="12" y="170" font-size="8" fill="#475569">· Compte de résultat prévisionnel</text>
-      <text x="12" y="192" font-size="8" font-weight="600" fill="#64748B">Chemin critique : Non (parallèle)</text>
-    </g>
-
-    <!-- R4 -->
-    <g transform="translate(750, 42)">
-      <rect x="0" y="0" width="232" height="205" rx="6" fill="#FFFFFF" stroke="#DDD6FE" stroke-width="1.2"/>
-      <rect x="0" y="0" width="232" height="26" rx="6" fill="#EDE9FE"/>
-      <text x="12" y="18" font-size="10.5" font-weight="700" fill="#6D28D9">JALON R4 · ARCHITECTURE V1</text>
-      <text x="12" y="42" font-size="9" font-weight="700" fill="#DC2626">Rendu : 18/12/2026 à 18h00</text>
-      <text x="12" y="56" font-size="9" font-weight="600" fill="#6D28D9">Soutenance : 04/01/2027 (1ère S4)</text>
-      <text x="12" y="70" font-size="8.5" fill="#475569">Équipe au complet devant jury</text>
-      <text x="12" y="90" font-size="8.5" font-weight="700" fill="#1E293B">Contenu attendu :</text>
-      <text x="12" y="105" font-size="8" fill="#475569">· Vue fonctionnelle (cas d'utilisation)</text>
-      <text x="12" y="118" font-size="8" fill="#475569">· Vue développement (diagramme classes)</text>
-      <text x="12" y="131" font-size="8" fill="#475569">· Modèle relationnel &amp; mapping ORM</text>
-      <text x="12" y="144" font-size="8" fill="#475569">· Vue déploiement (serveurs physiques)</text>
-      <text x="12" y="157" font-size="8" fill="#475569">· 1 composant déployé sous Docker</text>
-      <text x="12" y="170" font-size="8" fill="#475569">· Pitch projet (valeur, finance, RSE)</text>
-      <text x="12" y="192" font-size="8" font-weight="700" fill="#DC2626">Chemin critique : OUI</text>
-    </g>
-
-    <!-- R5 -->
-    <g transform="translate(995, 42)">
-      <rect x="0" y="0" width="240" height="205" rx="6" fill="#FFFFFF" stroke="#A7F3D0" stroke-width="1.2"/>
-      <rect x="0" y="0" width="240" height="26" rx="6" fill="#D1FAE5"/>
-      <text x="12" y="18" font-size="10.5" font-weight="700" fill="#047857">JALON R5 · SYSTÈME COMPLET V2</text>
-      <text x="12" y="42" font-size="9" font-weight="700" fill="#DC2626">Rendu : 19/03/2027 à 18h00</text>
-      <text x="12" y="56" font-size="9" font-weight="600" fill="#047857">Soutenance : 22/03/2027 (dernière S4)</text>
-      <text x="12" y="70" font-size="8.5" fill="#475569">Équipe au complet devant jury</text>
-      <text x="12" y="90" font-size="8.5" font-weight="700" fill="#1E293B">Contenu attendu :</text>
-      <text x="12" y="105" font-size="8" fill="#475569">· Architecture V2 complète (3 vues)</text>
-      <text x="12" y="118" font-size="8" fill="#475569">· Justification des propriétés logicielles</text>
-      <text x="12" y="131" font-size="8" fill="#475569">· Système logiciel complet fonctionnel</text>
-      <text x="12" y="144" font-size="8" fill="#475569">· Déploiement conteneurisé Docker</text>
-      <text x="12" y="157" font-size="8" fill="#475569">· Démonstration avec jeux de données</text>
-      <text x="12" y="170" font-size="8" fill="#475569">· Notice d'installation et exploitation</text>
-      <text x="12" y="192" font-size="8" font-weight="700" fill="#DC2626">Chemin critique : OUI</text>
-    </g>
-  </g>
-</svg>"""
+    svg_parts.append('</svg>')
+    
+    svg_content = "\n".join(svg_parts)
 
     output_dir = os.path.abspath("agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures")
     os.makedirs(output_dir, exist_ok=True)
@@ -286,11 +167,14 @@ def generate_gantt():
         f.write(svg_content)
     print(f"Generated SVG: {svg_path}")
 
-    doc = pymupdf.open(svg_path)
-    page = doc[0]
-    pix = page.get_pixmap(dpi=300)
-    pix.save(png_path)
-    print(f"Generated PNG: {png_path} ({pix.width}x{pix.height})")
+    try:
+        doc = pymupdf.open(svg_path)
+        page = doc[0]
+        pix = page.get_pixmap(dpi=300)
+        pix.save(png_path)
+        print(f"Generated PNG: {png_path} ({pix.width}x{pix.height})")
+    except Exception as e:
+        print(f"Failed to generate PNG using pymupdf: {e}")
 
 if __name__ == "__main__":
     generate_gantt()
