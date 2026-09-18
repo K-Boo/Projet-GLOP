@@ -19,6 +19,9 @@ import pymupdf
 def generate_story_mapping_svg():
     return """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1520 860" width="1520" height="860" style="font-family: 'Plus Jakarta Sans', 'Poppins', system-ui, -apple-system, sans-serif;">
   <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap');
+    </style>
     <filter id="shadow-soft" x="-2%" y="-2%" width="104%" height="106%">
       <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#243342" flood-opacity="0.06"/>
     </filter>

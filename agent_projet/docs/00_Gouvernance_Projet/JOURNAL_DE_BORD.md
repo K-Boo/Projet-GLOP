@@ -847,6 +847,30 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 - **Reste à faire / Prochaine étape** :
   - Réalisation des 5 chantiers par les membres de l'équipe selon la matrice de responsabilités P1 à P5.
 
+### [2026-09-18] Session 35 — Refonte Express de la Figure 3.3 (Police) et Figure 4.1 (Icônes & Épuration)
+- **Objectif** : Appliquer immédiatement les consignes du guide d'amélioration sur les deux diagrammes principaux :
+  1. Forcer l'application stricte de la typographie officielle (*Plus Jakarta Sans*) sur la cartographie User Story Mapping (Figure 3.3).
+  2. Refondre entièrement le diagramme d'architecture technique (Figure 4.1) : minimiser le texte, intégrer les logos technologiques officiels (React, TypeScript, Spring Boot, PostgreSQL, Docker, GitLab) et structurer les 4 Tiers.
+- **Actions réalisées** :
+  - Modification de `generate_story_mapping_svg.py` : Injection de la règle CSS `@import` pour *Plus Jakarta Sans*.
+  - Réécriture complète de `generate_tech_choices_diagram.py` : Design épuré, insertion de balises `<image>` avec liens dynamiques vers les icônes `devicon`, utilisation de badges et puces visuelles (👤, 🏪, 🏛️, 🔐, 🛒, 🎁, 📊, 💳, 🚌, 🅿️, 📑).
+  - Génération de captures d'écran haute résolution via **MS Edge Headless** pour forcer le rendu natif Chromium des typographies web et des SVG distants (remplaçant le rendu basique de PyMuPDF).
+  - Recompilation du PDF complet R1 (`render_report.py`).
+  - Validation sécurité (`verify_deliverables.py`) et synchronisation Google Drive.
+- **Fichiers modifiés** :
+  - `agent_projet/scripts/generate_story_mapping_svg.py`
+  - `agent_projet/scripts/generate_tech_choices_diagram.py`
+  - `agent_projet/templates/components/story_mapping_grid.html`
+  - `agent_projet/templates/components/tech_choices_diagram.html`
+  - `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_3_3_user_story_mapping.svg` / `.png`
+  - `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_4_1_choix_techniques.svg` / `.png`
+  - `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/ShopLoc_Cahier_des_Charges_Livrable_R1.pdf`
+  - `agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md`
+- **Décisions actées** :
+  - Validation du rendu visuel de la cartographie (typo conforme) et de l'architecture (logos + minimalisme).
+- **Reste à faire / Prochaine étape** :
+  - Poursuivre le traitement de la feuille de route (notamment Gantt, Coûts complets et Section 6.5).
+
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
 
 A la fin de chaque session de chat, l'agent ou l'utilisateur execute la mise a jour de ce fichier selon le format suivant :
