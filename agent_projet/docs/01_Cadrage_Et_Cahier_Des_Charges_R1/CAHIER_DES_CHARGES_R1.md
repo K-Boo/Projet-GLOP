@@ -2,7 +2,7 @@
 
 ## 1.1. Identité, vision et positionnement partenarial
 
-L'entreprise **Garik** est une société d'ingénierie logicielle créée par un collectif de cinq étudiants en Master 2 MIAGE à l'Université de Lille. Notre formation nous apporte une double culture, technique et managériale, qui nous paraît particulièrement adaptée aux enjeux de la commande publique et du commerce connecté : d'un côté la maîtrise du génie logiciel, de l'architecture web et de l'intégration continue, et de l'autre la modélisation des processus métier, l'ingénierie des exigences et l'analyse stratégique des coûts.
+L'entreprise **Garik** est une jeune société d'ingénierie logicielle créée par une équipe de cinq profils issus de la filière MIAGE de l'Université de Lille. Notre cursus nous apporte une double compétence, technique et méthodologique, adaptée aux besoins concrets du commerce local : d'un côté le développement web, l'architecture logicielle et l'intégration continue, et de l'autre l'analyse des besoins, la modélisation des processus et le suivi des coûts.
 
 Nous répondons aujourd'hui à l'appel d'offres émis pour la conception de la plateforme **ShopLoc**. Ce projet répond à une préoccupation majeure partagée par de nombreuses communes : la perte de vitalité des centres-villes face à l'attractivité des grandes zones commerciales de périphérie et des grandes plateformes internationales de commerce en ligne. Notre vision repose sur la mise à disposition d'un outil numérique souverain, accessible et éthique, conçu pour fédérer les commerçants de proximité et redonner envie aux habitants de consommer au cœur de leur quartier.
 
@@ -19,12 +19,12 @@ Notre équipe met à disposition de la maîtrise d'ouvrage une réelle compléme
 
 ## 2.1. Présentation synthétique des compétences de l'équipe
 
-L'équipe Garik réunit cinq étudiants dont les parcours académiques et les expériences professionnelles préalables (stages, alternances ou projets d'ingénierie) assurent une couverture équilibrée de tous les aspects du projet ShopLoc :
+L'équipe Garik réunit cinq profils complémentaires dont les expériences préalables en entreprise (alternances, stages et projets d'ingénierie) permettent de couvrir les différents aspects du projet ShopLoc :
 
-| Membre du groupe | Rôle principal dans le projet | Formation d'origine | Atouts majeurs et compétences clés |
+| Membre de l'équipe | Rôle principal dans le projet | Formation | Atouts majeurs et compétences clés |
 |---|---|---|---|
 | **Khalil Bouchama** | Responsable Qualité & Déploiement | Master 2 MIAGE, Licence MIAGE, DUT Informatique | Diagnostic et tests chez Alstom Crespin (analyse ferroviaire), développement web full-stack chez Benzz Auto (React, Strapi, PostgreSQL). Rigueur en validation et conteneurisation Docker. |
-| **Abdelkader Heddi** | Responsable Communication & Relations MOA | Master 2 MIAGE (parcours IPI-NT), Licence MIAGE | Analyse fonctionnelle chez AG2R La Mondiale, animation des rituels d'équipe, rédaction des synthèses et formalisation des besoins. Gestion de projets web collaboratifs. |
+| **Abdelkader Heddi** | Responsable Communication & Relations MOA | Master 2 MIAGE, Licence MIAGE | Analyse fonctionnelle chez AG2R La Mondiale, animation des rituels d'équipe, rédaction des synthèses et formalisation des besoins. Gestion de projets web collaboratifs. |
 | **Gautam Demeulemeester** | Responsable Architecture Back-Office & Données | Master 2 MIAGE, Licence MIAGE | Gestion de projet marketplace et refonte comptable chez Damart, logistique des flux chez Mondial Relay. Solides compétences en modélisation relationnelle SQL et intégrité des stocks. |
 | **Rayane Alli** | Spécialiste Outils & Ingénieur Logiciel | Master 2 MIAGE, Licence MIAGE | Conception d'applications de gestion d'inventaire, automatisation des tests et chaînes de compilation. Réalisation des simulateurs légers (bouchons) pour les services partenaires. |
 | **Ilyas Ait Ali** | Responsable Architecture Front-Office & Ergonomie | Master 2 MIAGE, Licence MIAGE, L1/L2 Recherche | Développement d'entreprise chez Sopra Steria, traitement d'incidents chez AG2R La Mondiale. Maîtrise des interfaces réactives et forte sensibilisation à l'accessibilité numérique. |
@@ -33,28 +33,28 @@ L'équipe Garik réunit cinq étudiants dont les parcours académiques et les ex
 
 <div style="page-break-after: always;"></div>
 
-## 2.2. Répartition des rôles selon le cadre de l'UE GLOP
+## 2.2. Répartition des rôles opérationnels du projet
 
-Afin de respecter fidèlement les six pôles de responsabilités définis dans le cadre pédagogique de l'UE Génie Logiciel par la Pratique, les responsabilités sont réparties entre les cinq membres du groupe de façon concrète et opérationnelle :
+Pour assurer une organisation claire et efficace, les responsabilités sont réparties entre les cinq membres de l'équipe de façon concrète et opérationnelle :
 
-| Rôle officiel de l'UE | Titulaire désigné | Responsabilités concrètes au sein de l'équipe |
+| Rôle dans le projet | Titulaire désigné | Responsabilités concrètes au sein de l'équipe |
 |---|---|---|
-| **1. Responsable de la Qualité** | **Khalil Bouchama** | Veille à la cohérence et à la clarté des livrables écrits, organise les relectures de code croisées entre membres, et s'assure de la présence de tests automatisés pertinents avant toute intégration de nouvelle fonctionnalité. |
-| **2. Responsable de la Communication** | **Abdelkader Heddi** | Rédige les comptes-rendus des séances de travail, maintient à jour le journal de bord de l'équipe, prépare les ordres du jour et assure la liaison officielle avec la maîtrise d'ouvrage (l'équipe enseignante). |
-| **3. Responsable du Déploiement** | **Khalil Bouchama** | Administre le dépôt de code de l'équipe, rédige la notice d'installation pas à pas et configure les fichiers Docker Compose pour permettre aux enseignants de lancer la plateforme sans difficulté technique. |
-| **4. Spécialiste Outils & Ingénieur Logiciel** | **Rayane Alli** | Met en place les environnements de travail communs, aide les membres du groupe sur les configurations d'outils et développe les simulateurs légers simulant les services de la banque, des transports et de la voirie. |
+| **1. Responsable de la Qualité** | **Khalil Bouchama** | Veille à la cohérence et à la clarté des livrables écrits, organise les relectures de code croisées entre collaborateurs, et s'assure de la présence de tests automatisés pertinents avant toute intégration de nouvelle fonctionnalité. |
+| **2. Responsable de la Communication** | **Abdelkader Heddi** | Rédige les comptes-rendus des séances de travail, maintient à jour le journal de bord de l'équipe, prépare les ordres du jour et assure la liaison officielle avec la maîtrise d'ouvrage. |
+| **3. Responsable du Déploiement** | **Khalil Bouchama** | Administre le dépôt de code de l'équipe, rédige la notice d'installation pas à pas et configure les fichiers Docker Compose pour permettre à la maîtrise d'ouvrage d'exécuter et valider la plateforme sans difficulté technique. |
+| **4. Spécialiste Outils & Ingénieur Logiciel** | **Rayane Alli** | Met en place les environnements de travail communs, assiste l'équipe sur les configurations d'outils DevOps et développe les simulateurs légers simulant les services de la banque, des transports et de la voirie. |
 | **5. Responsable Architecture Back-Office** | **Gautam Demeulemeester** | Conçoit le schéma relationnel de la base de données, met en œuvre la logique de réservation des commandes en deux temps pour éviter les ruptures de stock, et implémente les services métier côté serveur. |
 | **6. Responsable Architecture Front-Office** | **Ilyas Ait Ali** | Élabore les maquettes d'écrans, développe l'interface web responsive adaptée aux mobiles et aux ordinateurs, et veille à proposer une ergonomie intuitive accessible aux usagers les moins à l'aise avec le numérique. |
 
 ## 2.3. Organisation du travail et principe du Scrum Master tournant
 
-Conformément à l'esprit d'un projet universitaire mené en autonomie, **notre équipe fonctionne selon une organisation collégiale et sans hiérarchie verticale**. Nous appliquons les principes de la méthode Agile Scrum en faisant tourner la responsabilité de l'animation d'équipe (**Scrum Master tournant**) à chaque jalon officiel fixé dans les diapositives du cours :
+Pour favoriser l'implication de chacun et maintenir une bonne coordination, **notre équipe fonctionne selon une organisation collégiale et horizontale**. Nous nous appuyons sur les principes de la méthode Agile Scrum en confiant l'animation d'équipe (**Scrum Master tournant**) à tour de rôle à chaque jalon du projet :
 
-- **Jalon R1 (18/09/2026) — Cadrage & Réponse à l'appel d'offres :** Coordination par **Khalil Bouchama** (soutenance orale le 21/09/2026).
-- **Jalon R2 (12/10/2026) — Choix d'outillage & Socle technique :** Coordination par **Rayane Alli** (évaluation sur dossier technique).
-- **Jalon R3 (30/11/2026) — Analyse financière & Coûts complets :** Coordination par **Gautam Demeulemeester** (évaluation sur dossier financier).
-- **Jalon R4 (18/12/2026) — Premier prototype logiciel & Architecture V1 :** Coordination par **Ilyas Ait Ali** (soutenance orale le 04/01/2027).
-- **Jalon R5 (19/03/2027) — Version complète V2 & Bilan d'exploitation :** Coordination par **Abdelkader Heddi** (soutenance finale le 22/03/2027).
+- **Jalon R1 (18/09/2026) — Cadrage & Réponse à l'appel d'offres :** Coordination par **Khalil Bouchama** (restitution formelle et soutenance de cadrage le 21/09/2026).
+- **Jalon R2 (12/10/2026) — Choix d'outillage & Socle technique :** Coordination par **Rayane Alli** (revue sur dossier technique d'ingénierie).
+- **Jalon R3 (30/11/2026) — Analyse financière & Coûts complets :** Coordination par **Gautam Demeulemeester** (revue sur dossier financier et business plan).
+- **Jalon R4 (18/12/2026) — Premier prototype logiciel & Architecture V1 :** Coordination par **Ilyas Ait Ali** (démonstration du prototype opérationnel le 04/01/2027).
+- **Jalon R5 (19/03/2027) — Version complète V2 & Bilan d'exploitation :** Coordination par **Abdelkader Heddi** (recette finale et restitution de clôture le 22/03/2027).
 
 Au quotidien, notre travail s'organise autour d'une réunion hebdomadaire de synchronisation d'une trentaine de minutes permettant de faire le point sur les avancées, de partager les difficultés éventuelles et de redistribuer les tâches en cas de besoin, garantissant un investissement équitable de chacun.
 
@@ -698,7 +698,7 @@ Cette architecture s'articule autour de quatre niveaux opérationnels cohérents
 1. **Tier Clients & Interfaces Web (React 18 + TypeScript 5 + Tailwind CSS 3) :** Une application web responsive (PWA) offrant des interfaces dédiées pour les citoyens consommateurs (panier groupé, pass bi-média QR), les commerçants artisans (interface POS caisse, scan express < 3s) et les gestionnaires municipaux de la mairie (dashboard d'activité et k-anonymat RGPD).
 2. **Tier Backend & Services Métier (Java 21 LTS + Spring Boot 3.3) :** Un serveur d'application modulaire articulé en contextes délimités (*Gestion des Profils & Sécurité JWT*, *Catalogue & Réservation Click & Collect 2PC*, *Double Moteur de Fidélité & Batch VFP nocturne*, *Tableau de bord municipal*), communiquant via des interfaces RESTful normalisées sous contrat **OpenAPI 3.1**.
 3. **Tier Persistance & Données (PostgreSQL 16) :** Une base relationnelle assurant l'intégrité transactionnelle stricte (ACID) des commandes et des mouvements de points, persistée sur volume de données dédié (`pgdata`) avec isolation `READ COMMITTED` et index B-Tree.
-4. **Tier Simulateurs Partenaires (Mocks REST OpenAPI 3.1) :** Des bouchons applicatifs légers conteneurisés simulant les échanges avec les services tiers (passerelle bancaire Izli avec scénarios 2PC, réseau de transport Ilévia Pass Pass, contrôle horodateur de stationnement municipal 20 min) pour garantir l'autonomie totale des tests en environnement étudiant.
+4. **Tier Simulateurs Partenaires (Mocks REST OpenAPI 3.1) :** Des bouchons applicatifs légers conteneurisés simulant les échanges avec les services tiers (passerelle bancaire Izli avec scénarios 2PC, réseau de transport Ilévia Pass Pass, contrôle horodateur de stationnement municipal 20 min) pour garantir l'autonomie totale des tests en environnement d'intégration et de recette.
 
 L'ensemble de ces briques est orchestré par **Docker Compose** et versionné sur la forge institutionnelle **GitLab de l'Université de Lille**, garantissant un déploiement reproductible en une commande unique (`docker compose up`).
 
@@ -916,7 +916,7 @@ La **Figure 4.1** ci-après synthétise l'agencement global de ces composants au
   <rect x="25" y="510" width="1390" height="110" rx="10" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1.2" stroke-dasharray="4 3" filter="url(#shadow-card)"/>
   <rect x="25" y="510" width="1390" height="28" rx="10" fill="#F5F2EB" />
   <text x="45" y="529" font-size="11" font-weight="700" fill="#243342">TIER 4 — SIMULATEURS PARTENAIRES &amp; SYSTÈMES EXTERNES (Mocks REST OpenAPI 3.1)</text>
-  <text x="1395" y="529" text-anchor="end" font-size="9.5" font-weight="500" fill="#5A6578">Bouchons Dockerisés Autonomes pour Environnement Étudiant (Isolement Réseau)</text>
+  <text x="1395" y="529" text-anchor="end" font-size="9.5" font-weight="500" fill="#5A6578">Bouchons Dockerisés Autonomes pour Environnement de Recette (Isolement Réseau)</text>
 
   <!-- Carte 4.1 : Mock Banque -->
   <g transform="translate(45, 546)">
@@ -979,10 +979,10 @@ La **Figure 4.1** ci-après synthétise l'agencement global de ces composants au
 
 ## 4.2. Choix de la pile technologique (Backend, Frontend, Données)
 
-Les choix techniques présentés ci-dessous ont été guidés par trois impératifs : la robustesse industrielle, la pertinence par rapport aux enseignements du Master MIAGE, et la simplicité de prise en main collective pour notre groupe de cinq étudiants :
+Les choix techniques présentés ci-dessous ont été guidés par trois critères simples : la fiabilité des technologies, la bonne maîtrise des outils par l'équipe et la simplicité de mise en œuvre :
 
 - **Backend applicatif : Java (Spring Boot / J2E) avec Maven**
-  - *Justification :* Java Spring Boot répond aux directives du sujet pour la mise en place d'une architecture orientée composants d'entreprise. Il assure une gestion transactionnelle robuste indispensable au protocole de réservation des stocks et à la cohérence de la fidélité, ainsi qu'une sécurité éprouvée (Spring Security pour les accès commerçants et municipaux). Maven garantit la reproductibilité des builds. Cette orientation préliminaire sera confrontée à une solution alternative légère lors des expérimentations du jalon R2.
+  - *Justification :* Java Spring Boot répond aux exigences du cahier des charges pour la mise en place d'une architecture orientée composants d'entreprise. Il assure une gestion transactionnelle robuste indispensable au protocole de réservation des stocks et à la cohérence de la fidélité, ainsi qu'une sécurité éprouvée (Spring Security pour les accès commerçants et municipaux). Maven garantit la reproductibilité des builds. Cette orientation préliminaire sera confrontée à une solution alternative légère lors des expérimentations du jalon R2.
 - **Frontend utilisateur et commerçant : React avec TypeScript et Tailwind CSS**
   - *Justification :* React permet de construire des interfaces découpées en composants réutilisables, ce qui facilite la mise au point conjointe des écrans citoyens et commerçants. Conçu sous forme d'application web réactive (Progressive Web App), le service est directement utilisable depuis un navigateur mobile sans imposer aux usagers de télécharger une application dédiée sur les magasins d'applications.
 - **Base de données relationnelle : PostgreSQL (version 16)**
@@ -991,11 +991,11 @@ Les choix techniques présentés ci-dessous ont été guidés par trois impérat
 ## 4.3. Outillage collaboratif, intégration continue et simulateurs
 
 - **Gestion de versions et forge logicielle : GitLab (Université de Lille)**
-  - *Justification :* La forge institutionnelle de l'université centralise notre code source et garantit une visibilité totale de l'historique de nos travaux pour l'équipe pédagogique. Nous adoptons une gestion de branches simple et lisible avec une branche principale stable (`main`), une branche de développement (`develop`) et des branches de fonctionnalités isolées.
+  - *Justification :* La forge institutionnelle de l'université centralise notre code source et garantit une traçabilité totale et un audit transparent de l'ensemble de nos travaux pour la maîtrise d'ouvrage. Nous adoptons une gestion de branches simple et lisible avec une branche principale stable (`main`), une branche de développement (`develop`) et des branches de fonctionnalités isolées.
 - **Contrat d'interface formalisé : Spécification OpenAPI 3.1 (Swagger)**
   - *Justification :* Pour assurer une collaboration fluide entre l'architecture back-end (Gautam Demeulemeester) et l'architecture front-end (Ilyas Ait Ali), l'ensemble des points d'entrée d'API fera l'objet d'une documentation OpenAPI claire. Cela évite les malentendus techniques et permet de paralléliser les développements en toute confiance.
 - **Conteneurisation et exécution : Docker & Docker Compose**
-  - *Justification :* Docker permet d'encapsuler chaque composant (backend, frontend, base PostgreSQL et simulateurs) dans des environnements isolés et reproductibles. Ce choix garantit que le projet pourra être démarré sur les ordinateurs des évaluateurs à l'aide d'une simple commande `docker compose up`, sans risque de conflits de versions logicielles.
+  - *Justification :* Docker permet d'encapsuler chaque composant (backend, frontend, base PostgreSQL et simulateurs) dans des environnements isolés et reproductibles. Ce choix garantit que la plateforme pourra être déployée et démarrée sur les postes de recette de la collectivité à l'aide d'une simple commande `docker compose up`, sans risque de conflits de versions logicielles.
 - **Simulateurs de services partenaires (Mocks REST) :**
   - *Justification :* Ne pouvant pas nous connecter en direct aux infrastructures privées des banques (rechargement Izli), des réseaux de transport en commun (Ilévia) ou des serveurs de stationnement municipaux, ces briques seront simulées par des bouchons applicatifs légers intégrés dans l'environnement Docker, permettant de tester l'ensemble des parcours utilisateurs en parfaite autonomie.
 
@@ -1005,19 +1005,19 @@ Les choix techniques présentés ci-dessous ont été guidés par trois impérat
 
 ## 5.1. Calendrier des jalons contractuels officiels
 
-Le calendrier de développement de ShopLoc est structuré sur sept mois, de septembre 2026 à mars 2027, en s'alignant rigoureusement sur les cinq jalons d'évaluation définis par la maîtrise d'ouvrage dans le cadre de l'UE GLOP :
+Le calendrier de développement de ShopLoc est structuré sur sept mois, de septembre 2026 à mars 2027, en s'alignant sur les cinq jalons fixés par la maîtrise d'ouvrage :
 
 | Jalon contractuel | Date de remise | Format de restitution | Livrables et objectifs attendus |
 |---|---|---|---|
 | **R1 — Cadrage & Appel d'offres** | 18 septembre 2026 (18h) | Dossier PDF & Soutenance le 21/09 (Amphi Turing) | Présentation de l'entreprise, CVs de l'équipe, analyse des besoins, premiers choix d'outils, Gantt et étude des coûts. |
-| **R2 — Outillage & DevOps** | 12 octobre 2026 | Dossier technique évalué sur pièces | Sélection et justification approfondie des outils, configuration du dépôt Git, conteneurs Docker et simulateurs partenaires. |
-| **R3 — Viabilité financière** | 30 novembre 2026 | Dossier financier évalué sur pièces | Étude économique complète basée sur la méthode des coûts complets, seuil de rentabilité et pérennité du modèle. |
+| **R2 — Outillage & DevOps** | 12 octobre 2026 | Dossier technique d'outillage | Sélection et justification approfondie des outils, configuration du dépôt Git, conteneurs Docker et simulateurs partenaires. |
+| **R3 — Viabilité financière** | 30 novembre 2026 | Dossier financier et étude de rentabilité | Étude économique complète basée sur la méthode des coûts complets, seuil de rentabilité et pérennité du modèle. |
 | **R4 — Architecture V1 & Prototype** | 18 décembre 2026 (18h) | Dossier d'architecture, code & Soutenance le 04/01/2027 | Documentation d'architecture logicielle et premier démonstrateur opérationnel sous Docker (catalogue et réservation Click & Collect). |
 | **R5 — Version complète V2** | 19 mars 2027 (18h) | Système complet & Soutenance le 22/03/2027 | Version finale intégrant la fidélité VFP, le portail municipal, les tests d'intégration complets et le bilan d'exploitation. |
 
 ## 5.2. Diagramme de Gantt prévisionnel sur l'année
 
-Le diagramme ci-après retrace le cheminement chronologique des activités, en tenant compte des périodes universitaires d'examens et de congés afin de sécuriser nos livraisons :
+Le diagramme ci-après retrace le cheminement chronologique des activités, en tenant compte des périodes de congés et des échéances pour sécuriser nos livraisons :
 
 <div class="diagram-container" style="margin: 0; padding: 0; border: none; background: transparent;">
   <img src="figures/fig_5_1_gantt_annuel_officiel.png" alt="Figure 5.1 — Diagramme de Gantt annuel prévisionnel du projet ShopLoc" style="width: 100%; max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 4px;" />
@@ -1033,23 +1033,23 @@ Le projet s'organise autour de cinq phases de travail coordonnées :
 
 ## 5.3. Dispositif de sécurisation des délais et gestion des risques
 
-Pour prévenir les retards et assurer la régularité du travail en équipe, notre groupe met en œuvre trois mesures simples et pragmatiques :
-- **Estimation réaliste de la charge étudiante :** L'investissement de chaque étudiant est calibré à environ 6 à 8 heures de travail effectif par semaine sur les 25 semaines actives de l'année universitaire, ce qui représente un volume collectif d'environ 900 à 1 000 heures de travail sur l'ensemble du cycle de vie du projet.
-- **Règle du gel des modifications (Buffer de 72 heures) :** Avant chaque échéance de remise contractuelle, un arrêt des ajouts fonctionnels est programmé 72 heures à l'avance. Cette période est exclusivement réservée à la relecture collective des documents, aux tests d'installation sur des ordinateurs témoins et à la répétition minutieuse des présentations orales (15 minutes de présentation suivies de 5 minutes de questions).
-- **Point hebdomadaire d'alerte :** Lors de notre réunion hebdomadaire animée par Abdelkader Heddi, tout retard sur une tâche assignée est identifié immédiatement afin de réajuster la répartition du travail ou d'organiser un binôme d'entraide temporaire.
+Pour prévenir les retards et assurer la régularité du travail, notre équipe met en place trois mesures d'organisation simples :
+- **Estimation réaliste du temps de travail :** L'investissement de chaque membre est calibré à environ 6 à 8 heures de travail effectif par semaine sur les 25 semaines actives du projet, soit un volume global de 900 à 1 000 heures de travail sur l'ensemble de la réalisation.
+- **Règle du gel des modifications (Buffer de 72 heures) :** Avant chaque échéance de remise contractuelle, un arrêt des ajouts fonctionnels est programmé 72 heures à l'avance. Cette période est exclusivement réservée à la relecture collective des documents, aux tests d'installation sur des ordinateurs témoins et à la préparation des présentations orales (15 minutes de présentation suivies de 5 minutes d'échanges).
+- **Point hebdomadaire d'alerte :** Lors de notre réunion hebdomadaire animée par Abdelkader Heddi, tout retard sur une tâche est identifié immédiatement afin de réajuster la charge ou d'organiser un binôme d'entraide.
 
 <div style="page-break-after: always;"></div>
 
 # 6. Étude financière et méthode des coûts complets
 
-Le modèle économique d'un système d'information territorial comme ShopLoc doit être calculé de façon rigoureuse et transparente. Conformément aux consignes de l'appel d'offres et aux méthodes enseignées dans le cours de gestion financière (*La gestion stratégique des coûts*), notre chiffrage applique la **méthode des coûts complets** pour déterminer le coût de revient réel de la solution développée par notre start-up étudiante Garik, et justifier le montant de l'abonnement annuel proposé aux collectivités partenaires.
+Le modèle économique d'un système d'information territorial comme ShopLoc doit être calculé de façon rigoureuse et transparente. Conformément aux consignes de l'appel d'offres et aux principes de gestion financière (*La gestion stratégique des coûts*), notre chiffrage applique la **méthode des coûts complets** pour déterminer le coût de revient réel de la solution développée par Garik et justifier le tarif de l'abonnement annuel proposé à la collectivité.
 
 ## 6.1. Identification et sourçage des charges du projet
 
 L'évaluation financière repose sur des charges réelles et documentées, découpées entre les charges directes de personnel et les charges indirectes de fonctionnement :
 
 ### Charges directes de personnel (Réalisation logicielle)
-La phase de conception et de développement mobilise les 5 étudiants associés de Garik sur les 6 mois actifs du projet (septembre 2026 à février 2027 inclus). Conformément à notre statut d'étudiants-ingénieurs en Master 2, nous valorisons ce travail sur la base réaliste d'une indemnité mensuelle de gratification de stage ou d'alternance fixée à **800,00 € par étudiant et par mois**, soit :
+La phase de conception et de développement mobilise les 5 membres de Garik sur les 6 mois actifs du projet (septembre 2026 à février 2027 inclus). En phase de lancement, nous valorisons ce travail sur la base d'une indemnité mensuelle de **800,00 € par membre et par mois**, soit :
 $$\text{Charge directe mensuelle de l'équipe} = 5 \times 800{,}00\text{ €} = 4\,000{,}00\text{ € / mois}$$
 $$\text{Charge directe totale de réalisation (6 mois)} = 6 \times 4\,000{,}00\text{ €} = \mathbf{24\,000{,}00\text{ €}}$$
 
@@ -1059,8 +1059,8 @@ Les charges indirectes correspondent aux dépenses d'infrastructure technique, d
 - **Nom de domaine territorial (OVHcloud) :** Réservation d'un nom de domaine institutionnel en `.fr` avec protection DNSSEC et gestion de la zone DNS : **10,00 € HT / an**.
 - **Certificats de sécurité SSL/TLS (Let's Encrypt) :** Génération et renouvellement automatisé des certificats HTTPS de chiffrement : **0,00 €** (solution open-source).
 - **Service d'envoi de courriels transactionnels (Brevo, ex-Sendinblue, plan Starter) :** Envoi des notifications de commande, alertes de rupture de stock aux commerçants et réinitialisation de mots de passe : **19,00 € HT / mois**, soit **228,00 € HT / an**.
-- **Assurance Responsabilité Civile Professionnelle (RC Pro start-up junior) :** Couverture des risques d'exploitation et de responsabilité numérique : **350,00 € HT / an**.
-- **Frais généraux d'outillage et amortissement matériel :** Amortissement partiel des postes de travail des cinq étudiants et licences bureautiques : **500,00 € HT / an**.
+- **Assurance Responsabilité Civile Professionnelle (RC Pro entreprise numérique) :** Couverture des risques d'exploitation et de responsabilité numérique : **350,00 € HT / an**.
+- **Frais généraux d'outillage et amortissement matériel :** Amortissement partiel des postes de travail des cinq membres de l'équipe et licences : **500,00 € HT / an**.
 
 Le montant global des charges indirectes s'élève donc à :
 $$\text{Total des charges indirectes annuelles} = 420 + 10 + 0 + 228 + 350 + 500 = \mathbf{1\,508{,}00\text{ € HT / an}}$$
@@ -1107,7 +1107,7 @@ Pour chaque centre principal, nous définissons une Unité d'Œuvre (UO) représ
 | **Réalisation & Développement** | Heure d'ingénierie logicielle | 800 heures de développement | 17 454,80 € / 800 heures | **21,82 € HT / heure de dev** |
 | **Maintenance & Support** | Commerçant adhérent accompagné | 60 commerçants actifs | 3 952,40 € / 60 commerçants | **65,87 € HT / commerçant / an** |
 
-Ces coûts unitaires reflètent fidèlement la réalité économique de notre structure : le coût d'une heure d'ingénierie logicielle (21,82 € HT) demeure modéré grâce à notre statut universitaire, tout en valorisant convenablement le travail accompli.
+Ces coûts unitaires reflètent le fonctionnement de notre structure : le coût d'une heure de développement (21,82 € HT) reste très accessible pour une commune tout en valorisant convenablement le travail accompli.
 
 ## 6.5. Déduction et justification du modèle économique SaaS
 
