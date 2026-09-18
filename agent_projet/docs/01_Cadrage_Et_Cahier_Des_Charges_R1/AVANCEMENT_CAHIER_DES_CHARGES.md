@@ -31,7 +31,7 @@ Il est synchronisé avec le fichier machine [`agent_projet/config/cdc_progress.j
 | **08** | `SEC-08` | Gouvernance Agile, WBS & Gantt | **COMPLETED** | Étapes 06, 07 | Scrum Master (`flash`) | `08_gouvernance_agile_gantt.md` |
 | **09** | `SEC-09` | Cadrage Financier (Coûts Complets) | **COMPLETED** | Étapes 07, 08 | CFO Stratégie Financière & Équipe (`pro`) | `09_analyse_financiere_couts_complets.md` |
 | **10** | `CANVAS`| Synthèse : Le Lean Canvas | **COMPLETED** | Étapes 01, 02, 03, 04, 07, 09 | Lead PO & CFO (`pro`) | `templates/components/lean_canvas.html` |
-| **11** | `MAITRE`| Assemblage & Compilation PDF A4 | **NOT_STARTED** | Étapes 01 à 04, 06 à 10 | QA & Security (`flash_lite`) | `ShopLoc_Cahier_des_Charges_Livrable_R1.pdf` |
+| **11** | `MAITRE`| Assemblage & Compilation PDF A4 | **COMPLETED** | Étapes 01 à 04, 06 à 10 | Équipe Garik (`flash_lite`) | `ShopLoc_Cahier_des_Charges_Livrable_R1.pdf` |
 
 ---
 

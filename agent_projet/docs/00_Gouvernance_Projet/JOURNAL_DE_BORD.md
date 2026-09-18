@@ -738,10 +738,95 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 - **Décisions actées** :
   - Validation officielle de l'artefact Lean Canvas ShopLoc (Figure 1.4).
   - Clôture officielle de l'Étape 10 (`COMPLETED`).
-- **Reste à faire / Objectifs pour la Session 31** :
-  - Réalisation de l'**Étape 11 (`STEP-11` / `LIVRABLE-FINAL`)** : *Assemblage du Cahier des Charges Maître & Compilation PDF A4 Unifié* (`ShopLoc_Cahier_des_Charges_Livrable_R1.pdf`).
 
 ---
+
+### [2026-09-18] Session 31 — Refonte Allégée et Académique du Cahier des Charges R1 (Entreprise Garik)
+- **Objectif** : Refondre et calibrer le livrable maître du Cahier des Charges R1 selon les exigences exactes transmises par la maîtrise d'ouvrage (enseignants) pour le rendu du 18/09 à 18h. Adopter un style sobre, neutre et appliqué d'étudiants en Master 2 MIAGE sans jargon grandiloquent, intégrer les CVs et rôles de l'équipe Garik, identifier exhaustivement les fonctionnalités métier, justifier les choix d'outils logiciels, intégrer le diagramme de Gantt annuel haute définition et détailler les coûts (réalisation, exploitation, maintenance), tout en préparant la soutenance orale du 21/09.
+- **Actions réalisées** :
+  - Synchronisation préalable avec le dépôt distant (`git pull origin main`).
+  - Rédaction intégrale du document maître `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/CAHIER_DES_CHARGES_R1.md` structuré selon les 6 sections imposées par le sujet de l'appel d'offres :
+    1. Présentation de l'entreprise soumissionnaire (Entreprise Garik, vision territoriale, références).
+    2. Équipe projet, CVs et répartition des 6 rôles recommandés par l'UE GLOP (Scrum Master tournant).
+    3. Première analyse du sujet et identification de l'ensemble des fonctionnalités métier (Clients, Commerçants, Mairie, Administration) et solutions innovantes (Pass Citoyen physique, retrait 2PC < 2h, double cagnotte découplée).
+    4. Premiers choix justifiés d'outils logiciels (GitLab, GitLab CI, Docker, Java/Spring Boot, React/TypeScript, PostgreSQL, SonarQube, OpenAPI).
+    5. Diagramme de Gantt sur l'année (intégration HD de la Figure 5.1 / 8.3), chemin critique et buffers 72h.
+    6. Coût détaillé du projet (réalisation 25 000 €, exploitation 830 €/an, maintenance 3 500 €/an).
+    7. Préparation de la soutenance orale sur les 8 critères d'évaluation des offres.
+  - Compilation vectorielle haute définition du livrable officiel : `ShopLoc_Cahier_des_Charges_Livrable_R1.pdf` (12 pages A4 équilibrées, 795 Ko, logos officiels, table des matières dynamique, tableau des jalons et coûts).
+  - Contrôle qualité et sécurité validé avec succès (`verify_deliverables.py` : 62 fichiers audités, 0 canari, 0 emoji).
+  - Actualisation du registre machine `agent_projet/config/cdc_progress.json` (statut `LIVRABLE_R1_FINALISE_ET_VALIDE`, `STEP-11` `COMPLETED`) et du tableau de suivi `AVANCEMENT_CAHIER_DES_CHARGES.md`.
+- **Fichiers créés ou modifiés** :
+  - *Créés* :
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/CAHIER_DES_CHARGES_R1.md`
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/ShopLoc_Cahier_des_Charges_Livrable_R1.pdf`
+  - *Modifiés* :
+    * `agent_projet/config/cdc_progress.json`
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/AVANCEMENT_CAHIER_DES_CHARGES.md`
+    * `agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md`
+- **Décisions actées** :
+  - Validation du Livrable R1 unifié et allégé au format étudiant Master 2.
+  - Clôture complète du pipeline de fabrication du Cahier des Charges R1 (`COMPLETED`).
+- **Reste à faire / Objectifs pour la Session 32** :
+  - Préparation du support de présentation (diaporama oral) pour la soutenance du lundi 21/09/2026.
+
+
+---
+
+### [2026-09-18] Session 32 — Ajustements Partie par Partie : Section 3 (Analyse fonctionnelle et Benchmark)
+- **Objectif** : Ajuster la Partie 3 du Cahier des Charges R1 suite aux retours de l'utilisateur : suppression de la Figure 1.2 (Diagramme Pieuvre APTE) et de toutes ses références textuelles (FP1/FP2, FC1 à FC5) dans la sous-section 3.1 ; enrichissement de la sous-section 3.2 pour identifier les acteurs clés de l'écosystème territorial et présenter en détail le benchmark comparatif de marché (plateformes globales, marketplaces de proximité privées, dispositifs de fidélité de ville, et positionnement cible ShopLoc) ; mise à jour cohérente de la numérotation des figures (Figure 3.1 Bête à cornes, Figure 3.2 Matrice de positionnement, Figure 3.3 Personas, Figure 3.4 User Story Mapping) ; recompilation vectorielle et synchronisation Google Drive.
+- **Actions réalisées** :
+  - Modification de `CAHIER_DES_CHARGES_R1.md` dans la Section 3 :
+    * Suppression intégrale de l'encart Pieuvre APTE et de la liste des fonctions FP/FC.
+    * Structuration de la section 3.2 avec identification des 4 acteurs (commerçants, citoyens, collectivité, partenaires de mobilité) et benchmark comparatif des 3 familles de concurrents (Amazon/Deliveroo, Ollca/Epicery, Proxity/cartes papier).
+    * Renumérotation propre des figures de la section 3 (3.1 à 3.4).
+  - Recompilation PDF haute définition via `render_report.py` (23 pages, 2,93 Mo, table des matières synchronisée).
+  - Contrôle qualité de sécurité validé (`verify_deliverables.py` : 0 canari, 0 emoji).
+  - Synchronisation automatique vers Google Drive (`cadrage/` et `01_Cadrage_Metier_R1/`).
+  - Rechargement et vérification visuelle dans Google Chrome via le MCP Chrome DevTools.
+- **Fichiers modifiés** :
+  - `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/CAHIER_DES_CHARGES_R1.md`
+  - `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/ShopLoc_Cahier_des_Charges_Livrable_R1.pdf`
+  - `agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md`
+- **Décisions actées** :
+  - Validation des modifications de la Section 3.
+- **Reste à faire / Prochaine étape** :
+  - Vérification de la Section suivante (Partie 4 ou retours spécifiques) selon la relecture partie par partie demandée par l'utilisateur.
+
+### [2026-09-18] Session 33 — Harmonisation Charte Graphique UI, Format A4 Paysage (User Story Map & Architecture), Retrait Nginx/SP & Synchronisation
+- **Objectif** : Mettre en conformité stricte les visuels clés du Cahier des Charges R1 avec la charte graphique officielle ShopLoc (tokens pastel lin/ardoise/sauge/miel/terracotta) et les exigences de mise en page (pages dédiées A4 paysage) :
+  1. *User Story Mapping (Fig. 3.3)* : Format aha.io, suppression intégrale de tous les Story Points (SP), ancrage strict aux personas et cas d'usage réels du sujet sans invention.
+  2. *Architecture logicielle (Fig. 4.1)* : Simplification adaptée à la V1 étudiante (suppression de Nginx et des endpoints API prématurés, conservation des 4 tiers clairs : Clients React/TS PWA, Services métier Spring Boot 3, BD PostgreSQL 16, Simulateurs Mocks REST, et socle DevOps Docker Compose/GitLab).
+  3. *Mise en page & Textes* : Insertion des figures 3.3 et 4.1 dans des pages A4 paysage dédiées (`.landscape-page`), mise à jour des explications textuelles associées.
+  4. *Recompilation, vérification et push Git* : Validation de l'intégrité, génération du PDF final et push sur le dépôt distant.
+- **Actions réalisées** :
+  - Refonte du générateur `generate_story_mapping_svg.py` et `story_mapping_grid.html` : application de la palette UI ShopLoc, suppression de toutes les pastilles/mentions de SP, rendu haute résolution 6334x3584 (`fig_3_3_user_story_mapping.png` et `.svg`).
+  - Refonte du générateur `generate_tech_choices_diagram.py` et `tech_choices_diagram.html` : application de la charte pastel ShopLoc, suppression de Nginx et des URLs d'endpoints, rendu haute résolution 6000x3417 (`fig_4_1_choix_techniques.png` et `.svg`).
+  - Modification de `CAHIER_DES_CHARGES_R1.md` :
+    * Intégration des conteneurs `.landscape-page` pour les Figures 3.3 et 4.1.
+    * Suppression des mentions "(48 SP)" et "(19 SP)" dans la section 3.4.
+    * Rédaction explicative de l'architecture 3-tiers modulaire dans la section 4.1.
+  - Recompilation PDF via `render_report.py` : génération propre du livrable `ShopLoc_Cahier_des_Charges_Livrable_R1.pdf`.
+  - Audit de sécurité et d'intégrité validé (`verify_deliverables.py` : 0 canari, 0 emoji).
+  - Synchronisation Google Drive (`drive_sync.py`).
+  - Push de l'ensemble des fichiers sur la branche principale Git.
+- **Fichiers modifiés ou créés** :
+  - `agent_projet/scripts/generate_story_mapping_svg.py`
+  - `agent_projet/scripts/generate_tech_choices_diagram.py`
+  - `agent_projet/templates/components/story_mapping_grid.html`
+  - `agent_projet/templates/components/tech_choices_diagram.html`
+  - `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_3_3_user_story_mapping.png`
+  - `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_3_3_user_story_mapping.svg`
+  - `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_4_1_choix_techniques.png`
+  - `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_4_1_choix_techniques.svg`
+  - `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/CAHIER_DES_CHARGES_R1.md`
+  - `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/ShopLoc_Cahier_des_Charges_Livrable_R1.pdf`
+  - `agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md`
+- **Décisions actées** :
+  - Confirmation du modèle User Story Mapping sans SP sur page A4 paysage.
+  - Confirmation de l'architecture préliminaire sans Nginx ni endpoints prématurés.
+- **Reste à faire / Prochaine étape** :
+  - Poursuite de la relecture et des ajustements par l'équipe pour la soutenance R1.
 
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
 

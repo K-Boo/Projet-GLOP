@@ -1,404 +1,542 @@
-<!-- FIGURE 6.1 : GRILLE DE USER STORY MAPPING (JEFF PATTON) -->
-<div class="figure-card" style="background:#FFFFFF; border:1px solid #E8E6DF; border-radius:16px; padding:24px; margin-bottom:28px; box-shadow:0 4px 16px rgba(36,51,66,0.06);">
-  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; border-bottom:1px solid #E8E6DF; padding-bottom:12px;">
+<!-- FIGURE 3.3 : GRILLE DE USER STORY MAPPING (CHARTE OFFICIELLE SHOPLOC) -->
+<div class="figure-card" style="background:#FAF9F6; border:1px solid #DCD6CD; border-radius:14px; padding:20px; margin-bottom:24px; box-shadow:0 4px 16px rgba(36,51,66,0.06);">
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; border-bottom:1px solid #DCD6CD; padding-bottom:10px;">
     <div>
       <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:4px;">
-        <span style="width:8px; height:8px; border-radius:50%; background:#0284C7;"></span>
-        <span style="font-size:11px; font-weight:700; color:#0284C7; text-transform:uppercase; letter-spacing:0.08em;">Ingénierie Agile des Exigences</span>
+        <span style="width:8px; height:8px; border-radius:50%; background:#C26750;"></span>
+        <span style="font-size:11px; font-weight:700; color:#C26750; text-transform:uppercase; letter-spacing:0.08em;">Ingénierie des Exigences</span>
       </div>
-      <h3 style="font-size:17px; font-weight:700; color:#243342; margin:0;">Figure 6.1 — Grille Visuelle de User Story Mapping (Méthode Jeff Patton)</h3>
+      <h3 style="font-size:16px; font-weight:700; color:#243342; margin:0;">Figure 3.3 — Cartographie des Récits Utilisateurs (User Story Mapping)</h3>
     </div>
-    <span style="font-size:11px; background:#FAF9F6; border:1px solid #E8E6DF; padding:4px 12px; border-radius:9999px; color:#5A6578; font-weight:600;">Releases V1 (MVP) · V2 · V3</span>
+    <span style="font-size:11px; background:#FFFFFF; border:1px solid #DCD6CD; padding:4px 12px; border-radius:9999px; color:#5A6578; font-weight:600;">Modèle aha.io · Release 1 (MVP) &amp; Release 2</span>
   </div>
-<svg viewBox="0 0 1180 720" width="100%" height="auto" style="overflow:visible; font-family:'Poppins', sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1520 860" width="1520" height="860" style="font-family: 'Plus Jakarta Sans', 'Poppins', system-ui, -apple-system, sans-serif;">
   <defs>
-    <filter id="shadow-card" x="-4%" y="-6%" width="108%" height="116%">
+    <filter id="shadow-soft" x="-2%" y="-2%" width="104%" height="106%">
       <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#243342" flood-opacity="0.06"/>
     </filter>
-    <filter id="shadow-badge" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#243342" flood-opacity="0.04"/>
+    <filter id="shadow-card" x="-4%" y="-6%" width="108%" height="116%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#243342" flood-opacity="0.04"/>
     </filter>
   </defs>
 
+  <!-- FOND GLOBAL DE LA CARTE (LIN DOUX) -->
+  <rect x="5" y="5" width="1510" height="850" rx="14" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1.2" filter="url(#shadow-soft)"/>
+
   <!-- ======================================================== -->
-  <!-- 1. EN-TÊTE BACKBONE (ACTIVITÉS USAGERS EN COLONNES)       -->
+  <!-- EN-TÊTE PRINCIPAL DU DIAGRAMME                           -->
   <!-- ======================================================== -->
+  <rect x="25" y="20" width="1470" height="50" rx="8" fill="#243342" />
+  <rect x="38" y="31" width="28" height="28" rx="6" fill="#C26750" />
+  <text x="52" y="50" text-anchor="middle" font-size="12" font-weight="800" fill="#FFFFFF">USM</text>
+  <text x="78" y="44" font-size="14" font-weight="700" fill="#FFFFFF">Cartographie des Récits Utilisateurs — User Story Mapping (Modèle aha.io / Jeff Patton)</text>
+  <text x="78" y="59" font-size="9.5" font-weight="400" fill="#EBF0F5">Activités Métier (Backbone) &gt; Étapes du Parcours (Steps) &gt; Récits Utilisateurs par Release</text>
+  <text x="1480" y="49" text-anchor="end" font-size="11" font-weight="600" fill="#DCD6CD">ShopLoc · Master 2 MIAGE · Garik</text>
+
+  <!-- ======================================================== -->
+  <!-- NIVEAU 1 : ACTIVITÉS UTILISATEURS (USER ACTIVITIES)       -->
+  <!-- ======================================================== -->
+  <!-- Col 0 : Axe -->
+  <rect x="25" y="80" width="115" height="42" rx="6" fill="#F5F2EB" stroke="#DCD6CD" stroke-width="1" />
+  <text x="82" y="98" text-anchor="middle" font-size="10" font-weight="700" fill="#243342">ACTIVITÉS</text>
+  <text x="82" y="112" text-anchor="middle" font-size="8.5" font-weight="600" fill="#5A6578">BACKBONE</text>
+
+  <!-- Act 1 : Compte & Profils -->
+  <rect x="150" y="80" width="260" height="42" rx="6" fill="#C26750" />
+  <text x="280" y="98" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">1. COMPTE &amp; IDENTITÉ</text>
+  <text x="280" y="112" text-anchor="middle" font-size="8.5" font-weight="500" fill="#FBEEEA">Inscription, connexion et profils</text>
+
+  <!-- Act 2 : Catalogue & Click & Collect -->
+  <rect x="420" y="80" width="260" height="42" rx="6" fill="#4A7A5B" />
+  <text x="550" y="98" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">2. CATALOGUE &amp; CLICK &amp; COLLECT</text>
+  <text x="550" y="112" text-anchor="middle" font-size="8.5" font-weight="500" fill="#EBF3ED">Articles, stocks, panier et trajet piéton</text>
+
+  <!-- Act 3 : Caisse & Fidélité Boutique -->
+  <rect x="690" y="80" width="260" height="42" rx="6" fill="#4A7A5B" />
+  <text x="820" y="98" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">3. CAISSE &amp; FIDÉLITÉ BOUTIQUE</text>
+  <text x="820" y="112" text-anchor="middle" font-size="8.5" font-weight="500" fill="#EBF3ED">Scan QR caisse, points et cadeaux</text>
+
+  <!-- Act 4 : Programme VFP & Mobilité -->
+  <rect x="960" y="80" width="260" height="42" rx="6" fill="#C48B28" />
+  <text x="1090" y="98" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">4. STATUT VFP &amp; MOBILITÉ</text>
+  <text x="1090" y="112" text-anchor="middle" font-size="8.5" font-weight="500" fill="#FEF7EB">Fréquence, bus offert et parking 20 min</text>
+
+  <!-- Act 5 : Pilotage & Mairie -->
+  <rect x="1230" y="80" width="265" height="42" rx="6" fill="#243342" />
+  <text x="1362" y="98" text-anchor="middle" font-size="11" font-weight="700" fill="#FFFFFF">5. PILOTAGE &amp; SUPERVISION</text>
+  <text x="1362" y="112" text-anchor="middle" font-size="8.5" font-weight="500" fill="#EBF0F5">Rentabilité Suzanne et métriques Marius</text>
+
+  <!-- ======================================================== -->
+  <!-- NIVEAU 2 : ÉTAPES UTILISATEURS (USER STEPS)               -->
+  <!-- ======================================================== -->
+  <!-- Col 0 : Axe -->
+  <rect x="25" y="128" width="115" height="42" rx="6" fill="#F5F2EB" stroke="#DCD6CD" stroke-width="1" />
+  <text x="82" y="146" text-anchor="middle" font-size="10" font-weight="700" fill="#243342">ÉTAPES</text>
+  <text x="82" y="160" text-anchor="middle" font-size="8" font-weight="500" fill="#5A6578">PARCOURS</text>
+
+  <!-- Steps Act 1 -->
+  <rect x="150" y="128" width="125" height="42" rx="6" fill="#FBEEEA" stroke="#D88B77" stroke-width="1" />
+  <text x="212" y="145" text-anchor="middle" font-size="8.5" font-weight="700" fill="#8E3D2A">1.1 Inscription &amp;</text>
+  <text x="212" y="159" text-anchor="middle" font-size="8.5" font-weight="700" fill="#8E3D2A">Authentification</text>
+
+  <rect x="285" y="128" width="125" height="42" rx="6" fill="#FBEEEA" stroke="#D88B77" stroke-width="1" />
+  <text x="347" y="145" text-anchor="middle" font-size="8.5" font-weight="700" fill="#8E3D2A">1.2 Profil &amp;</text>
+  <text x="347" y="159" text-anchor="middle" font-size="8.5" font-weight="700" fill="#8E3D2A">Immatriculation</text>
+
+  <!-- Steps Act 2 -->
+  <rect x="420" y="128" width="125" height="42" rx="6" fill="#EBF3ED" stroke="#7EA88D" stroke-width="1" />
+  <text x="482" y="145" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2E583D">2.1 Fiche Boutique</text>
+  <text x="482" y="159" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2E583D">&amp; Articles</text>
+
+  <rect x="555" y="128" width="125" height="42" rx="6" fill="#EBF3ED" stroke="#7EA88D" stroke-width="1" />
+  <text x="617" y="145" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2E583D">2.2 Commande C&amp;C</text>
+  <text x="617" y="159" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2E583D">&amp; Trajet Piéton</text>
+
+  <!-- Steps Act 3 -->
+  <rect x="690" y="128" width="125" height="42" rx="6" fill="#EBF3ED" stroke="#7EA88D" stroke-width="1" />
+  <text x="752" y="145" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2E583D">3.1 Scan Caisse &amp;</text>
+  <text x="752" y="159" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2E583D">Crédit Points</text>
+
+  <rect x="825" y="128" width="125" height="42" rx="6" fill="#EBF3ED" stroke="#7EA88D" stroke-width="1" />
+  <text x="887" y="145" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2E583D">3.2 Déblocage</text>
+  <text x="887" y="159" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2E583D">Cadeaux Boutique</text>
+
+  <!-- Steps Act 4 -->
+  <rect x="960" y="128" width="125" height="42" rx="6" fill="#FEF7EB" stroke="#DCB162" stroke-width="1" />
+  <text x="1022" y="145" text-anchor="middle" font-size="8.5" font-weight="700" fill="#845A11">4.1 Fréquence &amp;</text>
+  <text x="1022" y="159" text-anchor="middle" font-size="8.5" font-weight="700" fill="#845A11">Obtention VFP</text>
+
+  <rect x="1095" y="128" width="125" height="42" rx="6" fill="#FEF7EB" stroke="#DCB162" stroke-width="1" />
+  <text x="1157" y="145" text-anchor="middle" font-size="8.5" font-weight="700" fill="#845A11">4.2 Usage Bus &amp;</text>
+  <text x="1157" y="159" text-anchor="middle" font-size="8.5" font-weight="700" fill="#845A11">Parking 20 min</text>
+
+  <!-- Steps Act 5 -->
+  <rect x="1230" y="128" width="128" height="42" rx="6" fill="#EBF0F5" stroke="#8B9EAF" stroke-width="1" />
+  <text x="1294" y="145" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1C2D3D">5.1 Statistiques</text>
+  <text x="1294" y="159" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1C2D3D">Commerçant</text>
+
+  <rect x="1367" y="128" width="128" height="42" rx="6" fill="#EBF0F5" stroke="#8B9EAF" stroke-width="1" />
+  <text x="1431" y="145" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1C2D3D">5.2 Supervision DSI</text>
+  <text x="1431" y="159" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1C2D3D">&amp; Sondages</text>
+
+  <!-- ======================================================== -->
+  <!-- SWIMLANE 1 : RELEASE 1 (MVP R4/R5 - MUST HAVE)           -->
+  <!-- ======================================================== -->
+  <rect x="25" y="180" width="1470" height="445" rx="10" fill="#FFFFFF" stroke="#243342" stroke-width="1.6" filter="url(#shadow-soft)"/>
   
-  <!-- Col 0 : Label Releases (x: 20 -> 140, w: 120) -->
-  <rect x="20" y="15" width="120" height="60" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.2" />
-  <text x="80" y="42" text-anchor="middle" font-size="10" font-weight="700" fill="#475569" letter-spacing="0.06em">ACTIVITÉS</text>
-  <text x="80" y="58" text-anchor="middle" font-size="8.5" font-weight="600" fill="#64748B">BACKBONE</text>
+  <!-- Bandeau Latéral Release 1 -->
+  <path d="M 25 190 A 10 10 0 0 1 35 180 L 140 180 L 140 625 L 35 625 A 10 10 0 0 1 25 615 Z" fill="#EBF0F5" />
+  <rect x="35" y="195" width="95" height="24" rx="5" fill="#243342" />
+  <text x="82" y="211" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">RELEASE 1</text>
+  <text x="82" y="235" text-anchor="middle" font-size="11" font-weight="800" fill="#243342">MVP</text>
+  <text x="82" y="252" text-anchor="middle" font-size="8.5" font-weight="600" fill="#4A7A5B">Cœur du sujet</text>
+  <circle cx="82" cy="295" r="18" fill="#FFFFFF" stroke="#243342" stroke-width="1.5"/>
+  <text x="82" y="301" text-anchor="middle" font-size="14" font-weight="800" fill="#243342">M</text>
+  <text x="82" y="328" text-anchor="middle" font-size="8.5" font-weight="700" fill="#243342">MUST HAVE</text>
+  <text x="82" y="344" text-anchor="middle" font-size="8" font-weight="500" fill="#5A6578">Évalué R4 / R5</text>
+  <text x="82" y="585" text-anchor="middle" font-size="8.5" font-weight="700" fill="#243342">Socle Majeur</text>
+  <text x="82" y="602" text-anchor="middle" font-size="10" font-weight="800" fill="#4A7A5B">Priorité 1</text>
 
-  <!-- Col 1 : Conventionnement & Adhésion (x: 155, w: 190) -->
-  <rect x="155" y="15" width="190" height="60" rx="8" fill="#F0F9FF" stroke="#BAE6FD" stroke-width="1.2" />
-  <rect x="165" y="24" width="22" height="14" rx="4" fill="#0284C7" />
-  <text x="176" y="34" text-anchor="middle" font-size="8" font-weight="700" fill="#FFFFFF">01</text>
-  <text x="195" y="35" font-size="10" font-weight="700" fill="#0284C7">CONVENTIONNEMENT</text>
-  <text x="165" y="55" font-size="8.5" font-weight="500" fill="#0369A1">Adhésion &amp; Enrôlement acteurs</text>
-  <text x="165" y="67" font-size="7.5" font-weight="400" fill="#64748B">Flux P1 · Entités Commune / Asso</text>
+  <!-- LIGNES SÉPARATRICES ACTIVITÉS MVP -->
+  <line x1="415" y1="180" x2="415" y2="625" stroke="#EDE8E1" stroke-width="1" />
+  <line x1="685" y1="180" x2="685" y2="625" stroke="#EDE8E1" stroke-width="1" />
+  <line x1="955" y1="180" x2="955" y2="625" stroke="#EDE8E1" stroke-width="1" />
+  <line x1="1225" y1="180" x2="1225" y2="625" stroke="#EDE8E1" stroke-width="1" />
 
-  <!-- Col 2 : Catalogue & Stocks (x: 360, w: 190) -->
-  <rect x="360" y="15" width="190" height="60" rx="8" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1.2" />
-  <rect x="370" y="24" width="22" height="14" rx="4" fill="#16A34A" />
-  <text x="381" y="34" text-anchor="middle" font-size="8" font-weight="700" fill="#FFFFFF">02</text>
-  <text x="400" y="35" font-size="10" font-weight="700" fill="#16A34A">CATALOGUE &amp; STOCKS</text>
-  <text x="370" y="55" font-size="8.5" font-weight="500" fill="#15803D">Offre marchande locale</text>
-  <text x="370" y="67" font-size="7.5" font-weight="400" fill="#64748B">MCD Domaine 2 · Stocks manuels</text>
-
-  <!-- Col 3 : Commande & Retrait C&C (x: 565, w: 190) -->
-  <rect x="565" y="15" width="190" height="60" rx="8" fill="#FAF5FF" stroke="#E9D5FF" stroke-width="1.2" />
-  <rect x="575" y="24" width="22" height="14" rx="4" fill="#7C3AED" />
-  <text x="586" y="34" text-anchor="middle" font-size="8" font-weight="700" fill="#FFFFFF">03</text>
-  <text x="605" y="35" font-size="10" font-weight="700" fill="#7C3AED">COMMANDE &amp; C&amp;C</text>
-  <text x="575" y="55" font-size="8.5" font-weight="500" fill="#6D28D9">Panier 2PC &amp; Retrait boutique</text>
-  <text x="575" y="67" font-size="7.5" font-weight="400" fill="#64748B">Flux P2 · Protocole 2PC garanti</text>
-
-  <!-- Col 4 : Caisse & Double Fidélité (x: 770, w: 190) -->
-  <rect x="770" y="15" width="190" height="60" rx="8" fill="#FFFBEB" stroke="#FDE68A" stroke-width="1.2" />
-  <rect x="780" y="24" width="22" height="14" rx="4" fill="#D97706" />
-  <text x="791" y="34" text-anchor="middle" font-size="8" font-weight="700" fill="#FFFFFF">04</text>
-  <text x="810" y="35" font-size="10" font-weight="700" fill="#D97706">CAISSE &amp; DOUBLE FIDÉLITÉ</text>
-  <text x="780" y="55" font-size="8.5" font-weight="500" fill="#B45309">Scan &lt; 3s &amp; Fenêtre 15j</text>
-  <text x="780" y="67" font-size="7.5" font-weight="400" fill="#64748B">Flux P3 · ADR-005 Découplage</text>
-
-  <!-- Col 5 : Mobilité & Pilotage (x: 975, w: 185) -->
-  <rect x="975" y="15" width="185" height="60" rx="8" fill="#F0FDFA" stroke="#99F6E4" stroke-width="1.2" />
-  <rect x="985" y="24" width="22" height="14" rx="4" fill="#0D9488" />
-  <text x="996" y="34" text-anchor="middle" font-size="8" font-weight="700" fill="#FFFFFF">05</text>
-  <text x="1015" y="35" font-size="10" font-weight="700" fill="#0D9488">MOBILITÉ &amp; REPORTING</text>
-  <text x="985" y="55" font-size="8.5" font-weight="500" fill="#0F766E">Vouchers bus &amp; Tableau Marius</text>
-  <text x="985" y="67" font-size="7.5" font-weight="400" fill="#64748B">Flux P4 · Compensation municipale</text>
-
-  <!-- ======================================================== -->
-  <!-- 2. TRANCHE 1 : RELEASE V1 (MVP CONTRACTUEL R4/R5)         -->
-  <!-- ======================================================== -->
-  <rect x="20" y="90" width="1140" height="260" rx="10" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.6" stroke-dasharray="0" filter="url(#shadow-card)" />
+  <!-- === CARTES RELEASE 1 (MVP) === -->
   
-  <!-- Bandeau Latéral Release V1 -->
-  <path d="M 20 100 A 10 10 0 0 1 30 90 L 140 90 L 140 350 L 30 350 A 10 10 0 0 1 20 340 Z" fill="#F0F9FF" />
-  <rect x="30" y="105" width="100" height="22" rx="6" fill="#0284C7" />
-  <text x="80" y="119" text-anchor="middle" font-size="9" font-weight="700" fill="#FFFFFF">RELEASE V1</text>
-  <text x="80" y="142" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0369A1">MVP R4 / R5</text>
-  <text x="80" y="160" text-anchor="middle" font-size="8" font-weight="500" fill="#64748B">Cœur contractuel</text>
-  <text x="80" y="174" text-anchor="middle" font-size="7.5" font-weight="600" fill="#16A34A">Jalon évalué</text>
-  <circle cx="80" cy="205" r="16" fill="#E0F2FE" />
-  <text x="80" y="210" text-anchor="middle" font-size="12" font-weight="700" fill="#0284C7">M</text>
-  <text x="80" y="235" text-anchor="middle" font-size="8" font-weight="600" fill="#0284C7">MUST HAVE</text>
-  <text x="80" y="325" text-anchor="middle" font-size="7.5" font-weight="500" fill="#94A3B8">Engagement 100%</text>
-
-  <!-- Lignes séparatrices colonnes V1 -->
-  <line x1="352" y1="90" x2="352" y2="350" stroke="#F1F5F9" stroke-width="1.2" />
-  <line x1="557" y1="90" x2="557" y2="350" stroke="#F1F5F9" stroke-width="1.2" />
-  <line x1="762" y1="90" x2="762" y2="350" stroke="#F1F5F9" stroke-width="1.2" />
-  <line x1="967" y1="90" x2="967" y2="350" stroke="#F1F5F9" stroke-width="1.2" />
-
-  <!-- Stories V1 - Col 1 : Inscription -->
-  <!-- US-01 -->
-  <g transform="translate(155, 105)">
-    <rect width="190" height="105" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
-    <rect x="8" y="8" width="52" height="16" rx="4" fill="#E0F2FE" />
-    <text x="34" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#0284C7">US-M01</text>
-    <rect x="155" y="8" width="26" height="16" rx="4" fill="#DCFCE7" />
-    <text x="168" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#16A34A">5 pts</text>
-    <text x="8" y="38" font-size="9" font-weight="700" fill="#243342">Adhésion commerçant</text>
-    <text x="8" y="52" font-size="8" font-weight="400" fill="#475569">Validation convention tripartite</text>
-    <text x="8" y="64" font-size="8" font-weight="400" fill="#475569">association locale &amp; activation SaaS.</text>
-    <rect x="8" y="80" width="174" height="18" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8" />
-    <text x="14" y="92" font-size="7.5" font-weight="600" fill="#64748B">Rôles : Asso / Suzanne · Flux P1</text>
-  </g>
-  <!-- US-02 -->
-  <g transform="translate(155, 225)">
-    <rect width="190" height="110" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
-    <rect x="8" y="8" width="52" height="16" rx="4" fill="#E0F2FE" />
-    <text x="34" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#0284C7">US-M02</text>
-    <rect x="155" y="8" width="26" height="16" rx="4" fill="#DCFCE7" />
-    <text x="168" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#16A34A">3 pts</text>
-    <text x="8" y="38" font-size="9" font-weight="700" fill="#243342">Compte &amp; Pass Citoyen</text>
-    <text x="8" y="52" font-size="8" font-weight="400" fill="#475569">Génération pass QR optique salé</text>
-    <text x="8" y="64" font-size="8" font-weight="400" fill="#475569">pour Pierre (papier) &amp; mobile.</text>
-    <rect x="8" y="84" width="174" height="18" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8" />
-    <text x="14" y="96" font-size="7.5" font-weight="600" fill="#64748B">Rôles : Pierre / Julie · ADR-012</text>
+  <!-- Step 1.1 : Card US-01 (Inscription) -->
+  <g transform="translate(150, 190)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#C26750" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#FBEEEA" stroke="#D88B77" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#8E3D2A">US-01</text>
+    <rect x="76" y="8" width="43" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="97" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Citoyen</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Création Compte</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#C26750">Julie / Arthur</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que citoyen,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">je crée mon compte avec</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">mes identifiants et j'obtiens</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">ma carte de fidélité.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Accès service garanti</text>
   </g>
 
-  <!-- Stories V1 - Col 2 : Catalogue & Stocks -->
-  <!-- US-03 -->
-  <g transform="translate(360, 105)">
-    <rect width="190" height="105" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
-    <rect x="8" y="8" width="52" height="16" rx="4" fill="#E0F2FE" />
-    <text x="34" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#0284C7">US-M03</text>
-    <rect x="155" y="8" width="26" height="16" rx="4" fill="#DCFCE7" />
-    <text x="168" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#16A34A">5 pts</text>
-    <text x="8" y="38" font-size="9" font-weight="700" fill="#243342">Gestion catalogue &amp; stock</text>
-    <text x="8" y="52" font-size="8" font-weight="400" fill="#475569">Saisie manuelle V1 prix, TVA, stock</text>
-    <text x="8" y="64" font-size="8" font-weight="400" fill="#475569">disponible et masquage si 0.</text>
-    <rect x="8" y="80" width="174" height="18" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8" />
-    <text x="14" y="92" font-size="7.5" font-weight="600" fill="#64748B">Rôle : Suzanne · RG-CMD-01</text>
-  </g>
-  <!-- US-04 -->
-  <g transform="translate(360, 225)">
-    <rect width="190" height="110" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
-    <rect x="8" y="8" width="52" height="16" rx="4" fill="#E0F2FE" />
-    <text x="34" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#0284C7">US-M04</text>
-    <rect x="155" y="8" width="26" height="16" rx="4" fill="#DCFCE7" />
-    <text x="168" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#16A34A">3 pts</text>
-    <text x="8" y="38" font-size="9" font-weight="700" fill="#243342">Découverte commerces</text>
-    <text x="8" y="52" font-size="8" font-weight="400" fill="#475569">Fiches vitrines, horaires réels</text>
-    <text x="8" y="64" font-size="8" font-weight="400" fill="#475569">pour Julie &amp; coordonnées locales.</text>
-    <rect x="8" y="84" width="174" height="18" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8" />
-    <text x="14" y="96" font-size="7.5" font-weight="600" fill="#64748B">Rôles : Julie / Arthur · In-Scope</text>
+  <!-- Step 1.1 : Card US-02 (Connexion) -->
+  <g transform="translate(150, 405)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#C26750" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#FBEEEA" stroke="#D88B77" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#8E3D2A">US-02</text>
+    <rect x="72" y="8" width="47" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="95" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Tous rôles</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Se Connecter</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#C26750">Tous profils</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant qu'utilisateur</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">(citoyen, commerçant,</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">admin mairie), je me</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">connecte à mon espace.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Authentification sécure</text>
   </g>
 
-  <!-- Stories V1 - Col 3 : Commande & Retrait C&C -->
-  <!-- US-05 -->
-  <g transform="translate(565, 105)">
-    <rect width="190" height="105" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
-    <rect x="8" y="8" width="52" height="16" rx="4" fill="#E0F2FE" />
-    <text x="34" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#0284C7">US-M05</text>
-    <rect x="155" y="8" width="26" height="16" rx="4" fill="#FEF08A" />
-    <text x="168" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#854D0E">8 pts</text>
-    <text x="8" y="38" font-size="9" font-weight="700" fill="#243342">Panier mutualisé 2PC</text>
-    <text x="8" y="52" font-size="8" font-weight="400" fill="#475569">Réservation multi-boutiques,</text>
-    <text x="8" y="64" font-size="8" font-weight="400" fill="#475569">débit SEPA unique &amp; snapshot prix.</text>
-    <rect x="8" y="80" width="174" height="18" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8" />
-    <text x="14" y="92" font-size="7.5" font-weight="600" fill="#64748B">Rôle : Julie · Flux P2 2PC</text>
-  </g>
-  <!-- US-06 -->
-  <g transform="translate(565, 225)">
-    <rect width="190" height="110" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
-    <rect x="8" y="8" width="52" height="16" rx="4" fill="#E0F2FE" />
-    <text x="34" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#0284C7">US-M06</text>
-    <rect x="155" y="8" width="26" height="16" rx="4" fill="#DCFCE7" />
-    <text x="168" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#16A34A">5 pts</text>
-    <text x="8" y="38" font-size="9" font-weight="700" fill="#243342">Validation retrait boutique</text>
-    <text x="8" y="52" font-size="8" font-weight="400" fill="#475569">Remise au comptoir &lt; 3s via scan,</text>
-    <text x="8" y="64" font-size="8" font-weight="400" fill="#475569">gestion no-show sous 24h.</text>
-    <rect x="8" y="84" width="174" height="18" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8" />
-    <text x="14" y="96" font-size="7.5" font-weight="600" fill="#64748B">Rôles : Suzanne / Julie · ADR-006</text>
+  <!-- Step 1.2 : Card US-04 (Plaque) -->
+  <g transform="translate(285, 190)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#C26750" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#FBEEEA" stroke="#D88B77" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#8E3D2A">US-04</text>
+    <rect x="68" y="8" width="51" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="93" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Automobile</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Saisie Plaque Auto</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#C26750">Arthur (Automobiliste)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant qu'automobiliste,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">je renseigne mon numéro</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">de plaque dans mon profil</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">pour le parking offert.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Lien véhicule &lt;&gt; profil</text>
   </g>
 
-  <!-- Stories V1 - Col 4 : Caisse & Double Fidélité -->
-  <!-- US-07 -->
-  <g transform="translate(770, 105)">
-    <rect width="190" height="105" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
-    <rect x="8" y="8" width="52" height="16" rx="4" fill="#E0F2FE" />
-    <text x="34" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#0284C7">US-M07</text>
-    <rect x="155" y="8" width="26" height="16" rx="4" fill="#DCFCE7" />
-    <text x="168" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#16A34A">5 pts</text>
-    <text x="8" y="38" font-size="9" font-weight="700" fill="#243342">Scan caisse physique &lt; 3s</text>
-    <text x="8" y="52" font-size="8" font-weight="400" fill="#475569">Enregistrement passage immuable</text>
-    <text x="8" y="64" font-size="8" font-weight="400" fill="#475569">+ cumul points marchands boutique.</text>
-    <rect x="8" y="80" width="174" height="18" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8" />
-    <text x="14" y="92" font-size="7.5" font-weight="600" fill="#64748B">Rôles : Suzanne / Pierre · Flux P3</text>
-  </g>
-  <!-- US-08 -->
-  <g transform="translate(770, 225)">
-    <rect width="190" height="110" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
-    <rect x="8" y="8" width="52" height="16" rx="4" fill="#E0F2FE" />
-    <text x="34" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#0284C7">US-M08</text>
-    <rect x="155" y="8" width="26" height="16" rx="4" fill="#FEF08A" />
-    <text x="168" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#854D0E">8 pts</text>
-    <text x="8" y="38" font-size="9" font-weight="700" fill="#243342">Moteur VFP glissant 15j</text>
-    <text x="8" y="52" font-size="8" font-weight="400" fill="#475569">Batch SQL nocturne : détection</text>
-    <text x="8" y="64" font-size="8" font-weight="400" fill="#475569">&gt;= 10 passages sur 15 jours.</text>
-    <rect x="8" y="84" width="174" height="18" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8" />
-    <text x="14" y="96" font-size="7.5" font-weight="600" fill="#64748B">Système VFP · ADR-005 · RG-FID-03</text>
+  <!-- Step 2.1 : Card US-06 (Fiche boutique) -->
+  <g transform="translate(420, 190)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#4A7A5B" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF3ED" stroke="#7EA88D" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2E583D">US-06</text>
+    <rect x="62" y="8" width="57" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="90" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Commerçant</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Horaires &amp; Boutique</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#4A7A5B">Suzanne (Fournil)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que commerçante,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">je configure les horaires</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">d'ouverture et l'adresse</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">de ma boulangerie.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Fiche magasin publique</text>
   </g>
 
-  <!-- Stories V1 - Col 5 : Mobilité & Reporting -->
-  <!-- US-09 -->
-  <g transform="translate(975, 105)">
-    <rect width="185" height="105" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
-    <rect x="8" y="8" width="52" height="16" rx="4" fill="#E0F2FE" />
-    <text x="34" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#0284C7">US-M09</text>
-    <rect x="150" y="8" width="26" height="16" rx="4" fill="#DCFCE7" />
-    <text x="163" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#16A34A">5 pts</text>
-    <text x="8" y="38" font-size="9" font-weight="700" fill="#243342">Délivrance voucher mobilité</text>
-    <text x="8" y="52" font-size="8" font-weight="400" fill="#475569">1 ticket bus Ilévia ou 20 min parking</text>
-    <text x="8" y="64" font-size="8" font-weight="400" fill="#475569">simulé via mock RESTful.</text>
-    <rect x="8" y="80" width="169" height="18" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8" />
-    <text x="14" y="92" font-size="7.5" font-weight="600" fill="#64748B">Rôles : Pierre / Arthur · Flux P4</text>
+  <!-- Step 2.1 : Card US-07 (Gestion articles & stocks) -->
+  <g transform="translate(420, 405)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#4A7A5B" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF3ED" stroke="#7EA88D" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2E583D">US-07</text>
+    <rect x="62" y="8" width="57" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="90" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Commerçant</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Articles &amp; Stocks</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#4A7A5B">Suzanne (Fournil)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que commerçante,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">je saisis et modifie</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">facilement mes articles</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">et stocks Click &amp; Collect.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Stock en temps réel</text>
   </g>
-  <!-- US-10 -->
-  <g transform="translate(975, 225)">
-    <rect width="185" height="110" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
-    <rect x="8" y="8" width="52" height="16" rx="4" fill="#E0F2FE" />
-    <text x="34" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#0284C7">US-M10</text>
-    <rect x="150" y="8" width="26" height="16" rx="4" fill="#DCFCE7" />
-    <text x="163" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#16A34A">5 pts</text>
-    <text x="8" y="38" font-size="9" font-weight="700" fill="#243342">Dashboard anonymisé mairie</text>
-    <text x="8" y="52" font-size="8" font-weight="400" fill="#475569">Indicateurs de fréquentation &amp;</text>
-    <text x="8" y="64" font-size="8" font-weight="400" fill="#475569">coût mobilité sans paniers nominatifs.</text>
-    <rect x="8" y="84" width="169" height="18" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8" />
-    <text x="14" y="96" font-size="7.5" font-weight="600" fill="#64748B">Rôle : Marius (DSI) · RGPD</text>
+
+  <!-- Step 2.2 : Card US-09 (Panier Julie) -->
+  <g transform="translate(555, 190)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#4A7A5B" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF3ED" stroke="#7EA88D" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2E583D">US-09</text>
+    <rect x="76" y="8" width="43" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="97" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Citoyen</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Commander en Ligne</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#4A7A5B">Julie (Citadine)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que cliente,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">je consulte les magasins,</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">sélectionne mes articles et</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">valide ma commande C&amp;C.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Réservation 2 phases</text>
+  </g>
+
+  <!-- Step 2.2 : Card US-11 (Plus court chemin) -->
+  <g transform="translate(555, 405)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#4A7A5B" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF3ED" stroke="#7EA88D" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2E583D">US-11</text>
+    <rect x="76" y="8" width="43" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="97" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Citoyen</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Trajet le Plus Court</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#4A7A5B">Julie (Citadine)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que cliente,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">je demande au système le</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">plus court chemin pour</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">collecter mes achats.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Calcul itinéraire piéton</text>
+  </g>
+
+  <!-- Step 3.1 : Card US-13 (Scan caisse & points) -->
+  <g transform="translate(690, 190)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#4A7A5B" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF3ED" stroke="#7EA88D" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2E583D">US-13</text>
+    <rect x="62" y="8" width="57" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="90" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Commerçant</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Scan Caisse &amp; Points</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#4A7A5B">Pierre / Suzanne</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que commerçante,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">je scanne la carte client</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">pour créditer les points</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">liés au montant dépensé.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Gain de points boutique</text>
+  </g>
+
+  <!-- Step 3.2 : Card US-15 (Catalogue cadeaux) -->
+  <g transform="translate(825, 190)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#4A7A5B" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF3ED" stroke="#7EA88D" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2E583D">US-15</text>
+    <rect x="62" y="8" width="57" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="90" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Commerçant</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Catalogue Cadeaux</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#4A7A5B">Suzanne (Fournil)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que commerçante,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">je paramètre les lots</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">offerts (tarte maroilles,</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">mini-viennoiserie).</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Offres partenaires</text>
+  </g>
+
+  <!-- Step 3.2 : Card US-16 (Déblocage cadeau) -->
+  <g transform="translate(825, 405)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#4A7A5B" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF3ED" stroke="#7EA88D" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2E583D">US-16</text>
+    <text x="97" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Citoyen</text>
+    <rect x="76" y="8" width="43" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Débloquer Cadeau</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#4A7A5B">Julie (Cliente)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que cliente,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">j'obtiens mon cadeau lors</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">d'un achat si j'ai au moins</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">un achat antérieur.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Règle anti-abus validée</text>
+  </g>
+
+  <!-- Step 4.1 : Card US-17 (Attribution VFP) -->
+  <g transform="translate(960, 190)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#C48B28" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#FEF7EB" stroke="#DCB162" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#845A11">US-17</text>
+    <rect x="76" y="8" width="43" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="97" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Citoyen</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Obtention Statut VFP</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#C48B28">Pierre / Arthur / Julie</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que client fidèle,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">j'obtiens le statut VFP</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">grâce à la fréquence de mes</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">achats hebdomadaires.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Calcul de fréquence auto</text>
+  </g>
+
+  <!-- Step 4.2 : Card US-19 (Bus Pierre) -->
+  <g transform="translate(1095, 190)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#C48B28" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#FEF7EB" stroke="#DCB162" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#845A11">US-19</text>
+    <rect x="76" y="8" width="43" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="97" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Mobilité</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Ticket Bus Offert</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#C48B28">Pierre (Senior)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que VFP,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">je génère mon ticket de bus</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">gratuit quotidien avec QR code</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">à présenter au chauffeur.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Ticket mobilité actif</text>
+  </g>
+
+  <!-- Step 4.2 : Card US-20 (Parking Arthur) -->
+  <g transform="translate(1095, 405)">
+    <rect x="0" y="0" width="125" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="125" height="4" rx="2" fill="#C48B28" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#FEF7EB" stroke="#DCB162" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#845A11">US-20</text>
+    <rect x="76" y="8" width="43" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="97" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Mobilité</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">20 min Parking Offert</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#C48B28">Arthur (Automobiliste)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que VFP,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">j'active mon forfait de 20 min</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">gratuites et je suis le</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">décompte en temps réel.</text>
+    <rect x="6" y="180" width="113" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="62" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Stationnement synchronisé</text>
+  </g>
+
+  <!-- Step 5.1 : Card US-22 (Stats Suzanne) -->
+  <g transform="translate(1230, 190)">
+    <rect x="0" y="0" width="128" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="128" height="4" rx="2" fill="#243342" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF0F5" stroke="#8B9EAF" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#1C2D3D">US-22</text>
+    <rect x="65" y="8" width="57" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="93" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Commerçant</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Ventes Boutique</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#243342">Suzanne (Fournil)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant que commerçante,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">je consulte le volume des</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">ventes et achats C&amp;C</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">généré par les clients.</text>
+    <rect x="6" y="180" width="116" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="64" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Mesure rentabilité</text>
+  </g>
+
+  <!-- Step 5.2 : Card US-24 (Tableau DSI Marius) -->
+  <g transform="translate(1367, 190)">
+    <rect x="0" y="0" width="128" height="205" rx="6" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="0" y="0" width="128" height="4" rx="2" fill="#243342" />
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF0F5" stroke="#8B9EAF" stroke-width="0.8"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#1C2D3D">US-24</text>
+    <rect x="80" y="8" width="42" height="14" rx="3" fill="#F5F2EB"/>
+    <text x="101" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Mairie DSI</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Tableau DSI Mairie</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#243342">Marius (DSI Ville)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">En tant qu'admin DSI,</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">je compare le coût des</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">avantages mobilité au</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">volume des ventes.</text>
+    <rect x="6" y="180" width="116" height="18" rx="3" fill="#EBF3ED"/>
+    <text x="64" y="192" text-anchor="middle" font-size="7" font-weight="600" fill="#2E583D">Rapport conseil municipal</text>
   </g>
 
   <!-- ======================================================== -->
-  <!-- 3. TRANCHE 2 : RELEASE V2 (ÉVOLUTIONS POST-LANCEMENT)     -->
+  <!-- SWIMLANE 2 : RELEASE 2 (ÉVOLUTIONS & CONFORT - SHOULD HAVE) -->
   <!-- ======================================================== -->
-  <rect x="20" y="365" width="1140" height="160" rx="10" fill="#FFFFFF" stroke="#D97706" stroke-width="1.2" stroke-dasharray="0" filter="url(#shadow-card)" />
+  <rect x="25" y="635" width="1470" height="205" rx="10" fill="#FFFFFF" stroke="#8C96A5" stroke-width="1.2" stroke-dasharray="4 3" filter="url(#shadow-soft)"/>
   
-  <!-- Bandeau Latéral Release V2 -->
-  <path d="M 20 375 A 10 10 0 0 1 30 365 L 140 365 L 140 525 L 30 525 A 10 10 0 0 1 20 515 Z" fill="#FFFBEB" />
-  <rect x="30" y="380" width="100" height="20" rx="6" fill="#D97706" />
-  <text x="80" y="394" text-anchor="middle" font-size="9" font-weight="700" fill="#FFFFFF">RELEASE V2</text>
-  <text x="80" y="415" text-anchor="middle" font-size="9" font-weight="700" fill="#B45309">OPTIMISATIONS</text>
-  <text x="80" y="430" text-anchor="middle" font-size="8" font-weight="500" fill="#64748B">Valeur ajoutée</text>
-  <circle cx="80" cy="460" r="14" fill="#FEF3C7" />
-  <text x="80" y="464" text-anchor="middle" font-size="11" font-weight="700" fill="#D97706">S</text>
-  <text x="80" y="488" text-anchor="middle" font-size="8" font-weight="600" fill="#D97706">SHOULD HAVE</text>
+  <!-- Bandeau Latéral Release 2 -->
+  <path d="M 25 645 A 10 10 0 0 1 35 635 L 140 635 L 140 840 L 35 840 A 10 10 0 0 1 25 830 Z" fill="#F5F2EB" />
+  <rect x="35" y="645" width="95" height="22" rx="5" fill="#5A6578" />
+  <text x="82" y="660" text-anchor="middle" font-size="9.5" font-weight="700" fill="#FFFFFF">RELEASE 2</text>
+  <text x="82" y="680" text-anchor="middle" font-size="10" font-weight="700" fill="#243342">Évolutions</text>
+  <text x="82" y="695" text-anchor="middle" font-size="8" font-weight="600" fill="#C48B28">Confort usagers</text>
+  <circle cx="82" cy="728" r="15" fill="#FFFFFF" stroke="#8C96A5" stroke-width="1"/>
+  <text x="82" y="733" text-anchor="middle" font-size="11" font-weight="700" fill="#5A6578">S</text>
+  <text x="82" y="755" text-anchor="middle" font-size="8" font-weight="600" fill="#5A6578">SHOULD HAVE</text>
+  <text x="82" y="818" text-anchor="middle" font-size="8.5" font-weight="700" fill="#5A6578">Post-MVP</text>
 
-  <!-- Lignes séparatrices colonnes V2 -->
-  <line x1="352" y1="365" x2="352" y2="525" stroke="#F1F5F9" stroke-width="1.2" />
-  <line x1="557" y1="365" x2="557" y2="525" stroke="#F1F5F9" stroke-width="1.2" />
-  <line x1="762" y1="365" x2="762" y2="525" stroke="#F1F5F9" stroke-width="1.2" />
-  <line x1="967" y1="365" x2="967" y2="525" stroke="#F1F5F9" stroke-width="1.2" />
+  <!-- LIGNES SÉPARATRICES ACTIVITÉS R2 -->
+  <line x1="415" y1="635" x2="415" y2="840" stroke="#EDE8E1" stroke-width="1" />
+  <line x1="685" y1="635" x2="685" y2="840" stroke="#EDE8E1" stroke-width="1" />
+  <line x1="955" y1="635" x2="955" y2="840" stroke="#EDE8E1" stroke-width="1" />
+  <line x1="1225" y1="635" x2="1225" y2="840" stroke="#EDE8E1" stroke-width="1" />
 
-  <!-- Stories V2 - Col 1 -->
-  <g transform="translate(155, 380)">
-    <rect width="190" height="130" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
-    <rect x="8" y="8" width="52" height="16" rx="4" fill="#FEF3C7" />
-    <text x="34" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#B45309">US-S11</text>
-    <rect x="155" y="8" width="26" height="16" rx="4" fill="#DCFCE7" />
-    <text x="168" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#16A34A">3 pts</text>
-    <text x="8" y="38" font-size="9" font-weight="700" fill="#243342">Enrôlement dématérialisé</text>
-    <text x="8" y="52" font-size="8" font-weight="400" fill="#475569">Signature électronique</text>
-    <text x="8" y="64" font-size="8" font-weight="400" fill="#475569">de la convention tripartite.</text>
-    <rect x="8" y="104" width="174" height="18" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8" />
-    <text x="14" y="116" font-size="7.5" font-weight="600" fill="#64748B">Rôles : Asso / Mairie</text>
+  <!-- === CARTES RELEASE 2 (Évolutions) === -->
+  <!-- Step 1.2 : US-05 (Recharge Izli) -->
+  <g transform="translate(285, 645)">
+    <rect x="0" y="0" width="125" height="185" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF0F5"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#5A6578">US-05</text>
+    <rect x="76" y="8" width="43" height="14" rx="3" fill="#FFFFFF"/>
+    <text x="97" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Citoyen</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Recharge Carte Izli</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#5A6578">Julie (Citadine)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">Chargement en ligne</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">d'une somme d'argent par</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">carte bleue pour petits</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">achats partenaires.</text>
+    <rect x="6" y="160" width="113" height="18" rx="3" fill="#EBF0F5"/>
+    <text x="62" y="172" text-anchor="middle" font-size="7" font-weight="600" fill="#243342">Porte-monnaie Izli</text>
   </g>
 
-  <!-- Stories V2 - Col 2 -->
-  <g transform="translate(360, 380)">
-    <rect width="190" height="130" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
-    <rect x="8" y="8" width="52" height="16" rx="4" fill="#FEF3C7" />
-    <text x="34" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#B45309">US-S12</text>
-    <rect x="155" y="8" width="26" height="16" rx="4" fill="#DCFCE7" />
-    <text x="168" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#16A34A">3 pts</text>
-    <text x="8" y="38" font-size="9" font-weight="700" fill="#243342">Alerte seuil de stock bas</text>
-    <text x="8" y="52" font-size="8" font-weight="400" fill="#475569">Notification email commerçant</text>
-    <text x="8" y="64" font-size="8" font-weight="400" fill="#475569">dès que stock &lt;= 2 unités.</text>
-    <rect x="8" y="104" width="174" height="18" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8" />
-    <text x="14" y="116" font-size="7.5" font-weight="600" fill="#64748B">Rôle : Suzanne</text>
+  <!-- Step 2.1 : US-08 (Alerte rupture stock) -->
+  <g transform="translate(420, 645)">
+    <rect x="0" y="0" width="125" height="185" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF0F5"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#5A6578">US-08</text>
+    <rect x="62" y="8" width="57" height="14" rx="3" fill="#FFFFFF"/>
+    <text x="90" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Commerçant</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Alerte Rupture Stock</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#5A6578">Suzanne (Fournil)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">Notification automatique</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">à la commerçante dès</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">qu'un article est épuisé.</text>
+    <rect x="6" y="160" width="113" height="18" rx="3" fill="#EBF0F5"/>
+    <text x="62" y="172" text-anchor="middle" font-size="7" font-weight="600" fill="#243342">Alerte commerçant</text>
   </g>
 
-  <!-- Stories V2 - Col 3 -->
-  <g transform="translate(565, 380)">
-    <rect width="190" height="130" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
-    <rect x="8" y="8" width="52" height="16" rx="4" fill="#FEF3C7" />
-    <text x="34" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#B45309">US-S13</text>
-    <rect x="155" y="8" width="26" height="16" rx="4" fill="#DCFCE7" />
-    <text x="168" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#16A34A">5 pts</text>
-    <text x="8" y="36" font-size="8.5" font-weight="700" fill="#243342">Itinéraire optimisé &amp; Procu.</text>
-    <text x="8" y="49" font-size="8" font-weight="400" fill="#475569">Calcul du plus court chemin</text>
-    <text x="8" y="61" font-size="8" font-weight="400" fill="#475569">piétonnier &amp; délégation tiers</text>
-    <text x="8" y="73" font-size="8" font-weight="400" fill="#475569">de confiance pour Pierre.</text>
-    <rect x="8" y="104" width="174" height="18" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8" />
-    <text x="14" y="116" font-size="7.5" font-weight="600" fill="#64748B">Rôles : Julie / Pierre</text>
+  <!-- Step 2.2 : US-12 (Notification horaires Julie) -->
+  <g transform="translate(555, 645)">
+    <rect x="0" y="0" width="125" height="185" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF0F5"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#5A6578">US-12</text>
+    <rect x="76" y="8" width="43" height="14" rx="3" fill="#FFFFFF"/>
+    <text x="97" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Citoyen</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Alerte Horaires</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#5A6578">Julie (Citadine)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">Notification courriel aux</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">clients quand les horaires</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">des magasins favoris</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">sont modifiés.</text>
+    <rect x="6" y="160" width="113" height="18" rx="3" fill="#EBF0F5"/>
+    <text x="62" y="172" text-anchor="middle" font-size="7" font-weight="600" fill="#243342">Suivi des commerces</text>
   </g>
 
-  <!-- Stories V2 - Col 4 -->
-  <g transform="translate(770, 380)">
-    <rect width="190" height="130" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
-    <rect x="8" y="8" width="52" height="16" rx="4" fill="#FEF3C7" />
-    <text x="34" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#B45309">US-S14</text>
-    <rect x="155" y="8" width="26" height="16" rx="4" fill="#FEF08A" />
-    <text x="168" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#854D0E">8 pts</text>
-    <text x="8" y="38" font-size="9" font-weight="700" fill="#243342">Porte-monnaie local (Izli)</text>
-    <text x="8" y="52" font-size="8" font-weight="400" fill="#475569">Recharge en ligne de petits</text>
-    <text x="8" y="64" font-size="8" font-weight="400" fill="#475569">montants pour achats caisse.</text>
-    <rect x="8" y="104" width="174" height="18" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8" />
-    <text x="14" y="116" font-size="7.5" font-weight="600" fill="#64748B">Rôle : Pierre / Commerçant</text>
+  <!-- Step 4.1 : US-18 (Perte VFP Vacances Arthur) -->
+  <g transform="translate(960, 645)">
+    <rect x="0" y="0" width="125" height="185" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF0F5"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#5A6578">US-18</text>
+    <rect x="76" y="8" width="43" height="14" rx="3" fill="#FFFFFF"/>
+    <text x="97" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Citoyen</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Gestion Perte VFP</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#5A6578">Arthur (Vacances)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">Suspension temporaire</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">du statut VFP si la</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">fréquence d'achats baisse</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">(vacances scolaires).</text>
+    <rect x="6" y="160" width="113" height="18" rx="3" fill="#EBF0F5"/>
+    <text x="62" y="172" text-anchor="middle" font-size="7" font-weight="600" fill="#243342">Règle d'inactivité</text>
   </g>
 
-  <!-- Stories V2 - Col 5 -->
-  <g transform="translate(975, 380)">
-    <rect width="185" height="130" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
-    <rect x="8" y="8" width="52" height="16" rx="4" fill="#FEF3C7" />
-    <text x="34" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#B45309">US-S15</text>
-    <rect x="150" y="8" width="26" height="16" rx="4" fill="#DCFCE7" />
-    <text x="163" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#16A34A">3 pts</text>
-    <text x="8" y="38" font-size="9" font-weight="700" fill="#243342">Enquêtes satisfaction</text>
-    <text x="8" y="52" font-size="8" font-weight="400" fill="#475569">Questionnaires anonymes</text>
-    <text x="8" y="64" font-size="8" font-weight="400" fill="#475569">sur l'expérience centre-ville.</text>
-    <rect x="8" y="104" width="169" height="18" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8" />
-    <text x="14" y="116" font-size="7.5" font-weight="600" fill="#64748B">Rôle : Marius / Citoyen</text>
+  <!-- Step 5.1 : US-23 (Comparatif Suzanne) -->
+  <g transform="translate(1230, 645)">
+    <rect x="0" y="0" width="128" height="185" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF0F5"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#5A6578">US-23</text>
+    <rect x="65" y="8" width="57" height="14" rx="3" fill="#FFFFFF"/>
+    <text x="93" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Commerçant</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Comparatif Ventes</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#5A6578">Suzanne (Fournil)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">Indicateurs comparatifs</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">auprès des autres magasins</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">pour vérifier le gain</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">de participation.</text>
+    <rect x="6" y="160" width="116" height="18" rx="3" fill="#EBF0F5"/>
+    <text x="64" y="172" text-anchor="middle" font-size="7" font-weight="600" fill="#243342">Benchmark interne</text>
   </g>
 
-  <!-- ======================================================== -->
-  <!-- 4. TRANCHE 3 : RELEASE V3 (ÉCOSYSTÈME & AUTOMATISATION)    -->
-  <!-- ======================================================== -->
-  <rect x="20" y="540" width="1140" height="160" rx="10" fill="#FFFFFF" stroke="#64748B" stroke-width="1.2" stroke-dasharray="0" filter="url(#shadow-card)" />
-  
-  <!-- Bandeau Latéral Release V3 -->
-  <path d="M 20 550 A 10 10 0 0 1 30 540 L 140 540 L 140 700 L 30 700 A 10 10 0 0 1 20 690 Z" fill="#F1F5F9" />
-  <rect x="30" y="555" width="100" height="20" rx="6" fill="#64748B" />
-  <text x="80" y="569" text-anchor="middle" font-size="9" font-weight="700" fill="#FFFFFF">RELEASE V3</text>
-  <text x="80" y="590" text-anchor="middle" font-size="9" font-weight="700" fill="#475569">ÉCOSYSTÈME</text>
-  <text x="80" y="605" text-anchor="middle" font-size="8" font-weight="500" fill="#64748B">Interopérabilité</text>
-  <circle cx="80" cy="635" r="14" fill="#E2E8F0" />
-  <text x="80" y="639" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">C</text>
-  <text x="80" y="663" text-anchor="middle" font-size="8" font-weight="600" fill="#475569">COULD HAVE</text>
-
-  <!-- Lignes séparatrices colonnes V3 -->
-  <line x1="352" y1="540" x2="352" y2="700" stroke="#F1F5F9" stroke-width="1.2" />
-  <line x1="557" y1="540" x2="557" y2="700" stroke="#F1F5F9" stroke-width="1.2" />
-  <line x1="762" y1="540" x2="762" y2="700" stroke="#F1F5F9" stroke-width="1.2" />
-  <line x1="967" y1="540" x2="967" y2="700" stroke="#F1F5F9" stroke-width="1.2" />
-
-  <!-- Stories V3 - Col 2 -->
-  <g transform="translate(360, 555)">
-    <rect width="190" height="130" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
-    <rect x="8" y="8" width="52" height="16" rx="4" fill="#E2E8F0" />
-    <text x="34" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#475569">US-C16</text>
-    <rect x="155" y="8" width="26" height="16" rx="4" fill="#FEF08A" />
-    <text x="168" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#854D0E">8 pts</text>
-    <text x="8" y="38" font-size="9" font-weight="700" fill="#243342">Sync automatique POS</text>
-    <text x="8" y="52" font-size="8" font-weight="400" fill="#475569">Connecteur d'inventaire</text>
-    <text x="8" y="64" font-size="8" font-weight="400" fill="#475569">avec logiciels caisse marchands.</text>
-    <rect x="8" y="104" width="174" height="18" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8" />
-    <text x="14" y="116" font-size="7.5" font-weight="600" fill="#64748B">Commerçants équipés</text>
-  </g>
-
-  <!-- Stories V3 - Col 3 -->
-  <g transform="translate(565, 555)">
-    <rect width="190" height="130" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
-    <rect x="8" y="8" width="52" height="16" rx="4" fill="#E2E8F0" />
-    <text x="34" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#475569">US-C17</text>
-    <rect x="150" y="8" width="31" height="16" rx="4" fill="#FEE2E2" />
-    <text x="165" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#B91C1C">13 pts</text>
-    <text x="8" y="38" font-size="9" font-weight="700" fill="#243342">Casiers réfrigérés 24/7</text>
-    <text x="8" y="52" font-size="8" font-weight="400" fill="#475569">Retrait autonome via code</text>
-    <text x="8" y="64" font-size="8" font-weight="400" fill="#475569">hors des horaires de boutique.</text>
-    <rect x="8" y="104" width="174" height="18" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8" />
-    <text x="14" y="116" font-size="7.5" font-weight="600" fill="#64748B">Logistique urbaine</text>
-  </g>
-
-  <!-- Stories V3 - Col 4 -->
-  <g transform="translate(770, 555)">
-    <rect width="190" height="130" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
-    <rect x="8" y="8" width="52" height="16" rx="4" fill="#E2E8F0" />
-    <text x="34" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#475569">US-C18</text>
-    <rect x="155" y="8" width="26" height="16" rx="4" fill="#FEF08A" />
-    <text x="168" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#854D0E">8 pts</text>
-    <text x="8" y="38" font-size="9" font-weight="700" fill="#243342">Intégration TPE physique</text>
-    <text x="8" y="52" font-size="8" font-weight="400" fill="#475569">Scan pass citoyen direct sur</text>
-    <text x="8" y="64" font-size="8" font-weight="400" fill="#475569">terminal bancaire commerçant.</text>
-    <rect x="8" y="104" width="174" height="18" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8" />
-    <text x="14" y="116" font-size="7.5" font-weight="600" fill="#64748B">Matériel caisse POS</text>
-  </g>
-
-  <!-- Stories V3 - Col 5 -->
-  <g transform="translate(975, 555)">
-    <rect width="185" height="130" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
-    <rect x="8" y="8" width="52" height="16" rx="4" fill="#E2E8F0" />
-    <text x="34" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#475569">US-C19</text>
-    <rect x="145" y="8" width="31" height="16" rx="4" fill="#FEE2E2" />
-    <text x="160" y="19" text-anchor="middle" font-size="8" font-weight="700" fill="#B91C1C">13 pts</text>
-    <text x="8" y="38" font-size="9" font-weight="700" fill="#243342">Open Data Voirie &amp; Bus</text>
-    <text x="8" y="52" font-size="8" font-weight="400" fill="#475569">Synchronisation APIs réelles</text>
-    <text x="8" y="64" font-size="8" font-weight="400" fill="#475569">capteurs parkings et Ilévia.</text>
-    <rect x="8" y="104" width="169" height="18" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8" />
-    <text x="14" y="116" font-size="7.5" font-weight="600" fill="#64748B">Métropole / Ilévia</text>
+  <!-- Step 5.2 : US-25 (Marius Relance & Sondages) -->
+  <g transform="translate(1367, 645)">
+    <rect x="0" y="0" width="128" height="185" rx="6" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1" filter="url(#shadow-card)"/>
+    <rect x="6" y="8" width="42" height="14" rx="3" fill="#EBF0F5"/>
+    <text x="27" y="18" text-anchor="middle" font-size="7.5" font-weight="700" fill="#5A6578">US-25</text>
+    <rect x="80" y="8" width="42" height="14" rx="3" fill="#FFFFFF"/>
+    <text x="101" y="18" text-anchor="middle" font-size="7" font-weight="600" fill="#5A6578">Mairie DSI</text>
+    <text x="6" y="34" font-size="8.5" font-weight="700" fill="#1E252D">Sondages &amp; Relances</text>
+    <text x="6" y="46" font-size="7.5" font-weight="600" fill="#5A6578">Marius (DSI)</text>
+    <text x="6" y="60" font-size="7" font-weight="400" fill="#5A6578">Envoi de questionnaires</text>
+    <text x="6" y="70" font-size="7" font-weight="400" fill="#5A6578">QCM de satisfaction et</text>
+    <text x="6" y="80" font-size="7" font-weight="400" fill="#5A6578">relance des usagers lors</text>
+    <text x="6" y="90" font-size="7" font-weight="400" fill="#5A6578">de la perte du statut VFP.</text>
+    <rect x="6" y="160" width="116" height="18" rx="3" fill="#EBF0F5"/>
+    <text x="64" y="172" text-anchor="middle" font-size="7" font-weight="600" fill="#243342">Animation &amp; Rétention</text>
   </g>
 </svg>
 

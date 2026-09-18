@@ -56,6 +56,7 @@ def get_base64_logos(assets_dir):
 
 # Nettoyage et formatage inline du markdown vers HTML
 def clean_inline(text):
+    text = re.sub(r'\[(.*?)\]\((.*?)\)', r'<a href="\2" style="color: #243342; text-decoration: underline; font-weight: 500;">\1</a>', text)
     text = re.sub(r'\*\*(.*?)\*\*', r'<strong>\1</strong>', text)
     text = re.sub(r'\*(.*?)\*', r'<em>\1</em>', text)
     text = re.sub(r'`(.*?)`', r'<code class="latex-code">\1</code>', text)
@@ -156,8 +157,7 @@ def parse_markdown_to_html(md_text, meta, b64_univ, b64_fst, css_content, genera
         if stripped.startswith('### '):
             close_list()
             title = clean_inline(stripped[4:])
-            sec_id = f"sec-{len(toc_items)+1}"
-            toc_items.append((3, title, sec_id))
+            sec_id = f"sec-h3-{i}"
             body_html.append(f'<h3 id="{sec_id}" class="subsection-heading">{title}</h3>')
             i += 1
             continue
@@ -239,11 +239,12 @@ def parse_markdown_to_html(md_text, meta, b64_univ, b64_fst, css_content, genera
     # Assemblage de la Table des Matières (TOC) si requise
     toc_html = ""
     if generate_toc and len(toc_items) > 3:
-        toc_lines = ['<h2 class="section-heading">Table des Matières</h2>', '<ul style="list-style: none; padding-left: 0; font-size: 9pt; line-height: 1.6;">']
+        toc_lines = ['<h2 class="section-heading">Table des Matières</h2>', '<ul style="list-style: none; padding-left: 0; font-size: 8.5pt; line-height: 1.38;">']
         for level, title, sec_id in toc_items:
-            indent = "0" if level == 1 else ("16pt" if level == 2 else "32pt")
+            indent = "0" if level == 1 else "14pt"
             font_weight = "bold" if level == 1 else "normal"
-            toc_lines.append(f'<li style="padding-left: {indent}; font-weight: {font_weight};"><a href="#{sec_id}" style="text-decoration: none; color: #0F2A4A;">{title}</a></li>')
+            margin_top = "5pt" if level == 1 else "1.5pt"
+            toc_lines.append(f'<li style="padding-left: {indent}; font-weight: {font_weight}; margin-top: {margin_top};"><a href="#{sec_id}" style="text-decoration: none; color: #0F2A4A;">{title}</a></li>')
         toc_lines.append('</ul><div style="page-break-after: always;"></div>')
         toc_html = '\n'.join(toc_lines)
 
@@ -267,9 +268,9 @@ def parse_markdown_to_html(md_text, meta, b64_univ, b64_fst, css_content, genera
         <tr><th>Reference Documentaire</th><td><code class="latex-code">{meta.get('ref', 'GLOP-2026-LIVRABLE-v1.0')}</code></td></tr>
         <tr><th>Contexte Academique</th><td>Master 2 MIAGE — UE Genie Logiciel par la Pratique (2026-2027)</td></tr>
         <tr><th>Maitrise d Ouvrage (MOA)</th><td>Laurence Duchien, Anne Etien, Francois Secchi, Jeremy Woirhaye</td></tr>
-        <tr><th>Date & Statut</th><td>{meta.get('date', '17 Septembre 2026')} — <span class="badge badge-success">{meta.get('status', 'Version 1.0 Formelle')}</span></td></tr>
-        <tr><th>Tag Communications</th><td><code class="latex-code">[GLOP]</code> (obligatoire dans tout objet de courriel)</td></tr>
-        <tr><th>Transparence IA</th><td>Ce document a ete structure avec l assistance d outils d ingenierie logicielle.</td></tr>
+        <tr><th>Entreprise Soumissionnaire</th><td>Garik (Equipe de 5 etudiants Master 2 MIAGE)</td></tr>
+        <tr><th>Date de remise</th><td>18 Septembre 2026 (18h00)</td></tr>
+        <tr><th>Statut du document</th><td><span class="badge badge-success">Version 1.0 — Formelle</span></td></tr>
       </table>
     </div>
         """

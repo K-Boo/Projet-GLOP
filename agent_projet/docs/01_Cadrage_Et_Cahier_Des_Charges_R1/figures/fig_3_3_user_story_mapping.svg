@@ -1,23 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-GÉNÉRATEUR DE LA GRILLE DE USER STORY MAPPING SHOPLOC (FIGURE 3.3)
-Master 2 MIAGE — Université de Lille — UE GLOP (2026-2027)
-
-Génère la cartographie vectorielle SVG conforme au modèle aha.io / Jeff Patton :
-- Niveau 1 (Activités / Goals) : Les 5 grands objectifs usagers
-- Niveau 2 (User Steps) : Les étapes séquentielles du parcours
-- Tranches horizontales (Releases) : Release 1 (MVP) et Release 2 (Évolutions)
-- Cartes usagers (User Stories) : 100% fidèles au sujet officiel et aux personas (Pierre, Julie, Arthur, Suzanne, Marius).
-- Charte graphique ShopLoc officielle : Lin doux #FAF9F6, Ardoise #243342, Terracotta #C26750, Sauge #4A7A5B, Miel #C48B28.
-- STRICTEMENT AUCUN STORY POINT (SP) mentionné.
-"""
-
-import os
-import pymupdf
-
-def generate_story_mapping_svg():
-    return """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1520 860" width="1520" height="860" style="font-family: 'Plus Jakarta Sans', 'Poppins', system-ui, -apple-system, sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1520 860" width="1520" height="860" style="font-family: 'Plus Jakarta Sans', 'Poppins', system-ui, -apple-system, sans-serif;">
   <defs>
     <filter id="shadow-soft" x="-2%" y="-2%" width="104%" height="106%">
       <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#243342" flood-opacity="0.06"/>
@@ -546,53 +527,3 @@ def generate_story_mapping_svg():
     <text x="64" y="172" text-anchor="middle" font-size="7" font-weight="600" fill="#243342">Animation &amp; Rétention</text>
   </g>
 </svg>
-"""
-
-def main():
-    repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-    
-    # 1. Sauvegarde du composant HTML
-    html_path = os.path.join(repo_root, "agent_projet/templates/components/story_mapping_grid.html")
-    os.makedirs(os.path.dirname(html_path), exist_ok=True)
-    
-    svg_content = generate_story_mapping_svg()
-    
-    component_content = f"""<!-- FIGURE 3.3 : GRILLE DE USER STORY MAPPING (CHARTE OFFICIELLE SHOPLOC) -->
-<div class="figure-card" style="background:#FAF9F6; border:1px solid #DCD6CD; border-radius:14px; padding:20px; margin-bottom:24px; box-shadow:0 4px 16px rgba(36,51,66,0.06);">
-  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; border-bottom:1px solid #DCD6CD; padding-bottom:10px;">
-    <div>
-      <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:4px;">
-        <span style="width:8px; height:8px; border-radius:50%; background:#C26750;"></span>
-        <span style="font-size:11px; font-weight:700; color:#C26750; text-transform:uppercase; letter-spacing:0.08em;">Ingénierie des Exigences</span>
-      </div>
-      <h3 style="font-size:16px; font-weight:700; color:#243342; margin:0;">Figure 3.3 — Cartographie des Récits Utilisateurs (User Story Mapping)</h3>
-    </div>
-    <span style="font-size:11px; background:#FFFFFF; border:1px solid #DCD6CD; padding:4px 12px; border-radius:9999px; color:#5A6578; font-weight:600;">Modèle aha.io · Release 1 (MVP) &amp; Release 2</span>
-  </div>
-{svg_content}
-</div>
-"""
-    with open(html_path, "w", encoding="utf-8") as f:
-        f.write(component_content)
-    print(f"HTML écrit : {html_path}")
-
-    # 2. Export SVG et PNG haute résolution avec PyMuPDF
-    output_dir = os.path.join(repo_root, "agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures")
-    os.makedirs(output_dir, exist_ok=True)
-    svg_path = os.path.join(output_dir, "fig_3_3_user_story_mapping.svg")
-    png_path = os.path.join(output_dir, "fig_3_3_user_story_mapping.png")
-    png_compat_path = os.path.join(output_dir, "fig_6_1_user_story_mapping.png")
-
-    with open(svg_path, "w", encoding="utf-8") as f:
-        f.write(svg_content)
-    print(f"SVG écrit : {svg_path}")
-
-    doc = pymupdf.open(svg_path)
-    page = doc[0]
-    pix = page.get_pixmap(dpi=300)
-    pix.save(png_path)
-    pix.save(png_compat_path)
-    print(f"Exporté PNG : {png_path} et {png_compat_path} ({pix.width}x{pix.height})")
-
-if __name__ == "__main__":
-    main()

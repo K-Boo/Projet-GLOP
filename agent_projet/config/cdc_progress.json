@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "document_cible": "Livrable R1 — Cahier des Charges ShopLoc (GLOP-2026-R1-CDC-v1.0)",
-  "derniere_mise_a_jour": "2026-09-17T22:20:00+02:00",
-  "statut_global": "INITIALISE_PRET_POUR_REDACTION",
+  "derniere_mise_a_jour": "2026-09-18T09:16:00+02:00",
+  "statut_global": "LIVRABLE_R1_FINALISE_ET_VALIDE",
   "directives_de_collaboration_multi_agents": {
     "regle_01_unicite": "Aucun agent ou collaborateur ne doit entreprendre la redaction d'une section deja marquee 'IN_PROGRESS' ou 'COMPLETED'. Avant tout travail, verifier l'etat dans ce fichier.",
     "regle_02_ordre_de_dependance_strict": "Il est FORMELLEMENT INTERDIT d'initier une section si 100% de ses dependances amont ('prerequisites') ne sont pas a l'etat 'COMPLETED'. Le graphe de dependances decoule de la demarche d'arborescence inversee (PLAN_DIRECTEUR_CAHIER_DES_CHARGES_R1.md).",
@@ -211,10 +211,10 @@
       "step_id": "STEP-11",
       "section_code": "LIVRABLE-FINAL",
       "titre": "Assemblage du Cahier des Charges Maitre & Compilation PDF A4",
-      "statut": "NOT_STARTED",
-      "assigne_a": null,
-      "date_debut": null,
-      "date_achevement": null,
+      "statut": "COMPLETED",
+      "assigne_a": "Equipe ShopLoc & Entreprise Garik",
+      "date_debut": "2026-09-18T09:10:00+02:00",
+      "date_achevement": "2026-09-18T09:16:00+02:00",
       "prerequisites": [
         "STEP-01",
         "STEP-02",
