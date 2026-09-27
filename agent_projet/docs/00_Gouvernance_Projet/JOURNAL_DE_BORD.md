@@ -881,13 +881,20 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Création du pointeur d'accès direct dans le dossier de cadrage : `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/RETOURS_EVALUATION_R1.md`.
   - Formalisation de l'arbitrage d'architecture et de gouvernance `ADR-020` dans `DECISIONS.md` (clarification ShopLoc vs Garik, matrice des 4 rôles d'administration RBAC, rescindage contractuel de R4 sur le composant Panier 2PC).
   - Définition de la feuille de route d'impacts pour les jalons R2 (12/10), R3 (30/11) et R4 (18/12).
+  - Synchronisation Git intégrale : validation, commit (`1b4bc0e`) et push de l'ensemble des livrables et documents de gouvernance sur la branche `main` du dépôt GitHub distant.
 - **Fichiers créés ou modifiés** :
   - *Créés* :
     * `agent_projet/docs/00_Gouvernance_Projet/RETOURS_EVALUATION_SOUTENANCE_R1.md`
     * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/RETOURS_EVALUATION_R1.md`
-  - *Modifiés* :
+    * `agent_projet/docs/04_Presentations_Diaporamas/CONDUCTEUR_ORAL_SOUTENANCE_R1.md`
+    * `agent_projet/docs/04_Presentations_Diaporamas/GARIK_GLOP-2026-SOUTENANCE-R1.html`
+    * `agent_projet/docs/04_Presentations_Diaporamas/GARIK_GLOP-2026-SOUTENANCE-R1.pdf`
+    * `agent_projet/scripts/generate_soutenance_deck.py`
+  - *Modifiés / Renommés* :
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/GARIK_GLOP-2026-LIVRABLE-R1.pdf` (renommé depuis `ShopLoc_Cahier_des_Charges_Livrable_R1.pdf`)
     * `agent_projet/docs/00_Gouvernance_Projet/DECISIONS.md` (ADR-020 ajouté)
     * `agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md` (Session 36)
+    * `agent_projet/docs/04_Presentations_Diaporamas/Diaporama_ShopLoc_Soutenance.html` & `.pdf`
 - **Décisions actées** :
   - `ADR-020` validé : Clarification institutionnelle, matrice RBAC des 4 rôles d'administration et recentrage de la démonstration logicielle R4 sur un seul composant vertical (Panier Click & Collect 2PC).
 - **Reste à faire / Prochaine étape** :
