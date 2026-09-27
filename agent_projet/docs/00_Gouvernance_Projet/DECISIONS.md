@@ -261,3 +261,35 @@ Chaque décision doit être formalisée ainsi :
   - **Renvoi des Maquettes IHM au Livrable R4** : La conception d'interfaces graphiques interactives détaillées sera réalisée directement lors de la phase de prototypage frontend React (Livrable R4).
 - **Conséquences** : Allègement du document, suppression d'un travail superflu, cohérence renforcée du livrable R1 et focalisation immédiate sur la gouvernance (Section 08), l'analyse financière (Section 09) et le Lean Canvas (Section 10).
 
+---
+
+### ADR-020 : Recadrage Opérationnel R4/R5, Clarification Institutionnelle ShopLoc et Intégration des Retours d'Évaluation R1
+- **Date** : 2026-09-27
+- **Statut** : Validé (Post-Soutenance R1 & Alignement MOA)
+- **Contexte** : Suite à la soutenance orale du 21/09/2026 et à la relecture critique du livrable R1 par la maîtrise d'ouvrage (Laurence Duchien, Anne Etien, François Secchi, Jérémy Woirhaye), plusieurs axes majeurs nécessitent un arbitrage formel :
+  1. Approfondissement de l'analyse fonctionnelle par de véritables Cas d'Utilisation UML (au-delà du User Story Mapping).
+  2. Intégration d'un registre formel des risques ISO 31000 avec matrice de criticité P x G et Plan de Continuité d'Activité.
+  3. Réalisme de la Release 1 de décembre (Jalon R4) : refus de l'engagement irréaliste sur les 10 US Must Have au profit de la directive GLOP (Architecture C4 complète + UN SEUL composant logiciel vertical déployé).
+  4. Levée de l'ambiguïté sur l'identité de ShopLoc et modélisation formelle des rôles d'administration RBAC.
+  5. Réconciliation des volumes horaires d'ingénierie et consolidation du modèle économique SaaS pour R3.
+- **Décision** :
+  - **Clarification des Acteurs Institutionnels** :
+    * *ShopLoc* est l'entreprise donneuse d'ordre, éditrice de la solution SaaS territoriale et propriétaire de la marque.
+    * *Garik* est la société d'ingénierie logicielle prestataire (équipe des 5 étudiants MIAGE), maître d'œuvre du développement et du déploiement.
+    * *Collectivité Locale (Mairie)* : cliente souscriptrice du service mutualisé et garante des subventions mobilité.
+    * *Association des Commerçants* : gestionnaire de terrain pour l'adhésion des commerces et l'animation locale.
+  - **Matrice Formelle des Rôles d'Administration (RBAC)** :
+    * `ROLE_SUPER_ADMIN` : Exploitant SaaS ShopLoc (provisionnement multi-tenant, supervision technique).
+    * `ROLE_CITY_ADMIN` : Administrateur Mairie (Marius / DSI - conventions, enveloppes mobilité, k-anonymat strict).
+    * `ROLE_ASSOCIATION_ADMIN` : Administrateur Association (enrôlement commerçants, catalogue des lots).
+    * `ROLE_MERCHANT_ADMIN` : Gestionnaire Boutique (Suzanne - catalogue, stocks, scan caisse, zéro visibilité concurrente).
+  - **Scoping Resserré du Jalon R4 (Décembre 2026)** :
+    * Focalisation de la démonstration logicielle R4 sur un seul composant vertical : **Le Composant Commande & Panier Multi-Commerces Click & Collect sous protocole transactionnel 2PC** (Spring Boot, PostgreSQL, Mock bancaire, interface web React et tests TDD $\ge 80\,\%$).
+    * Les fonctionnalités complémentaires (Caisse express, Moteur VFP, Vouchers mobilité, Dashboard DSI) sont sanctuarisées pour le Jalon R5 (Mars 2027).
+  - **Formalisme d'Ingénierie des Exigences** :
+    * Adoption obligatoire des diagrammes de cas d'utilisation UML et des fiches textuelles standard Cockburn / AFNOR.
+  - **Capitalisation Documentaire** :
+    * Rédaction et adoption du document de gouvernance `agent_projet/docs/00_Gouvernance_Projet/RETOURS_EVALUATION_SOUTENANCE_R1.md`.
+- **Conséquences** : Clarté contractuelle absolue avec la MOA, faisabilité technique garantie pour l'échéance de décembre, socle d'outillage R2 (12 octobre) directement aligné sur l'architecture et les rôles validés.
+
+

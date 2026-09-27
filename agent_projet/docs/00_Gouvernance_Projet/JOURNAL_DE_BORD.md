@@ -871,6 +871,29 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 - **Reste à faire / Prochaine étape** :
   - Poursuivre le traitement de la feuille de route (notamment Gantt, Coûts complets et Section 6.5).
 
+---
+
+### [2026-09-27] Session 36 — Intégration & Capitalisation des Retours d'Évaluation de la Soutenance R1
+- **Objectif** : Analyser exhaustivement les retours critiques et le document annoté transmis par la MOA (Laurence Duchien, Anne Etien, François Secchi, Jérémy Woirhaye) suite au livrable et à la soutenance orale R1. Structurer le plan d'action d'ingénierie corrective sur les 5 axes soulevés (Cas d'utilisation UML, registre des risques ISO 31000, réalisme du scoping R4 de décembre vs R5, clarification institutionnelle ShopLoc et rôles d'administration RBAC, consolidation financière pour R3).
+- **Actions réalisées** :
+  - Dépouillement des remarques de relecture et des passages surlignés du livrable `GARIK_GLOP-2026-LIVRABLE-R1.pdf` (Page 6 APTE/Bête à cornes, Page 8 Release 1 MVP, Page 14 Gantt prévisionnel, Page 18 Charges indirectes de production).
+  - Rédaction et intégration du rapport officiel exhaustif de capitalisation : `agent_projet/docs/00_Gouvernance_Projet/RETOURS_EVALUATION_SOUTENANCE_R1.md`.
+  - Création du pointeur d'accès direct dans le dossier de cadrage : `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/RETOURS_EVALUATION_R1.md`.
+  - Formalisation de l'arbitrage d'architecture et de gouvernance `ADR-020` dans `DECISIONS.md` (clarification ShopLoc vs Garik, matrice des 4 rôles d'administration RBAC, rescindage contractuel de R4 sur le composant Panier 2PC).
+  - Définition de la feuille de route d'impacts pour les jalons R2 (12/10), R3 (30/11) et R4 (18/12).
+- **Fichiers créés ou modifiés** :
+  - *Créés* :
+    * `agent_projet/docs/00_Gouvernance_Projet/RETOURS_EVALUATION_SOUTENANCE_R1.md`
+    * `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/RETOURS_EVALUATION_R1.md`
+  - *Modifiés* :
+    * `agent_projet/docs/00_Gouvernance_Projet/DECISIONS.md` (ADR-020 ajouté)
+    * `agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md` (Session 36)
+- **Décisions actées** :
+  - `ADR-020` validé : Clarification institutionnelle, matrice RBAC des 4 rôles d'administration et recentrage de la démonstration logicielle R4 sur un seul composant vertical (Panier Click & Collect 2PC).
+- **Reste à faire / Prochaine étape** :
+  - Finalisation de la formalisation des Use Cases UML et de la matrice des risques.
+  - Préparation opérationnelle de la séance du 28/09 pour le Jalon R2 (dépôt GitLab Univ-Lille, Docker, CI/CD).
+
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
 
 A la fin de chaque session de chat, l'agent ou l'utilisateur execute la mise a jour de ce fichier selon le format suivant :
