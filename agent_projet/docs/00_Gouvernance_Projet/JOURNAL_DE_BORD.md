@@ -897,9 +897,29 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
     * `agent_projet/docs/04_Presentations_Diaporamas/Diaporama_ShopLoc_Soutenance.html` & `.pdf`
 - **Décisions actées** :
   - `ADR-020` validé : Clarification institutionnelle, matrice RBAC des 4 rôles d'administration et recentrage de la démonstration logicielle R4 sur un seul composant vertical (Panier Click & Collect 2PC).
+### [2026-09-27] Session 37 — Guide d'Installation de l'Outillage Logiciel & Questionnaire d'Arbitrage MOA (Jalon R2)
+- **Objectif** : Formaliser le dossier d'ingénierie complet préparatoire à la séance présentielle du 28/09 (Jalon R2). Détailler la justification technique de chaque choix technologique (Java 21/Spring Boot 3.3, Maven, React/TS, PostgreSQL 16, Docker Compose, Mocks OpenAPI 3.1, GitLab CI), concevoir le guide d'installation pas-à-pas multi-OS (macOS, Windows, Linux), structurer le questionnaire d'arbitrage MOA en 6 volets pour verrouiller l'architecture sans aller-retour, et compiler le livrable PDF officiel A4 de 13 pages avec vérification d'intégrité zéro emoji.
+- **Actions réalisées** :
+  - Rédaction intégrale du document source : `agent_projet/docs/02_Choix_Et_Mise_En_Place_Outils_R2/GUIDE_INSTALLATION_OUTILS_ET_PREPARATION_SEANCE_R2.md`.
+  - Intégration des justifications d'ingénierie et de l'analyse comparative des alternatives rejetées pour chaque composant du socle.
+  - Rédaction du protocole de diagnostic rapide en 5 commandes pour les 5 membres de l'équipe Garik.
+  - Structuration du questionnaire d'arbitrage MOA (6 volets : conformité J2E, GitLab CI & runners, SonarQube, architecture des simulateurs, format du rendu R2, hébergement du site de suivi et reporting des temps).
+  - Adaptation de `agent_projet/scripts/render_report.py` (gestion isolée du user data dir Chromium sur macOS).
+  - Compilation vectorielle haute définition du livrable officiel : `GARIK_GLOP-2026-GUIDE-OUTILS-R2.pdf` (13 pages, 873 Ko, table des matières dynamique, cartouche normalisé).
+  - Vérification d'intégrité validée avec succès via `verify_deliverables.py` (0 violation, 0 canari, 0 emoji).
+  - Déploiement d'une copie du PDF à la racine de `agent_projet/docs/` pour diffusion rapide à l'équipe.
+- **Fichiers créés ou modifiés** :
+  - *Créés* :
+    * `agent_projet/docs/02_Choix_Et_Mise_En_Place_Outils_R2/GUIDE_INSTALLATION_OUTILS_ET_PREPARATION_SEANCE_R2.md`
+    * `agent_projet/docs/02_Choix_Et_Mise_En_Place_Outils_R2/GARIK_GLOP-2026-GUIDE-OUTILS-R2.pdf`
+    * `agent_projet/docs/GARIK_GLOP-2026-GUIDE-OUTILS-R2.pdf`
+  - *Modifiés* :
+    * `agent_projet/scripts/render_report.py`
+    * `agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md`
+- **Décisions actées** :
+  - Validation du guide d'installation et de la grille de questions à soumettre à l'enseignant expert le 28/09.
 - **Reste à faire / Prochaine étape** :
-  - Finalisation de la formalisation des Use Cases UML et de la matrice des risques.
-  - Préparation opérationnelle de la séance du 28/09 pour le Jalon R2 (dépôt GitLab Univ-Lille, Docker, CI/CD).
+  - Tenue de la séance 4 du 28/09 : présentation des choix, recueil des réponses aux 6 volets de questions et rédaction du compte-rendu d'arbitrage (ADR-021).
 
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
 

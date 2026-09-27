@@ -327,11 +327,17 @@ def compile_html_to_pdf(html_content, output_pdf_path, edge_bin):
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
     repo_root = os.path.dirname(os.path.dirname(script_dir))
+    user_data_dir = os.path.join(repo_root, ".chrome_tmp")
+    os.makedirs(user_data_dir, exist_ok=True)
     args = [
         edge_bin,
         "--headless=new",
         "--disable-gpu",
+        "--no-sandbox",
+        "--disable-crash-reporter",
+        "--no-first-run",
         "--no-pdf-header-footer",
+        f"--user-data-dir={user_data_dir}",
         f"--print-to-pdf={output_pdf_path}",
         temp_html_path
     ]
