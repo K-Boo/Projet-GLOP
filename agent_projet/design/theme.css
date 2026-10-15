@@ -181,6 +181,19 @@
   width: 100%;
 }
 
+.landscape-page table.booktabs {
+  font-size: 8pt;
+  line-height: 1.25;
+}
+.landscape-page table.booktabs th {
+  padding: 3.5pt 5pt;
+  font-size: 8pt;
+}
+.landscape-page table.booktabs td {
+  padding: 3pt 5pt;
+  font-size: 7.8pt;
+}
+
 /* REGLES GENERALES */
 *, *:before, *:after {
   box-sizing: border-box;
@@ -457,6 +470,7 @@ table.booktabs code {
 
 .badge-success { background: #DCFCE7; color: var(--color-success); }
 .badge-warning { background: #FEF3C7; color: var(--color-warning); }
+.badge-error   { background: #FEE2E2; color: var(--color-error); }
 .badge-brand   { background: #DBEAFE; color: var(--color-brand-primary); }
 .badge-neutral { background: #F1F5F9; color: var(--color-text-secondary); }
 
@@ -469,6 +483,11 @@ table.booktabs code {
   border-radius: var(--border-radius-md);
   text-align: center;
   page-break-inside: avoid;
+}
+
+.figure-card {
+  page-break-inside: avoid;
+  break-inside: avoid;
 }
 
 .diagram-caption {

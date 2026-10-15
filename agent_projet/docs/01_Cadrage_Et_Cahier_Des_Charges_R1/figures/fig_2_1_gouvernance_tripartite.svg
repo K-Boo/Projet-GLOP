@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 500" width="100%" height="auto" style="overflow:visible; font-family:'Poppins', sans-serif;">
+  <defs>
+    <filter id="shadow-soft" x="-8%" y="-8%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#243342" flood-opacity="0.06"/>
+    </filter>
+    <filter id="shadow-elevated" x="-8%" y="-8%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#243342" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow-slate" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#243342" />
+    </marker>
+    <marker id="arrow-terracotta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#C26750" />
+    </marker>
+    <marker id="arrow-sage" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#4A7A5B" />
+    </marker>
+    <marker id="arrow-honey" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#C48B28" />
+    </marker>
+    <marker id="arrow-plum" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#6E3946" />
+    </marker>
+    <marker id="arrow-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#8C96A5" />
+    </marker>
+  </defs>
+  <!-- FOND GENERAL -->
+  <rect x="0" y="0" width="1020" height="500" rx="16" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1.2" />
+
+  <!-- NIVEAU INSTITUTIONNEL (HAUT) -->
+  <!-- Mairie de Lille -->
+  <g filter="url(#shadow-soft)">
+    <rect x="60" y="30" width="410" height="95" rx="14" fill="#FFFFFF" stroke="#DCB162" stroke-width="1.8" />
+    <path d="M 60 42 A 14 14 0 0 1 74 30 L 456 30 A 14 14 0 0 1 470 42 L 470 54 L 60 54 Z" fill="#FEF7EB" />
+    <text x="75" y="47" font-size="10.5" font-weight="700" fill="#845A11" text-transform="uppercase">Commanditaire Institutionnel · Collectivité</text>
+    <text x="75" y="78" font-size="14.5" font-weight="700" fill="#243342">Mairie de Lille (Direction du Commerce &amp; DSI)</text>
+    <text x="75" y="98" font-size="11" font-weight="400" fill="#5A6578">• Subventions mobilite urbaine (enveloppes Ilevia &amp; voirie)</text>
+    <text x="75" y="114" font-size="11" font-weight="400" fill="#5A6578">• Supervision macroscopique k-anonymisee (zero donnees marchandes)</text>
+  </g>
+
+  <!-- Association des Commerçants -->
+  <g filter="url(#shadow-soft)">
+    <rect x="550" y="30" width="410" height="95" rx="14" fill="#FFFFFF" stroke="#7EA88D" stroke-width="1.8" />
+    <path d="M 550 42 A 14 14 0 0 1 564 30 L 946 30 A 14 14 0 0 1 960 42 L 960 54 L 550 54 Z" fill="#EBF3ED" />
+    <text x="565" y="47" font-size="10.5" font-weight="700" fill="#2E583D" text-transform="uppercase">Maîtrise d'Usage Terrain · Fédération Métier</text>
+    <text x="565" y="78" font-size="14.5" font-weight="700" fill="#243342">Association des Commerçants Lillois</text>
+    <text x="565" y="98" font-size="11" font-weight="400" fill="#5A6578">• Validation de l'adhesion des commerçants &amp; distribution cartes QR</text>
+    <text x="565" y="114" font-size="11" font-weight="400" fill="#5A6578">• Administration des lots cadeaux &amp; dotations federees</text>
+  </g>
+
+  <!-- NIVEAU PRESTATAIRE / MOE (CENTRE GAUCHE) -->
+  <g filter="url(#shadow-elevated)">
+    <rect x="60" y="200" width="410" height="110" rx="14" fill="#FFFFFF" stroke="#243342" stroke-width="2" />
+    <path d="M 60 214 A 14 14 0 0 1 74 200 L 456 200 A 14 14 0 0 1 470 214 L 470 226 L 60 226 Z" fill="#EBF0F5" />
+    <text x="75" y="219" font-size="10.5" font-weight="700" fill="#1C2D3D" text-transform="uppercase">Maîtrise d'Œuvre Informatique (MOE) · ESN Prestataire</text>
+    <text x="75" y="250" font-size="15" font-weight="700" fill="#243342">Entreprise Garik (Collectif d'Ingénierie)</text>
+    <text x="75" y="270" font-size="11" font-weight="400" fill="#5A6578">• Equipe de 5 ingenieurs MIAGE (Khalil, Abdelkader, Gautam, Rayane, Ilyas)</text>
+    <text x="75" y="286" font-size="11" font-weight="400" fill="#5A6578">• Conception, developpement TDD, architecture Docker, maintenance SLA</text>
+    <text x="75" y="302" font-size="11" font-weight="600" fill="#C26750">Prestataire juridique distinct de la plateforme editee</text>
+  </g>
+
+  <!-- NIVEAU PRODUIT LOGICIEL SAAS (CENTRE DROITE) -->
+  <g filter="url(#shadow-elevated)">
+    <rect x="550" y="200" width="410" height="110" rx="14" fill="#243342" stroke="#1A2530" stroke-width="2" />
+    <text x="755" y="235" text-anchor="middle" font-size="16" font-weight="700" fill="#FFFFFF">Plateforme SaaS ShopLoc</text>
+    <text x="755" y="258" text-anchor="middle" font-size="12" font-weight="500" fill="#DCB162">Produit Logiciel Multi-Tenant Hébergé</text>
+    <text x="755" y="278" text-anchor="middle" font-size="11" font-weight="400" fill="#FAF9F6" opacity="0.85">• API REST Spring Boot 3.3 · PostgreSQL 16 ACID</text>
+    <text x="755" y="295" text-anchor="middle" font-size="11" font-weight="400" fill="#FAF9F6" opacity="0.85">• Interfaces Web React 18 / PWA Citoyens, Artisans &amp; Mairie</text>
+  </g>
+
+  <!-- NIVEAU ACTEURS TERRAIN (BAS) -->
+  <g filter="url(#shadow-soft)">
+    <rect x="180" y="380" width="660" height="85" rx="14" fill="#FFFFFF" stroke="#8A9BAE" stroke-width="1.8" />
+    <path d="M 180 394 A 14 14 0 0 1 194 380 L 826 380 A 14 14 0 0 1 840 394 L 840 404 L 180 404 Z" fill="#F5F2EB" />
+    <text x="510" y="397" text-anchor="middle" font-size="10.5" font-weight="700" fill="#5A6578" text-transform="uppercase">Usagers Finaux &amp; Bénéficiaires du Territoire</text>
+    <text x="310" y="428" text-anchor="middle" font-size="13.5" font-weight="700" fill="#C26750">Citoyens Consommateurs</text>
+    <text x="310" y="448" text-anchor="middle" font-size="11" font-weight="400" fill="#5A6578">Achats C&amp;C, cagnotte fidelite, Ilevia</text>
+    <line x1="510" y1="412" x2="510" y2="455" stroke="#DCD6CD" stroke-width="1" />
+    <text x="700" y="428" text-anchor="middle" font-size="13.5" font-weight="700" fill="#4A7A5B">Artisans &amp; Commerçants</text>
+    <text x="700" y="448" text-anchor="middle" font-size="11" font-weight="400" fill="#5A6578">Scan caisse rapide, zero commission</text>
+  </g>
+
+  <!-- FLECHES RELATIONNELLES EXPLICITES -->
+  <!-- 1. Mairie <-> Association (Convention tripartite) -->
+  <path d="M 470 77 L 550 77" fill="none" stroke="#C48B28" stroke-width="2" marker-end="url(#arrow-honey)" />
+  <text x="510" y="70" text-anchor="middle" font-size="9" font-weight="600" fill="#845A11">Convention</text>
+
+  <!-- 2. Mairie & Asso -> Garik (Cahier des charges & SLA) -->
+  <path d="M 265 125 L 265 200" fill="none" stroke="#C48B28" stroke-width="2.2" marker-end="url(#arrow-honey)" />
+  <text x="270" y="165" font-size="9" font-weight="600" fill="#845A11">Contrat MOE</text>
+
+  <!-- 3. Garik -> ShopLoc (Conception, deploiement & hebergement) -->
+  <path d="M 470 255 L 550 255" fill="none" stroke="#243342" stroke-width="2.5" marker-end="url(#arrow-slate)" />
+  <text x="510" y="247" text-anchor="middle" font-size="9.5" font-weight="700" fill="#243342">Edite &amp; Opere</text>
+
+  <!-- 4. ShopLoc -> Usagers (Services et interfaces applicatives) -->
+  <path d="M 755 310 L 755 380" fill="none" stroke="#4A7A5B" stroke-width="2.2" marker-end="url(#arrow-sage)" />
+  <text x="760" y="350" font-size="9" font-weight="600" fill="#2E583D">Web &amp; PWA</text>
+
+  <path d="M 600 310 L 400 380" fill="none" stroke="#C26750" stroke-width="2.2" marker-end="url(#arrow-terracotta)" />
+</svg>

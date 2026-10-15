@@ -918,8 +918,51 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
     * `agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md`
 - **Décisions actées** :
   - Validation du guide d'installation et de la grille de questions à soumettre à l'enseignant expert le 28/09.
+### [2026-10-14] Session 38 — Refonte Intégrale du Diagramme de Gantt Annuel & Décomposition Fine WBS
+- **Objectif** : Traiter en profondeur l'axe 3 des retours critiques du jury de soutenance R1 concernant le manque de précision et le manque de réalisme du planning initial. Restructurer le diagramme de Gantt annuel avec une granularité hebdomadaire fine (S01 à S29), intégrer les contraintes calendaires réelles (Semaine IA, Toussaint, Noël, Hiver), tracer le chemin critique officiel, et détailler la décomposition opérationnelle du composant vertical Panier Click & Collect 2PC pour le jalon R4 de décembre.
+- **Actions réalisées** :
+  - Définition du dictionnaire WBS des 22 tâches d'ingénierie réparties sur les 6 Work Packages (WP1 Cadrage, WP2 Outils/DevOps, WP3 Viabilité financière, WP4 Architecture C4 & Panier 2PC, WP5 Solution V2 complète, WP6 Assurance DoD transverse).
+  - Réécriture complète du générateur `agent_projet/scripts/generate_gantt_annuel_hd.py` (dimensions 1960x1140 px, zéro collision typographique, tracé SVG vectoriel des flèches du chemin critique et des liaisons parallèles, indicateur dynamique "Aujourd'hui" en S07).
+  - Compilation haute définition PyMuPDF : génération du SVG et du PNG officiel `fig_5_1_gantt_annuel_officiel.png` (8167x4750 px).
+  - Enrichissement de la Section 5 du Cahier des Charges (`CAHIER_DES_CHARGES_R1.md`) avec le tableau d'ordonnancement exhaustif des 22 tâches et la justification de faisabilité de la cadence de 7 semaines pour R4.
+  - Audit de sécurité et de conformité validé (`verify_deliverables.py` : 0 canari, 0 violation).
+- **Fichiers modifiés ou créés** :
+  - `agent_projet/scripts/generate_gantt_annuel_hd.py`
+  - `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_5_1_gantt_annuel_officiel.svg`
+  - `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/fig_5_1_gantt_annuel_officiel.png`
+  - `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/CAHIER_DES_CHARGES_R1.md`
+  - `agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md`
+- **Décisions actées** :
+  - Validation du nouveau planning annuel comme référence officielle d'ingénierie pour les jalons R2 à R5.
+  - Découpage confirmé du jalon R4 en 7 sous-tâches verticales sous protocole 2PC et TDD (seuil Jacoco $\ge 80\,\%$).
+### [2026-10-15] Session 39 — Finalisation & Régularisation Formelle du Livrable Addendum R1 Post-Soutenance
+- **Objectif** : Finaliser le document correctif officiel (PDF addendum) répondant aux retours du jury de soutenance R1. Éliminer l'ensemble des scories d'encodage LaTeX, remplacer les diagrammes ASCII par 4 véritables schémas vectoriels SVG aux normes ShopLoc Pastel, passer les cartographies et la matrice des risques sur des pages A4 paysage dédiées, alléger le chapitre de planification en retirant le tableau redondant avec le Gantt, et compiler le livrable PDF finalisé.
+- **Actions réalisées** :
+  - Éradication systématique de l'ensemble des résidus LaTeX ($...$, \ge, \pm, \rightarrow) au profit d'une typographie française soignée (≥ 80 %, ± 0,5 s, →).
+  - Conception et génération des 4 diagrammes vectoriels SVG officiels dans `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/figures/` :
+    - `fig_1_1_bete_a_cornes_revisee.svg` (Bête à cornes APTE intégrant Citoyens, Commerçants, Mairie et Association).
+    - `fig_1_2_diagramme_pieuvre_revisee.svg` (Diagramme Pieuvre à 6 interacteurs et 10 fonctions de service).
+    - `fig_2_1_gouvernance_tripartite.svg` (Gouvernance contractuelle tripartite et distinction nette Garik MOE vs ShopLoc SaaS).
+    - `fig_3_1_use_cases_uml.svg` (Diagramme global UML des cas d'utilisation selon les normes Cockburn / AFNOR).
+  - Intégration de conteneurs A4 paysage (`.landscape-page`) pour : Figure 1.2 (Pieuvre), Figure 3.1 (UML), Tableau 4.1 (Matrice des Risques ISO 31000) et Figure 5.1 (Gantt Annuel HD).
+  - Reformatage de la Matrice des 10 Risques Projet réels en 7 colonnes spacieuses tenant sur une page paysage unique avec badges colorés d'impact.
+  - Suppression du tableau WBS des 22 tâches redondant avec le diagramme de Gantt.
+  - Compilation réussie du livrable officiel `GARIK_GLOP-2026-ADDENDUM-R1.pdf` (21 pages, 3,5 Mo) et duplication à la racine de `agent_projet/docs/`.
+  - Vérification automatisée d'intégrité validée (`verify_deliverables.py` : 0 canari, 0 violation, 0 emoji).
+- **Fichiers modifiés ou créés** :
+  - `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/GARIK_GLOP-2026-ADDENDUM-R1.md`
+  - `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/GARIK_GLOP-2026-ADDENDUM-R1.pdf`
+  - `agent_projet/docs/GARIK_GLOP-2026-ADDENDUM-R1.pdf`
+  - `agent_projet/scripts/generate_addendum_diagrams.py`
+  - `agent_projet/scripts/update_addendum_markdown.py`
+  - `agent_projet/scripts/render_report.py`
+  - `agent_projet/design/theme.css`
+  - `agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md`
+- **Décisions actées** :
+  - Validation du livrable Addendum R1 comme réponse contractuelle exhaustive aux demandes de régularisation post-soutenance.
+  - Consolidation financière confirmée comme étant réservée au jalon R3 du 30 novembre 2026.
 - **Reste à faire / Prochaine étape** :
-  - Tenue de la séance 4 du 28/09 : présentation des choix, recueil des réponses aux 6 volets de questions et rédaction du compte-rendu d'arbitrage (ADR-021).
+  - Préparation du jalon R3 (Viabilité financière, coûts complets des 1000h d'ingénierie, P&L 3 ans, VAN, TRI).
 
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
 

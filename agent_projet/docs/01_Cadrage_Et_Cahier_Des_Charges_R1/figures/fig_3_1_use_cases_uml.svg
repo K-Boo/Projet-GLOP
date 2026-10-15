@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 660" width="100%" height="auto" style="overflow:visible; font-family:'Poppins', sans-serif;">
+  <defs>
+    <filter id="shadow-soft" x="-8%" y="-8%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#243342" flood-opacity="0.06"/>
+    </filter>
+    <filter id="shadow-elevated" x="-8%" y="-8%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#243342" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow-slate" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#243342" />
+    </marker>
+    <marker id="arrow-terracotta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#C26750" />
+    </marker>
+    <marker id="arrow-sage" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#4A7A5B" />
+    </marker>
+    <marker id="arrow-honey" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#C48B28" />
+    </marker>
+    <marker id="arrow-plum" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#6E3946" />
+    </marker>
+    <marker id="arrow-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#8C96A5" />
+    </marker>
+  </defs>
+  <!-- FOND GENERAL -->
+  <rect x="0" y="0" width="1280" height="660" rx="16" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1.2" />
+
+  <!-- FRONTIERE DU SYSTEME SHOPLOC -->
+  <rect x="280" y="30" width="720" height="600" rx="16" fill="#FFFFFF" stroke="#243342" stroke-width="2" />
+  <path d="M 280 44 A 14 14 0 0 1 294 30 L 986 30 A 14 14 0 0 1 1000 44 L 1000 62 L 280 62 Z" fill="#243342" />
+  <text x="640" y="52" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFFFF" letter-spacing="0.04em">Système ShopLoc — Frontière Applicative &amp; Cas d'Utilisation</text>
+
+  <!-- ACTEURS HUMAINS (GAUCHE) -->
+  <!-- 1. Citoyen -->
+  <g filter="url(#shadow-soft)">
+    <rect x="35" y="80" width="200" height="85" rx="12" fill="#FFFFFF" stroke="#D88B77" stroke-width="1.8" />
+    <circle cx="75" cy="115" r="16" fill="#FBEEEA" stroke="#D88B77" stroke-width="1.5" />
+    <text x="75" y="120" text-anchor="middle" font-size="11" font-weight="700" fill="#8E3D2A">C</text>
+    <text x="105" y="112" font-size="13" font-weight="700" fill="#243342">Citoyen</text>
+    <text x="105" y="130" font-size="10" font-weight="500" fill="#C26750">« Acteur Principal »</text>
+    <text x="105" y="145" font-size="9" font-weight="400" fill="#5A6578">Pierre / Julie</text>
+  </g>
+
+  <!-- 2. Commerçant -->
+  <g filter="url(#shadow-soft)">
+    <rect x="35" y="270" width="200" height="85" rx="12" fill="#FFFFFF" stroke="#7EA88D" stroke-width="1.8" />
+    <circle cx="75" cy="305" r="16" fill="#EBF3ED" stroke="#7EA88D" stroke-width="1.5" />
+    <text x="75" y="310" text-anchor="middle" font-size="11" font-weight="700" fill="#2E583D">A</text>
+    <text x="105" y="302" font-size="13" font-weight="700" fill="#243342">Commerçant</text>
+    <text x="105" y="320" font-size="10" font-weight="500" fill="#4A7A5B">« Acteur Principal »</text>
+    <text x="105" y="335" font-size="9" font-weight="400" fill="#5A6578">Suzanne (Boulangère)</text>
+  </g>
+
+  <!-- 3. Association -->
+  <g filter="url(#shadow-soft)">
+    <rect x="35" y="470" width="200" height="85" rx="12" fill="#FFFFFF" stroke="#DCB162" stroke-width="1.8" />
+    <circle cx="75" cy="505" r="16" fill="#FEF7EB" stroke="#DCB162" stroke-width="1.5" />
+    <text x="75" y="510" text-anchor="middle" font-size="11" font-weight="700" fill="#845A11">G</text>
+    <text x="105" y="502" font-size="13" font-weight="700" fill="#243342">Association</text>
+    <text x="105" y="520" font-size="10" font-weight="500" fill="#C48B28">« Gestionnaire »</text>
+    <text x="105" y="535" font-size="9" font-weight="400" fill="#5A6578">Onboarding &amp; Lots</text>
+  </g>
+
+  <!-- ACTEURS SECONDAIRES & SYSTEMES TIERS (DROITE) -->
+  <!-- 4. Mairie (DSI) -->
+  <g filter="url(#shadow-soft)">
+    <rect x="1045" y="80" width="200" height="85" rx="12" fill="#FFFFFF" stroke="#DCB162" stroke-width="1.8" />
+    <circle cx="1085" cy="115" r="16" fill="#FEF7EB" stroke="#DCB162" stroke-width="1.5" />
+    <text x="1085" y="120" text-anchor="middle" font-size="11" font-weight="700" fill="#845A11">M</text>
+    <text x="1115" y="112" font-size="13" font-weight="700" fill="#243342">DSI Mairie</text>
+    <text x="1115" y="130" font-size="10" font-weight="500" fill="#845A11">« Superviseur »</text>
+    <text x="1115" y="145" font-size="9" font-weight="400" fill="#5A6578">Marius (Cadre)</text>
+  </g>
+
+  <!-- 5. Banque Izli -->
+  <g filter="url(#shadow-soft)">
+    <rect x="1045" y="270" width="200" height="85" rx="12" fill="#FFFFFF" stroke="#B88290" stroke-width="1.8" />
+    <rect x="1069" y="299" width="32" height="32" rx="6" fill="#F6ECEF" stroke="#B88290" stroke-width="1.5" />
+    <text x="1085" y="319" text-anchor="middle" font-size="10" font-weight="700" fill="#6E3946">SI</text>
+    <text x="1115" y="302" font-size="13" font-weight="700" fill="#243342">Passerelle Banque</text>
+    <text x="1115" y="320" font-size="10" font-weight="500" fill="#6E3946">« Système Tiers »</text>
+    <text x="1115" y="335" font-size="9" font-weight="400" fill="#5A6578">Autorisation 2PC</text>
+  </g>
+
+  <!-- 6. Mobilité Pass Pass / Parking -->
+  <g filter="url(#shadow-soft)">
+    <rect x="1045" y="470" width="200" height="85" rx="12" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1.8" />
+    <rect x="1069" y="499" width="32" height="32" rx="6" fill="#EBF0F5" stroke="#8B9EAF" stroke-width="1.5" />
+    <text x="1085" y="519" text-anchor="middle" font-size="10" font-weight="700" fill="#1C2D3D">API</text>
+    <text x="1115" y="502" font-size="13" font-weight="700" fill="#243342">API Mobilité</text>
+    <text x="1115" y="520" font-size="10" font-weight="500" fill="#1C2D3D">« Système Tiers »</text>
+    <text x="1115" y="535" font-size="9" font-weight="400" fill="#5A6578">Ilévia &amp; Horodateur</text>
+  </g>
+
+  <!-- 5 CAS D'UTILISATION PRINCIPAUX (ELLIPSES UML DANS LE SYSTEME) -->
+  
+  <!-- UC-01 : Commande Click & Collect 2PC -->
+  <g filter="url(#shadow-soft)">
+    <ellipse cx="640" cy="115" rx="260" ry="38" fill="#FFFFFF" stroke="#C26750" stroke-width="2" />
+    <text x="640" y="112" text-anchor="middle" font-size="12" font-weight="700" fill="#243342">UC-01 : Passer Commande Click &amp; Collect Multi-Commerces</text>
+    <text x="640" y="130" text-anchor="middle" font-size="10" font-weight="500" fill="#C26750">[Orchestration Two-Phase Commit 2PC ACID]</text>
+  </g>
+
+  <!-- UC-02 : Caisse & Double Fidélité -->
+  <g filter="url(#shadow-soft)">
+    <ellipse cx="640" cy="225" rx="260" ry="38" fill="#FFFFFF" stroke="#4A7A5B" stroke-width="2" />
+    <text x="640" y="222" text-anchor="middle" font-size="12" font-weight="700" fill="#243342">UC-02 : Enregistrer Passage Caisse Physique &amp; Double Fidélité</text>
+    <text x="640" y="240" text-anchor="middle" font-size="10" font-weight="500" fill="#4A7A5B">[Scan optique &lt; 3s · Cagnotte Commerçant + Ville]</text>
+  </g>
+
+  <!-- UC-03 : Mobilité Urbaine (Bus & Parking) -->
+  <g filter="url(#shadow-soft)">
+    <ellipse cx="640" cy="335" rx="260" ry="38" fill="#FFFFFF" stroke="#C48B28" stroke-width="2" />
+    <text x="640" y="332" text-anchor="middle" font-size="12" font-weight="700" fill="#243342">UC-03 : Activer Titre Mobilité Douce (Ilévia &amp; Parking)</text>
+    <text x="640" y="350" text-anchor="middle" font-size="10" font-weight="500" fill="#845A11">[Voucher Pass Pass Ilévia ou 20 min Stationnement Voirie]</text>
+  </g>
+
+  <!-- UC-04 : Batch VFP & Relances -->
+  <g filter="url(#shadow-soft)">
+    <ellipse cx="640" cy="445" rx="260" ry="38" fill="#FFFFFF" stroke="#6E3946" stroke-width="2" />
+    <text x="640" y="442" text-anchor="middle" font-size="12" font-weight="700" fill="#243342">UC-04 : Calculer Cohorte Régularité &amp; Notifier Usagers</text>
+    <text x="640" y="460" text-anchor="middle" font-size="10" font-weight="500" fill="#6E3946">[Batch nocturne SQL · Métriques k-anonymisées DSI]</text>
+  </g>
+
+  <!-- UC-05 : Conventionnement & Onboarding -->
+  <g filter="url(#shadow-soft)">
+    <ellipse cx="640" cy="555" rx="260" ry="38" fill="#FFFFFF" stroke="#2B5270" stroke-width="2" />
+    <text x="640" y="552" text-anchor="middle" font-size="12" font-weight="700" fill="#243342">UC-05 : Conventionner Commune &amp; Onboarder Boutique</text>
+    <text x="640" y="570" text-anchor="middle" font-size="10" font-weight="500" fill="#2B5270">[Validation Kbis · Insee API · RBAC 4 Niveaux]</text>
+  </g>
+
+  <!-- LIAISONS ACTEURS -> USE CASES -->
+  <!-- Citoyen -> UC-01, UC-02, UC-03 -->
+  <line x1="235" y1="120" x2="380" y2="120" stroke="#243342" stroke-width="1.8" />
+  <line x1="235" y1="135" x2="420" y2="210" stroke="#243342" stroke-width="1.5" />
+  <line x1="235" y1="150" x2="400" y2="330" stroke="#243342" stroke-width="1.5" />
+
+  <!-- Commerçant -> UC-01 (préparation), UC-02 (scan caisse), UC-05 (onboarding) -->
+  <line x1="235" y1="300" x2="420" y2="135" stroke="#243342" stroke-width="1.5" />
+  <line x1="235" y1="312" x2="380" y2="230" stroke="#243342" stroke-width="1.8" />
+  <line x1="235" y1="330" x2="420" y2="540" stroke="#243342" stroke-width="1.5" />
+
+  <!-- Association -> UC-05, UC-02 (gestion lots) -->
+  <line x1="235" y1="512" x2="380" y2="550" stroke="#243342" stroke-width="1.8" />
+  <line x1="235" y1="495" x2="420" y2="245" stroke="#243342" stroke-width="1.5" />
+
+  <!-- Banque -> UC-01 -->
+  <line x1="1045" y1="312" x2="900" y2="125" stroke="#B88290" stroke-width="1.8" stroke-dasharray="4,3" />
+
+  <!-- API Mobilité -> UC-03 -->
+  <line x1="1045" y1="512" x2="900" y2="345" stroke="#8B9EAF" stroke-width="1.8" stroke-dasharray="4,3" />
+
+  <!-- DSI Mairie -> UC-04, UC-05, UC-03 -->
+  <line x1="1045" y1="120" x2="880" y2="440" stroke="#DCB162" stroke-width="1.8" />
+  <line x1="1045" y1="135" x2="880" y2="550" stroke="#DCB162" stroke-width="1.5" />
+  <line x1="1045" y1="110" x2="880" y2="330" stroke="#DCB162" stroke-width="1.5" />
+</svg>

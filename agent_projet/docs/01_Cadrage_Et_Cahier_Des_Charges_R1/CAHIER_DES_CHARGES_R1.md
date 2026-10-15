@@ -1017,21 +1017,51 @@ Le calendrier de développement de ShopLoc est structuré sur sept mois, de sept
 | **R4 — Architecture V1 & Prototype** | 18 décembre 2026 (18h) | Dossier d'architecture, code & Soutenance le 04/01/2027 | Documentation d'architecture logicielle et premier démonstrateur opérationnel sous Docker (catalogue et réservation Click & Collect). |
 | **R5 — Version complète V2** | 19 mars 2027 (18h) | Système complet & Soutenance le 22/03/2027 | Version finale intégrant la fidélité VFP, le portail municipal, les tests d'intégration complets et le bilan d'exploitation. |
 
-## 5.2. Diagramme de Gantt prévisionnel sur l'année
+## 5.2. Diagramme de Gantt opérationnel & Décomposition fine des tâches (WBS)
 
-Le diagramme ci-après retrace le cheminement chronologique des activités, en tenant compte des périodes de congés et des échéances pour sécuriser nos livraisons :
+Pour répondre aux exigences de réalisme et d'ingénierie logicielle formulées par la maîtrise d'ouvrage, la planification a été entièrement restructurée avec une granularité hebdomadaire fine (semaines S01 à S29). Elle prend en compte les contraintes calendaires universitaires (Semaine IA, congés académiques de Toussaint, Noël et Hiver) et met en évidence le **chemin critique** reliant les jalons R1, R2, R4 et R5.
 
 <div class="diagram-container" style="margin: 0; padding: 0; border: none; background: transparent;">
   <img src="figures/fig_5_1_gantt_annuel_officiel.png" alt="Figure 5.1 — Diagramme de Gantt annuel prévisionnel du projet ShopLoc" style="width: 100%; max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 4px;" />
-  <div class="diagram-caption" style="margin-top: 6pt;">Figure 5.1 — Diagramme de Gantt annuel prévisionnel du projet ShopLoc (Jalons officiels R1 à R5 — 2026-2027)</div>
+  <div class="diagram-caption" style="margin-top: 6pt;">Figure 5.1 — Diagramme de Gantt annuel opérationnel du projet ShopLoc (Jalons officiels R1 à R5 — 2026-2027) · Chemin critique & Découpage fin par composant</div>
 </div>
 
-Le projet s'organise autour de cinq phases de travail coordonnées :
-- **Phase 1 (Septembre - Mi-octobre 2026) :** Réponse à l'appel d'offres, formalisation des exigences fonctionnelles et mise en place de la chaîne d'outils partagée (Jalons R1 et R2).
-- **Phase 2 (Mi-octobre - Fin novembre 2026) :** Élaboration de l'étude financière par la méthode des coûts complets et conception préliminaire des schémas de données (Jalon R3).
-- **Phase 3 (Décembre 2026 - Début janvier 2027) :** Développement du socle applicatif et du prototype fonctionnel Click & Collect mutualisé sous Docker (Jalon R4).
-- **Phase 4 (Janvier - Mi-mars 2027) :** Implémentation du moteur de double fidélité, de l'espace de supervision municipal, des simulateurs de services et des tests de non-régression (Jalon R5).
-- **Phase 5 (Fin mars 2027) :** Recette d'ensemble, rédaction de la documentation finale et soutenance de clôture du projet.
+### Tableau d'ordonnancement des 22 tâches d'ingénierie (WBS)
+
+| Réf. | Lot WBS | Tâche opérationnelle d'ingénierie | Période (Début - Fin) | Durée | Responsable | Prédécesseurs | Chemin Critique | Jalon cible |
+|---|---|---|---|---|---|---|---|---|
+| **T-01** | WP1.1 | Analyse du besoin APTE, Bête à cornes & Fonctions | 02/09/2026 - 06/09/2026 | 1 sem. | Abdelkader Heddi | — | **OUI** | R1 |
+| **T-02** | WP1.2 | Personas, BPMN 2.0 (P1-P5) & Modélisation Merise 3NF | 07/09/2026 - 15/09/2026 | 1.5 sem. | Ilyas Ait Ali / Gautam | T-01 | **OUI** | R1 |
+| **T-03** | WP1.3 | Cahier des charges R1, Backlog MoSCoW & Coûts | 14/09/2026 - 17/09/2026 | 0.5 sem. | Collectif Garik | T-02 | **OUI** | **R1 (18/09)** |
+| **T-04** | WP2.1 | Forge GitLab, branches protégées & convention Git | 22/09/2026 - 28/09/2026 | 1 sem. | Rayane Alli | T-03 | **OUI** | R2 |
+| **T-05** | WP2.2 | Justifications techniques & Guide d'installation multi-OS | 28/09/2026 - 04/10/2026 | 1 sem. | Abdelkader Heddi | T-04 | **OUI** | R2 |
+| **T-06** | WP2.3 | Pipeline GitLab CI, SonarQube (80%) & Docker multi-stage | 05/10/2026 - 11/10/2026 | 1 sem. | Khalil Bouchama / Rayane | T-04 | **OUI** | **R2 (12/10)** |
+| **T-07** | WP3.1 | Ventilation heures d'ingénierie (1000h) & Centres analyse | 12/10/2026 - 23/10/2026 | 2 sem. | Gautam Demeulemeester | T-06 | NON (marge 5j) | R3 |
+| **T-08** | WP3.2 | Unités d'Œuvre, P&L 3 ans, VAN, TRI & Seuil rentabilité | 02/11/2026 - 25/11/2026 | 3 sem. | Gautam / Abdelkader | T-07 | NON (marge 3j) | **R3 (30/11)** |
+| **T-09** | WP4.1 | Cas d'Utilisation Cockburn (UC-01 à 05) & Risques ISO 31000 | 12/10/2026 - 23/10/2026 | 2 sem. | Abdelkader / Khalil | T-06 | **OUI** | R4 |
+| **T-10** | WP4.2 | Architecture C4 4+1, DDL PostgreSQL 16 3NF & Multi-tenant | 02/11/2026 - 08/11/2026 | 1 sem. | Ilyas Ait Ali / Gautam | T-09 | **OUI** | R4 |
+| **T-11** | WP4.3 | Contrat OpenAPI 3.1 & Mock bancaire 2PC (Prepare/Commit) | 09/11/2026 - 15/11/2026 | 1 sem. | Rayane Alli | T-10 | **OUI** | R4 |
+| **T-12** | WP4.4 | Backend Spring Boot 3.3 : Entités JPA & Service 2PC ACID | 16/11/2026 - 29/11/2026 | 2 sem. | Gautam / Rayane | T-11 | **OUI** | R4 |
+| **T-13** | WP4.5 | Tests TDD automatisés unitaires & intégration (JUnit >= 80%) | 23/11/2026 - 04/12/2026 | 2 sem. | Khalil Bouchama | T-12 | **OUI** | R4 |
+| **T-14** | WP4.6 | Frontend React/TS : Catalogue, Panier & Sous-commandes | 30/11/2026 - 11/12/2026 | 2 sem. | Ilyas Ait Ali / Abdelkader | T-12 | **OUI** | R4 |
+| **T-15** | WP4.7 | Assemblage Docker, Pitch RSE & Code Freeze J-3 (15/12) | 11/12/2026 - 15/12/2026 | 0.5 sem. | Collectif Garik | T-13, T-14 | **OUI** | **R4 (18/12)** |
+| **T-16** | WP5.1 | Moteur batch SQL fidélité VFP (10 passages / 15j glissants) | 05/01/2027 - 22/01/2027 | 2 sem. | Gautam Demeulemeester | T-15 | **OUI** | R5 |
+| **T-17** | WP5.2 | Caisse express marchande (< 3s), scan QR & cadeaux | 18/01/2027 - 05/02/2027 | 2 sem. | Ilyas Ait Ali | T-15 | **OUI** | R5 |
+| **T-18** | WP5.3 | Titres mobilité (Bus Ilévia & Parking 20 min) + Mocks voirie | 01/02/2027 - 19/02/2027 | 2 sem. | Rayane Alli | T-16 | **OUI** | R5 |
+| **T-19** | WP5.4 | Supervision municipale DSI k-anonyme & Tournée piétonne | 15/02/2027 - 26/02/2027 | 2 sem. | Abdelkader / Ilyas | T-16, T-18 | NON (marge 4j) | R5 |
+| **T-20** | WP5.5 | Tests charge Gatling, Éco-conception & Homologation V2 | 01/03/2027 - 12/03/2027 | 2 sem. | Khalil / Rayane | T-18, T-19 | **OUI** | R5 |
+| **T-21** | WP5.6 | Release Docker clé en main, Code Freeze J-3 (16/03) & Oral | 12/03/2027 - 16/03/2027 | 0.5 sem. | Collectif Garik | T-20 | **OUI** | **R5 (19/03)** |
+| **T-22** | WP6.1 | Assurance Qualité DoD continue, SonarQube & Code Freeze | 02/09/2026 - 22/03/2027 | 27 sem. | Khalil Bouchama (QA) | — | Transverse | R1 à R5 |
+
+### Justification de la faisabilité du Jalon R4 (Décembre 2026)
+
+Le jury d'évaluation a justement souligné lors de la soutenance R1 qu'un volume de 7 semaines de développement effectif (mi-octobre à mi-décembre 2026) ne permettait pas de livrer l'intégralité du produit MVP (10 User Stories). 
+
+L'équipe Garik a donc opéré un recentrage strict et réaliste conformément aux attendus officiels de l'UE :
+1. **Un seul composant vertical complet déployé et testé sous TDD (Lot 4) :** Le composant de **Commande & Panier Multi-Commerces Click & Collect sous protocole Two-Phase Commit (2PC)**. Ce composant est développé de bout en bout : contrat d'API OpenAPI 3.1 (`T-11`), persistance PostgreSQL transactionnelle multi-tenant (`T-10`), service métier Spring Boot 2PC (`T-12`), couverture de tests automatisés $\ge 80\,\%$ (`T-13`) et interface web React (`T-14`).
+2. **Exécution en parallèle de l'étude financière R3 (Lot 3) :** Les travaux économiques (coûts complets, VAN, TRI) confiés à Gautam Demeulemeester s'exécutent en parallèle au mois de novembre sans consommer les ressources de développement du composant critique 2PC.
+3. **Report des composants secondaires au Semestre 4 (Lot 5) :** Le moteur de fidélité VFP par batch nocturne (`T-16`), la caisse express physique (`T-17`), les titres de mobilité Ilévia/parking (`T-18`) et le tableau de bord DSI Mairie (`T-19`) sont sanctuarisés pour le jalon final R5 de mars 2027.
+4. **Sanctuarisation des marges par le Code Freeze J-3 :** Un gel absolu de code de 72 heures précède chaque remise contractuelle (15 décembre pour R4, 16 mars pour R5) pour valider l'intégrité Docker et répéter les soutenances orales.
 
 ## 5.3. Dispositif de sécurisation des délais et gestion des risques
 

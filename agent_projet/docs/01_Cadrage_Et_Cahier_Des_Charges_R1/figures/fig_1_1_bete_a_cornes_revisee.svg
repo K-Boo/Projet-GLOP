@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 410" width="100%" height="auto" style="overflow:visible; font-family:'Poppins', sans-serif;">
+  <defs>
+    <filter id="shadow-soft" x="-8%" y="-8%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#243342" flood-opacity="0.06"/>
+    </filter>
+    <filter id="shadow-elevated" x="-8%" y="-8%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#243342" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow-slate" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#243342" />
+    </marker>
+    <marker id="arrow-terracotta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#C26750" />
+    </marker>
+    <marker id="arrow-sage" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#4A7A5B" />
+    </marker>
+    <marker id="arrow-honey" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#C48B28" />
+    </marker>
+    <marker id="arrow-plum" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#6E3946" />
+    </marker>
+    <marker id="arrow-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#8C96A5" />
+    </marker>
+  </defs>
+  <!-- FOND GENERAL CARTE -->
+  <rect x="0" y="0" width="960" height="410" rx="16" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1.2" />
+
+  <!-- CARTE HAUT GAUCHE : A QUI LE SYSTEME REND-IL SERVICE ? -->
+  <g filter="url(#shadow-soft)">
+    <rect x="35" y="30" width="415" height="115" rx="12" fill="#FFFFFF" stroke="#D88B77" stroke-width="1.8" />
+    <path d="M 35 42 A 12 12 0 0 1 47 30 L 438 30 A 12 12 0 0 1 450 42 L 450 56 L 35 56 Z" fill="#FBEEEA" />
+    <text x="50" y="48" font-size="10.5" font-weight="700" fill="#8E3D2A" text-transform="uppercase" letter-spacing="0.06em">À qui le système rend-il service ?</text>
+    <text x="50" y="78" font-size="13" font-weight="700" fill="#243342">Aux Citoyens, Artisans, Mairie &amp; Association</text>
+    <text x="50" y="98" font-size="11" font-weight="400" fill="#5A6578">• Citoyens &amp; Commerçants : Pouvoir d'achat et zero commission</text>
+    <text x="50" y="116" font-size="11" font-weight="400" fill="#5A6578">• Mairie &amp; Association : Dynamisation de centre-ville et mobilite</text>
+  </g>
+
+  <!-- CARTE HAUT DROITE : SUR QUOI LE SYSTEME AGIT-IL ? -->
+  <g filter="url(#shadow-soft)">
+    <rect x="510" y="30" width="415" height="115" rx="12" fill="#FFFFFF" stroke="#DCB162" stroke-width="1.8" />
+    <path d="M 510 42 A 12 12 0 0 1 522 30 L 913 30 A 12 12 0 0 1 925 42 L 925 56 L 510 56 Z" fill="#FEF7EB" />
+    <text x="525" y="48" font-size="10.5" font-weight="700" fill="#845A11" text-transform="uppercase" letter-spacing="0.06em">Sur quoi le système agit-il ?</text>
+    <text x="525" y="78" font-size="13" font-weight="700" fill="#243342">Sur les flux marchands et l'animation locale</text>
+    <text x="525" y="98" font-size="11" font-weight="400" fill="#5A6578">• Commandes Click &amp; Collect et passages en caisse physique</text>
+    <text x="525" y="116" font-size="11" font-weight="400" fill="#5A6578">• Double cagnotte fidelite, titres Ilevia et stationnement</text>
+  </g>
+
+  <!-- BOITE PRODUIT CENTRALE : SHOPLOC EDITE PAR GARIK -->
+  <g filter="url(#shadow-elevated)">
+    <rect x="270" y="180" width="420" height="92" rx="16" fill="#243342" stroke="#1A2530" stroke-width="2" />
+    <text x="480" y="215" text-anchor="middle" font-size="17" font-weight="700" fill="#FFFFFF" letter-spacing="0.03em">Plateforme Logicielle ShopLoc</text>
+    <text x="480" y="238" text-anchor="middle" font-size="12" font-weight="500" fill="#DCB162">Editee par Entreprise Garik (Prestataire MOE Informatique)</text>
+    <text x="480" y="257" text-anchor="middle" font-size="10.5" font-weight="400" fill="#FAF9F6" opacity="0.85">Marketplace Locale · Double Fidelite Territoriale · Connecteurs Mobilite</text>
+  </g>
+
+  <!-- CARTE BAS : DANS QUEL BUT ? -->
+  <g filter="url(#shadow-soft)">
+    <rect x="140" y="315" width="680" height="72" rx="12" fill="#FFFFFF" stroke="#7EA88D" stroke-width="1.8" />
+    <path d="M 140 327 A 12 12 0 0 1 152 315 L 808 315 A 12 12 0 0 1 820 327 L 820 338 L 140 338 Z" fill="#EBF3ED" />
+    <text x="480" y="331" text-anchor="middle" font-size="10" font-weight="700" fill="#2E583D" text-transform="uppercase" letter-spacing="0.06em">Dans quel but ? (Finalité Métier)</text>
+    <text x="480" y="358" text-anchor="middle" font-size="12.5" font-weight="600" fill="#243342">Federer le commerce de proximite sans commission predatrice, revitaliser les centres-villes</text>
+    <text x="480" y="376" text-anchor="middle" font-size="11" font-weight="400" fill="#5A6578">et valoriser le pouvoir d'achat des citoyens tout en encourageant les mobilites douces.</text>
+  </g>
+
+  <!-- FLECHES DE CONVERGENCE DE LA BETE A CORNES -->
+  <path d="M 242 145 C 242 168, 330 162, 375 178" fill="none" stroke="#C26750" stroke-width="2.2" marker-end="url(#arrow-terracotta)" />
+  <path d="M 718 145 C 718 168, 630 162, 585 178" fill="none" stroke="#C48B28" stroke-width="2.2" marker-end="url(#arrow-honey)" />
+  <path d="M 480 272 L 480 312" fill="none" stroke="#243342" stroke-width="2.5" marker-end="url(#arrow-slate)" />
+</svg>

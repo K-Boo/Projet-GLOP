@@ -56,10 +56,16 @@ def get_base64_logos(assets_dir):
 
 # Nettoyage et formatage inline du markdown vers HTML
 def clean_inline(text):
+    text = re.sub(r'!\[(.*?)\]\((.*?)\)', r'<img src="\2" alt="\1" style="max-width: 100%; height: auto; display: block; margin: 8pt auto;" />', text)
     text = re.sub(r'\[(.*?)\]\((.*?)\)', r'<a href="\2" style="color: #243342; text-decoration: underline; font-weight: 500;">\1</a>', text)
     text = re.sub(r'\*\*(.*?)\*\*', r'<strong>\1</strong>', text)
     text = re.sub(r'\*(.*?)\*', r'<em>\1</em>', text)
     text = re.sub(r'`(.*?)`', r'<code class="latex-code">\1</code>', text)
+    # Nettoyage automatique des residus LaTeX
+    text = text.replace(r'\ge', '≥').replace(r'\le', '≤').replace(r'\pm', '±')
+    text = text.replace(r'\rightarrow', '→').replace(r'\,', ' ').replace(r'\%', '%')
+    text = re.sub(r'\\text\{(.*?)\}', r'\1', text)
+    text = re.sub(r'\$(.*?)\$', r'\1', text)
     return text
 
 # Conversion d'une table Markdown en table Booktabs HTML
@@ -472,6 +478,7 @@ def main():
     parser.add_argument("--ref", default="GLOP-2026-LIVRABLE-R1-v1.0", help="Reference normalisee du livrable")
     parser.add_argument("--toc", action="store_true", help="Generer une table des matieres dynamique")
     parser.add_argument("--no-cartouche", action="store_true", help="Ne pas afficher le grand cartouche administratif et permettre l enchainement direct du contenu")
+    parser.add_argument("--no-appendices", action="store_true", help="Ne pas fusionner les annexes personas et CVs")
     parser.add_argument("--preview-styleguide", action="store_true", help="Generer uniquement le guide de style visuel ShopLoc")
 
     args = parser.parse_args()
@@ -524,8 +531,9 @@ def main():
     html_content = parse_markdown_to_html(source_content, meta, b64_univ, b64_fst, theme_css, generate_toc=args.toc, no_cartouche=args.no_cartouche)
     compile_html_to_pdf(html_content, output_pdf, edge_bin)
 
-    # Fusion des annexes Personas et CVs si presentes
-    merge_appendices_if_available(output_pdf)
+    # Fusion des annexes Personas et CVs si presentes et appropriees
+    if not args.no_appendices and "CAHIER_DES_CHARGES" in os.path.basename(source_path):
+        merge_appendices_if_available(output_pdf)
 
     # Verification de securite post-compilation sur le PDF
     try:
