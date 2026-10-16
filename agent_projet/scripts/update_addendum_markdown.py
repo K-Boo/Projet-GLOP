@@ -367,30 +367,181 @@ Pour garantir que l'équipe Garik conserve une capacité de réaction immédiate
 
 # 5. Recadrage du Périmètre de Décembre (R4) & Gantt Opérationnel
 
-Le présent chapitre formalise la réponse au commentaire central de la MOA : *« Première release très ambitieuse pour décembre. Il faut être plus précis et réaliste. »*.
+Le présent chapitre formalise la réponse contractuelle et technique au commentaire central formulé par la maîtrise d'ouvrage (MOA) lors de l'évaluation de soutenance : *« Première release très ambitieuse pour décembre. Il faut être plus précis et réaliste. »*.
 
-## 5.1. Découpage Réaliste par Release (R4 vs R5)
+## 5.1. Contexte du Recadrage & Alignement avec le Diaporama de Soutenance (Slide 10)
 
-L'engagement initial prévoyant la livraison des 10 User Stories du MVP dès décembre a été révoqué conformément à l'arbitrage `ADR-020`. Le calendrier d'ingénierie se restructure en deux tranches contractuelles étanches :
+Lors de la soutenance orale du 21 septembre 2026, l'équipe Garik avait présenté en Slide 10 une trajectoire globale découpée en **21 User Stories réparties en deux jalons initiaux** :
+1. **15 User Stories affectées au périmètre MVP initial**, couvrant l'inscription, la réservation, le parcours citoyen, le trajet piéton le plus court, le scan caisse express, le déblocage des cadeaux, les règles VFP, les titres de mobilité Ilévia/parking, et les tableaux de bord statistiques Suzanne et Marius.
+2. **6 User Stories affectées à la Release 2 (Should Have)**, incluant la recharge Izli, l'alerte rupture prédictive, les notifications d'horaires de retrait, le gel VFP vacances, les benchmarks comparatifs et les sondages municipaux.
 
-### Jalon R4 — 18 Décembre 2026 : Release V1 (Composant Vertical Panier 2PC & Archi C4)
-Conformément à la consigne contractuelle de l'UE GLOP (*« Réaliser un au choix des composants logiciels jusqu'au déploiement et aux tests »*), les 7 semaines de développement effectif (mi-octobre à mi-décembre 2026) sont dédiées à 100 % à l'excellence technique d'un composant vertical complet :
-* **Dossier d'Architecture Logicielle 4+1 C4 exhaustif** : Vue Contexte, Conteneurs, Composants et Code ; modélisation du domaine métier et schéma relationnel PostgreSQL 16 normalisé en 3NF.
-* **Composant logiciel unique déployé de bout en bout : Commande & Panier Multi-Commerces Click & Collect sous protocole Two-Phase Commit (2PC)** :
-  * Backend Java 21 / Spring Boot 3.3 implémentant la réservation temporaire de stock et l'orchestration transactionnelle 2PC.
-  * Persistance PostgreSQL 16 avec gestion de concurrence stricte (`SELECT FOR UPDATE`).
-  * Simulateur bancaire conteneurisé (Mock OpenAPI 3.1) validant les cas nominaux et les compensations (*rollback*).
-  * Interface frontend réactive React / TypeScript pour la consultation du catalogue et la validation du panier.
-  * Couverture de tests automatisés unitaires et d'intégration TDD ≥ 80 %.
-  * Déploiement clé en main via `docker compose up`.
+L'analyse critique de la MOA a rappelé avec pertinence la réalité calendaire : entre la validation de cadrage mi-octobre et le rendu du 18 décembre 2026, l'équipe ne dispose que de **7 semaines effectives de développement**. Tenter de livrer 15 User Stories dans ce laps de temps conduirait inévitablement à un prototype superficiel, instable et dépourvu de tests automatisés rigoureux.
 
-### Jalon R5 — 19 Mars 2027 : Release V2 (Système Industriel Complet)
-Le Semestre 4 intègre les composants complémentaires planifiés de janvier à mars 2027 :
-* Moteur batch SQL de fidélité VFP sur fenêtre glissante de 15 jours consécutifs.
-* Interface de caisse express marchande (moins de 3s) et catalogue cadeaux.
-* Module d'émission des vouchers mobilité (Bus Ilévia et franchise 20 min parking).
-* Portail de supervision municipale DSI k-anonymisé (Persona Marius).
-* Campagne d'homologation, tests de charge Gatling et audit d'éco-conception Green IT.
+Conformément à la consigne fondamentale de l'UE GLOP :
+> *« Réaliser un au choix des composants logiciels jusqu'au déploiement et aux tests. »*
+
+L'équipe d'ingénierie Garik a acté l'arbitrage architectural `ADR-020` : **recentrer la Release 1 de Décembre (Jalon R4) sur un seul composant vertical d'excellence technique**, développé sous TDD avec une couverture de tests supérieure ou égale à 80 %, conteneurisé sous Docker et démontrable en direct sans aucun artifice.
+
+---
+
+## 5.2. Matrice Formelle de Réallocation des 21 User Stories (Décembre R4 vs Mars R5)
+
+Afin d'assurer une traçabilité totale avec le diaporama officiel de soutenance (Slide 10), les 21 User Stories sont formellement réallouées selon la matrice ci-après :
+
+| Réf. US | Intitulé de la User Story | Acteur / Persona Cible | Statut Soutenance (Slide 10) | Nouvelle Affectation Contractuelle | Justification Technique &amp; Dépendances |
+|:---:|---|---|:---:|:---:|---|
+| **US-01** | Inscription &amp; Création de Compte Citoyen | Julie / Arthur (Citoyens) | MVP Initial | **Jalon R4 (Décembre 2026)** | Prérequis strict pour l'attribution du panier et la traçabilité de commande. |
+| **US-02** | Authentification Sécurisée Multi-Rôles RBAC | Tous profils utilisateurs | MVP Initial | **Jalon R4 (Décembre 2026)** | Socle de sécurité Spring Security 6 / JWT pour étanchéité commerçant/citoyen. |
+| **US-04** | Renseignement Plaque Immatriculation | Arthur (Automobiliste) | MVP Initial | **Jalon R5 (Mars 2027)** | Dépendance externe avec le système de voirie municipale et le module parking. |
+| **US-06** | Configuration Fiche Publique Magasin &amp; Horaires | Suzanne (Boulangère) | MVP Initial | **Jalon R4 (Décembre 2026)** | Nécessaire pour l'affichage de l'artisan sur la place de marché locale. |
+| **US-07** | Saisie &amp; Gestion des Articles et Stocks C&amp;C | Suzanne (Boulangère) | MVP Initial | **Jalon R4 (Décembre 2026)** | Composant critique : alimente les stocks soumis au verrouillage 2PC. |
+| **US-09** | Commande &amp; Panier Multi-Commerces 2PC | Julie (Citadine) | MVP Initial | **Jalon R4 (Décembre 2026)** | **Cœur de la Release R4** : orchestration transactionnelle 2PC et mock bancaire. |
+| **US-11** | Trajet le Plus Court Piéton Collecte | Julie (Citadine) | MVP Initial | **Jalon R5 (Mars 2027)** | Algorithme de tournée Dijkstra/A* découplable de la transaction d'achat. |
+| **US-13** | Scan Caisse Express &amp; Crédit de Points | Pierre (Senior) / Suzanne | MVP Initial | **Jalon R5 (Mars 2027)** | Concerne l'achat physique en boutique, non requis pour le Click &amp; Collect en ligne. |
+| **US-15** | Paramétrage du Catalogue Cadeaux Commerçant | Suzanne (Fournil) | MVP Initial | **Jalon R5 (Mars 2027)** | Fonctionnalité de fidélité différée au second semestre. |
+| **US-16** | Déblocage &amp; Retrait d'un Lot Cadeau Anti-Abus | Julie (Cliente) | MVP Initial | **Jalon R5 (Mars 2027)** | Sous-système dépendant du solde de points consolidé en caisse physique. |
+| **US-17** | Attribution Automatique du Statut VFP | Pierre / Arthur / Julie | MVP Initial | **Jalon R5 (Mars 2027)** | Moteur batch SQL nocturne sur historique de 15 jours consécutifs. |
+| **US-19** | Émission du Titre de Transport Bus Ilévia | Pierre (Senior) | MVP Initial | **Jalon R5 (Mars 2027)** | Dépend de l'attribution VFP et de l'interfaçage avec l'opérateur de transport. |
+| **US-20** | Activation Franchise 20 min Parking Voirie | Arthur (Automobiliste) | MVP Initial | **Jalon R5 (Mars 2027)** | Dépend du statut VFP et de la passerelle horodateurs municipaux. |
+| **US-22** | Tableau de Bord des Ventes Marchand | Suzanne (Fournil) | MVP Initial | **Jalon R5 (Mars 2027)** | Module de reporting analytique, secondaire par rapport à la chaîne transactionnelle. |
+| **US-24** | Tableau de Bord DSI Mairie k-anonymisé | Marius (DSI Ville) | MVP Initial | **Jalon R5 (Mars 2027)** | Requiert un volume de transactions historique suffisant pour k ≥ 5. |
+| **US-05** | Recharge Compte Citoyen via Passerelle Izli | Arthur (Étudiant) | Release 2 (Confort) | **Jalon R5 (Mars 2027)** | Option de paiement complémentaire planifiée en S4. |
+| **US-08** | Notification &amp; Alerte de Rupture Prédictive | Suzanne (Boulangère) | Release 2 (Confort) | **Jalon R5 (Mars 2027)** | Algorithme d'anticipation de rupture basé sur l'historique de ventes. |
+| **US-12** | Notification Push Horaires Retrait Collecte | Julie (Citadine) | Release 2 (Confort) | **Jalon R5 (Mars 2027)** | Service de messagerie asynchrone non bloquant pour le flux nominal. |
+| **US-18** | Suspension Dérogatoire VFP Période Vacances | Arthur (Automobiliste) | Release 2 (Confort) | **Jalon R5 (Mars 2027)** | Règle de tolérance pour congés, traitable au second semestre. |
+| **US-23** | Benchmark Sectoriel Comparatif Suzanne | Suzanne (Fournil) | Release 2 (Confort) | **Jalon R5 (Mars 2027)** | Agrégation inter-commerces nécessitant une base installée mature. |
+| **US-25** | Campagnes de Relance &amp; Sondages Citoyens | Marius (DSI Ville) | Release 2 (Confort) | **Jalon R5 (Mars 2027)** | Outil marketing municipal planifié pour la phase de déploiement territorial. |
+
+**Synthèse du recalibrage :**
+* **Jalon R4 (Décembre 2026) : 5 User Stories d'élite technique (US-01, US-02, US-06, US-07, US-09)** formant une chaîne verticale étanche et auto-suffisante.
+* **Jalon R5 (Mars 2027) : 16 User Stories** couvrant la fidélité en caisse physique, les mobilités douces, la supervision municipale et les fonctions de confort.
+
+<div style="page-break-after: always;"></div>
+
+## 5.3. Spécifications Détaillées des 4 Features &amp; 5 User Stories du MVP Décembre
+
+Le MVP de Décembre est structuré en **4 Features majeures** découpées selon le standard INVEST, dotées de leurs Règles de Gestion (RG) et de scénarios de validation Gherkin.
+
+### Feature F1 : Gestion des Identités &amp; Accès Multi-Rôles (US-01 &amp; US-02)
+* **Objectif d'ingénierie :** Garantir un contrôle d'accès strict (RBAC) isolant les prérogatives des citoyens et des commerçants, avec émission de jetons JWT sécurisés.
+* **User Story US-01 (Inscription Citoyen) :** En tant que citoyen (Julie), je souhaite créer mon compte avec mon adresse email et un mot de passe sécurisé afin d'obtenir un identifiant unique et une carte numérique de fidélité.
+* **User Story US-02 (Authentification Sécurisée RBAC) :** En tant qu'utilisateur (Julie ou Suzanne), je souhaite m'authentifier afin d'accéder à mon espace dédié en fonction de mon rôle (`ROLE_CITOYEN` ou `ROLE_MERCHANT_ADMIN`).
+* **Règles de Gestion :**
+  * `RG-AUTH-01` : Le mot de passe doit comporter au minimum 12 caractères incluant au moins 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial (norme CNIL / ANSSI).
+  * `RG-AUTH-02` : Tout compte créé se voit attribuer un UUID v4 unique et une carte numérique associée.
+  * `RG-AUTH-03` : La session est gérée par un jeton JWT signé (HMAC-SHA256) d'une durée de validité de 60 minutes avec renouvellement par Refresh Token.
+* **Critères d'Acceptation Gherkin :**
+```gherkin
+Scénario: Authentification réussie d'une commerçante
+  Étant donné une commerçante enregistrée "suzanne@fournil.fr" avec le rôle "ROLE_MERCHANT_ADMIN"
+  Quand elle saisit son adresse email et son mot de passe valide
+  Alors le système génère un jeton JWT contenant le claim "role: ROLE_MERCHANT_ADMIN"
+  Et elle est redirigée vers son tableau de bord de gestion des stocks
+
+Scénario: Échec de connexion avec mot de passe erroné
+  Étant donné un utilisateur enregistré "julie@citoyenne.fr"
+  Quand elle saisit un mot de passe incorrect
+  Alors le système refuse l'accès avec le code HTTP 401 Unauthorized
+  Et aucun jeton de session n'est délivré
+```
+
+### Feature F2 : Administration Boutique &amp; Gestion des Stocks Temps Réel (US-06 &amp; US-07)
+* **Objectif d'ingénierie :** Permettre aux commerçants artisans d'administrer leur vitrine Click &amp; Collect et de piloter précisément leurs stocks d'articles soumis à réservation.
+* **User Story US-06 (Fiche Publique Magasin) :** En tant que commerçante (Suzanne), je configure les coordonnées, la description et les créneaux d'ouverture de ma boulangerie afin d'être visible des acheteurs locaux.
+* **User Story US-07 (Catalogue &amp; Stocks C&amp;C) :** En tant que commerçante (Suzanne), je saisis et mets à jour en temps réel mes articles éligibles au Click &amp; Collect et leurs quantités disponibles.
+* **Règles de Gestion :**
+  * `RG-STK-01` : Chaque article possède un identifiant unique, une désignation, un prix unitaire TTC en centimes d'euro, et une quantité en stock entier strictement positive ou nulle.
+  * `RG-STK-02` : Un article dont le stock est égal à zéro bascule automatiquement à l'état `RUPTURE` et ne peut plus être ajouté à aucun panier.
+  * `RG-STK-03` : Les mises à jour de stocks par l'artisan sont propagées immédiatement dans le catalogue public (latence &lt; 500 ms).
+* **Critères d'Acceptation Gherkin :**
+```gherkin
+Scénario: Mise à jour du stock disponible pour le Click & Collect
+  Étant donné Suzanne connectée sur sa boutique "Le Fournil de Suzanne"
+  Quand elle sélectionne l'article "Baguette Tradition" et fixe le stock à 15 unités
+  Alors la base de données enregistre la quantité disponible de 15
+  Et l'article apparaît comme "Disponible" sur la place de marché citoyenne
+```
+
+### Feature F3 : Panier Multi-Commerces &amp; Réservation Transactionnelle 2PC (US-09)
+* **Objectif d'ingénierie :** Réaliser le cœur technique de l'UE GLOP : garantir l'atomicité stricte d'une commande passée sur plusieurs commerces distincts via un protocole Two-Phase Commit avec compensation automatique.
+* **User Story US-09 (Panier Mutualisé &amp; Commande 2PC) :** En tant que cliente (Julie), je sélectionne des articles issus de plusieurs boutiques (ex. Boulangerie Suzanne et Épicerie locale) et je valide ma commande en une seule transaction sécurisée avec garantie d'intégrité des stocks.
+* **Règles de Gestion Transactionnelles :**
+  * `RG-2PC-01` : Phase 1 (Prepare) : Dès la confirmation de commande, le système pose un verrou pessimiste PostgreSQL (`SELECT ... FOR UPDATE`) sur les lignes d'articles et réserve les quantités demandées en statut `STOCK_HOLD` avec une durée de validité de 15 minutes.
+  * `RG-2PC-02` : Phase 1 (Appel Bancaire) : Le système transmet une requête d'autorisation au simulateur bancaire OpenAPI 3.1.
+  * `RG-2PC-03` : Phase 2 (Commit) : En cas de réponse bancaire HTTP 200, le coordinateur 2PC exécute le `COMMIT` : les stocks sont décrémentés définitivement, la commande passe au statut `CONFIRMED` et les commerçants concernés sont notifiés.
+  * `RG-2PC-04` : Phase 2 (Rollback / Compensation) : En cas de refus bancaire (HTTP 402) ou d'expiration du délai de 15 minutes, le coordinateur exécute immédiatement un `ROLLBACK` : les verrous sont relâchés, le statut `STOCK_HOLD` est annulé (`RELEASED`), les stocks redeviennent instantanément disponibles pour les autres clients, et aucun débit n'est effectué.
+  * `RG-2PC-05` : Si une rupture de stock intervient pendant la constitution du panier, la transaction est rejetée avant tout appel bancaire avec un message explicite à l'usager.
+* **Critères d'Acceptation Gherkin :**
+```gherkin
+Scénario: Validation nominale d'une commande multi-commerces sous 2PC
+  Étant donné Julie avec un panier contenant 2 Baguettes (Boulangerie) et 1 Confiture (Épicerie)
+  Quand Julie déclenche le paiement avec une carte bancaire valide
+  Alors le coordinateur 2PC pose un verrou temporaire "STOCK_HOLD" sur les 2 boutiques
+  Et le mock bancaire retourne le code HTTP 200 OK
+  Alors la commande passe au statut "CONFIRMED"
+  Et les stocks respectifs des deux commerces sont décrémentés de façon atomique
+  Et Julie reçoit son récapitulatif de commande avec QR code de retrait
+
+Scénario: Échec bancaire et compensation transactionnelle automatique (Rollback)
+  Étant donné Julie avec un panier contenant 3 Baguettes (Boulangerie)
+  Quand Julie valide sa commande avec une carte générant un refus bancaire simulé (HTTP 402)
+  Alors le coordinateur 2PC intercepte l'erreur bancaire
+  Et déclenche le rollback immédiat de la réservation de stock
+  Alors le statut "STOCK_HOLD" est immédiatement annulé (RELEASED)
+  Et le stock de la boulangerie revient exactement à son niveau initial
+  Et aucun montant n'est débité
+  Et Julie est invitée à renouveler son moyen de paiement
+```
+
+### Feature F4 : Retrait Click &amp; Collect &amp; Clôture de Commande
+* **Objectif d'ingénierie :** Fournir un mécanisme sécurisé de remise des articles en magasin physique avec horodatage certifié.
+* **Règles de Gestion :**
+  * `RG-RET-01` : Toute commande validée génère un jeton de retrait chiffré encodé sous forme de QR Code (contenant l'identifiant de commande et une signature HMAC-SHA256).
+  * `RG-RET-02` : La présentation du QR Code au commerçant permet la validation du retrait par un scan optique unique.
+  * `RG-RET-03` : La validation du scan fait basculer la commande au statut `COMPLETED` et archive définitivement la transaction.
+* **Critères d'Acceptation Gherkin :**
+```gherkin
+Scénario: Retrait Click & Collect réussi en boutique
+  Étant donné une commande confirmée au statut "CONFIRMED" pour Julie
+  Quand Julie présente son QR Code de retrait à Suzanne
+  Et que Suzanne scanne le QR Code depuis son terminal commerçant
+  Alors le système vérifie l'authenticité de la signature HMAC
+  Et le statut de la commande devient "COMPLETED" avec horodatage de clôture
+```
+
+<div style="page-break-after: always;"></div>
+
+## 5.4. Déroulé Opérationnel du Scénario de Démonstration Live du 18 Décembre
+
+La soutenance du jalon R4 s'appuie sur une démonstration interactive de **10 à 12 minutes**, exécutée en direct sur deux terminaux synchronisés (ou écran scindé) face au jury, appuyée par la visualisation des logs backend en temps réel.
+
+### Découpage Chronologique de la Démonstration (4 Actes) :
+
+```
+[00:00 - 02:30] ACTE 1 : Onboarding & Inventaire Commerçant (Suzanne)
+ └─ Connexion ROLE_MERCHANT_ADMIN → Consultation stock boutique → Mise à jour Click & Collect (10 baguettes, 5 brioches)
+
+[02:30 - 05:00] ACTE 2 : Parcours Citoyen Multi-Commerces (Julie)
+ └─ Connexion ROLE_CITOYEN → Navigation marketplace → Ajout panier multi-vendeurs (Suzanne + Épicerie)
+
+[05:00 - 08:30] ACTE 3 : Climax Transactionnel 2PC & Succès Nominal
+ └─ Validation panier → Logs Spring Boot : SELECT FOR UPDATE (Phase 1 Prepare / STOCK_HOLD 15 min)
+ └─ Appel Mock OpenAPI 3.1 → Réponse HTTP 200 OK → Exécution COMMIT 2PC (Phase 2)
+ └─ Écran Julie : QR Code de retrait HMAC-SHA256 émis
+ └─ Écran Suzanne : Alerte commande entrante en temps réel avec décrémentation instantanée du stock
+
+[08:30 - 11:30] ACTE 4 : Preuve de Résilience & Robustesse MIAGE (Le Cas aux Limites)
+ └─ Nouvelle commande avec simulation d'échec bancaire (Carte refusée HTTP 402 configurée sur le Mock)
+ └─ Logs Spring Boot : Détection HTTP 402 → Déclenchement automatique de la COMPENSATION (Rollback 2PC)
+ └─ Libération immédiate des verrous PostgreSQL : STOCK_HOLD bascule en RELEASED
+ └─ Écran Suzanne : Stock restitué à la seconde près, zéro blocage orphelin
+ └─ Synthèse Qualité : Exécution de la suite de tests automatisés (TDD Jacoco ≥ 80 %, Testcontainers)
+```
+
+### Facteurs Clés d'Appréciation par le Jury Pédagogique :
+1. **Zéro Effet Tunnel :** Deux acteurs humains réels (Suzanne l'artisane et Julie la citoyenne) interagissant sur un cas d'usage urbain crédible.
+2. **Excellence Technique MIAGE :** La démonstration ne se limite pas à un simple CRUD visuel ; elle démontre la maîtrise des transactions distribuées (2PC), des verrous SQL pessimistes et de la compensation d'erreur.
+3. **Reproductibilité Totale :** Déploiement clé en main sous Docker Compose en une seule commande (`docker compose up --build`), garantissant l'absence d'aléa lié aux postes locaux.
 
 <div class="landscape-page" style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 184mm; width: 100%; box-sizing: border-box; padding: 0; margin: 0;">
 <!-- FIGURE 5.1 : DIAGRAMME DE GANTT ANNUEL OFFICIEL (PLEINE PAGE PAYSAGE) -->

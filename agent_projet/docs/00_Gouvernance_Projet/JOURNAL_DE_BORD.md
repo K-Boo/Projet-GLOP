@@ -1055,6 +1055,28 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Revue globale par l'utilisateur des travaux des sessions 41 et 42 avant toute decision de push Git.
   - Lancement operationnel du Chantier 2 : Cadrage fin du backlog (US INVEST), synchronisation Linear MCP et re-synchronisation du Gantt sur le MVP (Panier multi-commerces 2PC et moteur VFP).
 
+### [2026-10-16] Session 43 — Formalisation Contractuelle du MVP Décembre (Jalon R4) & Scénarisation de la Démo Live
+- **Objectif** : Formaliser et intégrer formellement les spécifications détaillées du MVP de Décembre (Jalon R4) dans l'Addendum R1 à partir du diaporama de soutenance (Slide 10) : matrice de réallocation des 21 User Stories, fiches des 4 Features majeures et 5 User Stories avec Règles de Gestion (RG) et scénarios Gherkin, et scénarisation opérationnelle de la démonstration live en 4 actes pour la soutenance R4.
+- **Actions réalisées** :
+  - Rédaction et intégration dans la Section 5 de l'addendum de la matrice exhaustive de réallocation des 21 User Stories (5 US pour le jalon R4, 16 US pour le jalon R5).
+  - Rédaction des spécifications d'ingénierie des 4 Features (F1 à F4) et 5 User Stories du MVP (US-01, US-02, US-06, US-07, US-09) avec critères d'acceptation Gherkin nominaux et de rollback.
+  - Écriture du conducteur de démonstration orale du 18 décembre en 4 actes chronométrés (10-12 min) valorisant les personas Suzanne et Julie, l'orchestration 2PC Spring Boot, et la résilience face aux pannes bancaires.
+  - Mise à jour de `agent_projet/scripts/update_addendum_markdown.py` et régénération de `GARIK_GLOP-2026-ADDENDUM-R1.md`.
+  - Recompilation PDF vectoriel via `render_report.py` : `GARIK_GLOP-2026-ADDENDUM-R1.pdf` (27 pages, 3,56 Mo), préservant parfaitement les 4 pages A4 paysage dédiées (Pieuvre, UML, Risques ISO 31000, Gantt).
+  - Duplication du livrable vers `agent_projet/docs/GARIK_GLOP-2026-ADDENDUM-R1.pdf`.
+  - Contrôle qualité automatisé avec `verify_deliverables.py` (0 canari, 0 violation, 0 emoji).
+- **Fichiers modifiés ou créés** :
+  - `agent_projet/scripts/update_addendum_markdown.py`
+  - `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/GARIK_GLOP-2026-ADDENDUM-R1.md`
+  - `agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/GARIK_GLOP-2026-ADDENDUM-R1.pdf`
+  - `agent_projet/docs/GARIK_GLOP-2026-ADDENDUM-R1.pdf`
+  - `agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md`
+- **Décisions actées** :
+  - Validation définitive de l'alignement contractuel entre le diaporama de soutenance R1 (Slide 10) et le périmètre de la Release 1 de Décembre 2026.
+  - Validation du scénario de démonstration live en 4 actes comme support de la soutenance R4.
+- **Reste à faire / Prochaine étape** :
+  - Préparation du livrable financier R3 (30 novembre 2026) : coûts complets, compte de résultat prévisionnel sur 3 ans, VAN et TRI.
+
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
 
 A la fin de chaque session de chat, l'agent ou l'utilisateur execute la mise a jour de ce fichier selon le format suivant :
