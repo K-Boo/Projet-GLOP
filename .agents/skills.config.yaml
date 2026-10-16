@@ -14,8 +14,9 @@ global:
   safety_gate_mode: "plan_first_explicit_human_approval"
   verification_requirement: "evidence_based_execution"
   ai_code_isolation: "zero_trace_in_evaluated_code_repositories"
-  code_repositories_location: "GLOP/"
+  code_repositories_location: "GLOP/microservices/"
   cockpit_governance_location: "GLOP/ShopLoc/"
+  gitlab_auth_standard: "personal_access_token_only_no_group_bots"
 
 # Surcharge de la competence de developpement Backend
 backend-dev-guidelines:

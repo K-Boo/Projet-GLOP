@@ -1,0 +1,1627 @@
+{
+  "name": "Projet-GLOP",
+  "key": "PRO",
+  "states": {
+    "nodes": [
+      {
+        "id": "d3eb13e6-87de-4ead-bc87-a97611b6cd09",
+        "name": "CI/CD & Autograding",
+        "type": "started",
+        "position": 2000
+      },
+      {
+        "id": "9f49069d-8f0f-43b6-a22e-d4159b7ca127",
+        "name": "In Review & QA (80% Jacoco)",
+        "type": "started",
+        "position": 1000
+      },
+      {
+        "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+        "name": "Sprint Backlog (Ready)",
+        "type": "unstarted",
+        "position": 2
+      },
+      {
+        "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+        "name": "Done (Production)",
+        "type": "completed",
+        "position": 6
+      },
+      {
+        "id": "bec74436-3935-4e5a-92e9-7ff25d090ba2",
+        "name": "Triage / Backlog",
+        "type": "backlog",
+        "position": 1
+      },
+      {
+        "id": "797deca8-345e-499d-8725-f37ac762d8f1",
+        "name": "In Dev (TDD Red-Green)",
+        "type": "started",
+        "position": 0
+      },
+      {
+        "id": "36ddcaa3-1107-409d-93a9-a862e18caf92",
+        "name": "Canceled",
+        "type": "canceled",
+        "position": 7
+      },
+      {
+        "id": "12bbb682-4a88-459f-b64e-bcec86f26fb6",
+        "name": "Duplicate",
+        "type": "duplicate",
+        "position": 5
+      }
+    ]
+  },
+  "labels": {
+    "nodes": [
+      {
+        "id": "18de18b3-04e6-4493-b16c-edf5c0bf5964",
+        "name": "milestone:r5-vfp",
+        "color": "#6366f1"
+      },
+      {
+        "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+        "name": "milestone:r4-mvp",
+        "color": "#f59e0b"
+      },
+      {
+        "id": "2c86910b-5102-4942-80eb-559d7a3df832",
+        "name": "tech:cicd-docker",
+        "color": "#0284c7"
+      },
+      {
+        "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
+        "name": "tech:unit-test",
+        "color": "#16a34a"
+      },
+      {
+        "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
+        "name": "tech:business-rules",
+        "color": "#9333ea"
+      },
+      {
+        "id": "d9f05449-2645-443f-a493-22ba804871e0",
+        "name": "tech:restclient-2pc",
+        "color": "#d03535"
+      },
+      {
+        "id": "4d547c5b-aa93-4708-a7e0-6f1beb6653d2",
+        "name": "tech:jpa-database",
+        "color": "#d97706"
+      },
+      {
+        "id": "cc3fd0e9-6af5-419e-87f1-7c98c3b31549",
+        "name": "tech:openapi-contract",
+        "color": "#4b9fe1"
+      },
+      {
+        "id": "117c232a-b479-4387-913f-84fdae166286",
+        "name": "service:gateway-frontend",
+        "color": "#26b5ce"
+      },
+      {
+        "id": "f7a65f45-988e-430b-801f-11bef59471ad",
+        "name": "service:loyalty",
+        "color": "#8957e5"
+      },
+      {
+        "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+        "name": "service:cart-order",
+        "color": "#e2843b"
+      },
+      {
+        "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+        "name": "service:catalog",
+        "color": "#0f7830"
+      },
+      {
+        "id": "38a29150-2f0d-4644-8f34-e2dcedfff308",
+        "name": "service:auth",
+        "color": "#e36999"
+      },
+      {
+        "id": "eb0dc030-88a8-4fe6-94f3-b688f495b067",
+        "name": "Improvement",
+        "color": "#4EA7FC"
+      },
+      {
+        "id": "c945ef1c-2096-4d68-8c37-8fb89db6337d",
+        "name": "Bug",
+        "color": "#EB5757"
+      },
+      {
+        "id": "8301614c-2d5a-47eb-a4d6-35f62e057788",
+        "name": "Feature",
+        "color": "#BB87FC"
+      }
+    ]
+  },
+  "issues": {
+    "nodes": [
+      {
+        "id": "ff1cb1c0-842f-4376-be40-11cd97574120",
+        "identifier": "PRO-55",
+        "title": "[US-11-T03] Tests Unitaires Retrait & Transition d'Etat",
+        "description": "Verification des transitions d'etat strictes et impossibilite de retrait double.",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "a255ed35-5c37-4d92-9955-285e00f73c6f",
+          "identifier": "PRO-15",
+          "title": "[US-11] Interface Web Ergonomique et Adaptée (Persona Pierre 74 ans)"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:cart-order"
+            },
+            {
+              "name": "tech:unit-test"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "46e334d5-f891-4cff-ab2a-b05faecc7c5f",
+        "identifier": "PRO-54",
+        "title": "[US-11-T02] Vue Tableau de Bord Commandes Commercant",
+        "description": "Endpoint de consultation des commandes en attente de preparation et de retrait pour une boutique donnee.",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "a255ed35-5c37-4d92-9955-285e00f73c6f",
+          "identifier": "PRO-15",
+          "title": "[US-11] Interface Web Ergonomique et Adaptée (Persona Pierre 74 ans)"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:cart-order"
+            },
+            {
+              "name": "tech:business-rules"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "60b2cbf9-b136-45d2-a925-c1aa7700719d",
+        "identifier": "PRO-53",
+        "title": "[US-11-T01] Endpoint Validation QR Code Retrait Commercant",
+        "description": "Endpoint POST /api/orders/sub-orders/{id}/validate-pickup verifiant le jeton QR code du client.",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "a255ed35-5c37-4d92-9955-285e00f73c6f",
+          "identifier": "PRO-15",
+          "title": "[US-11] Interface Web Ergonomique et Adaptée (Persona Pierre 74 ans)"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:cart-order"
+            },
+            {
+              "name": "tech:business-rules"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "b6904167-7bb1-4043-b0e1-f5ef1199c791",
+        "identifier": "PRO-52",
+        "title": "[US-10-T03] Tests Unitaires Confirmation Commande & QR Code",
+        "description": "Validation JUnit 5 de la creation des sous-commandes et de l'integrite du QR Code.",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "e51d068d-b5b2-49ed-9fa5-e91743e668fa",
+          "identifier": "PRO-14",
+          "title": "[US-10] Choix du Créneau de Retrait chez Chaque Commerçant"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:cart-order"
+            },
+            {
+              "name": "tech:unit-test"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "3ca2fb4e-98ad-44b5-bb85-2f2f690e0eac",
+        "identifier": "PRO-51",
+        "title": "[US-10-T02] Generation de Payload QR Code de Retrait Sécurisé",
+        "description": "Generation d'une cle cryptographique unique et du QR Code associe pour le retrait Click & Collect.",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "e51d068d-b5b2-49ed-9fa5-e91743e668fa",
+          "identifier": "PRO-14",
+          "title": "[US-10] Choix du Créneau de Retrait chez Chaque Commerçant"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:cart-order"
+            },
+            {
+              "name": "tech:business-rules"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e14c5694-cabd-437f-bb96-5e6594858baa",
+        "identifier": "PRO-50",
+        "title": "[US-10-T01] Modele JPA Order, SubOrder & Statuts de Commande",
+        "description": "Entites JPA Order et MerchantSubOrder avec statuts (CONFIRMED, PREPARING, READY_FOR_PICKUP, COMPLETED).",
+        "estimate": 2,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "e51d068d-b5b2-49ed-9fa5-e91743e668fa",
+          "identifier": "PRO-14",
+          "title": "[US-10] Choix du Créneau de Retrait chez Chaque Commerçant"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:cart-order"
+            },
+            {
+              "name": "tech:jpa-database"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "3c8b2e34-760c-457d-b3fb-730771bd69a8",
+        "identifier": "PRO-49",
+        "title": "[US-09-T03] Tests de Resilience 2PC & Scenarios de Panne",
+        "description": "Simulation d'echec sur un commerce B sur 3 et verification du rollback automatique sur commerces A et C.",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "3f6bccc4-7895-4ba0-bf5c-a5678969b1c1",
+          "identifier": "PRO-13",
+          "title": "[US-09] Sécurité des Pannes Transactionnelles (Timeout & Compensation Automatique)"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:cart-order"
+            },
+            {
+              "name": "tech:unit-test"
+            },
+            {
+              "name": "tech:restclient-2pc"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ad671cdf-e4cb-43b4-86e5-53e6bceda40d",
+        "identifier": "PRO-48",
+        "title": "[US-09-T02] Endpoints /api/inventory/commit et /rollback",
+        "description": "Endpoints de validation definitive de deduction de stock ou liberation immediate du verrou de reservation.",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "3f6bccc4-7895-4ba0-bf5c-a5678969b1c1",
+          "identifier": "PRO-13",
+          "title": "[US-09] Sécurité des Pannes Transactionnelles (Timeout & Compensation Automatique)"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:catalog"
+            },
+            {
+              "name": "tech:business-rules"
+            },
+            {
+              "name": "tech:restclient-2pc"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "1aa5435b-91ef-40f8-ab42-fd2276065e73",
+        "identifier": "PRO-47",
+        "title": "[US-09-T01] Moteur Coordinateur 2PC dans Cart & Order Service",
+        "description": "Orchestrateur Two-Phase Commit executant prepareAll puis commitAll ou rollbackAll selon reponse unanime.",
+        "estimate": 3,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "3f6bccc4-7895-4ba0-bf5c-a5678969b1c1",
+          "identifier": "PRO-13",
+          "title": "[US-09] Sécurité des Pannes Transactionnelles (Timeout & Compensation Automatique)"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:cart-order"
+            },
+            {
+              "name": "tech:restclient-2pc"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "4aa17a0f-7af4-42e0-98dd-78022d799d90",
+        "identifier": "PRO-46",
+        "title": "[US-08-T03] Tests d'Integration 2PC Prepare (Succes & Rupture)",
+        "description": "Tests unitaires et d'integration validant l'accord de reservation ou le refus VETO avec RFC 7807.",
+        "estimate": 2,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "16cd3b5a-b012-498e-8e76-0401770d9e1a",
+          "identifier": "PRO-12",
+          "title": "[US-08] Orchestration de la Transaction 2PC (Phase Prepare & Commit)"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:cart-order"
+            },
+            {
+              "name": "tech:unit-test"
+            },
+            {
+              "name": "tech:restclient-2pc"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "15bf8fdc-e1b1-4859-ba9b-2c0ac9e6066c",
+        "identifier": "PRO-45",
+        "title": "[US-08-T02] Endpoint /api/inventory/prepare dans Catalog Service",
+        "description": "Verification des stocks et pose d'un verrou de reservation temporaire (TTL 5 minutes).",
+        "estimate": 2,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "16cd3b5a-b012-498e-8e76-0401770d9e1a",
+          "identifier": "PRO-12",
+          "title": "[US-08] Orchestration de la Transaction 2PC (Phase Prepare & Commit)"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:catalog"
+            },
+            {
+              "name": "tech:business-rules"
+            },
+            {
+              "name": "tech:restclient-2pc"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "7e80039b-740b-4bf5-bc0c-1328cd3170ca",
+        "identifier": "PRO-44",
+        "title": "[US-08-T01] Contrat OpenAPI 3.1 & DTOs 2PC Prepare",
+        "description": "Definition et generation des DTOs Java 17 records pour l'endpoint /api/inventory/prepare.",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "16cd3b5a-b012-498e-8e76-0401770d9e1a",
+          "identifier": "PRO-12",
+          "title": "[US-08] Orchestration de la Transaction 2PC (Phase Prepare & Commit)"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:cart-order"
+            },
+            {
+              "name": "tech:openapi-contract"
+            },
+            {
+              "name": "tech:restclient-2pc"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "b0dfe052-a8df-434d-aa1a-57023886eec2",
+        "identifier": "PRO-43",
+        "title": "[US-07-T03] Tests Unitaires Panier Multi-Boutiques",
+        "description": "Verification du calcul des totaux par boutique et total global, couverture Jacoco >= 80%.",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "68dcb1ea-2148-47c7-b4a4-828b8348a8d4",
+          "identifier": "PRO-11",
+          "title": "[US-07] Constitution du Panier Multi-Boutiques"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:cart-order"
+            },
+            {
+              "name": "tech:unit-test"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "7b874cad-9b40-4521-ac30-bcabce6c233b",
+        "identifier": "PRO-42",
+        "title": "[US-07-T02] Endpoints Panier Multi-Commerces /api/cart",
+        "description": "Ajout, modification quantite, suppression d'article et regroupement automatique des sous-paniers par boutique.",
+        "estimate": 2,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "68dcb1ea-2148-47c7-b4a4-828b8348a8d4",
+          "identifier": "PRO-11",
+          "title": "[US-07] Constitution du Panier Multi-Boutiques"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:cart-order"
+            },
+            {
+              "name": "tech:business-rules"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e00e4209-2022-4298-b05f-985759c75f6a",
+        "identifier": "PRO-41",
+        "title": "[US-07-T01] Modele JPA Panier Multi-Boutiques (order_db)",
+        "description": "Entites Cart et CartItem dans shoploc-cart-order-service avec partitionnement logique par commercant.",
+        "estimate": 2,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "68dcb1ea-2148-47c7-b4a4-828b8348a8d4",
+          "identifier": "PRO-11",
+          "title": "[US-07] Constitution du Panier Multi-Boutiques"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:cart-order"
+            },
+            {
+              "name": "tech:jpa-database"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "0d89d7a7-1c44-45d4-bde4-8273eca75876",
+        "identifier": "PRO-40",
+        "title": "[US-06-T03] Tests Unitaires de Geofencing",
+        "description": "Tests de calcul de distance et filtrage des produits hors perimetre.",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "e79ab938-d177-4b0f-8aa4-2594263ead26",
+          "identifier": "PRO-10",
+          "title": "[US-06] Vérification & Réservation Temporaire de Stock (Endpoint Pré-Commit 2PC)"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:catalog"
+            },
+            {
+              "name": "tech:unit-test"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "bd4dad9a-dcfe-4a7b-9c5f-1166c10f5d2b",
+        "identifier": "PRO-39",
+        "title": "[US-06-T02] Endpoint GET /api/catalog/search",
+        "description": "Recherche paginee multi-criteres (mot-cle, commerce, disponibilite stock, perimetre geographique).",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "e79ab938-d177-4b0f-8aa4-2594263ead26",
+          "identifier": "PRO-10",
+          "title": "[US-06] Vérification & Réservation Temporaire de Stock (Endpoint Pré-Commit 2PC)"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:catalog"
+            },
+            {
+              "name": "tech:business-rules"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ceba68db-6328-4b41-a159-09112756f17b",
+        "identifier": "PRO-38",
+        "title": "[US-06-T01] JPA Specifications & Recherche Geofencing",
+        "description": "Implementer JPA Criteria / Specifications pour recherche par rayon (formule haversine ou distance geographique).",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "e79ab938-d177-4b0f-8aa4-2594263ead26",
+          "identifier": "PRO-10",
+          "title": "[US-06] Vérification & Réservation Temporaire de Stock (Endpoint Pré-Commit 2PC)"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:catalog"
+            },
+            {
+              "name": "tech:jpa-database"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "5e85cedc-06c7-4dd7-a164-b15e04a7da56",
+        "identifier": "PRO-37",
+        "title": "[US-05-T03] Tests de Concurrence sur Stocks",
+        "description": "Tests d'acces concurrentiel multi-threads simulant deux achats simultanes sur le dernier article.",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "c11fd486-fe79-4b1b-9bfd-e3cf5d13ae87",
+          "identifier": "PRO-9",
+          "title": "[US-05] Gestion des Fiches Produits & Stocks par le Commerçant"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:catalog"
+            },
+            {
+              "name": "tech:unit-test"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "4a1a65f6-2666-4380-b271-6ee1e3214787",
+        "identifier": "PRO-36",
+        "title": "[US-05-T02] Endpoint PATCH /api/products/{id}/stock",
+        "description": "Mise a jour rapide des stocks par le commercant avec emission d'alerte si stock epuise.",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "c11fd486-fe79-4b1b-9bfd-e3cf5d13ae87",
+          "identifier": "PRO-9",
+          "title": "[US-05] Gestion des Fiches Produits & Stocks par le Commerçant"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:catalog"
+            },
+            {
+              "name": "tech:business-rules"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e5b4749d-6afc-45b0-8c66-b6c7623b0952",
+        "identifier": "PRO-35",
+        "title": "[US-05-T01] Gestion Inventaire & Verrous Optimistes JPA",
+        "description": "Ajout du champ stock et du champ @Version pour la gestion de la concurrence d'acces aux stocks.",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "c11fd486-fe79-4b1b-9bfd-e3cf5d13ae87",
+          "identifier": "PRO-9",
+          "title": "[US-05] Gestion des Fiches Produits & Stocks par le Commerçant"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:catalog"
+            },
+            {
+              "name": "tech:jpa-database"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "3c9c3514-f08f-45ba-8adb-e7c3cfcbb3d1",
+        "identifier": "PRO-34",
+        "title": "[US-04-T03] Tests Unitaires Catalogue Produits",
+        "description": "Validation des scenarios d'erreur (prix negatif, categorie inexistante) et tests JUnit 5.",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "00f7c4ab-b319-490f-ba44-cbf551150c5a",
+          "identifier": "PRO-8",
+          "title": "[US-04] Consultation du Catalogue Produits d'une Boutique"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:catalog"
+            },
+            {
+              "name": "tech:unit-test"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "bfbfb83c-58a0-4fd4-929a-3a7f2d9f4130",
+        "identifier": "PRO-33",
+        "title": "[US-04-T02] Endpoints REST Produits /api/merchants/{id}/products",
+        "description": "Endpoints de creation, modification, desactivation de produits du catalogue avec validation prix positif.",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "00f7c4ab-b319-490f-ba44-cbf551150c5a",
+          "identifier": "PRO-8",
+          "title": "[US-04] Consultation du Catalogue Produits d'une Boutique"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:catalog"
+            },
+            {
+              "name": "tech:business-rules"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "691fee22-84e2-4eb9-a9d4-c2133d900cb0",
+        "identifier": "PRO-32",
+        "title": "[US-04-T01] Modele JPA Product & Category",
+        "description": "Entites JPA Product (id, merchant_id, nom, prix, tva, description) et Category dans shoploc-merchant-catalog-service.",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "00f7c4ab-b319-490f-ba44-cbf551150c5a",
+          "identifier": "PRO-8",
+          "title": "[US-04] Consultation du Catalogue Produits d'une Boutique"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:catalog"
+            },
+            {
+              "name": "tech:jpa-database"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "2bd048dc-09ce-4aad-959c-a2316306e957",
+        "identifier": "PRO-31",
+        "title": "[US-03-T03] Tests Unitaires & Isolation MockMvc",
+        "description": "Tests JUnit 5 verifiant les regles de gestion de modification de fiche boutique et couverture Jacoco >= 80%.",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "820c0647-1bbf-4c6f-a561-56d221be189a",
+          "identifier": "PRO-7",
+          "title": "[US-03] Consultation des Boutiques Partenaires"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:catalog"
+            },
+            {
+              "name": "tech:unit-test"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "196375ae-211a-4e6d-9d9f-7d8f1b7ee441",
+        "identifier": "PRO-30",
+        "title": "[US-03-T02] CRUD REST /api/merchants Fiche Boutique",
+        "description": "Endpoints de creation, consultation et mise a jour de la fiche commercant avec controle d'habilitation role.",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "820c0647-1bbf-4c6f-a561-56d221be189a",
+          "identifier": "PRO-7",
+          "title": "[US-03] Consultation des Boutiques Partenaires"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:catalog"
+            },
+            {
+              "name": "tech:business-rules"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "651db106-7e89-402f-9f6e-fb2c3631b4e5",
+        "identifier": "PRO-29",
+        "title": "[US-03-T01] Modele JPA Merchant & Boutique (catalog_db)",
+        "description": "Creer l'entite JPA MerchantStore avec adresse geolocalisee (lat/lon), siret, horaires et etat d'activation.",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "820c0647-1bbf-4c6f-a561-56d221be189a",
+          "identifier": "PRO-7",
+          "title": "[US-03] Consultation des Boutiques Partenaires"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:catalog"
+            },
+            {
+              "name": "tech:jpa-database"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "c80e520c-734b-488f-a79b-7e51ee64b1fd",
+        "identifier": "PRO-28",
+        "title": "[US-02-T03] Tests de Securite & Token Expiration",
+        "description": "Tests automatises verifiant le rejet des requetes non authentifiees et la validite temporelle des tokens JWT.",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "e66dc4ad-ea87-40f8-a0a8-13dbf5e9b310",
+          "identifier": "PRO-6",
+          "title": "[US-02] Connexion Sécurisée & Émission de Token JWT"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:auth"
+            },
+            {
+              "name": "tech:unit-test"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "137b36df-89fc-420e-906d-afdb006c7242",
+        "identifier": "PRO-27",
+        "title": "[US-02-T02] Endpoint Authentification /api/auth/login",
+        "description": "Implementer l'authentification avec emission du token JWT contenant user_id et roles commercant/citoyen.",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "e66dc4ad-ea87-40f8-a0a8-13dbf5e9b310",
+          "identifier": "PRO-6",
+          "title": "[US-02] Connexion Sécurisée & Émission de Token JWT"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:auth"
+            },
+            {
+              "name": "tech:business-rules"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "d12a0dd9-8c62-4f8a-a281-c5b60bc693b8",
+        "identifier": "PRO-26",
+        "title": "[US-02-T01] Configuration Spring Security & Filtre JWT",
+        "description": "Configurer le SecurityFilterChain stateless et le filtre de validation de signature JWT dans shoploc-auth-service.",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "e66dc4ad-ea87-40f8-a0a8-13dbf5e9b310",
+          "identifier": "PRO-6",
+          "title": "[US-02] Connexion Sécurisée & Émission de Token JWT"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:auth"
+            },
+            {
+              "name": "tech:business-rules"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "229e94a7-ebd2-4f73-8e0b-4dbf6f8ad84d",
+        "identifier": "PRO-25",
+        "title": "[US-01-T03] Tests Unitaires & Couverture Jacoco >= 80%",
+        "description": "Ecrire les tests unitaires et de validation d'unicite email sous JUnit 5 / MockMvc pour atteindre 80% de couverture.",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "e8959e4d-eeb5-41bf-b306-1608502aa5ac",
+          "identifier": "PRO-5",
+          "title": "[US-01] Inscription Sécurisée Multi-Rôles"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:auth"
+            },
+            {
+              "name": "tech:unit-test"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "6cbb4619-7dd1-4633-bdfc-e5f2db525112",
+        "identifier": "PRO-24",
+        "title": "[US-01-T02] Endpoints REST Inscription Citoyen & Commercant",
+        "description": "Implementer les endpoints POST /api/auth/register-citizen et /api/auth/register-merchant avec validation Jakarta et RFC 7807.",
+        "estimate": 2,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "e8959e4d-eeb5-41bf-b306-1608502aa5ac",
+          "identifier": "PRO-5",
+          "title": "[US-01] Inscription Sécurisée Multi-Rôles"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:auth"
+            },
+            {
+              "name": "tech:business-rules"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "564c40f9-e7b4-4328-ad4b-c4ffd3b466cc",
+        "identifier": "PRO-23",
+        "title": "[US-01-T01] Modele JPA User, Role & DDL auth_db",
+        "description": "Concevoir les entites JPA User, Role et MerchantProfile dans shoploc-auth-service (PostgreSQL auth_db normalise 3NF).",
+        "estimate": 1,
+        "priority": 1,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": {
+          "id": "e8959e4d-eeb5-41bf-b306-1608502aa5ac",
+          "identifier": "PRO-5",
+          "title": "[US-01] Inscription Sécurisée Multi-Rôles"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:auth"
+            },
+            {
+              "name": "tech:jpa-database"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "4fae13be-c839-46a3-b1e9-c7c194ac86a0",
+        "identifier": "PRO-22",
+        "title": "[US-18] Tableau de Bord Municipal k-Anonyme (Supervision Mairie / DSI)",
+        "description": "En tant que responsable municipal du commerce de proximité (Mairie de Lille),  \n Je veux visualiser les flux d'achats agrégés et les retombées économiques par quartier,  \n Afin de mesurer l'efficacité des politiques de redynamisation commerciale dans le respect total du RGPD.\n\n## Criteres d'Acceptation (Gherkin)\n\n```gherkin\nFonctionnalité: Supervision municipale k-anonyme\n    Scénario: Consultation des métriques agrégées\n      Étant donné un compte utilisateur authentifié avec le rôle \"MAIRIE_DSI\"\n      Quand il accède au tableau de bord municipal\n      Alors les flux économiques sont affichés sous forme de totaux agrégés par zone géographique\n      Et aucune donnée nominative ou individuelle n'est transmise (seuil k-anonymat >= 5).\n```",
+        "estimate": 3,
+        "priority": 1,
+        "state": {
+          "name": "Triage / Backlog",
+          "type": "backlog"
+        },
+        "parent": null,
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:gateway-frontend"
+            },
+            {
+              "name": "milestone:r5-vfp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "61410416-ba6d-4dc1-8a7b-6f2db55340ab",
+        "identifier": "PRO-21",
+        "title": "[US-17] Activation des 20 Minutes de Parking Gratuit",
+        "description": "En tant que citoyen véhiculé effectuant un retrait Click & Collect,  \n Je veux générer un bon de gratuité de stationnement de 20 minutes,  \n Afin de stationner rapidement sans frais le temps de récupérer mes courses.\n\n## Criteres d'Acceptation (Gherkin)\n\n```gherkin\nFonctionnalité: Bon de parking 20 minutes\n    Scénario: Délivrance de bon de stationnement\n      Étant donné une commande Click & Collect confirmée pour un retrait aujourd'hui\n      Quand le client demande son bon de stationnement\n      Alors le système génère un coupon unique horodaté valable 20 minutes\n      Et le coupon est transmis au système de voirie municipal (mock d'API).\n```",
+        "estimate": 3,
+        "priority": 1,
+        "state": {
+          "name": "Triage / Backlog",
+          "type": "backlog"
+        },
+        "parent": null,
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:gateway-frontend"
+            },
+            {
+              "name": "milestone:r5-vfp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "80a7c9ea-b453-4775-a295-ad098915416a",
+        "identifier": "PRO-20",
+        "title": "[US-16] Délivrance de Ticket de Bus Dématérialisé (Partenariat Ilévia)",
+        "description": "En tant que citoyen ayant atteint le palier VFP,  \n Je veux convertir mes points en un ticket de transport en commun 1 voyage,  \n Afin de me déplacer gratuitement pour venir chercher mes achats dans le centre-ville.\n\n## Criteres d'Acceptation (Gherkin)\n\n```gherkin\nFonctionnalité: Émission de titre de transport dématérialisé\n    Scénario: Conversion de points en ticket de bus\n      Étant donné un client VFP disposant de 100 points disponibles\n      Quand il clique sur \"Obtenir un ticket Ilévia 1 Voyage\"\n      Alors 100 points sont déduits de sa cagnotte\n      Et le service génère un code-barres 2D conforme aux normes Ilévia\n      Et le titre est téléchargeable hors-ligne sur le smartphone.\n```",
+        "estimate": 3,
+        "priority": 1,
+        "state": {
+          "name": "Triage / Backlog",
+          "type": "backlog"
+        },
+        "parent": null,
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:gateway-frontend"
+            },
+            {
+              "name": "milestone:r5-vfp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "9ac0ddc3-fc6d-4354-b7c1-612201adb1be",
+        "identifier": "PRO-19",
+        "title": "[US-15] Scan Caisse Commerçant & Crédit Express",
+        "description": "En tant que commerçant en boutique physique,  \n Je veux scanner le QR Code du client avec la caméra de ma tablette ou mon lecteur de caisse,  \n Afin de lui attribuer ses points de fidélité en moins de 3 secondes sans ralentir la file d'attente.\n\n## Criteres d'Acceptation (Gherkin)\n\n```gherkin\nFonctionnalité: Scan caisse commerçant\n    Scénario: Scan valide et crédit de transaction\n      Étant donné un commerçant sur son interface de caisse ShopLoc\n      Quand il scanne le QR Code d'un client et valide un montant d'achat de 12,50 €\n      Alors la cagnotte du client est incrémentée en temps réel\n      Et l'écran affiche une validation visuelle verte sans rechargement de page.\n```",
+        "estimate": 3,
+        "priority": 1,
+        "state": {
+          "name": "Triage / Backlog",
+          "type": "backlog"
+        },
+        "parent": null,
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:loyalty"
+            },
+            {
+              "name": "milestone:r5-vfp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "07f4b778-d009-40de-b2e4-bd9caae2c207",
+        "identifier": "PRO-18",
+        "title": "[US-14] Dématérialisation de la Carte de Fidélité (QR Code Client)",
+        "description": "## Criteres d'Acceptation (Gherkin)\n\n```gherkin\nFonctionnalité: Carte de fidélité dématérialisée\n    Scénario: Génération du QR Code client\n      Étant donné un utilisateur citoyen connecté sur son tableau de bord\n      Quand il ouvre l'onglet \"Ma Carte de Fidélité\"\n      Alors un QR Code signé cryptographiquement s'affiche à l'écran\n      Et le QR Code est renouvelé automatiquement toutes les 60 secondes.\n```",
+        "estimate": 3,
+        "priority": 1,
+        "state": {
+          "name": "Triage / Backlog",
+          "type": "backlog"
+        },
+        "parent": null,
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:loyalty"
+            },
+            {
+              "name": "milestone:r5-vfp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "2111aadc-6227-4a4e-b653-d75467130149",
+        "identifier": "PRO-17",
+        "title": "[US-13] Algorithme d'Expiration Dynamique VFP (Règle Métier des 15 Jours)",
+        "description": "En tant que régisseur du programme de fidélité ShopLoc,  \n Je veux que le statut Very Frequent Purchaser (VFP) expire automatiquement si aucun achat n'est effectué dans un délai glissant de 15 jours,  \n Afin de stimuler la récurrence réelle des achats chez les artisans de proximité.\n\n## Criteres d'Acceptation (Gherkin)\n\n```gherkin\nFonctionnalité: Moteur d'expiration VFP à 15 jours\n    Scénario: Maintien du statut VFP\n      Étant donné un client disposant du statut VFP au jour J\n      Quand le client effectue un nouvel achat éligible au jour J+12\n      Alors la date d'échéance de son statut VFP est repoussée au jour J+27 (J+12 + 15 jours).\n\n    Scénario: Rétrogradation automatique après inactivité\n      Étant donné un client VFP dont le dernier achat date d'il y a 16 jours\n      Quand le batch nocturne de conformité s'exécute à 02h00\n      Alors le statut du client passe de \"VFP\" à \"STANDARD\"\n      Et un journal d'audit enregistre la transition d'état.\n```",
+        "estimate": 3,
+        "priority": 1,
+        "state": {
+          "name": "Triage / Backlog",
+          "type": "backlog"
+        },
+        "parent": null,
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:loyalty"
+            },
+            {
+              "name": "milestone:r5-vfp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "f0a59a6a-7c8d-48eb-aa90-12bb772c7984",
+        "identifier": "PRO-16",
+        "title": "[US-12] Cumul de Points de Fidélité lors d'un Achat Validé",
+        "description": "En tant que citoyen consommant localement,  \n Je veux cumuler des points de fidélité lors de la validation d'un achat (en ligne ou en boutique),  \n Afin de valoriser ma fidélité auprès des commerces de mon quartier.\n\n## Criteres d'Acceptation (Gherkin)\n\n```gherkin\nFonctionnalité: Cumul de points de fidélité\n    Scénario: Attribution de points après retrait de commande\n      Étant donné une commande de 25,00 € retirée et confirmée chez la Boulangerie A\n      Quand le signal de retrait est reçu par loyalty-vfp-service\n      Alors la cagnotte du client est créditée de 25 points dédiés à la Boulangerie A\n      Et le client reçoit un accusé d'actualisation de sa cagnotte.\n```",
+        "estimate": 3,
+        "priority": 1,
+        "state": {
+          "name": "Triage / Backlog",
+          "type": "backlog"
+        },
+        "parent": null,
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:loyalty"
+            },
+            {
+              "name": "milestone:r5-vfp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "a255ed35-5c37-4d92-9955-285e00f73c6f",
+        "identifier": "PRO-15",
+        "title": "[US-11] Interface Web Ergonomique et Adaptée (Persona Pierre 74 ans)",
+        "description": "En tant que citoyen senior ou malvoyant léger (Pierre),  \n Je veux naviguer sur une interface web épurée, contrastée, lisible et utilisable au clavier,  \n Afin d' effectuer mes achats en ligne en toute autonomie et sans confusion visuelle.\n\n## Criteres d'Acceptation (Gherkin)\n\n```gherkin\nFonctionnalité: Accessibilité de l'interface d'achat\n    Scénario: Conformité RGAA AA des composants de panier\n      Étant donné l'écran de consultation du panier sur l'application web\n      Quand un audit d'accessibilité automatisé (Axe / Lighthouse) est exécuté\n      Alors 100% des contrastes de texte sont supérieurs ou égaux à 4.5:1\n      Et tous les boutons et liens disposent d'un label explicite ou aria-label\n      Et l'intégralité du tunnel d'achat est franchissable à l'aide de la touche TAB.\n```",
+        "estimate": 3,
+        "priority": 1,
+        "state": {
+          "name": "Triage / Backlog",
+          "type": "backlog"
+        },
+        "parent": null,
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:cart-order"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e51d068d-b5b2-49ed-9fa5-e91743e668fa",
+        "identifier": "PRO-14",
+        "title": "[US-10] Choix du Créneau de Retrait chez Chaque Commerçant",
+        "description": "En tant que client citoyen,  \n Je veux sélectionner un créneau horaire de passage chez chaque artisan de mon panier,  \n Afin d' organiser mon parcours de retrait pédestre sans faire la queue.\n\n## Criteres d'Acceptation (Gherkin)\n\n```gherkin\nFonctionnalité: Choix des créneaux de retrait\n    Scénario: Sélection de créneaux cohérents\n      Étant donné une commande multi-boutiques validée\n      Quand je choisis le créneau 17h30-17h45 pour la Boulangerie et 17h45-18h00 pour la Boucherie\n      Alors le récapitulatif de commande enregistre ces horaires\n      Et une notification de commande est mise à disposition des commerçants.\n```",
+        "estimate": 3,
+        "priority": 1,
+        "state": {
+          "name": "Triage / Backlog",
+          "type": "backlog"
+        },
+        "parent": null,
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:cart-order"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "3f6bccc4-7895-4ba0-bf5c-a5678969b1c1",
+        "identifier": "PRO-13",
+        "title": "[US-09] Sécurité des Pannes Transactionnelles (Timeout & Compensation Automatique)",
+        "description": "## Criteres d'Acceptation (Gherkin)\n\n```gherkin\nFonctionnalité: Gestion des pannes et timeout 2PC\n    Scénario: Expiration du délai de réservation\n      Étant donné une réservation \"res-789\" émise à 14h00 avec un timeout de 10 minutes\n      Quand le délai de 10 minutes est dépassé sans réception du signal COMMIT\n      Alors le démon de compensation libère automatiquement le stock réservé\n      Et le statut de la réservation devient \"EXPIRED_RELEASED\".\n```",
+        "estimate": 3,
+        "priority": 1,
+        "state": {
+          "name": "Triage / Backlog",
+          "type": "backlog"
+        },
+        "parent": null,
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:cart-order"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "16cd3b5a-b012-498e-8e76-0401770d9e1a",
+        "identifier": "PRO-12",
+        "title": "[US-08] Orchestration de la Transaction 2PC (Phase Prepare & Commit)",
+        "description": "En tant que moteur de commande (`cart-order-service`),  \n Je veux orchestrer une transaction distribuée Two-Phase Commit auprès de l'ensemble des commerçants du panier,  \n Afin de garantir qu'aucun client ne paie une commande si un des commerçants est en rupture de stock inopinée.\n\n## Criteres d'Acceptation (Gherkin)\n\n```gherkin\nFonctionnalité: Protocole Two-Phase Commit (2PC)\n    Scénario: Validation nominale (Tous les commerçants confirment)\n      Étant donné un panier multi-commerces avec Boulangerie A et Boucherie B\n      Quand l'utilisateur déclenche la validation de commande\n      Alors cart-order-service envoie une requête PREPARE à chaque service commerçant\n      Et si Boulangerie A et Boucherie B répondent positivement\n      Alors cart-order-service émet un message COMMIT définitif\n      Et la commande passe à l'état \"CONFIRMED\".\n\n    Scénario: Rollback automatique (Un commerçant refuse ou ne répond pas)\n      Étant donné un panier avec Boulangerie A et Boucherie B\n      Quand cart-order-service envoie une requête PREPARE\n      Et que Boucherie B répond par un refus de stock (HTTP 409)\n      Alors cart-order-service envoie un ordre de ROLLBACK immédiat à Boulangerie A\n      Et la commande passe à l'état \"CANCELLED_STOCK_UNAVAILABLE\"\n      Et aucun compte client n'est débité.\n```",
+        "estimate": 3,
+        "priority": 1,
+        "state": {
+          "name": "Triage / Backlog",
+          "type": "backlog"
+        },
+        "parent": null,
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:cart-order"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "68dcb1ea-2148-47c7-b4a4-828b8348a8d4",
+        "identifier": "PRO-11",
+        "title": "[US-07] Constitution du Panier Multi-Boutiques",
+        "description": "En tant que citoyen effectuant ses courses de quartier,  \n Je veux ajouter dans un même panier virtuel des articles issus de plusieurs commerces différents (ex: pain chez le boulanger et viande chez le boucher),  \n Afin de regrouper mes achats de proximité en une seule commande centralisée.\n\n## Criteres d'Acceptation (Gherkin)\n\n```gherkin\nFonctionnalité: Panier multi-boutiques\n    Scénario: Ajout d'articles de deux commerçants distincts\n      Étant donné un panier actif pour l'utilisateur Pierre\n      Quand j'ajoute 1 baguette (Boulangerie A) et 2 pavés de bœuf (Boucherie B)\n      Alors mon panier contient 2 sous-ensembles marchands distincts\n      Et le montant total du panier est la somme exacte des sous-totaux respectifs.\n```",
+        "estimate": 3,
+        "priority": 1,
+        "state": {
+          "name": "Triage / Backlog",
+          "type": "backlog"
+        },
+        "parent": null,
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:cart-order"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e79ab938-d177-4b0f-8aa4-2594263ead26",
+        "identifier": "PRO-10",
+        "title": "[US-06] Vérification & Réservation Temporaire de Stock (Endpoint Pré-Commit 2PC)",
+        "description": "En tant que microservice de commande (`cart-order-service`),  \n Je veux interroger le catalogue pour vérifier et verrouiller temporairement un lot d'articles,  \n Afin d' exécuter la phase 1 (Prepare) de la transaction distribuée Click & Collect.\n\n## Criteres d'Acceptation (Gherkin)\n\n```gherkin\nFonctionnalité: Réservation de stock 2PC (Phase Prepare)\n    Scénario: Réservation réussie de stock\n      Étant donné que le produit 202 dispose de 10 unités en stock\n      Quand cart-order-service demande une réservation de 2 unités avec un TTL de 10 minutes\n      Alors le service place 2 unités sous statut \"RESERVED\"\n      Et le service renvoie un statut HTTP 200 OK avec un identifiant de réservation \"res-789\".\n\n    Scénario: Échec de réservation pour rupture de stock\n      Étant donné que le produit 202 ne dispose que de 1 unité en stock\n      Quand cart-order-service demande une réservation de 3 unités\n      Alors le service refuse la réservation et retourne HTTP 409 Conflict\n      Et aucun stock n'est débité.\n```",
+        "estimate": 3,
+        "priority": 1,
+        "state": {
+          "name": "Triage / Backlog",
+          "type": "backlog"
+        },
+        "parent": null,
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:catalog"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "c11fd486-fe79-4b1b-9bfd-e3cf5d13ae87",
+        "identifier": "PRO-9",
+        "title": "[US-05] Gestion des Fiches Produits & Stocks par le Commerçant",
+        "description": "En tant que commerçant partenaire (ex: Marc le boulanger),  \n Je veux ajouter, modifier ou désactiver un produit et ajuster mon niveau de stock,  \n Afin de maintenir mon catalogue Click & Collect parfaitement synchronisé avec mes disponibilités réelles.\n\n## Criteres d'Acceptation (Gherkin)\n\n```gherkin\nFonctionnalité: Gestion de stock commerçant\n    Scénario: Mise à jour du stock d'un article\n      Étant donné que je suis authentifié avec le rôle \"COMMERCANT\" pour la boutique 101\n      Quand j'envoie une requête PATCH sur \"/api/v1/merchants/101/products/202/stock\" avec quantity=15\n      Alors le stock de l'article 202 passe à 15 unités\n      Et le service retourne HTTP 200 OK.\n```",
+        "estimate": 3,
+        "priority": 1,
+        "state": {
+          "name": "Triage / Backlog",
+          "type": "backlog"
+        },
+        "parent": null,
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:catalog"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "00f7c4ab-b319-490f-ba44-cbf551150c5a",
+        "identifier": "PRO-8",
+        "title": "[US-04] Consultation du Catalogue Produits d'une Boutique",
+        "description": "En tant que client citoyen,  \n Je veux visualiser les produits disponibles chez un commerçant avec leur prix unitaire et leur disponibilité,  \n Afin de sélectionner les articles que je souhaite réserver en Click & Collect.\n\n## Criteres d'Acceptation (Gherkin)\n\n```gherkin\nFonctionnalité: Consultation du catalogue commerçant\n    Scénario: Affichage des articles disponibles\n      Étant donné que la Boulangerie Saint-Michel propose 3 baguettes et 2 croissants en stock\n      Quand je consulte l'endpoint \"/api/v1/merchants/{id}/products\"\n      Alors je reçois la liste des produits avec identifiant, libellé, prix TTC et quantité en stock.\n```",
+        "estimate": 3,
+        "priority": 1,
+        "state": {
+          "name": "Triage / Backlog",
+          "type": "backlog"
+        },
+        "parent": null,
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:catalog"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "820c0647-1bbf-4c6f-a561-56d221be189a",
+        "identifier": "PRO-7",
+        "title": "[US-03] Consultation des Boutiques Partenaires",
+        "description": "En tant que citoyen local (ex: Pierre ou Léa),  \n Je veux consulter la liste et la fiche détaillée des commerces adhérents de mon quartier,  \n Afin de découvrir leurs horaires d'ouverture, leur adresse et leurs coordonnées.\n\n## Criteres d'Acceptation (Gherkin)\n\n```gherkin\nFonctionnalité: Découverte des boutiques locales\n    Scénario: Consultation des boutiques actives\n      Étant donné que 5 commerçants sont enregistrés et actifs dans la ville\n      Quand j'envoie une requête GET sur \"/api/v1/merchants\"\n      Alors le service me renvoie une liste de 5 boutiques avec nom, adresse et horaires\n      Et le temps de réponse est inférieur à 200 millisecondes.\n```",
+        "estimate": 3,
+        "priority": 1,
+        "state": {
+          "name": "Triage / Backlog",
+          "type": "backlog"
+        },
+        "parent": null,
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:catalog"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e66dc4ad-ea87-40f8-a0a8-13dbf5e9b310",
+        "identifier": "PRO-6",
+        "title": "[US-02] Connexion Sécurisée & Émission de Token JWT",
+        "description": "## Criteres d'Acceptation (Gherkin)\n\n```gherkin\nFonctionnalité: Authentification et délivrance de token\n    Scénario: Authentification valide\n      Étant donné que mes identifiants sont valides\n      Quand j'envoie une requête POST sur \"/api/v1/auth/login\" avec mon email et mot de passe\n      Alors le service me retourne un statut HTTP 200 OK\n      Et la réponse contient un jeton JWT signé avec une durée de validité de 2 heures\n      Et le jeton contient les claims \"sub\", \"role\" et \"userId\".\n```",
+        "estimate": 3,
+        "priority": 1,
+        "state": {
+          "name": "Triage / Backlog",
+          "type": "backlog"
+        },
+        "parent": null,
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:auth"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "e8959e4d-eeb5-41bf-b306-1608502aa5ac",
+        "identifier": "PRO-5",
+        "title": "[US-01] Inscription Sécurisée Multi-Rôles",
+        "description": "En tant que nouvel utilisateur (Citoyen ou Commerçant),  \n Je veux créer un compte avec mon adresse email et un mot de passe robuste,  \n Afin de pouvoir accéder de manière sécurisée aux fonctionnalités de ShopLoc adaptées à mon rôle.\n\n## Criteres d'Acceptation (Gherkin)\n\n```gherkin\nFonctionnalité: Inscription utilisateur multi-rôles\n    Scénario: Inscription réussie d'un citoyen\n      Étant donné que je suis un nouvel utilisateur sur le formulaire d'inscription\n      Quand je renseigne l'email \"pierre.dupont@orange.fr\", un mot de passe conforme et le rôle \"CITOYEN\"\n      Alors mon compte est créé dans la base de données auth_db avec un mot de passe haché par BCrypt\n      Et le service retourne un statut HTTP 201 Created avec l'identifiant public du compte.\n\n    Scénario: Échec si l'adresse email existe déjà\n      Étant donné qu'un compte existe déjà avec l'email \"pierre.dupont@orange.fr\"\n      Quand je tente de créer un compte avec cette même adresse email\n      Alors le service retourne un statut HTTP 409 Conflict au format RFC 7807\n      Et le message précise que le compte est déjà existant.\n```",
+        "estimate": 3,
+        "priority": 1,
+        "state": {
+          "name": "Triage / Backlog",
+          "type": "backlog"
+        },
+        "parent": null,
+        "labels": {
+          "nodes": [
+            {
+              "name": "service:auth"
+            },
+            {
+              "name": "milestone:r4-mvp"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ed2a5e7e-5b12-4b8c-9bdb-351b877f165d",
+        "identifier": "PRO-4",
+        "title": "Set up your teams",
+        "description": "This workspace is a container for your organization’s work. \n\n* [Learn more about Workspaces](<https://linear.app/docs/workspaces>)\n  How to configure settings and workflows \n\nTeams are how you organize people and work in Linear.\n\n* [Learn about Teams](<https://linear.app/docs/teams>)\n  How to structure teams and configure workflows\n\nTeams are made of members with defined roles (Admin, Member, Guest).\n\n* [Learn more about Members](<https://linear.app/docs/invite-members>)\n  Add your team and assign roles\n\n---\n\nReady to add your team? Invite via CSV or a unique link in [settings](<http://linear.app/settings/members>).",
+        "estimate": null,
+        "priority": 0,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": null,
+        "labels": {
+          "nodes": []
+        }
+      },
+      {
+        "id": "55048cf8-0c75-44ca-84d3-f7fa4582247e",
+        "identifier": "PRO-1",
+        "title": "Get familiar with Linear",
+        "description": "Welcome to Linear! \n\nWatch an introductory video and access a list of resources below.\n\n[LinearH264Version_1.mp4](https://uploads.linear.app/fe63b3e2-bf87-46c0-8784-cd7d639287c8/a044fb03-9b84-470c-ab6f-8eae613e2529/98d7274d-de7f-4910-b3f3-f72e8e286a98)\n\n### **Choose your setup guide** based on your company stage:\n\n* [Small teams](<https://linear.app/docs/how-to-use-linear-small-teams>)\n  For early-stage startups and projects\n* [Startups & mid-size companies](<https://linear.app/docs/how-to-use-linear-startups-mid-size-companies>)\n  For growing teams with cross-functional needs\n* [Large & scaling companies](<https://linear.app/docs/how-to-use-linear-large-scaling-companies>)\n  For enterprise and high-growth teams with complex workflows\n\n### **Need help getting started?**\n\n* [Join our Slack community](<https://linear.app/join-slack>)\n  Connect with other Linear users and get tips\n* [Join a live ](<https://lu.ma/welcome-to-linear?utm_source=docs>)[onboarding](<https://lu.ma/welcome-to-linear?utm_source=onboarding>)[ ](<https://lu.ma/welcome-to-linear?utm_source=docs>)[session](<https://lu.ma/welcome-to-linear?utm_source=onboarding>)\n  Learn the essentials and see demos of core workflows\n\n---\n\nIf you have any questions hit `?` in the bottom left > Contact us.\n\n![contactlinear (1).gif](https://uploads.linear.app/fe63b3e2-bf87-46c0-8784-cd7d639287c8/bc9bbf62-4192-411f-88f6-c89c9150503e/4df0346e-803b-4f58-8527-4aeb30d88411)",
+        "estimate": null,
+        "priority": 0,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": null,
+        "labels": {
+          "nodes": []
+        }
+      },
+      {
+        "id": "297d5700-772e-4687-a5cc-fde1028a167e",
+        "identifier": "PRO-3",
+        "title": "Import your data",
+        "description": "Sync data between Linear and your other tools.\n\n![import-your-data.png](https://uploads.linear.app/fe63b3e2-bf87-46c0-8784-cd7d639287c8/80d7e050-dd1f-4d4f-8257-b29c16087017/65c16454-30f3-4f4a-8f25-c2428d64ff57)\n\nWhether you're exploring Linear, running a pilot, or ready for full migration, we’ve got you covered. \n\n### **Exploring Linear:**\n\n* [**Pitch Linear**](<https://linear.app/switch/pitch-guide>)\n  Build your business case and get organizational buy-in\n* [**Run a pilot**](<https://linear.app/switch/pilot-guide>)\n  Test Linear with a small team before rolling out company-wide\n\n### **Ready to migrate:**\n\n* [**Migration guide**](<https://linear.app/switch/migration-guide>) \n  Step-by-step process for importing data and rolling out Linear\n\n---\n\nIf you have any questions hit `?` in the bottom left > Contact us.\n\n![contactlinear (1).gif](https://uploads.linear.app/fe63b3e2-bf87-46c0-8784-cd7d639287c8/191f6985-8562-4f62-9482-a094b69c4756/0e4ff63b-3da2-4699-912b-04afb68511e8)",
+        "estimate": null,
+        "priority": 0,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": null,
+        "labels": {
+          "nodes": []
+        }
+      },
+      {
+        "id": "120c0390-ffc1-48ab-8140-c56a55686c98",
+        "identifier": "PRO-2",
+        "title": "Connect your tools",
+        "description": "Integrations turn Linear into your source of truth around product development. Keep data in sync, and eliminate manual updates between tools.\n\n![connect-your-tools.png](https://uploads.linear.app/fe63b3e2-bf87-46c0-8784-cd7d639287c8/c2eae035-37e2-4754-adcb-b8305431aa1f/c92d70c7-e6d0-4fa2-a0fd-78f6e780993a)\n\n### **Key integrations**\n\n* [**Slack**](<https://linear.app/settings/integrations/slack>)\n  Create issues from Slack messages and sync threads\n* **[GitHub](<https://linear.app/settings/integrations/github>) / [GitLab](<https://linear.app/settings/integrations/gitlab>)**\n  Automate your pull request, commit workflows, and keep issues synced both ways\n* [**Agents**](<https://linear.app/integrations/agents>)\n  Deploy AI agents that work alongside you as teammates\n\n### **Browse all integrations**\n\nDiscover 150+ available connections in our [integration directory](<https://linear.app/integrations>) – from bug creation via support tools (Intercom, Zendesk), to issues created from design explorations (Figma).\n\n### **Linear API**\n\nIf you need something more custom, you can build directly on the Linear API (built on GraphQL). [See our Dev Docs to learn more](<https://linear.app/developers>).",
+        "estimate": null,
+        "priority": 0,
+        "state": {
+          "name": "Sprint Backlog (Ready)",
+          "type": "unstarted"
+        },
+        "parent": null,
+        "labels": {
+          "nodes": []
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,494 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1960 1260" width="1960" height="1260" style="font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; background-color: #FAF9F6;">
+  <defs>
+    <filter id="shadow-soft" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#243342" flood-opacity="0.08"/>
+    </filter>
+    <filter id="shadow-bar" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow-crit" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 2 L 8 5 L 0 8 z" fill="#DC2626" />
+    </marker>
+  </defs>
+
+  <!-- FOND GLOBAL -->
+  <rect x="15" y="15" width="1930" height="1230" rx="12" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1.5" />
+
+  <!-- EN-TETE PRINCIPAL -->
+  <rect x="15" y="15" width="1930" height="70" rx="12" fill="#243342" />
+  <rect x="15" y="65" width="1930" height="20" fill="#243342" />
+  <text x="40" y="55" font-size="20" font-weight="800" fill="#FFFFFF">ShopLoc · Diagramme de Gantt Granulaire par User Story INVEST (2026-2027)</text>
+  <text x="960" y="54" font-size="13" font-weight="500" fill="#DCD6CD">Master 2 MIAGE · Entreprise Garik · Planification Agile Alignée sur le MVP R4 &amp; Extensions R5</text>
+
+  <!-- SIDEBAR EN-TETE -->
+  <rect x="15" y="85" width="580" height="45" fill="#F4F2EC" stroke="#DCD6CD" stroke-width="1"/>
+  <text x="35" y="112" font-size="11" font-weight="700" fill="#243342" text-transform="uppercase" letter-spacing="1">Réf / User Story INVEST</text>
+  <text x="410" y="112" font-size="11" font-weight="700" fill="#243342" text-transform="uppercase" letter-spacing="1">Resp. / Service</text>
+  <text x="545" y="112" font-size="11" font-weight="700" fill="#243342" text-transform="uppercase" letter-spacing="1">Est.</text>
+
+  <!-- GRILLE CALENDRIER -->
+  <g transform="translate(600, 85)">
+    <rect x="0" y="0" width="1330" height="45" fill="#FFFFFF" stroke="#DCD6CD" stroke-width="1"/>
+    <rect x="0.0" y="0" width="183.44827586206895" height="25" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="91.72413793103448" y="17" text-anchor="middle" font-size="11" font-weight="700" fill="#243342">Septembre 2026</text>
+    <rect x="183.44827586206895" y="0" width="183.44827586206895" height="25" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="275.17241379310343" y="17" text-anchor="middle" font-size="11" font-weight="700" fill="#243342">Octobre 2026</text>
+    <rect x="366.8965517241379" y="0" width="206.37931034482756" height="25" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="470.0862068965517" y="17" text-anchor="middle" font-size="11" font-weight="700" fill="#243342">Novembre 2026</text>
+    <rect x="573.2758620689655" y="0" width="160.51724137931035" height="25" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="653.5344827586207" y="17" text-anchor="middle" font-size="11" font-weight="700" fill="#243342">Décembre 2026</text>
+    <rect x="733.7931034482758" y="0" width="206.37931034482756" height="25" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="836.9827586206895" y="17" text-anchor="middle" font-size="11" font-weight="700" fill="#243342">Janvier 2027</text>
+    <rect x="940.1724137931034" y="0" width="183.44827586206895" height="25" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="1031.896551724138" y="17" text-anchor="middle" font-size="11" font-weight="700" fill="#243342">Février 2027</text>
+    <rect x="1123.6206896551723" y="0" width="206.37931034482756" height="25" fill="#FAF9F6" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="1226.810344827586" y="17" text-anchor="middle" font-size="11" font-weight="700" fill="#243342">Mars 2027</text>
+    <rect x="0.0" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="22.93103448275862" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S01</text>
+    <line x1="0.0" y1="45" x2="0.0" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="45.86206896551724" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="68.79310344827586" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S02</text>
+    <line x1="45.86206896551724" y1="45" x2="45.86206896551724" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="91.72413793103448" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="114.6551724137931" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S03</text>
+    <line x1="91.72413793103448" y1="45" x2="91.72413793103448" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="137.58620689655172" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="160.51724137931035" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S04</text>
+    <line x1="137.58620689655172" y1="45" x2="137.58620689655172" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="183.44827586206895" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="206.37931034482756" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S05</text>
+    <line x1="183.44827586206895" y1="45" x2="183.44827586206895" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="229.3103448275862" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="252.24137931034483" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S06</text>
+    <line x1="229.3103448275862" y1="45" x2="229.3103448275862" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="275.17241379310343" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="298.10344827586204" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S07</text>
+    <line x1="275.17241379310343" y1="45" x2="275.17241379310343" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="321.0344827586207" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="343.9655172413793" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S08</text>
+    <line x1="321.0344827586207" y1="45" x2="321.0344827586207" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="366.8965517241379" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="389.8275862068965" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S09</text>
+    <line x1="366.8965517241379" y1="45" x2="366.8965517241379" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="412.7586206896551" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="435.6896551724137" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S10</text>
+    <line x1="412.7586206896551" y1="45" x2="412.7586206896551" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="458.6206896551724" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="481.551724137931" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S11</text>
+    <line x1="458.6206896551724" y1="45" x2="458.6206896551724" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="504.48275862068965" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="527.4137931034483" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S12</text>
+    <line x1="504.48275862068965" y1="45" x2="504.48275862068965" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="550.3448275862069" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="573.2758620689655" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S13</text>
+    <line x1="550.3448275862069" y1="45" x2="550.3448275862069" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="596.2068965517241" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="619.1379310344827" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S14</text>
+    <line x1="596.2068965517241" y1="45" x2="596.2068965517241" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="642.0689655172414" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="665.0" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S15</text>
+    <line x1="642.0689655172414" y1="45" x2="642.0689655172414" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="687.9310344827586" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="710.8620689655172" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S16</text>
+    <line x1="687.9310344827586" y1="45" x2="687.9310344827586" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="733.7931034482758" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="756.7241379310344" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S17</text>
+    <line x1="733.7931034482758" y1="45" x2="733.7931034482758" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="779.655172413793" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="802.5862068965516" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S18</text>
+    <line x1="779.655172413793" y1="45" x2="779.655172413793" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="825.5172413793102" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="848.4482758620688" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S19</text>
+    <line x1="825.5172413793102" y1="45" x2="825.5172413793102" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="871.3793103448276" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="894.3103448275862" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S20</text>
+    <line x1="871.3793103448276" y1="45" x2="871.3793103448276" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="917.2413793103448" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="940.1724137931034" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S21</text>
+    <line x1="917.2413793103448" y1="45" x2="917.2413793103448" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="963.103448275862" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="986.0344827586206" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S22</text>
+    <line x1="963.103448275862" y1="45" x2="963.103448275862" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="1008.9655172413793" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="1031.896551724138" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S23</text>
+    <line x1="1008.9655172413793" y1="45" x2="1008.9655172413793" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="1054.8275862068965" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="1077.7586206896551" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S24</text>
+    <line x1="1054.8275862068965" y1="45" x2="1054.8275862068965" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="1100.6896551724137" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="1123.6206896551723" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S25</text>
+    <line x1="1100.6896551724137" y1="45" x2="1100.6896551724137" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="1146.551724137931" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="1169.4827586206895" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S26</text>
+    <line x1="1146.551724137931" y1="45" x2="1146.551724137931" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="1192.4137931034481" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="1215.3448275862067" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S27</text>
+    <line x1="1192.4137931034481" y1="45" x2="1192.4137931034481" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="1238.2758620689654" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="1261.206896551724" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S28</text>
+    <line x1="1238.2758620689654" y1="45" x2="1238.2758620689654" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+    <rect x="1284.1379310344828" y="25" width="45.86206896551724" height="20" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <text x="1307.0689655172414" y="39" text-anchor="middle" font-size="8.5" font-weight="600" fill="#606B76">S29</text>
+    <line x1="1284.1379310344828" y1="45" x2="1284.1379310344828" y2="1170" stroke="#F0ECE1" stroke-width="0.8" />
+  </g>
+  <!-- Header: PHASE AMONT : Cadrage Métier R1 &amp; Socle DevOps R2 (Sept-Oct 2026) -->
+  <g transform="translate(15, 135)">
+    <rect x="0" y="0" width="1930" height="24" fill="#1E293B" opacity="0.95"/>
+    <text x="20" y="16.5" font-size="11" font-weight="700" fill="#FFFFFF">PHASE AMONT : Cadrage Métier R1 &amp; Socle DevOps R2 (Sept-Oct 2026)</text>
+  </g>
+  <!-- Task: T-01..03 - Cahier des charges R1, APTE, Merise 3NF &amp; Étude initiale -->
+  <g transform="translate(15, 161)">
+    <rect x="0" y="0" width="580" height="29" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="0.8"/>
+    <rect x="8" y="5" width="56" height="18" rx="3" fill="#FEE2E2" stroke="#DC2626" stroke-width="0.8"/>
+    <text x="36" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#DC2626">T-01..03</text>
+    <text x="70" y="18" font-size="10" font-weight="600" fill="#243342">Cahier des charges R1, APTE, Merise 3NF &amp; Étude initiale</text>
+    <text x="410" y="18" font-size="9" font-weight="500" fill="#606B76">Collectif Garik</text>
+    <text x="560" y="18" text-anchor="end" font-size="9" font-weight="700" fill="#243342">3 SP</text>
+  </g>
+  <g transform="translate(600.0, 161)">
+    <rect x="0" y="4" width="137.58620689655172" height="20" rx="4" fill="#334155" stroke="#DC2626" stroke-width="1.5" filter="url(#shadow-bar)"/>
+    <text x="68.79310344827586" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#FFFFFF">T-01..03</text>
+    <path d="M 152.58620689655172 4 L 159.58620689655172 14 L 152.58620689655172 24 L 145.58620689655172 14 Z" fill="#DC2626" filter="url(#shadow-bar)"/>
+    <text x="165.58620689655172" y="17.5" font-size="9.5" font-weight="800" fill="#DC2626">R1 (18/09)</text>
+  </g>
+  <!-- Task: T-04..06 - Outillage GitLab CI, SonarQube, Docker multi-stage &amp; Guide -->
+  <g transform="translate(15, 192)">
+    <rect x="0" y="0" width="580" height="29" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <rect x="8" y="5" width="56" height="18" rx="3" fill="#FEE2E2" stroke="#DC2626" stroke-width="0.8"/>
+    <text x="36" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#DC2626">T-04..06</text>
+    <text x="70" y="18" font-size="10" font-weight="600" fill="#243342">Outillage GitLab CI, SonarQube, Docker multi-stage &amp; Guide</text>
+    <text x="410" y="18" font-size="9" font-weight="500" fill="#606B76">Rayane / Khalil</text>
+    <text x="560" y="18" text-anchor="end" font-size="9" font-weight="700" fill="#243342">5 SP</text>
+  </g>
+  <g transform="translate(737.5862068965517, 192)">
+    <rect x="0" y="4" width="137.58620689655172" height="20" rx="4" fill="#EA580C" stroke="#DC2626" stroke-width="1.5" filter="url(#shadow-bar)"/>
+    <text x="68.79310344827586" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#FFFFFF">T-04..06</text>
+    <path d="M 152.58620689655172 4 L 159.58620689655172 14 L 152.58620689655172 24 L 145.58620689655172 14 Z" fill="#DC2626" filter="url(#shadow-bar)"/>
+    <text x="165.58620689655172" y="17.5" font-size="9.5" font-weight="800" fill="#DC2626">R2 (12/10)</text>
+  </g>
+  <!-- Header: SPRINT 1 : Socle Microservices, Auth &amp; Catalogue Marchand (Novembre 2026) -->
+  <g transform="translate(15, 223)">
+    <rect x="0" y="0" width="1930" height="24" fill="#2563EB" opacity="0.95"/>
+    <text x="20" y="16.5" font-size="11" font-weight="700" fill="#FFFFFF">SPRINT 1 : Socle Microservices, Auth &amp; Catalogue Marchand (Novembre 2026)</text>
+  </g>
+  <!-- Task: US-01 - Inscription sécurisée multi-rôles (Citoyen / Commerçant) -->
+  <g transform="translate(15, 249)">
+    <rect x="0" y="0" width="580" height="29" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <rect x="8" y="5" width="56" height="18" rx="3" fill="#FEE2E2" stroke="#DC2626" stroke-width="0.8"/>
+    <text x="36" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#DC2626">US-01</text>
+    <text x="70" y="18" font-size="10" font-weight="600" fill="#243342">Inscription sécurisée multi-rôles (Citoyen / Commerçant)</text>
+    <text x="410" y="18" font-size="9" font-weight="500" fill="#606B76">auth-service</text>
+    <text x="560" y="18" text-anchor="end" font-size="9" font-weight="700" fill="#243342">3 SP</text>
+  </g>
+  <g transform="translate(898.1034482758621, 249)">
+    <rect x="0" y="4" width="68.79310344827586" height="20" rx="4" fill="#3B82F6" stroke="#DC2626" stroke-width="1.5" filter="url(#shadow-bar)"/>
+    <text x="34.39655172413793" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#FFFFFF">US-01</text>
+  </g>
+  <!-- Task: US-02 - Connexion sécurisée &amp; Émission de token JWT -->
+  <g transform="translate(15, 280)">
+    <rect x="0" y="0" width="580" height="29" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="0.8"/>
+    <rect x="8" y="5" width="56" height="18" rx="3" fill="#FEE2E2" stroke="#DC2626" stroke-width="0.8"/>
+    <text x="36" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#DC2626">US-02</text>
+    <text x="70" y="18" font-size="10" font-weight="600" fill="#243342">Connexion sécurisée &amp; Émission de token JWT</text>
+    <text x="410" y="18" font-size="9" font-weight="500" fill="#606B76">auth-service</text>
+    <text x="560" y="18" text-anchor="end" font-size="9" font-weight="700" fill="#243342">2 SP</text>
+  </g>
+  <g transform="translate(943.9655172413793, 280)">
+    <rect x="0" y="4" width="55.03448275862068" height="20" rx="4" fill="#3B82F6" stroke="#DC2626" stroke-width="1.5" filter="url(#shadow-bar)"/>
+    <text x="27.51724137931034" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#FFFFFF">US-02</text>
+  </g>
+  <!-- Task: US-03 - Consultation des boutiques partenaires adhérentes -->
+  <g transform="translate(15, 311)">
+    <rect x="0" y="0" width="580" height="29" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <rect x="8" y="5" width="56" height="18" rx="3" fill="#FEE2E2" stroke="#DC2626" stroke-width="0.8"/>
+    <text x="36" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#DC2626">US-03</text>
+    <text x="70" y="18" font-size="10" font-weight="600" fill="#243342">Consultation des boutiques partenaires adhérentes</text>
+    <text x="410" y="18" font-size="9" font-weight="500" fill="#606B76">catalog-service</text>
+    <text x="560" y="18" text-anchor="end" font-size="9" font-weight="700" fill="#243342">2 SP</text>
+  </g>
+  <g transform="translate(966.8965517241379, 311)">
+    <rect x="0" y="4" width="55.03448275862068" height="20" rx="4" fill="#2563EB" stroke="#DC2626" stroke-width="1.5" filter="url(#shadow-bar)"/>
+    <text x="27.51724137931034" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#FFFFFF">US-03</text>
+  </g>
+  <!-- Task: US-04 - Consultation du catalogue produits d'une boutique -->
+  <g transform="translate(15, 342)">
+    <rect x="0" y="0" width="580" height="29" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="0.8"/>
+    <rect x="8" y="5" width="56" height="18" rx="3" fill="#FEE2E2" stroke="#DC2626" stroke-width="0.8"/>
+    <text x="36" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#DC2626">US-04</text>
+    <text x="70" y="18" font-size="10" font-weight="600" fill="#243342">Consultation du catalogue produits d'une boutique</text>
+    <text x="410" y="18" font-size="9" font-weight="500" fill="#606B76">catalog-service</text>
+    <text x="560" y="18" text-anchor="end" font-size="9" font-weight="700" fill="#243342">3 SP</text>
+  </g>
+  <g transform="translate(1003.5862068965517, 342)">
+    <rect x="0" y="4" width="68.79310344827586" height="20" rx="4" fill="#2563EB" stroke="#DC2626" stroke-width="1.5" filter="url(#shadow-bar)"/>
+    <text x="34.39655172413793" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#FFFFFF">US-04</text>
+  </g>
+  <!-- Task: US-05 - Gestion fiches produits &amp; stocks par le commerçant -->
+  <g transform="translate(15, 373)">
+    <rect x="0" y="0" width="580" height="29" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <rect x="8" y="5" width="56" height="18" rx="3" fill="#FEE2E2" stroke="#DC2626" stroke-width="0.8"/>
+    <text x="36" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#DC2626">US-05</text>
+    <text x="70" y="18" font-size="10" font-weight="600" fill="#243342">Gestion fiches produits &amp; stocks par le commerçant</text>
+    <text x="410" y="18" font-size="9" font-weight="500" fill="#606B76">catalog-service</text>
+    <text x="560" y="18" text-anchor="end" font-size="9" font-weight="700" fill="#243342">3 SP</text>
+  </g>
+  <g transform="translate(1035.6896551724137, 373)">
+    <rect x="0" y="4" width="68.79310344827586" height="20" rx="4" fill="#2563EB" stroke="#DC2626" stroke-width="1.5" filter="url(#shadow-bar)"/>
+    <text x="34.39655172413793" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#FFFFFF">US-05</text>
+  </g>
+  <!-- Task: US-06 - Réservation temporaire de stock (Prepare 2PC endpoint) -->
+  <g transform="translate(15, 404)">
+    <rect x="0" y="0" width="580" height="29" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="0.8"/>
+    <rect x="8" y="5" width="56" height="18" rx="3" fill="#FEE2E2" stroke="#DC2626" stroke-width="0.8"/>
+    <text x="36" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#DC2626">US-06</text>
+    <text x="70" y="18" font-size="10" font-weight="600" fill="#243342">Réservation temporaire de stock (Prepare 2PC endpoint)</text>
+    <text x="410" y="18" font-size="9" font-weight="500" fill="#606B76">catalog-service</text>
+    <text x="560" y="18" text-anchor="end" font-size="9" font-weight="700" fill="#243342">5 SP</text>
+  </g>
+  <g transform="translate(1067.7931034482758, 404)">
+    <rect x="0" y="4" width="91.72413793103448" height="20" rx="4" fill="#1D4ED8" stroke="#DC2626" stroke-width="1.5" filter="url(#shadow-bar)"/>
+    <text x="45.86206896551724" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#FFFFFF">US-06</text>
+    <path d="M 106.72413793103448 4 L 113.72413793103448 14 L 106.72413793103448 24 L 99.72413793103448 14 Z" fill="#DC2626" filter="url(#shadow-bar)"/>
+    <text x="119.72413793103448" y="17.5" font-size="9.5" font-weight="800" fill="#DC2626">R3 (30/11)</text>
+  </g>
+  <!-- Header: SPRINT 2 : Cœur MVP — Panier Multi-Commerces 2PC &amp; Click &amp; Collect (Décembre 2026) -->
+  <g transform="translate(15, 435)">
+    <rect x="0" y="0" width="1930" height="24" fill="#7C3AED" opacity="0.95"/>
+    <text x="20" y="16.5" font-size="11" font-weight="700" fill="#FFFFFF">SPRINT 2 : Cœur MVP — Panier Multi-Commerces 2PC &amp; Click &amp; Collect (Décembre 2026)</text>
+  </g>
+  <!-- Task: US-07 - Constitution du panier multi-boutiques unifié -->
+  <g transform="translate(15, 461)">
+    <rect x="0" y="0" width="580" height="29" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="0.8"/>
+    <rect x="8" y="5" width="56" height="18" rx="3" fill="#FEE2E2" stroke="#DC2626" stroke-width="0.8"/>
+    <text x="36" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#DC2626">US-07</text>
+    <text x="70" y="18" font-size="10" font-weight="600" fill="#243342">Constitution du panier multi-boutiques unifié</text>
+    <text x="410" y="18" font-size="9" font-weight="500" fill="#606B76">cart-order</text>
+    <text x="560" y="18" text-anchor="end" font-size="9" font-weight="700" fill="#243342">5 SP</text>
+  </g>
+  <g transform="translate(1104.4827586206898, 461)">
+    <rect x="0" y="4" width="82.55172413793103" height="20" rx="4" fill="#8B5CF6" stroke="#DC2626" stroke-width="1.5" filter="url(#shadow-bar)"/>
+    <text x="41.275862068965516" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#FFFFFF">US-07</text>
+  </g>
+  <!-- Task: US-08 - Orchestration transaction distribuée Two-Phase Commit (2PC) -->
+  <g transform="translate(15, 492)">
+    <rect x="0" y="0" width="580" height="29" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <rect x="8" y="5" width="56" height="18" rx="3" fill="#FEE2E2" stroke="#DC2626" stroke-width="0.8"/>
+    <text x="36" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#DC2626">US-08</text>
+    <text x="70" y="18" font-size="10" font-weight="600" fill="#243342">Orchestration transaction distribuée Two-Phase Commit (2PC)</text>
+    <text x="410" y="18" font-size="9" font-weight="500" fill="#606B76">cart-order</text>
+    <text x="560" y="18" text-anchor="end" font-size="9" font-weight="700" fill="#243342">8 SP</text>
+  </g>
+  <g transform="translate(1150.344827586207, 492)">
+    <rect x="0" y="4" width="100.89655172413794" height="20" rx="4" fill="#7C3AED" stroke="#DC2626" stroke-width="1.5" filter="url(#shadow-bar)"/>
+    <text x="50.44827586206897" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#FFFFFF">US-08</text>
+  </g>
+  <!-- Task: US-09 - Timeout &amp; Compensation automatique des réservations -->
+  <g transform="translate(15, 523)">
+    <rect x="0" y="0" width="580" height="29" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <rect x="8" y="5" width="56" height="18" rx="3" fill="#FEE2E2" stroke="#DC2626" stroke-width="0.8"/>
+    <text x="36" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#DC2626">US-09</text>
+    <text x="70" y="18" font-size="10" font-weight="600" fill="#243342">Timeout &amp; Compensation automatique des réservations</text>
+    <text x="410" y="18" font-size="9" font-weight="500" fill="#606B76">cart-order</text>
+    <text x="560" y="18" text-anchor="end" font-size="9" font-weight="700" fill="#243342">5 SP</text>
+  </g>
+  <g transform="translate(1187.0344827586207, 523)">
+    <rect x="0" y="4" width="82.55172413793103" height="20" rx="4" fill="#7C3AED" stroke="#DC2626" stroke-width="1.5" filter="url(#shadow-bar)"/>
+    <text x="41.275862068965516" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#FFFFFF">US-09</text>
+  </g>
+  <!-- Task: US-10 - Choix du créneau de retrait Click &amp; Collect chez l'artisan -->
+  <g transform="translate(15, 554)">
+    <rect x="0" y="0" width="580" height="29" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="0.8"/>
+    <rect x="8" y="5" width="56" height="18" rx="3" fill="#FEE2E2" stroke="#DC2626" stroke-width="0.8"/>
+    <text x="36" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#DC2626">US-10</text>
+    <text x="70" y="18" font-size="10" font-weight="600" fill="#243342">Choix du créneau de retrait Click &amp; Collect chez l'artisan</text>
+    <text x="410" y="18" font-size="9" font-weight="500" fill="#606B76">cart-order/UI</text>
+    <text x="560" y="18" text-anchor="end" font-size="9" font-weight="700" fill="#243342">3 SP</text>
+  </g>
+  <g transform="translate(1219.1379310344828, 554)">
+    <rect x="0" y="4" width="68.79310344827586" height="20" rx="4" fill="#6D28D9" stroke="#DC2626" stroke-width="1.5" filter="url(#shadow-bar)"/>
+    <text x="34.39655172413793" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#FFFFFF">US-10</text>
+  </g>
+  <!-- Task: US-11 - Interface Web ergonomique adaptée senior (Persona Pierre) -->
+  <g transform="translate(15, 585)">
+    <rect x="0" y="0" width="580" height="29" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <rect x="8" y="5" width="56" height="18" rx="3" fill="#FEE2E2" stroke="#DC2626" stroke-width="0.8"/>
+    <text x="36" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#DC2626">US-11</text>
+    <text x="70" y="18" font-size="10" font-weight="600" fill="#243342">Interface Web ergonomique adaptée senior (Persona Pierre)</text>
+    <text x="410" y="18" font-size="9" font-weight="500" fill="#606B76">web-ui React</text>
+    <text x="560" y="18" text-anchor="end" font-size="9" font-weight="700" fill="#243342">5 SP</text>
+  </g>
+  <g transform="translate(1205.3793103448274, 585)">
+    <rect x="0" y="4" width="91.72413793103448" height="20" rx="4" fill="#6D28D9" stroke="#DC2626" stroke-width="1.5" filter="url(#shadow-bar)"/>
+    <text x="45.86206896551724" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#FFFFFF">US-11</text>
+  </g>
+  <!-- Task: R4-FREEZE - Assemblage Docker, Tests TDD 80%, Code Freeze J-3 &amp; Soutenance -->
+  <g transform="translate(15, 616)">
+    <rect x="0" y="0" width="580" height="29" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="0.8"/>
+    <rect x="8" y="5" width="56" height="18" rx="3" fill="#FEE2E2" stroke="#DC2626" stroke-width="0.8"/>
+    <text x="36" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#DC2626">R4-FREEZE</text>
+    <text x="70" y="18" font-size="10" font-weight="600" fill="#243342">Assemblage Docker, Tests TDD 80%, Code Freeze J-3 &amp; Soutenance</text>
+    <text x="410" y="18" font-size="9" font-weight="500" fill="#606B76">Collectif Garik</text>
+    <text x="560" y="18" text-anchor="end" font-size="9" font-weight="700" fill="#243342">Jalon</text>
+  </g>
+  <g transform="translate(1278.7586206896551, 616)">
+    <rect x="0" y="4" width="22.93103448275862" height="20" rx="4" fill="#DC2626" stroke="#DC2626" stroke-width="1.5" filter="url(#shadow-bar)"/>
+    <path d="M 37.93103448275862 4 L 44.93103448275862 14 L 37.93103448275862 24 L 30.93103448275862 14 Z" fill="#DC2626" filter="url(#shadow-bar)"/>
+    <text x="50.93103448275862" y="17.5" font-size="9.5" font-weight="800" fill="#DC2626">R4 MVP (18/12)</text>
+  </g>
+  <!-- Header: SPRINT 3 : Moteur de Fidélité Territoriale &amp; Règle VFP 15 Jours (Février 2027) -->
+  <g transform="translate(15, 647)">
+    <rect x="0" y="0" width="1930" height="24" fill="#059669" opacity="0.95"/>
+    <text x="20" y="16.5" font-size="11" font-weight="700" fill="#FFFFFF">SPRINT 3 : Moteur de Fidélité Territoriale &amp; Règle VFP 15 Jours (Février 2027)</text>
+  </g>
+  <!-- Task: US-12 - Cumul de points de fidélité lors d'un achat validé -->
+  <g transform="translate(15, 673)">
+    <rect x="0" y="0" width="580" height="29" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="0.8"/>
+    <rect x="8" y="5" width="56" height="18" rx="3" fill="#FEE2E2" stroke="#DC2626" stroke-width="0.8"/>
+    <text x="36" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#DC2626">US-12</text>
+    <text x="70" y="18" font-size="10" font-weight="600" fill="#243342">Cumul de points de fidélité lors d'un achat validé</text>
+    <text x="410" y="18" font-size="9" font-weight="500" fill="#606B76">loyalty-vfp</text>
+    <text x="560" y="18" text-anchor="end" font-size="9" font-weight="700" fill="#243342">3 SP</text>
+  </g>
+  <g transform="translate(1402.5862068965516, 673)">
+    <rect x="0" y="4" width="68.79310344827586" height="20" rx="4" fill="#10B981" stroke="#DC2626" stroke-width="1.5" filter="url(#shadow-bar)"/>
+    <text x="34.39655172413793" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#FFFFFF">US-12</text>
+  </g>
+  <!-- Task: US-13 - Moteur d'expiration dynamique VFP (Règle glissante 15 jours) -->
+  <g transform="translate(15, 704)">
+    <rect x="0" y="0" width="580" height="29" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <rect x="8" y="5" width="56" height="18" rx="3" fill="#FEE2E2" stroke="#DC2626" stroke-width="0.8"/>
+    <text x="36" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#DC2626">US-13</text>
+    <text x="70" y="18" font-size="10" font-weight="600" fill="#243342">Moteur d'expiration dynamique VFP (Règle glissante 15 jours)</text>
+    <text x="410" y="18" font-size="9" font-weight="500" fill="#606B76">loyalty-vfp</text>
+    <text x="560" y="18" text-anchor="end" font-size="9" font-weight="700" fill="#243342">5 SP</text>
+  </g>
+  <g transform="translate(1448.4482758620688, 704)">
+    <rect x="0" y="4" width="91.72413793103448" height="20" rx="4" fill="#059669" stroke="#DC2626" stroke-width="1.5" filter="url(#shadow-bar)"/>
+    <text x="45.86206896551724" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#FFFFFF">US-13</text>
+  </g>
+  <!-- Task: US-14 - Dématérialisation carte de fidélité (QR Code dynamique) -->
+  <g transform="translate(15, 735)">
+    <rect x="0" y="0" width="580" height="29" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="0.8"/>
+    <rect x="8" y="5" width="56" height="18" rx="3" fill="#FEE2E2" stroke="#DC2626" stroke-width="0.8"/>
+    <text x="36" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#DC2626">US-14</text>
+    <text x="70" y="18" font-size="10" font-weight="600" fill="#243342">Dématérialisation carte de fidélité (QR Code dynamique)</text>
+    <text x="410" y="18" font-size="9" font-weight="500" fill="#606B76">loyalty / UI</text>
+    <text x="560" y="18" text-anchor="end" font-size="9" font-weight="700" fill="#243342">3 SP</text>
+  </g>
+  <g transform="translate(1494.310344827586, 735)">
+    <rect x="0" y="4" width="68.79310344827586" height="20" rx="4" fill="#059669" stroke="#DC2626" stroke-width="1.5" filter="url(#shadow-bar)"/>
+    <text x="34.39655172413793" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#FFFFFF">US-14</text>
+  </g>
+  <!-- Task: US-15 - Scan caisse commerçant express (&lt; 3s) &amp; Crédit immédiat -->
+  <g transform="translate(15, 766)">
+    <rect x="0" y="0" width="580" height="29" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <rect x="8" y="5" width="56" height="18" rx="3" fill="#FEE2E2" stroke="#DC2626" stroke-width="0.8"/>
+    <text x="36" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#DC2626">US-15</text>
+    <text x="70" y="18" font-size="10" font-weight="600" fill="#243342">Scan caisse commerçant express (&lt; 3s) &amp; Crédit immédiat</text>
+    <text x="410" y="18" font-size="9" font-weight="500" fill="#606B76">loyalty / UI</text>
+    <text x="560" y="18" text-anchor="end" font-size="9" font-weight="700" fill="#243342">3 SP</text>
+  </g>
+  <g transform="translate(1526.4137931034481, 766)">
+    <rect x="0" y="4" width="82.55172413793103" height="20" rx="4" fill="#047857" stroke="#DC2626" stroke-width="1.5" filter="url(#shadow-bar)"/>
+    <text x="41.275862068965516" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#FFFFFF">US-15</text>
+  </g>
+  <!-- Header: SPRINT 4 : Titres Mobilité, Supervision DSI &amp; Clôture V2 (Mars 2027) -->
+  <g transform="translate(15, 797)">
+    <rect x="0" y="0" width="1930" height="24" fill="#0D9488" opacity="0.95"/>
+    <text x="20" y="16.5" font-size="11" font-weight="700" fill="#FFFFFF">SPRINT 4 : Titres Mobilité, Supervision DSI &amp; Clôture V2 (Mars 2027)</text>
+  </g>
+  <!-- Task: US-16 - Délivrance de ticket de bus dématérialisé (Partenariat Ilévia) -->
+  <g transform="translate(15, 823)">
+    <rect x="0" y="0" width="580" height="29" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <rect x="8" y="5" width="56" height="18" rx="3" fill="#FEE2E2" stroke="#DC2626" stroke-width="0.8"/>
+    <text x="36" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#DC2626">US-16</text>
+    <text x="70" y="18" font-size="10" font-weight="600" fill="#243342">Délivrance de ticket de bus dématérialisé (Partenariat Ilévia)</text>
+    <text x="410" y="18" font-size="9" font-weight="500" fill="#606B76">mobility-service</text>
+    <text x="560" y="18" text-anchor="end" font-size="9" font-weight="700" fill="#243342">3 SP</text>
+  </g>
+  <g transform="translate(1586.0344827586205, 823)">
+    <rect x="0" y="4" width="82.55172413793103" height="20" rx="4" fill="#14B8A6" stroke="#DC2626" stroke-width="1.5" filter="url(#shadow-bar)"/>
+    <text x="41.275862068965516" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#FFFFFF">US-16</text>
+  </g>
+  <!-- Task: US-17 - Activation des 20 minutes de parking gratuit centre-ville -->
+  <g transform="translate(15, 854)">
+    <rect x="0" y="0" width="580" height="29" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="0.8"/>
+    <rect x="8" y="5" width="56" height="18" rx="3" fill="#FEE2E2" stroke="#DC2626" stroke-width="0.8"/>
+    <text x="36" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#DC2626">US-17</text>
+    <text x="70" y="18" font-size="10" font-weight="600" fill="#243342">Activation des 20 minutes de parking gratuit centre-ville</text>
+    <text x="410" y="18" font-size="9" font-weight="500" fill="#606B76">mobility-service</text>
+    <text x="560" y="18" text-anchor="end" font-size="9" font-weight="700" fill="#243342">3 SP</text>
+  </g>
+  <g transform="translate(1631.896551724138, 854)">
+    <rect x="0" y="4" width="68.79310344827586" height="20" rx="4" fill="#0D9488" stroke="#DC2626" stroke-width="1.5" filter="url(#shadow-bar)"/>
+    <text x="34.39655172413793" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#FFFFFF">US-17</text>
+  </g>
+  <!-- Task: US-18 - Tableau de bord municipal k-anonyme (Supervision Mairie DSI) -->
+  <g transform="translate(15, 885)">
+    <rect x="0" y="0" width="580" height="29" fill="#FFFFFF" stroke="#EDE8E1" stroke-width="0.8"/>
+    <rect x="8" y="5" width="56" height="18" rx="3" fill="#F1F5F9" stroke="#64748B" stroke-width="0.8"/>
+    <text x="36" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#64748B">US-18</text>
+    <text x="70" y="18" font-size="10" font-weight="600" fill="#243342">Tableau de bord municipal k-anonyme (Supervision Mairie DSI)</text>
+    <text x="410" y="18" font-size="9" font-weight="500" fill="#606B76">municipal-dash</text>
+    <text x="560" y="18" text-anchor="end" font-size="9" font-weight="700" fill="#243342">5 SP</text>
+  </g>
+  <g transform="translate(1677.7586206896551, 885)">
+    <rect x="0" y="4" width="91.72413793103448" height="20" rx="4" fill="#0D9488" stroke="#0D9488" stroke-width="1" filter="url(#shadow-bar)"/>
+    <text x="45.86206896551724" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#FFFFFF">US-18</text>
+  </g>
+  <!-- Task: R5-RELEASE - Tests de charge Gatling, Homologation Docker, Code Freeze J-3 -->
+  <g transform="translate(15, 916)">
+    <rect x="0" y="0" width="580" height="29" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="0.8"/>
+    <rect x="8" y="5" width="56" height="18" rx="3" fill="#FEE2E2" stroke="#DC2626" stroke-width="0.8"/>
+    <text x="36" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#DC2626">R5-RELEASE</text>
+    <text x="70" y="18" font-size="10" font-weight="600" fill="#243342">Tests de charge Gatling, Homologation Docker, Code Freeze J-3</text>
+    <text x="410" y="18" font-size="9" font-weight="500" fill="#606B76">Collectif Garik</text>
+    <text x="560" y="18" text-anchor="end" font-size="9" font-weight="700" fill="#243342">Jalon</text>
+  </g>
+  <g transform="translate(1815.3448275862067, 916)">
+    <rect x="0" y="4" width="22.93103448275862" height="20" rx="4" fill="#DC2626" stroke="#DC2626" stroke-width="1.5" filter="url(#shadow-bar)"/>
+    <path d="M 37.93103448275862 4 L 44.93103448275862 14 L 37.93103448275862 24 L 30.93103448275862 14 Z" fill="#DC2626" filter="url(#shadow-bar)"/>
+    <text x="50.93103448275862" y="17.5" font-size="9.5" font-weight="800" fill="#DC2626">R5 Final (19/03)</text>
+  </g>
+  <!-- Header: ASSURANCE QUALITE CONTINUE : DoD, SonarQube &amp; Verify Deliverables (S01 à S29) -->
+  <g transform="translate(15, 947)">
+    <rect x="0" y="0" width="1930" height="24" fill="#475569" opacity="0.95"/>
+    <text x="20" y="16.5" font-size="11" font-weight="700" fill="#FFFFFF">ASSURANCE QUALITE CONTINUE : DoD, SonarQube &amp; Verify Deliverables (S01 à S29)</text>
+  </g>
+  <!-- Task: QA-TRANS - Contrôle TDD continu (Jacoco &gt;= 80%), Zéro Canari &amp; Zéro Emoji -->
+  <g transform="translate(15, 973)">
+    <rect x="0" y="0" width="580" height="29" fill="#FAF9F6" stroke="#EDE8E1" stroke-width="0.8"/>
+    <rect x="8" y="5" width="56" height="18" rx="3" fill="#F1F5F9" stroke="#64748B" stroke-width="0.8"/>
+    <text x="36" y="17.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#64748B">QA-TRANS</text>
+    <text x="70" y="18" font-size="10" font-weight="600" fill="#243342">Contrôle TDD continu (Jacoco &gt;= 80%), Zéro Canari &amp; Zéro Emoji</text>
+    <text x="410" y="18" font-size="9" font-weight="500" fill="#606B76">Khalil (QA)</text>
+    <text x="560" y="18" text-anchor="end" font-size="9" font-weight="700" fill="#243342">Transv.</text>
+  </g>
+  <g transform="translate(600.0, 973)">
+    <rect x="0" y="9" width="1238.2758620689654" height="10" rx="5" fill="none" stroke="#94A3B8" stroke-width="2" stroke-dasharray="6 4"/>
+    <text x="619.1379310344827" y="7" text-anchor="middle" font-size="8.5" font-weight="600" fill="#64748B">Supervision Qualité &amp; Code Freeze permanent</text>
+  </g>
+
+  <!-- LEGENDE DU GANTT -->
+  <g transform="translate(15, 1195)">
+    <rect x="0" y="0" width="1930" height="45" rx="6" fill="#F4F2EC" stroke="#DCD6CD" stroke-width="1"/>
+    <text x="20" y="27" font-size="11" font-weight="700" fill="#243342">Légende :</text>
+    
+    <rect x="90" y="16" width="22" height="14" rx="3" fill="#3B82F6"/>
+    <text x="120" y="27" font-size="10" font-weight="600" fill="#243342">Sprint 1 (Auth &amp; Catalogues)</text>
+
+    <rect x="300" y="16" width="22" height="14" rx="3" fill="#7C3AED"/>
+    <text x="330" y="27" font-size="10" font-weight="600" fill="#243342">Sprint 2 (Cœur MVP Panier 2PC)</text>
+
+    <rect x="540" y="16" width="22" height="14" rx="3" fill="#059669"/>
+    <text x="570" y="27" font-size="10" font-weight="600" fill="#243342">Sprint 3 (Moteur Fidélité VFP 15j)</text>
+
+    <rect x="790" y="16" width="22" height="14" rx="3" fill="#0D9488"/>
+    <text x="820" y="27" font-size="10" font-weight="600" fill="#243342">Sprint 4 (Mobilité &amp; DSI)</text>
+
+    <path d="M 1030 16 L 1037 23 L 1030 30 L 1023 23 Z" fill="#DC2626"/>
+    <text x="1045" y="27" font-size="10" font-weight="700" fill="#DC2626">Jalon Contractuel &amp; Soutenance</text>
+
+    <text x="1350" y="27" font-size="10" font-style="italic" fill="#5A6578">Vélocité cible : 22 SP / Sprint · Couverture DoD JUnit : >= 80%</text>
+  </g>
+</svg>

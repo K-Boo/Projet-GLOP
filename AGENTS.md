@@ -45,8 +45,9 @@ La Definition of Done (DoD) exige imperativement :
 
 Le projet repose sur une isolation bi-depots stricte :
 * `ShopLoc/` (GitHub) : Cockpit unique de gouvernance, memoire agentique, scripts FinOps, configuration Antigravity.
-* `projet-glop-app/` et microservices associes (GitLab Univ-Lille) : Depots remis aux enseignants evaluateurs.
+* `microservices/` (GitLab Univ-Lille, groupe `glop-garik`) : Depots de code de chaque microservice remis aux enseignants evaluateurs.
 * **REGLE INVIOLABLE** : Aucun dossier `.antigravity`, `.agents`, script d'IA, trace de prompt ou mention d'assistant virtuel ne doit penetrer dans les depots de code evalues. Le code, les tests et les fichiers Docker/CI doivent etre d'un niveau d'artisanat logiciel pur (Software Craftsmanship).
+* **ZERO BOT ET ZERO COMPTE SYNTHETIQUE DANS GITLAB** : Interdiction formelle d'utiliser des Group Access Tokens (GAT) qui generent des membres virtuels [Bot] visibles dans l'annuaire du groupe GitLab. Toute interaction API ou MCP avec la forge de l'Universite de Lille doit imperativement employer un Personal Access Token (PAT) nominatif etudiant, garantissant que seuls les membres humains reels de l'equipe figurent dans les membres du groupe.
 
 ---
 

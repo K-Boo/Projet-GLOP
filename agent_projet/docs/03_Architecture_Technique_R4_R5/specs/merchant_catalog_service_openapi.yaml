@@ -1,0 +1,288 @@
+openapi: 3.1.0
+info:
+  title: ShopLoc - Merchant Catalog Service API
+  description: Microservice de gestion des fiches commercants, du catalogue articles et des reservations atomiques de stock sous protocole Two-Phase Commit (2PC).
+  version: 1.0.0
+  contact:
+    name: Equipe Ingenierie Garik - M2 MIAGE GLOP
+    email: contact@garik-ingenierie.fr
+
+servers:
+  - url: http://localhost:8082
+    description: Environnement local de developpement
+  - url: http://catalog-service:8082
+    description: Environnement Docker Compose inter-conteneurs
+
+paths:
+  /api/v1/merchants:
+    get:
+      summary: Liste des boutiques adherentes partenaires
+      operationId: listMerchants
+      responses:
+        '200':
+          description: Liste des commercants actifs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MerchantResponse'
+
+  /api/v1/merchants/{merchantId}/products:
+    get:
+      summary: Catalogue des produits d'une boutique
+      operationId: getMerchantProducts
+      parameters:
+        - name: merchantId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Liste des articles avec niveau de stock
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductResponse'
+
+  /api/v1/merchants/{merchantId}/products/{productId}/stock:
+    patch:
+      summary: Mise a jour du stock par le commercant
+      operationId: updateStock
+      parameters:
+        - name: merchantId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - quantity
+              properties:
+                quantity:
+                  type: integer
+                  minimum: 0
+                  example: 15
+      responses:
+        '200':
+          description: Stock mis a jour avec succes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+
+  /api/v1/merchants/{merchantId}/reservations:
+    post:
+      summary: Phase 1 Prepare 2PC - Reservation temporaire de stock
+      description: Verrouille temporairement une quantite d'article pendant un TTL (par defaut 600 secondes).
+      operationId: prepareStockReservation
+      parameters:
+        - name: merchantId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StockReservationRequest'
+      responses:
+        '200':
+          description: Stock reserve avec succes (Prepare valide)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StockReservationResponse'
+        '409':
+          description: Stock insuffisant pour satisfaire la reservation
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+
+  /api/v1/merchants/{merchantId}/reservations/{reservationId}/commit:
+    post:
+      summary: Phase 2a Commit 2PC - Validation definitive de la reservation
+      description: Debite definitivement le stock physique precedemment reserve.
+      operationId: commitStockReservation
+      parameters:
+        - name: merchantId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: reservationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Reservation validee et stock debite definitivement
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /api/v1/merchants/{merchantId}/reservations/{reservationId}/rollback:
+    post:
+      summary: Phase 2b Rollback 2PC - Liberation de la reservation temporaire
+      description: Restitue le stock reserve suite a l'echec d'un autre artisan du panier.
+      operationId: rollbackStockReservation
+      parameters:
+        - name: merchantId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: reservationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Reservation liberee avec succes
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+components:
+  schemas:
+    MerchantResponse:
+      type: object
+      required:
+        - id
+        - name
+        - address
+        - openHours
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 101
+        name:
+          type: string
+          example: Boulangerie Saint-Michel
+        address:
+          type: string
+          example: 12 Place Saint-Michel, 59000 Lille
+        openHours:
+          type: string
+          example: 07h00 - 19h30
+
+    ProductResponse:
+      type: object
+      required:
+        - id
+        - merchantId
+        - name
+        - unitPrice
+        - availableStock
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 202
+        merchantId:
+          type: integer
+          format: int64
+          example: 101
+        name:
+          type: string
+          example: Baguette Tradition Label Rouge
+        unitPrice:
+          type: number
+          format: double
+          example: 1.20
+        availableStock:
+          type: integer
+          example: 18
+
+    StockReservationRequest:
+      type: object
+      required:
+        - orderId
+        - productId
+        - quantity
+      properties:
+        orderId:
+          type: string
+          format: uuid
+        productId:
+          type: integer
+          format: int64
+          example: 202
+        quantity:
+          type: integer
+          minimum: 1
+          example: 2
+        ttlSeconds:
+          type: integer
+          default: 600
+          example: 600
+
+    StockReservationResponse:
+      type: object
+      required:
+        - reservationId
+        - status
+        - expiresAt
+      properties:
+        reservationId:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [RESERVED, EXPIRED, COMMITTED, ROLLED_BACK]
+          example: RESERVED
+        expiresAt:
+          type: string
+          format: date-time
+
+    ProblemDetails:
+      type: object
+      required:
+        - type
+        - title
+        - status
+      properties:
+        type:
+          type: string
+          format: uri
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+
+  responses:
+    NotFound:
+      description: Ressource introuvable
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'

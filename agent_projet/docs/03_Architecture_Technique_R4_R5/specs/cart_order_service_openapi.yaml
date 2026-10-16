@@ -1,0 +1,295 @@
+openapi: 3.1.0
+info:
+  title: ShopLoc - Cart & Order Service API
+  description: Microservice de gestion du panier multi-boutiques et d'orchestration de transactions Two-Phase Commit (2PC) pour le Click & Collect ShopLoc.
+  version: 1.0.0
+  contact:
+    name: Equipe Ingenierie Garik - M2 MIAGE GLOP
+    email: contact@garik-ingenierie.fr
+
+servers:
+  - url: http://localhost:8083
+    description: Environnement local de developpement
+  - url: http://cart-order-service:8083
+    description: Environnement Docker Compose inter-conteneurs
+
+paths:
+  /api/v1/cart:
+    get:
+      summary: Recuperation du panier actif de l'utilisateur connecte
+      operationId: getActiveCart
+      responses:
+        '200':
+          description: Panier actif avec sous-totaux par commercant
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /api/v1/cart/items:
+    post:
+      summary: Ajout d'un article dans le panier multi-boutiques
+      operationId: addItemToCart
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddCartItemRequest'
+      responses:
+        '200':
+          description: Article ajoute avec succes au panier
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /api/v1/orders/checkout:
+    post:
+      summary: Validation du panier et declenchement de la transaction distribuee 2PC
+      description: |
+        Le coordinateur 2PC execute la phase Prepare aupres de chaque boutique.
+        Si tous les stocks sont reserves, la commande est validee (Commit).
+        En cas de rupture, un Rollback automatique libere les reservations partielles.
+      operationId: checkoutCart
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckoutRequest'
+      responses:
+        '201':
+          description: Commande validee avec succes (2PC Commit reussi)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '409':
+          description: Echec de reservation 2PC (Rupture de stock chez un artisan - Rollback effectue)
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '504':
+          description: Timeout transactionnel 2PC (Delai depasse - Rollback de securite)
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+
+  /api/v1/orders/{orderId}:
+    get:
+      summary: Consultation du statut d'une commande Click & Collect
+      operationId: getOrderById
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Details de la commande avec creneaux de retrait par boutique
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+components:
+  schemas:
+    AddCartItemRequest:
+      type: object
+      required:
+        - merchantId
+        - productId
+        - quantity
+      properties:
+        merchantId:
+          type: integer
+          format: int64
+          example: 101
+        productId:
+          type: integer
+          format: int64
+          example: 202
+        quantity:
+          type: integer
+          minimum: 1
+          example: 2
+
+    CartResponse:
+      type: object
+      required:
+        - cartId
+        - totalAmount
+        - merchantSubCarts
+      properties:
+        cartId:
+          type: string
+          format: uuid
+        totalAmount:
+          type: number
+          format: double
+          example: 15.50
+        merchantSubCarts:
+          type: array
+          items:
+            $ref: '#/components/schemas/MerchantSubCart'
+
+    MerchantSubCart:
+      type: object
+      required:
+        - merchantId
+        - merchantName
+        - subTotal
+        - items
+      properties:
+        merchantId:
+          type: integer
+          format: int64
+        merchantName:
+          type: string
+          example: Boulangerie Saint-Michel
+        subTotal:
+          type: number
+          format: double
+          example: 3.50
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartItemDto'
+
+    CartItemDto:
+      type: object
+      required:
+        - productId
+        - productName
+        - unitPrice
+        - quantity
+      properties:
+        productId:
+          type: integer
+          format: int64
+        productName:
+          type: string
+          example: Baguette Tradition
+        unitPrice:
+          type: number
+          format: double
+          example: 1.20
+        quantity:
+          type: integer
+          example: 2
+
+    CheckoutRequest:
+      type: object
+      required:
+        - cartId
+        - pickupSlots
+      properties:
+        cartId:
+          type: string
+          format: uuid
+        pickupSlots:
+          type: array
+          items:
+            $ref: '#/components/schemas/MerchantPickupSlot'
+
+    MerchantPickupSlot:
+      type: object
+      required:
+        - merchantId
+        - slotStart
+        - slotEnd
+      properties:
+        merchantId:
+          type: integer
+          format: int64
+        slotStart:
+          type: string
+          format: date-time
+          example: '2026-10-16T17:30:00Z'
+        slotEnd:
+          type: string
+          format: date-time
+          example: '2026-10-16T17:45:00Z'
+
+    OrderResponse:
+      type: object
+      required:
+        - orderId
+        - status
+        - totalAmount
+        - createdAt
+      properties:
+        orderId:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [PENDING_PREPARE, CONFIRMED, CANCELLED_STOCK_UNAVAILABLE, RETRIEVED]
+          example: CONFIRMED
+        totalAmount:
+          type: number
+          format: double
+          example: 15.50
+        createdAt:
+          type: string
+          format: date-time
+
+    ProblemDetails:
+      type: object
+      required:
+        - type
+        - title
+        - status
+      properties:
+        type:
+          type: string
+          format: uri
+          example: https://api.shoploc.fr/errors/stock-unavailable
+        title:
+          type: string
+          example: Rupture de stock lors du pre-commit 2PC
+        status:
+          type: integer
+          example: 409
+        detail:
+          type: string
+          example: L'article 202 chez Boucherie B ne dispose pas de quantite suffisante.
+        instance:
+          type: string
+          example: /api/v1/orders/checkout
+        timestamp:
+          type: string
+          format: date-time
+
+  responses:
+    BadRequest:
+      description: Requete malformee ou donnees d'entree invalides (Jakarta Validation)
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+    Unauthorized:
+      description: Token JWT absent ou expire
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+    NotFound:
+      description: Ressource introuvable
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
