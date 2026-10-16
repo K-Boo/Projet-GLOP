@@ -154,8 +154,11 @@ def check_line(line, loc, registry):
 
 
 def main():
+    script_dir = Path(__file__).resolve().parent
+    default_docs_dir = script_dir.parent / "docs"
+
     parser = argparse.ArgumentParser(description="Verificateur d'Integrite des Livrables ShopLoc")
-    parser.add_argument("--dir", default="agent_projet/docs", help="Dossier a scanner")
+    parser.add_argument("--dir", default=str(default_docs_dir), help="Dossier a scanner")
     parser.add_argument("--file", help="Fichier unique a scanner")
     parser.add_argument("--registry", help="Chemin vers canary_registry.json")
 
@@ -167,6 +170,10 @@ def main():
         files_to_check.append(Path(args.file))
     else:
         docs_dir = Path(args.dir)
+        if not docs_dir.is_absolute():
+            # Essayer relatif au CWD puis relatif a ShopLoc
+            if not docs_dir.exists() and (script_dir.parent.parent / docs_dir).exists():
+                docs_dir = script_dir.parent.parent / docs_dir
         if docs_dir.exists():
             for p in docs_dir.rglob("*"):
                 if p.is_file() and p.suffix.lower() in [".md", ".pdf", ".html", ".txt", ".json"]:

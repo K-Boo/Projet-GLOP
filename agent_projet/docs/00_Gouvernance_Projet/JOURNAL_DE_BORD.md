@@ -995,6 +995,66 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 - **Reste à faire / Prochaine étape** :
   - Lancement du Chantier 2 : Décomposition fine du Backlog par User Story INVEST, synchronisation Linear via MCP et recalibrage du diagramme de Gantt synchronisé sur le MVP (Panier Click & Collect 2PC et moteur VFP).
 
+### [2026-10-16] Session 41 — Perfectionnement Agentique : Patron Configurable Skills, Safety Gate & Guide de Prompting
+- **Objectif** : Analyser les tutoriels de reference freeCodeCamp et integrer dans notre systeme agentique les meilleures pratiques d'ingenierie :
+  1. Implanter le patron 'Configurable Skills Pattern' (loader Python resolve_config.py et fichier maitre .agents/skills.config.yaml) permettant de piloter l'ensemble des 40 competences pour Java 17/Spring Boot 3/React/PostgreSQL sans aucun fork.
+  2. Verrouiller le protocole 'Plan-First Safety Gate' dans les roles de sous-agents (developer_role.md, architect_role.md, instructions.md) pour interdire toute ecriture de code sans validation d'un Artifact de plan detaille.
+  3. Formaliser l'exigence de preuve d'execution tangible (DoD certifiee par les logs Maven JUnit et couverture Jacoco >= 80%) dans qa_role.md.
+  4. Rediger le guide d'equipe GUIDE_PROMPTING_AGENTIQUE.md contenant la formule canonique en 5 blocs et 5 prompts types prets a l'emploi pour ShopLoc.
+- **Actions réalisées** :
+  - Conception et test du script Python ShopLoc/agent_projet/scripts/resolve_config.py avec algorithme de deep merge et detection multi-repertoires.
+  - Ajout de pyyaml dans ShopLoc/requirements.txt et installation reussie dans ShopLoc/.venv.
+  - Redaction du fichier de configuration central ShopLoc/.agents/skills.config.yaml parametrant les stacks Backend (Spring Boot 3.3, Java 17, 2PC), Frontend (React 18, Tailwind, RGAA AA), BDD (PostgreSQL 16 3NF) et DevOps (Docker multi-stage, GitLab CI autograding).
+  - Mise a jour des directives de sous-agents avec le verrou Plan-First obligatoire et la resolution automatique de configuration.
+  - Mise a jour de la DoD du sous-agent QA avec le contrat de preuves tangibles (evidence).
+  - Redaction integrale du document de cadrage methodologique ShopLoc/agent_projet/docs/00_Gouvernance_Projet/GUIDE_PROMPTING_AGENTIQUE.md.
+  - Controle qualite et securite valide sans anomalie via verify_deliverables.py (0 canari, 0 violation, 0 emoji).
+- **Fichiers créés ou modifiés** :
+  - *Créés* :
+    * ShopLoc/agent_projet/scripts/resolve_config.py
+    * ShopLoc/.agents/skills.config.yaml
+    * ShopLoc/agent_projet/docs/00_Gouvernance_Projet/GUIDE_PROMPTING_AGENTIQUE.md
+  - *Modifiés* :
+    * ShopLoc/requirements.txt
+    * ShopLoc/.antigravity/instructions.md
+    * ShopLoc/.antigravity/roles/developer_role.md
+    * ShopLoc/.antigravity/roles/architect_role.md
+    * ShopLoc/.antigravity/roles/qa_role.md
+    * ShopLoc/agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md
+- **Décisions actées** :
+  - Adoption officielle du patron de configurabilite sans fork : les 40 competences d'equipe sont figees et pilotees declarativement par skills.config.yaml.
+  - Adoption de la formule de prompt en 5 blocs : Contexte + Objectif + Contraintes + Safety Gate + Preuve par l'Execution.
+- **Reste à faire / Prochaine étape** :
+  - Review utilisateur des modifications locales avant toute decision de push Git.
+  - Enchainement sur le Chantier 2 : Decoupage INVEST du Backlog, synchronisation Linear via MCP et diagramme de Gantt annuel granularise par User Story aligne sur le MVP.
+
+### [2026-10-16] Session 42 — Automatisation du Prompting : Prompt Optimizer Gateway & Sous-Agent Dedie
+- **Objectif** : Repondre au besoin d'automatisation formule par l'utilisateur (/learn) en implantant un dispositif systematique d'interception et de transmutation de toute requete brute en prompt canonique a 5 blocs conforme au GUIDE_PROMPTING_AGENTIQUE.md.
+- **Actions réalisées** :
+  - Elaboration de la proposition d'apprentissage et validation de l'Artifact interactif learning_proposal.md.
+  - Creation de la directive de role du sous-agent dedie ShopLoc/.antigravity/roles/prompt_optimizer_role.md (modele Flash, decomposition INVEST, criteres Gherkin).
+  - Conception et test du script Python ShopLoc/agent_projet/scripts/optimize_prompt.py (detection heuristique de categorie, injection dynamique de skills.config.yaml, formats texte/json/markdown).
+  - Creation des regles permanentes de contexte haut-niveau GLOP/AGENTS.md (portee workspace) et ShopLoc/AGENTS.md (portee cockpit).
+  - Integration de la regle maitresse 'Phase 0 : Interception & Optimisation Canonique' au sein de ShopLoc/.antigravity/instructions.md et de GLOP/.antigravity/instructions.md.
+  - Adaptation multi-racines de verify_deliverables.py (execution resiliente depuis GLOP ou ShopLoc) et controle qualite valide a 100% (100 fichiers audites, 0 canari, 0 violation, 0 emoji).
+- **Fichiers créés ou modifiés** :
+  - *Créés* :
+    * GLOP/AGENTS.md
+    * ShopLoc/AGENTS.md
+    * ShopLoc/.antigravity/roles/prompt_optimizer_role.md
+    * ShopLoc/agent_projet/scripts/optimize_prompt.py
+  - *Modifiés* :
+    * ShopLoc/.antigravity/instructions.md
+    * GLOP/.antigravity/instructions.md
+    * ShopLoc/agent_projet/scripts/verify_deliverables.py
+    * ShopLoc/agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md
+- **Décisions actées** :
+  - Institution de la passerelle Phase 0 : toute demande utilisateur brute est transmutee de maniere transparente en cartouche canonique a 5 blocs avant declenchement des sous-agents executants.
+  - Verrouillage inconditionnel par AGENTS.md garantissant l'injection permanente des 7 invariants a chaque requete sans surcout d'execution.
+- **Reste à faire / Prochaine étape** :
+  - Revue globale par l'utilisateur des travaux des sessions 41 et 42 avant toute decision de push Git.
+  - Lancement operationnel du Chantier 2 : Cadrage fin du backlog (US INVEST), synchronisation Linear MCP et re-synchronisation du Gantt sur le MVP (Panier multi-commerces 2PC et moteur VFP).
+
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
 
 A la fin de chaque session de chat, l'agent ou l'utilisateur execute la mise a jour de ce fichier selon le format suivant :

@@ -33,7 +33,18 @@ GLOP/
 
 ## 2. Aiguillage des Requetes Utilisateur
 
-Des reception d'une instruction utilisateur, l'agent identifie le domaine concerne et applique la directive appropriee :
+Des reception d'une instruction utilisateur, l'agent applique systematiquement la Phase 0 de normalisation, puis oriente vers le domaine concerne :
+
+### Phase 0 : Interception & Optimisation Canonique (Prompt Optimizer Gateway)
+Toute instruction utilisateur brute ou informelle (ex: "ajoute l'endpoint de stock", "mets a jour le gantt") est systematiquement interceptee et transmutee selon la formule canonique en 5 blocs definie dans [`GUIDE_PROMPTING_AGENTIQUE.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_projet/docs/00_Gouvernance_Projet/GUIDE_PROMPTING_AGENTIQUE.md) :
+1. **Resolution de Contexte** : Chargement automatique des parametres du projet via `ShopLoc/.agents/skills.config.yaml` ou le script d'assistance `ShopLoc/.venv/Scripts/python.exe ShopLoc/agent_projet/scripts/optimize_prompt.py "<instruction>"`.
+2. **Formule Canonique en 5 Blocs** :
+   * **BLOC 1 - CONTEXTE** : Societe Garik, ShopLoc, Universite de Lille M2 MIAGE GLOP, cockpit ShopLoc vs depot GitLab.
+   * **BLOC 2 - OBJECTIF ATOMIQUE (INVEST)** : Intention precise, portee delivree.
+   * **BLOC 3 - CONTRAINTES & STANDARDS** : Zero emoji, isolation IA, Spring Boot 3.3 / Java 17, 2PC, RGAA AA.
+   * **BLOC 4 - SAFETY GATE (Plan Prealable)** : Generation d'un Artifact de plan detaille obligatoire avant toute execution destructive ou creation de code/livrable.
+   * **BLOC 5 - PREUVE PAR L'EXECUTION** : Preuve console reelle ('mvn test', Jacoco >= 80%, audit verify_deliverables.py).
+3. **Restitution du Cartouche d'Alignement** : L'agent restitue le cartouche `[REQUETE OPTIMISEE - FORMULE CANONIQUE]` en tete de sa reponse pour valider l'alignement avant d'orienter vers les cas ci-dessous.
 
 ### Cas A : Demande liee au Projet, aux Livrables ou a la Gouvernance
 - **Exemples** : Redaction ou modification de livrables (R1, R3, R4/R5), cadrage metier, questionnaires MOA, etude financiere, mise a jour du glossaire, diaporamas PPTX, synchronisation Google Drive.
@@ -72,6 +83,10 @@ Des reception d'une instruction utilisateur, l'agent identifie le domaine concer
 5. **Stratégie Frugale d'Export PDF (Zéro Gaspillage de Tokens)** :
    - Aucun PDF intermédiaire n'est généré à chaque sous-partie ou section. Les sections sont maintenues en Markdown propre avec leurs images.
    - La génération d'un unique PDF complet et unifié est réservée à la toute fin du projet (Étape 11), lors de l'assemblage maître du Cahier des Charges.
+6. **Protocole de Prompting Agentique & Plan-First Safety Gate (Standard freeCodeCamp)** :
+   - Formule canonique : `Contexte + Objectif + Contraintes + Safety Gate (Plan préalable) + Preuve par l'Exécution`.
+   - Avant toute génération de code ou commande de création, l'agent produit systématiquement un plan d'action sous forme d'Artifact et attend l'approbation explicite de l'utilisateur.
+   - Avant toute action technique, l'agent résout la configuration de projet via `ShopLoc/.venv/Scripts/python.exe ShopLoc/agent_projet/scripts/resolve_config.py <skill>` adossé à `.agents/skills.config.yaml`.
 
 ---
 
@@ -136,6 +151,7 @@ python agent_projet/scripts/setup_env.py
 1. **Architecture par Contrats & Fichiers Partagés** :
    - Pour éliminer le non-déterminisme, les sous-agents ne dialoguent pas en texte libre mais s'échangent des contrats JSON typés et des fichiers de spécification versionnés selon la machine à états décrite dans [`.antigravity/workflows/workflow_sprint.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/.antigravity/workflows/workflow_sprint.md).
 2. **Rôles de Sous-Agents Spécialisés** :
+   - Sous-Agent Prompt Optimizer (`.antigravity/roles/prompt_optimizer_role.md`) : Interception de requetes brutes, normalisation canonique en 5 blocs, decomposition INVEST et generation de prompts prets pour l'equipe. Modele obligatoire : `flash`.
    - Sous-Agent PO (`.antigravity/roles/po_role.md`) : Découpage INVEST, critères Gherkin, synchronisation Linear via MCP (`.agents/mcp_config.json`). Modèle obligatoire : `flash`.
    - Sous-Agent Architecte (`.antigravity/roles/architect_role.md`) : Contrats OpenAPI, schémas PostgreSQL 3NF, multi-tenancy. Modèle obligatoire : `pro`.
    - Sous-Agent Développeur TDD (`.antigravity/roles/developer_role.md`) : Cycle Red-Green-Refactor, Clean Code. Modèle : `pro` (calculs financiers) ou `flash` (standard).

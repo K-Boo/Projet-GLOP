@@ -1,0 +1,129 @@
+# CONFIGURATION CENTRALE DES COMPETENCES AGENTIQUES (.agents/skills.config.yaml)
+# Projet ShopLoc — Societe d'Ingenierie Garik (M2 MIAGE GLOP 2026-2027, Universite de Lille)
+# Inspire du patron 'Configurable Skills Pattern' (freeCodeCamp 2026)
+#
+# Ce fichier centralise toutes les surcharges de projet pour les 40 competences agentiques,
+# garantissant que les agents generent du code et des livrables selon nos standards stricts.
+
+global:
+  project_name: "ShopLoc"
+  company: "Societe Garik"
+  academic_framework: "Master 2 MIAGE - UE GLOP 2026-2027"
+  client_moa: "Enseignants Universite de Lille (Laurence Duchien, Anne Etien, Francois Secchi, Jeremy Woirhaye)"
+  policy_zero_emoji: true
+  safety_gate_mode: "plan_first_explicit_human_approval"
+  verification_requirement: "evidence_based_execution"
+  ai_code_isolation: "zero_trace_in_evaluated_code_repositories"
+  code_repositories_location: "GLOP/"
+  cockpit_governance_location: "GLOP/ShopLoc/"
+
+# Surcharge de la competence de developpement Backend
+backend-dev-guidelines:
+  runtime:
+    language: "java"
+    version: "17"
+    framework: "spring-boot-3.3.x"
+    build_tool: "maven"
+    package_prefix: "fr.univlille.shoploc"
+  architecture:
+    pattern: "microservices-distribues"
+    layers:
+      - "domain"
+      - "application / use-cases"
+      - "infrastructure / adapters"
+      - "rest-controllers"
+    inter_service_client: "spring-6-http-interfaces / restclient"
+    distributed_protocol: "two-phase-commit-2pc (panier multi-boutiques)"
+  conventions:
+    naming: "english-camelcase"
+    validation: "jakarta-validation"
+    error_handling: "problem-details-rfc-7807"
+
+# Surcharge du cycle de developpement pilote par les tests (TDD)
+test-driven-development:
+  methodology: "red-green-refactor"
+  framework: "junit-5"
+  assertions: "assertj"
+  mocking: "mockito"
+  integration_testing: "spring-boot-starter-test / mockmvc"
+  coverage:
+    tool: "jacoco"
+    min_line_coverage_percent: 80
+    enforce_on_pull_request: true
+  execution_rule: "ne jamais livrer une methode sans son test unitaire prealable"
+
+tdd-workflow:
+  test_framework: "junit-5"
+  build_tool: "maven"
+  target_command: "mvn test -Dtest={TestClass}"
+
+# Surcharge de la persistance et modelisation de donnees
+database-design:
+  engine: "postgresql-16"
+  architecture_pattern: "database-per-service"
+  normalization_level: "3nf"
+  orm: "spring-data-jpa"
+  migrations: "flyway"
+  multi_tenancy:
+    strategy: "discriminator_column"
+    discriminator_key: "tenant_id"
+    scope: "isolation-par-commune"
+  constraints:
+    foreign_keys_indexed: true
+    acid_transactions: true
+
+postgresql:
+  engine_version: "16"
+  naming: "snake_case"
+  audit_columns:
+    - "created_at"
+    - "updated_at"
+
+# Surcharge du developpement Frontend Web
+frontend-dev-guidelines:
+  runtime:
+    language: "typescript"
+    framework: "react-18"
+    bundler: "vite"
+    css_framework: "tailwind-css"
+  design_system:
+    source_tokens: "agent_projet/design/design_tokens.json"
+    palette: "shoploc-pastel (lin, ardoise, terracotta, sauge, miel)"
+    anti_slop_rule: "interdiction absolue de border-left asymetrique"
+    zero_emoji: true
+  accessibility:
+    standard: "rgaa-aa / wcag-2.1"
+    senior_persona_pierre:
+      min_font_size: "16px"
+      high_contrast: true
+      simple_navigation: true
+      qr_code_paper_alternative: true
+    merchant_persona_suzanne:
+      responsive_tablet_pos: true
+      quick_action_click_collect: true
+
+# Surcharge de la conteneurisation et DevOps
+docker-expert:
+  dockerfile_strategy: "multi-stage-build"
+  base_build_image: "maven:3.9-eclipse-temurin-17-alpine"
+  base_runtime_image: "eclipse-temurin:17-jre-alpine"
+  container_security:
+    non_root_user: true
+    read_only_root_filesystem: false
+  orchestration:
+    compose_file: "docker-compose.yml"
+    network_driver: "bridge"
+  ci_cd:
+    platform: "gitlab-ci"
+    template: "gitlab-classrooms/autograding maven-junit.yml"
+
+# Surcharge des conventions Git et Clean Code
+clean-code:
+  naming_language: "english"
+  max_function_length_lines: 30
+  explicit_errors: true
+  git_commits:
+    format: "conventional_commits"
+    allowed_types: ["feat", "fix", "docs", "test", "refactor", "chore"]
+    zero_emoji: true
+    student_identity: "Khalil Bouchama <khalil.bouchama.etu@univ-lille.fr>"

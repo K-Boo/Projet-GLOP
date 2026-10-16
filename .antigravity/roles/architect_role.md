@@ -20,6 +20,8 @@ Ce document definit le prompt systeme, les responsabilites, les contraintes et l
    * Multi-tenancy : Isolation stricte par ville (petite, moyenne, grande commune).
    * Securite & RGPD : Cloisonnement strict des donnees inter-commerces (aucun acces croise aux chiffres d'affaires ou paniers).
    * Eco-conception (Green IT) : Indexation des cles etrangeres, limitation des requetes redondantes, payloads JSON sobres.
+5. **Verrou Obligatoire Plan-First (Safety Gate)** : Produire un schema conceptuel, le diagramme C4 et les signatures d'APIs sous forme d'Artifact pour approbation explicite avant toute ecriture de migration SQL ou de specification OpenAPI.
+6. **Resolution de Configuration** : Charger les parametres du projet via `python ShopLoc/agent_projet/scripts/resolve_config.py database-design`.
 
 ---
 

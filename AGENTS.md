@@ -1,0 +1,76 @@
+# DIRECTIVES MAITRESSES DU COCKPIT SHOPLOC (AGENTS.md)
+
+Ce fichier de regles permanentes s'applique de maniere automatique et inconditionnelle a l'ensemble du depot ShopLoc (Cockpit de Gouvernance Garik - Master 2 MIAGE GLOP).
+
+---
+
+## 1. Phase 0 : Interception & Optimisation Canonique Obligatoire
+
+A chaque instruction ou requete utilisateur (qu'elle soit informelle, rapide ou telegraphique), l'agent applique systematiquement le protocole de normalisation issu du `GUIDE_PROMPTING_AGENTIQUE.md` avant toute action operationnelle :
+
+1. **Resolution de Contexte** : Charger les contraintes depuis `.agents/skills.config.yaml` ou via le script `.venv/Scripts/python.exe agent_projet/scripts/optimize_prompt.py "<requete>"`.
+2. **Formulation Canonique en 5 Blocs** :
+   * **BLOC 1 - CONTEXTE** : Societe Garik, ShopLoc, Universite de Lille M2 MIAGE GLOP, cockpit ShopLoc vs depots de code GitLab.
+   * **BLOC 2 - OBJECTIF ATOMIQUE (INVEST)** : Formule avec precision chirurgicale, sans ambiguite.
+   * **BLOC 3 - CONTRAINTES & STANDARDS** : Zero emoji, etancheite IA, Spring Boot 3.3 / Java 17, 2PC, RGAA AA.
+   * **BLOC 4 - SAFETY GATE** : Plan prealable obligatoire.
+   * **BLOC 5 - PREUVE PAR L'EXECUTION** : Commande tangible console de certification.
+3. **Restitution Visuelle** : Afficher systematiquement le cartouche `[REQUETE OPTIMISEE - FORMULE CANONIQUE]` en tete de reponse pour garantir la parfaite synchronisation des attentes avec l'utilisateur.
+
+---
+
+## 2. Le Verrou Plan-First Safety Gate
+
+L'agent a l'interdiction formelle de :
+* Generer du code applicatif,
+* Modifier des fichiers de code existants,
+* Creer ou modifier des sections de livrables academiques officiels (R1, R3, R4/R5),
+* Executer des commandes a impact fort,
+
+**sans avoir prealablement soumis un Artifact de plan d'action detaille et obtenu l'accord humain explicite et textuel de l'utilisateur dans le chat**.
+
+---
+
+## 3. Preuve Tangible par l'Execution (Evidence-Based DoD)
+
+Une fonctionnalite, un correctif ou un livrable ne peut JAMAIS etre declare termine sur une simple affirmation theorique.
+La Definition of Done (DoD) exige imperativement :
+1. Pour le code : L'execution reelle de `mvn test` affichant 0 echec et 0 erreur, avec une couverture de tests Jacoco >= 80%.
+2. Pour les livrables documentaires : L'execution reelle de `.venv/Scripts/python.exe agent_projet/scripts/verify_deliverables.py` affichant 0 canari, 0 violation et 0 emoji.
+3. Les traces d'execution de la console doivent figurer dans le compte-rendu.
+
+---
+
+## 4. Etancheite Absolue des Depots de Code Evalues (Zero Trace d'IA)
+
+Le projet repose sur une isolation bi-depots stricte :
+* `ShopLoc/` (GitHub) : Cockpit unique de gouvernance, memoire agentique, scripts FinOps, configuration Antigravity.
+* `projet-glop-app/` et microservices associes (GitLab Univ-Lille) : Depots remis aux enseignants evaluateurs.
+* **REGLE INVIOLABLE** : Aucun dossier `.antigravity`, `.agents`, script d'IA, trace de prompt ou mention d'assistant virtuel ne doit penetrer dans les depots de code evalues. Le code, les tests et les fichiers Docker/CI doivent etre d'un niveau d'artisanat logiciel pur (Software Craftsmanship).
+
+---
+
+## 5. Environnement Virtuel Python Dedie
+
+Toute execution de script d'outillage, de verification, de compilation PDF ou de generation documentaire doit imperativement employer le binaire virtuel du projet :
+`ShopLoc/.venv/Scripts/python.exe`
+
+---
+
+## 6. Politique Zero Emoji Absolue
+
+Aucun caractere emoji n'est tolere dans :
+* Le code source et les commentaires,
+* Les fichiers Markdown, HTML, CSS,
+* Les commits Git et les messages de journalisation,
+* Les reponses textuelles de l'agent.
+Le style redactionnel doit etre sobre, academique, rigoureux et digne d'un rapport professionnel de Master 2 MIAGE.
+
+---
+
+## 7. Configuration Technologique Centrale (Zero-Fork)
+
+Toute competence ou developpement doit respecter la stack maitresse declaree dans `.agents/skills.config.yaml` :
+* Backend : Java 17, Spring Boot 3.3.x, Maven, Jakarta Validation, Problem Details RFC 7807, Two-Phase Commit (2PC).
+* Frontend : React 18, TypeScript, Tailwind CSS, RGAA / WCAG AA.
+* BDD : PostgreSQL 16, normalisation 3NF, isolation stricte par microservice (Database-per-Service).

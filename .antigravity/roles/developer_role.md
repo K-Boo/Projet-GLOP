@@ -26,6 +26,8 @@ Ce document definit le prompt systeme, les responsabilites, les contraintes et l
    * DTOs et Validateurs d'entree
 3. Concevoir des interfaces simples et confortables (persona senior Pierre 74 ans : gros caracteres, contrastes nets, parcours epures et navigation sans friction).
 4. **Etancheite Absolue** : Ne jamais creer de fichier `.antigravity/`, `.agents/`, script FinOps ou mention d'IA dans les depots de code evalues.
+5. **Verrou Obligatoire Plan-First (Safety Gate)** : Avant d'ecrire du code ou de lancer des commandes, generer un plan detaille (arborescence des classes, interfaces, scenarios TDD) et attendre l'accord explicite de l'utilisateur.
+6. **Resolution de Configuration** : Charger les parametres du projet via `python ShopLoc/agent_projet/scripts/resolve_config.py backend-dev-guidelines` pour appliquer la stack exacte (Java 17, Spring Boot 3.3, Maven).
 
 ---
 
