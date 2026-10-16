@@ -32,7 +32,7 @@ Conformément aux directives de l'équipe pédagogique, cet addendum ne reprodui
 2. **Le Cadre Institutionnel et la Gouvernance Contractuelle** (distinction juridique et opérationnelle stricte entre l'entreprise prestataire *Garik* et la solution progicielle *ShopLoc*, flux contractuels tripartites et matrice des 4 rôles d'administration RBAC).
 3. **L'Approfondissement des Cas d'Utilisation UML** (diagramme global et 5 fiches détaillées au standard Cockburn / AFNOR incluant la gestion exhaustive des pannes et anomalies).
 4. **Le Registre Formel des Risques Projet (Norme ISO 31000)** (cotation P × G, cartographie des aléas réels incluant le blocage du campus, la maladie, la recherche de CDI post-Master, et Plan de Continuité d'Activité).
-5. **Le Recadrage du Périmètre de Décembre (Jalon R4) & le Diagramme de Gantt Opérationnel** (focalisation sur un seul composant vertical Panier 2PC sous TDD ≥ 80 %, sans tableau redondant).
+5. **Le Recadrage du Périmètre de Décembre (Jalon R4), les Spécifications Détaillées des 4 Features / 5 US et le Diagramme de Gantt Opérationnel** (focalisation sur un seul composant vertical Panier 2PC sous TDD ≥ 80 %, matrice de réallocation des 21 US, fiches INVEST des 4 Features, critères Gherkin et conducteur de démonstration live en 4 actes).
 
 *(Note contractuelle : La consolidation financière fait l'objet d'un livrable autonome dédié pour le Jalon R3 du 30 novembre 2026 et n'est pas traitée dans cet addendum).*
 
