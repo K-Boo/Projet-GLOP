@@ -53,7 +53,7 @@ La méthode APTE impose de répondre rigoureusement aux trois questions fondamen
 | **Dans quel but le système existe-t-il ?** | **Fédérer les acteurs locaux** (Citoyens, Commerçants, Mairie, Association) autour d'un écosystème numérique souverain, éthique et pérenne, dynamisant le commerce de centre-ville tout en encourageant les comportements écoresponsables. |
 
 <div class="figure-card" style="background:#FAF9F6; border:1px solid #DCD6CD; border-radius:14px; padding:14px 18px; margin: 14pt auto; width: 100%; box-sizing: border-box; box-shadow:0 4px 16px rgba(36,51,66,0.06);">
-  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px; border-bottom:1px solid #DCD6CD; padding-bottom:8px;">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:1px solid #DCD6CD; padding-bottom:8px;">
     <div>
       <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:4px;">
         <span style="width:8px; height:8px; border-radius:50%; background:#C26750;"></span>
@@ -61,7 +61,6 @@ La méthode APTE impose de répondre rigoureusement aux trois questions fondamen
       </div>
       <h3 style="font-size:15px; font-weight:700; color:#243342; margin:0; font-family: 'Poppins', sans-serif;">Figure 1.1 — Énonciation Canonique du Besoin (Bête à Cornes Révisée)</h3>
     </div>
-    <span style="font-size:11px; background:#FFFFFF; border:1px solid #DCD6CD; padding:4px 12px; border-radius:9999px; color:#5A6578; font-weight:600; font-family: 'Poppins', sans-serif;">Cadrage Stratégique</span>
   </div>
   <img src="figures/fig_1_1_bete_a_cornes_revisee.svg" alt="Figure 1.1 — Bête à cornes révisée" style="width: 100%; max-width: 100%; height: auto; display: block; margin: 0 auto;" />
 </div>
@@ -416,98 +415,110 @@ Afin d'assurer une traçabilité totale avec le diaporama officiel de soutenance
 * **Jalon R4 (Décembre 2026) : 5 User Stories d'élite technique (US-01, US-02, US-06, US-07, US-09)** formant une chaîne verticale étanche et auto-suffisante.
 * **Jalon R5 (Mars 2027) : 16 User Stories** couvrant la fidélité en caisse physique, les mobilités douces, la supervision municipale et les fonctions de confort.
 
-<div style="page-break-after: always;"></div>
+## 5.3. Spécifications Détaillées des 5 User Stories du MVP Décembre (Jalon R4)
 
-## 5.3. Spécifications Détaillées des 4 Features &amp; 5 User Stories du MVP Décembre
+Le périmètre opérationnel de la Release R4 (Décembre 2026) est composé de **5 User Stories** autonomes et verticalement intégrées, découpées selon le standard d'ingénierie INVEST. Chaque User Story est pourvue de ses Règles de Gestion (RG) formelles et de ses critères d'acceptation rédigés sous forme de scénarios structurés.
 
-Le MVP de Décembre est structuré en **4 Features majeures** découpées selon le standard INVEST, dotées de leurs Règles de Gestion (RG) et de scénarios de validation Gherkin.
+### User Story US-01 : Inscription &amp; Création de Compte Citoyen
+* **Identifiant &amp; Rôle :** `US-01` · Julie (Citadine)
+* **Formulation INVEST :** En tant que citoyenne (Julie), je souhaite créer mon compte personnel avec mon adresse email et un mot de passe sécurisé afin d'obtenir un identifiant unique et une carte numérique de fidélité.
+* **Règles de Gestion Applicables :**
+  * `RG-01.1` : Le mot de passe doit comporter au minimum 12 caractères incluant au moins 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial (norme CNIL / ANSSI).
+  * `RG-01.2` : L'adresse email doit être unique au sein du référentiel d'identité ShopLoc. Toute tentative d'inscription avec un email déjà existant est rejetée avec un message générique pour prévenir l'énumération de comptes.
+  * `RG-01.3` : Tout compte créé se voit attribuer un identifiant universel UUID v4, le rôle par défaut `ROLE_CITOYEN`, et une carte numérique associée à solde nul.
+* **Critères d'Acceptation :**
+  * **Scénario nominal : Inscription citoyenne réussie**
+    * **Étant donné que** une nouvelle utilisatrice saisit une adresse email valide non enregistrée `julie@citoyenne.fr` et un mot de passe conforme aux règles de complexité,
+    * **Quand** elle valide le formulaire d'inscription,
+    * **Alors** le service d'identité persiste l'utilisateur avec un hachage sécurisé (Argon2id ou BCrypt cost 12), lui attribue le rôle `ROLE_CITOYEN`, génère son UUID v4 et initialise son profil fidélité avec confirmation HTTP 201 Created.
+  * **Scénario d'exception : Rejet pour mot de passe non conforme**
+    * **Étant donné que** l'utilisatrice renseigne un mot de passe de moins de 12 caractères ou sans caractère spécial,
+    * **Quand** elle soumet le formulaire,
+    * **Alors** le système bloque l'enregistrement, retourne une erreur RFC 7807 (HTTP 400 Bad Request) précisant les exigences de sécurité non satisfaites, et aucun compte n'est créé en base de données.
 
-### Feature F1 : Gestion des Identités &amp; Accès Multi-Rôles (US-01 &amp; US-02)
-* **Objectif d'ingénierie :** Garantir un contrôle d'accès strict (RBAC) isolant les prérogatives des citoyens et des commerçants, avec émission de jetons JWT sécurisés.
-* **User Story US-01 (Inscription Citoyen) :** En tant que citoyen (Julie), je souhaite créer mon compte avec mon adresse email et un mot de passe sécurisé afin d'obtenir un identifiant unique et une carte numérique de fidélité.
-* **User Story US-02 (Authentification Sécurisée RBAC) :** En tant qu'utilisateur (Julie ou Suzanne), je souhaite m'authentifier afin d'accéder à mon espace dédié en fonction de mon rôle (`ROLE_CITOYEN` ou `ROLE_MERCHANT_ADMIN`).
-* **Règles de Gestion :**
-  * `RG-AUTH-01` : Le mot de passe doit comporter au minimum 12 caractères incluant au moins 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial (norme CNIL / ANSSI).
-  * `RG-AUTH-02` : Tout compte créé se voit attribuer un UUID v4 unique et une carte numérique associée.
-  * `RG-AUTH-03` : La session est gérée par un jeton JWT signé (HMAC-SHA256) d'une durée de validité de 60 minutes avec renouvellement par Refresh Token.
-* **Critères d'Acceptation Gherkin :**
-```gherkin
-Scénario: Authentification réussie d'une commerçante
-  Étant donné une commerçante enregistrée "suzanne@fournil.fr" avec le rôle "ROLE_MERCHANT_ADMIN"
-  Quand elle saisit son adresse email et son mot de passe valide
-  Alors le système génère un jeton JWT contenant le claim "role: ROLE_MERCHANT_ADMIN"
-  Et elle est redirigée vers son tableau de bord de gestion des stocks
+### User Story US-02 : Authentification Sécurisée Multi-Rôles (RBAC)
+* **Identifiant &amp; Rôles :** `US-02` · Julie (Citadine) &amp; Suzanne (Commerçante)
+* **Formulation INVEST :** En tant qu'utilisateur enregistré (Julie ou Suzanne), je souhaite m'authentifier de manière sécurisée afin d'accéder à mon espace dédié en fonction de mon rôle (`ROLE_CITOYEN` ou `ROLE_MERCHANT_ADMIN`).
+* **Règles de Gestion Applicables :**
+  * `RG-02.1` : Le contrôle d'accès repose sur un modèle RBAC strict isolant les prérogatives `ROLE_CITOYEN` (consultation, panier, paiement) et `ROLE_MERCHANT_ADMIN` (administration boutique, catalogue, stocks, scan de retrait).
+  * `RG-02.2` : L'authentification réussie délivre un jeton JWT signé (HMAC-SHA256) d'une durée de validité de 60 minutes contenant l'UUID et les rôles, accompagné d'un Refresh Token sécurisé (durée 7 jours, stockage `HttpOnly / Secure`).
+  * `RG-02.3` : Après 5 tentatives consécutives infructueuses sur un même compte, un verrouillage temporaire de 15 minutes est appliqué pour contrer les attaques par force brute.
+* **Critères d'Acceptation :**
+  * **Scénario nominal : Authentification réussie d'une commerçante**
+    * **Étant donné que** Suzanne est enregistrée dans l'annuaire avec l'adresse `suzanne@fournil.fr` et dispose du rôle `ROLE_MERCHANT_ADMIN`,
+    * **Quand** elle saisit son adresse email et son mot de passe valide,
+    * **Alors** le service d'authentification valide les droits, émet un jeton JWT porteur du claim `ROLE_MERCHANT_ADMIN` et redirige Suzanne vers le tableau de bord d'administration de sa boulangerie.
+  * **Scénario d'exception : Refus de connexion sur identifiants erronés**
+    * **Étant donné que** un utilisateur renseigne un mot de passe incorrect pour le compte `julie@citoyenne.fr`,
+    * **Quand** la demande de connexion est soumise,
+    * **Alors** le système rejette l'accès avec le statut HTTP 401 Unauthorized, incrémente le compteur d'échecs, et ne délivre aucun jeton de session.
 
-Scénario: Échec de connexion avec mot de passe erroné
-  Étant donné un utilisateur enregistré "julie@citoyenne.fr"
-  Quand elle saisit un mot de passe incorrect
-  Alors le système refuse l'accès avec le code HTTP 401 Unauthorized
-  Et aucun jeton de session n'est délivré
-```
+### User Story US-06 : Configuration de la Fiche Publique Magasin &amp; Horaires
+* **Identifiant &amp; Rôle :** `US-06` · Suzanne (Boulangère)
+* **Formulation INVEST :** En tant que commerçante artisane (Suzanne), je souhaite configurer les coordonnées, la description et les créneaux d'ouverture de ma boulangerie afin d'être visible des acheteurs locaux et de définir mes plages de retrait.
+* **Règles de Gestion Applicables :**
+  * `RG-06.1` : La création et la modification de la fiche boutique exigent la validation d'un numéro SIRET légal à 14 chiffres (contrôle d'intégrité Luhn) et l'attribution obligatoire à une catégorie d'activité référencée.
+  * `RG-06.2` : Les plages horaires d'ouverture et les créneaux Click &amp; Collect doivent comporter des bornes temporelles valides (format ISO 8601, heure de début antérieure à l'heure de fin) sans chevauchement incohérent.
+  * `RG-06.3` : Toute mise à jour de la fiche commerçant est propagée sur la place de marché publique avec une latence d'indexation inférieure à 500 millisecondes.
+* **Critères d'Acceptation :**
+  * **Scénario nominal : Mise à jour des créneaux Click &amp; Collect**
+    * **Étant donné que** Suzanne est connectée avec le rôle `ROLE_MERCHANT_ADMIN` sur sa boutique « Le Fournil de Suzanne »,
+    * **Quand** elle renseigne de nouvelles plages de retrait Click &amp; Collect « Du Mardi au Samedi : 16h30 - 19h00 »,
+    * **Alors** le service catalogue enregistre les nouveaux créneaux en base de données, invalide le cache public et affiche instantanément les horaires actualisés sur la fiche boutique vue par les citoyens.
+  * **Scénario d'exception : Rejet d'un créneau horaire invalide**
+    * **Étant donné que** la commerçante saisit une heure de fin antérieure à l'heure de début,
+    * **Quand** elle clique sur le bouton d'enregistrement,
+    * **Alors** le formulaire bloque la soumission avec un message d'erreur d'incohérence temporelle et aucune modification n'est transmise au serveur.
 
-### Feature F2 : Administration Boutique &amp; Gestion des Stocks Temps Réel (US-06 &amp; US-07)
-* **Objectif d'ingénierie :** Permettre aux commerçants artisans d'administrer leur vitrine Click &amp; Collect et de piloter précisément leurs stocks d'articles soumis à réservation.
-* **User Story US-06 (Fiche Publique Magasin) :** En tant que commerçante (Suzanne), je configure les coordonnées, la description et les créneaux d'ouverture de ma boulangerie afin d'être visible des acheteurs locaux.
-* **User Story US-07 (Catalogue &amp; Stocks C&amp;C) :** En tant que commerçante (Suzanne), je saisis et mets à jour en temps réel mes articles éligibles au Click &amp; Collect et leurs quantités disponibles.
-* **Règles de Gestion :**
-  * `RG-STK-01` : Chaque article possède un identifiant unique, une désignation, un prix unitaire TTC en centimes d'euro, et une quantité en stock entier strictement positive ou nulle.
-  * `RG-STK-02` : Un article dont le stock est égal à zéro bascule automatiquement à l'état `RUPTURE` et ne peut plus être ajouté à aucun panier.
-  * `RG-STK-03` : Les mises à jour de stocks par l'artisan sont propagées immédiatement dans le catalogue public (latence &lt; 500 ms).
-* **Critères d'Acceptation Gherkin :**
-```gherkin
-Scénario: Mise à jour du stock disponible pour le Click & Collect
-  Étant donné Suzanne connectée sur sa boutique "Le Fournil de Suzanne"
-  Quand elle sélectionne l'article "Baguette Tradition" et fixe le stock à 15 unités
-  Alors la base de données enregistre la quantité disponible de 15
-  Et l'article apparaît comme "Disponible" sur la place de marché citoyenne
-```
+### User Story US-07 : Gestion des Articles &amp; Niveaux de Stock Click &amp; Collect
+* **Identifiant &amp; Rôle :** `US-07` · Suzanne (Boulangère)
+* **Formulation INVEST :** En tant que commerçante artisane (Suzanne), je souhaite saisir et ajuster en temps réel mes articles éligibles au Click &amp; Collect et leurs quantités disponibles, afin de prévenir toute survente.
+* **Règles de Gestion Applicables :**
+  * `RG-07.1` : Chaque référence d'article possède un identifiant unique, une désignation textuelle, un prix unitaire TTC exprimé en centimes d'euro (valeur entière strictement positive) et une quantité de stock entier supérieur ou égal à zéro.
+  * `RG-07.2` : Dès qu'un stock atteint zéro unité, l'article bascule automatiquement à l'état `RUPTURE` : il demeure consultable dans le catalogue mais son bouton d'ajout au panier est désactivé.
+  * `RG-07.3` : Les écritures de mise à jour des stocks en base de données utilisent un verrouillage optimiste (`@Version` JPA) pour éliminer tout risque d'écrasement concurrent entre requêtes.
+* **Critères d'Acceptation :**
+  * **Scénario nominal : Réapprovisionnement d'un article en boutique**
+    * **Étant donné que** Suzanne consulte son catalogue et constate que l'article « Baguette Tradition » dispose de 3 unités restantes,
+    * **Quand** elle fixe le stock disponible à 25 unités et valide la modification,
+    * **Alors** la base de données enregistre la quantité de 25 unités, l'indicateur d'état repasse à « Disponible » et le catalogue public reflète immédiatement ce stock pour les acheteurs.
+  * **Scénario d'exception : Rejet d'un stock négatif ou prix invalide**
+    * **Étant donné que** la commerçante tente de renseigner un stock négatif (ex. -5 unités),
+    * **Quand** la requête est transmise à l'API,
+    * **Alors** le validateur Jakarta `@Min(0)` rejette la saisie avec le code HTTP 400 Bad Request et conserve intacte la valeur précédente de l'article.
 
-### Feature F3 : Panier Multi-Commerces &amp; Réservation Transactionnelle 2PC (US-09)
-* **Objectif d'ingénierie :** Réaliser le cœur technique de l'UE GLOP : garantir l'atomicité stricte d'une commande passée sur plusieurs commerces distincts via un protocole Two-Phase Commit avec compensation automatique.
-* **User Story US-09 (Panier Mutualisé &amp; Commande 2PC) :** En tant que cliente (Julie), je sélectionne des articles issus de plusieurs boutiques (ex. Boulangerie Suzanne et Épicerie locale) et je valide ma commande en une seule transaction sécurisée avec garantie d'intégrité des stocks.
+### User Story US-09 : Commande &amp; Panier Multi-Commerces sous Two-Phase Commit (2PC)
+* **Identifiant &amp; Rôles :** `US-09` · Julie (Citadine) &amp; Suzanne (Commerçante)
+* **Formulation INVEST :** En tant que citoyenne (Julie), je souhaite valider un panier regroupant des articles de plusieurs commerces indépendants et régler ma commande en une transaction atomique sécurisée, puis retirer mes achats en boutique via un QR code certifié.
 * **Règles de Gestion Transactionnelles :**
-  * `RG-2PC-01` : Phase 1 (Prepare) : Dès la confirmation de commande, le système pose un verrou pessimiste PostgreSQL (`SELECT ... FOR UPDATE`) sur les lignes d'articles et réserve les quantités demandées en statut `STOCK_HOLD` avec une durée de validité de 15 minutes.
-  * `RG-2PC-02` : Phase 1 (Appel Bancaire) : Le système transmet une requête d'autorisation au simulateur bancaire OpenAPI 3.1.
-  * `RG-2PC-03` : Phase 2 (Commit) : En cas de réponse bancaire HTTP 200, le coordinateur 2PC exécute le `COMMIT` : les stocks sont décrémentés définitivement, la commande passe au statut `CONFIRMED` et les commerçants concernés sont notifiés.
-  * `RG-2PC-04` : Phase 2 (Rollback / Compensation) : En cas de refus bancaire (HTTP 402) ou d'expiration du délai de 15 minutes, le coordinateur exécute immédiatement un `ROLLBACK` : les verrous sont relâchés, le statut `STOCK_HOLD` est annulé (`RELEASED`), les stocks redeviennent instantanément disponibles pour les autres clients, et aucun débit n'est effectué.
-  * `RG-2PC-05` : Si une rupture de stock intervient pendant la constitution du panier, la transaction est rejetée avant tout appel bancaire avec un message explicite à l'usager.
-* **Critères d'Acceptation Gherkin :**
-```gherkin
-Scénario: Validation nominale d'une commande multi-commerces sous 2PC
-  Étant donné Julie avec un panier contenant 2 Baguettes (Boulangerie) et 1 Confiture (Épicerie)
-  Quand Julie déclenche le paiement avec une carte bancaire valide
-  Alors le coordinateur 2PC pose un verrou temporaire "STOCK_HOLD" sur les 2 boutiques
-  Et le mock bancaire retourne le code HTTP 200 OK
-  Alors la commande passe au statut "CONFIRMED"
-  Et les stocks respectifs des deux commerces sont décrémentés de façon atomique
-  Et Julie reçoit son récapitulatif de commande avec QR code de retrait
-
-Scénario: Échec bancaire et compensation transactionnelle automatique (Rollback)
-  Étant donné Julie avec un panier contenant 3 Baguettes (Boulangerie)
-  Quand Julie valide sa commande avec une carte générant un refus bancaire simulé (HTTP 402)
-  Alors le coordinateur 2PC intercepte l'erreur bancaire
-  Et déclenche le rollback immédiat de la réservation de stock
-  Alors le statut "STOCK_HOLD" est immédiatement annulé (RELEASED)
-  Et le stock de la boulangerie revient exactement à son niveau initial
-  Et aucun montant n'est débité
-  Et Julie est invitée à renouveler son moyen de paiement
-```
-
-### Feature F4 : Retrait Click &amp; Collect &amp; Clôture de Commande
-* **Objectif d'ingénierie :** Fournir un mécanisme sécurisé de remise des articles en magasin physique avec horodatage certifié.
-* **Règles de Gestion :**
-  * `RG-RET-01` : Toute commande validée génère un jeton de retrait chiffré encodé sous forme de QR Code (contenant l'identifiant de commande et une signature HMAC-SHA256).
-  * `RG-RET-02` : La présentation du QR Code au commerçant permet la validation du retrait par un scan optique unique.
-  * `RG-RET-03` : La validation du scan fait basculer la commande au statut `COMPLETED` et archive définitivement la transaction.
-* **Critères d'Acceptation Gherkin :**
-```gherkin
-Scénario: Retrait Click & Collect réussi en boutique
-  Étant donné une commande confirmée au statut "CONFIRMED" pour Julie
-  Quand Julie présente son QR Code de retrait à Suzanne
-  Et que Suzanne scanne le QR Code depuis son terminal commerçant
-  Alors le système vérifie l'authenticité de la signature HMAC
-  Et le statut de la commande devient "COMPLETED" avec horodatage de clôture
-```
+  * `RG-09.1` : Le panier citoyen peut héberger des articles provenant de plusieurs commerces distincts de la métropole au sein d'une commande mère unique.
+  * `RG-09.2` (Phase 1 Prepare - Verrouillage) : Dès la confirmation de commande, le coordinateur 2PC pose un verrou pessimiste PostgreSQL (`SELECT ... FOR UPDATE`) sur les lignes d'articles et réserve les quantités demandées sous le statut `STOCK_HOLD` avec une validité de 15 minutes.
+  * `RG-09.3` (Phase 1 Prepare - Appel Bancaire) : Le coordinateur transmet la requête de débit globale au simulateur bancaire OpenAPI 3.1.
+  * `RG-09.4` (Phase 2 Commit - Validation) : En cas de réponse bancaire HTTP 200 OK, le coordinateur 2PC valide définitivement la transaction (`COMMIT`) : les stocks en statut `STOCK_HOLD` sont décrémentés de manière irrévocable, la commande passe au statut `CONFIRMED`, un QR Code de retrait sécurisé par signature HMAC-SHA256 est généré pour le citoyen, et les commerçants reçoivent une notification de préparation en temps réel.
+  * `RG-09.5` (Phase 2 Rollback - Compensation) : En cas de refus bancaire (HTTP 402 Payment Required) ou d'expiration du délai de 15 minutes, le coordinateur déclenche immédiatement une séquence de compensation : les verrous sont levés, le statut `STOCK_HOLD` bascule en `RELEASED`, les stocks sont réintégrés instantanément dans les boutiques et aucun montant n'est débité.
+  * `RG-09.6` (Clôture &amp; Scan en Boutique) : Lors du retrait en magasin, l'artisan scanne le QR Code depuis son terminal. Le système vérifie l'authenticité de la signature HMAC, passe la commande au statut `COMPLETED` et archive définitivement la transaction avec horodatage de clôture.
+* **Critères d'Acceptation :**
+  * **Scénario nominal : Achat multi-commerces validé sous transaction 2PC**
+    * **Étant donné que** Julie dispose d'un panier composé de 2 Baguettes chez Suzanne et 1 Pot de Miel à l'Épicerie locale,
+    * **Quand** Julie initie le paiement avec une carte bancaire valide,
+    * **Alors** le coordinateur 2PC pose un verrou temporaire `STOCK_HOLD` sur les articles des deux boutiques,
+    * **Et** le mock bancaire retourne le code d'autorisation HTTP 200 OK,
+    * **Alors** le coordinateur exécute le commit atomique : la commande passe au statut `CONFIRMED`, les stocks des deux commerces sont décrémentés de façon définitive et Julie reçoit son QR Code de retrait infalsifiable.
+  * **Scénario d'exception : Refus bancaire et compensation automatique (Rollback 2PC)**
+    * **Étant donné que** Julie valide son panier avec un moyen de paiement provoquant un échec bancaire (carte refusée HTTP 402 configurée sur le mock),
+    * **Quand** le refus bancaire est intercepté par le coordinateur 2PC,
+    * **Alors** le coordinateur déclenche le rollback immédiat de la réservation de stock,
+    * **Et** le statut `STOCK_HOLD` est annulé avec bascule instantanée à l'état `RELEASED`,
+    * **Alors** les stocks des boutiques reviennent exactement à leur niveau initial, aucun débit n'est effectué et Julie est invitée à renouveler son paiement.
+  * **Scénario d'exception : Conflit de concurrence sur stock épuisé**
+    * **Étant donné que** deux acheteurs tentent de commander simultanément la dernière unité disponible d'un même article,
+    * **Quand** les requêtes concurrentes parviennent au coordinateur,
+    * **Alors** le verrou pessimiste PostgreSQL sérialise les transactions : la première réservation aboutit tandis que la seconde est rejetée avec un message explicite de rupture avant toute tentative de débit bancaire.
+  * **Scénario nominal de retrait : Scan optique du QR Code en magasin**
+    * **Étant donné que** Julie présente son QR Code de retrait à Suzanne pour une commande au statut `CONFIRMED`,
+    * **Quand** Suzanne scanne le QR Code depuis son terminal commerçant,
+    * **Alors** le système vérifie l'authenticité de la signature cryptographique HMAC-SHA256,
+    * **Et** le statut de la commande passe à `COMPLETED` avec horodatage certifié de remise en main propre.
 
 <div style="page-break-after: always;"></div>
 

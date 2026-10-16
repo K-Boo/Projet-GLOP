@@ -161,66 +161,92 @@ def generate_fig_1_2_diagramme_pieuvre():
     <text x="160" y="319" text-anchor="middle" font-size="10" font-weight="400" fill="#5A6578">Pass Pass NFC &amp; horodateurs</text>
   </g>
 
+  <!-- ========================================== -->
+  <!-- COUCHE 1 : TOUTES LES LIGNES ET COURBES DE LIAISON (EN ARRIÈRE-PLAN) -->
+  <!-- ========================================== -->
+
   <!-- LIAISONS FONCTIONS PRINCIPALES (FP) -->
   <!-- FP1 : Citoyen -> ShopLoc -> Commerçant -->
   <path d="M 290 78 Q 590 140 890 78" fill="none" stroke="#C26750" stroke-width="3" stroke-linecap="round" />
+
+  <!-- FP2 : Citoyen -> ShopLoc -> Mairie & Mobilité -->
+  <path d="M 190 116 C 220 280, 580 480, 850 515" fill="none" stroke="#C48B28" stroke-width="2.5" stroke-dasharray="6,4" />
+
+  <!-- FP3 : Association -> ShopLoc -> Commerçants -->
+  <path d="M 1030 255 C 1050 185, 1040 150, 1010 116" fill="none" stroke="#4A7A5B" stroke-width="2.5" stroke-dasharray="6,4" />
+
+  <!-- LIAISONS CONTRAINTES (FC) -->
+  <!-- FC1 : Commerçant -> ShopLoc -->
+  <line x1="890" y1="100" x2="720" y2="260" stroke="#7EA88D" stroke-width="1.8" />
+
+  <!-- FC2 : Mairie -> ShopLoc -->
+  <line x1="850" y1="500" x2="720" y2="340" stroke="#DCB162" stroke-width="1.8" />
+
+  <!-- FC3 : Banque -> ShopLoc -->
+  <line x1="280" y1="490" x2="460" y2="340" stroke="#B88290" stroke-width="1.8" />
+
+  <!-- FC4 : Mobilité -> ShopLoc -->
+  <line x1="280" y1="293" x2="460" y2="293" stroke="#8B9EAF" stroke-width="1.8" />
+
+  <!-- FC5 : Citoyen -> ShopLoc -->
+  <line x1="290" y1="100" x2="460" y2="260" stroke="#D88B77" stroke-width="1.8" />
+
+  <!-- FC6 : Association -> ShopLoc -->
+  <line x1="910" y1="293" x2="720" y2="293" stroke="#DCB162" stroke-width="1.8" />
+
+  <!-- ========================================== -->
+  <!-- COUCHE 2 : TOUTES LES ÉTIQUETTES ET BADGES (AU PREMIER PLAN SUR FOND OPAQUE) -->
+  <!-- ========================================== -->
+
+  <!-- Badge FP1 -->
   <g transform="translate(590, 115)">
     <rect x="-165" y="-14" width="330" height="28" rx="14" fill="#FFFFFF" stroke="#C26750" stroke-width="1.8" filter="url(#shadow-soft)" />
     <text x="0" y="5" text-anchor="middle" font-size="11" font-weight="700" fill="#C26750">FP1 : Commander en C&amp;C &amp; retirer en boutique</text>
   </g>
 
-  <!-- FP2 : Citoyen -> ShopLoc -> Mairie & Mobilité -->
-  <path d="M 170 116 C 170 200, 480 380, 850 515" fill="none" stroke="#C48B28" stroke-width="2.5" stroke-dasharray="6,4" />
-  <g transform="translate(370, 395)">
+  <!-- Badge FP2 -->
+  <g transform="translate(540, 440)">
     <rect x="-140" y="-13" width="280" height="26" rx="13" fill="#FFFFFF" stroke="#C48B28" stroke-width="1.5" filter="url(#shadow-soft)" />
     <text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#845A11">FP2 : Convertir régularité en titres mobilité</text>
   </g>
 
-  <!-- FP3 : Association -> ShopLoc -> Commerçants -->
-  <path d="M 910 293 Q 780 200 890 95" fill="none" stroke="#4A7A5B" stroke-width="2.5" stroke-dasharray="6,4" />
-  <g transform="translate(855, 205)">
+  <!-- Badge FP3 -->
+  <g transform="translate(1015, 185)">
     <rect x="-120" y="-12" width="240" height="24" rx="12" fill="#FFFFFF" stroke="#4A7A5B" stroke-width="1.5" filter="url(#shadow-soft)" />
     <text x="0" y="4" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2E583D">FP3 : Onboarding &amp; animation des lots</text>
   </g>
 
-  <!-- LIAISONS CONTRAINTES (FC) -->
-  <!-- FC1 : Commerçant -> ShopLoc -->
-  <line x1="890" y1="110" x2="720" y2="250" stroke="#7EA88D" stroke-width="1.8" />
-  <g transform="translate(775, 170)">
+  <!-- Badge FC1 -->
+  <g transform="translate(795, 175)">
     <rect x="-70" y="-11" width="140" height="22" rx="11" fill="#FFFFFF" stroke="#7EA88D" stroke-width="1.2" />
     <text x="0" y="4" text-anchor="middle" font-size="9" font-weight="600" fill="#2E583D">FC1 : Caisse &amp; scan &lt; 3s</text>
   </g>
 
-  <!-- FC2 : Mairie -> ShopLoc -->
-  <line x1="850" y1="500" x2="720" y2="340" stroke="#DCB162" stroke-width="1.8" />
-  <g transform="translate(765, 430)">
+  <!-- Badge FC2 -->
+  <g transform="translate(775, 425)">
     <rect x="-75" y="-11" width="150" height="22" rx="11" fill="#FFFFFF" stroke="#DCB162" stroke-width="1.2" />
     <text x="0" y="4" text-anchor="middle" font-size="9" font-weight="600" fill="#845A11">FC2 : Secret &amp; k-anonymat</text>
   </g>
 
-  <!-- FC3 : Banque -> ShopLoc -->
-  <line x1="330" y1="500" x2="460" y2="340" stroke="#B88290" stroke-width="1.8" />
-  <g transform="translate(410, 430)">
+  <!-- Badge FC3 -->
+  <g transform="translate(365, 420)">
     <rect x="-75" y="-11" width="150" height="22" rx="11" fill="#FFFFFF" stroke="#B88290" stroke-width="1.2" />
     <text x="0" y="4" text-anchor="middle" font-size="9" font-weight="600" fill="#6E3946">FC3 : Sécurité DSP2 &amp; 2PC</text>
   </g>
 
-  <!-- FC4 : Mobilité -> ShopLoc -->
-  <line x1="280" y1="293" x2="460" y2="293" stroke="#8B9EAF" stroke-width="1.8" />
+  <!-- Badge FC4 -->
   <g transform="translate(365, 293)">
     <rect x="-65" y="-11" width="130" height="22" rx="11" fill="#FFFFFF" stroke="#8B9EAF" stroke-width="1.2" />
     <text x="0" y="4" text-anchor="middle" font-size="9" font-weight="600" fill="#1C2D3D">FC4 : Pass Pass &amp; Parking</text>
   </g>
 
-  <!-- FC5 : Citoyen -> ShopLoc -->
-  <line x1="290" y1="110" x2="460" y2="250" stroke="#D88B77" stroke-width="1.8" />
-  <g transform="translate(400, 175)">
+  <!-- Badge FC5 -->
+  <g transform="translate(385, 175)">
     <rect x="-75" y="-11" width="150" height="22" rx="11" fill="#FFFFFF" stroke="#D88B77" stroke-width="1.2" />
     <text x="0" y="4" text-anchor="middle" font-size="9" font-weight="600" fill="#8E3D2A">FC5 : RGAA &amp; carte bi-média</text>
   </g>
 
-  <!-- FC6 : Association -> ShopLoc -->
-  <line x1="910" y1="293" x2="720" y2="293" stroke="#DCB162" stroke-width="1.8" />
+  <!-- Badge FC6 -->
   <g transform="translate(815, 293)">
     <rect x="-70" y="-11" width="140" height="22" rx="11" fill="#FFFFFF" stroke="#DCB162" stroke-width="1.2" />
     <text x="0" y="4" text-anchor="middle" font-size="9" font-weight="600" fill="#845A11">FC6 : Zéro commission</text>

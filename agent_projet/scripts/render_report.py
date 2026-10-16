@@ -198,7 +198,14 @@ def parse_markdown_to_html(md_text, meta, b64_univ, b64_fst, css_content, genera
 
         # Lignes d'indentation / continuation d'un item de liste
         if (line.startswith('  ') or line.startswith('\t')) and in_item and stripped:
-            body_html.append(f'<br><span style="display:inline-block; margin-top: 1.5pt; color: #334155;">{clean_inline(stripped)}</span>')
+            indent_level = len(line) - len(line.lstrip())
+            margin_left = max(8, indent_level * 3)
+            line_text = stripped
+            bullet_prefix = ""
+            if line_text.startswith('* ') or line_text.startswith('- '):
+                line_text = line_text[2:]
+                bullet_prefix = "• "
+            body_html.append(f'<br><span style="display:inline-block; margin-top: 2pt; margin-left: {margin_left}pt; color: #334155;">{bullet_prefix}{clean_inline(line_text)}</span>')
             i += 1
             continue
 
