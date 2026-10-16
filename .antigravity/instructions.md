@@ -79,7 +79,7 @@ Des reception d'une instruction utilisateur, l'agent identifie le domaine concer
 
 1. **Principe 1 Session = 1 Tâche Atomique** :
    - Clôturer le chat dès qu'une tâche est achevée et ouvrir une nouvelle session pour la suivante.
-   - La mémoire pérenne du projet réside dans les fichiers Markdown de `agent_projet/docs/` et `agent_code/`.
+   - La mémoire pérenne du projet réside dans les fichiers Markdown de `agent_projet/docs/` et l'architecture dans les dépôts de code évalués.
 2. **Rituel d'Historisation Inter-Sessions (Journal de Bord)** :
    - À chaque début de chat : l'agent consulte [`agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md) pour reprendre le fil immédiatement sans réexplication.
    - À chaque fin de tâche / fin de chat : l'agent consigne une entrée synthétique dans ce journal (date, réalisations, décisions prises, prochaine étape).
@@ -125,7 +125,7 @@ python agent_projet/scripts/setup_env.py
 
 ## 8. Charte Rédactionnelle & Interdiction Absolue des Emojis (Règle Permanente)
 
-1. **Interdiction stricte des emojis** : Aucun emoji ne doit être utilisé dans la rédaction des fichiers du projet : `README.md`, documentation dans `agent_projet/docs/`, spécifications d'architecture dans `agent_code/`, livrables PDF/PPTX/HTML, commentaires de code et messages de commit.
+1. **Interdiction stricte des emojis** : Aucun emoji ne doit être utilisé dans la rédaction des fichiers du projet : `README.md`, documentation dans `agent_projet/docs/`, spécifications d'architecture dans `agent_projet/docs/03_Architecture_Technique_R4_R5/`, livrables PDF/PPTX/HTML, commentaires de code et messages de commit.
 2. **Exigence de sobriété et de propreté** : Le rendu visuel doit être épuré, structuré, rigoureux et digne d'un rapport professionnel d'élèves-ingénieurs en Master 2 MIAGE.
 3. **Contrôle à chaque modification** : À chaque modification d'un document ou du `README.md`, l'agent doit impérativement s'assurer de l'absence totale d'emojis avant de valider ses changements.
 

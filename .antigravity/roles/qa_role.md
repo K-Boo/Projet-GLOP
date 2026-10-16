@@ -30,8 +30,8 @@ Ce document definit le prompt systeme, les responsabilites, les contraintes et l
 {
   "auditType": "FULL_GATE_VERIFICATION",
   "scope": {
-    "codeModule": "agent_code/src/backend/cart",
-    "documentationFile": "agent_projet/docs/ShopLoc_Cadrage_Metier_Livrable_R1_v2.pdf"
+    "codeModule": "backend/cart-service",
+    "documentationFile": "agent_projet/docs/01_Cadrage_Et_Cahier_Des_Charges_R1/ShopLoc_Cahier_des_Charges_Livrable_R1.pdf"
   }
 }
 ```

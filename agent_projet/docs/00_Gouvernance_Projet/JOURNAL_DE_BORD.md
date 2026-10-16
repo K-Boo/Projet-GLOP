@@ -961,8 +961,39 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 - **Décisions actées** :
   - Validation du livrable Addendum R1 comme réponse contractuelle exhaustive aux demandes de régularisation post-soutenance.
   - Consolidation financière confirmée comme étant réservée au jalon R3 du 30 novembre 2026.
+### [2026-10-16] Session 40 — Chantier 1 : Sanctuarisation de l'Environnement Local, Découverte Antigravity & Étanchéité
+- **Objectif** : Exécuter l'intégralité du Chantier 1 d'alignement système et de gouvernance agentique :
+  1. Résoudre le routage et la découverte native Antigravity à la racine du workspace GLOP sans modifier l'arborescence ni déplacer le dossier ShopLoc.
+  2. Créer un environnement virtuel Python dédié et isolé (ShopLoc/.venv) adossé au Python 3.14 officiel de la machine, figer ShopLoc/requirements.txt et installer les dépendances documentaires (pymupdf, reportlab, pypdf, pillow, rich).
+  3. Mettre à jour ShopLoc/start_monitor.bat et .gitignore pour sanctuariser l'exécution sans dépendre du PATH système ni polluer Git.
+  4. Harmoniser les directives des sous-agents techniques (developer_role.md, architect_role.md, qa_role.md, instructions.md) en éliminant toute référence au répertoire fictif agent_code au profit du respect strict de l'étanchéité des dépôts de code étudiants dans GLOP.
+- **Actions réalisées** :
+  - Découverte du binaire officiel Python 3.14 (C:\Users\hpome\AppData\Local\Python\pythoncore-3.14-64\python.exe) et abandon total de toute référence à Orange.
+  - Création du .venv dédié dans ShopLoc/.venv et installation réussie de 100% des packages nécessaires.
+  - Ajout de .venv/ dans ShopLoc/.gitignore et création de ShopLoc/requirements.txt.
+  - Mise à niveau de ShopLoc/start_monitor.bat pour cibler en priorité .venv\Scripts\python.exe.
+  - Remplacement méthodique dans .antigravity/roles/ de toutes les occurrences d'agent_code par les chemins légitimes de spécifications d'architecture (agent_projet/docs/03_Architecture_Technique_R4_R5/specs/) et les modules applicatifs cibles dans les dépôts de code de GLOP.
+  - Mise en place à la racine de GLOP des fichiers de configuration non versionnés .agents/skills.json (pointant vers ShopLoc/.agents/skills) et .antigravity/instructions.md (aiguillage vers ShopLoc/), assurant la découverte native des 40 compétences sans toucher aux dépôts GitLab.
+  - Audit d'intégrité exécuté avec succès via ShopLoc/.venv/Scripts/python.exe ShopLoc/agent_projet/scripts/verify_deliverables.py (0 canari, 0 violation, 0 emoji).
+- **Fichiers créés ou modifiés** :
+  - *Créés* :
+    * ShopLoc/requirements.txt
+    * ShopLoc/.venv/ (isolé et ignoré par Git)
+    * GLOP/.agents/skills.json (hors dépôt de code)
+    * GLOP/.antigravity/instructions.md (hors dépôt de code)
+  - *Modifiés* :
+    * ShopLoc/.gitignore
+    * ShopLoc/start_monitor.bat
+    * ShopLoc/.antigravity/instructions.md
+    * ShopLoc/.antigravity/roles/developer_role.md
+    * ShopLoc/.antigravity/roles/architect_role.md
+    * ShopLoc/.antigravity/roles/qa_role.md
+    * ShopLoc/agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md
+- **Décisions actées** :
+  - Sanctuarisation de l'étanchéité bi-dépôt : ShopLoc demeure le cockpit unique de gouvernance, tandis que les dépôts GitLab de code demeurent 100% vierges de toute trace d'IA.
+  - Validation du fonctionnement du .venv dédié pour tous les scripts Python.
 - **Reste à faire / Prochaine étape** :
-  - Préparation du jalon R3 (Viabilité financière, coûts complets des 1000h d'ingénierie, P&L 3 ans, VAN, TRI).
+  - Lancement du Chantier 2 : Décomposition fine du Backlog par User Story INVEST, synchronisation Linear via MCP et recalibrage du diagramme de Gantt synchronisé sur le MVP (Panier Click & Collect 2PC et moteur VFP).
 
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
 

@@ -39,16 +39,16 @@ Ce document definit le prompt systeme, les responsabilites, les contraintes et l
 ---
 
 ## 4. Contrat de Sortie (Output Contract)
-Le sous-agent Architecte produit ou met a jour les specifications dans `agent_code/` et retourne :
+Le sous-agent Architecte produit ou met a jour les specifications d'architecture dans `agent_projet/docs/03_Architecture_Technique_R4_R5/specs/` et retourne :
 ```json
 {
   "status": "SUCCESS",
   "specificationsGenerated": [
-    "agent_code/specs/api/cart_service_openapi.yaml",
-    "agent_code/specs/database/schema_cart_v1.sql"
+    "agent_projet/docs/03_Architecture_Technique_R4_R5/specs/cart_service_openapi.yaml",
+    "agent_projet/docs/03_Architecture_Technique_R4_R5/specs/schema_cart_v1.sql"
   ],
   "entitiesDefined": ["Cart", "CartItem", "Shop", "Tenant"],
-  "architecturalDecisionsRef": "agent_projet/docs/DECISIONS.md#ADR-04",
+  "architecturalDecisionsRef": "agent_projet/docs/00_Gouvernance_Projet/DECISIONS.md#ADR-04",
   "readyForDevelopment": true
 }
 ```
