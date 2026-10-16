@@ -17,7 +17,7 @@ Conformément aux directives de l'équipe pédagogique, cet addendum ne reprodui
 2. **Le Cadre Institutionnel et la Gouvernance Contractuelle** (distinction juridique et opérationnelle stricte entre l'entreprise prestataire *Garik* et la solution progicielle *ShopLoc*, flux contractuels tripartites et matrice des 4 rôles d'administration RBAC).
 3. **L'Approfondissement des Cas d'Utilisation UML** (diagramme global et 5 fiches détaillées au standard Cockburn / AFNOR incluant la gestion exhaustive des pannes et anomalies).
 4. **Le Registre Formel des Risques Projet (Norme ISO 31000)** (cotation P × G, cartographie des aléas réels incluant le blocage du campus, la maladie, la recherche de CDI post-Master, et Plan de Continuité d'Activité).
-5. **Le Recadrage du Périmètre de Décembre (Jalon R4), les Spécifications Détaillées des 4 Features / 5 US et le Diagramme de Gantt Opérationnel** (focalisation sur un seul composant vertical Panier 2PC sous TDD ≥ 80 %, matrice de réallocation des 21 US, fiches INVEST des 4 Features, critères Gherkin et conducteur de démonstration live en 4 actes).
+5. **Le Recadrage du Périmètre de Décembre (Jalon R4), les Spécifications Détaillées des 5 User Stories et le Diagramme de Gantt Opérationnel** (focalisation sur le composant vertical Panier 2PC sous TDD ≥ 80 %, matrice de réallocation des 21 US, spécifications détaillées INVEST des 5 US avec leurs règles de gestion et critères d'acceptation, et diagramme de Gantt consolidé).
 
 *(Note contractuelle : La consolidation financière fait l'objet d'un livrable autonome dédié pour le Jalon R3 du 30 novembre 2026 et n'est pas traitée dans cet addendum).*
 
@@ -505,39 +505,6 @@ Le périmètre opérationnel de la Release R4 (Décembre 2026) est composé de *
     * **Alors** le système vérifie l'authenticité de la signature cryptographique HMAC-SHA256,
     * **Et** le statut de la commande passe à `COMPLETED` avec horodatage certifié de remise en main propre.
 
-<div style="page-break-after: always;"></div>
-
-## 5.4. Déroulé Opérationnel du Scénario de Démonstration Live du 18 Décembre
-
-La soutenance du jalon R4 s'appuie sur une démonstration interactive de **10 à 12 minutes**, exécutée en direct sur deux terminaux synchronisés (ou écran scindé) face au jury, appuyée par la visualisation des logs backend en temps réel.
-
-### Découpage Chronologique de la Démonstration (4 Actes) :
-
-```
-[00:00 - 02:30] ACTE 1 : Onboarding & Inventaire Commerçant (Suzanne)
- └─ Connexion ROLE_MERCHANT_ADMIN → Consultation stock boutique → Mise à jour Click & Collect (10 baguettes, 5 brioches)
-
-[02:30 - 05:00] ACTE 2 : Parcours Citoyen Multi-Commerces (Julie)
- └─ Connexion ROLE_CITOYEN → Navigation marketplace → Ajout panier multi-vendeurs (Suzanne + Épicerie)
-
-[05:00 - 08:30] ACTE 3 : Climax Transactionnel 2PC & Succès Nominal
- └─ Validation panier → Logs Spring Boot : SELECT FOR UPDATE (Phase 1 Prepare / STOCK_HOLD 15 min)
- └─ Appel Mock OpenAPI 3.1 → Réponse HTTP 200 OK → Exécution COMMIT 2PC (Phase 2)
- └─ Écran Julie : QR Code de retrait HMAC-SHA256 émis
- └─ Écran Suzanne : Alerte commande entrante en temps réel avec décrémentation instantanée du stock
-
-[08:30 - 11:30] ACTE 4 : Preuve de Résilience & Robustesse MIAGE (Le Cas aux Limites)
- └─ Nouvelle commande avec simulation d'échec bancaire (Carte refusée HTTP 402 configurée sur le Mock)
- └─ Logs Spring Boot : Détection HTTP 402 → Déclenchement automatique de la COMPENSATION (Rollback 2PC)
- └─ Libération immédiate des verrous PostgreSQL : STOCK_HOLD bascule en RELEASED
- └─ Écran Suzanne : Stock restitué à la seconde près, zéro blocage orphelin
- └─ Synthèse Qualité : Exécution de la suite de tests automatisés (TDD Jacoco ≥ 80 %, Testcontainers)
-```
-
-### Facteurs Clés d'Appréciation par le Jury Pédagogique :
-1. **Zéro Effet Tunnel :** Deux acteurs humains réels (Suzanne l'artisane et Julie la citoyenne) interagissant sur un cas d'usage urbain crédible.
-2. **Excellence Technique MIAGE :** La démonstration ne se limite pas à un simple CRUD visuel ; elle démontre la maîtrise des transactions distribuées (2PC), des verrous SQL pessimistes et de la compensation d'erreur.
-3. **Reproductibilité Totale :** Déploiement clé en main sous Docker Compose en une seule commande (`docker compose up --build`), garantissant l'absence d'aléa lié aux postes locaux.
 
 <div class="landscape-page" style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 184mm; width: 100%; box-sizing: border-box; padding: 0; margin: 0;">
 <!-- FIGURE 5.1 : DIAGRAMME DE GANTT ANNUEL OFFICIEL (PLEINE PAGE PAYSAGE) -->
