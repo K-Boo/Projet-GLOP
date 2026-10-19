@@ -267,10 +267,10 @@ def parse_markdown_to_html(md_text, meta, b64_univ, b64_fst, css_content, genera
     if no_cartouche:
         header_meta_html = f"""
     <div class="cartouche-compact">
-      <span><strong>Reference :</strong> <code class="latex-code">{meta.get('ref', 'GLOP-2026-LIVRABLE-v1.0')}</code></span> &nbsp;|&nbsp;
+      <span><strong>Reference :</strong> <code class="latex-code">{meta.get('ref', 'GLOP-2026-LIVRABLE-R2-v1.0')}</code></span> &nbsp;|&nbsp;
       <span><strong>Statut :</strong> <span class="badge badge-success">{meta.get('status', 'Version 1.0 Formelle')}</span></span> &nbsp;|&nbsp;
-      <span><strong>Date :</strong> {meta.get('date', '18 Septembre 2026')}</span> &nbsp;|&nbsp;
-      <span><strong>Transparence :</strong> Élaboré avec assistance IA (validé par l'équipe)</span>
+      <span><strong>Date :</strong> {meta.get('date', '19 Octobre 2026 (23h59)')}</span> &nbsp;|&nbsp;
+      <span><strong>Transparence :</strong> Modeles LLM en acces libre sans cout financier (0 euro)</span>
     </div>
         """
         page_break_after_header = ""
@@ -280,14 +280,14 @@ def parse_markdown_to_html(md_text, meta, b64_univ, b64_fst, css_content, genera
       <table class="cartouche-table">
         <tr><th>Intitule du Projet</th><td>Plateforme ShopLoc — Marketplace & Fidelisation Territoriale</td></tr>
         <tr><th>Identifiant Officiel</th><td><code class="latex-code">MiageShopLoc</code></td></tr>
-        <tr><th>Titre du Document</th><td>{meta.get('title', 'Livrable Officiel')}</td></tr>
-        <tr><th>Reference Documentaire</th><td><code class="latex-code">{meta.get('ref', 'GLOP-2026-LIVRABLE-v1.0')}</code></td></tr>
-        <tr><th>Contexte Academique</th><td>Master 2 MIAGE — UE Genie Logiciel par la Pratique (2026-2027)</td></tr>
-        <tr><th>Maitrise d Ouvrage (MOA)</th><td>Laurence Duchien, Anne Etien, Francois Secchi, Jeremy Woirhaye</td></tr>
-        <tr><th>Entreprise Soumissionnaire</th><td>Garik (Equipe de 5 etudiants Master 2 MIAGE)</td></tr>
-        <tr><th>Date de remise</th><td>18 Septembre 2026 (18h00)</td></tr>
-        <tr><th>Statut du document</th><td><span class="badge badge-success">Version 1.0 — Formelle</span></td></tr>
-        <tr><th>Assistance IA &amp; Transparence</th><td>Document élaboré avec l'assistance d'une intelligence artificielle (Antigravity), sous la direction, la relecture critique et la validation intégrale de l'équipe d'ingénierie Garik.</td></tr>
+        <tr><th>Titre du Document</th><td>{meta.get('title', 'Dossier d Architecture Technique & Choix des Outils (Livrable R2)')}</td></tr>
+        <tr><th>Reference Documentaire</th><td><code class="latex-code">{meta.get('ref', 'GLOP-2026-LIVRABLE-R2-v1.0')}</code></td></tr>
+        <tr><th>Contexte Academique</th><td>Master 2 MIAGE — UE Genie Logiciel par la Pratique / Architecture ALOM (2026-2027)</td></tr>
+        <tr><th>Maitrise d Ouvrage (MOA)</th><td>Jeremy Woirhaye, Laurence Duchien, Anne Etien, Francois Secchi</td></tr>
+        <tr><th>Entreprise Soumissionnaire</th><td>Societe Garik (Equipe de 5 etudiants Master 2 MIAGE)</td></tr>
+        <tr><th>Date de remise</th><td>{meta.get('date', '19 Octobre 2026 (23h59)')}</td></tr>
+        <tr><th>Statut du document</th><td><span class="badge badge-success">{meta.get('status', 'Version 1.0 — Validee')}</span></td></tr>
+        <tr><th>Assistance IA &amp; Transparence</th><td>{meta.get('ai_transparency', 'Modeles LLM en acces libre utilises exclusivement pour la verification methodologique et la relecture documentaire, sans cout financier (0 euro). Conception, code et configurations integralement maitrises par l equipe etudiante.')}</td></tr>
       </table>
     </div>
         """
@@ -473,6 +473,58 @@ def merge_appendices_if_available(output_pdf):
         doc.close()
         shutil.move(tmp_pdf, output_pdf)
         print(f"[SUCCES FUSION] {inserted_personas} fiches Personas (A4 Paysage) et {inserted_cvs} CVs fusionnes. Signets PDF integres. Total : {base_pages + inserted_personas + inserted_cvs} pages.")
+        doc.close()
+
+def add_r2_pdf_bookmarks(output_pdf):
+    if not os.path.exists(output_pdf):
+        return
+    import pymupdf, re
+    doc = pymupdf.open(output_pdf)
+    if len(doc) <= 1:
+        doc.close()
+        return
+
+    toc = [
+        [1, "Page de Garde & Cartouche Officiel", 1],
+        [1, "Sommaire Executif", 2]
+    ]
+    seen = set()
+
+    for pno in range(1, len(doc)):
+        page = doc[pno]
+        text = page.get_text("text")
+        lines = [l.strip() for l in text.split("\n") if l.strip()]
+        for line in lines:
+            m1 = re.match(r'^(?:##?\s*)?([1-5]\.\s+.*)', line)
+            m2 = re.match(r'^(?:###?\s*)?([1-4]\.[1-8]\.\s+.*)', line)
+            m_app = re.match(r'^(?:###?\s*)?(A\.[1-5]\.\s+.*)', line)
+
+            if line.startswith('* ') or line.startswith('- '):
+                continue
+
+            if m1 and ("Pilier" in line or "Annexe" in line):
+                title = m1.group(1).replace("## ", "").strip()
+                if title not in seen:
+                    seen.add(title)
+                    toc.append([1, title, pno + 1])
+            elif m2:
+                title = m2.group(1).replace("### ", "").strip()
+                if title not in seen:
+                    seen.add(title)
+                    toc.append([2, title, pno + 1])
+            elif m_app:
+                title = m_app.group(1).replace("### ", "").strip()
+                if title not in seen:
+                    seen.add(title)
+                    toc.append([2, title, pno + 1])
+
+    if len(toc) > 2:
+        doc.set_toc(toc)
+        tmp = output_pdf + ".toc.tmp"
+        doc.save(tmp)
+        doc.close()
+        shutil.move(tmp, output_pdf)
+        print(f"[SUCCES SIGNETS] {len(toc)} signets hierarchiques ajoutes au PDF.")
     else:
         doc.close()
 
@@ -480,9 +532,10 @@ def main():
     parser = argparse.ArgumentParser(description="Moteur de compilation de livrables academiques GLOP en PDF A4")
     parser.add_argument("source", help="Fichier Markdown ou HTML source a compiler")
     parser.add_argument("--output", "-o", help="Chemin du PDF genere en sortie")
-    parser.add_argument("--title", default="ShopLoc — Cahier des Charges & Cadrage R1", help="Titre officiel du document")
-    parser.add_argument("--subtitle", default="Master 2 MIAGE — UE Genie Logiciel par la Pratique 2026-2027", help="Sous-titre academique")
-    parser.add_argument("--ref", default="GLOP-2026-LIVRABLE-R1-v1.0", help="Reference normalisee du livrable")
+    parser.add_argument("--title", default=None, help="Titre officiel du document")
+    parser.add_argument("--subtitle", default=None, help="Sous-titre academique")
+    parser.add_argument("--ref", default=None, help="Reference normalisee du livrable")
+    parser.add_argument("--date", default=None, help="Date officielle de remise")
     parser.add_argument("--toc", action="store_true", help="Generer une table des matieres dynamique")
     parser.add_argument("--no-cartouche", action="store_true", help="Ne pas afficher le grand cartouche administratif et permettre l enchainement direct du contenu")
     parser.add_argument("--no-appendices", action="store_true", help="Ne pas fusionner les annexes personas et CVs")
@@ -528,19 +581,36 @@ def main():
     with open(source_path, "r", encoding="utf-8") as f:
         source_content = f.read()
 
+    is_r2 = "R2" in os.path.basename(source_path) or "R2" in (args.title or "") or "Architecture" in os.path.basename(source_path)
+    default_title = "Dossier d Architecture Technique & Choix des Outils (Livrable R2)" if is_r2 else "ShopLoc — Cahier des Charges & Cadrage R1"
+    default_subtitle = "Master 2 MIAGE — UE Genie Logiciel par la Pratique / Architecture ALOM (2026-2027)" if is_r2 else "Master 2 MIAGE — UE Genie Logiciel par la Pratique 2026-2027"
+    default_ref = "GLOP-2026-LIVRABLE-R2-v1.0" if is_r2 else "GLOP-2026-LIVRABLE-R1-v1.0"
+    default_date = "19 Octobre 2026 (23h59)" if is_r2 else "18 Septembre 2026 (18h00)"
+    default_ai_transparency = (
+        "Modeles LLM en acces libre utilises exclusivement pour la verification methodologique et la relecture documentaire, sans cout financier (0 euro). Conception, code et configurations integralement maitrises par l equipe etudiante."
+        if is_r2 else
+        "Modeles LLM en acces libre sans cout financier (0 euro)."
+    )
+
     meta = {
-        "title": args.title,
-        "subtitle": args.subtitle,
-        "ref": args.ref,
-        "status": "Version 1.0 — Validee"
+        "title": args.title if args.title else default_title,
+        "subtitle": args.subtitle if args.subtitle else default_subtitle,
+        "ref": args.ref if args.ref else default_ref,
+        "date": args.date if args.date else default_date,
+        "status": "Version 1.0 — Validee",
+        "ai_transparency": default_ai_transparency
     }
 
     html_content = parse_markdown_to_html(source_content, meta, b64_univ, b64_fst, theme_css, generate_toc=args.toc, no_cartouche=args.no_cartouche)
     compile_html_to_pdf(html_content, output_pdf, edge_bin)
 
-    # Fusion des annexes Personas et CVs si presentes et appropriees
+    # Fusion des annexes Personas et CVs si presentes et appropriees (R1)
     if not args.no_appendices and "CAHIER_DES_CHARGES" in os.path.basename(source_path):
         merge_appendices_if_available(output_pdf)
+
+    # Ajout des signets pour R2
+    if is_r2:
+        add_r2_pdf_bookmarks(output_pdf)
 
     # Verification de securite post-compilation sur le PDF
     try:

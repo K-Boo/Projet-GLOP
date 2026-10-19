@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 760" width="100%" height="100%" style="background-color: #F8FAFC; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <filter id="shadow2" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0F172A" flood-opacity="0.08" />
+    </filter>
+    <marker id="arrow-blue2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#0284C7" />
+    </marker>
+    <marker id="arrow-green2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#16A34A" />
+    </marker>
+    <marker id="arrow-amber2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#D97706" />
+    </marker>
+  </defs>
+
+  <!-- En-tete du schema -->
+  <rect x="30" y="20" width="1080" height="64" rx="8" fill="#0F172A" filter="url(#shadow2)" />
+  <text x="50" y="48" fill="#F8FAFC" font-size="18" font-weight="700">SCHEMA 2 : ARCHITECTURE DES SERVICES &amp; LIAISONS (C4 NIVEAU 2)</text>
+  <text x="50" y="68" fill="#94A3B8" font-size="12">Gateway Unique, 4 Microservices Metiers, Database-per-Service et Protocole 2PC RestClient</text>
+  <rect x="910" y="36" width="180" height="30" rx="6" fill="#1E293B" stroke="#334155" />
+  <text x="930" y="56" fill="#38BDF8" font-size="11" font-weight="600">Notation : C4 Conteneurs</text>
+
+  <!-- ==================== BLOC GAUCHE : PASSERELLE EDGE ==================== -->
+  <rect x="30" y="105" width="220" height="535" rx="10" fill="#FFFFFF" stroke="#0284C7" stroke-width="2" filter="url(#shadow2)" />
+  <rect x="30" y="105" width="220" height="38" rx="10" fill="#E0F2FE" />
+  <text x="45" y="130" fill="#0369A1" font-size="13" font-weight="700">POINT D'ENTREE UNIQUE</text>
+
+  <rect x="42" y="160" width="196" height="130" rx="8" fill="#F0F9FF" stroke="#BAE6FD" />
+  <g transform="translate(54, 175)">
+    <rect width="36" height="36" rx="8" fill="#0284C7" />
+    <path d="M 18 9 L 27 13 L 27 20 C 27 25 18 29 18 29 C 18 29 9 25 9 20 L 9 13 Z" fill="none" stroke="#FFFFFF" stroke-width="2" />
+    <path d="M 15 19 L 17 21 L 22 16" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" />
+  </g>
+  <text x="98" y="184" fill="#0369A1" font-size="12" font-weight="700">shoploc-api-gateway</text>
+  <text x="98" y="201" fill="#64748B" font-size="11">Port externe : 8080</text>
+  <text x="54" y="228" fill="#1E293B" font-size="10.5">• Terminaison JWT &amp; RBAC</text>
+  <text x="54" y="246" fill="#1E293B" font-size="10.5">• Routage vers microservices</text>
+  <text x="54" y="264" fill="#1E293B" font-size="10.5">• En-tete X-Correlation-ID</text>
+  <text x="54" y="282" fill="#0284C7" font-size="10" font-weight="600">• Protection CORS globale</text>
+
+  <rect x="42" y="310" width="196" height="310" rx="8" fill="#F8FAFC" stroke="#E2E8F0" />
+  <text x="54" y="335" fill="#0F172A" font-size="11.5" font-weight="700">Routage Public vers Prive :</text>
+  <text x="54" y="360" fill="#475569" font-size="10.5">/api/v1/auth/** -&gt; :8081</text>
+  <text x="54" y="385" fill="#475569" font-size="10.5">/api/v1/catalog/** -&gt; :8082</text>
+  <text x="54" y="410" fill="#475569" font-size="10.5">/api/v1/orders/** -&gt; :8083</text>
+  <text x="54" y="435" fill="#475569" font-size="10.5">/api/v1/loyalty/** -&gt; :8084</text>
+  <line x1="54" y1="455" x2="226" y2="455" stroke="#CBD5E1" stroke-width="1" />
+  <text x="54" y="480" fill="#166534" font-size="10.5" font-weight="700">Reseau Docker Isole :</text>
+  <text x="54" y="500" fill="#64748B" font-size="10">Aucun port microservice (8081-8084) ni BDD n'est ouvert sur Internet.</text>
+  <text x="54" y="535" fill="#64748B" font-size="10">Seul Nginx reverse proxy achemine le trafic vers :8080.</text>
+
+  <!-- LIAISON GATEWAY -> SERVICES -->
+  <line x1="250" y1="370" x2="288" y2="370" stroke="#0284C7" stroke-width="3" marker-end="url(#arrow-blue2)" />
+  <text x="269" y="358" fill="#0284C7" font-size="10" font-weight="700" text-anchor="middle">HTTP</text>
+  <text x="269" y="386" fill="#64748B" font-size="9" text-anchor="middle">prive</text>
+
+  <!-- ==================== ZONE CENTRALE : LES 4 MICROSERVICES & BDD ==================== -->
+  <rect x="290" y="105" width="560" height="535" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" filter="url(#shadow2)" />
+  <rect x="290" y="105" width="560" height="38" rx="10" fill="#F1F5F9" />
+  <text x="310" y="130" fill="#1E293B" font-size="13" font-weight="700">2. LES 4 MICROSERVICES AUTONOMES &amp; PERSISTANCE ISOLEE</text>
+
+  <!-- Service 1 : Auth -->
+  <rect x="310" y="155" width="360" height="85" rx="8" fill="#F8FAFC" stroke="#CBD5E1" />
+  <text x="325" y="180" fill="#0F172A" font-size="12" font-weight="700">shoploc-auth-service (Port 8081)</text>
+  <text x="325" y="198" fill="#64748B" font-size="11">Securite Spring Security 6, hashing BCrypt, emission JWT</text>
+  <text x="325" y="215" fill="#0284C7" font-size="10.5">Roles : ROLE_CITOYEN, ROLE_COMMERCANT, ROLE_MAIRIE</text>
+
+  <!-- BDD 1 : auth_db -->
+  <rect x="685" y="155" width="145" height="85" rx="8" fill="#F1F5F9" stroke="#CBD5E1" />
+  <text x="700" y="180" fill="#1E293B" font-size="11.5" font-weight="700">auth_db (:5432)</text>
+  <text x="700" y="198" fill="#64748B" font-size="10.5">PostgreSQL 16</text>
+  <text x="700" y="215" fill="#0284C7" font-size="10">Comptes &amp; roles</text>
+
+  <!-- Service 2 : Catalog -->
+  <rect x="310" y="255" width="360" height="105" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.5" />
+  <text x="325" y="280" fill="#166534" font-size="12.5" font-weight="800">shoploc-merchant-catalog-service (Port 8082)</text>
+  <text x="325" y="298" fill="#64748B" font-size="11">Referentiel boutiques, categories, articles et inventaires</text>
+  <text x="325" y="316" fill="#15803D" font-size="10.5" font-weight="700">Phase 1 2PC : Verrous pessimistes SQL (SELECT FOR UPDATE)</text>
+  <text x="325" y="333" fill="#15803D" font-size="10">Statut STOCK_HOLD temporaire (TTL 5 min) -&gt; COMMIT ou RELEASED</text>
+
+  <!-- BDD 2 : catalog_db -->
+  <rect x="685" y="255" width="145" height="105" rx="8" fill="#F0FDF4" stroke="#86EFAC" />
+  <text x="700" y="280" fill="#166534" font-size="11.5" font-weight="700">catalog_db (:5433)</text>
+  <text x="700" y="298" fill="#64748B" font-size="10.5">PostgreSQL 16</text>
+  <text x="700" y="316" fill="#15803D" font-size="10">Stocks physiques</text>
+  <text x="700" y="333" fill="#15803D" font-size="10">&amp; reservations</text>
+
+  <!-- FLUX 2PC ENTRE CATALOG ET ORDER -->
+  <line x1="490" y1="360" x2="490" y2="378" stroke="#16A34A" stroke-width="3" marker-end="url(#arrow-green2)" />
+  <text x="500" y="372" fill="#166534" font-size="10" font-weight="700">RestClient 2PC (Prepare / Commit)</text>
+
+  <!-- Service 3 : Cart Order (Coordinateur 2PC) -->
+  <rect x="310" y="380" width="360" height="110" rx="8" fill="#EFF6FF" stroke="#38BDF8" stroke-width="1.8" />
+  <text x="325" y="405" fill="#0369A1" font-size="12.5" font-weight="800">shoploc-cart-order-service (Port 8083) [COORDINATEUR 2PC]</text>
+  <text x="325" y="423" fill="#64748B" font-size="11">Panier multi-boutiques, orchestration de la commande Click &amp; Collect</text>
+  <text x="325" y="441" fill="#0284C7" font-size="10.5" font-weight="700">Orchestrateur Two-Phase Commit :</text>
+  <text x="325" y="458" fill="#475569" font-size="10">1. Prepare reservation catalogue -&gt; 2. Appel Bancaire -&gt; 3. Commit / Rollback</text>
+  <text x="325" y="474" fill="#0284C7" font-size="10">Generation du QR Code de retrait signe HMAC-SHA256</text>
+
+  <!-- BDD 3 : order_db -->
+  <rect x="685" y="380" width="145" height="110" rx="8" fill="#EFF6FF" stroke="#BAE6FD" />
+  <text x="700" y="405" fill="#0369A1" font-size="11.5" font-weight="700">order_db (:5434)</text>
+  <text x="700" y="423" fill="#64748B" font-size="10.5">PostgreSQL 16</text>
+  <text x="700" y="441" fill="#0284C7" font-size="10">Paniers, commandes</text>
+  <text x="700" y="458" fill="#0284C7" font-size="10">statuts &amp; tokens</text>
+
+  <!-- Service 4 : Loyalty -->
+  <rect x="310" y="505" width="360" height="85" rx="8" fill="#FAF5FF" stroke="#D8B4FE" />
+  <text x="325" y="530" fill="#6B21A8" font-size="12" font-weight="700">shoploc-loyalty-service (Port 8084)</text>
+  <text x="325" y="548" fill="#64748B" font-size="11">Moteur VFP 15 jours glissants, conversion en tickets bus et parking</text>
+  <text x="325" y="565" fill="#9333EA" font-size="10.5">Scheduled job nocturne d'expiration &amp; restitution k-anonymisee mairie</text>
+
+  <!-- BDD 4 : loyalty_db -->
+  <rect x="685" y="505" width="145" height="85" rx="8" fill="#FAF5FF" stroke="#D8B4FE" />
+  <text x="700" y="530" fill="#6B21A8" font-size="11.5" font-weight="700">loyalty_db (:5435)</text>
+  <text x="700" y="548" fill="#64748B" font-size="10.5">PostgreSQL 16</text>
+  <text x="700" y="565" fill="#9333EA" font-size="10">Points &amp; titres</text>
+
+  <!-- LIAISON SERVICES -> STUBS EXTERNES -->
+  <line x1="850" y1="370" x2="878" y2="370" stroke="#D97706" stroke-width="3" marker-end="url(#arrow-amber2)" />
+
+  <!-- ==================== COLONNE DROITE : STUBS EXTERNES ==================== -->
+  <rect x="880" y="105" width="230" height="535" rx="10" fill="#FFFFFF" stroke="#FDE68A" stroke-width="1.5" filter="url(#shadow2)" />
+  <rect x="880" y="105" width="230" height="38" rx="10" fill="#FEF3C7" />
+  <text x="895" y="130" fill="#92400E" font-size="12.5" font-weight="700">3. PARTENAIRES SIMULES</text>
+
+  <rect x="895" y="165" width="200" height="120" rx="8" fill="#FFFBEB" stroke="#FDE68A" />
+  <text x="908" y="190" fill="#92400E" font-size="12" font-weight="700">Mock Banque (:8090)</text>
+  <text x="908" y="210" fill="#64748B" font-size="10.5">Appele par Cart-Order</text>
+  <text x="908" y="228" fill="#B45309" font-size="10">HTTP 200 -&gt; Commit 2PC</text>
+  <text x="908" y="246" fill="#DC2626" font-size="10">HTTP 402 -&gt; Rollback 2PC</text>
+  <text x="908" y="264" fill="#475569" font-size="9.5">Simulation de refus</text>
+
+  <rect x="895" y="310" width="200" height="120" rx="8" fill="#FFFBEB" stroke="#FDE68A" />
+  <text x="908" y="335" fill="#92400E" font-size="12" font-weight="700">Mock Ilevia (:8091)</text>
+  <text x="908" y="355" fill="#64748B" font-size="10.5">Appele par Loyalty</text>
+  <text x="908" y="373" fill="#B45309" font-size="10">POST /api/ilevia/ticket</text>
+  <text x="908" y="391" fill="#475569" font-size="9.5">Delivrance de titres bus</text>
+  <text x="908" y="409" fill="#475569" font-size="9.5">pour usagers reguliers</text>
+
+  <rect x="895" y="455" width="200" height="120" rx="8" fill="#FFFBEB" stroke="#FDE68A" />
+  <text x="908" y="480" fill="#92400E" font-size="12" font-weight="700">Mock Parking (:8092)</text>
+  <text x="908" y="500" fill="#64748B" font-size="10.5">Appele par Loyalty</text>
+  <text x="908" y="518" fill="#B45309" font-size="10">POST /api/parking/voucher</text>
+  <text x="908" y="536" fill="#475569" font-size="9.5">20 min franchise stationnement</text>
+  <text x="908" y="554" fill="#475569" font-size="9.5">horodateurs de voirie</text>
+
+  <!-- LEGENDE DU BAS -->
+  <rect x="30" y="660" width="1080" height="75" rx="8" fill="#1E293B" />
+  <text x="50" y="682" fill="#F8FAFC" font-size="12" font-weight="700">LEGENDE DU SCHEMA DES SERVICES ET LIAISONS (C4 NIVEAU 2) :</text>
+  <text x="50" y="702" fill="#CBD5E1" font-size="11">• <tspan font-weight="700">Database-per-Service :</tspan> Chaque microservice est proprietaire de sa persistance PostgreSQL dediee, garantissant le couplage lache.</text>
+  <text x="50" y="720" fill="#CBD5E1" font-size="11">• <tspan font-weight="700">Coherence 2PC :</tspan> RestClient coordonne la reservation PENDING sur le catalogue avant confirmation bancaire et COMMIT definitif.</text>
+</svg>
