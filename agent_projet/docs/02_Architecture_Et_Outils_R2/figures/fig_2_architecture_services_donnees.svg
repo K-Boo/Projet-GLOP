@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 620" width="100%" height="auto" style="background:#FAF9F6; font-family:'Helvetica Neue', Arial, sans-serif;">
+  <defs>
+    <filter id="shadow2" x="-3%" y="-3%" width="106%" height="106%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.06"/>
+    </filter>
+    <marker id="arr-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#0D9488"/>
+    </marker>
+    <marker id="arr-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#DC2626"/>
+    </marker>
+  </defs>
+
+  <!-- Titre -->
+  <text x="475" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">FIG. 2 – Architecture applicative interne et flux de persistance (Zones d'isolation)</text>
+
+  <!-- ZONE 1 : ZONE ACCES (Haut) -->
+  <rect x="40" y="55" width="870" height="90" rx="8" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.5" filter="url(#shadow2)"/>
+  <text x="60" y="78" font-size="12" font-weight="bold" fill="#15803D" text-transform="uppercase">Zone 1 : Acces &amp; Exposition Publique</text>
+
+  <!-- Nginx -->
+  <rect x="180" y="85" width="230" height="45" rx="6" fill="#FFFFFF" stroke="#86EFAC" stroke-width="1.2"/>
+  <text x="295" y="105" text-anchor="middle" font-size="12" font-weight="bold" fill="#166534">Reverse Proxy Nginx</text>
+  <text x="295" y="121" text-anchor="middle" font-size="10" fill="#4B5563">Port 443 HTTPS &amp; Certificat SSL Let's Encrypt</text>
+
+  <!-- Gateway -->
+  <rect x="520" y="85" width="250" height="45" rx="6" fill="#FFFFFF" stroke="#86EFAC" stroke-width="1.2"/>
+  <text x="645" y="105" text-anchor="middle" font-size="12" font-weight="bold" fill="#166534">API Gateway (Spring Cloud)</text>
+  <text x="645" y="121" text-anchor="middle" font-size="10" fill="#4B5563">Verification JWT, Routage interne, Correlation ID</text>
+
+  <line x1="410" y1="107" x2="510" y2="107" stroke="#16A34A" stroke-width="2" marker-end="url(#arr-green)"/>
+  <text x="460" y="100" text-anchor="middle" font-size="9.5" fill="#15803D">Routage</text>
+
+  <!-- ZONE 2 : ZONE APPLICATIVE METIER (Milieu) -->
+  <rect x="40" y="170" width="870" height="260" rx="8" fill="#F8FAFC" stroke="#0284C7" stroke-width="1.5" filter="url(#shadow2)"/>
+  <text x="60" y="195" font-size="12" font-weight="bold" fill="#0369A1" text-transform="uppercase">Zone 2 : Services Metiers (Spring Boot 3.3 / Java 17)</text>
+
+  <!-- Service 1 : Auth -->
+  <rect x="65" y="215" width="180" height="180" rx="6" fill="#FFFFFF" stroke="#BAE6FD" stroke-width="1.2"/>
+  <rect x="65" y="215" width="180" height="28" rx="6" fill="#E0F2FE"/>
+  <text x="155" y="234" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0369A1">shoploc-auth-service</text>
+  <text x="155" y="262" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155">Gestion des Comptes</text>
+  <text x="75" y="285" font-size="10" fill="#475569">• Inscription &amp; Profils</text>
+  <text x="75" y="303" font-size="10" fill="#475569">• Authentification BCrypt</text>
+  <text x="75" y="321" font-size="10" fill="#475569">• Habilitations RBAC</text>
+  <text x="75" y="339" font-size="10" fill="#475569">• Emission des jetons JWT</text>
+  <text x="155" y="380" text-anchor="middle" font-size="9.5" fill="#0369A1">Port interne 8081</text>
+
+  <!-- Service 2 : Catalogue -->
+  <rect x="275" y="215" width="185" height="180" rx="6" fill="#FFFFFF" stroke="#BAE6FD" stroke-width="1.2"/>
+  <rect x="275" y="215" width="185" height="28" rx="6" fill="#E0F2FE"/>
+  <text x="367" y="234" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0369A1">merchant-catalog-service</text>
+  <text x="367" y="262" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155">Catalogue &amp; Stocks</text>
+  <text x="285" y="285" font-size="10" fill="#475569">• Fiches magasins &amp; horaires</text>
+  <text x="285" y="303" font-size="10" fill="#475569">• Produits &amp; prix en centimes</text>
+  <text x="285" y="321" font-size="10" fill="#475569">• Inventaires en temps reel</text>
+  <text x="285" y="339" font-size="10" fill="#475569">• Verrous de stock (2PC)</text>
+  <text x="367" y="380" text-anchor="middle" font-size="9.5" fill="#0369A1">Port interne 8082</text>
+
+  <!-- Service 3 : Commande -->
+  <rect x="490" y="215" width="185" height="180" rx="6" fill="#FFFFFF" stroke="#0284C7" stroke-width="2"/>
+  <rect x="490" y="215" width="185" height="28" rx="6" fill="#BAE6FD"/>
+  <text x="582" y="234" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0C4A6E">cart-order-service</text>
+  <text x="582" y="262" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#0369A1">Coordinateur 2PC</text>
+  <text x="500" y="285" font-size="10" fill="#475569">• Panier multi-boutiques</text>
+  <text x="500" y="303" font-size="10" fill="#475569">• Phase 1 : Prepare stock</text>
+  <text x="500" y="321" font-size="10" fill="#475569">• Phase 2 : Commit / Rollback</text>
+  <text x="500" y="339" font-size="10" fill="#475569">• QR code de retrait</text>
+  <text x="582" y="380" text-anchor="middle" font-size="9.5" fill="#0369A1">Port interne 8083</text>
+
+  <!-- Service 4 : Fidelite -->
+  <rect x="705" y="215" width="180" height="180" rx="6" fill="#FFFFFF" stroke="#BAE6FD" stroke-width="1.2"/>
+  <rect x="705" y="215" width="180" height="28" rx="6" fill="#E0F2FE"/>
+  <text x="795" y="234" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#0369A1">shoploc-loyalty-service</text>
+  <text x="795" y="262" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#334155">Programme Fidelite VFP</text>
+  <text x="715" y="285" font-size="10" fill="#475569">• Points d'achat marchands</text>
+  <text x="715" y="303" font-size="10" fill="#475569">• Regularite 10 pass / 15j</text>
+  <text x="715" y="321" font-size="10" fill="#475569">• Vouchers bus &amp; parking</text>
+  <text x="715" y="339" font-size="10" fill="#475569">• Statistiques mairie anonymes</text>
+  <text x="795" y="380" text-anchor="middle" font-size="9.5" fill="#0369A1">Port interne 8084</text>
+
+  <!-- LIAISON 2PC RestClient entre Commande et Catalogue -->
+  <path d="M 490 280 L 465 280" stroke="#DC2626" stroke-width="2" marker-end="url(#arr-red)"/>
+  <text x="477" y="272" text-anchor="middle" font-size="9" font-weight="bold" fill="#DC2626">2PC</text>
+
+  <!-- ZONE 3 : PERSISTANCE & DONNEES (Bas) -->
+  <rect x="40" y="450" width="870" height="110" rx="8" fill="#FDF4FF" stroke="#A855F7" stroke-width="1.5" filter="url(#shadow2)"/>
+  <text x="60" y="475" font-size="12" font-weight="bold" fill="#7E22CE" text-transform="uppercase">Zone 3 : Persistance Database-per-Service (PostgreSQL 16)</text>
+
+  <!-- DB 1 -->
+  <rect x="75" y="490" width="160" height="50" rx="6" fill="#FFFFFF" stroke="#E9D5FF" stroke-width="1"/>
+  <text x="155" y="512" text-anchor="middle" font-size="11" font-weight="bold" fill="#581C87">auth_db</text>
+  <text x="155" y="528" text-anchor="middle" font-size="9.5" fill="#6B7280">Port 5432 / Comptes</text>
+  <line x1="155" y1="395" x2="155" y2="485" stroke="#9333EA" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+  <!-- DB 2 -->
+  <rect x="287" y="490" width="160" height="50" rx="6" fill="#FFFFFF" stroke="#E9D5FF" stroke-width="1"/>
+  <text x="367" y="512" text-anchor="middle" font-size="11" font-weight="bold" fill="#581C87">catalog_db</text>
+  <text x="367" y="528" text-anchor="middle" font-size="9.5" fill="#6B7280">Port 5433 / Articles</text>
+  <line x1="367" y1="395" x2="367" y2="485" stroke="#9333EA" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+  <!-- DB 3 -->
+  <rect x="502" y="490" width="160" height="50" rx="6" fill="#FFFFFF" stroke="#E9D5FF" stroke-width="1"/>
+  <text x="582" y="512" text-anchor="middle" font-size="11" font-weight="bold" fill="#581C87">order_db</text>
+  <text x="582" y="528" text-anchor="middle" font-size="9.5" fill="#6B7280">Port 5434 / Commandes</text>
+  <line x1="582" y1="395" x2="582" y2="485" stroke="#9333EA" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+  <!-- DB 4 -->
+  <rect x="715" y="490" width="160" height="50" rx="6" fill="#FFFFFF" stroke="#E9D5FF" stroke-width="1"/>
+  <text x="795" y="512" text-anchor="middle" font-size="11" font-weight="bold" fill="#581C87">loyalty_db</text>
+  <text x="795" y="528" text-anchor="middle" font-size="9.5" fill="#6B7280">Port 5435 / Points</text>
+  <line x1="795" y1="395" x2="795" y2="485" stroke="#9333EA" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+  <!-- LEGENDE DES FLUX ET COMPOSANTS -->
+  <rect x="180" y="575" width="590" height="32" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <line x1="200" y1="591" x2="230" y2="591" stroke="#16A34A" stroke-width="2" marker-end="url(#arr-green)"/>
+  <text x="240" y="595" font-size="10.5" fill="#334155">Point d'entree public (Nginx)</text>
+
+  <line x1="420" y1="591" x2="450" y2="591" stroke="#DC2626" stroke-width="2" marker-end="url(#arr-red)"/>
+  <text x="460" y="595" font-size="10.5" fill="#334155">Echange transactionnel 2PC</text>
+
+  <line x1="640" y1="591" x2="670" y2="591" stroke="#9333EA" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <text x="680" y="595" font-size="10.5" fill="#334155">Liaison BDD privee</text>
+</svg>

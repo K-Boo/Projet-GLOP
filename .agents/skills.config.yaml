@@ -128,3 +128,10 @@ clean-code:
     allowed_types: ["feat", "fix", "docs", "test", "refactor", "chore"]
     zero_emoji: true
     student_identity: "Khalil Bouchama <khalil.bouchama.etu@univ-lille.fr>"
+
+# Surcharge de l'explication et analyse en lecture seule (Cas C - Zero modification)
+code-documentation-code-explain:
+  mode: "read_only_pedagogical_explanation"
+  allow_file_modifications: false
+  generate_plan_artifact: false
+  output_format: "direct_textual_markdown"

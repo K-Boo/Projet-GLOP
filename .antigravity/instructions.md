@@ -42,8 +42,8 @@ Toute instruction utilisateur brute ou informelle (ex: "ajoute l'endpoint de sto
    * **BLOC 1 - CONTEXTE** : Societe Garik, ShopLoc, Universite de Lille M2 MIAGE GLOP, cockpit ShopLoc vs depot GitLab.
    * **BLOC 2 - OBJECTIF ATOMIQUE (INVEST)** : Intention precise, portee delivree.
    * **BLOC 3 - CONTRAINTES & STANDARDS** : Zero emoji, isolation IA, Spring Boot 3.3 / Java 17, 2PC, RGAA AA.
-   * **BLOC 4 - SAFETY GATE (Plan Prealable)** : Generation d'un Artifact de plan detaille obligatoire avant toute execution destructive ou creation de code/livrable.
-   * **BLOC 5 - PREUVE PAR L'EXECUTION** : Preuve console reelle ('mvn test', Jacoco >= 80%, audit verify_deliverables.py).
+   * **BLOC 4 - SAFETY GATE (Plan Prealable)** : Generation d'un Artifact de plan detaille obligatoire avant toute execution destructive ou creation de code/livrable. Indiquer 'Non applicable (Consultation / Explication en lecture seule)' lorsque la requete ne modifie aucun fichier.
+   * **BLOC 5 - PREUVE PAR L'EXECUTION** : Preuve console reelle ('mvn test', Jacoco >= 80%, audit verify_deliverables.py, ou inspection en lecture seule).
 3. **Restitution du Cartouche d'Alignement** : L'agent restitue le cartouche `[REQUETE OPTIMISEE - FORMULE CANONIQUE]` en tete de sa reponse pour valider l'alignement avant d'orienter vers les cas ci-dessous.
 
 ### Cas A : Demande liee au Projet, aux Livrables ou a la Gouvernance
@@ -56,8 +56,16 @@ Toute instruction utilisateur brute ou informelle (ex: "ajoute l'endpoint de sto
 ### Cas B : Demande liee au Code, a l'Architecture ou aux Tests
 - **Exemples** : Choix de la stack, ecriture de code applicatif, creation d'APIs REST, modelisation SQL, cycle TDD, composants React ergonomiques et adaptables, conteneurs Docker, tests de charge, pipeline CI/CD.
 - **Regle a appliquer** : Se conformer imperativement a [`.antigravity/agent_code.md`](file:///c:/Users/hpome/Documents/M2_MIAGE/GLOP/ShopLoc/.antigravity/agent_code.md).
-- **Emplacement des fichiers** : Operer exclusivement dans le depot de code GitLab `projet-glop-app/` (chemin local indique dans `config.local.json`).
+- **Emplacement des fichiers** : Operer exclusivement dans le depot de code GitLab `projet-glop-app/` ou `microservices/` (chemin local indique dans `config.local.json`).
 - **Condition prealable** : Aucune generation de code prematuree tant que le cadrage (R1) et le choix de la stack technologique ne sont pas formellement valides.
+
+### Cas C : Demande Purement Explicative, Consultative ou d'Analyse (Lecture Seule / Q&A)
+- **Exemples** : Questions conceptuelles (ex: "Pourquoi...", "Comment fonctionne..."), analyses de l'existant (ex: "Analyse-moi toutes les dernieres modifications..."), explications de code ou d'architecture, revues sans modification de fichier.
+- **Regle d'Or Inviolable** :
+  1. **Zero Modification** : Aucune modification de code ni de document.
+  2. **Zero Plan Parasite** : Ne JAMAIS generer d'Artifact de plan (`plan_*.md`) ni de proposition d'apprentissage (`learning_proposal.md`) lorsque l'utilisateur pose une question explicative ou demande un diagnostic.
+  3. **Reponse Purement Textuelle Directe** : L'agent repond directement, avec clarte, rigueur et pedagogie dans le chat Markdown.
+  4. **Skill Dedie** : `code-documentation-code-explain` pour les explications de code et d'architecture sans ecriture.
 
 ---
 

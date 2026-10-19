@@ -1323,6 +1323,43 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   5. **Prochaine etape d'ingenierie** :
      * Implementation TDD des User Stories metier prioritaires issues de Linear et finalisation du protocole de transaction distribuee 2PC.
 
+### [2026-10-19] Session 51 — Finalisation du Livrable R2 (Architecture & Outils V2), Harmonisation Microservices & Grand Assainissement Documentaire
+- **Objectif** : Consolider la version V2 du livrable officiel R2 conformement aux exigences de Jeremy Woirhaye (4 figures vectorielles C4, 5 preuves tangibles d'execution du walking skeleton et tests Spring Boot), harmoniser les pipelines CI et configurations microservices sous GitLab Univ-Lille, operer un grand assainissement documentaire de l'espace de travail (purge de 150 fichiers obsoletes/doublons) et commiter l'ensemble sans trace d'IA.
+- **Actions réalisées** :
+  - Production et compilation de la version enrichie V2 du livrable R2 (`DOSSIER_ARCHITECTURE_ET_OUTILS_R2.md` et `GARIK_GLOP-2026-LIVRABLE-R2.pdf` / `V2`), integrant la suite des 4 schemas d'architecture C4 vectoriels et la grille de preuves certifiees.
+  - Sauvegarde de la version historique V1 dans `ShopLoc/agent_projet/docs/02_Architecture_Et_Outils_R2/backup_v1/`.
+  - Harmonisation et execution reelle des tests unitaires et d'integration sur les 4 microservices Java 17 / Spring Boot 3.3 (`auth`, `catalog`, `cart-order`, `loyalty`) : 100% au vert, 0 echec, 0 erreur.
+  - Verification de l'orchestration Docker Compose `shoploc-platform` et validation de la synchronisation GitLab (`glop-garik-2026`).
+  - Resolution de l'injection d'URL inter-services pour le client de catalogue dans `shoploc-cart-order-service`.
+  - Assainissement massif de l'espace de travail :
+    * Racine GLOP : suppression du script obsolete `generate_pdf.py`, du dossier redondant `cv/` (5 CVs normalises et preserves dans `01_Cadrage_Et_Cahier_Des_Charges_R1/annexes_cv/`) et de l'archive `skills_backup/`.
+    * Cockpit ShopLoc : purge du cache navigateur `.chrome_tmp/` (12.7 Mo).
+    * Presentations R1 (`04_Presentations_Diaporamas/`) : suppression de 99 fichiers temporaires (8 versions PDF de travail `v5` a `v12`, apercus de rognage PNG) pour sanctuariser strictement la version officielle `GARIK_GLOP-2026-SOUTENANCE-R1.pdf` et `.html`.
+    * Dossier documentaire (`docs/`) : suppression des doublons externes et des prototypes HTML obsoletes.
+    * Ajout au suivi Git de la competence active `code-documentation-code-explain` dans `ShopLoc/.agents/skills/`.
+  - Audit d'integrite execute avec succes via `verify_deliverables.py` (0 canari, 0 violation, 0 emoji).
+- **Fichiers créés, modifiés ou supprimés** :
+  - *Créés / Actualisés* :
+    * `ShopLoc/agent_projet/docs/02_Architecture_Et_Outils_R2/DOSSIER_ARCHITECTURE_ET_OUTILS_R2.md` & `DOSSIER_ARCHITECTURE_ET_OUTILS_R2_V2.md`
+    * `ShopLoc/agent_projet/docs/02_Architecture_Et_Outils_R2/GARIK_GLOP-2026-LIVRABLE-R2.pdf` & `GARIK_GLOP-2026-LIVRABLE-R2-V2.pdf`
+    * `ShopLoc/agent_projet/docs/02_Architecture_Et_Outils_R2/figures/fig_1_contexte_global_shoploc.svg`
+    * `ShopLoc/agent_projet/docs/02_Architecture_Et_Outils_R2/figures/fig_2_architecture_services_donnees.svg`
+    * `ShopLoc/agent_projet/docs/02_Architecture_Et_Outils_R2/figures/fig_3_chaine_devops_deploiement.svg`
+    * `ShopLoc/agent_projet/docs/02_Architecture_Et_Outils_R2/figures/fig_4_sequence_walking_skeleton.svg`
+    * `ShopLoc/agent_projet/scripts/generate_r2_v2_figures.py`
+    * `ShopLoc/.agents/skills/code-documentation-code-explain/`
+  - *Supprimés* :
+    * ~150 fichiers temporaires, brouillons de diaporama, prototypes HTML et archives orphelines.
+  - *Modifiés* :
+    * `ShopLoc/agent_projet/design/theme.css`
+    * `ShopLoc/agent_projet/scripts/render_report.py`
+    * `ShopLoc/agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md`
+- **Décisions actées** :
+  - Sanctuarisation definitive de l'architecture V2 du Livrable R2 pour soumission a l'equipe enseignante.
+  - Cloture de l'operation de grand nettoyage documentaire : l'espace de travail est sobre, allege et rigoureusement conforme.
+- **Reste à faire / Prochaine étape** :
+  - Preparation de l'etude financiere et du modele de rentabilite R3 (echeance fin novembre).
+  - Poursuite de l'implementation TDD des User Stories du panier multi-boutiques et de la transaction 2PC.
 
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
 

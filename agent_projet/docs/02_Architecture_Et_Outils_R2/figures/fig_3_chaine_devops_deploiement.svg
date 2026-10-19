@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 560" width="100%" height="auto" style="background:#FAF9F6; font-family:'Helvetica Neue', Arial, sans-serif;">
+  <defs>
+    <filter id="shadow3" x="-3%" y="-3%" width="106%" height="106%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.06"/>
+    </filter>
+    <marker id="arr-gray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <!-- Titre -->
+  <text x="475" y="32" text-anchor="middle" font-size="16" font-weight="bold" fill="#0F172A">FIG. 3 – Chaine d'ingenierie DevOps : de l'environnement local au deploiement VPS</text>
+
+  <!-- ETAPE 1 : POSTE LOCAL (Gauche) -->
+  <rect x="40" y="65" width="260" height="415" rx="8" fill="#F8FAFC" stroke="#64748B" stroke-width="1.5" filter="url(#shadow3)"/>
+  <rect x="40" y="65" width="260" height="36" rx="8" fill="#E2E8F0" stroke="#64748B" stroke-width="1.5"/>
+  <text x="170" y="88" text-anchor="middle" font-size="13" font-weight="bold" fill="#1E293B">1. Developpement Local</text>
+
+  <rect x="55" y="120" width="230" height="65" rx="6" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="170" y="145" text-anchor="middle" font-size="12" font-weight="bold" fill="#0F172A">Environnement &amp; Outils</text>
+  <text x="170" y="163" text-anchor="middle" font-size="10.5" fill="#475569">Java 17 OpenJDK, Maven Wrapper (mvnw)</text>
+  <text x="170" y="177" text-anchor="middle" font-size="10" fill="#64748B">IntelliJ IDEA / VS Code sous Windows &amp; WSL</text>
+
+  <rect x="55" y="200" width="230" height="65" rx="6" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="170" y="225" text-anchor="middle" font-size="12" font-weight="bold" fill="#0F172A">Tests Unitaires Rapides</text>
+  <text x="170" y="243" text-anchor="middle" font-size="10.5" fill="#475569">Base H2 en memoire (h2:mem)</text>
+  <text x="170" y="257" text-anchor="middle" font-size="10" fill="#64748B">Execution instantanee sans conteneur</text>
+
+  <rect x="55" y="280" width="230" height="65" rx="6" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="170" y="305" text-anchor="middle" font-size="12" font-weight="bold" fill="#0F172A">Qualite &amp; Clean Code</text>
+  <text x="170" y="323" text-anchor="middle" font-size="10.5" fill="#475569">SonarLint integre a la saisie</text>
+  <text x="170" y="337" text-anchor="middle" font-size="10" fill="#64748B">Zero anomalie critique avant commit</text>
+
+  <rect x="55" y="360" width="230" height="60" rx="6" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="170" y="385" text-anchor="middle" font-size="12" font-weight="bold" fill="#0F172A">Gestion Git &amp; MR</text>
+  <text x="170" y="403" text-anchor="middle" font-size="10.5" fill="#475569">Branches feature/ &amp; Revue de code</text>
+
+  <!-- ETAPE 2 : FORGE GITLAB CI (Milieu) -->
+  <rect x="345" y="65" width="260" height="415" rx="8" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.5" filter="url(#shadow3)"/>
+  <rect x="345" y="65" width="260" height="36" rx="8" fill="#DCFCE7" stroke="#16A34A" stroke-width="1.5"/>
+  <text x="475" y="88" text-anchor="middle" font-size="13" font-weight="bold" fill="#15803D">2. Integration Continue (GitLab)</text>
+
+  <rect x="360" y="120" width="230" height="75" rx="6" fill="#FFFFFF" stroke="#BBF7D0" stroke-width="1"/>
+  <text x="475" y="145" text-anchor="middle" font-size="12" font-weight="bold" fill="#166534">Forge Univ-Lille</text>
+  <text x="475" y="163" text-anchor="middle" font-size="10.5" fill="#15803D">Groupe glop-garik-2026</text>
+  <text x="475" y="177" text-anchor="middle" font-size="10" fill="#4B5563">4 depots independants (Polyrepo)</text>
+  <text x="475" y="190" text-anchor="middle" font-size="9.5" fill="#16A34A">Acces Reporter+ accorde aux enseignants</text>
+
+  <rect x="360" y="210" width="230" height="75" rx="6" fill="#FFFFFF" stroke="#BBF7D0" stroke-width="1"/>
+  <text x="475" y="235" text-anchor="middle" font-size="12" font-weight="bold" fill="#166534">Pipeline CI Automatique</text>
+  <text x="475" y="253" text-anchor="middle" font-size="10.5" fill="#15803D">Job maven-tests sur runner</text>
+  <text x="475" y="267" text-anchor="middle" font-size="10" fill="#4B5563">mvn test jacoco:report</text>
+  <text x="475" y="280" text-anchor="middle" font-size="9.5" fill="#15803D">Verification du seuil Jacoco &gt;= 80%</text>
+
+  <rect x="360" y="300" width="230" height="75" rx="6" fill="#FFFFFF" stroke="#BBF7D0" stroke-width="1"/>
+  <text x="475" y="325" text-anchor="middle" font-size="12" font-weight="bold" fill="#166534">Construction d'Images</text>
+  <text x="475" y="343" text-anchor="middle" font-size="10.5" fill="#15803D">Dockerfile Multi-Stage</text>
+  <text x="475" y="357" text-anchor="middle" font-size="10" fill="#4B5563">Base allegee Alpine JRE (148 Mo)</text>
+  <text x="475" y="370" text-anchor="middle" font-size="9.5" fill="#166534">Registre prive universitaire</text>
+
+  <rect x="360" y="390" width="230" height="40" rx="6" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="475" y="415" text-anchor="middle" font-size="11" font-weight="bold" fill="#334155">Declencheur CD post-succes</text>
+
+  <!-- ETAPE 3 : HEBERGEMENT VPS (Droite) -->
+  <rect x="650" y="65" width="260" height="415" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5" filter="url(#shadow3)"/>
+  <rect x="650" y="65" width="260" height="36" rx="8" fill="#DBEAFE" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="780" y="88" text-anchor="middle" font-size="13" font-weight="bold" fill="#1E40AF">3. Exploitation en Production</text>
+
+  <rect x="665" y="120" width="230" height="65" rx="6" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="1"/>
+  <text x="780" y="145" text-anchor="middle" font-size="12" font-weight="bold" fill="#1E40AF">Serveur VPS OVHcloud</text>
+  <text x="780" y="163" text-anchor="middle" font-size="10.5" fill="#2563EB">Linux Ubuntu Server 24.04 LTS</text>
+  <text x="780" y="177" text-anchor="middle" font-size="10" fill="#64748B">Datacenter Roubaix / Gravelines (France)</text>
+
+  <rect x="665" y="200" width="230" height="65" rx="6" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="1"/>
+  <text x="780" y="225" text-anchor="middle" font-size="12" font-weight="bold" fill="#1E40AF">Frontal Securise</text>
+  <text x="780" y="243" text-anchor="middle" font-size="10.5" fill="#2563EB">Nginx Reverse Proxy &amp; HTTPS</text>
+  <text x="780" y="257" text-anchor="middle" font-size="10" fill="#64748B">Certificats SSL Let's Encrypt (Certbot)</text>
+
+  <rect x="665" y="280" width="230" height="75" rx="6" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="1"/>
+  <text x="780" y="305" text-anchor="middle" font-size="12" font-weight="bold" fill="#1E40AF">Docker Compose</text>
+  <text x="780" y="323" text-anchor="middle" font-size="10.5" fill="#2563EB">Reseau prive etanche (shoploc-net)</text>
+  <text x="780" y="337" text-anchor="middle" font-size="10" fill="#4B5563">Microservices &amp; BDD non exposes</text>
+  <text x="780" y="350" text-anchor="middle" font-size="9.5" fill="#64748B">Volumes persistants sur disque hote</text>
+
+  <rect x="665" y="370" width="230" height="65" rx="6" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="1"/>
+  <text x="780" y="395" text-anchor="middle" font-size="12" font-weight="bold" fill="#1E40AF">Maintenance &amp; Sauvegardes</text>
+  <text x="780" y="413" text-anchor="middle" font-size="10" fill="#4B5563">Tache cron nocturne pg_dump (7 jours)</text>
+  <text x="780" y="427" text-anchor="middle" font-size="9.5" fill="#64748B">Supervision Actuator (/health, /metrics)</text>
+
+  <!-- FLECHES INTER-ZONES -->
+  <line x1="300" y1="230" x2="340" y2="230" stroke="#475569" stroke-width="2" marker-end="url(#arr-gray)"/>
+  <text x="320" y="220" text-anchor="middle" font-size="9.5" fill="#475569">git push</text>
+
+  <line x1="605" y1="230" x2="645" y2="230" stroke="#475569" stroke-width="2" marker-end="url(#arr-gray)"/>
+  <text x="625" y="220" text-anchor="middle" font-size="9.5" fill="#475569">deploy</text>
+
+  <!-- LEGENDE DU PIPELINE -->
+  <rect x="250" y="500" width="450" height="34" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <circle cx="270" cy="517" r="5" fill="#64748B"/>
+  <text x="282" y="521" font-size="11" fill="#334155">Code source local</text>
+
+  <circle cx="410" cy="517" r="5" fill="#16A34A"/>
+  <text x="422" y="521" font-size="11" fill="#334155">Validation continue CI</text>
+
+  <circle cx="560" cy="517" r="5" fill="#2563EB"/>
+  <text x="572" y="521" font-size="11" fill="#334155">Production conteneurisee VPS</text>
+</svg>

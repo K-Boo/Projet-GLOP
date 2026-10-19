@@ -13,21 +13,24 @@ A chaque instruction ou requete utilisateur (qu'elle soit informelle, rapide ou 
    * **BLOC 1 - CONTEXTE** : Societe Garik, ShopLoc, Universite de Lille M2 MIAGE GLOP, cockpit ShopLoc vs depots de code GitLab.
    * **BLOC 2 - OBJECTIF ATOMIQUE (INVEST)** : Formule avec precision chirurgicale, sans ambiguite.
    * **BLOC 3 - CONTRAINTES & STANDARDS** : Zero emoji, etancheite IA, Spring Boot 3.3 / Java 17, 2PC, RGAA AA.
-   * **BLOC 4 - SAFETY GATE** : Plan prealable obligatoire.
-   * **BLOC 5 - PREUVE PAR L'EXECUTION** : Commande tangible console de certification.
+   * **BLOC 4 - SAFETY GATE** : Plan prealable obligatoire pour les actions modificatrices (code, livrables). Mentionner 'Non applicable (Consultation / Explication en lecture seule)' des lors qu'aucune modification de fichier n'est requise.
+   * **BLOC 5 - PREUVE PAR L'EXECUTION** : Commande tangible console de certification (si action technique).
 3. **Restitution Visuelle** : Afficher systematiquement le cartouche `[REQUETE OPTIMISEE - FORMULE CANONIQUE]` en tete de reponse pour garantir la parfaite synchronisation des attentes avec l'utilisateur.
 
 ---
 
-## 2. Le Verrou Plan-First Safety Gate
+## 2. Le Verrou Plan-First Safety Gate & Distinction des Requetes
 
-L'agent a l'interdiction formelle de :
+Le Verrou Plan-First Safety Gate s'applique **exclusivement aux actions modificatrices**. L'agent a l'interdiction formelle de :
 * Generer du code applicatif,
 * Modifier des fichiers de code existants,
 * Creer ou modifier des sections de livrables academiques officiels (R1, R3, R4/R5),
 * Executer des commandes a impact fort,
 
 **sans avoir prealablement soumis un Artifact de plan d'action detaille et obtenu l'accord humain explicite et textuel de l'utilisateur dans le chat**.
+
+**DISPOSITION SPECIALE REQUETES EXPLICATIVES & ANALYSES (LECTURE SEULE)** :
+Des lors que la requete utilisateur releve d'une question conceptuelle, d'une explication technique, d'un diagnostic ou d'une demande d'analyse sans ecriture (ex: "Pourquoi...", "Explique-moi...", "Analyse l'etat de..."), le Safety Gate est **inactif**. L'agent a l'interdiction formelle de generer un plan d'action ou de proposer des modifications : il repond **directement, integralement et exclusivement par du texte explicatif Markdown dans le fil de discussion**.
 
 ---
 
