@@ -1357,9 +1357,29 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 - **Décisions actées** :
   - Sanctuarisation definitive de l'architecture V2 du Livrable R2 pour soumission a l'equipe enseignante.
   - Cloture de l'operation de grand nettoyage documentaire : l'espace de travail est sobre, allege et rigoureusement conforme.
+### [2026-10-26] Session 52 — Cadrage Operationnel MVP R4 (Addendum R1), Reallocation des Tickets Linear & Strategie de Developpement Parallele
+- **Objectif** : Synchroniser les depots Git distants (cockpit ShopLoc et depot applicatif projet-glop-app), valider l'alignement contractuel strict du perimetre MVP de Decembre 2026 sur les 5 User Stories d'elite technique de l'Addendum R1 (US-01, US-02, US-06, US-07, US-09 / 4 Features F1 a F4), acter la reallocation des tickets Linear aux 5 membres de l'equipe Garik (tickets simples CRUD/JPA pour Abdelkader et Gautam, prise en charge du coordinateur 2PC et de la QA par Khalil, infrastructure conteneurisee par Rayane, ecrans React 18 par Ilyas) et valider la strategie d'execution autonome sans blocage inter-membres.
+- **Actions réalisées** :
+  - Synchronisation Git reussie sur les branches `main` de `ShopLoc/` et de `projet-glop-app/` (`Already up to date.`).
+  - Verification et confirmation de la conformite contractuelle avec la Section 5 de `GARIK_GLOP-2026-ADDENDUM-R1.md` : le jalon R4 de Decembre se concentre sur 5 User Stories majeures (31 Story Points) et gele toutes les fonctions de fidelite et de mobilite urbaine (16 US) pour le Jalon R5 de Mars 2027.
+  - Arbitrage sur la complexite des taches : reallocation des tickets a faible complexite algorithmique et sans risque transactionnel a Abdelkader (Auth JPA, Register REST, Login REST, Payload QR Code - 5 SP) et a Gautam (Modeles JPA Boutique/Produits/Commande, CRUDs REST fiches marchandes - 6 SP).
+  - Attribution du defi d'excellence technique (Moteur Coordinateur 2PC, verrous pessimistes PostgreSQL `SELECT FOR UPDATE`, compensation automatique sur HTTP 402 ou timeout, et tests TDD Jacoco >= 80%) a Khalil (8 SP).
+  - Attribution du socle conteneurise Docker Compose multi-bases, du simulateur bancaire OpenAPI 3.1 reglable (HTTP 200/402) et du pipeline GitLab CI a Rayane (6 SP).
+  - Attribution des interfaces React 18 / TypeScript / Tailwind CSS (tableau de bord Suzanne, panier citoyen Julie, ecran de retrait) a Ilyas (6 SP).
+  - Demonstration methodologique de l'autonomie immediate des 5 developpeurs grace aux patrons Contract-First, Database-per-Service et au bouchonnage (Mocks).
+  - Actualisation de la table des responsabilites dans `agent_projet/docs/ShopLoc_MVP_Decembre_2026_Fiche_Equipe.md`.
+  - Controle d'integrite documentaire valide a 100% via `verify_deliverables.py` (0 canari, 0 violation, 0 emoji).
+- **Fichiers créés ou modifiés** :
+  - *Modifiés* :
+    * `ShopLoc/agent_projet/docs/ShopLoc_MVP_Decembre_2026_Fiche_Equipe.md` (reallocation nominative des taches Section 5)
+    * `ShopLoc/agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md` (historisation Session 52)
+- **Décisions actées** :
+  - Confirmation du perimetre MVP R4 : 5 User Stories contractuelles (US-01, US-02, US-06, US-07, US-09) pour 31 Story Points au total.
+  - Decharge complete de Gautam sur l'orchestration 2PC au profit de la persistance relationnelle et des CRUDs catalogue/commande.
+  - Validation du calendrier d'equipe en 3 phases : Semaines 1 a 3 (Autonomie complete), Semaines 4 a 5 (Interconnexion des contrats REST), Semaines 6 a 7 (Repetition de la demo live 4 Actes et certification Jacoco >= 80%).
 - **Reste à faire / Prochaine étape** :
-  - Preparation de l'etude financiere et du modele de rentabilite R3 (echeance fin novembre).
-  - Poursuite de l'implementation TDD des User Stories du panier multi-boutiques et de la transaction 2PC.
+  - Demarrage du sprint d'implementation TDD par chaque membre conformement a la grille d'attribution.
+  - Finalisation du livrable financier R3 (echeance fin novembre).
 
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
 

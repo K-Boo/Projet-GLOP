@@ -143,11 +143,11 @@ Pour tenir le calendrier de 7 semaines sans dérive, les responsabilités sont r
 
 | Membre de l'Équipe | Rôle Principal | Responsabilités Techniques sur le MVP | Livrables Attendus |
 |---|---|---|---|
-| **Gautam** | Lead Backend &amp; Architecture | Coordinateur 2PC Spring Boot 3.3, verrous pessimistes PostgreSQL 16 (`SELECT FOR UPDATE`), persistance JPA/Hibernate, gestion des statuts de commande. | Code backend transactionnel, tests unitaires et intégration Testcontainers. |
-| **Rayane** | Lead DevOps &amp; Systèmes | Déploiement docker compose, conteneurisation multi-stage, simulateur Mock OpenAPI 3.1 pour l'API bancaire, pipeline CI GitLab. | Environnement Docker clé en main, simulateurs REST configurables. |
-| **Ilyas** | Lead Frontend &amp; Scrum Master | Interface React 18 / TypeScript, portail de gestion de stocks Suzanne, marketplace citoyenne, consultation du panier multi-boutiques. | Interface web responsive, composants d'administration marchande. |
-| **Abdelkader** | Frontend &amp; Sécurité | Sécurité d'accès RBAC, gestion des jetons JWT, affichage réactif des QR codes de retrait, respect de l'accessibilité RGAA AA. | Module d'authentification frontend, modal de validation Click &amp; Collect. |
-| **Khalil** | Lead QA &amp; Méthodes | Stratégie TDD, couverture de tests Jacoco (seuil strict >= 80 %), tests des scénarios de compensation (*Rollback*), audit qualité. | Rapports de couverture Jacoco, suites de tests Cucumber / Gherkin automatisées. |
+| **Abdelkader** | Frontend, Sécurité &amp; Identité | Sécurité d'accès RBAC, modèles JPA et endpoints REST d'authentification (`auth_db`), émission JWT, payload QR Code de retrait sécurisé HMAC-SHA256. | Contrôleurs Auth REST, entités JPA `User`/`Role`, helper cryptographique QR code. |
+| **Gautam** | Backend &amp; Persistance Catalogue | Modèles JPA Boutique, Produits et Commande (`catalog_db`, `order_db`), contrôleurs CRUD REST fiches marchandes et gestion catalogue. | Entités JPA `Merchant`/`Product`/`Order`, API REST catalogue et boutiques. |
+| **Rayane** | Lead DevOps &amp; Systèmes | Déploiement docker compose multi-bases, conteneurisation multi-stage, simulateur Mock OpenAPI 3.1 bancaire (HTTP 200/402), pipeline CI GitLab. | Environnement Docker clé en main, simulateur bancaire OpenAPI 3.1 paramétrable. |
+| **Ilyas** | Lead Frontend &amp; Scrum Master | Interface React 18 / TypeScript / Tailwind CSS, portail de gestion de stocks Suzanne, marketplace citoyenne, consultation du panier multi-boutiques, tableau de bord commandes. | Interface web responsive, composants d'administration marchande et panier. |
+| **Khalil** | Lead QA &amp; Cœur Transactionnel 2PC | Coordinateur 2PC Spring Boot 3.3, verrous pessimistes PostgreSQL 16 (`SELECT FOR UPDATE`), scénarios de compensation (*Rollback*), stratégie TDD (Jacoco >= 80 %). | Moteur coordinateur 2PC distribué, suites de tests automatisées Testcontainers. |
 
 ---
 
