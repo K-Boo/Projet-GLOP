@@ -6,12 +6,14 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 
 ## 1. Etat Courant du Projet
 
-- **Phase active** : Cadrage Métier & Rédaction du Livrable R1 (Étapes 01 à 04, 06 à 10 COMPLETED — Étape 05 supprimée par ADR-019 — Prochaine Étape : 11 Assemblage & Compilation du Cahier des Charges Maître)
-- **Dernière mise à jour** : 2026-09-17 (Session 30)
-- **Responsable / Scrum Master** : Équipe ShopLoc (M2 MIAGE GLOP)
-- **Dépôt Projet (Cockpit / Gouvernance)** : GitHub `Projet-GLOP`
-- **Dépôt Applicatif (Code étudiant évalué)** : GitLab `projet-glop-app`
-- **Synchronisation Drive** : Configurée vers `Projet-GLOP/01_Cadrage_Metier_R1`
+- **Phase active** : Developpement & Deploiement du MVP Decembre 2026 (Jalon R4) - Composant Commande & Panier Multi-Commerces 2PC, Architecture Microservices, Tests TDD Dan Luu (JaCoCo >= 80 %), Mock Bancaire OpenAPI 3.1
+- **Derniere mise a jour** : 2026-11-08 (Session 55 - Lead QA & Coeur 2PC Khalil)
+- **Responsable / Scrum Master** : Equipe Garik (M2 MIAGE GLOP - Universite de Lille)
+- **Depot Cockpit (Gouvernance & Memoire Agentique)** : GitHub Projet-GLOP / ShopLoc
+- **Depots de Code Evalues (GitLab Univ-Lille)** : Groupe glop-garik-2026 (shoploc-cart-order-service, shoploc-auth-service, shoploc-merchant-catalog-service, shoploc-loyalty-service)
+- **Depot Plateforme & CI/CD** : GitLab shoploc-platform (Mock bancaire OpenAPI 3.1, Docker Compose, orchestration)
+- **Dernier Jalon Valide** : Session 1 de Khalil terminee (Socle relationnel JPA de commande, Machine a etats 2PC, 18 tests passes, JaCoCo 91.12%, Guide pedagogique publie)
+- **Prochaine Etape** : Session 2 de Khalil (Client REST bancaire BankClient, gestion 200/402 RFC 7807 et tests @RestClientTest)
 
 ---
 
@@ -1450,6 +1452,30 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Respect scrupuleux de l'étanchéité : aucune trace d'IA, aucun markdown, aucun prompt dans le dépôt GitLab shoploc-cart-order-service.
 - **Reste à faire / Prochaine étape** :
   - Lancement de la Session 2 de Khalil : développement du client HTTP BankClient et intégration avec le simulateur bancaire OpenAPI 3.1 ank-mock.
+
+### [2026-11-08] Session 55 : Gouvernance Avancee, Verrou de Push Distant, Normalisation Conventional Commits en Francais & Cloture des Travaux de Khalil
+- **Identifiant de session** : SESSION-2026-11-08-KHALIL-GOUVERNANCE-CONVENTIONAL-COMMITS-PUSH
+- **Objectif atomique** : Journaliser l'integralite du cycle de developpement realise par Khalil (Lead QA & Coeur 2PC), formaliser l'architecture CI/CD du projet, etablir les regles permanentes de securite Git (verrou de push distant, Conventional Commits obligatoirement en francais, zero emoji), acter l'ADR-021 et synchroniser l'ensemble des depots distants GitHub et GitLab.
+- **Actions realisees** :
+  - Audit et explication didactique de l'architecture CI/CD globale : distinction claire entre les pipelines specifiques des microservices metiers et le depot dedie de deploiement shoploc-platform (simulateur bancaire bank-mock OpenAPI 3.1, Docker Compose, orchestration).
+  - Inscription et sanctuarisation de la Regle 9 dans AGENTS.md et les instructions d'orchestration : interdiction absolue de tout push distant autonome sans consentement humain explicite dans le fil de discussion.
+  - Inscription et sanctuarisation de la Regle 10 dans AGENTS.md : normalisation des messages de commit selon le standard Conventional Commits (<type>(<perimetre>): <description>) avec obligation de rediger la description exclusivement en francais simple, clair et naturel dans le style d'un etudiant de Master 2 MIAGE (interdiction de l'anglais, zero emoji).
+  - Amendement et publication du commit e5f7d5b sur la branche main du cockpit GitHub ShopLoc avec le message docs(gouvernance): regles des commits conventional commits en francais.
+  - Controle et certification de l'alignement a jour de l'integralite des 5 depots GitLab de l'Universite de Lille (shoploc-cart-order-service, shoploc-auth-service, shoploc-merchant-catalog-service, shoploc-loyalty-service, shoploc-platform) avec etancheite absolue (zero trace d'IA dans les depots evalues).
+  - Formalisation de l'ADR-021 dans DECISIONS.md (sanctuarisation Dan Luu, verrou de push, Conventional Commits en francais).
+  - Bilan de la Session 1 de Khalil dans shoploc-cart-order-service : socle relationnel JPA de commande (OrderStatus, Order, OrderItem, OrderRepository), 18 tests adverses Dan Luu sans sur-mocking (OrderStateMachineTest, OrderPersistenceTest, CartValidationControllerTest), couverture Jacoco a 91.12%, guide pedagogique vulgarise EXPLICATION_SESSION_1_COMMANDE_JPA.md.
+  - Verification d'integrite documentaire globale via verify_deliverables.py affichant 0 canari, 0 violation et 0 emoji.
+- **Fichiers crees ou modifies** :
+  - ShopLoc/agent_projet/docs/00_Gouvernance_Projet/DECISIONS.md (ADR-021)
+  - ShopLoc/agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md (Session 55)
+  - ShopLoc/AGENTS.md et AGENTS.md (Regles 8, 9, 10)
+  - ShopLoc/.antigravity/instructions.md et .antigravity/instructions.md (Directives commit et push)
+- **Decisions actees** :
+  - Sanctuarisation de l'ADR-021.
+  - Cloture officielle et securisee des travaux de la Session 1 de Khalil.
+- **Reste a faire / Prochaine etape** :
+  - Demarrage de la Session 2 de Khalil : implementation du client HTTP BankClient.java dans shoploc-cart-order-service pour appeler le simulateur bancaire POST /api/v1/payments/debit avec gestion des statuts 200 et 402 RFC 7807, et suite de tests @RestClientTest.
+
 
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
 

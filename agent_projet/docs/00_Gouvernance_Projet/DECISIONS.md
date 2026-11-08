@@ -292,4 +292,18 @@ Chaque décision doit être formalisée ainsi :
     * Rédaction et adoption du document de gouvernance `agent_projet/docs/00_Gouvernance_Projet/RETOURS_EVALUATION_SOUTENANCE_R1.md`.
 - **Conséquences** : Clarté contractuelle absolue avec la MOA, faisabilité technique garantie pour l'échéance de décembre, socle d'outillage R2 (12 octobre) directement aligné sur l'architecture et les rôles validés.
 
+---
+
+### ADR-021 : Sanctuarisation du Protocole Dan Luu, Verrou de Push Distant et Conventional Commits en Francais
+- **Date** : 2026-11-08
+- **Statut** : Valide (Sessions 53 a 55 - Lead QA & Coeur 2PC Khalil)
+- **Contexte** : 
+  1. Les retours de la litterature empirique sur les agents de developpement (Dan Luu, 2026) demontrent que le TDD agentique produit frequemment des tests superficiels (vanity testing, sur-mocking des repositories) qui ne detectent aucun bogue reel.
+  2. La necessite de controler rigoureusement toute publication vers les serveurs distants pour eviter tout push automatique ou premature.
+  3. L'exigence de clarte et d'authenticite academique pour l'evaluation Master 2 MIAGE, imposant des messages de commit lisibles, structures et rediges dans le style naturel d'etudiants francophones.
+- **Decision** :
+  - **Protocole de Test Rigoureux (Dan Luu)** : Interdiction d'ecrire des tests unitaires tautologiques et de mocker les repositories de persistance. Utilisation obligatoire de @DataJpaTest sur base reelle en memoire. Priorite absolue aux chemins de defaillance (Fault Paths First : HTTP 402, verrous, donnees invalides, compensation rollback) avant le cas nominal.
+  - **Verrou de Push Distant Obligatoire (Regle 9)** : Interdiction formelle d'executer 'git push' vers GitHub ou GitLab de maniere autonome. Tout push necessite une confirmation humaine explicite prealable dans le chat.
+  - **Messages de Commit Git (Regle 10)** : Respect strict du standard Conventional Commits <type>(<perimetre>): <description> avec une description imperativement redigee en francais simple et direct (style etudiant MIAGE, zero mot anglais, zero emoji).
+- **Consequences** : Couverture de tests elevee et reellement pertinente (Jacoco 91.12% sur cart-order avec 0 mock relationnel), maitrise totale des flux Git distants, et historique de commit exemplaire pour l'evaluation universitaire.
 
