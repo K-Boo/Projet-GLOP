@@ -277,15 +277,17 @@ def parse_markdown_to_html(md_text, meta, b64_univ, b64_fst, css_content, genera
         header_meta_html = f"""
     <div class="cartouche-container">
       <table class="cartouche-table">
-        <tr><th>Intitule du Projet</th><td>Plateforme ShopLoc — Marketplace & Fidelisation Territoriale</td></tr>
+        <tr><th>Intitulé du Projet</th><td>Plateforme ShopLoc — Marketplace &amp; Fidélisation Territoriale</td></tr>
         <tr><th>Identifiant Officiel</th><td><code class="latex-code">MiageShopLoc</code></td></tr>
-        <tr><th>Titre du Document</th><td>{meta.get('title', 'Dossier d Architecture Technique & Choix des Outils (Livrable R2)')}</td></tr>
-        <tr><th>Reference Documentaire</th><td><code class="latex-code">{meta.get('ref', 'GLOP-2026-LIVRABLE-R2-v1.0')}</code></td></tr>
-        <tr><th>Contexte Academique</th><td>Master 2 MIAGE — UE Genie Logiciel par la Pratique / Architecture ALOM (2026-2027)</td></tr>
-        <tr><th>Maitrise d Ouvrage (MOA)</th><td>Jeremy Woirhaye, Laurence Duchien, Anne Etien, Francois Secchi</td></tr>
-        <tr><th>Entreprise Soumissionnaire</th><td>Societe Garik (Equipe de 5 etudiants Master 2 MIAGE)</td></tr>
+        <tr><th>Titre du Document</th><td>{meta.get('title', "Dossier d'Architecture Technique & Choix des Outils (Livrable R2)")}</td></tr>
+        <tr><th>Référence Documentaire</th><td><code class="latex-code">{meta.get('ref', 'GLOP-2026-LIVRABLE-R2-v1.0')}</code></td></tr>
+        <tr><th>Contexte Académique</th><td>Master 2 MIAGE — UE Génie Logiciel par la Pratique / Architecture ALOM (2026-2027)</td></tr>
+        <tr><th>Maîtrise d'Ouvrage (MOA)</th><td>Jérémy Woirhaye, Laurence Duchien, Anne Etien, François Secchi</td></tr>
+        <tr><th>Entreprise Soumissionnaire</th><td>Société Garik (Équipe de 5 étudiants Master 2 MIAGE)</td></tr>
+        <tr><th>Dépôts Git Évalués</th><td><code class="latex-code">https://gitlab.univ-lille.fr/glop-garik-2026</code> (Accès Reporter accordé MOA)</td></tr>
+        <tr><th>Suivi Agile &amp; Backlog</th><td><code class="latex-code">https://linear.app/glop-garik/</code> (Backlog INVEST actif)</td></tr>
         <tr><th>Date de remise</th><td>{meta.get('date', '19 Octobre 2026')}</td></tr>
-        <tr><th>Assistance IA &amp; Transparence</th><td>{meta.get('ai_transparency', "Document elabore avec l assistance d une intelligence artificielle (Antigravity), sous la direction, la relecture critique et la validation integrale de l equipe d ingenierie Garik.")}</td></tr>
+        <tr><th>Assistance IA &amp; Transparence</th><td>{meta.get('ai_transparency', "Document élaboré avec l'assistance d'une intelligence artificielle (Antigravity), sous la direction, la relecture critique et la validation intégrale de l'équipe d'ingénierie Garik.")}</td></tr>
       </table>
     </div>
         """
@@ -580,12 +582,12 @@ def main():
         source_content = f.read()
 
     is_r2 = "R2" in os.path.basename(source_path) or "R2" in (args.title or "") or "Architecture" in os.path.basename(source_path)
-    default_title = "Dossier d Architecture Technique & Choix des Outils (Livrable R2)" if is_r2 else "ShopLoc — Cahier des Charges & Cadrage R1"
-    default_subtitle = "Master 2 MIAGE — UE Genie Logiciel par la Pratique / Architecture ALOM (2026-2027)" if is_r2 else "Master 2 MIAGE — UE Genie Logiciel par la Pratique 2026-2027"
+    default_title = "Dossier d'Architecture Technique & Choix des Outils (Livrable R2)" if is_r2 else "ShopLoc — Cahier des Charges & Cadrage R1"
+    default_subtitle = "Master 2 MIAGE — UE Génie Logiciel par la Pratique / Architecture ALOM (2026-2027)" if is_r2 else "Master 2 MIAGE — UE Génie Logiciel par la Pratique 2026-2027"
     default_ref = "GLOP-2026-LIVRABLE-R2-v1.0" if is_r2 else "GLOP-2026-LIVRABLE-R1-v1.0"
     default_date = "19 Octobre 2026" if is_r2 else "18 Septembre 2026"
     default_ai_transparency = (
-        "Document elabore avec l assistance d une intelligence artificielle (Antigravity), sous la direction, la relecture critique et la validation integrale de l equipe d ingenierie Garik."
+        "Document élaboré avec l'assistance d'une intelligence artificielle (Antigravity), sous la direction, la relecture critique et la validation intégrale de l'équipe d'ingénierie Garik."
     )
 
     meta = {
