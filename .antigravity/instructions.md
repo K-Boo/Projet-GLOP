@@ -81,7 +81,15 @@ Toute instruction utilisateur brute ou informelle (ex: "ajoute l'endpoint de sto
 3. **Interdiction Formelle d'Auto-Validation d'Artefacts (Accord Humain Explicite Requis)** :
    - Même si le système IDE émet un événement d'auto-approbation technique d'un artefact, **l'agent a l'interdiction absolue d'exécuter la suite sans validation manuelle et textuelle de l'utilisateur dans le chat**.
    - Tout plan d'action, tout document ou livrable officiel requiert une réponse écrite explicite de l'utilisateur avant toute concrétisation.
-4. **Méthode de Co-Design Itérative du Cahier des Charges (Figure par Figure)** :
+4. **Interdiction Formelle de Push Distant Autonome (No Autonomous Push)** :
+   - L'agent a l'interdiction formelle et absolue d'exécuter `git push` vers un serveur distant (GitHub ou GitLab) sans une demande textuelle directe de l'utilisateur ou sans avoir préalablement posé la question et obtenu un accord explicite dans le chat.
+   - Les commits locaux sont autorisés dès lors que la Definition of Done (DoD) est validée, mais le push vers le dépôt distant reste strictement sous contrôle humain.
+5. **Messages de Commit Git : Conventional Commits en Francais (Style Etudiant)** :
+   - Format obligatoire : `<type>(<perimetre>): <description en francais>`
+   - Types autorises : `feat`, `fix`, `test`, `docs`, `refactor`, `ci`, `build`, `chore`.
+   - L'agent a l'interdiction formelle de rediger la description en anglais (ex: pas de "add feature", "fix bug").
+   - Tous les commits doivent employer un francais sobre, simple, direct et naturel d'etudiants en Master 2 MIAGE (ex: `feat(commande): ajout des entites jpa et de la machine a etats`, `test(mock): integration du simulateur bancaire`).
+6. **Méthode de Co-Design Itérative du Cahier des Charges (Figure par Figure)** :
    - **Atelier préalable /grill-me** : Avant chaque livrable et chaque section, une série de questions ciblées est soumise à l'utilisateur pour vérifier la compréhension, challenger les choix et aligner les arbitrages.
    - **Démarche Visuelle Granulaire (Figure par Figure)** :
      - *Étape A* : Échange pédagogique sur la figure (intérêt du document, rôle stratégique, ce à quoi il sert) et questions de validation.
