@@ -1419,6 +1419,38 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Développement du moteur coordinateur 2PC et des verrous pessimistes dans shoploc-cart-order-service (Khalil).
   - Finalisation du livrable financier R3.
 
+### [2026-11-08] Session 54 — Réalisation Session 1 Khalil : Modèle de Persistance JPA Commande & Guide Pédagogique (Principes Dan Luu)
+- **Identifiant de session** : SESSION-2026-11-08-KHALIL-SESSION-1-ORDER-JPA
+- **Objectif atomique** : Exécuter la Session 1 de Khalil dans shoploc-cart-order-service selon le protocole de test Dan Luu : création du modèle relationnel JPA (Order, OrderItem, OrderStatus), validation des chemins de défaillance (Fault Paths First), persistance relationnelle sans sur-mocking (@DataJpaTest), rédaction du guide pédagogique explicatif vulgarisé dans le cockpit ShopLoc, et certification de la couverture Jacoco (91.12%).
+- **Actions réalisées** :
+  - Création de la machine à états OrderStatus validant rigoureusement les transitions 2PC (CREATED -> STOCK_HOLD -> CONFIRMED ou RELEASED) et levant IllegalStateException sur transition illégale.
+  - Modélisation de l'entité racine Order et de la ligne OrderItem avec invariants stricts (somme des montants, quantités > 0, partitionnement multi-boutiques getItemsByMerchant()).
+  - Implémentation du repository Spring Data JPA OrderRepository.
+  - Développement de la suite de tests unitaires adverses OrderStateMachineTest (rejet de quantite invalide, rejet de commande vide, rejet de saut d'etat, cycle nominal 2PC et cycle de compensation 402).
+  - Développement du test d'intégration @DataJpaTest OrderPersistenceTest sur base réelle en mémoire avec validation de cascade et des requêtes dérivées.
+  - Ajout du test unitaire CartValidationControllerTest pour couvrir les flux du contrôleur panier existant.
+  - Rédaction du document d'explication et de vulgarisation EXPLICATION_SESSION_1_COMMANDE_JPA.md dans le cockpit ShopLoc.
+  - Exécution complète de mvn test : 18 tests exécutés, 0 échec, 0 erreur, couverture Jacoco atteinte à 91.12% d'instructions (seuil requis >= 80%).
+  - Contrôle d'intégrité globale erify_deliverables.py (86 fichiers audités, 0 canari, 0 violation).
+- **Fichiers créés ou modifiés** :
+  - *Dépôt de code évalué (shoploc-cart-order-service)* :
+    * src/main/java/fr/univlille/shoploc/cartorder/domain/OrderStatus.java
+    * src/main/java/fr/univlille/shoploc/cartorder/domain/OrderItem.java
+    * src/main/java/fr/univlille/shoploc/cartorder/domain/Order.java
+    * src/main/java/fr/univlille/shoploc/cartorder/repository/OrderRepository.java
+    * src/test/java/fr/univlille/shoploc/cartorder/domain/OrderStateMachineTest.java
+    * src/test/java/fr/univlille/shoploc/cartorder/domain/OrderPersistenceTest.java
+    * src/test/java/fr/univlille/shoploc/cartorder/web/CartValidationControllerTest.java
+  - *Cockpit agentique (ShopLoc)* :
+    * gent_projet/docs/03_Architecture_Technique_R4_R5/EXPLICATION_SESSION_1_COMMANDE_JPA.md
+    * ShopLoc/.agents/skills/agentic-testing-danluu/SKILL.md
+    * ShopLoc/agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md
+- **Décisions actées** :
+  - Clôture réussie de la Session 1 de Khalil : le socle de persistance commande est stable, testé et conforme aux standards de l'artisanat logiciel.
+  - Respect scrupuleux de l'étanchéité : aucune trace d'IA, aucun markdown, aucun prompt dans le dépôt GitLab shoploc-cart-order-service.
+- **Reste à faire / Prochaine étape** :
+  - Lancement de la Session 2 de Khalil : développement du client HTTP BankClient et intégration avec le simulateur bancaire OpenAPI 3.1 ank-mock.
+
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
 
 A la fin de chaque session de chat, l'agent ou l'utilisateur execute la mise a jour de ce fichier selon le format suivant :
