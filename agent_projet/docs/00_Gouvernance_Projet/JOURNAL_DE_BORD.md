@@ -7,13 +7,13 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 ## 1. Etat Courant du Projet
 
 - **Phase active** : Developpement & Deploiement du MVP Decembre 2026 (Jalon R4) - Composant Commande & Panier Multi-Commerces 2PC, Architecture Microservices, Tests TDD Dan Luu (JaCoCo >= 80 %), Mock Bancaire OpenAPI 3.1
-- **Derniere mise a jour** : 2026-11-08 (Session 55 - Lead QA & Coeur 2PC Khalil)
+- **Derniere mise a jour** : 2026-11-09 (Session 56 - Lead QA & Coeur 2PC Khalil)
 - **Responsable / Scrum Master** : Equipe Garik (M2 MIAGE GLOP - Universite de Lille)
 - **Depot Cockpit (Gouvernance & Memoire Agentique)** : GitHub Projet-GLOP / ShopLoc
 - **Depots de Code Evalues (GitLab Univ-Lille)** : Groupe glop-garik-2026 (shoploc-cart-order-service, shoploc-auth-service, shoploc-merchant-catalog-service, shoploc-loyalty-service)
 - **Depot Plateforme & CI/CD** : GitLab shoploc-platform (Mock bancaire OpenAPI 3.1, Docker Compose, orchestration)
-- **Dernier Jalon Valide** : Session 1 de Khalil terminee (Socle relationnel JPA de commande, Machine a etats 2PC, 18 tests passes, JaCoCo 91.12%, Guide pedagogique publie)
-- **Prochaine Etape** : Session 2 de Khalil (Client REST bancaire BankClient, gestion 200/402 RFC 7807 et tests @RestClientTest)
+- **Dernier Jalon Valide** : Session 2 de Khalil terminee (Client REST bancaire BankClient, modeles DTOs et conformite RFC 7807 Problem Details, 29 tests passes, JaCoCo 91.78%, Guide pedagogique Session 2 publie)
+- **Prochaine Etape** : Session 3 de Khalil (Orchestrateur Two-Phase Commit 2PC, verrous pessimistes PostgreSQL SELECT FOR UPDATE, scenarios de Rollback sur HTTP 402)
 
 ---
 
@@ -1475,6 +1475,43 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Cloture officielle et securisee des travaux de la Session 1 de Khalil.
 - **Reste a faire / Prochaine etape** :
   - Demarrage de la Session 2 de Khalil : implementation du client HTTP BankClient.java dans shoploc-cart-order-service pour appeler le simulateur bancaire POST /api/v1/payments/debit avec gestion des statuts 200 et 402 RFC 7807, et suite de tests @RestClientTest.
+
+
+### [2026-11-09] Session 56 : Realisation Session 2 Khalil - Client Bancaire RestClient & Resilience RFC 7807 (Principes Dan Luu)
+- **Identifiant de session** : SESSION-2026-11-09-KHALIL-SESSION-2-BANK-RESTCLIENT
+- **Objectif atomique** : Executer la Session 2 de Khalil dans shoploc-cart-order-service conformement aux principes Dan Luu : synchronisation des changements distants de Gautam (shoploc-merchant-catalog-service), ajout des modeles d'echange de paiement (PaymentDebitRequest, PaymentDebitResponse, BankProblemDetails RFC 7807, PaymentResult), redaction des tests adverses Dan Luu (@RestClientTest sur MockRestServiceServer), implementation du client HTTP BankClient, publication du guide pedagogique explicatif Session 2 et certification qualimetrique JaCoCo (91.78%).
+- **Actions realisees** :
+  - Synchronisation Git de l'ensemble des 6 depots (pull reussi de la session Gautam sur shoploc-merchant-catalog-service, 31 fichiers).
+  - Verification preliminaire de non-regression de tous les microservices (100% succes sur l'ensemble des modules).
+  - Ajout des proprietes d'URL du simulateur bancaire dans application.properties (shoploc.services.bank.url et services.bank.url).
+  - Conception des DTOs et records immutables de paiement sous le package fr.univlille.shoploc.cartorder.dto.bank avec validation Jakarta (PaymentDebitRequest, PaymentDebitResponse, BankProblemDetails, PaymentResult).
+  - Implementation de la suite de tests unitaires PaymentDtoTest validant les invariants et la conformite RFC 7807.
+  - Developpement de la suite de tests adverses Dan Luu BankClientTest sur MockRestServiceServer couvrant 4 chemins de defaillance (refus 402 RFC 7807, erreur 400 Bad Request, panne serveur 500, statut metier REJECTED) et le chemin nominal 200 OK APPROVED.
+  - Developpement du client HTTP Spring Boot 3.3 BankClient s'appuyant sur RestClient.Builder et interceptant les exceptions de reponse pour deserialiser le format application/problem+json RFC 7807.
+  - Execution de 4 commits modulaires dans shoploc-cart-order-service respectant le formalisme Conventional Commits en francais.
+  - Redaction du document pedagogique et de vulgarisation EXPLICATION_SESSION_2_CLIENT_BANCAIRE.md dans le cockpit ShopLoc.
+  - Execution de la suite complete de tests cart-order-service : 29 tests executes, 0 echec, 0 erreur, couverture Jacoco atteinte a 91.78% d'instructions (seuil requis >= 80%).
+  - Verification d'integrite documentaire globale via verify_deliverables.py (87 fichiers audites, 0 canari, 0 violation, 0 emoji).
+- **Fichiers crees ou modifies** :
+  - *Depot de code evalue (shoploc-cart-order-service)* :
+    * src/main/resources/application.properties
+    * src/test/resources/application.properties
+    * src/main/java/fr/univlille/shoploc/cartorder/dto/bank/PaymentDebitRequest.java
+    * src/main/java/fr/univlille/shoploc/cartorder/dto/bank/PaymentDebitResponse.java
+    * src/main/java/fr/univlille/shoploc/cartorder/dto/bank/BankProblemDetails.java
+    * src/main/java/fr/univlille/shoploc/cartorder/dto/bank/PaymentResult.java
+    * src/main/java/fr/univlille/shoploc/cartorder/client/BankClient.java
+    * src/test/java/fr/univlille/shoploc/cartorder/dto/bank/PaymentDtoTest.java
+    * src/test/java/fr/univlille/shoploc/cartorder/client/BankClientTest.java
+  - *Cockpit agentique (ShopLoc)* :
+    * agent_projet/docs/03_Architecture_Technique_R4_R5/EXPLICATION_SESSION_2_CLIENT_BANCAIRE.md
+    * agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md
+- **Decisions actees** :
+  - Validation de la passerelle bancaire HTTP conforme au contrat OpenAPI 3.1 du simulateur bank-mock.
+  - Cloture officielle et securisee des travaux de la Session 2 de Khalil.
+  - Respect absolu de l'etancheite IA et de la politique zero emoji.
+- **Reste a faire / Prochaine etape** :
+  - Lancement de la Session 3 de Khalil : implementation de l'orchestrateur Two-Phase Commit (2PC) articulant la reservation de stock avec verrous pessimistes et l'appel bancaire BankClient.
 
 
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
