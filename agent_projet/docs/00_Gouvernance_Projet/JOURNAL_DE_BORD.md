@@ -7,13 +7,13 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 ## 1. Etat Courant du Projet
 
 - **Phase active** : Developpement & Deploiement du MVP Decembre 2026 (Jalon R4) - Composant Commande & Panier Multi-Commerces 2PC, Architecture Microservices, Tests TDD Dan Luu (JaCoCo >= 80 %), Mock Bancaire OpenAPI 3.1
-- **Derniere mise a jour** : 2026-11-09 (Session 56 - Lead QA & Coeur 2PC Khalil)
+- **Derniere mise a jour** : 2026-11-10 (Session 57 - Gouvernance Linear & Scrum Sprint 1)
 - **Responsable / Scrum Master** : Equipe Garik (M2 MIAGE GLOP - Universite de Lille)
 - **Depot Cockpit (Gouvernance & Memoire Agentique)** : GitHub Projet-GLOP / ShopLoc
 - **Depots de Code Evalues (GitLab Univ-Lille)** : Groupe glop-garik-2026 (shoploc-cart-order-service, shoploc-auth-service, shoploc-merchant-catalog-service, shoploc-loyalty-service)
 - **Depot Plateforme & CI/CD** : GitLab shoploc-platform (Mock bancaire OpenAPI 3.1, Docker Compose, orchestration)
-- **Dernier Jalon Valide** : Session 2 de Khalil terminee (Client REST bancaire BankClient, modeles DTOs et conformite RFC 7807 Problem Details, 29 tests passes, JaCoCo 91.78%, Guide pedagogique Session 2 publie)
-- **Prochaine Etape** : Session 3 de Khalil (Orchestrateur Two-Phase Commit 2PC, verrous pessimistes PostgreSQL SELECT FOR UPDATE, scenarios de Rollback sur HTTP 402)
+- **Dernier Jalon Valide** : Cloture des Sessions 1 et 2 de Khalil, Push du Commit 4 certifie, Rationalisation Linear en 4 colonnes, Activation des Cycles/Sprints (Sprint 1 demarre), Publication du Guide Backlog Linear & Scrum
+- **Prochaine Etape** : Session 3 de Khalil (PRO-47 : Orchestrateur Two-Phase Commit 2PC, verrous pessimistes PostgreSQL SELECT FOR UPDATE, scenarios de Rollback sur HTTP 402)
 
 ---
 
@@ -1512,6 +1512,30 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Respect absolu de l'etancheite IA et de la politique zero emoji.
 - **Reste a faire / Prochaine etape** :
   - Lancement de la Session 3 de Khalil : implementation de l'orchestrateur Two-Phase Commit (2PC) articulant la reservation de stock avec verrous pessimistes et l'appel bancaire BankClient.
+
+
+### [2026-11-10] Session 57 : Gouvernance Linear, Rationalisation des Colonnes, Activation des Sprints & Guide Methodologique d'Equipe
+- **Identifiant de session** : SESSION-2026-11-10-LINEAR-SCRUM-GOVERNANCE-SPRINTS
+- **Objectif atomique** : Repondre aux interrogations fondamentales sur la gestion du backlog Linear : certifier le push du Commit 4, simplifier le flux de travail Linear (passage de 8 a 4 colonnes), activer officiellement les Cycles/Sprints (demarrage du Sprint 1 le 10 novembre 2026), expliciter la nomenclature des tickets ([US-XX] macro vs [US-XX-TYY] micro), actualiser les tickets termines de Khalil (PRO-50, PRO-52, PRO-59 a 'Termine (Done)'), et publier le guide methodologique GUIDE_GESTION_BACKLOG_LINEAR_SCRUM.md pour l'ensemble de l'equipe Garik.
+- **Actions realisees** :
+  - Verification et certification que le Commit 4 (366e894) a bien ete commite et pousse sur origin/main du depot GitLab shoploc-cart-order-service.
+  - Audit approfondi de la configuration Linear via l'API GraphQL : decouverte que l'option cyclesEnabled etait desactivee (false), expliquant l'absence apparente de Sprints et l'affichage plat de tous les tickets.
+  - Activation immediate des Sprints (Cycles de 2 semaines) et lancement officiel du Sprint 1 (du 10 au 29 novembre 2026) avec affectation des tickets actifs et termines.
+  - Rationalisation du flux Kanban Linear : archivage des 2 colonnes started redondantes (In Review & QA, CI/CD) et renommage des etats restants en 4 colonnes limpides : Backlog (User Stories), A faire (Sprint Backlog), En cours (In Progress), Termine (Done).
+  - Clarification de l'illusion d'"achevement eclair des US" : distinction formelle entre les User Stories macro fonctionnelles (qui restent dans le Backlog) et les sous-taches techniques atomiques T01/T02/T03 d'une a trois heures.
+  - Mise a jour des tickets realises par Khalil : PRO-50 (Modele JPA Order), PRO-52 (Tests unitaires commande) et creation de PRO-59 (Client HTTP RestClient BankClient) tous positionnes a Termine (Done) et assignes nominativement a Khalil.
+  - Redaction et publication du guide exhaustif GUIDE_GESTION_BACKLOG_LINEAR_SCRUM.md dans le cockpit ShopLoc.
+  - Execution du script verify_deliverables.py (88 fichiers audites, 0 canari, 0 violation, 0 emoji).
+- **Fichiers crees ou modifies** :
+  - *Cockpit agentique (ShopLoc)* :
+    * agent_projet/docs/00_Gouvernance_Projet/GUIDE_GESTION_BACKLOG_LINEAR_SCRUM.md
+    * agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md
+- **Decisions actees** :
+  - Sanctuarisation de la nomenclature [US-XX-TYY] pour toutes les taches techniques futures.
+  - Adoption officielle des Sprints de 2 semaines sur Linear pour le jalon MVP R4.
+  - Validation de la cloture des Sessions 1 et 2 de Khalil sur le board de gestion de projet.
+- **Reste a faire / Prochaine etape** :
+  - Lancement de la Session 3 de Khalil sur le ticket PRO-47 (Moteur Coordinateur 2PC dans Cart & Order Service, endpoints commit/rollback, verrous pessimistes).
 
 
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
