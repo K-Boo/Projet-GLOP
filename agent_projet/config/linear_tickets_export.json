@@ -1,55 +1,50 @@
 {
+  "id": "9dca7a65-1996-4e23-a892-2a26a5fc3acb",
   "name": "Projet-GLOP",
   "key": "PRO",
   "states": {
     "nodes": [
       {
-        "id": "d3eb13e6-87de-4ead-bc87-a97611b6cd09",
-        "name": "CI/CD & Autograding",
-        "type": "started",
-        "position": 2000
-      },
-      {
-        "id": "9f49069d-8f0f-43b6-a22e-d4159b7ca127",
-        "name": "In Review & QA (80% Jacoco)",
-        "type": "started",
-        "position": 1000
-      },
-      {
         "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
-        "name": "Sprint Backlog (Ready)",
+        "name": "A faire (Sprint Backlog)",
         "type": "unstarted",
-        "position": 2
+        "position": 2,
+        "color": "#e2e2e2"
       },
       {
         "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
-        "name": "Done (Production)",
+        "name": "Termine (Done)",
         "type": "completed",
-        "position": 6
+        "position": 6,
+        "color": "#27ae60"
       },
       {
         "id": "bec74436-3935-4e5a-92e9-7ff25d090ba2",
-        "name": "Triage / Backlog",
+        "name": "Backlog (User Stories)",
         "type": "backlog",
-        "position": 1
+        "position": 1,
+        "color": "#bec2c8"
       },
       {
         "id": "797deca8-345e-499d-8725-f37ac762d8f1",
-        "name": "In Dev (TDD Red-Green)",
+        "name": "En cours (In Progress)",
         "type": "started",
-        "position": 0
+        "position": 0,
+        "color": "#f2c94c"
       },
       {
         "id": "36ddcaa3-1107-409d-93a9-a862e18caf92",
         "name": "Canceled",
         "type": "canceled",
-        "position": 7
+        "position": 7,
+        "color": "#95a5a6"
       },
       {
         "id": "12bbb682-4a88-459f-b64e-bcec86f26fb6",
         "name": "Duplicate",
         "type": "duplicate",
-        "position": 5
+        "position": 5,
+        "color": "#95a2b3"
       }
     ]
   },
@@ -140,31 +135,161 @@
   "issues": {
     "nodes": [
       {
+        "id": "ef1fabf1-2ab5-480a-87d3-199d062a4ca4",
+        "identifier": "PRO-59",
+        "title": "[US-09-T00] Client HTTP Bancaire RestClient & Resilience RFC 7807 (BankClient)",
+        "description": "Implementation du client HTTP REST BankClient dans shoploc-cart-order-service pour consommer le simulateur bancaire OpenAPI 3.1 (/api/v1/payments/debit).\n\n* Modeles DTOs immutables : PaymentDebitRequest, PaymentDebitResponse, BankProblemDetails (RFC 7807), PaymentResult.\n* Gestion des statuts HTTP 200 OK (APPROVED) et refus 402 (Payment Required) declenchant le Rollback 2PC.\n* Suite de tests unitaires et d'integration Dan Luu (@RestClientTest) avec 29 tests au total et une couverture Jacoco de 91.78%.\n* Commits modulaires effectues et synchronises avec GitLab.",
+        "estimate": null,
+        "priority": 1,
+        "state": {
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
+        },
+        "assignee": {
+          "id": "fe7c4534-dd68-4778-a718-048612a4e071",
+          "displayName": "khalil",
+          "email": "khalil.mailgeneral@gmail.com"
+        },
+        "labels": {
+          "nodes": []
+        }
+      },
+      {
+        "id": "00f07415-4137-466d-8d7b-0030a80b7e2b",
+        "identifier": "PRO-58",
+        "title": "[DEVOPS-03] Pipeline GitLab CI Multi-Services & Certification Jacoco >= 80%",
+        "description": "### Description de la Tâche DevOps\n\nMise en place de l'intégration continue GitLab CI sur la forge de l'Université de Lille pour tous les microservices ShopLoc.\n\n### Exigences Techniques\n\n1. **Pipeline multi-étapes** :\n   * `build` : Compilation Maven avec Java 17 Temurin / OpenJDK 17.\n   * `test` : Exécution de `mvn clean test` avec génération du rapport Jacoco.\n   * `quality-gate` : Seuil bloquant sur le rapport `jacoco.csv` ou `jacoco.xml` exigeant strictement **Line Coverage >= 80%**.\n2. **Intégration GitLab** :\n   * Regex d'extraction du taux de couverture affiché dans les Merge Requests (`Total.*Coverage:\\s*([0-9.]+)%`).\n   * Publication des rapports Surefire / JUnit en artifacts GitLab CI.\n3. **Optimisation du cache** :\n   * Mise en cache du dossier `.m2/repository` pour accélérer l'exécution des jobs sous 2 minutes.\n\n### Livrables Attendus\n\n* Fichier `.gitlab-ci.yml` modèle et déployé sur chaque microservice (`shoploc-auth-service`, `shoploc-merchant-catalog-service`, `shoploc-cart-order-service`).\n* Preuve d'exécution d'un pipeline complet avec badge de couverture de test.",
+        "estimate": 2,
+        "priority": 0,
+        "state": {
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
+          "type": "unstarted"
+        },
+        "assignee": {
+          "id": "40bf7df7-0a1f-4227-b3dd-4442db8f33c1",
+          "displayName": "mwb9650",
+          "email": "mwb9650@gmail.com"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "id": "2c86910b-5102-4942-80eb-559d7a3df832",
+              "name": "tech:cicd-docker",
+              "color": "#0284c7"
+            },
+            {
+              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
+              "name": "tech:unit-test",
+              "color": "#16a34a"
+            },
+            {
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
+            }
+          ]
+        }
+      },
+      {
+        "id": "06c19637-b81a-4ed7-9cf9-74ab404037f1",
+        "identifier": "PRO-57",
+        "title": "[DEVOPS-02] Simulateur Mock Bancaire OpenAPI 3.1 Conteneurisé (HTTP 200 / 402)",
+        "description": "### Description de la Tâche DevOps\n\nDéveloppement et conteneurisation du simulateur d'autorisation de paiement bancaire pour tester les scénarios nominaux et d'échec du protocole Two-Phase Commit (2PC).\n\n### Exigences Techniques\n\n1. **Contrat d'interface OpenAPI 3.1** :\n   * Endpoint : `POST /api/v1/payments/authorize`\n   * Payload : montant, devise, token de carte bancaire, référence commande.\n2. **Scénario Nominal (Phase 2 Commit)** :\n   * Carte valide (ou montant inférieur à un seuil défini) -> Réponse HTTP 200 OK avec `{ \"status\": \"AUTHORIZED\", \"authCode\": \"AUTH-12345\" }`.\n3. **Scénario Dégradé (Phase 2 Rollback / Compensation)** :\n   * Carte invalide (ex. se terminant par 402 ou payload spécifique) -> Réponse HTTP 402 Payment Required avec `{ \"status\": \"DECLINED\", \"reason\": \"INSUFFICIENT_FUNDS\" }`.\n4. **Simulation de Latence & Pannes Réseau** :\n   * Possibilité d'injecter une latence (> 5000 ms) ou une erreur HTTP 504 pour valider le timeout du coordinateur 2PC.\n5. **Conteneurisation Docker** :\n   * Image légère intégrée au `docker-compose.yml` sur le port 8089.\n\n### Livrables Attendus\n\n* Spécification `openapi.yaml` du simulateur.\n* Code source et `Dockerfile` du simulateur bancaire dans `shoploc-platform/mock-bank`.",
+        "estimate": 2,
+        "priority": 0,
+        "state": {
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
+          "type": "unstarted"
+        },
+        "assignee": {
+          "id": "40bf7df7-0a1f-4227-b3dd-4442db8f33c1",
+          "displayName": "mwb9650",
+          "email": "mwb9650@gmail.com"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "id": "2c86910b-5102-4942-80eb-559d7a3df832",
+              "name": "tech:cicd-docker",
+              "color": "#0284c7"
+            },
+            {
+              "id": "cc3fd0e9-6af5-419e-87f1-7c98c3b31549",
+              "name": "tech:openapi-contract",
+              "color": "#4b9fe1"
+            },
+            {
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
+            }
+          ]
+        }
+      },
+      {
+        "id": "a5714837-f8a8-4a5d-bf76-161fb6c2ed2c",
+        "identifier": "PRO-56",
+        "title": "[DEVOPS-01] Orchestration Docker Compose Multi-Bases PostgreSQL 16 & Microservices",
+        "description": "### Description de la Tâche DevOps\n\nMise en place de l'orchestration locale unifiée pour les 3 microservices du MVP ShopLoc sous Docker Compose.\n\n### Exigences Techniques\n\n1. **Instances PostgreSQL 16 indépendantes (Database-per-Service)** :\n   * `shoploc-auth-db` : Port hôte 5432, base `auth_db`, utilisateur `shoploc_auth`.\n   * `shoploc-catalog-db` : Port hôte 5433, base `catalog_db`, utilisateur `shoploc_catalog`.\n   * `shoploc-order-db` : Port hôte 5434, base `order_db`, utilisateur `shoploc_order`.\n2. **Volumes Docker persistants** pour conserver l'état des bases entre redémarrages.\n3. **Réseau bridge interne** `shoploc-network` reliant tous les conteneurs.\n4. **Healthchecks** sur chaque base pour ordonnancer le démarrage des microservices.\n5. **Commande de démarrage unifiée** : `docker compose up --build`.\n\n### Livrables Attendus\n\n* Fichier `docker-compose.yml` à la racine de `shoploc-platform`.\n* Fichier `.env.example` documentant les variables d'environnement requises.\n* Scripts d'initialisation SQL `/docker-entrypoint-initdb.d/` si nécessaire.",
+        "estimate": 2,
+        "priority": 0,
+        "state": {
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
+          "type": "unstarted"
+        },
+        "assignee": {
+          "id": "40bf7df7-0a1f-4227-b3dd-4442db8f33c1",
+          "displayName": "mwb9650",
+          "email": "mwb9650@gmail.com"
+        },
+        "labels": {
+          "nodes": [
+            {
+              "id": "2c86910b-5102-4942-80eb-559d7a3df832",
+              "name": "tech:cicd-docker",
+              "color": "#0284c7"
+            },
+            {
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
+            }
+          ]
+        }
+      },
+      {
         "id": "ff1cb1c0-842f-4376-be40-11cd97574120",
         "identifier": "PRO-55",
         "title": "[US-11-T03] Tests Unitaires Retrait & Transition d'Etat",
         "description": "Verification des transitions d'etat strictes et impossibilite de retrait double.",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "parent": {
-          "id": "a255ed35-5c37-4d92-9955-285e00f73c6f",
-          "identifier": "PRO-15",
-          "title": "[US-11] Interface Web Ergonomique et Adaptée (Persona Pierre 74 ans)"
-        },
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:cart-order"
+              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "name": "service:cart-order",
+              "color": "#e2843b"
             },
             {
-              "name": "tech:unit-test"
+              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
+              "name": "tech:unit-test",
+              "color": "#16a34a"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -175,26 +300,29 @@
         "title": "[US-11-T02] Vue Tableau de Bord Commandes Commercant",
         "description": "Endpoint de consultation des commandes en attente de preparation et de retrait pour une boutique donnee.",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "parent": {
-          "id": "a255ed35-5c37-4d92-9955-285e00f73c6f",
-          "identifier": "PRO-15",
-          "title": "[US-11] Interface Web Ergonomique et Adaptée (Persona Pierre 74 ans)"
-        },
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:cart-order"
+              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "name": "service:cart-order",
+              "color": "#e2843b"
             },
             {
-              "name": "tech:business-rules"
+              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
+              "name": "tech:business-rules",
+              "color": "#9333ea"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -205,26 +333,29 @@
         "title": "[US-11-T01] Endpoint Validation QR Code Retrait Commercant",
         "description": "Endpoint POST /api/orders/sub-orders/{id}/validate-pickup verifiant le jeton QR code du client.",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "parent": {
-          "id": "a255ed35-5c37-4d92-9955-285e00f73c6f",
-          "identifier": "PRO-15",
-          "title": "[US-11] Interface Web Ergonomique et Adaptée (Persona Pierre 74 ans)"
-        },
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:cart-order"
+              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "name": "service:cart-order",
+              "color": "#e2843b"
             },
             {
-              "name": "tech:business-rules"
+              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
+              "name": "tech:business-rules",
+              "color": "#9333ea"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -235,26 +366,33 @@
         "title": "[US-10-T03] Tests Unitaires Confirmation Commande & QR Code",
         "description": "Validation JUnit 5 de la creation des sous-commandes et de l'integrite du QR Code.",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
-          "type": "unstarted"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "parent": {
-          "id": "e51d068d-b5b2-49ed-9fa5-e91743e668fa",
-          "identifier": "PRO-14",
-          "title": "[US-10] Choix du Créneau de Retrait chez Chaque Commerçant"
+        "assignee": {
+          "id": "fe7c4534-dd68-4778-a718-048612a4e071",
+          "displayName": "khalil",
+          "email": "khalil.mailgeneral@gmail.com"
         },
         "labels": {
           "nodes": [
             {
-              "name": "service:cart-order"
+              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "name": "service:cart-order",
+              "color": "#e2843b"
             },
             {
-              "name": "tech:unit-test"
+              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
+              "name": "tech:unit-test",
+              "color": "#16a34a"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -265,26 +403,33 @@
         "title": "[US-10-T02] Generation de Payload QR Code de Retrait Sécurisé",
         "description": "Generation d'une cle cryptographique unique et du QR Code associe pour le retrait Click & Collect.",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
-          "type": "unstarted"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "parent": {
-          "id": "e51d068d-b5b2-49ed-9fa5-e91743e668fa",
-          "identifier": "PRO-14",
-          "title": "[US-10] Choix du Créneau de Retrait chez Chaque Commerçant"
+        "assignee": {
+          "id": "2bd79ef4-1c1e-421a-94f8-6b7b638ca366",
+          "displayName": "abdelkader.heddi.etu",
+          "email": "abdelkader.heddi.etu@univ-lille.fr"
         },
         "labels": {
           "nodes": [
             {
-              "name": "service:cart-order"
+              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "name": "service:cart-order",
+              "color": "#e2843b"
             },
             {
-              "name": "tech:business-rules"
+              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
+              "name": "tech:business-rules",
+              "color": "#9333ea"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -295,26 +440,33 @@
         "title": "[US-10-T01] Modele JPA Order, SubOrder & Statuts de Commande",
         "description": "Entites JPA Order et MerchantSubOrder avec statuts (CONFIRMED, PREPARING, READY_FOR_PICKUP, COMPLETED).",
         "estimate": 2,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
-          "type": "unstarted"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "parent": {
-          "id": "e51d068d-b5b2-49ed-9fa5-e91743e668fa",
-          "identifier": "PRO-14",
-          "title": "[US-10] Choix du Créneau de Retrait chez Chaque Commerçant"
+        "assignee": {
+          "id": "fe7c4534-dd68-4778-a718-048612a4e071",
+          "displayName": "khalil",
+          "email": "khalil.mailgeneral@gmail.com"
         },
         "labels": {
           "nodes": [
             {
-              "name": "service:cart-order"
+              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "name": "service:cart-order",
+              "color": "#e2843b"
             },
             {
-              "name": "tech:jpa-database"
+              "id": "4d547c5b-aa93-4708-a7e0-6f1beb6653d2",
+              "name": "tech:jpa-database",
+              "color": "#d97706"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -325,29 +477,34 @@
         "title": "[US-09-T03] Tests de Resilience 2PC & Scenarios de Panne",
         "description": "Simulation d'echec sur un commerce B sur 3 et verification du rollback automatique sur commerces A et C.",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "parent": {
-          "id": "3f6bccc4-7895-4ba0-bf5c-a5678969b1c1",
-          "identifier": "PRO-13",
-          "title": "[US-09] Sécurité des Pannes Transactionnelles (Timeout & Compensation Automatique)"
-        },
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:cart-order"
+              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "name": "service:cart-order",
+              "color": "#e2843b"
             },
             {
-              "name": "tech:unit-test"
+              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
+              "name": "tech:unit-test",
+              "color": "#16a34a"
             },
             {
-              "name": "tech:restclient-2pc"
+              "id": "d9f05449-2645-443f-a493-22ba804871e0",
+              "name": "tech:restclient-2pc",
+              "color": "#d03535"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -358,29 +515,34 @@
         "title": "[US-09-T02] Endpoints /api/inventory/commit et /rollback",
         "description": "Endpoints de validation definitive de deduction de stock ou liberation immediate du verrou de reservation.",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "parent": {
-          "id": "3f6bccc4-7895-4ba0-bf5c-a5678969b1c1",
-          "identifier": "PRO-13",
-          "title": "[US-09] Sécurité des Pannes Transactionnelles (Timeout & Compensation Automatique)"
-        },
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:catalog"
+              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "name": "service:catalog",
+              "color": "#0f7830"
             },
             {
-              "name": "tech:business-rules"
+              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
+              "name": "tech:business-rules",
+              "color": "#9333ea"
             },
             {
-              "name": "tech:restclient-2pc"
+              "id": "d9f05449-2645-443f-a493-22ba804871e0",
+              "name": "tech:restclient-2pc",
+              "color": "#d03535"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -391,26 +553,29 @@
         "title": "[US-09-T01] Moteur Coordinateur 2PC dans Cart & Order Service",
         "description": "Orchestrateur Two-Phase Commit executant prepareAll puis commitAll ou rollbackAll selon reponse unanime.",
         "estimate": 3,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "parent": {
-          "id": "3f6bccc4-7895-4ba0-bf5c-a5678969b1c1",
-          "identifier": "PRO-13",
-          "title": "[US-09] Sécurité des Pannes Transactionnelles (Timeout & Compensation Automatique)"
-        },
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:cart-order"
+              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "name": "service:cart-order",
+              "color": "#e2843b"
             },
             {
-              "name": "tech:restclient-2pc"
+              "id": "d9f05449-2645-443f-a493-22ba804871e0",
+              "name": "tech:restclient-2pc",
+              "color": "#d03535"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -421,29 +586,34 @@
         "title": "[US-08-T03] Tests d'Integration 2PC Prepare (Succes & Rupture)",
         "description": "Tests unitaires et d'integration validant l'accord de reservation ou le refus VETO avec RFC 7807.",
         "estimate": 2,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "parent": {
-          "id": "16cd3b5a-b012-498e-8e76-0401770d9e1a",
-          "identifier": "PRO-12",
-          "title": "[US-08] Orchestration de la Transaction 2PC (Phase Prepare & Commit)"
-        },
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:cart-order"
+              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "name": "service:cart-order",
+              "color": "#e2843b"
             },
             {
-              "name": "tech:unit-test"
+              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
+              "name": "tech:unit-test",
+              "color": "#16a34a"
             },
             {
-              "name": "tech:restclient-2pc"
+              "id": "d9f05449-2645-443f-a493-22ba804871e0",
+              "name": "tech:restclient-2pc",
+              "color": "#d03535"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -454,29 +624,34 @@
         "title": "[US-08-T02] Endpoint /api/inventory/prepare dans Catalog Service",
         "description": "Verification des stocks et pose d'un verrou de reservation temporaire (TTL 5 minutes).",
         "estimate": 2,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "parent": {
-          "id": "16cd3b5a-b012-498e-8e76-0401770d9e1a",
-          "identifier": "PRO-12",
-          "title": "[US-08] Orchestration de la Transaction 2PC (Phase Prepare & Commit)"
-        },
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:catalog"
+              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "name": "service:catalog",
+              "color": "#0f7830"
             },
             {
-              "name": "tech:business-rules"
+              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
+              "name": "tech:business-rules",
+              "color": "#9333ea"
             },
             {
-              "name": "tech:restclient-2pc"
+              "id": "d9f05449-2645-443f-a493-22ba804871e0",
+              "name": "tech:restclient-2pc",
+              "color": "#d03535"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -487,29 +662,34 @@
         "title": "[US-08-T01] Contrat OpenAPI 3.1 & DTOs 2PC Prepare",
         "description": "Definition et generation des DTOs Java 17 records pour l'endpoint /api/inventory/prepare.",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "parent": {
-          "id": "16cd3b5a-b012-498e-8e76-0401770d9e1a",
-          "identifier": "PRO-12",
-          "title": "[US-08] Orchestration de la Transaction 2PC (Phase Prepare & Commit)"
-        },
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:cart-order"
+              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "name": "service:cart-order",
+              "color": "#e2843b"
             },
             {
-              "name": "tech:openapi-contract"
+              "id": "cc3fd0e9-6af5-419e-87f1-7c98c3b31549",
+              "name": "tech:openapi-contract",
+              "color": "#4b9fe1"
             },
             {
-              "name": "tech:restclient-2pc"
+              "id": "d9f05449-2645-443f-a493-22ba804871e0",
+              "name": "tech:restclient-2pc",
+              "color": "#d03535"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -520,26 +700,29 @@
         "title": "[US-07-T03] Tests Unitaires Panier Multi-Boutiques",
         "description": "Verification du calcul des totaux par boutique et total global, couverture Jacoco >= 80%.",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "parent": {
-          "id": "68dcb1ea-2148-47c7-b4a4-828b8348a8d4",
-          "identifier": "PRO-11",
-          "title": "[US-07] Constitution du Panier Multi-Boutiques"
-        },
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:cart-order"
+              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "name": "service:cart-order",
+              "color": "#e2843b"
             },
             {
-              "name": "tech:unit-test"
+              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
+              "name": "tech:unit-test",
+              "color": "#16a34a"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -550,26 +733,29 @@
         "title": "[US-07-T02] Endpoints Panier Multi-Commerces /api/cart",
         "description": "Ajout, modification quantite, suppression d'article et regroupement automatique des sous-paniers par boutique.",
         "estimate": 2,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "parent": {
-          "id": "68dcb1ea-2148-47c7-b4a4-828b8348a8d4",
-          "identifier": "PRO-11",
-          "title": "[US-07] Constitution du Panier Multi-Boutiques"
-        },
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:cart-order"
+              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "name": "service:cart-order",
+              "color": "#e2843b"
             },
             {
-              "name": "tech:business-rules"
+              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
+              "name": "tech:business-rules",
+              "color": "#9333ea"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -580,26 +766,29 @@
         "title": "[US-07-T01] Modele JPA Panier Multi-Boutiques (order_db)",
         "description": "Entites Cart et CartItem dans shoploc-cart-order-service avec partitionnement logique par commercant.",
         "estimate": 2,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "parent": {
-          "id": "68dcb1ea-2148-47c7-b4a4-828b8348a8d4",
-          "identifier": "PRO-11",
-          "title": "[US-07] Constitution du Panier Multi-Boutiques"
-        },
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:cart-order"
+              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "name": "service:cart-order",
+              "color": "#e2843b"
             },
             {
-              "name": "tech:jpa-database"
+              "id": "4d547c5b-aa93-4708-a7e0-6f1beb6653d2",
+              "name": "tech:jpa-database",
+              "color": "#d97706"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -610,26 +799,29 @@
         "title": "[US-06-T03] Tests Unitaires de Geofencing",
         "description": "Tests de calcul de distance et filtrage des produits hors perimetre.",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "parent": {
-          "id": "e79ab938-d177-4b0f-8aa4-2594263ead26",
-          "identifier": "PRO-10",
-          "title": "[US-06] Vérification & Réservation Temporaire de Stock (Endpoint Pré-Commit 2PC)"
-        },
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:catalog"
+              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "name": "service:catalog",
+              "color": "#0f7830"
             },
             {
-              "name": "tech:unit-test"
+              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
+              "name": "tech:unit-test",
+              "color": "#16a34a"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -640,26 +832,29 @@
         "title": "[US-06-T02] Endpoint GET /api/catalog/search",
         "description": "Recherche paginee multi-criteres (mot-cle, commerce, disponibilite stock, perimetre geographique).",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "parent": {
-          "id": "e79ab938-d177-4b0f-8aa4-2594263ead26",
-          "identifier": "PRO-10",
-          "title": "[US-06] Vérification & Réservation Temporaire de Stock (Endpoint Pré-Commit 2PC)"
-        },
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:catalog"
+              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "name": "service:catalog",
+              "color": "#0f7830"
             },
             {
-              "name": "tech:business-rules"
+              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
+              "name": "tech:business-rules",
+              "color": "#9333ea"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -670,26 +865,29 @@
         "title": "[US-06-T01] JPA Specifications & Recherche Geofencing",
         "description": "Implementer JPA Criteria / Specifications pour recherche par rayon (formule haversine ou distance geographique).",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "parent": {
-          "id": "e79ab938-d177-4b0f-8aa4-2594263ead26",
-          "identifier": "PRO-10",
-          "title": "[US-06] Vérification & Réservation Temporaire de Stock (Endpoint Pré-Commit 2PC)"
-        },
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:catalog"
+              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "name": "service:catalog",
+              "color": "#0f7830"
             },
             {
-              "name": "tech:jpa-database"
+              "id": "4d547c5b-aa93-4708-a7e0-6f1beb6653d2",
+              "name": "tech:jpa-database",
+              "color": "#d97706"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -700,26 +898,29 @@
         "title": "[US-05-T03] Tests de Concurrence sur Stocks",
         "description": "Tests d'acces concurrentiel multi-threads simulant deux achats simultanes sur le dernier article.",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "parent": {
-          "id": "c11fd486-fe79-4b1b-9bfd-e3cf5d13ae87",
-          "identifier": "PRO-9",
-          "title": "[US-05] Gestion des Fiches Produits & Stocks par le Commerçant"
-        },
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:catalog"
+              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "name": "service:catalog",
+              "color": "#0f7830"
             },
             {
-              "name": "tech:unit-test"
+              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
+              "name": "tech:unit-test",
+              "color": "#16a34a"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -730,26 +931,29 @@
         "title": "[US-05-T02] Endpoint PATCH /api/products/{id}/stock",
         "description": "Mise a jour rapide des stocks par le commercant avec emission d'alerte si stock epuise.",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "parent": {
-          "id": "c11fd486-fe79-4b1b-9bfd-e3cf5d13ae87",
-          "identifier": "PRO-9",
-          "title": "[US-05] Gestion des Fiches Produits & Stocks par le Commerçant"
-        },
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:catalog"
+              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "name": "service:catalog",
+              "color": "#0f7830"
             },
             {
-              "name": "tech:business-rules"
+              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
+              "name": "tech:business-rules",
+              "color": "#9333ea"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -760,26 +964,29 @@
         "title": "[US-05-T01] Gestion Inventaire & Verrous Optimistes JPA",
         "description": "Ajout du champ stock et du champ @Version pour la gestion de la concurrence d'acces aux stocks.",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "parent": {
-          "id": "c11fd486-fe79-4b1b-9bfd-e3cf5d13ae87",
-          "identifier": "PRO-9",
-          "title": "[US-05] Gestion des Fiches Produits & Stocks par le Commerçant"
-        },
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:catalog"
+              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "name": "service:catalog",
+              "color": "#0f7830"
             },
             {
-              "name": "tech:jpa-database"
+              "id": "4d547c5b-aa93-4708-a7e0-6f1beb6653d2",
+              "name": "tech:jpa-database",
+              "color": "#d97706"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -790,26 +997,33 @@
         "title": "[US-04-T03] Tests Unitaires Catalogue Produits",
         "description": "Validation des scenarios d'erreur (prix negatif, categorie inexistante) et tests JUnit 5.",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
-          "type": "unstarted"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "parent": {
-          "id": "00f7c4ab-b319-490f-ba44-cbf551150c5a",
-          "identifier": "PRO-8",
-          "title": "[US-04] Consultation du Catalogue Produits d'une Boutique"
+        "assignee": {
+          "id": "2788f319-69b3-4c03-b240-4ed79cc5e674",
+          "displayName": "gautam.demeulemeester.et",
+          "email": "gautam.demeulemeester.etu@univ-lille.fr"
         },
         "labels": {
           "nodes": [
             {
-              "name": "service:catalog"
+              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "name": "service:catalog",
+              "color": "#0f7830"
             },
             {
-              "name": "tech:unit-test"
+              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
+              "name": "tech:unit-test",
+              "color": "#16a34a"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -820,26 +1034,33 @@
         "title": "[US-04-T02] Endpoints REST Produits /api/merchants/{id}/products",
         "description": "Endpoints de creation, modification, desactivation de produits du catalogue avec validation prix positif.",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
-          "type": "unstarted"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "parent": {
-          "id": "00f7c4ab-b319-490f-ba44-cbf551150c5a",
-          "identifier": "PRO-8",
-          "title": "[US-04] Consultation du Catalogue Produits d'une Boutique"
+        "assignee": {
+          "id": "2788f319-69b3-4c03-b240-4ed79cc5e674",
+          "displayName": "gautam.demeulemeester.et",
+          "email": "gautam.demeulemeester.etu@univ-lille.fr"
         },
         "labels": {
           "nodes": [
             {
-              "name": "service:catalog"
+              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "name": "service:catalog",
+              "color": "#0f7830"
             },
             {
-              "name": "tech:business-rules"
+              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
+              "name": "tech:business-rules",
+              "color": "#9333ea"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -850,26 +1071,33 @@
         "title": "[US-04-T01] Modele JPA Product & Category",
         "description": "Entites JPA Product (id, merchant_id, nom, prix, tva, description) et Category dans shoploc-merchant-catalog-service.",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
-          "type": "unstarted"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "parent": {
-          "id": "00f7c4ab-b319-490f-ba44-cbf551150c5a",
-          "identifier": "PRO-8",
-          "title": "[US-04] Consultation du Catalogue Produits d'une Boutique"
+        "assignee": {
+          "id": "2788f319-69b3-4c03-b240-4ed79cc5e674",
+          "displayName": "gautam.demeulemeester.et",
+          "email": "gautam.demeulemeester.etu@univ-lille.fr"
         },
         "labels": {
           "nodes": [
             {
-              "name": "service:catalog"
+              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "name": "service:catalog",
+              "color": "#0f7830"
             },
             {
-              "name": "tech:jpa-database"
+              "id": "4d547c5b-aa93-4708-a7e0-6f1beb6653d2",
+              "name": "tech:jpa-database",
+              "color": "#d97706"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -880,26 +1108,33 @@
         "title": "[US-03-T03] Tests Unitaires & Isolation MockMvc",
         "description": "Tests JUnit 5 verifiant les regles de gestion de modification de fiche boutique et couverture Jacoco >= 80%.",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
-          "type": "unstarted"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "parent": {
-          "id": "820c0647-1bbf-4c6f-a561-56d221be189a",
-          "identifier": "PRO-7",
-          "title": "[US-03] Consultation des Boutiques Partenaires"
+        "assignee": {
+          "id": "2788f319-69b3-4c03-b240-4ed79cc5e674",
+          "displayName": "gautam.demeulemeester.et",
+          "email": "gautam.demeulemeester.etu@univ-lille.fr"
         },
         "labels": {
           "nodes": [
             {
-              "name": "service:catalog"
+              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "name": "service:catalog",
+              "color": "#0f7830"
             },
             {
-              "name": "tech:unit-test"
+              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
+              "name": "tech:unit-test",
+              "color": "#16a34a"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -910,26 +1145,33 @@
         "title": "[US-03-T02] CRUD REST /api/merchants Fiche Boutique",
         "description": "Endpoints de creation, consultation et mise a jour de la fiche commercant avec controle d'habilitation role.",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
-          "type": "unstarted"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "parent": {
-          "id": "820c0647-1bbf-4c6f-a561-56d221be189a",
-          "identifier": "PRO-7",
-          "title": "[US-03] Consultation des Boutiques Partenaires"
+        "assignee": {
+          "id": "2788f319-69b3-4c03-b240-4ed79cc5e674",
+          "displayName": "gautam.demeulemeester.et",
+          "email": "gautam.demeulemeester.etu@univ-lille.fr"
         },
         "labels": {
           "nodes": [
             {
-              "name": "service:catalog"
+              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "name": "service:catalog",
+              "color": "#0f7830"
             },
             {
-              "name": "tech:business-rules"
+              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
+              "name": "tech:business-rules",
+              "color": "#9333ea"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -940,26 +1182,33 @@
         "title": "[US-03-T01] Modele JPA Merchant & Boutique (catalog_db)",
         "description": "Creer l'entite JPA MerchantStore avec adresse geolocalisee (lat/lon), siret, horaires et etat d'activation.",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
-          "type": "unstarted"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "parent": {
-          "id": "820c0647-1bbf-4c6f-a561-56d221be189a",
-          "identifier": "PRO-7",
-          "title": "[US-03] Consultation des Boutiques Partenaires"
+        "assignee": {
+          "id": "2788f319-69b3-4c03-b240-4ed79cc5e674",
+          "displayName": "gautam.demeulemeester.et",
+          "email": "gautam.demeulemeester.etu@univ-lille.fr"
         },
         "labels": {
           "nodes": [
             {
-              "name": "service:catalog"
+              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "name": "service:catalog",
+              "color": "#0f7830"
             },
             {
-              "name": "tech:jpa-database"
+              "id": "4d547c5b-aa93-4708-a7e0-6f1beb6653d2",
+              "name": "tech:jpa-database",
+              "color": "#d97706"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -970,26 +1219,33 @@
         "title": "[US-02-T03] Tests de Securite & Token Expiration",
         "description": "Tests automatises verifiant le rejet des requetes non authentifiees et la validite temporelle des tokens JWT.",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
-          "type": "unstarted"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "parent": {
-          "id": "e66dc4ad-ea87-40f8-a0a8-13dbf5e9b310",
-          "identifier": "PRO-6",
-          "title": "[US-02] Connexion Sécurisée & Émission de Token JWT"
+        "assignee": {
+          "id": "2bd79ef4-1c1e-421a-94f8-6b7b638ca366",
+          "displayName": "abdelkader.heddi.etu",
+          "email": "abdelkader.heddi.etu@univ-lille.fr"
         },
         "labels": {
           "nodes": [
             {
-              "name": "service:auth"
+              "id": "38a29150-2f0d-4644-8f34-e2dcedfff308",
+              "name": "service:auth",
+              "color": "#e36999"
             },
             {
-              "name": "tech:unit-test"
+              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
+              "name": "tech:unit-test",
+              "color": "#16a34a"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -1000,26 +1256,33 @@
         "title": "[US-02-T02] Endpoint Authentification /api/auth/login",
         "description": "Implementer l'authentification avec emission du token JWT contenant user_id et roles commercant/citoyen.",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
-          "type": "unstarted"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "parent": {
-          "id": "e66dc4ad-ea87-40f8-a0a8-13dbf5e9b310",
-          "identifier": "PRO-6",
-          "title": "[US-02] Connexion Sécurisée & Émission de Token JWT"
+        "assignee": {
+          "id": "2bd79ef4-1c1e-421a-94f8-6b7b638ca366",
+          "displayName": "abdelkader.heddi.etu",
+          "email": "abdelkader.heddi.etu@univ-lille.fr"
         },
         "labels": {
           "nodes": [
             {
-              "name": "service:auth"
+              "id": "38a29150-2f0d-4644-8f34-e2dcedfff308",
+              "name": "service:auth",
+              "color": "#e36999"
             },
             {
-              "name": "tech:business-rules"
+              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
+              "name": "tech:business-rules",
+              "color": "#9333ea"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -1030,26 +1293,33 @@
         "title": "[US-02-T01] Configuration Spring Security & Filtre JWT",
         "description": "Configurer le SecurityFilterChain stateless et le filtre de validation de signature JWT dans shoploc-auth-service.",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
-          "type": "unstarted"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "parent": {
-          "id": "e66dc4ad-ea87-40f8-a0a8-13dbf5e9b310",
-          "identifier": "PRO-6",
-          "title": "[US-02] Connexion Sécurisée & Émission de Token JWT"
+        "assignee": {
+          "id": "2bd79ef4-1c1e-421a-94f8-6b7b638ca366",
+          "displayName": "abdelkader.heddi.etu",
+          "email": "abdelkader.heddi.etu@univ-lille.fr"
         },
         "labels": {
           "nodes": [
             {
-              "name": "service:auth"
+              "id": "38a29150-2f0d-4644-8f34-e2dcedfff308",
+              "name": "service:auth",
+              "color": "#e36999"
             },
             {
-              "name": "tech:business-rules"
+              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
+              "name": "tech:business-rules",
+              "color": "#9333ea"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -1060,26 +1330,33 @@
         "title": "[US-01-T03] Tests Unitaires & Couverture Jacoco >= 80%",
         "description": "Ecrire les tests unitaires et de validation d'unicite email sous JUnit 5 / MockMvc pour atteindre 80% de couverture.",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
-          "type": "unstarted"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "parent": {
-          "id": "e8959e4d-eeb5-41bf-b306-1608502aa5ac",
-          "identifier": "PRO-5",
-          "title": "[US-01] Inscription Sécurisée Multi-Rôles"
+        "assignee": {
+          "id": "2bd79ef4-1c1e-421a-94f8-6b7b638ca366",
+          "displayName": "abdelkader.heddi.etu",
+          "email": "abdelkader.heddi.etu@univ-lille.fr"
         },
         "labels": {
           "nodes": [
             {
-              "name": "service:auth"
+              "id": "38a29150-2f0d-4644-8f34-e2dcedfff308",
+              "name": "service:auth",
+              "color": "#e36999"
             },
             {
-              "name": "tech:unit-test"
+              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
+              "name": "tech:unit-test",
+              "color": "#16a34a"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -1090,26 +1367,33 @@
         "title": "[US-01-T02] Endpoints REST Inscription Citoyen & Commercant",
         "description": "Implementer les endpoints POST /api/auth/register-citizen et /api/auth/register-merchant avec validation Jakarta et RFC 7807.",
         "estimate": 2,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
-          "type": "unstarted"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "parent": {
-          "id": "e8959e4d-eeb5-41bf-b306-1608502aa5ac",
-          "identifier": "PRO-5",
-          "title": "[US-01] Inscription Sécurisée Multi-Rôles"
+        "assignee": {
+          "id": "2bd79ef4-1c1e-421a-94f8-6b7b638ca366",
+          "displayName": "abdelkader.heddi.etu",
+          "email": "abdelkader.heddi.etu@univ-lille.fr"
         },
         "labels": {
           "nodes": [
             {
-              "name": "service:auth"
+              "id": "38a29150-2f0d-4644-8f34-e2dcedfff308",
+              "name": "service:auth",
+              "color": "#e36999"
             },
             {
-              "name": "tech:business-rules"
+              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
+              "name": "tech:business-rules",
+              "color": "#9333ea"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -1120,26 +1404,33 @@
         "title": "[US-01-T01] Modele JPA User, Role & DDL auth_db",
         "description": "Concevoir les entites JPA User, Role et MerchantProfile dans shoploc-auth-service (PostgreSQL auth_db normalise 3NF).",
         "estimate": 1,
-        "priority": 1,
+        "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
-          "type": "unstarted"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "parent": {
-          "id": "e8959e4d-eeb5-41bf-b306-1608502aa5ac",
-          "identifier": "PRO-5",
-          "title": "[US-01] Inscription Sécurisée Multi-Rôles"
+        "assignee": {
+          "id": "2bd79ef4-1c1e-421a-94f8-6b7b638ca366",
+          "displayName": "abdelkader.heddi.etu",
+          "email": "abdelkader.heddi.etu@univ-lille.fr"
         },
         "labels": {
           "nodes": [
             {
-              "name": "service:auth"
+              "id": "38a29150-2f0d-4644-8f34-e2dcedfff308",
+              "name": "service:auth",
+              "color": "#e36999"
             },
             {
-              "name": "tech:jpa-database"
+              "id": "4d547c5b-aa93-4708-a7e0-6f1beb6653d2",
+              "name": "tech:jpa-database",
+              "color": "#d97706"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -1152,17 +1443,22 @@
         "estimate": 3,
         "priority": 1,
         "state": {
-          "name": "Triage / Backlog",
+          "id": "bec74436-3935-4e5a-92e9-7ff25d090ba2",
+          "name": "Backlog (User Stories)",
           "type": "backlog"
         },
-        "parent": null,
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:gateway-frontend"
+              "id": "117c232a-b479-4387-913f-84fdae166286",
+              "name": "service:gateway-frontend",
+              "color": "#26b5ce"
             },
             {
-              "name": "milestone:r5-vfp"
+              "id": "18de18b3-04e6-4493-b16c-edf5c0bf5964",
+              "name": "milestone:r5-vfp",
+              "color": "#6366f1"
             }
           ]
         }
@@ -1175,17 +1471,22 @@
         "estimate": 3,
         "priority": 1,
         "state": {
-          "name": "Triage / Backlog",
+          "id": "bec74436-3935-4e5a-92e9-7ff25d090ba2",
+          "name": "Backlog (User Stories)",
           "type": "backlog"
         },
-        "parent": null,
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:gateway-frontend"
+              "id": "117c232a-b479-4387-913f-84fdae166286",
+              "name": "service:gateway-frontend",
+              "color": "#26b5ce"
             },
             {
-              "name": "milestone:r5-vfp"
+              "id": "18de18b3-04e6-4493-b16c-edf5c0bf5964",
+              "name": "milestone:r5-vfp",
+              "color": "#6366f1"
             }
           ]
         }
@@ -1198,17 +1499,22 @@
         "estimate": 3,
         "priority": 1,
         "state": {
-          "name": "Triage / Backlog",
+          "id": "bec74436-3935-4e5a-92e9-7ff25d090ba2",
+          "name": "Backlog (User Stories)",
           "type": "backlog"
         },
-        "parent": null,
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:gateway-frontend"
+              "id": "117c232a-b479-4387-913f-84fdae166286",
+              "name": "service:gateway-frontend",
+              "color": "#26b5ce"
             },
             {
-              "name": "milestone:r5-vfp"
+              "id": "18de18b3-04e6-4493-b16c-edf5c0bf5964",
+              "name": "milestone:r5-vfp",
+              "color": "#6366f1"
             }
           ]
         }
@@ -1221,17 +1527,22 @@
         "estimate": 3,
         "priority": 1,
         "state": {
-          "name": "Triage / Backlog",
+          "id": "bec74436-3935-4e5a-92e9-7ff25d090ba2",
+          "name": "Backlog (User Stories)",
           "type": "backlog"
         },
-        "parent": null,
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:loyalty"
+              "id": "f7a65f45-988e-430b-801f-11bef59471ad",
+              "name": "service:loyalty",
+              "color": "#8957e5"
             },
             {
-              "name": "milestone:r5-vfp"
+              "id": "18de18b3-04e6-4493-b16c-edf5c0bf5964",
+              "name": "milestone:r5-vfp",
+              "color": "#6366f1"
             }
           ]
         }
@@ -1244,17 +1555,22 @@
         "estimate": 3,
         "priority": 1,
         "state": {
-          "name": "Triage / Backlog",
+          "id": "bec74436-3935-4e5a-92e9-7ff25d090ba2",
+          "name": "Backlog (User Stories)",
           "type": "backlog"
         },
-        "parent": null,
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:loyalty"
+              "id": "f7a65f45-988e-430b-801f-11bef59471ad",
+              "name": "service:loyalty",
+              "color": "#8957e5"
             },
             {
-              "name": "milestone:r5-vfp"
+              "id": "18de18b3-04e6-4493-b16c-edf5c0bf5964",
+              "name": "milestone:r5-vfp",
+              "color": "#6366f1"
             }
           ]
         }
@@ -1267,17 +1583,22 @@
         "estimate": 3,
         "priority": 1,
         "state": {
-          "name": "Triage / Backlog",
+          "id": "bec74436-3935-4e5a-92e9-7ff25d090ba2",
+          "name": "Backlog (User Stories)",
           "type": "backlog"
         },
-        "parent": null,
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:loyalty"
+              "id": "f7a65f45-988e-430b-801f-11bef59471ad",
+              "name": "service:loyalty",
+              "color": "#8957e5"
             },
             {
-              "name": "milestone:r5-vfp"
+              "id": "18de18b3-04e6-4493-b16c-edf5c0bf5964",
+              "name": "milestone:r5-vfp",
+              "color": "#6366f1"
             }
           ]
         }
@@ -1290,17 +1611,22 @@
         "estimate": 3,
         "priority": 1,
         "state": {
-          "name": "Triage / Backlog",
+          "id": "bec74436-3935-4e5a-92e9-7ff25d090ba2",
+          "name": "Backlog (User Stories)",
           "type": "backlog"
         },
-        "parent": null,
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:loyalty"
+              "id": "f7a65f45-988e-430b-801f-11bef59471ad",
+              "name": "service:loyalty",
+              "color": "#8957e5"
             },
             {
-              "name": "milestone:r5-vfp"
+              "id": "18de18b3-04e6-4493-b16c-edf5c0bf5964",
+              "name": "milestone:r5-vfp",
+              "color": "#6366f1"
             }
           ]
         }
@@ -1313,17 +1639,22 @@
         "estimate": 3,
         "priority": 1,
         "state": {
-          "name": "Triage / Backlog",
+          "id": "bec74436-3935-4e5a-92e9-7ff25d090ba2",
+          "name": "Backlog (User Stories)",
           "type": "backlog"
         },
-        "parent": null,
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:cart-order"
+              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "name": "service:cart-order",
+              "color": "#e2843b"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -1336,17 +1667,22 @@
         "estimate": 3,
         "priority": 1,
         "state": {
-          "name": "Triage / Backlog",
-          "type": "backlog"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "parent": null,
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:cart-order"
+              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "name": "service:cart-order",
+              "color": "#e2843b"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -1359,17 +1695,22 @@
         "estimate": 3,
         "priority": 1,
         "state": {
-          "name": "Triage / Backlog",
+          "id": "bec74436-3935-4e5a-92e9-7ff25d090ba2",
+          "name": "Backlog (User Stories)",
           "type": "backlog"
         },
-        "parent": null,
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:cart-order"
+              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "name": "service:cart-order",
+              "color": "#e2843b"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -1382,17 +1723,22 @@
         "estimate": 3,
         "priority": 1,
         "state": {
-          "name": "Triage / Backlog",
+          "id": "bec74436-3935-4e5a-92e9-7ff25d090ba2",
+          "name": "Backlog (User Stories)",
           "type": "backlog"
         },
-        "parent": null,
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:cart-order"
+              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "name": "service:cart-order",
+              "color": "#e2843b"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -1405,17 +1751,22 @@
         "estimate": 3,
         "priority": 1,
         "state": {
-          "name": "Triage / Backlog",
+          "id": "bec74436-3935-4e5a-92e9-7ff25d090ba2",
+          "name": "Backlog (User Stories)",
           "type": "backlog"
         },
-        "parent": null,
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:cart-order"
+              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "name": "service:cart-order",
+              "color": "#e2843b"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -1428,17 +1779,22 @@
         "estimate": 3,
         "priority": 1,
         "state": {
-          "name": "Triage / Backlog",
+          "id": "bec74436-3935-4e5a-92e9-7ff25d090ba2",
+          "name": "Backlog (User Stories)",
           "type": "backlog"
         },
-        "parent": null,
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:catalog"
+              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "name": "service:catalog",
+              "color": "#0f7830"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -1451,17 +1807,22 @@
         "estimate": 3,
         "priority": 1,
         "state": {
-          "name": "Triage / Backlog",
+          "id": "bec74436-3935-4e5a-92e9-7ff25d090ba2",
+          "name": "Backlog (User Stories)",
           "type": "backlog"
         },
-        "parent": null,
+        "assignee": null,
         "labels": {
           "nodes": [
             {
-              "name": "service:catalog"
+              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "name": "service:catalog",
+              "color": "#0f7830"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -1474,17 +1835,26 @@
         "estimate": 3,
         "priority": 1,
         "state": {
-          "name": "Triage / Backlog",
-          "type": "backlog"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "parent": null,
+        "assignee": {
+          "id": "2788f319-69b3-4c03-b240-4ed79cc5e674",
+          "displayName": "gautam.demeulemeester.et",
+          "email": "gautam.demeulemeester.etu@univ-lille.fr"
+        },
         "labels": {
           "nodes": [
             {
-              "name": "service:catalog"
+              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "name": "service:catalog",
+              "color": "#0f7830"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -1497,17 +1867,26 @@
         "estimate": 3,
         "priority": 1,
         "state": {
-          "name": "Triage / Backlog",
-          "type": "backlog"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "parent": null,
+        "assignee": {
+          "id": "2788f319-69b3-4c03-b240-4ed79cc5e674",
+          "displayName": "gautam.demeulemeester.et",
+          "email": "gautam.demeulemeester.etu@univ-lille.fr"
+        },
         "labels": {
           "nodes": [
             {
-              "name": "service:catalog"
+              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "name": "service:catalog",
+              "color": "#0f7830"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -1520,17 +1899,26 @@
         "estimate": 3,
         "priority": 1,
         "state": {
-          "name": "Triage / Backlog",
-          "type": "backlog"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "parent": null,
+        "assignee": {
+          "id": "2bd79ef4-1c1e-421a-94f8-6b7b638ca366",
+          "displayName": "abdelkader.heddi.etu",
+          "email": "abdelkader.heddi.etu@univ-lille.fr"
+        },
         "labels": {
           "nodes": [
             {
-              "name": "service:auth"
+              "id": "38a29150-2f0d-4644-8f34-e2dcedfff308",
+              "name": "service:auth",
+              "color": "#e36999"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -1543,17 +1931,26 @@
         "estimate": 3,
         "priority": 1,
         "state": {
-          "name": "Triage / Backlog",
-          "type": "backlog"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "parent": null,
+        "assignee": {
+          "id": "2bd79ef4-1c1e-421a-94f8-6b7b638ca366",
+          "displayName": "abdelkader.heddi.etu",
+          "email": "abdelkader.heddi.etu@univ-lille.fr"
+        },
         "labels": {
           "nodes": [
             {
-              "name": "service:auth"
+              "id": "38a29150-2f0d-4644-8f34-e2dcedfff308",
+              "name": "service:auth",
+              "color": "#e36999"
             },
             {
-              "name": "milestone:r4-mvp"
+              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
+              "name": "milestone:r4-mvp",
+              "color": "#f59e0b"
             }
           ]
         }
@@ -1566,10 +1963,11 @@
         "estimate": null,
         "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "parent": null,
+        "assignee": null,
         "labels": {
           "nodes": []
         }
@@ -1582,10 +1980,11 @@
         "estimate": null,
         "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "parent": null,
+        "assignee": null,
         "labels": {
           "nodes": []
         }
@@ -1598,10 +1997,11 @@
         "estimate": null,
         "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "parent": null,
+        "assignee": null,
         "labels": {
           "nodes": []
         }
@@ -1614,10 +2014,11 @@
         "estimate": null,
         "priority": 0,
         "state": {
-          "name": "Sprint Backlog (Ready)",
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "parent": null,
+        "assignee": null,
         "labels": {
           "nodes": []
         }
