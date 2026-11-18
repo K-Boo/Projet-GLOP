@@ -1,7 +1,7 @@
 Identifier,Title,Estimate,State,Assignee,Labels
-PRO-63,[DEVOPS-07] Deploiement continu sur serveur VPS avec frontal HTTPS et sauvegardes automatisees,3,A faire (Sprint Backlog),Non assigne,"DevOps, service:platform, Sprint 2"
+PRO-63,[DEVOPS-07] Publication des images conteneurisees et deploiement continu HTTPS sur VPS,3,A faire (Sprint Backlog),Non assigne,"DevOps, service:platform, Sprint 2"
 PRO-62,[DEVOPS-06] Isolation des environnements Developpement et Production (Profils et Orchestration),2,A faire (Sprint Backlog),Non assigne,"DevOps, service:platform, Sprint 2"
-PRO-61,[DEVOPS-05] Centralisation du pipeline GitLab CI bloquant et publication des images conteneurisees,2,A faire (Sprint Backlog),Non assigne,"DevOps, service:platform, Sprint 1"
+PRO-61,[DEVOPS-05] Centralisation du pipeline GitLab CI bloquant a 80 %,2,En cours (In Progress),khalil,"DevOps, service:platform, Sprint 1"
 PRO-60,[DEVOPS-04] Mise en place de la branche dev et des Merge Requests controlees sur GitLab,1,Termine (Done),khalil,"DevOps, service:platform, Sprint 1"
 PRO-59,[US-09-T00] Passerelle de Paiement Bancaire et Traitement des Refus,,Termine (Done),khalil,"US-09, service:cart-order, Sprint 1"
 PRO-58,[DEVOPS-03] Pipeline GitLab CI Multi-Services & Certification Jacoco >= 80%,2,Termine (Done),mwb9650,"DevOps, service:platform, Sprint 1"

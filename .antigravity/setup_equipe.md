@@ -96,7 +96,23 @@ Ce script realise en totale autonomie :
 2. **Verification du moteur PDF** : verifie la presence de Chromium / Edge headless pour la compilation A4.
 3. **Detection de Google Drive pour ordinateur** : localise le dossier `Projet-GLOP`, cree les 5 sous-dossiers officiels (`01_Cadrage_Metier_R1` a `05_Demonstrations_Videos`), et genere un fichier `config.local.json` si le Drive n'est pas sur le lecteur `G:\`.
 4. **Controle du depot Git principal (GitHub)** : verifie la connexion au remote `git@github.com:K-Boo/Projet-GLOP.git`.
-5. **Detection et liaison du depot de code evalue (GitLab)** : localise ou clone `git@gitlab-ssh.univ-lille.fr:khalil.bouchama.etu/projet-glop-app.git` dans le dossier parent et l'enregistre dans `config.local.json`.
+5. **Detection et liaison des depots de code evalues (GitLab)** : le code applicatif est organise en 6 depots distincts sous le groupe `https://gitlab.univ-lille.fr/glop-garik-2026` (`shoploc-auth-service`, `shoploc-merchant-catalog-service`, `shoploc-cart-order-service`, `shoploc-loyalty-service`, `shoploc-platform`, `shoploc-frontend`). Chaque membre utilise obligatoirement son Personal Access Token (PAT) nominatif etudiant dans son `.env` local (aucun bot ni Group Access Token autorise).
 6. **Verification et liaison de la passerelle LiteLLM Proxy** : detecte `C:\tools\LiteLLM`, verifie l'endpoint `http://localhost:4000/v1` et associe la cle virtuelle de projet `ShopLoc`.
 
 L'agent confirme ensuite au collegue que son poste est 100% conforme a l'environnement d'equipe.
+
+---
+
+## 4. Nouvelles Methodes de Travail a Appliquer Apres `git pull`
+
+Tout membre (et son agent) qui tire les dernieres mises a jour de `ShopLoc/` applique immediatement les regles suivantes :
+1. **Workflow Git Multi-Depots (`feat -> MR -> dev -> main`)** :
+   * Les branches `main` et `dev` sont protegees sur les 6 depots GitLab (`push=No one`, fusion uniquement par Merge Request).
+   * Chaque ticket s'implemente sur une branche dediee (`feat/<id-ticket>-<resume>`) creee depuis `dev`, avec Merge Request vers `dev` puis relecture croisee par un pair.
+   * `dev` sert a l'integration quotidienne des tickets ; `main` est reservee aux versions stables validees en fin de Sprint.
+   * Avant d'ouvrir une MR vers `dev`, penser a synchroniser sa branche (`git fetch origin && git merge origin/dev`).
+2. **Pipeline CI/CD Centralise & Qualimetrie JaCoCo (>= 80 %)** :
+   * Les 4 microservices Java incluent le modele partage `glop-garik-2026/shoploc-platform` (`/ci-templates/spring-boot-microservice.yml`, `ref: dev`).
+   * Le job `maven-verify` execute `mvn -B verify` avec blocage automatique sous 80 % de couverture lignes sur le code metier (exclusions : `**/*Application.class` et `**/dto/**`).
+3. **Gouvernance Linear Etanche** :
+   * Contenu 100 % fonctionnel (zero nom de classe, zero annotation technique, zero trace d'IA ou de methodologie interne) et strictement 3 labels maximum (`US-XX` ou `DevOps`, `service:*`, `Sprint X`).

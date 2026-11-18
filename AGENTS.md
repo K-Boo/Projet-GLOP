@@ -99,11 +99,12 @@ Conformement aux decouvertes empiriques sur la verification agentique (Dan Luu, 
 
 ---
 
-## 9. Verrou de Push Distant Obligatoire (Interdiction de Push Autonome)
+## 9. Verrou Commit & Push Synchrone (Plan de Commits Modulaires)
 
-L'agent a l'interdiction formelle et absolue d'executer la commande `git push` vers un depot distant (qu'il s'agisse du cockpit GitHub ou des depots GitLab de microservices) de maniere autonome, automatique ou sous-entendue.
-* **Consentement humain prealable obligatoire** : Tout push vers un serveur distant requiert imperativement une demande explicite prealable de l'agent et une confirmation textuelle positive de l'utilisateur dans le fil de discussion, ou un ordre direct et specifique de push donne par l'utilisateur.
-* **Comportement par defaut** : En fin de tache ou d'etape, l'agent peut preparer et committer les fichiers localement sur la branche de travail si la DoD est atteinte, mais il s'arrete systematiquement avant le push et demande formellement : *"Les modifications sont committees localement. Souhaitez-vous que je les pousse vers le depot distant ?"*.
+L'agent a l'interdiction formelle d'executer `git commit` ou `git push` de maniere autonome sur les depots distants (GitHub ou GitLab).
+* **Planification modulaire prealable** : Pour toute tache de code, l'agent decoupe le travail en un maximum de commits atomiques (1 couche logique ou 1 suite de tests par commit) et soumet ce plan avant generation.
+* **Double aval prealable obligatoire** : Pour chaque commit du plan, l'agent presente le message en francais simple, la liste des fichiers et le contenu prevu, puis attend l'accord explicite de l'utilisateur dans le chat avant de generer et committer.
+* **Execution atomique et horodatage coherent** : Des validation humaine d'un commit, l'agent execute dans le meme enchainement : validation des tests (`mvn test`), synchronisation (`git pull --rebase` si travail sur branche partagee), `git commit` et `git push` immediat pour garantir un arbre Git propre sans decalage d'horodatage.
 
 ---
 
@@ -140,6 +141,27 @@ Les messages de commit doivent imperativement concilier le formalisme du standar
    * `feat(order): implement order jpa entities state machine and repository` (description en anglais : strictement interdit)
    * `ajout des entites commande` (absence du formalisme Conventional Commits : strictement interdit)
    * `fix: bug` (trop laconique et imprécis)
+
+---
+
+## 11. Gouvernance Linear : Etancheite MOA, Style Fonctionnel et Labels Stricts
+
+L'espace Linear etant accessible aux enseignants evaluateurs, il est soumis aux memes regles d'etancheite absolue que les depots de code GitLab :
+1. **Zero Trace Agentique ou Organisationnelle Interne** : Interdiction absolue de mentionner des ressources internes d'IA, methodes de test nommees ("Dan Luu"), prompts, cockpit de gouvernance ou la separation entre deux depots Git dans les titres, descriptions ou commentaires Linear.
+2. **Contenu 100 % Fonctionnel (Zero Reference de Code)** : Les fiches de tickets Linear doivent decrire exclusivement le besoin metier, les regles de gestion, le comportement attendu ("Ce qui a ete realise" / "Ce qu'il y a a faire") dans un style direct et sobre d'etudiant M2 MIAGE. Interdiction de citer des noms de classes Java, packages, annotations techniques (`@DataJpaTest`, etc.) ou signatures de methodes.
+3. **Triptyque Strict des Etiquettes Colorees** : Chaque ticket actif porte exclusivement trois labels maximum :
+   * L'User Story parente (`US-01` a `US-18` ou `DevOps`),
+   * Le microservice concerne (`service:auth`, `service:catalog`, `service:cart-order`, `service:loyalty`, `service:gateway-frontend`, `service:platform`),
+   * L'iteration cible (`Sprint 1` a `Sprint 4`).
+   Tout label technique (`tech:*`), de jalon (`milestone:*`) ou generique (`Bug`, `Feature`, `Improvement`) est proscrit.
+
+---
+
+## 12. Strategie Git Multi-Depots (Feature -> Merge Request -> Dev -> Main)
+
+Une fois l'infrastructure GitLab configuree (branches protegees et `dev` creee sur les 5 depots du groupe `glop-garik-2026`) :
+1. **Zero Push Direct sur `main`** : La branche `main` represente l'etat stable de demonstration / production et n'est alimentee que par Merge Request validee depuis `dev`.
+2. **Branches Isolees par Ticket** : Tout developpement s'effectue sur une branche dediee (`feat/<id-ticket>-<resume>`) puis fait l'objet d'une Merge Request vers `dev` avec pipeline CI/CD au vert et relecture croisee par un pair.
 
 
 

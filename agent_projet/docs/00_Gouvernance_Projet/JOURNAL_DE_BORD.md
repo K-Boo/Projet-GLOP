@@ -1671,6 +1671,32 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Soumettre et executer le plan du ticket PRO-61 (DEVOPS-05) avant de reprendre PRO-47 (Commit 2/10) sur une branche feat/pro-47-coordinateur-2pc via Merge Request.
 
 
+### [2026-11-18] Session 62 : Deploiement du Pipeline CI Centralise (PRO-61) & Synchronisation Cockpit Equipe
+- **Identifiant de session** : SESSION-2026-11-18-PRO61-CI-CENTRALISE-AND-TEAM-SYNC
+- **Objectif atomique** : Centraliser le modele de pipeline GitLab CI dans shoploc-platform, activer le controle bloquant JaCoCo a 80 % sur le code metier des 4 microservices Java (Option 3B), deployer le pipeline de compilation sur shoploc-frontend selon une approche prudente, et aligner les directives partagees dans ShopLoc/ pour l'equipe.
+- **Actions realisees** :
+  - *shoploc-platform (MR !1 mergee dans dev, commit e921435)* : creation du modele partage ci-templates/spring-boot-microservice.yml (stages test et package sans Kaniko, reporte a PRO-63 en Sprint 2) et de .gitlab-ci.yml (bank-mock-tests + compose-validate), pipeline dev #96426 au vert (6 s) et activation de only_allow_merge_if_pipeline_succeeds=true.
+  - *shoploc-frontend (MR !1 ouverte vers dev, non mergee volontairement)* : ajout de .gitlab-ci.yml (npm ci + npm run build bloquant + npm run lint informatif), pipeline #96428 passe au vert en 67 s (only_allow_merge_if_pipeline_succeeds conserve a false afin de ne pas bloquer la branche en cours d'Ilyas Ait Ali).
+  - *shoploc-cart-order-service (MR !1 mergee dans dev, commit 26eded4)* : configuration JaCoCo Option 3B (exclusions **/*Application.class et **/dto/**, jacoco:check >= 0.80), 61 tests passes (95,47 % lignes en local), pipeline MR #96430 (95,64 %) et dev #96436 (46 s) au vert.
+  - *shoploc-auth-service (MR !2 mergee dans dev, commit b7e4797)* : JaCoCo Option 3B (36 tests passes, 87,76 % lignes en local) et modele partage, pipeline #96437 au vert (89,52 %).
+  - *shoploc-merchant-catalog-service (MR !6 mergee dans dev, commit b852ade)* : JaCoCo Option 3B (153 tests passes, 100 % lignes en local) et modele partage, pipeline #96438 au vert (99,37 %).
+  - *shoploc-loyalty-service (MR !2 mergee dans dev, commit 56eb3c0)* : JaCoCo Option 3B (1 test passe, 0 classe metier hors Application) et modele partage, pipeline #96439 au vert (100 %).
+  - *Linear & Gouvernance ShopLoc/* : actualisation de PRO-61 et PRO-63 (report de la publication conteneurisee en Sprint 2), synchronisation via pull_linear.py, alignement de ShopLoc/AGENTS.md (Sections 9, 11 et 12) avec la racine GLOP/AGENTS.md et mise a jour de ShopLoc/.antigravity/setup_equipe.md (groupe glop-garik-2026 et nouvelles regles d'equipe).
+- **Fichiers crees ou modifies** :
+  - *Depots GitLab (glop-garik-2026)* : shoploc-platform (ci-templates/spring-boot-microservice.yml, .gitlab-ci.yml), shoploc-frontend (.gitlab-ci.yml sur MR !1), et pom.xml + .gitlab-ci.yml sur les 4 microservices Java.
+  - *Cockpit agentique (ShopLoc)* :
+    * AGENTS.md (Sections 9, 11 et 12 synchronisees pour l'equipe)
+    * .antigravity/setup_equipe.md (Section 3 actualisee et Section 4 ajoutee)
+    * agent_projet/config/linear_tickets_export.json et .csv
+    * agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md (Session 62)
+- **Decisions actees** :
+  - Option 3B JaCoCo (>= 80 % uniquement sur le code metier, hors **/*Application.class et **/dto/**).
+  - Report de Kaniko et de la publication d'images conteneurisees sur le ticket PRO-63 en fin de Sprint 2.
+  - Maintien provisoire de la MR !1 sur shoploc-frontend sans blocage des fusions le temps de synchroniser l'equipe frontend.
+- **Reste a faire / Prochaine etape** :
+  - Annoncer aux collegues de faire git pull sur ShopLoc/ (et git merge origin/dev sur leurs microservices), fusionner la MR !1 de shoploc-frontend puis cloturer PRO-61 avant de reprendre PRO-47 (Commit 2/10 sur feat/pro-47-coordinateur-2pc).
+
+
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
 
 A la fin de chaque session de chat, l'agent ou l'utilisateur execute la mise a jour de ce fichier selon le format suivant :

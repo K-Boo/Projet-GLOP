@@ -217,8 +217,8 @@
       {
         "id": "b6a9bbdb-2991-4314-a1e2-e6d9da907529",
         "identifier": "PRO-63",
-        "title": "[DEVOPS-07] Deploiement continu sur serveur VPS avec frontal HTTPS et sauvegardes automatisees",
-        "description": "Mise en oeuvre du deploiement continu vers l'environnement d'hebergement cible en conformite avec l'architecture d'exploitation prevue pour la solution.\n\n### Ce qu'il y a a faire :\n\n* Configurer le serveur d'hebergement Linux cible avec un frontal reverse proxy securise en HTTPS et certificats TLS valides.\n* Connecter le pipeline de livraison continue pour mettre a jour automatiquement l'environnement de test lors des fusions sur `dev`, et declencher le deploiement de production lors des fusions validees sur `main`.\n* Mettre en place des sauvegardes automatiques quotidiennes des quatre bases de donnees isolees avec retention glissante sur 7 jours.\n* Verifier automatiquement l'etat de sante de l'ensemble des services apres chaque deploiement via leurs sondes de disponibilite.",
+        "title": "[DEVOPS-07] Publication des images conteneurisees et deploiement continu HTTPS sur VPS",
+        "description": "Mise en oeuvre de la publication d'images conteneurisees et du deploiement continu vers l'environnement d'hebergement cible en conformite avec l'architecture d'exploitation prevue pour la solution.\n\n### Ce qu'il y a a faire :\n\n* Mettre en place la construction et la publication automatique des images applicatives conteneurisees depuis le pipeline d'integration continue (etiquetage distinct pour l'environnement de developpement et de production).\n* Configurer le serveur d'hebergement Linux cible avec un frontal reverse proxy securise en HTTPS et certificats TLS valides.\n* Connecter le pipeline de livraison continue pour mettre a jour automatiquement l'environnement de test lors des fusions sur dev, et declencher le deploiement de production lors des fusions validees sur main.\n* Mettre en place des sauvegardes automatiques quotidiennes des quatre bases de donnees isolees avec retention glissante sur 7 jours.\n* Verifier automatiquement l'etat de sante de l'ensemble des services apres chaque deploiement via leurs sondes de disponibilite.",
         "estimate": 3,
         "priority": 0,
         "state": {
@@ -283,16 +283,20 @@
       {
         "id": "46a1828c-0f97-46b4-b4ea-c80f6b3a2319",
         "identifier": "PRO-61",
-        "title": "[DEVOPS-05] Centralisation du pipeline GitLab CI bloquant et publication des images conteneurisees",
-        "description": "Evolution des pipelines d'integration continue pour uniformiser les controles sur les 5 depots, bloquer les fusions sous le seuil de qualite et publier automatiquement les images applicatives.\n\n### Ce qu'il y a a faire :\n\n* Centraliser le modele de pipeline dans le depot plateforme afin qu'il soit partage et reutilise par tous les microservices sans duplication.\n* Rendre le controle de couverture de tests strictement bloquant sous le seuil de 80 % sur chaque Merge Request.\n* Ajouter une etape de verification de construction logicielle et de generation des images conteneurisees.\n* Publier automatiquement les images validees dans le registre prive GitLab avec une etiquette distincte selon l'environnement (`dev` apres fusion en integration, `prod` apres fusion sur la branche principale).",
+        "title": "[DEVOPS-05] Centralisation du pipeline GitLab CI bloquant a 80 %",
+        "description": "Evolution des pipelines d'integration continue pour uniformiser les controles sur l'ensemble des depots et bloquer les fusions sous le seuil de qualite metier de 80 %.\n\n### Ce qui a ete realise :\n\n* Centralisation du modele de pipeline partage dans le depot plateforme et activation des controles automatiques sur le serveur de simulation bancaire et la configuration d'orchestration.\n* Activation du controle bloquant de couverture de tests a 80 % sur le code metier des quatre microservices backend et raccordement au modele partage (fusions validees sur dev pour la plateforme et les quatre microservices).\n* Ajout de la verification de compilation applicative et de qualite syntaxique sur le depot frontend avec validation sur une Merge Request ouverte vers dev.\n\n### Ce qu'il reste a faire :\n\n* Fusionner la Merge Request frontend dans dev et activer le blocage automatique des fusions une fois l'equipe frontend synchronisee.\n* La construction et la publication automatique des images conteneurisees ont ete reportees au ticket PRO-63 en Sprint 2.",
         "estimate": 2,
         "priority": 0,
         "state": {
-          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
-          "name": "A faire (Sprint Backlog)",
-          "type": "unstarted"
+          "id": "797deca8-345e-499d-8725-f37ac762d8f1",
+          "name": "En cours (In Progress)",
+          "type": "started"
         },
-        "assignee": null,
+        "assignee": {
+          "id": "fe7c4534-dd68-4778-a718-048612a4e071",
+          "displayName": "khalil",
+          "email": "khalil.mailgeneral@gmail.com"
+        },
         "labels": {
           "nodes": [
             {
