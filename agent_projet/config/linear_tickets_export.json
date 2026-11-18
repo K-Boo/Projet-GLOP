@@ -802,13 +802,13 @@
         "id": "1aa5435b-91ef-40f8-ab42-fd2276065e73",
         "identifier": "PRO-47",
         "title": "[US-09-T01] Orchestration de Commande et Protocole 2PC Multi-Commerces",
-        "description": "Coordination de la validation d'un panier multi-commerces assurant la synchronisation sans faille entre la reservation des stocks et le debit bancaire.\n\n### Ce qu'il y a a faire :\n\n* Phase 1 (Reservation) : Envoi des demandes de reservation temporaire des stocks a chaque commercant concerne par le panier.\n* Regle d'unanimite : Si tous les commercants confirment le stock, passage a l'etape de paiement. Si un seul commercant est en rupture, annulation immediate de la commande sans prelevement et liberation des stocks deja reserves.\n* Phase 2 (Paiement) : Declenchement de la demande de debit aupres du service bancaire.\n* Si le reglement est approuve : confirmation definitive de la commande et notification a chaque commercant pour valider la sortie de stock.\n* Si le reglement echoue ou est refuse : annulation de la commande et restitution immediate des stocks reserves aux commercants.",
+        "description": "Coordination de la validation d'un panier multi-commerces assurant la synchronisation sans faille entre la reservation des stocks et le debit bancaire.\n\n### Ce qui a ete realise :\n\n* Phase 1 (Reservation) : Envoi des demandes de reservation temporaire des stocks a chaque commercant concerne par le panier, avec annulation immediate et liberation des stocks deja reserves des qu'un commercant signale une rupture (reponse HTTP 409).\n* Phase 2 (Paiement) : Declenchement du debit bancaire apres accord unanime des commercants ; confirmation definitive de la commande (HTTP 201) et des stocks en cas d'approbation, ou restitution immediate de tous les stocks reserves en cas de refus bancaire (HTTP 402) ou d'erreur technique (HTTP 502).\n* Exposition du point d'entree REST de validation de commande, gestion normalisee des erreurs et suite de tests automatises validant l'ensemble des scenarios d'echec et le cas nominal.\n\n### Ce qu'il reste a faire :\n\n* Relecture croisee et fusion de la Merge Request ouverte vers la branche d'integration dev.",
         "estimate": 3,
         "priority": 0,
         "state": {
-          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
-          "name": "A faire (Sprint Backlog)",
-          "type": "unstarted"
+          "id": "797deca8-345e-499d-8725-f37ac762d8f1",
+          "name": "En cours (In Progress)",
+          "type": "started"
         },
         "assignee": {
           "id": "fe7c4534-dd68-4778-a718-048612a4e071",
@@ -1139,9 +1139,9 @@
         "estimate": 1,
         "priority": 0,
         "state": {
-          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
-          "name": "A faire (Sprint Backlog)",
-          "type": "unstarted"
+          "id": "797deca8-345e-499d-8725-f37ac762d8f1",
+          "name": "En cours (In Progress)",
+          "type": "started"
         },
         "assignee": {
           "id": "2788f319-69b3-4c03-b240-4ed79cc5e674",

@@ -1697,6 +1697,35 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Annoncer aux collegues de faire git pull sur ShopLoc/ (et git merge origin/dev sur leurs microservices), fusionner la MR !1 de shoploc-frontend puis cloturer PRO-61 avant de reprendre PRO-47 (Commit 2/10 sur feat/pro-47-coordinateur-2pc).
 
 
+### [2026-11-18] Session 63 : Implementation Complete du Coordinateur Two-Phase Commit (PRO-47)
+- **Identifiant de session** : SESSION-2026-11-18-PRO47-2PC-COORDINATOR
+- **Objectif atomique** : Realiser les Commits 2/10 a 10/10 du ticket PRO-47 (`[US-09-T01]`) sur la branche isolee feat/pro-47-coordinateur-2pc de shoploc-cart-order-service, verifier l'ensemble des chemins de panne et le seuil JaCoCo >= 80 %, puis ouvrir la Merge Request vers dev.
+- **Actions realisees** :
+  - Creation de la branche feat/pro-47-coordinateur-2pc a partir de dev (26eded4, incluant deja le Commit 1 263dcac et le pipeline partage).
+  - Execution stricte commit par commit (Commits 2/10 a 10/10) avec verification Maven prealable a chaque etape :
+    * Commit 2/10 (2340d3a) : tests Jakarta Validation et mapping DTO dans OrderDtoValidationTest.java.
+    * Commit 3/10 (dd7d8b9) : contrats DTO StockReservationItem.java et StockReservationRequest.java.
+    * Commit 4/10 (06eb320) : extension de CatalogClient.java (reserveStock, commitStock, releaseStock).
+    * Commit 5/10 (fb24a56) : tests @RestClientTest dans CatalogClientTest.java (409, 500 et 200 OK).
+    * Commit 6/10 (84e0bf7) : exceptions InsufficientStockException.java et PaymentFailedException.java.
+    * Commit 7/10 (a57f839) : coordinateur 2PC OrderService.java avec conservation transactionnelle de l'etat RELEASED en cas de compensation.
+    * Commit 8/10 (fd0f272) : suite Mockito + InOrder OrderServiceTest.java (rupture Phase 1, refus 402, erreur 500, nominal).
+    * Commit 9/10 (93dcb32) : controleur REST POST /api/v1/orders/checkout (OrderController.java) et traduction RFC 7807 (OrderExceptionHandler.java : 400, 402, 409, 502).
+    * Commit 10/10 (b15af2f) : tests @WebMvcTest dans OrderControllerTest.java (80 tests au total, 0 echec, couverture lignes 97,56 % et instructions 97,26 %).
+  - Ouverture de la Merge Request !3 (feat/pro-47-coordinateur-2pc -> dev) et validation du pipeline GitLab CI #96485 (maven-verify 39,8 s a 97,26 %, maven-package 24,1 s).
+  - Passage de PRO-47 a En cours (In Progress) sur Linear (en attente de relecture croisee/fusion sur dev) et synchronisation via pull_linear.py.
+- **Fichiers crees ou modifies** :
+  - *shoploc-cart-order-service (branche feat/pro-47-coordinateur-2pc, MR !3)* : OrderDtoValidationTest.java, StockReservationItem.java, StockReservationRequest.java, CatalogClient.java, CatalogClientTest.java, InsufficientStockException.java, PaymentFailedException.java, OrderService.java, OrderServiceTest.java, OrderController.java, OrderExceptionHandler.java, OrderControllerTest.java.
+  - *Cockpit agentique (ShopLoc)* :
+    * agent_projet/config/linear_tickets_export.json et .csv
+    * agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md (Session 63)
+- **Decisions actees** :
+  - Conservation explicite des compensations persistees (Order[RELEASED]) via @Transactional(noRollbackFor = ...).
+  - Ouverture de la MR !3 vers dev pour relecture par un pair avant cloture definitive de PRO-47 a Termine.
+- **Reste a faire / Prochaine etape** :
+  - Relecture croisee et fusion de la MR !3 de shoploc-cart-order-service dans dev (puis cloture de PRO-47 sur Linear), fusion de la MR !1 de shoploc-frontend apres synchronisation d'Ilyas (cloture de PRO-61), et implementation des endpoints /api/v1/inventory/prepare|commit|rollback cote shoploc-merchant-catalog-service.
+
+
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
 
 A la fin de chaque session de chat, l'agent ou l'utilisateur execute la mise a jour de ce fichier selon le format suivant :
