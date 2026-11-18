@@ -6,14 +6,14 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 
 ## 1. Etat Courant du Projet
 
-- **Phase active** : Developpement & Deploiement du MVP Decembre 2026 (Jalon R4) - Composant Commande & Panier Multi-Commerces 2PC, Architecture Microservices, Tests TDD Dan Luu (JaCoCo >= 80 %), Mock Bancaire OpenAPI 3.1
-- **Derniere mise a jour** : 2026-11-10 (Session 57 - Gouvernance Linear & Scrum Sprint 1)
+- **Phase active** : Developpement & Deploiement du MVP Decembre 2026 (Jalon R4) - Composant Commande & Panier Multi-Commerces 2PC, Architecture Microservices, Tests TDD (JaCoCo >= 80 %), Mock Bancaire OpenAPI 3.1
+- **Derniere mise a jour** : 2026-11-18 (Session 60 - /learn Gouvernance Git/Linear, Commit 1 PRO-47 & Tickets DEVOPS-04 a DEVOPS-07)
 - **Responsable / Scrum Master** : Equipe Garik (M2 MIAGE GLOP - Universite de Lille)
 - **Depot Cockpit (Gouvernance & Memoire Agentique)** : GitHub Projet-GLOP / ShopLoc
 - **Depots de Code Evalues (GitLab Univ-Lille)** : Groupe glop-garik-2026 (shoploc-cart-order-service, shoploc-auth-service, shoploc-merchant-catalog-service, shoploc-loyalty-service)
 - **Depot Plateforme & CI/CD** : GitLab shoploc-platform (Mock bancaire OpenAPI 3.1, Docker Compose, orchestration)
-- **Dernier Jalon Valide** : Cloture des Sessions 1 et 2 de Khalil, Push du Commit 4 certifie, Rationalisation Linear en 4 colonnes, Activation des Cycles/Sprints (Sprint 1 demarre), Publication du Guide Backlog Linear & Scrum
-- **Prochaine Etape** : Session 3 de Khalil (PRO-47 : Orchestrateur Two-Phase Commit 2PC, verrous pessimistes PostgreSQL SELECT FOR UPDATE, scenarios de Rollback sur HTTP 402)
+- **Dernier Jalon Valide** : Commit 1/10 de PRO-47 pousse sur shoploc-cart-order-service (263dcac, 38 tests au vert), regles permanentes /learn integrees (AGENTS.md & skills.config.yaml), creation des tickets PRO-60 a PRO-63 (DEVOPS-04 a DEVOPS-07) sur Linear (63 tickets synchronises).
+- **Prochaine Etape** : Executer PRO-60 (DEVOPS-04 : creation branche dev, protection main et Merge Requests sur les 5 depots GitLab) puis poursuivre PRO-47 (Commit 2/10) sur branche dediee.
 
 ---
 
@@ -1593,6 +1593,60 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Respect scrupuleux de l'etancheite IA et de la politique zero emoji.
 - **Reste a faire / Prochaine etape** :
   - Lancement des travaux de la Session 3 de Khalil sur le ticket PRO-47 (Orchestrateur 2PC avec verrous pessimistes dans cart-order-service).
+
+
+
+### [2026-11-17] Session 59 : Cloture des Tickets Linear, Rationalisation des Labels & Cadrage Fonctionnel du Coordinateur 2PC (PRO-47)
+- **Identifiant de session** : SESSION-2026-11-17-KHALIL-LINEAR-ALIGNMENT-AND-PRO47-PLANNING
+- **Objectif atomique** : Synchroniser l'etat local de l'ensemble des 6 composants Git et du backlog Linear aupres de l'equipe (Abdelkader, Gautam, Rayane, Ilyas), clarifier et pedagogiser l'ensemble des realisations logicielles de Khalil (US-10 / PRO-50 & PRO-52, US-09 / PRO-59), assainir integralement les fiches Linear de Khalil pour supprimer toute reference directe au code source ou methodologique non etudiante (elimination des classes Java, annotations, Dan Luu, separation des depots), epurer le systeme de labels Linear sous forme d'un triptyque strict [US-XX, service:*, Sprint X], etablir le plan d'action d'architecture logicielle pour le ticket PRO-47 (Orchestrateur 2PC) et journaliser la continuite de gouvernance.
+- **Actions realisees** :
+  - Execution de `git pull` sur l'ensemble des 6 depots : cockpit ShopLoc (merge auto session 56), shoploc-auth-service (fast-forward filtre JWT commit f296c62), shoploc-merchant-catalog-service (fast-forward endpoints produits et tests commits 629a0d6 a 38810f6), shoploc-platform (fast-forward conteneur frontend stub et Docker Compose commit 69487b7), shoploc-cart-order-service et shoploc-loyalty-service (deja a jour).
+  - Restructuration complete et assainissement des fiches de tickets de Khalil (PRO-50, PRO-52, PRO-59 termines ; PRO-47, PRO-48, PRO-49 a faire) via l'API GraphQL Linear, avec reformulation purement fonctionnelle et metier (flux d'achat, precision des centimes, machine a etats, regles de debit et motifs de rejet).
+  - Refonte complete du systeme de labels sur Linear : suppression des 13 labels techniques et de jalons redondants (milestone:*, tech:*), creation de la nomenclature standardisee des US (US-01 a US-18, DevOps) et des Sprints (Sprint 1 a Sprint 4), et restauration ciblee des labels de microservices (service:auth, service:catalog, service:cart-order, service:loyalty, service:gateway-frontend, service:platform) pour une lisibilite immediate par la MOA enseignante.
+  - Elaboration du plan technique d'architecture pour le ticket PRO-47 formalise dans l'artefact plan_pro47_coordinateur_2pc.md : decouplage des DTOs de commande et d'inventaire, extension de CatalogClient pour la reservation, le commit et le rollback, conception d'OrderService pour l'orchestration 2PC avec compensation automatique en cas de rupture de stock ou de refus bancaire 402, exposition REST via OrderController et OrderExceptionHandler (RFC 7807), et suite de tests automatises.
+  - Re-synchronisation des exports locaux de gouvernance agent_projet/config/linear_tickets_export.json et linear_tickets_export.csv.
+  - Verification d'integrite documentaire via verify_deliverables.py affichant 90 fichiers conformes, 0 canari, 0 violation et 0 emoji.
+- **Fichiers crees ou modifies** :
+  - *Cockpit agentique (ShopLoc)* :
+    * agent_projet/config/linear_tickets_export.json (59 tickets synchronises avec triptyque de labels epure)
+    * agent_projet/config/linear_tickets_export.csv (export tabulaire a jour)
+    * agent_projet/scripts/pull_linear.py (script d'extraction automatique du board Linear)
+    * agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md (Session 59)
+- **Decisions actees** :
+  - Sanctuarisation du triptyque de labels Linear : [US-XX, service:*, Sprint X] sur l'ensemble du projet.
+  - Interdiction de toute reference brute a du code Java ou a des concepts hors-programme dans les tickets Linear visibles par les professeurs.
+  - Validation du decoupage par commercant pour la Phase 1 (Prepare) du 2PC et du relais structure des erreurs bancaires 402 au format RFC 7807.
+- **Reste a faire / Prochaine etape** :
+  - Demarrage effectif de l'implementation du ticket PRO-47 dans shoploc-cart-order-service (DTOs, extension CatalogClient, OrderService 2PC, OrderController et tests d'integration).
+
+
+### [2026-11-18] Session 60 : Commit 1 PRO-47, Apprentissage Permanent (/learn) & Tickets DevOps Git/Deploiement (PRO-60 a PRO-63)
+- **Identifiant de session** : SESSION-2026-11-18-LEARN-GIT-CI-DEVOPS-TICKETS
+- **Objectif atomique** : Demarrer le plan modulaire de PRO-47 (Commit 1 : modeles de requete/reponse de commande), formaliser les regles permanentes /learn (etancheite Linear, commits modulaires avec push synchrone, strategie feature -> MR -> dev -> main), auditer l'ecart de deploiement reel par rapport aux dossiers R2/C4, creer les 4 tickets DevOps manquants sur Linear et synchroniser le cockpit GitHub.
+- **Actions realisees** :
+  - Generation et validation (mvn test : 38 tests au vert) des 4 records DTOs de commande (OrderItemRequest, CreateOrderRequest, OrderItemResponse, OrderResponse) dans shoploc-cart-order-service, rebasage sur les commits PRO-53/PRO-55 d'Abdelkader et push synchrone du Commit 1 (263dcac) sur origin/main.
+  - Application de /learn dans AGENTS.md (Sections 9, 11 et 12) et ShopLoc/.agents/skills.config.yaml : verrou commit/push synchrone apres plan modulaire, etancheite MOA et contenu 100% fonctionnel sur Linear avec triptyque de labels [US-XX, service:*, Sprint X], et strategie multi-depots feat/* -> MR -> dev -> main.
+  - Audit complet de l'architecture de deploiement prevue en R2/R3/C4 (VPS OVHcloud Ubuntu 24.04 LTS, Nginx reverse proxy HTTPS Let's Encrypt, images Alpine multi-stage sur Registry GitLab, cron pg_dump 7 jours, profils dev vs prod) face aux fichiers reels des 5 depots GitLab.
+  - Creation sur Linear des 4 tickets manquants sans doublon : PRO-60 (DEVOPS-04 branches dev/main & MR), PRO-61 (DEVOPS-05 pipeline CI centralise bloquant >= 80% & Registry), PRO-62 (DEVOPS-06 isolation profils dev/prod) et PRO-63 (DEVOPS-07 deploiement continu VPS, Nginx HTTPS & sauvegardes).
+  - Resynchronisation locale via pull_linear.py (63 tickets au total) et certification verify_deliverables.py (90 fichiers audites, 0 violation, 0 canari, 0 emoji).
+- **Fichiers crees ou modifies** :
+  - *Code evalue (shoploc-cart-order-service, commit 263dcac)* :
+    * src/main/java/fr/univlille/shoploc/cartorder/dto/order/OrderItemRequest.java
+    * src/main/java/fr/univlille/shoploc/cartorder/dto/order/CreateOrderRequest.java
+    * src/main/java/fr/univlille/shoploc/cartorder/dto/order/OrderItemResponse.java
+    * src/main/java/fr/univlille/shoploc/cartorder/dto/order/OrderResponse.java
+  - *Cockpit agentique (ShopLoc) & Racine workspace* :
+    * AGENTS.md (hors depot ShopLoc : regles permanentes workspace)
+    * ShopLoc/.agents/skills.config.yaml
+    * ShopLoc/agent_projet/config/linear_tickets_export.json (63 tickets)
+    * ShopLoc/agent_projet/config/linear_tickets_export.csv (63 tickets)
+    * ShopLoc/agent_projet/scripts/pull_linear.py
+    * ShopLoc/agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md (Session 60)
+- **Decisions actees** :
+  - Conservation de PRO-58 a Termine (premiere version CI) et portage du template mutualise bloquant + Docker build/Registry dans PRO-61 (DEVOPS-05).
+  - Creation de PRO-60 (DEVOPS-04) comme prerequis immediat pour verrouiller main, creer dev et passer sur des Merge Requests avant de poursuivre PRO-47.
+- **Reste a faire / Prochaine etape** :
+  - Realiser PRO-60 (DEVOPS-04 : branche dev + protection main + regles MR sur les 5 depots du groupe glop-garik-2026), puis reprendre PRO-47 (Commit 2/10) sur branche feat/pro-47-coordinateur-2pc.
 
 
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
