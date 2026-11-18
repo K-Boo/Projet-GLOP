@@ -51,69 +51,149 @@
   "labels": {
     "nodes": [
       {
-        "id": "18de18b3-04e6-4493-b16c-edf5c0bf5964",
-        "name": "milestone:r5-vfp",
-        "color": "#6366f1"
-      },
-      {
-        "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-        "name": "milestone:r4-mvp",
-        "color": "#f59e0b"
-      },
-      {
-        "id": "2c86910b-5102-4942-80eb-559d7a3df832",
-        "name": "tech:cicd-docker",
+        "id": "ebca7aad-2566-4c76-9b8e-f9bc14d44c0a",
+        "name": "service:platform",
         "color": "#0284c7"
       },
       {
-        "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
-        "name": "tech:unit-test",
-        "color": "#16a34a"
-      },
-      {
-        "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
-        "name": "tech:business-rules",
-        "color": "#9333ea"
-      },
-      {
-        "id": "d9f05449-2645-443f-a493-22ba804871e0",
-        "name": "tech:restclient-2pc",
-        "color": "#d03535"
-      },
-      {
-        "id": "4d547c5b-aa93-4708-a7e0-6f1beb6653d2",
-        "name": "tech:jpa-database",
-        "color": "#d97706"
-      },
-      {
-        "id": "cc3fd0e9-6af5-419e-87f1-7c98c3b31549",
-        "name": "tech:openapi-contract",
-        "color": "#4b9fe1"
-      },
-      {
-        "id": "117c232a-b479-4387-913f-84fdae166286",
+        "id": "d8eb7608-d31c-42be-96a4-ee4f17e77594",
         "name": "service:gateway-frontend",
         "color": "#26b5ce"
       },
       {
-        "id": "f7a65f45-988e-430b-801f-11bef59471ad",
+        "id": "32a93cba-f6dc-46c7-9e6c-c09897635239",
         "name": "service:loyalty",
         "color": "#8957e5"
       },
       {
-        "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+        "id": "aefcbc40-7574-4b6b-a279-50c87f34ca23",
         "name": "service:cart-order",
         "color": "#e2843b"
       },
       {
-        "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+        "id": "9c61d6d1-72af-4470-a479-201bcfe2c69b",
         "name": "service:catalog",
         "color": "#0f7830"
       },
       {
-        "id": "38a29150-2f0d-4644-8f34-e2dcedfff308",
+        "id": "b205fb2a-83f2-44db-ad30-f804e1a54481",
         "name": "service:auth",
         "color": "#e36999"
+      },
+      {
+        "id": "652a9adf-b1f8-4b42-9cc6-3c3a8c90a726",
+        "name": "DevOps",
+        "color": "#d97706"
+      },
+      {
+        "id": "6fc290c7-9199-4314-b70c-3680184a61d5",
+        "name": "US-18",
+        "color": "#334155"
+      },
+      {
+        "id": "3a699da5-fc37-4b1a-a6d0-fb13997b404c",
+        "name": "US-17",
+        "color": "#475569"
+      },
+      {
+        "id": "88d030c2-d9cf-434b-adad-f94560937bef",
+        "name": "US-16",
+        "color": "#64748b"
+      },
+      {
+        "id": "e45ae923-9861-461e-b6f4-0fc816570272",
+        "name": "US-15",
+        "color": "#e11d48"
+      },
+      {
+        "id": "d888612a-8aba-49d2-9989-b8031a3d6042",
+        "name": "US-14",
+        "color": "#f43f5e"
+      },
+      {
+        "id": "c2d8dd5a-6021-4bdb-bf9f-d04d0636b5cf",
+        "name": "US-13",
+        "color": "#ec4899"
+      },
+      {
+        "id": "64fb2271-1782-4284-9846-726247b62d1a",
+        "name": "US-12",
+        "color": "#d946ef"
+      },
+      {
+        "id": "e8467a18-1c67-4517-b2ed-f4835935cd95",
+        "name": "US-11",
+        "color": "#a855f7"
+      },
+      {
+        "id": "dbc1ea40-a83c-4b62-989e-2545dbffe530",
+        "name": "US-10",
+        "color": "#8b5cf6"
+      },
+      {
+        "id": "1b334ded-ec03-41ad-a562-aae28b3197a4",
+        "name": "US-09",
+        "color": "#6366f1"
+      },
+      {
+        "id": "b5996f8e-be4c-4b20-86a6-8c8bc2b27786",
+        "name": "US-08",
+        "color": "#3b82f6"
+      },
+      {
+        "id": "ab9ad4cc-b5d2-475e-9e8b-d7d37ea4fae4",
+        "name": "US-07",
+        "color": "#0284c7"
+      },
+      {
+        "id": "5bcd38c7-6626-4120-84f4-947f7d8c10d6",
+        "name": "US-06",
+        "color": "#06b6d4"
+      },
+      {
+        "id": "893ffd00-bc4d-49da-a666-575f521a42f7",
+        "name": "US-05",
+        "color": "#14b8a6"
+      },
+      {
+        "id": "538b5d00-6dfe-45f7-b2ab-0ba6ea197bd4",
+        "name": "US-04",
+        "color": "#059669"
+      },
+      {
+        "id": "b62add7e-771a-4c72-8853-47bc4e34a12a",
+        "name": "US-03",
+        "color": "#10b981"
+      },
+      {
+        "id": "193b5957-2ebf-4987-aef2-fe8d54617822",
+        "name": "US-02",
+        "color": "#ea580c"
+      },
+      {
+        "id": "dd647847-ae40-4121-8de6-99adf96aecfe",
+        "name": "US-01",
+        "color": "#f97316"
+      },
+      {
+        "id": "2910eedc-0fc5-4071-8f52-4304bfe77847",
+        "name": "Sprint 4",
+        "color": "#059669"
+      },
+      {
+        "id": "1917d384-1409-4be4-8cd4-8c26e2a32638",
+        "name": "Sprint 3",
+        "color": "#db2777"
+      },
+      {
+        "id": "48dfa844-b58d-4a3c-912c-e90ed66af7a8",
+        "name": "Sprint 2",
+        "color": "#7c3aed"
+      },
+      {
+        "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+        "name": "Sprint 1",
+        "color": "#2563eb"
       },
       {
         "id": "eb0dc030-88a8-4fe6-94f3-b688f495b067",
@@ -135,10 +215,142 @@
   "issues": {
     "nodes": [
       {
+        "id": "b6a9bbdb-2991-4314-a1e2-e6d9da907529",
+        "identifier": "PRO-63",
+        "title": "[DEVOPS-07] Deploiement continu sur serveur VPS avec frontal HTTPS et sauvegardes automatisees",
+        "description": "Mise en oeuvre du deploiement continu vers l'environnement d'hebergement cible en conformite avec l'architecture d'exploitation prevue pour la solution.\n\n### Ce qu'il y a a faire :\n\n* Configurer le serveur d'hebergement Linux cible avec un frontal reverse proxy securise en HTTPS et certificats TLS valides.\n* Connecter le pipeline de livraison continue pour mettre a jour automatiquement l'environnement de test lors des fusions sur `dev`, et declencher le deploiement de production lors des fusions validees sur `main`.\n* Mettre en place des sauvegardes automatiques quotidiennes des quatre bases de donnees isolees avec retention glissante sur 7 jours.\n* Verifier automatiquement l'etat de sante de l'ensemble des services apres chaque deploiement via leurs sondes de disponibilite.",
+        "estimate": 3,
+        "priority": 0,
+        "state": {
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
+          "type": "unstarted"
+        },
+        "assignee": null,
+        "labels": {
+          "nodes": [
+            {
+              "id": "652a9adf-b1f8-4b42-9cc6-3c3a8c90a726",
+              "name": "DevOps",
+              "color": "#d97706"
+            },
+            {
+              "id": "ebca7aad-2566-4c76-9b8e-f9bc14d44c0a",
+              "name": "service:platform",
+              "color": "#0284c7"
+            },
+            {
+              "id": "48dfa844-b58d-4a3c-912c-e90ed66af7a8",
+              "name": "Sprint 2",
+              "color": "#7c3aed"
+            }
+          ]
+        }
+      },
+      {
+        "id": "8863b0ed-9dec-44a6-af35-6d0202af910b",
+        "identifier": "PRO-62",
+        "title": "[DEVOPS-06] Isolation des environnements Developpement et Production (Profils et Orchestration)",
+        "description": "Separation formelle entre l'environnement de developpement quotidien et l'environnement de production destine aux demonstrations et a l'exploitation.\n\n### Ce qu'il y a a faire :\n\n* Definir deux profils de configuration distincts pour chaque microservice : un profil developpement (journaux detailles, fonctionnement local) et un profil production (validation stricte des bases de donnees, journaux restreints, secrets externes).\n* Fournir dans le depot plateforme deux orchestrations distinctes : une pour le demarrage en integration (`dev`) et une pour la production (`prod`) tirant uniquement les images certifiees de la branche principale.\n* Restreindre l'exposition reseau en production afin qu'aucune base de donnees ni port interne de microservice ne soit accessible directement de l'exterieur.",
+        "estimate": 2,
+        "priority": 0,
+        "state": {
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
+          "type": "unstarted"
+        },
+        "assignee": null,
+        "labels": {
+          "nodes": [
+            {
+              "id": "652a9adf-b1f8-4b42-9cc6-3c3a8c90a726",
+              "name": "DevOps",
+              "color": "#d97706"
+            },
+            {
+              "id": "ebca7aad-2566-4c76-9b8e-f9bc14d44c0a",
+              "name": "service:platform",
+              "color": "#0284c7"
+            },
+            {
+              "id": "48dfa844-b58d-4a3c-912c-e90ed66af7a8",
+              "name": "Sprint 2",
+              "color": "#7c3aed"
+            }
+          ]
+        }
+      },
+      {
+        "id": "46a1828c-0f97-46b4-b4ea-c80f6b3a2319",
+        "identifier": "PRO-61",
+        "title": "[DEVOPS-05] Centralisation du pipeline GitLab CI bloquant et publication des images conteneurisees",
+        "description": "Evolution des pipelines d'integration continue pour uniformiser les controles sur les 5 depots, bloquer les fusions sous le seuil de qualite et publier automatiquement les images applicatives.\n\n### Ce qu'il y a a faire :\n\n* Centraliser le modele de pipeline dans le depot plateforme afin qu'il soit partage et reutilise par tous les microservices sans duplication.\n* Rendre le controle de couverture de tests strictement bloquant sous le seuil de 80 % sur chaque Merge Request.\n* Ajouter une etape de verification de construction logicielle et de generation des images conteneurisees.\n* Publier automatiquement les images validees dans le registre prive GitLab avec une etiquette distincte selon l'environnement (`dev` apres fusion en integration, `prod` apres fusion sur la branche principale).",
+        "estimate": 2,
+        "priority": 0,
+        "state": {
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
+          "type": "unstarted"
+        },
+        "assignee": null,
+        "labels": {
+          "nodes": [
+            {
+              "id": "652a9adf-b1f8-4b42-9cc6-3c3a8c90a726",
+              "name": "DevOps",
+              "color": "#d97706"
+            },
+            {
+              "id": "ebca7aad-2566-4c76-9b8e-f9bc14d44c0a",
+              "name": "service:platform",
+              "color": "#0284c7"
+            },
+            {
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
+            }
+          ]
+        }
+      },
+      {
+        "id": "44bf8487-e6b2-4706-9054-6a8ecda40bfc",
+        "identifier": "PRO-60",
+        "title": "[DEVOPS-04] Mise en place de la branche dev et des Merge Requests controlees sur GitLab",
+        "description": "Mise en place du workflow Git collaboratif sur l'ensemble des 5 depots du groupe pour securiser la branche principale et imposer la revue de code avant integration.\n\n### Ce qu'il y a a faire :\n\n* Creer la branche d'integration `dev` sur les 5 depots (authentification, catalogue, commande, fidelite et plateforme).\n* Proteger la branche `main` sur chaque depot : interdire tout push direct et n'autoriser les fusions que par Merge Request depuis `dev`.\n* Activer la regle obligeant la reussite complete du pipeline de tests avant d'autoriser la fusion d'une Merge Request.\n* Mettre en place l'obligation de relecture croisee par un autre membre de l'equipe sur chaque Merge Request.",
+        "estimate": 1,
+        "priority": 0,
+        "state": {
+          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
+          "name": "A faire (Sprint Backlog)",
+          "type": "unstarted"
+        },
+        "assignee": null,
+        "labels": {
+          "nodes": [
+            {
+              "id": "652a9adf-b1f8-4b42-9cc6-3c3a8c90a726",
+              "name": "DevOps",
+              "color": "#d97706"
+            },
+            {
+              "id": "ebca7aad-2566-4c76-9b8e-f9bc14d44c0a",
+              "name": "service:platform",
+              "color": "#0284c7"
+            },
+            {
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
+            }
+          ]
+        }
+      },
+      {
         "id": "ef1fabf1-2ab5-480a-87d3-199d062a4ca4",
         "identifier": "PRO-59",
-        "title": "[US-09-T00] Client HTTP Bancaire RestClient & Resilience RFC 7807 (BankClient)",
-        "description": "Implementation du client HTTP REST BankClient dans shoploc-cart-order-service pour consommer le simulateur bancaire OpenAPI 3.1 (/api/v1/payments/debit).\n\n* Modeles DTOs immutables : PaymentDebitRequest, PaymentDebitResponse, BankProblemDetails (RFC 7807), PaymentResult.\n* Gestion des statuts HTTP 200 OK (APPROVED) et refus 402 (Payment Required) declenchant le Rollback 2PC.\n* Suite de tests unitaires et d'integration Dan Luu (@RestClientTest) avec 29 tests au total et une couverture Jacoco de 91.78%.\n* Commits modulaires effectues et synchronises avec GitLab.",
+        "title": "[US-09-T00] Passerelle de Paiement Bancaire et Traitement des Refus",
+        "description": "Raccordement au service bancaire pour la validation financiere des achats du citoyen.\n\n### Ce qui a ete realise :\n\n* Emission des demandes de debit bancaire comprenant la reference de commande, le montant et les coordonnees de paiement.\n* Traitement de l'accord bancaire avec conservation de l'identifiant unique de transaction.\n* Prise en compte normalisee des motifs de refus (carte refusee, solde insuffisant) pour declencher l'annulation de la commande et la liberation des stocks.\n* Verification prioritaire par tests automatises des situations de rejet, d'erreur de paiement et d'indisponibilite du service bancaire avant le cas nominal.",
         "estimate": null,
         "priority": 1,
         "state": {
@@ -152,7 +364,23 @@
           "email": "khalil.mailgeneral@gmail.com"
         },
         "labels": {
-          "nodes": []
+          "nodes": [
+            {
+              "id": "1b334ded-ec03-41ad-a562-aae28b3197a4",
+              "name": "US-09",
+              "color": "#6366f1"
+            },
+            {
+              "id": "aefcbc40-7574-4b6b-a279-50c87f34ca23",
+              "name": "service:cart-order",
+              "color": "#e2843b"
+            },
+            {
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
+            }
+          ]
         }
       },
       {
@@ -163,9 +391,9 @@
         "estimate": 2,
         "priority": 0,
         "state": {
-          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
-          "name": "A faire (Sprint Backlog)",
-          "type": "unstarted"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
         "assignee": {
           "id": "40bf7df7-0a1f-4227-b3dd-4442db8f33c1",
@@ -175,19 +403,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "2c86910b-5102-4942-80eb-559d7a3df832",
-              "name": "tech:cicd-docker",
+              "id": "652a9adf-b1f8-4b42-9cc6-3c3a8c90a726",
+              "name": "DevOps",
+              "color": "#d97706"
+            },
+            {
+              "id": "ebca7aad-2566-4c76-9b8e-f9bc14d44c0a",
+              "name": "service:platform",
               "color": "#0284c7"
             },
             {
-              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
-              "name": "tech:unit-test",
-              "color": "#16a34a"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -200,9 +428,9 @@
         "estimate": 2,
         "priority": 0,
         "state": {
-          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
-          "name": "A faire (Sprint Backlog)",
-          "type": "unstarted"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
         "assignee": {
           "id": "40bf7df7-0a1f-4227-b3dd-4442db8f33c1",
@@ -212,19 +440,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "2c86910b-5102-4942-80eb-559d7a3df832",
-              "name": "tech:cicd-docker",
+              "id": "652a9adf-b1f8-4b42-9cc6-3c3a8c90a726",
+              "name": "DevOps",
+              "color": "#d97706"
+            },
+            {
+              "id": "ebca7aad-2566-4c76-9b8e-f9bc14d44c0a",
+              "name": "service:platform",
               "color": "#0284c7"
             },
             {
-              "id": "cc3fd0e9-6af5-419e-87f1-7c98c3b31549",
-              "name": "tech:openapi-contract",
-              "color": "#4b9fe1"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -237,9 +465,9 @@
         "estimate": 2,
         "priority": 0,
         "state": {
-          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
-          "name": "A faire (Sprint Backlog)",
-          "type": "unstarted"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
         "assignee": {
           "id": "40bf7df7-0a1f-4227-b3dd-4442db8f33c1",
@@ -249,14 +477,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "2c86910b-5102-4942-80eb-559d7a3df832",
-              "name": "tech:cicd-docker",
+              "id": "652a9adf-b1f8-4b42-9cc6-3c3a8c90a726",
+              "name": "DevOps",
+              "color": "#d97706"
+            },
+            {
+              "id": "ebca7aad-2566-4c76-9b8e-f9bc14d44c0a",
+              "name": "service:platform",
               "color": "#0284c7"
             },
             {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -273,23 +506,27 @@
           "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "assignee": null,
+        "assignee": {
+          "id": "2bd79ef4-1c1e-421a-94f8-6b7b638ca366",
+          "displayName": "abdelkader.heddi.etu",
+          "email": "abdelkader.heddi.etu@univ-lille.fr"
+        },
         "labels": {
           "nodes": [
             {
-              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "id": "e8467a18-1c67-4517-b2ed-f4835935cd95",
+              "name": "US-11",
+              "color": "#a855f7"
+            },
+            {
+              "id": "aefcbc40-7574-4b6b-a279-50c87f34ca23",
               "name": "service:cart-order",
               "color": "#e2843b"
             },
             {
-              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
-              "name": "tech:unit-test",
-              "color": "#16a34a"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -302,27 +539,31 @@
         "estimate": 1,
         "priority": 0,
         "state": {
-          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
-          "name": "A faire (Sprint Backlog)",
-          "type": "unstarted"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "assignee": null,
+        "assignee": {
+          "id": "8690a512-7b8f-48df-97e2-7f6a6c0d4628",
+          "displayName": "saitalilyas",
+          "email": "saitalilyas@gmail.com"
+        },
         "labels": {
           "nodes": [
             {
-              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "id": "e8467a18-1c67-4517-b2ed-f4835935cd95",
+              "name": "US-11",
+              "color": "#a855f7"
+            },
+            {
+              "id": "aefcbc40-7574-4b6b-a279-50c87f34ca23",
               "name": "service:cart-order",
               "color": "#e2843b"
             },
             {
-              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
-              "name": "tech:business-rules",
-              "color": "#9333ea"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -339,23 +580,27 @@
           "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "assignee": null,
+        "assignee": {
+          "id": "2bd79ef4-1c1e-421a-94f8-6b7b638ca366",
+          "displayName": "abdelkader.heddi.etu",
+          "email": "abdelkader.heddi.etu@univ-lille.fr"
+        },
         "labels": {
           "nodes": [
             {
-              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "id": "e8467a18-1c67-4517-b2ed-f4835935cd95",
+              "name": "US-11",
+              "color": "#a855f7"
+            },
+            {
+              "id": "aefcbc40-7574-4b6b-a279-50c87f34ca23",
               "name": "service:cart-order",
               "color": "#e2843b"
             },
             {
-              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
-              "name": "tech:business-rules",
-              "color": "#9333ea"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -363,8 +608,8 @@
       {
         "id": "b6904167-7bb1-4043-b0e1-f5ef1199c791",
         "identifier": "PRO-52",
-        "title": "[US-10-T03] Tests Unitaires Confirmation Commande & QR Code",
-        "description": "Validation JUnit 5 de la creation des sous-commandes et de l'integrite du QR Code.",
+        "title": "[US-10-T03] Validation Fonctionnelle du Cycle de Commande et des Regles Metier",
+        "description": "Verification par tests automatises du bon respect des regles de gestion et de la continuite du cycle de commande.\n\n### Ce qui a ete realise :\n\n* Validation de la creation complete d'une commande multi-commerces avec l'ensemble de ses lignes d'articles.\n* Verification du parcours nominal complet : creation initiale, passage en reservation de stock, puis confirmation finale apres reglement.\n* Validation des parcours d'annulation et de restitution lors d'une rupture ou d'un echec de paiement.\n* Controle des gardes metier : interdiction stricte de confirmer une commande sans reservation prealable et rejet des commandes aux donnees invalides.",
         "estimate": 1,
         "priority": 0,
         "state": {
@@ -380,19 +625,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "id": "dbc1ea40-a83c-4b62-989e-2545dbffe530",
+              "name": "US-10",
+              "color": "#8b5cf6"
+            },
+            {
+              "id": "aefcbc40-7574-4b6b-a279-50c87f34ca23",
               "name": "service:cart-order",
               "color": "#e2843b"
             },
             {
-              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
-              "name": "tech:unit-test",
-              "color": "#16a34a"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -417,19 +662,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "id": "dbc1ea40-a83c-4b62-989e-2545dbffe530",
+              "name": "US-10",
+              "color": "#8b5cf6"
+            },
+            {
+              "id": "aefcbc40-7574-4b6b-a279-50c87f34ca23",
               "name": "service:cart-order",
               "color": "#e2843b"
             },
             {
-              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
-              "name": "tech:business-rules",
-              "color": "#9333ea"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -437,8 +682,8 @@
       {
         "id": "e14c5694-cabd-437f-bb96-5e6594858baa",
         "identifier": "PRO-50",
-        "title": "[US-10-T01] Modele JPA Order, SubOrder & Statuts de Commande",
-        "description": "Entites JPA Order et MerchantSubOrder avec statuts (CONFIRMED, PREPARING, READY_FOR_PICKUP, COMPLETED).",
+        "title": "[US-10-T01] Gestion du Cycle de Vie et Statuts de Commande Multi-Commerces",
+        "description": "Modelisation metier de la commande regroupant des articles issus de plusieurs commercants differents.\n\n### Ce qui a ete realise :\n\n* Rattachement de chaque article a son commercant d'origine avec sa quantite et son prix unitaire.\n* Gestion des montants financiers en centimes entiers pour garantir une precision comptable sans erreur d'arrondi.\n* Definition du cycle de vie metier a travers 4 statuts stricts : creation, reservation de stock, confirmation apres reglement, et annulation.\n* Regle de securite metier empechant toute validation de commande sans reservation prealable des stocks.",
         "estimate": 2,
         "priority": 0,
         "state": {
@@ -454,19 +699,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "id": "dbc1ea40-a83c-4b62-989e-2545dbffe530",
+              "name": "US-10",
+              "color": "#8b5cf6"
+            },
+            {
+              "id": "aefcbc40-7574-4b6b-a279-50c87f34ca23",
               "name": "service:cart-order",
               "color": "#e2843b"
             },
             {
-              "id": "4d547c5b-aa93-4708-a7e0-6f1beb6653d2",
-              "name": "tech:jpa-database",
-              "color": "#d97706"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -474,8 +719,8 @@
       {
         "id": "3c8b2e34-760c-457d-b3fb-730771bd69a8",
         "identifier": "PRO-49",
-        "title": "[US-09-T03] Tests de Resilience 2PC & Scenarios de Panne",
-        "description": "Simulation d'echec sur un commerce B sur 3 et verification du rollback automatique sur commerces A et C.",
+        "title": "[US-09-T03] Tests Fonctionnels Bout-en-Bout et Scenarios de Panne 2PC",
+        "description": "Certification par tests automatises de la robustesse de l'orchestrateur de commande sur l'ensemble des parcours reels et des cas d'erreur.\n\n### Ce qu'il y a a faire :\n\n* Parcours nominal : panier multi-commerces, reservation unanime des stocks, paiement valide, confirmation finale de la commande et des stocks.\n* Parcours rupture de stock : commande bloquee des la premiere phase en cas d'indisponibilite chez un commercant, aucun appel bancaire declenche.\n* Parcours refus bancaire : solde insuffisant, annulation de la commande et verification de la restitution effective des stocks a tous les commercants.\n* Parcours panne reseau : indisponibilite de la banque en cours de reglement, bascule securisee de la commande en echec et liberation des stocks.",
         "estimate": 1,
         "priority": 0,
         "state": {
@@ -483,28 +728,27 @@
           "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "assignee": null,
+        "assignee": {
+          "id": "fe7c4534-dd68-4778-a718-048612a4e071",
+          "displayName": "khalil",
+          "email": "khalil.mailgeneral@gmail.com"
+        },
         "labels": {
           "nodes": [
             {
-              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "id": "1b334ded-ec03-41ad-a562-aae28b3197a4",
+              "name": "US-09",
+              "color": "#6366f1"
+            },
+            {
+              "id": "aefcbc40-7574-4b6b-a279-50c87f34ca23",
               "name": "service:cart-order",
               "color": "#e2843b"
             },
             {
-              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
-              "name": "tech:unit-test",
-              "color": "#16a34a"
-            },
-            {
-              "id": "d9f05449-2645-443f-a493-22ba804871e0",
-              "name": "tech:restclient-2pc",
-              "color": "#d03535"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -512,8 +756,8 @@
       {
         "id": "ad671cdf-e4cb-43b4-86e5-53e6bceda40d",
         "identifier": "PRO-48",
-        "title": "[US-09-T02] Endpoints /api/inventory/commit et /rollback",
-        "description": "Endpoints de validation definitive de deduction de stock ou liberation immediate du verrou de reservation.",
+        "title": "[US-09-T02] Gestion des Compensations et Liberation des Stocks",
+        "description": "Mise en place des mecanismes de confirmation definitive des ventes ou de restitution des produits aupres des commercants.\n\n### Ce qu'il y a a faire :\n\n* Notification de validation definitive des ventes aux commercants des validation du paiement.\n* Notification d'annulation et liberation immediate des verrous de reservation en cas de rejet bancaire ou d'abandon client.\n* Prise en compte du delai d'expiration automatique pour liberer les stocks si la transaction reste sans reponse.",
         "estimate": 1,
         "priority": 0,
         "state": {
@@ -521,28 +765,27 @@
           "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "assignee": null,
+        "assignee": {
+          "id": "fe7c4534-dd68-4778-a718-048612a4e071",
+          "displayName": "khalil",
+          "email": "khalil.mailgeneral@gmail.com"
+        },
         "labels": {
           "nodes": [
             {
-              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "id": "1b334ded-ec03-41ad-a562-aae28b3197a4",
+              "name": "US-09",
+              "color": "#6366f1"
+            },
+            {
+              "id": "9c61d6d1-72af-4470-a479-201bcfe2c69b",
               "name": "service:catalog",
               "color": "#0f7830"
             },
             {
-              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
-              "name": "tech:business-rules",
-              "color": "#9333ea"
-            },
-            {
-              "id": "d9f05449-2645-443f-a493-22ba804871e0",
-              "name": "tech:restclient-2pc",
-              "color": "#d03535"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -550,8 +793,8 @@
       {
         "id": "1aa5435b-91ef-40f8-ab42-fd2276065e73",
         "identifier": "PRO-47",
-        "title": "[US-09-T01] Moteur Coordinateur 2PC dans Cart & Order Service",
-        "description": "Orchestrateur Two-Phase Commit executant prepareAll puis commitAll ou rollbackAll selon reponse unanime.",
+        "title": "[US-09-T01] Orchestration de Commande et Protocole 2PC Multi-Commerces",
+        "description": "Coordination de la validation d'un panier multi-commerces assurant la synchronisation sans faille entre la reservation des stocks et le debit bancaire.\n\n### Ce qu'il y a a faire :\n\n* Phase 1 (Reservation) : Envoi des demandes de reservation temporaire des stocks a chaque commercant concerne par le panier.\n* Regle d'unanimite : Si tous les commercants confirment le stock, passage a l'etape de paiement. Si un seul commercant est en rupture, annulation immediate de la commande sans prelevement et liberation des stocks deja reserves.\n* Phase 2 (Paiement) : Declenchement de la demande de debit aupres du service bancaire.\n* Si le reglement est approuve : confirmation definitive de la commande et notification a chaque commercant pour valider la sortie de stock.\n* Si le reglement echoue ou est refuse : annulation de la commande et restitution immediate des stocks reserves aux commercants.",
         "estimate": 3,
         "priority": 0,
         "state": {
@@ -559,23 +802,27 @@
           "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "assignee": null,
+        "assignee": {
+          "id": "fe7c4534-dd68-4778-a718-048612a4e071",
+          "displayName": "khalil",
+          "email": "khalil.mailgeneral@gmail.com"
+        },
         "labels": {
           "nodes": [
             {
-              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "id": "1b334ded-ec03-41ad-a562-aae28b3197a4",
+              "name": "US-09",
+              "color": "#6366f1"
+            },
+            {
+              "id": "aefcbc40-7574-4b6b-a279-50c87f34ca23",
               "name": "service:cart-order",
               "color": "#e2843b"
             },
             {
-              "id": "d9f05449-2645-443f-a493-22ba804871e0",
-              "name": "tech:restclient-2pc",
-              "color": "#d03535"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -592,28 +839,27 @@
           "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "assignee": null,
+        "assignee": {
+          "id": "40bf7df7-0a1f-4227-b3dd-4442db8f33c1",
+          "displayName": "mwb9650",
+          "email": "mwb9650@gmail.com"
+        },
         "labels": {
           "nodes": [
             {
-              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "id": "b5996f8e-be4c-4b20-86a6-8c8bc2b27786",
+              "name": "US-08",
+              "color": "#3b82f6"
+            },
+            {
+              "id": "aefcbc40-7574-4b6b-a279-50c87f34ca23",
               "name": "service:cart-order",
               "color": "#e2843b"
             },
             {
-              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
-              "name": "tech:unit-test",
-              "color": "#16a34a"
-            },
-            {
-              "id": "d9f05449-2645-443f-a493-22ba804871e0",
-              "name": "tech:restclient-2pc",
-              "color": "#d03535"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -630,28 +876,27 @@
           "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "assignee": null,
+        "assignee": {
+          "id": "8690a512-7b8f-48df-97e2-7f6a6c0d4628",
+          "displayName": "saitalilyas",
+          "email": "saitalilyas@gmail.com"
+        },
         "labels": {
           "nodes": [
             {
-              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "id": "b5996f8e-be4c-4b20-86a6-8c8bc2b27786",
+              "name": "US-08",
+              "color": "#3b82f6"
+            },
+            {
+              "id": "9c61d6d1-72af-4470-a479-201bcfe2c69b",
               "name": "service:catalog",
               "color": "#0f7830"
             },
             {
-              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
-              "name": "tech:business-rules",
-              "color": "#9333ea"
-            },
-            {
-              "id": "d9f05449-2645-443f-a493-22ba804871e0",
-              "name": "tech:restclient-2pc",
-              "color": "#d03535"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -664,32 +909,31 @@
         "estimate": 1,
         "priority": 0,
         "state": {
-          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
-          "name": "A faire (Sprint Backlog)",
-          "type": "unstarted"
+          "id": "797deca8-345e-499d-8725-f37ac762d8f1",
+          "name": "En cours (In Progress)",
+          "type": "started"
         },
-        "assignee": null,
+        "assignee": {
+          "id": "8690a512-7b8f-48df-97e2-7f6a6c0d4628",
+          "displayName": "saitalilyas",
+          "email": "saitalilyas@gmail.com"
+        },
         "labels": {
           "nodes": [
             {
-              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "id": "b5996f8e-be4c-4b20-86a6-8c8bc2b27786",
+              "name": "US-08",
+              "color": "#3b82f6"
+            },
+            {
+              "id": "aefcbc40-7574-4b6b-a279-50c87f34ca23",
               "name": "service:cart-order",
               "color": "#e2843b"
             },
             {
-              "id": "cc3fd0e9-6af5-419e-87f1-7c98c3b31549",
-              "name": "tech:openapi-contract",
-              "color": "#4b9fe1"
-            },
-            {
-              "id": "d9f05449-2645-443f-a493-22ba804871e0",
-              "name": "tech:restclient-2pc",
-              "color": "#d03535"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -702,27 +946,31 @@
         "estimate": 1,
         "priority": 0,
         "state": {
-          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
-          "name": "A faire (Sprint Backlog)",
-          "type": "unstarted"
+          "id": "797deca8-345e-499d-8725-f37ac762d8f1",
+          "name": "En cours (In Progress)",
+          "type": "started"
         },
-        "assignee": null,
+        "assignee": {
+          "id": "40bf7df7-0a1f-4227-b3dd-4442db8f33c1",
+          "displayName": "mwb9650",
+          "email": "mwb9650@gmail.com"
+        },
         "labels": {
           "nodes": [
             {
-              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "id": "ab9ad4cc-b5d2-475e-9e8b-d7d37ea4fae4",
+              "name": "US-07",
+              "color": "#0284c7"
+            },
+            {
+              "id": "aefcbc40-7574-4b6b-a279-50c87f34ca23",
               "name": "service:cart-order",
               "color": "#e2843b"
             },
             {
-              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
-              "name": "tech:unit-test",
-              "color": "#16a34a"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -735,27 +983,31 @@
         "estimate": 2,
         "priority": 0,
         "state": {
-          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
-          "name": "A faire (Sprint Backlog)",
-          "type": "unstarted"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "assignee": null,
+        "assignee": {
+          "id": "8690a512-7b8f-48df-97e2-7f6a6c0d4628",
+          "displayName": "saitalilyas",
+          "email": "saitalilyas@gmail.com"
+        },
         "labels": {
           "nodes": [
             {
-              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "id": "ab9ad4cc-b5d2-475e-9e8b-d7d37ea4fae4",
+              "name": "US-07",
+              "color": "#0284c7"
+            },
+            {
+              "id": "aefcbc40-7574-4b6b-a279-50c87f34ca23",
               "name": "service:cart-order",
               "color": "#e2843b"
             },
             {
-              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
-              "name": "tech:business-rules",
-              "color": "#9333ea"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -768,27 +1020,31 @@
         "estimate": 2,
         "priority": 0,
         "state": {
-          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
-          "name": "A faire (Sprint Backlog)",
-          "type": "unstarted"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "assignee": null,
+        "assignee": {
+          "id": "40bf7df7-0a1f-4227-b3dd-4442db8f33c1",
+          "displayName": "mwb9650",
+          "email": "mwb9650@gmail.com"
+        },
         "labels": {
           "nodes": [
             {
-              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "id": "ab9ad4cc-b5d2-475e-9e8b-d7d37ea4fae4",
+              "name": "US-07",
+              "color": "#0284c7"
+            },
+            {
+              "id": "aefcbc40-7574-4b6b-a279-50c87f34ca23",
               "name": "service:cart-order",
               "color": "#e2843b"
             },
             {
-              "id": "4d547c5b-aa93-4708-a7e0-6f1beb6653d2",
-              "name": "tech:jpa-database",
-              "color": "#d97706"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -805,23 +1061,27 @@
           "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "assignee": null,
+        "assignee": {
+          "id": "40bf7df7-0a1f-4227-b3dd-4442db8f33c1",
+          "displayName": "mwb9650",
+          "email": "mwb9650@gmail.com"
+        },
         "labels": {
           "nodes": [
             {
-              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "id": "5bcd38c7-6626-4120-84f4-947f7d8c10d6",
+              "name": "US-06",
+              "color": "#06b6d4"
+            },
+            {
+              "id": "9c61d6d1-72af-4470-a479-201bcfe2c69b",
               "name": "service:catalog",
               "color": "#0f7830"
             },
             {
-              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
-              "name": "tech:unit-test",
-              "color": "#16a34a"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -838,23 +1098,27 @@
           "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "assignee": null,
+        "assignee": {
+          "id": "2788f319-69b3-4c03-b240-4ed79cc5e674",
+          "displayName": "gautam.demeulemeester.et",
+          "email": "gautam.demeulemeester.etu@univ-lille.fr"
+        },
         "labels": {
           "nodes": [
             {
-              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "id": "5bcd38c7-6626-4120-84f4-947f7d8c10d6",
+              "name": "US-06",
+              "color": "#06b6d4"
+            },
+            {
+              "id": "9c61d6d1-72af-4470-a479-201bcfe2c69b",
               "name": "service:catalog",
               "color": "#0f7830"
             },
             {
-              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
-              "name": "tech:business-rules",
-              "color": "#9333ea"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -871,23 +1135,27 @@
           "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "assignee": null,
+        "assignee": {
+          "id": "2788f319-69b3-4c03-b240-4ed79cc5e674",
+          "displayName": "gautam.demeulemeester.et",
+          "email": "gautam.demeulemeester.etu@univ-lille.fr"
+        },
         "labels": {
           "nodes": [
             {
-              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "id": "5bcd38c7-6626-4120-84f4-947f7d8c10d6",
+              "name": "US-06",
+              "color": "#06b6d4"
+            },
+            {
+              "id": "9c61d6d1-72af-4470-a479-201bcfe2c69b",
               "name": "service:catalog",
               "color": "#0f7830"
             },
             {
-              "id": "4d547c5b-aa93-4708-a7e0-6f1beb6653d2",
-              "name": "tech:jpa-database",
-              "color": "#d97706"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -904,23 +1172,27 @@
           "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "assignee": null,
+        "assignee": {
+          "id": "8690a512-7b8f-48df-97e2-7f6a6c0d4628",
+          "displayName": "saitalilyas",
+          "email": "saitalilyas@gmail.com"
+        },
         "labels": {
           "nodes": [
             {
-              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "id": "893ffd00-bc4d-49da-a666-575f521a42f7",
+              "name": "US-05",
+              "color": "#14b8a6"
+            },
+            {
+              "id": "9c61d6d1-72af-4470-a479-201bcfe2c69b",
               "name": "service:catalog",
               "color": "#0f7830"
             },
             {
-              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
-              "name": "tech:unit-test",
-              "color": "#16a34a"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -933,27 +1205,31 @@
         "estimate": 1,
         "priority": 0,
         "state": {
-          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
-          "name": "A faire (Sprint Backlog)",
-          "type": "unstarted"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "assignee": null,
+        "assignee": {
+          "id": "8690a512-7b8f-48df-97e2-7f6a6c0d4628",
+          "displayName": "saitalilyas",
+          "email": "saitalilyas@gmail.com"
+        },
         "labels": {
           "nodes": [
             {
-              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "id": "893ffd00-bc4d-49da-a666-575f521a42f7",
+              "name": "US-05",
+              "color": "#14b8a6"
+            },
+            {
+              "id": "9c61d6d1-72af-4470-a479-201bcfe2c69b",
               "name": "service:catalog",
               "color": "#0f7830"
             },
             {
-              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
-              "name": "tech:business-rules",
-              "color": "#9333ea"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -970,23 +1246,27 @@
           "name": "A faire (Sprint Backlog)",
           "type": "unstarted"
         },
-        "assignee": null,
+        "assignee": {
+          "id": "8690a512-7b8f-48df-97e2-7f6a6c0d4628",
+          "displayName": "saitalilyas",
+          "email": "saitalilyas@gmail.com"
+        },
         "labels": {
           "nodes": [
             {
-              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "id": "893ffd00-bc4d-49da-a666-575f521a42f7",
+              "name": "US-05",
+              "color": "#14b8a6"
+            },
+            {
+              "id": "9c61d6d1-72af-4470-a479-201bcfe2c69b",
               "name": "service:catalog",
               "color": "#0f7830"
             },
             {
-              "id": "4d547c5b-aa93-4708-a7e0-6f1beb6653d2",
-              "name": "tech:jpa-database",
-              "color": "#d97706"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -1011,19 +1291,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "id": "538b5d00-6dfe-45f7-b2ab-0ba6ea197bd4",
+              "name": "US-04",
+              "color": "#059669"
+            },
+            {
+              "id": "9c61d6d1-72af-4470-a479-201bcfe2c69b",
               "name": "service:catalog",
               "color": "#0f7830"
             },
             {
-              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
-              "name": "tech:unit-test",
-              "color": "#16a34a"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -1048,19 +1328,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "id": "538b5d00-6dfe-45f7-b2ab-0ba6ea197bd4",
+              "name": "US-04",
+              "color": "#059669"
+            },
+            {
+              "id": "9c61d6d1-72af-4470-a479-201bcfe2c69b",
               "name": "service:catalog",
               "color": "#0f7830"
             },
             {
-              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
-              "name": "tech:business-rules",
-              "color": "#9333ea"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -1085,19 +1365,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "id": "538b5d00-6dfe-45f7-b2ab-0ba6ea197bd4",
+              "name": "US-04",
+              "color": "#059669"
+            },
+            {
+              "id": "9c61d6d1-72af-4470-a479-201bcfe2c69b",
               "name": "service:catalog",
               "color": "#0f7830"
             },
             {
-              "id": "4d547c5b-aa93-4708-a7e0-6f1beb6653d2",
-              "name": "tech:jpa-database",
-              "color": "#d97706"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -1122,19 +1402,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "id": "b62add7e-771a-4c72-8853-47bc4e34a12a",
+              "name": "US-03",
+              "color": "#10b981"
+            },
+            {
+              "id": "9c61d6d1-72af-4470-a479-201bcfe2c69b",
               "name": "service:catalog",
               "color": "#0f7830"
             },
             {
-              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
-              "name": "tech:unit-test",
-              "color": "#16a34a"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -1159,19 +1439,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "id": "b62add7e-771a-4c72-8853-47bc4e34a12a",
+              "name": "US-03",
+              "color": "#10b981"
+            },
+            {
+              "id": "9c61d6d1-72af-4470-a479-201bcfe2c69b",
               "name": "service:catalog",
               "color": "#0f7830"
             },
             {
-              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
-              "name": "tech:business-rules",
-              "color": "#9333ea"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -1196,19 +1476,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "id": "b62add7e-771a-4c72-8853-47bc4e34a12a",
+              "name": "US-03",
+              "color": "#10b981"
+            },
+            {
+              "id": "9c61d6d1-72af-4470-a479-201bcfe2c69b",
               "name": "service:catalog",
               "color": "#0f7830"
             },
             {
-              "id": "4d547c5b-aa93-4708-a7e0-6f1beb6653d2",
-              "name": "tech:jpa-database",
-              "color": "#d97706"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -1233,19 +1513,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "38a29150-2f0d-4644-8f34-e2dcedfff308",
+              "id": "193b5957-2ebf-4987-aef2-fe8d54617822",
+              "name": "US-02",
+              "color": "#ea580c"
+            },
+            {
+              "id": "b205fb2a-83f2-44db-ad30-f804e1a54481",
               "name": "service:auth",
               "color": "#e36999"
             },
             {
-              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
-              "name": "tech:unit-test",
-              "color": "#16a34a"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -1270,19 +1550,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "38a29150-2f0d-4644-8f34-e2dcedfff308",
+              "id": "193b5957-2ebf-4987-aef2-fe8d54617822",
+              "name": "US-02",
+              "color": "#ea580c"
+            },
+            {
+              "id": "b205fb2a-83f2-44db-ad30-f804e1a54481",
               "name": "service:auth",
               "color": "#e36999"
             },
             {
-              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
-              "name": "tech:business-rules",
-              "color": "#9333ea"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -1307,19 +1587,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "38a29150-2f0d-4644-8f34-e2dcedfff308",
+              "id": "193b5957-2ebf-4987-aef2-fe8d54617822",
+              "name": "US-02",
+              "color": "#ea580c"
+            },
+            {
+              "id": "b205fb2a-83f2-44db-ad30-f804e1a54481",
               "name": "service:auth",
               "color": "#e36999"
             },
             {
-              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
-              "name": "tech:business-rules",
-              "color": "#9333ea"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -1344,19 +1624,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "38a29150-2f0d-4644-8f34-e2dcedfff308",
+              "id": "dd647847-ae40-4121-8de6-99adf96aecfe",
+              "name": "US-01",
+              "color": "#f97316"
+            },
+            {
+              "id": "b205fb2a-83f2-44db-ad30-f804e1a54481",
               "name": "service:auth",
               "color": "#e36999"
             },
             {
-              "id": "46054f13-38cb-4a85-8aaf-fcf11b3de010",
-              "name": "tech:unit-test",
-              "color": "#16a34a"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -1381,19 +1661,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "38a29150-2f0d-4644-8f34-e2dcedfff308",
+              "id": "dd647847-ae40-4121-8de6-99adf96aecfe",
+              "name": "US-01",
+              "color": "#f97316"
+            },
+            {
+              "id": "b205fb2a-83f2-44db-ad30-f804e1a54481",
               "name": "service:auth",
               "color": "#e36999"
             },
             {
-              "id": "0488682d-0aef-41e2-a775-dcebfa96ea92",
-              "name": "tech:business-rules",
-              "color": "#9333ea"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -1418,19 +1698,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "38a29150-2f0d-4644-8f34-e2dcedfff308",
+              "id": "dd647847-ae40-4121-8de6-99adf96aecfe",
+              "name": "US-01",
+              "color": "#f97316"
+            },
+            {
+              "id": "b205fb2a-83f2-44db-ad30-f804e1a54481",
               "name": "service:auth",
               "color": "#e36999"
             },
             {
-              "id": "4d547c5b-aa93-4708-a7e0-6f1beb6653d2",
-              "name": "tech:jpa-database",
-              "color": "#d97706"
-            },
-            {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -1451,14 +1731,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "117c232a-b479-4387-913f-84fdae166286",
+              "id": "6fc290c7-9199-4314-b70c-3680184a61d5",
+              "name": "US-18",
+              "color": "#334155"
+            },
+            {
+              "id": "d8eb7608-d31c-42be-96a4-ee4f17e77594",
               "name": "service:gateway-frontend",
               "color": "#26b5ce"
             },
             {
-              "id": "18de18b3-04e6-4493-b16c-edf5c0bf5964",
-              "name": "milestone:r5-vfp",
-              "color": "#6366f1"
+              "id": "2910eedc-0fc5-4071-8f52-4304bfe77847",
+              "name": "Sprint 4",
+              "color": "#059669"
             }
           ]
         }
@@ -1479,14 +1764,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "117c232a-b479-4387-913f-84fdae166286",
+              "id": "3a699da5-fc37-4b1a-a6d0-fb13997b404c",
+              "name": "US-17",
+              "color": "#475569"
+            },
+            {
+              "id": "d8eb7608-d31c-42be-96a4-ee4f17e77594",
               "name": "service:gateway-frontend",
               "color": "#26b5ce"
             },
             {
-              "id": "18de18b3-04e6-4493-b16c-edf5c0bf5964",
-              "name": "milestone:r5-vfp",
-              "color": "#6366f1"
+              "id": "2910eedc-0fc5-4071-8f52-4304bfe77847",
+              "name": "Sprint 4",
+              "color": "#059669"
             }
           ]
         }
@@ -1507,14 +1797,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "117c232a-b479-4387-913f-84fdae166286",
+              "id": "88d030c2-d9cf-434b-adad-f94560937bef",
+              "name": "US-16",
+              "color": "#64748b"
+            },
+            {
+              "id": "d8eb7608-d31c-42be-96a4-ee4f17e77594",
               "name": "service:gateway-frontend",
               "color": "#26b5ce"
             },
             {
-              "id": "18de18b3-04e6-4493-b16c-edf5c0bf5964",
-              "name": "milestone:r5-vfp",
-              "color": "#6366f1"
+              "id": "2910eedc-0fc5-4071-8f52-4304bfe77847",
+              "name": "Sprint 4",
+              "color": "#059669"
             }
           ]
         }
@@ -1535,14 +1830,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "f7a65f45-988e-430b-801f-11bef59471ad",
+              "id": "e45ae923-9861-461e-b6f4-0fc816570272",
+              "name": "US-15",
+              "color": "#e11d48"
+            },
+            {
+              "id": "32a93cba-f6dc-46c7-9e6c-c09897635239",
               "name": "service:loyalty",
               "color": "#8957e5"
             },
             {
-              "id": "18de18b3-04e6-4493-b16c-edf5c0bf5964",
-              "name": "milestone:r5-vfp",
-              "color": "#6366f1"
+              "id": "1917d384-1409-4be4-8cd4-8c26e2a32638",
+              "name": "Sprint 3",
+              "color": "#db2777"
             }
           ]
         }
@@ -1563,14 +1863,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "f7a65f45-988e-430b-801f-11bef59471ad",
+              "id": "d888612a-8aba-49d2-9989-b8031a3d6042",
+              "name": "US-14",
+              "color": "#f43f5e"
+            },
+            {
+              "id": "32a93cba-f6dc-46c7-9e6c-c09897635239",
               "name": "service:loyalty",
               "color": "#8957e5"
             },
             {
-              "id": "18de18b3-04e6-4493-b16c-edf5c0bf5964",
-              "name": "milestone:r5-vfp",
-              "color": "#6366f1"
+              "id": "1917d384-1409-4be4-8cd4-8c26e2a32638",
+              "name": "Sprint 3",
+              "color": "#db2777"
             }
           ]
         }
@@ -1591,14 +1896,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "f7a65f45-988e-430b-801f-11bef59471ad",
+              "id": "c2d8dd5a-6021-4bdb-bf9f-d04d0636b5cf",
+              "name": "US-13",
+              "color": "#ec4899"
+            },
+            {
+              "id": "32a93cba-f6dc-46c7-9e6c-c09897635239",
               "name": "service:loyalty",
               "color": "#8957e5"
             },
             {
-              "id": "18de18b3-04e6-4493-b16c-edf5c0bf5964",
-              "name": "milestone:r5-vfp",
-              "color": "#6366f1"
+              "id": "1917d384-1409-4be4-8cd4-8c26e2a32638",
+              "name": "Sprint 3",
+              "color": "#db2777"
             }
           ]
         }
@@ -1619,14 +1929,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "f7a65f45-988e-430b-801f-11bef59471ad",
+              "id": "64fb2271-1782-4284-9846-726247b62d1a",
+              "name": "US-12",
+              "color": "#d946ef"
+            },
+            {
+              "id": "32a93cba-f6dc-46c7-9e6c-c09897635239",
               "name": "service:loyalty",
               "color": "#8957e5"
             },
             {
-              "id": "18de18b3-04e6-4493-b16c-edf5c0bf5964",
-              "name": "milestone:r5-vfp",
-              "color": "#6366f1"
+              "id": "1917d384-1409-4be4-8cd4-8c26e2a32638",
+              "name": "Sprint 3",
+              "color": "#db2777"
             }
           ]
         }
@@ -1647,14 +1962,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "id": "e8467a18-1c67-4517-b2ed-f4835935cd95",
+              "name": "US-11",
+              "color": "#a855f7"
+            },
+            {
+              "id": "aefcbc40-7574-4b6b-a279-50c87f34ca23",
               "name": "service:cart-order",
               "color": "#e2843b"
             },
             {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "48dfa844-b58d-4a3c-912c-e90ed66af7a8",
+              "name": "Sprint 2",
+              "color": "#7c3aed"
             }
           ]
         }
@@ -1675,14 +1995,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "id": "dbc1ea40-a83c-4b62-989e-2545dbffe530",
+              "name": "US-10",
+              "color": "#8b5cf6"
+            },
+            {
+              "id": "aefcbc40-7574-4b6b-a279-50c87f34ca23",
               "name": "service:cart-order",
               "color": "#e2843b"
             },
             {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -1703,14 +2028,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "id": "1b334ded-ec03-41ad-a562-aae28b3197a4",
+              "name": "US-09",
+              "color": "#6366f1"
+            },
+            {
+              "id": "aefcbc40-7574-4b6b-a279-50c87f34ca23",
               "name": "service:cart-order",
               "color": "#e2843b"
             },
             {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "48dfa844-b58d-4a3c-912c-e90ed66af7a8",
+              "name": "Sprint 2",
+              "color": "#7c3aed"
             }
           ]
         }
@@ -1731,14 +2061,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "id": "b5996f8e-be4c-4b20-86a6-8c8bc2b27786",
+              "name": "US-08",
+              "color": "#3b82f6"
+            },
+            {
+              "id": "aefcbc40-7574-4b6b-a279-50c87f34ca23",
               "name": "service:cart-order",
               "color": "#e2843b"
             },
             {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "48dfa844-b58d-4a3c-912c-e90ed66af7a8",
+              "name": "Sprint 2",
+              "color": "#7c3aed"
             }
           ]
         }
@@ -1759,14 +2094,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "7af427e8-2e89-45c1-997e-f292e0ab78d0",
+              "id": "ab9ad4cc-b5d2-475e-9e8b-d7d37ea4fae4",
+              "name": "US-07",
+              "color": "#0284c7"
+            },
+            {
+              "id": "aefcbc40-7574-4b6b-a279-50c87f34ca23",
               "name": "service:cart-order",
               "color": "#e2843b"
             },
             {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "48dfa844-b58d-4a3c-912c-e90ed66af7a8",
+              "name": "Sprint 2",
+              "color": "#7c3aed"
             }
           ]
         }
@@ -1787,14 +2127,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "id": "5bcd38c7-6626-4120-84f4-947f7d8c10d6",
+              "name": "US-06",
+              "color": "#06b6d4"
+            },
+            {
+              "id": "9c61d6d1-72af-4470-a479-201bcfe2c69b",
               "name": "service:catalog",
               "color": "#0f7830"
             },
             {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -1815,14 +2160,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "id": "893ffd00-bc4d-49da-a666-575f521a42f7",
+              "name": "US-05",
+              "color": "#14b8a6"
+            },
+            {
+              "id": "9c61d6d1-72af-4470-a479-201bcfe2c69b",
               "name": "service:catalog",
               "color": "#0f7830"
             },
             {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -1847,14 +2197,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "id": "538b5d00-6dfe-45f7-b2ab-0ba6ea197bd4",
+              "name": "US-04",
+              "color": "#059669"
+            },
+            {
+              "id": "9c61d6d1-72af-4470-a479-201bcfe2c69b",
               "name": "service:catalog",
               "color": "#0f7830"
             },
             {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -1879,14 +2234,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "1e8515c8-3ea9-455d-9fc4-f382dab485bf",
+              "id": "b62add7e-771a-4c72-8853-47bc4e34a12a",
+              "name": "US-03",
+              "color": "#10b981"
+            },
+            {
+              "id": "9c61d6d1-72af-4470-a479-201bcfe2c69b",
               "name": "service:catalog",
               "color": "#0f7830"
             },
             {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -1911,14 +2271,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "38a29150-2f0d-4644-8f34-e2dcedfff308",
+              "id": "193b5957-2ebf-4987-aef2-fe8d54617822",
+              "name": "US-02",
+              "color": "#ea580c"
+            },
+            {
+              "id": "b205fb2a-83f2-44db-ad30-f804e1a54481",
               "name": "service:auth",
               "color": "#e36999"
             },
             {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -1943,14 +2308,19 @@
         "labels": {
           "nodes": [
             {
-              "id": "38a29150-2f0d-4644-8f34-e2dcedfff308",
+              "id": "dd647847-ae40-4121-8de6-99adf96aecfe",
+              "name": "US-01",
+              "color": "#f97316"
+            },
+            {
+              "id": "b205fb2a-83f2-44db-ad30-f804e1a54481",
               "name": "service:auth",
               "color": "#e36999"
             },
             {
-              "id": "b14ecc74-6495-4e59-b7c5-dce8aac2992e",
-              "name": "milestone:r4-mvp",
-              "color": "#f59e0b"
+              "id": "003e0922-efa2-4430-9e98-af1445c78f15",
+              "name": "Sprint 1",
+              "color": "#2563eb"
             }
           ]
         }
@@ -1963,9 +2333,9 @@
         "estimate": null,
         "priority": 0,
         "state": {
-          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
-          "name": "A faire (Sprint Backlog)",
-          "type": "unstarted"
+          "id": "36ddcaa3-1107-409d-93a9-a862e18caf92",
+          "name": "Canceled",
+          "type": "canceled"
         },
         "assignee": null,
         "labels": {
@@ -1980,9 +2350,9 @@
         "estimate": null,
         "priority": 0,
         "state": {
-          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
-          "name": "A faire (Sprint Backlog)",
-          "type": "unstarted"
+          "id": "36ddcaa3-1107-409d-93a9-a862e18caf92",
+          "name": "Canceled",
+          "type": "canceled"
         },
         "assignee": null,
         "labels": {
@@ -1997,9 +2367,9 @@
         "estimate": null,
         "priority": 0,
         "state": {
-          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
-          "name": "A faire (Sprint Backlog)",
-          "type": "unstarted"
+          "id": "36ddcaa3-1107-409d-93a9-a862e18caf92",
+          "name": "Canceled",
+          "type": "canceled"
         },
         "assignee": null,
         "labels": {
@@ -2014,9 +2384,9 @@
         "estimate": null,
         "priority": 0,
         "state": {
-          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
-          "name": "A faire (Sprint Backlog)",
-          "type": "unstarted"
+          "id": "36ddcaa3-1107-409d-93a9-a862e18caf92",
+          "name": "Canceled",
+          "type": "canceled"
         },
         "assignee": null,
         "labels": {
