@@ -321,11 +321,15 @@
         "estimate": 1,
         "priority": 0,
         "state": {
-          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
-          "name": "A faire (Sprint Backlog)",
-          "type": "unstarted"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
-        "assignee": null,
+        "assignee": {
+          "id": "fe7c4534-dd68-4778-a718-048612a4e071",
+          "displayName": "khalil",
+          "email": "khalil.mailgeneral@gmail.com"
+        },
         "labels": {
           "nodes": [
             {

@@ -7,13 +7,13 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 ## 1. Etat Courant du Projet
 
 - **Phase active** : Developpement & Deploiement du MVP Decembre 2026 (Jalon R4) - Composant Commande & Panier Multi-Commerces 2PC, Architecture Microservices, Tests TDD (JaCoCo >= 80 %), Mock Bancaire OpenAPI 3.1
-- **Derniere mise a jour** : 2026-11-18 (Session 60 - /learn Gouvernance Git/Linear, Commit 1 PRO-47 & Tickets DEVOPS-04 a DEVOPS-07)
+- **Derniere mise a jour** : 2026-11-18 (Session 61 - Cloture PRO-60 GitLab Branches/MR & Cadrage PRO-61 CI/CD Centralisee)
 - **Responsable / Scrum Master** : Equipe Garik (M2 MIAGE GLOP - Universite de Lille)
 - **Depot Cockpit (Gouvernance & Memoire Agentique)** : GitHub Projet-GLOP / ShopLoc
-- **Depots de Code Evalues (GitLab Univ-Lille)** : Groupe glop-garik-2026 (shoploc-cart-order-service, shoploc-auth-service, shoploc-merchant-catalog-service, shoploc-loyalty-service)
+- **Depots de Code Evalues (GitLab Univ-Lille)** : Groupe glop-garik-2026 (shoploc-cart-order-service, shoploc-auth-service, shoploc-merchant-catalog-service, shoploc-loyalty-service, shoploc-frontend)
 - **Depot Plateforme & CI/CD** : GitLab shoploc-platform (Mock bancaire OpenAPI 3.1, Docker Compose, orchestration)
-- **Dernier Jalon Valide** : Commit 1/10 de PRO-47 pousse sur shoploc-cart-order-service (263dcac, 38 tests au vert), regles permanentes /learn integrees (AGENTS.md & skills.config.yaml), creation des tickets PRO-60 a PRO-63 (DEVOPS-04 a DEVOPS-07) sur Linear (63 tickets synchronises).
-- **Prochaine Etape** : Executer PRO-60 (DEVOPS-04 : creation branche dev, protection main et Merge Requests sur les 5 depots GitLab) puis poursuivre PRO-47 (Commit 2/10) sur branche dediee.
+- **Dernier Jalon Valide** : Cloture de PRO-60 (DEVOPS-04) : creation branche dev, verrouillage strict main et dev (push=No one, merge=Maintainers, discussions resolues) sur les 6 depots GitLab + activation Pipelines must succeed sur les 4 microservices Java.
+- **Prochaine Etape** : Execution de PRO-61 (DEVOPS-05 : template CI centralise, seuil bloquant JaCoCo >= 80 %, CI frontend/platform, build images Docker), puis reprise de PRO-47 (Commit 2/10) sur branche feat/pro-47-coordinateur-2pc via Merge Request vers dev.
 
 ---
 
@@ -1647,6 +1647,28 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Creation de PRO-60 (DEVOPS-04) comme prerequis immediat pour verrouiller main, creer dev et passer sur des Merge Requests avant de poursuivre PRO-47.
 - **Reste a faire / Prochaine etape** :
   - Realiser PRO-60 (DEVOPS-04 : branche dev + protection main + regles MR sur les 5 depots du groupe glop-garik-2026), puis reprendre PRO-47 (Commit 2/10) sur branche feat/pro-47-coordinateur-2pc.
+
+
+### [2026-11-18] Session 61 : Cloture de PRO-60 (Branches dev/main & Protection MR) & Audit Prealable PRO-61 (CI Centralisee)
+- **Identifiant de session** : SESSION-2026-11-18-PRO60-CLOSE-AND-PRO61-AUDIT
+- **Objectif atomique** : Appliquer et certifier la gouvernance GitLab du ticket PRO-60 (DEVOPS-04) sur l'integralite des 6 depots du groupe glop-garik-2026 (incluant shoploc-frontend), cloturer PRO-60 sur Linear et preparer l'audit technique prealable de PRO-61 (DEVOPS-05).
+- **Actions realisees** :
+  - Audit complet via l'API GitLab v4 (PAT nominatif Khalil, acces Owner=50, zero bot) mettant en evidence l'existence d'un 6e depot (shoploc-frontend, React/Vite/TypeScript) ainsi que des branches ouvertes feature/PRO-53-pickup-validation et feature/maven-wrapper.
+  - Creation de la branche dev a partir de main sur les 6 depots (shoploc-auth-service, shoploc-merchant-catalog-service, shoploc-cart-order-service, shoploc-loyalty-service, shoploc-platform, shoploc-frontend) et fetch local dans les 5 clones.
+  - Protection stricte des branches main et dev sur les 6 depots : interdiction totale des push directs (push_access_level=0 / No one), fusion autorisee uniquement par Merge Request (merge_access_level=40 / Maintainers), force push desactive, et conservation de main comme branche par defaut.
+  - Activation de only_allow_merge_if_all_discussions_are_resolved=true sur les 6 depots, et activation de only_allow_merge_if_pipeline_succeeds=true sur les 4 microservices Java dotes d'un .gitlab-ci.yml (le report sur shoploc-platform et shoploc-frontend evitant tout blocage de MR avant l'ajout de leurs pipelines dans PRO-61).
+  - Cloture de PRO-60 a 'Termine (Done)' sur Linear et resynchronisation via pull_linear.py.
+  - Audit technique prealable de PRO-61 : verification des runners Docker (gitlab-ce-runner-1/2), inspection des pom.xml (absence de jacoco:check) et mesure reelle des couvertures JaCoCo locales (auth: 80.56%, catalog: 99.48%, cart-order: 77.88% en attente des tests DTOs, loyalty: 33.33% squelette Sprint 3).
+- **Fichiers crees ou modifies** :
+  - *Cockpit agentique (ShopLoc)* :
+    * agent_projet/config/linear_tickets_export.json (PRO-60 a Termine)
+    * agent_projet/config/linear_tickets_export.csv (PRO-60 a Termine)
+    * agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md (Session 61)
+- **Decisions actees** :
+  - Choix 1 valide : cloture immediate de PRO-60 et transfert de l'ajout des pipelines sur shoploc-platform et shoploc-frontend vers PRO-61 afin d'eviter tout travail provisoire en double.
+  - Protection identique de dev et main (push=No one) imposant des Merge Requests pour toutes les evolutions.
+- **Reste a faire / Prochaine etape** :
+  - Soumettre et executer le plan du ticket PRO-61 (DEVOPS-05) avant de reprendre PRO-47 (Commit 2/10) sur une branche feat/pro-47-coordinateur-2pc via Merge Request.
 
 
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
