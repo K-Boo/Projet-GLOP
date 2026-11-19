@@ -1746,6 +1746,27 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Lancer PRO-49 (`[US-09-T03]`) sur une branche feat/pro-49-tests-e2e-2pc de shoploc-cart-order-service, ou se synchroniser avec Ilyas et Gautam avant d'intervenir sur shoploc-frontend et shoploc-merchant-catalog-service.
 
 
+### [2026-11-19] Session 65 : Suite d'Integration Bout-en-Bout 2PC (PRO-49)
+- **Identifiant de session** : SESSION-2026-11-19-PRO49-INTEGRATION-E2E
+- **Objectif atomique** : Implementer et certifier en 2 commits la suite de tests d'integration bout-en-bout (`@SpringBootTest` + `MockMvc` + base H2 reelle) du ticket `PRO-49` sur `feat/pro-49-tests-e2e-2pc` sans serveur HTTP superflu, puis ouvrir la Merge Request vers `dev`.
+- **Actions realisees** :
+  - Creation de la branche `feat/pro-49-tests-e2e-2pc` depuis `dev` (`a71c2218`).
+  - Arbitrage d'architecture simple et maintenable : remplacement d'un harnais `HttpServer` custom par un fichier unique `OrderCheckoutIntegrationTest.java` (`@SpringBootTest`, `@AutoConfigureMockMvc`, `@MockBean CatalogClient` / `BankClient`, vraie base H2 interrogee via `OrderRepository`).
+  - *Commit 1/2 (`0c8defb`)* : ajout des 3 scenarios de defaillance (`409` rupture Phase 1 avec compensation du 1er commercant sans appel banque, `402` refus carte avec rollback integral, `502` erreur technique 500 bancaire), prouvant la persistance reelle de `OrderStatus.RELEASED` en base H2 (99/99 tests, 97,20 % lignes).
+  - *Commit 2/2 (`c247d28`)* : ajout du parcours nominal multi-commerces (`201 Created`, `OrderStatus.CONFIRMED` en base H2) et du rejet de validation (`400 Bad Request` sans ecriture en base ni appel externe) — 101/101 tests, `0` echec, couverture lignes `97,20 %` (`451/464`), instructions `97,15 %` (`1876/1931`).
+  - Ouverture de la Merge Request `!4` (`feat/pro-49-tests-e2e-2pc -> dev`) et validation du pipeline GitLab CI `#96541` (`maven-verify` `40,6 s` a `97,15 %`, `maven-package` `26,5 s`).
+  - Passage de `PRO-49` a `En cours (In Progress)` sur Linear (en attente de relecture croisee et fusion sur `dev`) et synchronisation via `pull_linear.py`.
+- **Fichiers crees ou modifies** :
+  - *shoploc-cart-order-service (`feat/pro-49-tests-e2e-2pc`, MR `!4`)* : `src/test/java/fr/univlille/shoploc/cartorder/web/OrderCheckoutIntegrationTest.java`.
+  - *Cockpit agentique (`ShopLoc`)* :
+    * `agent_projet/config/linear_tickets_export.json` et `.csv`
+    * `agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md` (Session 65)
+- **Decisions actees** :
+  - Priorite donnee a un test d'integration `@SpringBootTest` lisible sans serveur TCP embarque, suffisant pour certifier `OrderController -> OrderService (@Transactional noRollbackFor) -> OrderRepository (H2) -> OrderExceptionHandler`.
+- **Reste a faire / Prochaine etape** :
+  - Relecture croisee et fusion de la MR `!4` (`PRO-49`) dans `dev` (puis cloture de `PRO-49` a `Termine`), fusion de la MR `!1` de `shoploc-frontend` apres synchronisation d'Ilyas (`PRO-61`), et coordination avec Ilyas (`PRO-44`/`PRO-45`) et Gautam (`US-38`) avant d'implementer `PRO-48` sur `shoploc-merchant-catalog-service`.
+
+
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
 
 A la fin de chaque session de chat, l'agent ou l'utilisateur execute la mise a jour de ce fichier selon le format suivant :
