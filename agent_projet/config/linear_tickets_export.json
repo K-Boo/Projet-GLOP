@@ -728,13 +728,13 @@
         "id": "3c8b2e34-760c-457d-b3fb-730771bd69a8",
         "identifier": "PRO-49",
         "title": "[US-09-T03] Tests Fonctionnels Bout-en-Bout et Scenarios de Panne 2PC",
-        "description": "Certification par tests automatises de la robustesse de l'orchestrateur de commande sur l'ensemble des parcours reels et des cas d'erreur.\n\n### Ce qu'il y a a faire :\n\n* Parcours nominal : panier multi-commerces, reservation unanime des stocks, paiement valide, confirmation finale de la commande et des stocks.\n* Parcours rupture de stock : commande bloquee des la premiere phase en cas d'indisponibilite chez un commercant, aucun appel bancaire declenche.\n* Parcours refus bancaire : solde insuffisant, annulation de la commande et verification de la restitution effective des stocks a tous les commercants.\n* Parcours panne reseau : indisponibilite de la banque en cours de reglement, bascule securisee de la commande en echec et liberation des stocks.",
+        "description": "Certification par tests automatises bout-en-bout de la robustesse du coordinateur de commande sur l'ensemble des parcours reels et des cas d'erreur avec verification de la persistance en base de donnees.\n\n### Ce qui a ete realise :\n\n* Parcours rupture de stock : commande bloquee des la premiere phase en cas d'indisponibilite chez un commercant (HTTP 409), aucun appel bancaire declenche, compensation du premier commercant et conservation de la commande au statut annule en base de donnees.\n* Parcours refus bancaire : rejet pour solde insuffisant (HTTP 402), restitution des stocks sur l'ensemble des commercants et persistance de l'annulation en base.\n* Parcours panne reseau ou technique : indisponibilite du service bancaire (HTTP 502), liberation des stocks et trace en base de donnees.\n* Parcours nominal et rejet de saisie : validation complete d'un panier multi-commerces (HTTP 201, commande confirmee en base) et blocage d'une requete invalide (HTTP 400) sans aucune ecriture en base.\n\n### Ce qu'il reste a faire :\n\n* Relecture croisee et fusion de la Merge Request ouverte vers la branche d'integration dev.",
         "estimate": 1,
         "priority": 0,
         "state": {
-          "id": "f54f7648-a945-4d50-b16f-69f9792d3696",
-          "name": "A faire (Sprint Backlog)",
-          "type": "unstarted"
+          "id": "797deca8-345e-499d-8725-f37ac762d8f1",
+          "name": "En cours (In Progress)",
+          "type": "started"
         },
         "assignee": {
           "id": "fe7c4534-dd68-4778-a718-048612a4e071",
