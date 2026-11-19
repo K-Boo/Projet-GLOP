@@ -1726,6 +1726,26 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
   - Relecture croisee et fusion de la MR !3 de shoploc-cart-order-service dans dev (puis cloture de PRO-47 sur Linear), fusion de la MR !1 de shoploc-frontend apres synchronisation d'Ilyas (cloture de PRO-61), et implementation des endpoints /api/v1/inventory/prepare|commit|rollback cote shoploc-merchant-catalog-service.
 
 
+### [2026-11-19] Session 64 : Fusion dans dev & Cloture de PRO-47, Audit de Non-Blocage Equipe
+- **Identifiant de session** : SESSION-2026-11-19-PRO47-MERGE-AND-TEAM-CHECK
+- **Objectif atomique** : Verifier l'etat de tous les depots GitLab et de Linear pour n'executer aucune action risquant de bloquer un collegue, fusionner la MR !3 de PRO-47 si sans conflit, et cloturer PRO-47.
+- **Actions realisees** :
+  - Audit complet GitLab/Linear : constat de l'absence de conflit entre la fusion d'Abdelkader Heddi sur dev (6495d735, PRO-53) et la MR !3 (PRO-47), presence d'une branche US-38 de Gautam Demeulemeester sur shoploc-merchant-catalog-service, affectation de PRO-44 (En cours) et PRO-45 (/api/inventory/prepare) a Ilyas (Saitali), et absence de nouvelle synchronisation poussee par Ilyas sur shoploc-frontend depuis 0e5b04e3.
+  - Fusion de la MR !3 de shoploc-cart-order-service dans dev (commit a71c2218) et validation du pipeline post-merge #96501 sur dev (maven-verify 27,6 s a 97,15 %, maven-package 12,5 s) integrant PRO-53 et PRO-47.
+  - Passage de PRO-47 a Termine (Done) sur Linear et resynchronisation via pull_linear.py.
+  - Maintien prudent de la MR !1 de shoploc-frontend sans blocage et report de l'intervention sur shoploc-merchant-catalog-service afin de ne pas entrer en collision avec Ilyas (PRO-44/PRO-45) ni Gautam (US-38).
+- **Fichiers crees ou modifies** :
+  - *shoploc-cart-order-service* : branche dev synchronisee localement sur a71c2218.
+  - *Cockpit agentique (ShopLoc)* :
+    * agent_projet/config/linear_tickets_export.json et .csv (PRO-47 a Termine)
+    * agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md (Session 64)
+- **Decisions actees** :
+  - Arret volontaire avant shoploc-frontend (only_allow_merge_if_pipeline_succeeds maintenu a false) et shoploc-merchant-catalog-service (respect de PRO-44/PRO-45 assignes a Saitali et US-38 de Gautam).
+  - Orientation proposee vers PRO-49 (tests fonctionnels bout-en-bout 2PC dans shoploc-cart-order-service, sans risque de blocage collegue).
+- **Reste a faire / Prochaine etape** :
+  - Lancer PRO-49 (`[US-09-T03]`) sur une branche feat/pro-49-tests-e2e-2pc de shoploc-cart-order-service, ou se synchroniser avec Ilyas et Gautam avant d'intervenir sur shoploc-frontend et shoploc-merchant-catalog-service.
+
+
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
 
 A la fin de chaque session de chat, l'agent ou l'utilisateur execute la mise a jour de ce fichier selon le format suivant :

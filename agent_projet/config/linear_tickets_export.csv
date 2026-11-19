@@ -15,7 +15,7 @@ PRO-51,[US-10-T02] Generation de Payload QR Code de Retrait Sécurisé,1,Termine
 PRO-50,[US-10-T01] Gestion du Cycle de Vie et Statuts de Commande Multi-Commerces,2,Termine (Done),khalil,"US-10, service:cart-order, Sprint 1"
 PRO-49,[US-09-T03] Tests Fonctionnels Bout-en-Bout et Scenarios de Panne 2PC,1,A faire (Sprint Backlog),khalil,"US-09, service:cart-order, Sprint 1"
 PRO-48,[US-09-T02] Gestion des Compensations et Liberation des Stocks,1,A faire (Sprint Backlog),khalil,"US-09, service:catalog, Sprint 1"
-PRO-47,[US-09-T01] Orchestration de Commande et Protocole 2PC Multi-Commerces,3,En cours (In Progress),khalil,"US-09, service:cart-order, Sprint 1"
+PRO-47,[US-09-T01] Orchestration de Commande et Protocole 2PC Multi-Commerces,3,Termine (Done),khalil,"US-09, service:cart-order, Sprint 1"
 PRO-46,[US-08-T03] Tests d'Integration 2PC Prepare (Succes & Rupture),2,A faire (Sprint Backlog),mwb9650,"US-08, service:cart-order, Sprint 1"
 PRO-45,[US-08-T02] Endpoint /api/inventory/prepare dans Catalog Service,2,A faire (Sprint Backlog),saitalilyas,"US-08, service:catalog, Sprint 1"
 PRO-44,[US-08-T01] Contrat OpenAPI 3.1 & DTOs 2PC Prepare,1,En cours (In Progress),saitalilyas,"US-08, service:cart-order, Sprint 1"

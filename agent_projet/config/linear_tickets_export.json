@@ -802,13 +802,13 @@
         "id": "1aa5435b-91ef-40f8-ab42-fd2276065e73",
         "identifier": "PRO-47",
         "title": "[US-09-T01] Orchestration de Commande et Protocole 2PC Multi-Commerces",
-        "description": "Coordination de la validation d'un panier multi-commerces assurant la synchronisation sans faille entre la reservation des stocks et le debit bancaire.\n\n### Ce qui a ete realise :\n\n* Phase 1 (Reservation) : Envoi des demandes de reservation temporaire des stocks a chaque commercant concerne par le panier, avec annulation immediate et liberation des stocks deja reserves des qu'un commercant signale une rupture (reponse HTTP 409).\n* Phase 2 (Paiement) : Declenchement du debit bancaire apres accord unanime des commercants ; confirmation definitive de la commande (HTTP 201) et des stocks en cas d'approbation, ou restitution immediate de tous les stocks reserves en cas de refus bancaire (HTTP 402) ou d'erreur technique (HTTP 502).\n* Exposition du point d'entree REST de validation de commande, gestion normalisee des erreurs et suite de tests automatises validant l'ensemble des scenarios d'echec et le cas nominal.\n\n### Ce qu'il reste a faire :\n\n* Relecture croisee et fusion de la Merge Request ouverte vers la branche d'integration dev.",
+        "description": "Coordination de la validation d'un panier multi-commerces assurant la synchronisation sans faille entre la reservation des stocks et le debit bancaire.\n\n### Ce qui a ete realise :\n\n* Phase 1 (Reservation) : Envoi des demandes de reservation temporaire des stocks a chaque commercant concerne par le panier, avec annulation immediate et liberation des stocks deja reserves des qu'un commercant signale une rupture (reponse HTTP 409).\n* Phase 2 (Paiement) : Declenchement du debit bancaire apres accord unanime des commercants ; confirmation definitive de la commande (HTTP 201) et des stocks en cas d'approbation, ou restitution immediate de tous les stocks reserves en cas de refus bancaire (HTTP 402) ou d'erreur technique (HTTP 502).\n* Exposition du point d'entree REST de validation de commande, gestion normalisee des erreurs et suite de tests automatises validant l'ensemble des scenarios d'echec et le cas nominal.\n* Validation de l'integration dans la branche dev (tests unitaires et integration au vert).",
         "estimate": 3,
         "priority": 0,
         "state": {
-          "id": "797deca8-345e-499d-8725-f37ac762d8f1",
-          "name": "En cours (In Progress)",
-          "type": "started"
+          "id": "d3e75199-35c0-48a9-a9fe-6000b3634ce2",
+          "name": "Termine (Done)",
+          "type": "completed"
         },
         "assignee": {
           "id": "fe7c4534-dd68-4778-a718-048612a4e071",
