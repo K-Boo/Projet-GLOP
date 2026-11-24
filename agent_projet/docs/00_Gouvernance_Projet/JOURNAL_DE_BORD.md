@@ -6,14 +6,14 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
 
 ## 1. Etat Courant du Projet
 
-- **Phase active** : Developpement & Deploiement du MVP Decembre 2026 (Jalon R4) - Composant Commande & Panier Multi-Commerces 2PC, Architecture Microservices, Tests TDD (JaCoCo >= 80 %), Mock Bancaire OpenAPI 3.1
-- **Derniere mise a jour** : 2026-11-18 (Session 61 - Cloture PRO-60 GitLab Branches/MR & Cadrage PRO-61 CI/CD Centralisee)
+- **Phase active** : Livrable R3 (Étude Financière Approfondie — Échéance 30 novembre 2026) & Préparation MVP Décembre 2026 (Jalon R4)
+- **Derniere mise a jour** : 2026-11-24 (Session 66 - Finalisation & Certification Haute Fidélité du Livrable R3 Étude Financière)
 - **Responsable / Scrum Master** : Equipe Garik (M2 MIAGE GLOP - Universite de Lille)
 - **Depot Cockpit (Gouvernance & Memoire Agentique)** : GitHub Projet-GLOP / ShopLoc
 - **Depots de Code Evalues (GitLab Univ-Lille)** : Groupe glop-garik-2026 (shoploc-cart-order-service, shoploc-auth-service, shoploc-merchant-catalog-service, shoploc-loyalty-service, shoploc-frontend)
 - **Depot Plateforme & CI/CD** : GitLab shoploc-platform (Mock bancaire OpenAPI 3.1, Docker Compose, orchestration)
-- **Dernier Jalon Valide** : Cloture de PRO-60 (DEVOPS-04) : creation branche dev, verrouillage strict main et dev (push=No one, merge=Maintainers, discussions resolues) sur les 6 depots GitLab + activation Pipelines must succeed sur les 4 microservices Java.
-- **Prochaine Etape** : Execution de PRO-61 (DEVOPS-05 : template CI centralise, seuil bloquant JaCoCo >= 80 %, CI frontend/platform, build images Docker), puis reprise de PRO-47 (Commit 2/10) sur branche feat/pro-47-coordinateur-2pc via Merge Request vers dev.
+- **Dernier Jalon Valide** : Finalisation intégrale du Livrable R3 (Étude financière, analyse des coûts complets par centres d'analyse, direct costing, évaluation pluriannuelle 3 ans VAN/TRI/Payback, PDF officiel vectoriel 12 pages et Markdown certifié).
+- **Prochaine Etape** : Remise officielle du Livrable R3 le 30 novembre 2026, puis reprise des développements R4 (fusion MR !4 PRO-49, ticket PRO-48 catalogue, CI centrale PRO-61).
 
 ---
 
@@ -1763,8 +1763,43 @@ Ce document constitue la memoire persistante du projet entre chaque session de t
     * `agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md` (Session 65)
 - **Decisions actees** :
   - Priorite donnee a un test d'integration `@SpringBootTest` lisible sans serveur TCP embarque, suffisant pour certifier `OrderController -> OrderService (@Transactional noRollbackFor) -> OrderRepository (H2) -> OrderExceptionHandler`.
+### [2026-11-24] Session 66 : Conception, Calibration & Certification Haute Fidélité du Livrable R3 (Étude Financière)
+- **Identifiant de session** : SESSION-2026-11-24-LIVRABLE-R3-FINANCIAL-STUDY
+- **Objectif atomique** : Rédiger, calibrer et certifier le Livrable officiel R3 (« Dossier d'Étude Financière Approfondie ») pour l'échéance du 30 novembre 2026 en intégrant les 4 supports de cours universitaires (ESN Numeria, Gestion des investissements, Gestion stratégique des coûts, Sustainable BMC Université Laval), en réconciliant intégralement l'enveloppe horaire de 950 heures à 45 €/h chargé, en détaillant 18 postes de charges indirectes (loyer, EDF, machine Jura, mutuelle, etc.), et en compilant un PDF vectoriel haute fidélité calibré sur exactement 12 pages A4 sans emoji ni canaris.
+- **Actions realisees** :
+  - *Synchronisation initiale* : `git pull` sur le cockpit GitHub (`Projet-GLOP`) et l'ensemble des 6 dépôts microservices GitLab (`shoploc-cart-order-service`, `shoploc-auth-service`, `shoploc-merchant-catalog-service`, `shoploc-loyalty-service`, `shoploc-platform`, `projet-glop-app`).
+  - *Modélisation financière 100 % réconciliée* :
+    * Investissement initial $I_0 = 45\,000{,}00\text{ €}$ (Incorporel 24 500 €, Corporel 15 500 €, $\Delta BFRe$ 5 000 €).
+    * CMPC / $K = 7{,}80\,\%$ (60 % Capitaux Propres à 10 %, 40 % Dette bancaire à 4,5 %).
+    * Main-d'œuvre réévaluée à 45,00 €/h chargé (SYNTEC cadre débutant, charges patronales 41,1 %, mutuelle Alan 50 %, Swile 60 %, Ilévia 50 %, médecine du travail).
+    * Réconciliation intégrale des 950 heures : 480 h MOD directe (21 600 €) + 120 h Commercial (UO) + 150 h DevOps + 200 h Gouvernance.
+    * Nomenclature de 18 postes de charges indirectes totalisant 45 000,00 € (Bail EuraTechnologies 13 800 €, EDF 1 980 €, machine Jura grains 1 920 €, fontaine Culligan 1 620 €, Orange Pro 1 880 €, Google/Slack/GitHub/JetBrains 4 000 €, expert-comptable 4 200 €, assurances Hiscox 2 400 €, amortissements 5 300 €, SIST/Syntec 7 900 €).
+    * Répartition primaire et secondaire en cascade (centres auxiliaires Admin et Support Infra vers centres principaux Commercial et Production).
+    * Coût d'UO : Commercial = 258,00 €/h commercial ; Production = 61,50 €/h consultant.
+    * Coût de revient complet An 1 = 70 100,00 € ; Chiffre d'affaires = 79 400,00 € (Mairie 50 000 € + 70 commerces à 35 €/m = 29 400 €) ; Résultat net analytique = + 9 300,00 € (11,71 % marge nette). Prix cible 15 % = 82 470,59 €.
+    * Direct Costing : Charges variables $CV = 4\,200\text{ €}$, Charges fixes $CF = 65\,900\text{ €}$, $TMCV = 94{,}71\,\%$, Seuil de rentabilité $SR = 69\,580{,}60\text{ €}$, Point Mort $PM = 315{,}45\text{ jours}$ (16 novembre An 1), Marge de sécurité $MS = 9\,819{,}40\text{ €}$ (12,37 %).
+    * Arbitrage Make or Buy : simulateur d'APIs OpenAPI 3.1 conteneurisé fait en interne (Make, gain net de 3 200 € vs sandbox externe).
+    * Évaluation pluriannuelle sur 3 ans : Compte de résultat prévisionnel et CAF nettes (An 1 = 12 440 €, An 2 = 36 675 €, An 3 = 64 815 € incluant récupération BFRe).
+    * Critères d'investissement actualisés à $K = 7{,}80\,\%$ : VAN = + 49 838,63 €, IP = 2,11, DRCI (Payback actualisé) = 2 ans et 13 jours (24,5 mois), TRI = 45,32 %, ROI sur 3 ans = 199,84 %.
+    * Sustainable Business Model Canvas (Université Laval) et balance des retombées RSE sans greenwashing.
+  - *Outillage & Génération logicielle* :
+    * Script Python `agent_projet/scripts/build_r3_deliverable.py` générant l'HTML avec structure Booktabs, mise en forme mathématique sémantique (fractions, sommes, opérateurs) et compilation PDF via Google Chrome Headless.
+    * Calibration CSS typographique pour tenir sur exactement 12 pages A4 (page-break contrôlés, marges 14mm/15mm, police serif Computer Modern/Latin Modern Roman, zero orphelin).
+    * Script Python `agent_projet/scripts/generate_r3_markdown.py` produisant la version Markdown `GARIK_GLOP-2026-LIVRABLE-R3.md`.
+    * Audit d'intégrité exécuté via `verify_deliverables.py` : 93 fichiers audités, 0 canary, 0 emoji, 0 violation.
+- **Fichiers crees ou modifies** :
+  - `agent_projet/scripts/build_r3_deliverable.py` (Script de compilation HTML & PDF Chrome Headless)
+  - `agent_projet/scripts/generate_r3_markdown.py` (Script d'export Markdown)
+  - `agent_projet/docs/02_Etude_Financiere_R3/GARIK_GLOP-2026-LIVRABLE-R3.html` (Source HTML vectorielle 12 pages)
+  - `agent_projet/docs/02_Etude_Financiere_R3/GARIK_GLOP-2026-LIVRABLE-R3.pdf` (Livrable officiel imprimable, 12 pages exactes, 1,2 Mo)
+  - `agent_projet/docs/02_Etude_Financiere_R3/GARIK_GLOP-2026-LIVRABLE-R3.md` (Version documentaire Markdown intégrale)
+  - `agent_projet/docs/00_Gouvernance_Projet/JOURNAL_DE_BORD.md` (Actualisation Session 66 et état courant)
+- **Decisions actees** :
+  - Validation du modèle économique d'abonnement fixe artisan (35 € HT/mois) + subvention municipale d'amorce (50 000 € HT), garantissant la couverture de 72 % du seuil de rentabilité dès l'An 1.
+  - Levée définitive et formelle de la réserve R1 du jury concernant les salaires d'ingénieurs (portés à 45 €/h) et l'absorption des 950 heures de l'équipe étudiante.
 - **Reste a faire / Prochaine etape** :
-  - Relecture croisee et fusion de la MR `!4` (`PRO-49`) dans `dev` (puis cloture de `PRO-49` a `Termine`), fusion de la MR `!1` de `shoploc-frontend` apres synchronisation d'Ilyas (`PRO-61`), et coordination avec Ilyas (`PRO-44`/`PRO-45`) et Gautam (`US-38`) avant d'implementer `PRO-48` sur `shoploc-merchant-catalog-service`.
+  - Dépôt formel du Livrable R3 le 30 novembre 2026.
+  - Poursuite de la préparation du Jalon R4 (relecture/fusion MR !4 PRO-49, ticket PRO-48 catalogue, CI centrale PRO-61).
 
 
 ## 3. Protocole de Cloture de Session (Pour l'Agent & l'Utilisateur)
